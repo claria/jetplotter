@@ -50,7 +50,7 @@ class BasePlot(object):
         Initialize matplotlib with rc settings.
         """
         # figure
-        matplotlib.rcParams['figure.figsize'] = 7., 7.
+        matplotlib.rcParams['figure.figsize'] = 10., 10.
 
         matplotlib.rcParams['lines.linewidth'] = 2
         matplotlib.rcParams['font.family'] = 'sans-serif'

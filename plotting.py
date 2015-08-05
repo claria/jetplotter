@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from baseplot import BasePlot
 from baseplot import plot_errorbar, plot_band, add_axis_text
 
-from settings import SettingListAction
+from settings import AutoGrowListAction, AutoGrowList
 
 from root2mpl import MplObject1D
 
@@ -20,17 +20,18 @@ def get_parser():
     plotting_group.register('type','bool',str2bool) 
 
     # Plot objects options
-    plotting_group.add_argument('--labels', nargs='+', default='__nolegend__', action=SettingListAction, help='Legend labels for each plot')
-    plotting_group.add_argument('--colors', nargs='+', default=[], help='Colors for each plot')
+    plotting_group.add_argument('--labels', nargs='+', default=AutoGrowList(['__nolegend__']), action=AutoGrowListAction, help='Legend labels for each plot')
+    plotting_group.add_argument('--colors', nargs='+', default=AutoGrowList(matplotlib.rcParams['axes.color_cycle']), help='Colors for each plot')
 
-    plotting_group.add_argument('--x-errs', type='bool', default=[True], action=SettingListAction, help='Show x-errors.')
-    plotting_group.add_argument('--y-errs', type='bool', default=[True], action=SettingListAction, help='Show y-errors.')
+    plotting_group.add_argument('--x-errs', type='bool', default=AutoGrowList([True]), action=AutoGrowListAction, help='Show x-errors.')
+    plotting_group.add_argument('--y-errs', type='bool', default=AutoGrowList([True]), action=AutoGrowListAction, help='Show y-errors.')
 
-    plotting_group.add_argument('--styles', default=['errorbar'], action=SettingListAction,
+    plotting_group.add_argument('--styles', default=AutoGrowList(['errorbar']), 
+                                action=AutoGrowListAction,
                                 choices=['errorbar', 'band', 'line'], 
                                 help='Style of the plotted object.')
 
-    plotting_group.add_argument('--steps', type='bool', default=[False], action=SettingListAction, help='Plot stepped, if possible.')
+    plotting_group.add_argument('--steps', type='bool', default=AutoGrowList([False]), action=AutoGrowListAction, help='Plot stepped, if possible.')
 
     # Axis options
     plotting_group.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
@@ -68,9 +69,9 @@ class Plot(BasePlot):
         self.histos = histos
 
         self.x_lims = kwargs.pop('x_lims', (None, None))
-        self.x_lims = [float(v) if not (v is None or v.lower() == 'none') else None for v in self.x_lims ]
+        self.x_lims = [any2float(v) for v in self.x_lims ]
         self.y_lims = kwargs.pop('y_lims', (None, None))
-        self.y_lims = [float(v) if not (v is None or v.lower() == 'none') else None for v in self.y_lims ]
+        self.y_lims = [any2float(v) for v in self.y_lims ]
 
         self.x_log = kwargs.pop('x_log', False)
         self.y_log = kwargs.pop('y_log', False)
@@ -84,24 +85,26 @@ class Plot(BasePlot):
         self.texts = kwargs.pop('ax_texts', [])
 
         self.labels = kwargs.pop('labels')
-        self.colors = kwargs.pop('x_errs')
-        self.colors = kwargs.pop('y_errs')
+        self.colors = kwargs.pop('colors')
+        self.x_errs = kwargs.pop('x_errs')
+        self.y_errs = kwargs.pop('y_errs')
         self.style = kwargs.pop('styles')
         self.steps = kwargs.pop('steps')
         self.idx = 0
 
-    def plot(self, root_obj, style=None, **kwargs):
-        mpl_obj = MplObject1D(root_obj)
-        idx = kwargs.pop('idx', self.idx)
-        style = kwargs.pop('styles')[idx]
-        label = kwargs.pop('labels')[idx]
-        step = kwargs.pop('steps')[idx]
-        xerrs = kwargs.pop('x_errs')[idx]
-        yerrs = kwargs.pop('y_errs')[idx]
+    def plot(self, **kwargs):
+        print kwargs
+        mpl_obj = MplObject1D(kwargs.pop('obj'))
+        style = kwargs.pop('styles')
+        label = kwargs.pop('labels')
+        step = kwargs.pop('steps')
+        xerrs = kwargs.pop('x_errs')
+        yerrs = kwargs.pop('y_errs')
+        color = kwargs.pop('colors')
         if style == 'errorbar':
-            plot_errorbar(mpl_obj, ax=self.ax, show_xerr=xerrs, label=label, show_yerr=yerrs, marker='.', linestyle=None, step=True)
+            plot_errorbar(mpl_obj, ax=self.ax, show_xerr=xerrs, color=color, label=label, show_yerr=yerrs, marker='.', linestyle=None, step=True)
         elif style == 'band' :
-            plot_band(mpl_obj, ax=self.ax, label=label, step=step)
+            plot_band(mpl_obj, ax=self.ax, label=label, step=step, color=color)
         else:
             raise ValueError('Style {0} not supported.'.format(style))
 
@@ -117,8 +120,7 @@ class Plot(BasePlot):
         # Add axis texts
         # TODO refactor into function
         for text in self.texts:
-            print text
-            text, loc = text.rsplit(':', 1)
+            text, loc = text.rsplit('?', 1)
             add_axis_text(self.ax, text, loc=loc)
 
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
@@ -141,3 +143,10 @@ def str2bool(v):
     """ Parse string content to bool."""
     return v.lower() in ("yes", "true", "t", "1")
 
+
+def any2float(v):
+    """Return float if parseable, else None."""
+    try:
+        return float(v)
+    except TypeError:
+        return None

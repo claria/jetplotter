@@ -3,32 +3,41 @@ ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
 
 import argparse
+import core
+from core import SettingAction
 
 
 def get_parser():
 
-    parser = argparse.ArgumentParser(add_help=False)
+    parser = core.UserParser(add_help=False)
     root_input = parser.add_argument_group('Root Input')
-    root_input.add_argument('-i', '--root-filenames', nargs='+', help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+    root_input.add_argument('-i', '--input',  nargs='+', type='str2kvstr', action='setting', help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
     root_input.add_argument('--object-paths', nargs='+', help='Path to root objects.')
 
     return parser
 
-def get_root_objects(root_filenames, object_paths=None, option=None, **kwargs):
-    if root_filenames is None:
-        root_filenames = []
-    if not object_paths:
-        object_paths = len(root_filenames) * [None]
-    
-    print root_filenames
-    print object_paths
+def read_input(**kwargs):
+    root_objects = get_root_objects(**kwargs)
+    data = []
 
-    return [get_root_object(filename, object_path) for filename, object_path in zip(root_filenames, object_paths)]
+    for i, object in enumerate(root_objects):
+        obj = {}
+        obj['id'] = 'id_{0}'.format(i)
+        obj['obj'] = object
+        data.append(obj)
+    return data
+
+def get_root_objects(input, object_paths=None, option=None, **kwargs):
+    if input is None:
+        input = []
+    if not object_paths:
+        object_paths = len(input) * [None]
+    return [get_root_object(filename, object_path) for filename, object_path in zip(input, object_paths)]
 
 def get_root_object(root_filename, object_path=None, option="READ"):
 
     if ':' in root_filename and not object_path:
-        root_filename, object_path = root_filename.split(':')
+        root_filename, object_path = root_filename.split('?')
 
     rootfile = get_root_file(root_filename, option=option)
     obj = rootfile.Get(object_path)

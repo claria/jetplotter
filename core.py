@@ -1,5 +1,79 @@
-import collections
 import argparse
+
+
+class UserParser(argparse.ArgumentParser):
+
+    def __init__(self, *args, **kwargs):
+        super(UserParser, self).__init__(*args, **kwargs)
+        self.register('type','bool', str2bool)
+        self.register('type','str2kvfloat', str2kvfloat)
+        self.register('type','str2kvint', str2kvint)
+        self.register('type','str2kvbool', str2kvbool)
+        self.register('type','str2kvstr', str2kvstr)
+
+        self.register('action','setting', SettingAction)
+
+
+def str2bool(s):
+    """ Parse string content to bool."""
+    return s.lower() in ("yes", "true", "t", "1")
+
+def str2kvfloat(s):
+    k, v = get_tuple(s)
+    return k, float(v)
+
+def str2kvint(s):
+    id, setting = get_tuple(s)
+    return id, int(setting)
+
+def str2kvbool(s):
+    id, setting = get_tuple(s)
+    b = setting.lower() in ("yes", "true", "t", "1")
+    return id, b
+
+def str2kvstr(s):
+    return get_tuple(s)
+
+def get_tuple(s):
+    """Try to split s into key value pair at ':' delimiter. Set key to None if ':' not in s."""
+    try:
+        (id, setting) = s.split(':')
+    except ValueError:
+        (id, setting) = None, s
+    return id, setting
+
+class SettingAction(argparse.Action):
+    """Stores a setting list object in the Parser namespace."""
+    def __init__(self, list_default=None, *args, **kwargs):
+        super(SettingAction, self).__init__(*args, **kwargs)
+
+    def __call__(self, parser, namespace, values, option_string=None):
+        setattr(namespace, self.dest, SettingDict(values))
+
+
+class SettingDict(dict):
+
+    def __init__(self, *args, **kwargs ):
+        self.default = kwargs.pop('default', None)
+        self.update(*args, **kwargs)
+
+    def __getitem__(self, key):
+        if key in self:
+            return dict.__getitem__(self, key)
+        return self.default
+
+    def __setitem__(self, key, val):
+        dict.__setitem__(self, key, val)
+
+    def __repr__(self):
+        dictrepr = dict.__repr__(self)
+        return '%s(%s)' % (type(self).__name__, dictrepr)
+
+    def update(self, *args, **kwargs):
+        print args
+        print kwargs
+        for k, v in dict(*args, **kwargs).iteritems():
+            self[k] = v
 
 
 class AutoGrowListAction(argparse.Action):

@@ -1,7 +1,7 @@
 import argparse
 import sys
 import inspect
-from settings import SettingListAction
+from settings import AutoGrowListAction
 
 def get_modules():
     ana_modules = []
@@ -23,10 +23,9 @@ class AnaModule(object):
         self.parser = _parser.add_argument_group(self.__class__.__name__)
 
     def get_parser(self):
-
         return parser_group
 
-    def run(self, **args):
+    def __call__(self, **args):
         pass
 
 class RatioToObj(AnaModule):
@@ -35,7 +34,7 @@ class RatioToObj(AnaModule):
         super(RatioToObj, self).__init__()
         self.parser.add_argument('--ratio-to', type=int, help='')
 
-    def run(self, root_objects, **args):
+    def __call__(self, root_objects, **args):
         ref_obj = root_objects[0].Clone('ref_obj')
         for obj in root_objects:
             obj.Divide(ref_obj)
@@ -47,7 +46,9 @@ class SimpleRatioToFirstObj(AnaModule):
         super(SimpleRatioToFirstObj, self).__init__()
         self.parser.add_argument('--simpleratio-to', type=int, help='')
 
-    def run(self, root_objects, **args):
+    def __call__(self, root_objects, **args):
+        if not root_objects:
+            return
         ref_obj = root_objects[0].Clone('ref_obj')
         for i in xrange(1, ref_obj.GetNbinsX() + 1):
             ref_obj.SetBinError(i, 0.)
@@ -60,10 +61,10 @@ class NormalizeObj(AnaModule):
     def __init__(self):
         super(NormalizeObj, self).__init__()
         self.parser.add_argument('--scale-objs',  nargs='+', default=[1.0],
-                                       action=SettingListAction,
+                                       action=AutoGrowListAction,
                                        help='Scale each obj with factor')
 
-    def run(self, root_objects, **args):
+    def __call__(self, root_objects, **args):
         for i, obj in enumerate(root_objects):
             if args['scale_objs'][i] == 'width':
                 print "Scale", obj.GetName(), "with ", args['scale_objs'][i]
@@ -77,10 +78,10 @@ class NormalizeToObj(AnaModule):
     def __init__(self):
         super(NormalizeToObj, self).__init__()
         self.parser.add_argument('--scale-to',  nargs='+', default=[1.0],
-                                       action=SettingListAction,
+                                       action=AutoGrowListAction,
                                        help='Scale each obj with factor')
 
-    def run(self, root_objects, **args):
+    def __call__(self, root_objects, **args):
         for i, obj in enumerate(root_objects):
             if args['scale_to'][i] == -1:
                 continue
@@ -88,4 +89,17 @@ class NormalizeToObj(AnaModule):
                 obj.Scale(root_objects[args['scale_to'][i]].Integral() / root_objects[i].Integral())
 
 
+#
+# Helper functions
+#
+
+def normalize_to_obj(obj, ref_obj):
+    obj.Scale(ref_obj.Integral() / objIntegral())
+
+def ratio_to_obj(obj, ref_obj, error_prop=True):
+    ref_obj = ref_obj.Clone('ref_obj')
+    if error_prop is False:
+        for i in xrange(1, ref_obj.GetNbinsX() + 1):
+            ref_obj.SetBinError(i, 0.)
+    obj.Divide(ref_obj)
 
