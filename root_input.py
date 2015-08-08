@@ -1,19 +1,18 @@
 import ROOT
+
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
 
-import argparse
-import core
-from parser import SettingAction
 from modules import Module
 
 
 class RootModule(Module):
-
     def __init__(self):
         super(RootModule, self).__init__()
-        self.parser.add_argument('-i', '--input',  nargs='+', type='str2kvstr', action='setting', help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
-        self.parser.add_argument('--input_graph',  nargs='+', type='str2kvstr', action='setting', help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+        self.parser.add_argument('-i', '--input', nargs='+', type='str2kvstr', action='setting',
+                                 help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+        self.parser.add_argument('--input_graph', nargs='+', type='str2kvstr', action='setting',
+                                 help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
         self.parser.add_argument('--object-paths', nargs='+', help='Path to root objects.')
 
     def __call__(self, config):
@@ -33,8 +32,8 @@ def get_root_objects(input, object_paths=None, option=None, **kwargs):
         object_paths = len(input) * [None]
     return [get_root_object(filename, object_path) for filename, object_path in zip(input, object_paths)]
 
-def get_root_object(root_filename, object_path=None, option="READ"):
 
+def get_root_object(root_filename, object_path=None, option="READ"):
     if '?' in root_filename and not object_path:
         root_filename, object_path = root_filename.split('?')
 
@@ -49,15 +48,16 @@ def get_root_object(root_filename, object_path=None, option="READ"):
 def get_tgraphasymm_err(central_histo, err_low_histo, err_hi_histo):
     graph = ROOT.TGraphAsymmErrors(central_histo)
     for i in xrange(graph.GetN()):
-        graph.SetPointEYlow(i, err_low_histo.GetBinContent(i+1))
-        graph.SetPointEYhigh(i, err_hi_histo.GetBinContent(i+1))
+        graph.SetPointEYlow(i, err_low_histo.GetBinContent(i + 1))
+        graph.SetPointEYhigh(i, err_hi_histo.GetBinContent(i + 1))
     return graph
+
 
 def get_tgraphasymm(central_histo, low_histo, hi_histo):
     graph = ROOT.TGraphAsymmErrors(central_histo)
     for i in xrange(graph.GetN()):
-        graph.SetPointEYlow(i, central_histo.GetBinContent(i+1) - low_histo.GetBinContent(i+1))
-        graph.SetPointEYhigh(i, hi_histo.GetBinContent(i+1) - central_histo.GetBinContent(i+1))
+        graph.SetPointEYlow(i, central_histo.GetBinContent(i + 1) - low_histo.GetBinContent(i + 1))
+        graph.SetPointEYhigh(i, hi_histo.GetBinContent(i + 1) - central_histo.GetBinContent(i + 1))
     return graph
 
 

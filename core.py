@@ -1,9 +1,9 @@
-import argparse
 import copy
 import os
 import sys
 import json
 import collections
+
 from root_input import RootModule
 from plotting import PlotModule
 from parser import UserParser
@@ -11,7 +11,6 @@ from modules import get_module
 
 
 class Plotter(object):
-
     def __init__(self):
         self.config = {}
         self._input_modules = [RootModule()]
@@ -26,7 +25,6 @@ class Plotter(object):
         if self.config['print_config']:
             print_config(self.config)
 
-
         for module in self.path:
             print "Processing {0}...".format(module.label)
             module(self.config)
@@ -35,9 +33,7 @@ class Plotter(object):
         path = os.path.join(self.config['output_prefix'], self.config['output_path']).replace('.png', '.json')
         save_config(self.config, path)
 
-
     def _init_parser(self, parents=[]):
-        add_parsers = [module._parser for module in self._input_modules + self._ana_modules + self._output_modules]
         self.parser = UserParser(add_help=False)
         self.parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
         args = vars(self.parser.parse_known_args()[0])
@@ -46,10 +42,9 @@ class Plotter(object):
         self.parser = UserParser(parents=add_parsers)
         self.parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
         self.parser.add_argument("-p", "--print-config", default=False, action="store_true",
-                            help="Print out the JSON config before running Artus.")
+                                 help="Print out the JSON config before running Artus.")
         self.parser.add_argument("-l", "--load-config", default=None,
-                            help="Print out the JSON config before running Artus.")
-
+                                 help="Print out the JSON config before running Artus.")
 
     def _prepare_config(self):
         config = vars(self.parser.parse_args())
@@ -68,6 +63,7 @@ class SimpleJsonEncoder(json.JSONEncoder):
             return 'null'
         # Let the base class default method raise the TypeError
         return json.JSONEncoder.default(self, obj)
+
 
 def save_config(config, path, indent=4):
     """Save json config to file."""
@@ -90,6 +86,7 @@ def save_config(config, path, indent=4):
     print "Config written to \"{0}\"".format(path)
     return path
 
+
 def read_config(path):
     with open(path) as json_file:
         try:
@@ -99,6 +96,7 @@ def read_config(path):
             print 'Failed to parse json file {0}'.format(path)
             sys.exit(1)
     return config
+
 
 def update_settings(d, u):
     for k, v in u.iteritems():
@@ -114,15 +112,17 @@ def update_settings(d, u):
                 pass
     return d
 
+
 def print_config(config):
     print json.dumps(config, sort_keys=True, cls=SimpleJsonEncoder, indent=4)
 
+
 def walk_json():
     pass
+
 
 def update_with_default(data):
     for id, item in data.iteritems():
         if id == '_default':
             continue
         data[id] = dict(data['_default'].items() + item.items())
-

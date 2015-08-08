@@ -1,37 +1,43 @@
 import argparse
-import os
-import sys
 import collections
 
-class UserParser(argparse.ArgumentParser):
 
+class UserParser(argparse.ArgumentParser):
     def __init__(self, *args, **kwargs):
         super(UserParser, self).__init__(*args, **kwargs)
-        self.register('type','bool', str2bool)
-        self.register('type','str2kvfloat', str2kvfloat)
-        self.register('type','str2kvint', str2kvint)
-        self.register('type','str2kvbool', str2kvbool)
-        self.register('type','str2kvstr', str2kvstr)
+        self.register('type', 'bool', str2bool)
+        self.register('type', 'str2kvfloat', str2kvfloat)
+        self.register('type', 'str2kvint', str2kvint)
+        self.register('type', 'str2kvbool', str2kvbool)
+        self.register('type', 'str2kvstr', str2kvstr)
 
-        self.register('action','setting', SettingAction)
-
+        self.register('action', 'setting', SettingAction)
 
     def parse_args(self, *args, **kwargs):
         args = super(UserParser, self).parse_args()
         for a in self._actions:
             # this is true if setting has not provided on commandline
-            if hasattr(args, a.dest) and (getattr(args, a.dest) == a.default or 
-                   (isinstance(a.default, basestring) and getattr(args, a.dest) == self._registry_get('type', a.type, a.type)(a.default))):
-                    if isinstance(a, SettingAction):
-                        a(self, args, a.default, a.option_strings)
-                        delattr(args, a.dest)
+            # in case a setting has not been provided on the commandline,
+            # argparse just calls setattr(args, a.dest, a.default) without calling any action.
+            # Only if the type of a.default is a string, the type function is called.
+            is_default_arg = False
+            if hasattr(args, a.dest):
+                if isinstance(a.default, basestring) and getattr(args, a.dest) == self._registry_get('type', a.type,
+                                                                                                     a.type)(a.default):
+                    is_default_arg = True
+                elif getattr(args, a.dest) == a.default:
+                    is_default_arg = True
+
+            if is_default_arg:
+                if isinstance(a, SettingAction):
+                    a(self, args, a.default, a.option_strings)
+                    delattr(args, a.dest)
             else:
                 # these args were actually provided on cmd line.
                 if not hasattr(args, 'provided_args'):
                     setattr(args, 'provided_args', [])
                 args.provided_args.append(a.dest)
         return args
-
 
 
 def str2bool(s):
@@ -41,21 +47,26 @@ def str2bool(s):
     else:
         return s.lower() in ("yes", "true", "t", "1")
 
+
 def str2kvfloat(s):
     k, v = get_tuple(s)
     return k, float(v)
 
+
 def str2kvint(s):
     id, setting = get_tuple(s)
     return id, int(setting)
+
 
 def str2kvbool(s):
     id, setting = get_tuple(s)
     b = setting.lower() in ("yes", "true", "t", "1")
     return id, b
 
+
 def str2kvstr(s):
     return get_tuple(s)
+
 
 def get_tuple(s):
     """Try to split s into key value pair at ':' delimiter. Set key to None if ':' not in s."""
@@ -68,7 +79,8 @@ def get_tuple(s):
 
 class SettingAction(argparse.Action):
     """Stores a setting list object in the Parser namespace."""
-    def __init__(self, list_default=None, *args, **kwargs):
+
+    def __init__(self, *args, **kwargs):
         super(SettingAction, self).__init__(*args, **kwargs)
 
     def __call__(self, parser, namespace, values, option_string=None):
@@ -87,38 +99,18 @@ class SettingAction(argparse.Action):
                 # values[i] = ('id_{0}'.format(i), values[i][1])
                 values[i] = ('_default'.format(i), values[i][1])
         for id, val in values:
-            if not id in namespace.settings:
+            if id not in namespace.settings:
                 namespace.settings[id] = {}
                 namespace.settings[id]['id'] = id
             namespace.settings[id][self.dest] = val
-        # setattr(namespace, self.dest, SettingDict(values))
-
-
-class DefaultDict(dict):
-
-    def __init__(self, *args, **kwargs ):
-        self.defaults = dict()
-        self.update(*args, **kwargs)
-
-    def setdefault(self, key, val):
-        self.defaults[key] = val
-
-    def __getitem__(self, key):
-        if not key in self and key in self.defaults:
-            return self.defaults[key]
-        else:
-            return dict.__getitem__(self, key)
-
-    def __repr__(self):
-        dictrepr = dict.__repr__(self)
-        return '%s(%s)' % (type(self).__name__, dictrepr)
-
+            # setattr(namespace, self.dest, SettingDict(values))
 
 
 class AutoGrowListAction(argparse.Action):
     """Stores a setting list object in the Parser namespace."""
+
     def __init__(self, list_default=None, *args, **kwargs):
-        self.list_default = kwargs.pop('list_default', None)
+        self.list_default = list_default
         super(AutoGrowListAction, self).__init__(*args, **kwargs)
 
     def __call__(self, parser, namespace, values, option_string=None):
@@ -149,7 +141,7 @@ class AutoGrowList(list):
 
     def __getitem__(self, idx):
         """Return item at idx if in list, else grow list and return default value."""
-        if (idx >= len(self)):
+        if idx >= len(self):
             self._grow(idx)
         return super(AutoGrowList, self).__getitem__(idx)
 
@@ -174,5 +166,3 @@ class AutoGrowList(list):
     def _grow(self, idx):
         """Grow list up to idx using default values."""
         self.extend((idx - len(self) + 1) * [self._get_default()])
-
-

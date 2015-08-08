@@ -1,6 +1,5 @@
 import os
-from abc import ABCMeta, abstractmethod
-from root2mpl import MplObject1D
+from abc import ABCMeta
 import numpy as np
 
 import matplotlib
@@ -30,7 +29,7 @@ class BasePlot(object):
         Save Fig to File and create directory structure
         if not yet existing.
         """
-        #Check if directory exists and create if not
+        # Check if directory exists and create if not
         path = os.path.join(self.output_prefix, self.output_path)
         directory = os.path.dirname(path)
 
@@ -119,14 +118,14 @@ class BasePlot(object):
         if style == 'none':
             pass
         elif style == 'cmsprel':
-            self.set_preset_text(ax, r"\textbf{CMS Preliminary}", loc='topleft')
+            add_axis_text(ax, r"\textbf{CMS Preliminary}", loc='topleft')
             if show_cme:
-                self.set_preset_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
+                add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
                                      loc='topleft', )
         else:
-            self.set_preset_text(ax, r"\textbf{CMS}", loc='topleft')
+            add_axis_text(ax, r"\textbf{CMS}", loc='topleft')
             if show_cme:
-                self.set_preset_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
+                add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
                                      loc='topleft', )
 
 def add_axis_text(ax, text, loc='top right', **kwargs):
@@ -189,7 +188,7 @@ def log_locator_filter(x, pos):
     return ''
 
 
-def set(obj, *args, **kwargs):
+def setval(obj, *args, **kwargs):
     """
     Apply Settings in kwargs, while defaults are set
     """
@@ -257,7 +256,6 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
     if ax is None:
         ax = plt.gca()
 
-
     color = kwargs.pop('color', next(ax._get_lines.color_cycle))
     label = kwargs.pop('label', '')
 
@@ -271,7 +269,6 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
         y_errl = steppify_bin(y_errl)
         y_erru = steppify_bin(y_erru)
 
-    label = kwargs.pop('label', '')
     artist = ax.fill_between(x, y-y_errl, y+y_erru, label=label, color=color, alpha=alpha)
     return artist
 
