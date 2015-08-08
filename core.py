@@ -4,185 +4,70 @@ import os
 import sys
 import json
 import collections
+from root_input import RootModule
+from plotting import PlotModule
+from parser import UserParser
+from modules import get_module
 
 
-class UserParser(argparse.ArgumentParser):
+class Plotter(object):
 
-    def __init__(self, *args, **kwargs):
-        super(UserParser, self).__init__(*args, **kwargs)
-        self.register('type','bool', str2bool)
-        self.register('type','str2kvfloat', str2kvfloat)
-        self.register('type','str2kvint', str2kvint)
-        self.register('type','str2kvbool', str2kvbool)
-        self.register('type','str2kvstr', str2kvstr)
+    def __init__(self):
+        self.config = {}
+        self._input_modules = [RootModule()]
+        self._ana_modules = []
+        self._output_modules = [PlotModule()]
 
-        self.register('action','setting', SettingAction)
+    def __call__(self):
+        self._init_parser()
+        self.path = self._input_modules + self._ana_modules + self._output_modules
+        self._prepare_config()
 
-    def parse_args(self, *args, **kwargs):
-        args = super(UserParser, self).parse_args()
-        for a in self._actions:
-            # this is true if setting has not provided on commandline
-            if hasattr(args, a.dest) and (getattr(args, a.dest) == a.default or 
-                                          getattr(args, a.dest) == self._registry_get('type', a.type, a.type)(a.default)):
-
-                if isinstance(a, SettingAction):
-                    a(self, args, a.default, a.option_strings)
-                    delattr(args, a.dest)
-            else:
-                # these args were actually provided on cmd line.
-                if not hasattr(args, 'provided_args'):
-                    setattr(args, 'provided_args', [])
-                args.provided_args.append(a.dest)
-        return args
+        if self.config['print_config']:
+            print_config(self.config)
 
 
+        for module in self.path:
+            print "Processing {0}...".format(module.label)
+            module(self.config)
 
-def str2bool(s):
-    """ Parse string content to bool."""
-    if isinstance(s, bool):
-        return s
-    else:
-        return s.lower() in ("yes", "true", "t", "1")
-
-def str2kvfloat(s):
-    k, v = get_tuple(s)
-    return k, float(v)
-
-def str2kvint(s):
-    id, setting = get_tuple(s)
-    return id, int(setting)
-
-def str2kvbool(s):
-    id, setting = get_tuple(s)
-    b = setting.lower() in ("yes", "true", "t", "1")
-    return id, b
-
-def str2kvstr(s):
-    return get_tuple(s)
-
-def get_tuple(s):
-    """Try to split s into key value pair at ':' delimiter. Set key to None if ':' not in s."""
-    try:
-        (id, setting) = s.split(':')
-    except ValueError:
-        (id, setting) = None, s
-    return id, setting
-
-def update_with_default(data):
-    for id, item in data.iteritems():
-        if id == '_default':
-            continue
-        data[id] = dict(data['_default'].items() + item.items())
-
-class SettingAction(argparse.Action):
-    """Stores a setting list object in the Parser namespace."""
-    def __init__(self, list_default=None, *args, **kwargs):
-        super(SettingAction, self).__init__(*args, **kwargs)
-
-    def __call__(self, parser, namespace, values, option_string=None):
-        if values is None:
-            values = []
-        if isinstance(values, basestring) or not isinstance(values, collections.Iterable):
-            values = [values]
-
-        if not hasattr(namespace, 'settings'):
-            setattr(namespace, 'settings', {})
-        # Ensure all values are list of tuples (id, val)
-        for i in xrange(0, len(values)):
-            if not isinstance(values[i], tuple):
-                values[i] = (None, values[i])
-            if values[i][0] is None:
-                # values[i] = ('id_{0}'.format(i), values[i][1])
-                values[i] = ('_default'.format(i), values[i][1])
-        for id, val in values:
-            if not id in namespace.settings:
-                namespace.settings[id] = {}
-                namespace.settings[id]['id'] = id
-            namespace.settings[id][self.dest] = val
-        # setattr(namespace, self.dest, SettingDict(values))
+        # write config
+        path = os.path.join(self.config['output_prefix'], self.config['output_path']).replace('.png', '.json')
+        save_config(self.config, path)
 
 
-class DefaultDict(dict):
-
-    def __init__(self, *args, **kwargs ):
-        self.defaults = dict()
-        self.update(*args, **kwargs)
-
-    def setdefault(self, key, val):
-        self.defaults[key] = val
-
-    def __getitem__(self, key):
-        if not key in self and key in self.defaults:
-            return self.defaults[key]
-        else:
-            return dict.__getitem__(self, key)
-
-    def __repr__(self):
-        dictrepr = dict.__repr__(self)
-        return '%s(%s)' % (type(self).__name__, dictrepr)
+    def _init_parser(self, parents=[]):
+        add_parsers = [module._parser for module in self._input_modules + self._ana_modules + self._output_modules]
+        self.parser = UserParser(add_help=False)
+        self.parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
+        args = vars(self.parser.parse_known_args()[0])
+        self._ana_modules += [get_module(name) for name in args['ana_modules']]
+        add_parsers = [module._parser for module in self._input_modules + self._ana_modules + self._output_modules]
+        self.parser = UserParser(parents=add_parsers)
+        self.parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
+        self.parser.add_argument("-p", "--print-config", default=False, action="store_true",
+                            help="Print out the JSON config before running Artus.")
+        self.parser.add_argument("-l", "--load-config", default=None,
+                            help="Print out the JSON config before running Artus.")
 
 
+    def _prepare_config(self):
+        config = vars(self.parser.parse_args())
 
-class AutoGrowListAction(argparse.Action):
-    """Stores a setting list object in the Parser namespace."""
-    def __init__(self, list_default=None, *args, **kwargs):
-        self.list_default = kwargs.pop('list_default', None)
-        super(AutoGrowListAction, self).__init__(*args, **kwargs)
-
-    def __call__(self, parser, namespace, values, option_string=None):
-        setattr(namespace, self.dest, AutoGrowList(values, self.list_default))
+        if config['load_config']:
+            file_config = read_config(config['load_config'])
+            update_settings(file_config, config)
+            config = file_config
+        self.config = config
+        update_with_default(self.config['settings'])
 
 
-class AutoGrowList(list):
-    """Contains list of settings values.
-
-       Returns item of idx in list if available, otherwise returns default
-       value. Currently default value is just last accessible item in list.
-       If item is set outside range of list, list is automatically extended
-       to that idx filling the items inbetween with default values.
-    """
-
-    def __init__(self, setting, default=None):
-        if default:
-            self.default = default
-        else:
-            self.default = 'last'
-
-        if isinstance(setting, basestring) or not isinstance(setting, collections.Iterable):
-            setting = [setting]
-        super(AutoGrowList, self).__init__(setting)
-
-        if len(self) == 0 and self.default in [None, 'last', 'first']:
-            raise ValueError('You either have to provide a list with len>0 or a valid default.')
-
-    def __getitem__(self, idx):
-        """Return item at idx if in list, else grow list and return default value."""
-        if (idx >= len(self)):
-            self._grow(idx)
-        return super(AutoGrowList, self).__getitem__(idx)
-
-    def _get_default(self):
-        """Return default value. For now, default is just last accessible value in list."""
-        if self.default == 'last':
-            return self[-1]
-        elif self.default == 'first':
-            return self[0]
-        elif self.default:
-            return self.default
-        else:
-            raise ValueError('No default value provided. Thats not good.')
-
-    def __setitem__(self, idx, value):
-        """Set item if idx in list, else increase list up to idx."""
-        if idx >= len(self):
-            # Extend list up to idx with default vals.
-            self._grow(idx)
-        super(AutoGrowList, self).__setitem__(idx, value)
-
-    def _grow(self, idx):
-        """Grow list up to idx using default values."""
-        self.extend((idx - len(self) + 1) * [self._get_default()])
-
+class SimpleJsonEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if not isinstance(obj, (dict, list, tuple, str, unicode, int, long, float, bool)):
+            return 'null'
+        # Let the base class default method raise the TypeError
+        return json.JSONEncoder.default(self, obj)
 
 def save_config(config, path, indent=4):
     """Save json config to file."""
@@ -215,20 +100,29 @@ def read_config(path):
             sys.exit(1)
     return config
 
-def update_dict(d, u):
+def update_settings(d, u):
     for k, v in u.iteritems():
         if isinstance(v, collections.Mapping):
-            r = update_dict(d.get(k, {}), v)
+            r = update_settings(d.get(k, {}), v)
             d[k] = r
         else:
             if 'provided_args' in u.keys() and k in u['provided_args']:
                 d[k] = u[k]
-            else:
+            elif k not in d:
                 d[k] = u[k]
+            else:
+                pass
     return d
 
 def print_config(config):
-    print json.dumps(config, sort_keys=True, indent=4)
+    print json.dumps(config, sort_keys=True, cls=SimpleJsonEncoder, indent=4)
 
 def walk_json():
     pass
+
+def update_with_default(data):
+    for id, item in data.iteritems():
+        if id == '_default':
+            continue
+        data[id] = dict(data['_default'].items() + item.items())
+

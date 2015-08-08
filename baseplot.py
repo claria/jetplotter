@@ -23,7 +23,7 @@ class BasePlot(object):
             self.fig = plt.figure()
 
         self.output_path = kwargs.pop('output_path', 'plot.png')
-        self.output_folder = kwargs.pop('output_folder', 'plots')
+        self.output_prefix = kwargs.pop('output_prefix', 'plots')
 
     def save_fig(self, close_fig=True):
         """
@@ -31,15 +31,16 @@ class BasePlot(object):
         if not yet existing.
         """
         #Check if directory exists and create if not
-        directory = os.path.dirname(self.output_path)
+        path = os.path.join(self.output_prefix, self.output_path)
+        directory = os.path.dirname(path)
 
         if directory and not os.path.exists(directory):
             os.makedirs(directory)
         # for ext in self.output_ext:
             # if not m.lower().endswith(('.png', '.jpg', '.jpeg', '.pdf', '.ps'))
             # filename = "{}.{}".format(self.output_path, ext)
-        print 'Saved plot to {0}'.format(self.output_path)
-        self.fig.savefig(self.output_path, bbox_inches='tight')
+        print 'Saved plot to {0}'.format(path)
+        self.fig.savefig(path, bbox_inches='tight')
 
         if close_fig:
             plt.close(self.fig)

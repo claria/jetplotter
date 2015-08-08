@@ -4,27 +4,26 @@ ROOT.gROOT.SetBatch(True)
 
 import argparse
 import core
-from core import SettingAction
+from parser import SettingAction
+from modules import Module
 
 
-def get_parser():
+class RootModule(Module):
 
-    parser = core.UserParser(add_help=False)
-    root_input = parser.add_argument_group('Root Input')
-    root_input.add_argument('-i', '--input',  nargs='+', type='str2kvstr', action='setting', help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
-    root_input.add_argument('--input_graph',  nargs='+', type='str2kvstr', action='setting', help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
-    root_input.add_argument('--object-paths', nargs='+', help='Path to root objects.')
+    def __init__(self):
+        super(RootModule, self).__init__()
+        self.parser.add_argument('-i', '--input',  nargs='+', type='str2kvstr', action='setting', help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+        self.parser.add_argument('--input_graph',  nargs='+', type='str2kvstr', action='setting', help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+        self.parser.add_argument('--object-paths', nargs='+', help='Path to root objects.')
 
-    return parser
-
-def read_input(args):
-    for id, item in args.iteritems():
-        if 'input' in item:
-            item['obj'] = get_root_object(item['input'])
-        elif 'input_graph' in item:
-            item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input_graph']))
-        elif 'input_asymmerrgraph' in item:
-            item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input']))
+    def __call__(self, config):
+        for id, item in config['settings'].iteritems():
+            if 'input' in item:
+                item['obj'] = get_root_object(item['input'])
+            elif 'input_graph' in item:
+                item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input_graph']))
+            elif 'input_asymmerrgraph' in item:
+                item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input']))
 
 
 def get_root_objects(input, object_paths=None, option=None, **kwargs):

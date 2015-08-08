@@ -7,54 +7,56 @@ BasePlot.init_matplotlib()
 from baseplot import plot_errorbar, plot_band, add_axis_text
 
 # from core import SettingDict
-from core import UserParser
+from parser import UserParser
+from modules import Module
 
 from root2mpl import MplObject1D
 
 
-def get_parser():
+class PlotModule(Module):
 
-    parser = UserParser(add_help=False)
-    # Register new keyword 'bool' for parser
-    parser.register('type','bool',str2bool) 
-    plotting_group = parser.add_argument_group('Plotting')
-    plotting_group.register('type','bool',str2bool) 
+    def __init__(self):
+        super(PlotModule, self).__init__()
+        self.parser.add_argument('--label', type='str2kvstr', nargs='+', default=['__nolegend__'], action='setting', help='Legend labels for each plot')
+        self.parser.add_argument('--color', type='str2kvstr', nargs='+', default=matplotlib.rcParams['axes.color_cycle'], action='setting', help='Colors for each plot')
 
-    # Plot objects options
-    plotting_group.add_argument('--label', type='str2kvstr', nargs='+', default=['__nolegend__'], action='setting', help='Legend labels for each plot')
-    plotting_group.add_argument('--color', type='str2kvstr', nargs='+', default=matplotlib.rcParams['axes.color_cycle'], action='setting', help='Colors for each plot')
+        self.parser.add_argument('--x-err', type='str2kvbool', nargs='+', default=[True], action='setting', help='Show x-errors.')
+        self.parser.add_argument('--y-err', type='str2kvbool', nargs='+', default=[True], action='setting', help='Show y-errors.')
+        self.parser.add_argument('--alpha', type='str2kvfloat', nargs='+', default=1.0, action='setting', help='Alpha value in plot.')
 
-    plotting_group.add_argument('--x-err', type='str2kvbool', nargs='+', default=[True], action='setting', help='Show x-errors.')
-    plotting_group.add_argument('--y-err', type='str2kvbool', nargs='+', default=[True], action='setting', help='Show y-errors.')
-    plotting_group.add_argument('--alpha', type='str2kvfloat', nargs='+', default=1.0, action='setting', help='Alpha value in plot.')
+        self.parser.add_argument('--style', default='errorbar', type='str2kvstr', nargs='+', action='setting',
+                                    help='Style of the plotted object.')
 
-    plotting_group.add_argument('--style', default='errorbar', type='str2kvstr', nargs='+', action='setting',
-                                help='Style of the plotted object.')
+        self.parser.add_argument('--step', type='str2kvbool', nargs='+', default=False, action='setting', help='Plot stepped, if possible.')
+        self.parser.add_argument('--plot', type='str2kvbool', nargs='+', default=True, action='setting', help='Plot id.')
 
-    plotting_group.add_argument('--step', type='str2kvbool', nargs='+', default=False, action='setting', help='Plot stepped, if possible.')
-    plotting_group.add_argument('--plot', type='str2kvbool', nargs='+', default=True, action='setting', help='Plot id.')
+        # Axis options
+        self.parser.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
+        self.parser.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
 
-    # Axis options
-    plotting_group.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
-    plotting_group.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
+        self.parser.add_argument('--x-log', default=False, type='bool', help='Show x-errors.')
+        self.parser.add_argument('--y-log', default=False, type='bool',  help='Show y-errors.')
 
-    plotting_group.add_argument('--x-log', default=False, type='bool', help='Show x-errors.')
-    plotting_group.add_argument('--y-log', default=False, type='bool',  help='Show y-errors.')
+        self.parser.add_argument('--x-label', default='', help='xlabel')
+        self.parser.add_argument('--y-label', default='', help='ylabel')
 
-    plotting_group.add_argument('--x-label', default='', help='xlabel')
-    plotting_group.add_argument('--y-label', default='', help='ylabel')
+        self.parser.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
+        self.parser.add_argument('--legend-loc', default='best', help='Legend location.')
 
-    plotting_group.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
-    plotting_group.add_argument('--legend-loc', default='best', help='Legend location.')
+        self.parser.add_argument('--ax-texts', nargs='+', default=[], help='Add text to plot. Syntax is \'Text:1.0,1.0\' with loc 1.0,1.0')
 
-    plotting_group.add_argument('--ax-texts', nargs='+', default=[], help='Add text to plot. Syntax is \'Text:1.0,1.0\' with loc 1.0,1.0')
+        self.parser.add_argument('--output-path', default='plot.png', help='Path to output file.')
+        self.parser.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
 
-    plotting_group.add_argument('--output-path', default='plot.png', help='Path to output file.')
-    plotting_group.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
-
-    # plotting_group.add_argument('--autoscale', 'store_false', default=True, help='Autoscale plot to datalims')
-
-    return parser
+    def __call__(self, config):
+        plot = Plot(**config)
+        # plot each object
+        for id, item in config['settings'].iteritems():
+            if not 'obj' in item or not item['plot'] or id.startswith('_'):
+                continue
+            plot.plot(**item)
+        # Save plot
+        plot.finish()
 
 
 def get_plot(*args, **kwargs):
