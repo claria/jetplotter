@@ -1,6 +1,5 @@
 import os
-from abc import ABCMeta, abstractmethod
-from root2mpl import MplObject1D
+from abc import ABCMeta
 import numpy as np
 
 import matplotlib
@@ -23,23 +22,24 @@ class BasePlot(object):
             self.fig = plt.figure()
 
         self.output_path = kwargs.pop('output_path', 'plot.png')
-        self.output_folder = kwargs.pop('output_folder', 'plots')
+        self.output_prefix = kwargs.pop('output_prefix', 'plots')
 
     def save_fig(self, close_fig=True):
         """
         Save Fig to File and create directory structure
         if not yet existing.
         """
-        #Check if directory exists and create if not
-        directory = os.path.dirname(self.output_path)
+        # Check if directory exists and create if not
+        path = os.path.join(self.output_prefix, self.output_path)
+        directory = os.path.dirname(path)
 
         if directory and not os.path.exists(directory):
             os.makedirs(directory)
         # for ext in self.output_ext:
             # if not m.lower().endswith(('.png', '.jpg', '.jpeg', '.pdf', '.ps'))
             # filename = "{}.{}".format(self.output_path, ext)
-        print 'Saved plot to {0}'.format(self.output_path)
-        self.fig.savefig(self.output_path, bbox_inches='tight')
+        print 'Saved plot to {0}'.format(path)
+        self.fig.savefig(path, bbox_inches='tight')
 
         if close_fig:
             plt.close(self.fig)
@@ -50,12 +50,12 @@ class BasePlot(object):
         Initialize matplotlib with rc settings.
         """
         # figure
-        matplotlib.rcParams['figure.figsize'] = 7., 7.
+        matplotlib.rcParams['figure.figsize'] = 10., 10.
 
         matplotlib.rcParams['lines.linewidth'] = 2
-        matplotlib.rcParams['font.family'] = 'sans-serif'
-        matplotlib.rcParams['font.serif'] = 'lmodern'
-        matplotlib.rcParams['font.sans-serif'] = 'Helvetica'
+        # matplotlib.rcParams['font.family'] = 'sans-serif'
+        # matplotlib.rcParams['font.serif'] = 'lmodern'
+        # matplotlib.rcParams['font.sans-serif'] = 'Helvetica'
         matplotlib.rcParams['font.monospace'] = 'Computer Modern Typewriter'
         matplotlib.rcParams['font.style'] = 'normal'
         matplotlib.rcParams['font.size'] = 20.
@@ -118,14 +118,14 @@ class BasePlot(object):
         if style == 'none':
             pass
         elif style == 'cmsprel':
-            self.set_preset_text(ax, r"\textbf{CMS Preliminary}", loc='topleft')
+            add_axis_text(ax, r"\textbf{CMS Preliminary}", loc='topleft')
             if show_cme:
-                self.set_preset_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
+                add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
                                      loc='topleft', )
         else:
-            self.set_preset_text(ax, r"\textbf{CMS}", loc='topleft')
+            add_axis_text(ax, r"\textbf{CMS}", loc='topleft')
             if show_cme:
-                self.set_preset_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
+                add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
                                      loc='topleft', )
 
 def add_axis_text(ax, text, loc='top right', **kwargs):
@@ -188,7 +188,7 @@ def log_locator_filter(x, pos):
     return ''
 
 
-def set(obj, *args, **kwargs):
+def setval(obj, *args, **kwargs):
     """
     Apply Settings in kwargs, while defaults are set
     """
@@ -241,52 +241,49 @@ def steppify_bin(arr, isx=False):
     return newarr
 
 
-def plot_band(obj, step=False, emptybins=True, ax=None, **kwargs):
+def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwargs):
     """ Produce an errorbar plots with or without connecting lines.
 
     Args:
         obj: Mplobj representation of a root object.
         ax: Axis to plot on. If not specified current global axis will be used.
-        show_xerr: If True, x errorbars will be plotted.
-        show_yerr: If True, y errorbars will be plotted.
+        x_err: If True, x errorbars will be plotted.
+        yerr: If True, y errorbars will be plotted.
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
 
     # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
-
 
     color = kwargs.pop('color', next(ax._get_lines.color_cycle))
     label = kwargs.pop('label', '')
 
     x = obj.x
     y = obj.y
-    yerrl = obj.yerrl
-    yerru = obj.yerru
+    y_errl = obj.yerrl
+    y_erru = obj.yerru
     if step:
         x = steppify_bin(obj.xbinedges, isx=True)
         y = steppify_bin(y)
-        yerrl = steppify_bin(yerrl)
-        yerru = steppify_bin(yerru)
+        y_errl = steppify_bin(y_errl)
+        y_erru = steppify_bin(y_erru)
 
-    label = kwargs.pop('label', '')
-    artist = ax.fill_between(x, y-yerrl, y+yerru, label=label, color=color, **kwargs)
+    artist = ax.fill_between(x, y-y_errl, y+y_erru, label=label, color=color, alpha=alpha)
     return artist
 
 
 
-def plot_errorbar(obj, step=False, show_xerr=True, show_yerr=True, emptybins=True, ax=None, **kwargs):
+def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, ax=None, alpha=1.0,  **kwargs):
     """ Produce an errorbar plots with or without connecting lines.
 
     Args:
         obj: Mplobj representation of a root objogram.
         ax: Axis to plot on. If not specified current global axis will be used.
-        show_xerr: If True, x errorbars will be plotted.
-        show_yerr: If True, y errorbars will be plotted.
+        x_err: If True, x errorbars will be plotted.
+        yerr: If True, y errorbars will be plotted.
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
-
     # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
@@ -294,14 +291,14 @@ def plot_errorbar(obj, step=False, show_xerr=True, show_yerr=True, emptybins=Tru
     x = obj.x
     y = obj.y
 
-    if show_xerr:
-        xerr = np.array((obj.xerrl, obj.xerru))
+    if x_err:
+        x_err = np.array((obj.xerrl, obj.xerru))
     else:
-        xerr = None
-    if show_yerr:
-        yerr = np.array((obj.yerrl, obj.yerru))
+        x_err = None
+    if y_err:
+        y_err = np.array((obj.yerrl, obj.yerru))
     else:
-        yerr = None
+        y_err = None
 
     linestyle = kwargs.pop('linestyle', '')
     color = kwargs.pop('color', next(ax._get_lines.color_cycle))
@@ -319,7 +316,7 @@ def plot_errorbar(obj, step=False, show_xerr=True, show_yerr=True, emptybins=Tru
             ax.step(steppify_bin(obj.xbinedges, isx=True), steppify_bin(y), linestyle=linestyle, color=color, **kwargs)
         else:
             ax.plot(x, y, linestyle=linestyle, color=color, **kwargs)
-    artist = ax.errorbar(x, y, xerr=xerr, yerr=yerr, label=label, capsize=capsize, fmt=fmt, linestyle='None', color=color, **kwargs)
+    artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, label=label, capsize=capsize, fmt=fmt, linestyle='None', color=color, alpha=alpha, **kwargs)
     return artist
 
 
