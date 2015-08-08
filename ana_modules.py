@@ -1,6 +1,8 @@
 import argparse
 import sys
 import inspect
+import core
+import copy
 from settings import AutoGrowListAction
 
 def get_modules():
@@ -19,7 +21,7 @@ def get_module(name):
 class AnaModule(object):
 
     def __init__(self):
-        _parser = argparse.ArgumentParser(add_help=False)
+        _parser = core.UserParser(add_help=False)
         self.parser = _parser.add_argument_group(self.__class__.__name__)
 
     def get_parser(self):
@@ -32,14 +34,38 @@ class RatioToObj(AnaModule):
 
     def __init__(self):
         super(RatioToObj, self).__init__()
-        self.parser.add_argument('--ratio-to', type=int, help='')
+        self.parser.add_argument('--ratio', nargs='+', type='str2kvstr', action='setting', help='')
 
-    def __call__(self, root_objects, **args):
-        ref_obj = root_objects[0].Clone('ref_obj')
-        for obj in root_objects:
-            obj.Divide(ref_obj)
+    def __call__(self, data):
+        for id, item in data.items():
+            if 'ratio' in item:
+                to_id = item['ratio']
+                if not to_id in data:
+                    raise ValueError('Requested id {} not found.'.format(to_id))
+                ratio_container = copy.deepcopy(item)
+                if not 'ratio_{0}'.format(id) in data: 
+                    data['ratio_{0}'.format(id)] ={}
+                data['ratio_{0}'.format(id)] = dict(ratio_container.items() + data['ratio_{0}'.format(id)].items())
+                ratio_to_obj(ratio_container['obj'], data[to_id]['obj'])
 
-class SimpleRatioToFirstObj(AnaModule):
+class MultiplyObj(AnaModule):
+
+    def __init__(self):
+        super(RatioToObj, self).__init__()
+        self.parser.add_argument('--multiply', nargs='+', type='str2kvstr', action='setting', help='')
+
+    def __call__(self, data):
+        for id, item in data.items():
+            if 'multiply' in item:
+                to_id = item['multiply']
+                if not to_id in data:
+                    raise ValueError('Requested id {} not found.'.format(to_id))
+                item['obj'].Multiply(data[to_id]['obj'])
+
+
+
+
+class SimpleRatioToObj(AnaModule):
     """Just divide by value, do not take into account errors of ref histo."""
 
     def __init__(self):
@@ -92,6 +118,31 @@ class NormalizeToObj(AnaModule):
 #
 # Helper functions
 #
+
+def divide_tgraph(graph1, graph2, error_prop=False):
+    assert(graph1.GetN() == graph2.GetN())
+    for i in xrange(graph1.GetN()):
+        graph1X, graph1Y = ROOT.Double(0), ROOT.Double(0)
+        graph1.GetPoint(i, graph1X, graph1Y)
+        graph2X, graph2Y = ROOT.Double(0), ROOT.Double(0)
+        graph2.GetPoint(i, graph2X, graph2Y)
+
+        graph1.SetPoint(i, graph1X, graph1Y/graph2Y if graph2Y != 0. else 0.)
+        graph1.SetPointEYlow(i, graph1.GetErrorYlow(i)/graph2Y if graph2Y != 0. else 0.)
+        graph1.SetPointEYhigh(i, graph1.GetErrorYhigh(i)/graph2Y if graph2Y != 0. else 0.)
+
+def multiply_tgraph(graph1, graph2, error_prop=False):
+    assert(graph1.GetN() == graph2.GetN())
+    for i in xrange(graph1.GetN()):
+        graph1X, graph1Y = ROOT.Double(0), ROOT.Double(0)
+        graph1.GetPoint(i, graph1X, graph1Y)
+        graph2X, graph2Y = ROOT.Double(0), ROOT.Double(0)
+        graph2.GetPoint(i, graph2X, graph2Y)
+
+        graph1.SetPoint(i, graph1X, graph1Y/graph2Y if graph2Y != 0. else 0.)
+        graph1.SetPointEYlow(i, graph1.GetErrorYlow(i)/graph2Y if graph2Y != 0. else 0.)
+        graph1.SetPointEYhigh(i, graph1.GetErrorYhigh(i)/graph2Y if graph2Y != 0. else 0.)
+
 
 def normalize_to_obj(obj, ref_obj):
     obj.Scale(ref_obj.Integral() / objIntegral())
