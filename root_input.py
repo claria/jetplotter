@@ -11,37 +11,38 @@ class RootModule(Module):
         super(RootModule, self).__init__()
         self.parser.add_argument('-i', '--input', nargs='+', type='str2kvstr', action='setting',
                                  help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
-        self.parser.add_argument('--input_graph', nargs='+', type='str2kvstr', action='setting',
+        self.parser.add_argument('--input_tgraph', nargs='+', type='str2kvstr', action='setting',
                                  help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
-        self.parser.add_argument('--object-paths', nargs='+', help='Path to root objects.')
 
     def __call__(self, config):
         for id, item in config['settings'].iteritems():
             if 'input' in item:
                 item['obj'] = get_root_object(item['input'])
-            elif 'input_graph' in item:
-                item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input_graph']))
+            elif 'input_tgraph' in item:
+                if '&' in item['input_tgraph']:
+                    item['obj'] = get_tgraphasymm_from_histos(*[get_root_object(input) for input in item['input_tgraph'].split('&')])
+                else:
+                    item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input_tgraph']))
             elif 'input_asymmerrgraph' in item:
                 item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input']))
 
 
-def get_root_objects(input, object_paths=None, option=None, **kwargs):
+def get_root_objects(input, option=None, **kwargs):
     if input is None:
         input = []
-    if not object_paths:
-        object_paths = len(input) * [None]
-    return [get_root_object(filename, object_path) for filename, object_path in zip(input, object_paths)]
+    return [get_root_object(filename) for filename in input]
 
 
-def get_root_object(root_filename, object_path=None, option="READ"):
-    if '?' in root_filename and not object_path:
-        root_filename, object_path = root_filename.split('?')
+def get_root_object(input, option="READ"):
 
-    rootfile = get_root_file(root_filename, option=option)
+    if '?' in input:
+        input, object_path = input.split('?')
+
+    rootfile = get_root_file(input, option=option)
     obj = rootfile.Get(object_path)
     ROOT.SetOwnership(obj, 0)
     if obj == None:
-        raise Exception("Requested object {0} not found in rootfile {1}.".format(object_path, root_filename))
+        raise Exception("Requested object {0} not found in rootfile {1}.".format(object_path, input))
     return obj
 
 
@@ -53,7 +54,7 @@ def get_tgraphasymm_err(central_histo, err_low_histo, err_hi_histo):
     return graph
 
 
-def get_tgraphasymm(central_histo, low_histo, hi_histo):
+def get_tgraphasymm_from_histos(central_histo, low_histo, hi_histo):
     graph = ROOT.TGraphAsymmErrors(central_histo)
     for i in xrange(graph.GetN()):
         graph.SetPointEYlow(i, central_histo.GetBinContent(i + 1) - low_histo.GetBinContent(i + 1))
