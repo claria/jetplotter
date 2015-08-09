@@ -2,6 +2,7 @@ import sys
 import inspect
 from parser import UserParser
 import ROOT
+import collections
 
 
 class Module(object):
@@ -44,6 +45,23 @@ class RatioToObj(Module):
 
             ratio_to_obj(config['settings'][id]['obj'], config['settings'][to]['obj'])
 
+class ToTGraph(Module):
+    def __init__(self):
+        super(ToTGraph, self).__init__()
+        self.parser.add_argument('--to-tgraph', nargs='+', default=[], help='')
+
+    def __call__(self, config):
+        for id in config['to_tgraph']:
+            if isinstance(config['settings'][id]['obj'], collections.Iterable):
+                if len(config['settings'][id]['obj']) == 1:
+                    config['settings'][id]['obj'] = ROOT.TGraphAsymmErrors(config['settings'][id]['obj'])
+                elif len(config['settings'][id]['obj']) == 3:
+                    config['settings'][id]['obj'] = get_tgraphasymm_from_histos(*config['settings'][id]['obj'])
+                else:
+                    raise ValueError('unsupported conversion requested.')
+            else:
+                config['settings'][id]['obj'] = ROOT.TGraphAsymmErrors(config['settings'][id]['obj'])
+
 
 class SimpleRatioToObj(Module):
     def __init__(self):
@@ -58,9 +76,7 @@ class SimpleRatioToObj(Module):
             if to not in config['settings']:
                 raise ValueError('Requested id {} not found.'.format(to))
             to_obj = config['settings'][to]['obj'].Clone('ref')
-            for i in xrange(1, to_obj.GetNbinsX() + 1):
-                to_obj.SetBinError(i, 0.)
-            ratio_to_obj(config['settings'][id]['obj'], to_obj)
+            config['settings'][id]['obj'] = ratio_to_obj(config['settings'][id]['obj'], to_obj, error_prop=False)
 
 
 class MultiplyObj(Module):
@@ -123,13 +139,22 @@ def multiply_tgraph(graph1, graph2, error_prop=False):
         graph1.SetPointEYhigh(i, graph1.GetErrorYhigh(i) / graph2Y if graph2Y != 0. else 0.)
 
 
-def normalize_to_obj(obj, ref_obj):
-    obj.Scale(ref_obj.Integral() / objIntegral())
+def normalize_to_obj(obj, to_obj):
+    obj.Scale(to_obj.Integral() / objIntegral())
 
 
-def ratio_to_obj(obj, ref_obj, error_prop=True):
-    ref_obj = ref_obj.Clone('ref_obj')
-    if error_prop is False:
-        for i in xrange(1, ref_obj.GetNbinsX() + 1):
-            ref_obj.SetBinError(i, 0.)
-    obj.Divide(ref_obj)
+def ratio_to_obj(obj, to_obj, error_prop=True):
+    if isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TH1):
+        to_obj = to_obj.Clone('to_obj')
+        if error_prop is False:
+            for i in xrange(1, to_obj.GetNbinsX() + 1):
+                to_obj.SetBinError(i, 0.)
+        obj.Divide(to_obj)
+    elif isinstance(obj, ROOT.TGraph) and isinstance(to_obj, ROOT.TGraph):
+        divide_tgraph(obj, to_obj, error_prop=False)
+    elif isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TGraph):
+        obj = ROOT.TGraphAsymmErrors(obj)
+        divide_tgraph(obj, to_obj, error_prop=False)
+    else:
+        raise TypeError('Invalid types passed: {0} and {1}'.format(type(obj), type(to_obj)))
+    return obj
