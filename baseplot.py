@@ -143,7 +143,7 @@ def add_axis_text(ax, text, loc='top right', **kwargs):
         kwargs.update({'x': x, 'y': y, 'va': 'bottom',
                        'ha': 'left'})
     else:
-        raise Exception('Unknown loc.')
+        raise Exception('Unknown loc {0}.'.format(loc))
 
     ax.text(s=text, transform=ax.transAxes, **kwargs)
 
