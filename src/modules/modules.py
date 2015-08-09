@@ -1,29 +1,23 @@
 import sys
 import inspect
-from parser import UserParser
+from ..parser import UserParser
 import ROOT
 import collections
 
 
 class Module(object):
+
     def __init__(self):
         self.label = self.__class__.__name__
         self._parser = UserParser(add_help=False)
         self.parser = self._parser.add_argument_group(self.label)
 
     def __call__(self, **args):
-        pass
-
-
-def get_modules():
-    ana_modules = []
-    for name, obj in inspect.getmembers(sys.modules[__name__]):
-        if inspect.isclass(obj) and issubclass(obj, Module):
-            ana_modules.append(obj())
-    return ana_modules
+        raise NotImplementedError()
 
 
 def get_module(name):
+    """Returns instance of module of with class name 'name'."""
     thismodule = sys.modules[__name__]
     cls = getattr(thismodule, name)
     module = cls()

@@ -4,10 +4,10 @@ import sys
 import json
 import collections
 
-from root_input import RootModule
-from plotting import PlotModule
+from modules.root_module import RootModule
+from modules.plot_module import PlotModule
 from parser import UserParser
-from modules import get_module
+from modules.modules import get_module
 
 
 class Plotter(object):
@@ -25,6 +25,7 @@ class Plotter(object):
         if self.config['print_config']:
             print_config(self.config)
 
+        print self.config
         for module in self.path:
             print "Processing {0}...".format(module.label)
             module(self.config)

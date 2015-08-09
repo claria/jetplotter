@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from core import Plotter
+from src.core import Plotter
 
 
 def main():

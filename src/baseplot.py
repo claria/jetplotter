@@ -85,18 +85,15 @@ class BasePlot(object):
         matplotlib.rcParams['agg.path.chunksize'] = 20000
 
         # default color cycle
-        matplotlib.rcParams['axes.color_cycle'] = ['#1f77b4',
-                                                   '#ff7f0e',
-                                                   '#2ca02c',
-                                                   '#d62728',
-                                                   '#9467bd',
-                                                   '#8c564b',
-                                                   '#e377c2',
-                                                   '#7f7f7f',
-                                                   '#bcbd22',
-                                                   '#17becf']
+        matplotlib.rcParams['axes.color_cycle'] = ['#4878CF',
+                                                   '#6ACC65', 
+                                                   '#D65F5F',
+                                                   '#B47CC7',
+                                                   '#C4AD66',
+                                                   '#77BEDB']
 
-        matplotlib.rcParams["axes.formatter.limits"] = [-5, 5]
+
+        matplotlib.rcParams['axes.formatter.limits'] = [-5, 5]
         # legend
         matplotlib.rcParams['legend.numpoints'] = 1
         matplotlib.rcParams['legend.fontsize'] = 19
@@ -112,9 +109,7 @@ class BasePlot(object):
     #
 
     def set_style(self, ax, style, show_cme=False):
-        """
-        Some preset styles
-        """
+        """Some preset styles """
         if style == 'none':
             pass
         elif style == 'cmsprel':
@@ -270,6 +265,16 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
         y_erru = steppify_bin(y_erru)
 
     artist = ax.fill_between(x, y-y_errl, y+y_erru, label=label, color=color, alpha=alpha)
+    p = matplotlib.patches.Rectangle((0, 0), 1, 1,
+                                     label=label,
+                                     fill=True,
+                                     facecolor=color,
+                                     alpha=alpha,
+                                     # linewidth=linewidth,
+                                     edgecolor=color,
+                                     hatch=None)
+    ax.add_patch(p)
+
     return artist
 
 

@@ -1,11 +1,12 @@
+import itertools
 import matplotlib
 import matplotlib.pyplot as plt
 
-from baseplot import BasePlot
+from ..baseplot import BasePlot
 BasePlot.init_matplotlib()
 
-from baseplot import plot_errorbar, plot_band, add_axis_text
-from root2mpl import MplObject1D
+from ..baseplot import plot_errorbar, plot_band, add_axis_text
+from ..root2mpl import MplObject1D
 from modules import Module
 
 
@@ -15,8 +16,14 @@ class PlotModule(Module):
         self.parser.add_argument('--label', type='str2kvstr', nargs='+', default=['__nolegend__'], action='setting',
                                  help='Legend labels for each plot')
         self.parser.add_argument('--color', type='str2kvstr', nargs='+',
-                                 default=matplotlib.rcParams['axes.color_cycle'], action='setting',
+                                 default='auto', action='setting',
                                  help='Colors for each plot')
+        self.parser.add_argument('--edge-color', type='str2kvstr', nargs='+',
+                                 default='auto', action='setting',
+                                 help='Edgecolor for each plot')
+        self.parser.add_argument('--hatch', type='str2kvstr', nargs='+',
+                                 default=None, action='setting',
+                                 help='Hatch for each plot')
 
         self.parser.add_argument('--x-err', type='str2kvbool', nargs='+', default=[True], action='setting',
                                  help='Show x-errors.')
@@ -24,6 +31,9 @@ class PlotModule(Module):
                                  help='Show y-errors.')
         self.parser.add_argument('--alpha', type='str2kvfloat', nargs='+', default=1.0, action='setting',
                                  help='Alpha value in plot.')
+        self.parser.add_argument('--zorder', type='str2kvfloat', nargs='+', default=1.0, action='setting',
+                                 help='Alpha value in plot.')
+
 
         self.parser.add_argument('--style', default='errorbar', type='str2kvstr', nargs='+', action='setting',
                                  help='Style of the plotted object.')
@@ -90,15 +100,25 @@ class Plot(BasePlot):
 
         self.texts = kwargs.pop('ax_texts', [])
 
+        self.auto_colors = itertools.cycle(matplotlib.rcParams['axes.color_cycle'])
+
     def plot(self, **kwargs):
         kwargs['obj'] = MplObject1D(kwargs.get('obj'))
         style = kwargs.pop('style', 'errorbar')
+
+        if kwargs['color'] == 'auto':
+            kwargs['color'] = next(self.auto_colors)
+        if kwargs['edge_color'] == 'auto':
+            kwargs['edge_color'] = kwargs['color']
+
         try:
             kwargs.pop('plot')
             kwargs.pop('id')
             kwargs.pop('input')
+            kwargs.pop('edge_color')
         except:
             pass
+
         if style == 'errorbar':
             artist = plot_errorbar(ax=self.ax, marker='.', linestyle=None, **kwargs)
         elif style == 'band':
