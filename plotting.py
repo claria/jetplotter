@@ -93,9 +93,12 @@ class Plot(BasePlot):
     def plot(self, **kwargs):
         kwargs['obj'] = MplObject1D(kwargs.get('obj'))
         style = kwargs.pop('style', 'errorbar')
-        kwargs.pop('plot')
-        kwargs.pop('id')
-        kwargs.pop('input')
+        try:
+            kwargs.pop('plot')
+            kwargs.pop('id')
+            kwargs.pop('input')
+        except:
+            pass
         if style == 'errorbar':
             artist = plot_errorbar(ax=self.ax, marker='.', linestyle=None, **kwargs)
         elif style == 'band':
