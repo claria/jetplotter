@@ -19,8 +19,8 @@ class Plotter(object):
 
     def __call__(self):
         self._init_parser()
-        self.path = self._input_modules + self._ana_modules + self._output_modules
         self._prepare_config()
+        self.path = self._input_modules + self._ana_modules + self._output_modules
 
         if self.config['print_config']:
             print_config(self.config)
@@ -54,6 +54,8 @@ class Plotter(object):
             update_settings(file_config, config)
             config = file_config
         self.config = config
+
+        self._ana_modules += [get_module(name) for name in config['ana_modules']]
         update_with_default(self.config['settings'])
 
 
