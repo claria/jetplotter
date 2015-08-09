@@ -44,6 +44,7 @@ class PlotModule(Module):
                                  help='Plot id.')
 
         # Axis options
+        self.parser.add_argument('--fig-size', nargs=2, default=None, help='Size of figure.')
         self.parser.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
         self.parser.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
 

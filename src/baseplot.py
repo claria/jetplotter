@@ -15,9 +15,9 @@ class BasePlot(object):
 
         self.init_matplotlib()
 
-        figsize = kwargs.pop('figsize', None)
-        if figsize:
-            self.fig = plt.figure(figsize=figsize)
+        fig_size = kwargs.pop('fig_size', None)
+        if fig_size:
+            self.fig = plt.figure(figsize=fig_size)
         else:
             self.fig = plt.figure()
 
