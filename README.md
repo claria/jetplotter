@@ -2,5 +2,6 @@
 
 ## TODO
   - rename id (shadows builtin)
-  - order structure
-  - rename 'settings'
+  - keep order of legend entries (difficult due to dict, probably another setting with list of ids)
+  - X order structure
+  - X rename 'settings'
