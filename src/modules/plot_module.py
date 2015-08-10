@@ -13,38 +13,44 @@ from modules import Module
 class PlotModule(Module):
     def __init__(self):
         super(PlotModule, self).__init__()
+        # Plot object options
         self.parser.add_argument('--label', type='str2kvstr', nargs='+', default=['__nolegend__'], action='setting',
                                  help='Legend labels for each plot')
         self.parser.add_argument('--color', type='str2kvstr', nargs='+',
                                  default='auto', action='setting',
                                  help='Colors for each plot')
-        self.parser.add_argument('--edge-color', type='str2kvstr', nargs='+',
+        self.parser.add_argument('--edgecolor', type='str2kvstr', nargs='+',
                                  default='auto', action='setting',
                                  help='Edgecolor for each plot')
         self.parser.add_argument('--hatch', type='str2kvstr', nargs='+',
                                  default=None, action='setting',
                                  help='Hatch for each plot')
-
-        self.parser.add_argument('--x-err', type='str2kvbool', nargs='+', default=[True], action='setting',
+        self.parser.add_argument('--linestyle', type='str2kvstr', nargs='+',
+                                 default='', action='setting',
+                                 help='Linestyle for each plot')
+        self.parser.add_argument('--marker', type='str2kvstr', nargs='+',
+                                 default='.', action='setting',
+                                 help='Marker for errorbars for each plot.')
+        self.parser.add_argument('--x-err', type='str2kvbool', nargs='+', default=True, action='setting',
                                  help='Show x-errors.')
-        self.parser.add_argument('--y-err', type='str2kvbool', nargs='+', default=[True], action='setting',
+        self.parser.add_argument('--y-err', type='str2kvbool', nargs='+', default=True, action='setting',
                                  help='Show y-errors.')
         self.parser.add_argument('--alpha', type='str2kvfloat', nargs='+', default=1.0, action='setting',
                                  help='Alpha value in plot.')
+        self.parser.add_argument('--capsize', type='str2kvint', nargs='+', default=0, action='setting',
+                                 help='Capsize of errorbars in plot.')
         self.parser.add_argument('--zorder', type='str2kvfloat', nargs='+', default=1.0, action='setting',
                                  help='Alpha value in plot.')
-
-
         self.parser.add_argument('--style', default='errorbar', type='str2kvstr', nargs='+', action='setting',
                                  help='Style of the plotted object.')
-
         self.parser.add_argument('--step', type='str2kvbool', nargs='+', default=False, action='setting',
-                                 help='Plot stepped, if possible.')
-        self.parser.add_argument('--plot', type='str2kvbool', nargs='+', default=True, action='setting',
-                                 help='Plot id.')
+                                 help='Plot the data stepped at the xerr edges.')
+        # Figure options
+        self.parser.add_argument('--fig-size', type=float, nargs=2, default=None, help='Size of figure.')
+        self.parser.add_argument('--output-path', default='plot.png', help='Path to output file.')
+        self.parser.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
 
         # Axis options
-        self.parser.add_argument('--fig-size', nargs=2, default=None, help='Size of figure.')
         self.parser.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
         self.parser.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
 
@@ -58,18 +64,19 @@ class PlotModule(Module):
         self.parser.add_argument('--legend-loc', default='best', help='Legend location.')
 
         self.parser.add_argument('--ax-texts', nargs='+', default=[],
-                                 help='Add text to plot. Syntax is \'Text:1.0,1.0\' with loc 1.0,1.0')
+                                 help='Add text to plot. Syntax is \'Text?1.0,1.0\' with loc 1.0,1.0')
+        self.parser.add_argument('--ax-vlines', nargs='+', default=[],
+                                 help='Add vertical lines to plot. Syntax is y_pos?color?lw.')
+        self.parser.add_argument('--ax-hlines', nargs='+', default=[],
+                                 help='Add horizontal lines to plot. Syntax is y_pos?color?lw.')
 
-        self.parser.add_argument('--output-path', default='plot.png', help='Path to output file.')
-        self.parser.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
 
     def __call__(self, config):
         plot = Plot(**config)
         # plot each object
-        for id, item in config['settings'].iteritems():
-            if 'obj' not in item or not item['plot'] or id.startswith('_'):
-                continue
-            plot.plot(**item)
+        for id, item in config['objects'].iteritems():
+            if not id.startswith('_'):
+                plot.plot(**item)
         # Save plot
         plot.finish()
 
@@ -100,6 +107,8 @@ class Plot(BasePlot):
         self.legend_loc = kwargs.pop('legend_loc', 'best')
 
         self.texts = kwargs.pop('ax_texts', [])
+        self.vlines = kwargs.pop('ax_vlines', [])
+        self.hlines = kwargs.pop('ax_hlines', [])
 
         self.auto_colors = itertools.cycle(matplotlib.rcParams['axes.color_cycle'])
 
@@ -109,19 +118,11 @@ class Plot(BasePlot):
 
         if kwargs['color'] == 'auto':
             kwargs['color'] = next(self.auto_colors)
-        if kwargs['edge_color'] == 'auto':
-            kwargs['edge_color'] = kwargs['color']
-
-        try:
-            kwargs.pop('plot')
-            kwargs.pop('id')
-            kwargs.pop('input')
-            kwargs.pop('edge_color')
-        except:
-            pass
+        if kwargs['edgecolor'] == 'auto':
+            kwargs['edgecolor'] = kwargs['color']
 
         if style == 'errorbar':
-            artist = plot_errorbar(ax=self.ax, marker='.', linestyle=None, **kwargs)
+            artist = plot_errorbar(ax=self.ax, **kwargs)
         elif style == 'band':
             artist = plot_band(ax=self.ax, **kwargs)
         else:
@@ -139,6 +140,15 @@ class Plot(BasePlot):
         for text in self.texts:
             text, loc = text.rsplit('?', 1)
             add_axis_text(self.ax, text, loc=loc)
+
+        # Add horizontal lines to ax
+        for hline in self.hlines:
+            ypos, color, lw = hline.split('?')
+            self.ax.axhline(y=float(ypos), color=color, lw=lw, zorder=0.99)
+        # Add vertical lines to ax
+        for vline in self.vlines:
+            xpos, color, lw = vline.split('?')
+            self.ax.axvline(y=float(ypos), color=color, lw=lw)
 
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
