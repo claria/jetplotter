@@ -5,53 +5,6 @@ import numpy as np
 import ROOT
 
 
-class MplGraph:
-    def __init__(self, root_object):
-        if not isinstance(root_object, ROOT.TGraph):
-            raise TypeError(str(root_object.ClassName()) + ' does not inherit from TGraph.')
-        self.name = root_object.GetName()
-        self.root_object = root_object
-        # self.classname = root_object.ClassName()
-        self.title = root_object.GetTitle()
-        self.xlabel = root_object.GetXaxis().GetTitle()
-        self.ylabel = root_object.GetYaxis().GetTitle()
-        # Number of bins without underflow/overflow bin
-        self.x = np.zeros((root_object.GetN()))
-        self.y = np.zeros((root_object.GetN()))
-
-        for i in xrange(root_object.GetN()):
-            tmpx, tmpy = ROOT.Double(0), ROOT.Double(0)
-            root_object.GetPoint(i, tmpx, tmpy)
-            self.x[i] = tmpx
-            self.y[i] = tmpy
-        self.xerr = np.array([root_object.GetErrorX(i) for i in xrange(root_object.GetN())])
-        self.xerrl = np.array([root_object.GetErrorXlow(i) for i in xrange(root_object.GetN())])
-        self.xerru = np.array([root_object.GetErrorXhigh(i) for i in xrange(root_object.GetN())])
-        self.yerr = np.array([root_object.GetErrorY(i) for i in xrange(root_object.GetN())])
-        self.yerrl = np.array([root_object.GetErrorYlow(i) for i in xrange(root_object.GetN())])
-        self.yerru = np.array([root_object.GetErrorYhigh(i) for i in xrange(root_object.GetN())])
-
-    @property
-    def xbinedges(self):
-        return np.concatenate((self.xl, self.xu[-1:]))
-
-    @property
-    def xl(self):
-        return self.x - self.xerrl
-
-    @property
-    def xu(self):
-        return self.x + self.xerru
-
-    @property
-    def yl(self):
-        return self.y - self.yerrl
-
-    @property
-    def yu(self):
-        return self.y + self.yerru
-
-
 class MplObject1D(object):
     """Simple representation of 1D or 2D Root histogram to be used for matplotlib plotting."""
 
@@ -101,8 +54,14 @@ class MplObject1D(object):
             self.xl = np.array([self.x[i] - root_object.GetErrorXlow(i) for i in xrange(root_object.GetN())])
             self.xu = np.array([self.x[i] + root_object.GetErrorXhigh(i) for i in xrange(root_object.GetN())])
             self.yerr = np.array([root_object.GetErrorY(i) for i in xrange(root_object.GetN())])
+            # map yerr < 0 to zero
+            self.yerr[self.yerr < 0.] = 0.
             self.yerrl = np.array([root_object.GetErrorYlow(i) for i in xrange(root_object.GetN())])
+            self.yerrl[self.yerrl < 0.] = 0.
             self.yerru = np.array([root_object.GetErrorYhigh(i) for i in xrange(root_object.GetN())])
+            self.yerru[self.yerru < 0.] = 0.
+        elif isinstance(root_object, ROOT.TF1):
+            raise NotImplementedError
         else:
             raise TypeError(str(root_object.ClassName()) + ' cannot be converted to an MPLObject1d.')
 
