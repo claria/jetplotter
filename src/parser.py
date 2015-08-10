@@ -1,5 +1,6 @@
 import argparse
 import collections
+import json
 
 
 class UserParser(argparse.ArgumentParser):
@@ -10,6 +11,7 @@ class UserParser(argparse.ArgumentParser):
         self.register('type', 'str2kvint', str2kvint)
         self.register('type', 'str2kvbool', str2kvbool)
         self.register('type', 'str2kvstr', str2kvstr)
+        self.register('type', 'str2kvdict', str2kvdict)
 
         self.register('action', 'setting', SettingAction)
 
@@ -31,7 +33,7 @@ class UserParser(argparse.ArgumentParser):
             if is_default_arg:
                 if isinstance(a, SettingAction):
                     a(self, args, a.default, a.option_strings)
-                    delattr(args, a.dest)
+                    # delattr(args, a.dest)
             else:
                 # these args were actually provided on cmd line.
                 if not hasattr(args, 'provided_args'):
@@ -52,6 +54,10 @@ def str2kvfloat(s):
     k, v = get_tuple(s)
     return k, float(v)
 
+def str2kvdict(s):
+    k, v = get_tuple(s)
+    return k, json.loads(v)
+
 
 def str2kvint(s):
     id, setting = get_tuple(s)
@@ -71,7 +77,7 @@ def str2kvstr(s):
 def get_tuple(s):
     """Try to split s into key value pair at ':' delimiter. Set key to None if ':' not in s."""
     try:
-        (id, setting) = s.split(':')
+        (id, setting) = s.split(':', 1)
     except ValueError:
         (id, setting) = None, s
     return id, setting
@@ -89,8 +95,10 @@ class SettingAction(argparse.Action):
         if isinstance(values, basestring) or not isinstance(values, collections.Iterable):
             values = [values]
 
-        if not hasattr(namespace, 'settings'):
-            setattr(namespace, 'settings', {})
+        if not hasattr(namespace, 'objects'):
+            setattr(namespace, 'objects', {})
+        if hasattr(namespace, self.dest):
+            delattr(namespace, self.dest)
         # Ensure all values are list of tuples (id, val)
         for i in xrange(0, len(values)):
             if not isinstance(values[i], tuple):
@@ -99,11 +107,10 @@ class SettingAction(argparse.Action):
                 # values[i] = ('id_{0}'.format(i), values[i][1])
                 values[i] = ('_default'.format(i), values[i][1])
         for id, val in values:
-            if id not in namespace.settings:
-                namespace.settings[id] = {}
-                namespace.settings[id]['id'] = id
-            namespace.settings[id][self.dest] = val
-            # setattr(namespace, self.dest, SettingDict(values))
+            if id not in namespace.objects:
+                namespace.objects[id] = {}
+                namespace.objects[id]['id'] = id
+            namespace.objects[id][self.dest] = val
 
 
 class AutoGrowListAction(argparse.Action):
