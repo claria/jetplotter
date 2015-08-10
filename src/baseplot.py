@@ -251,11 +251,9 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
     if ax is None:
         ax = plt.gca()
 
-    color = kwargs.pop('color', next(ax._get_lines.color_cycle))
-    label = kwargs.pop('label', '')
-
     x = obj.x
     y = obj.y
+
     y_errl = obj.yerrl
     y_erru = obj.yerru
     if step:
@@ -264,15 +262,9 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
         y_errl = steppify_bin(y_errl)
         y_erru = steppify_bin(y_erru)
 
-    artist = ax.fill_between(x, y-y_errl, y+y_erru, label=label, color=color, alpha=alpha)
-    p = matplotlib.patches.Rectangle((0, 0), 1, 1,
-                                     label=label,
-                                     fill=True,
-                                     facecolor=color,
-                                     alpha=alpha,
-                                     # linewidth=linewidth,
-                                     edgecolor=color,
-                                     hatch=None)
+    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'color', 'alpha', 'edgecolor']}
+    artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
+    p = matplotlib.patches.Rectangle((0, 0), 1, 1, **fill_between_kwargs)
     ax.add_patch(p)
 
     return artist
@@ -305,23 +297,24 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     else:
         y_err = None
 
-    linestyle = kwargs.pop('linestyle', '')
-    color = kwargs.pop('color', next(ax._get_lines.color_cycle))
-    capsize = kwargs.pop('capsize', 0)
-    fmt = kwargs.pop('fmt', '')
-    if fmt in ['bar', 'fill']:
-        log.warning('Invalid marker style. Default to \'.\'')
-        fmt = '.'
-    label = kwargs.pop('label', '')
+    # linestyle = kwargs.pop('linestyle', '')
+    # color = kwargs.pop('color', next(ax._get_lines.color_cycle))
+    # capsize = kwargs.pop('capsize', 0)
     # Due to a bug in matplotlib v1.1 errorbar does not always respect linestyle when fmt is passed.
     # Workaround by plotting line and errorbars separately.
     # http://stackoverflow.com/a/18499120/3243729
-    if linestyle:
+
+    errorbar_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'capsize', 'fmt', 'alpha', 'color']}
+    errorbar_kwargs['fmt'] = ''
+    errorbar_kwargs['linestyle'] = ''
+    artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, **errorbar_kwargs)
+
+    if kwargs['linestyle']:
         if step:
-            ax.step(steppify_bin(obj.xbinedges, isx=True), steppify_bin(y), linestyle=linestyle, color=color, **kwargs)
-        else:
-            ax.plot(x, y, linestyle=linestyle, color=color, **kwargs)
-    artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, label=label, capsize=capsize, fmt=fmt, linestyle='None', color=color, alpha=alpha, **kwargs)
+            x = steppify_bin(obj.xbinedges, isx=True)
+            y = steppify_bin(y)
+        plot_kwargs = {k: v for k, v in kwargs.items() if k in ['alpha', 'color', 'linestyle', 'step', 'zorder']}
+        ax.plot(x, y, **plot_kwargs)
     return artist
 
 
