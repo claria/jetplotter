@@ -15,7 +15,7 @@ class RootModule(Module):
                                  help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
 
     def __call__(self, config):
-        for id, item in config['settings'].iteritems():
+        for id, item in config['objects'].iteritems():
             if 'input' in item:
                 item['obj'] = get_root_object(item['input'])
             elif 'input_tgraph' in item:
