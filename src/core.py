@@ -25,7 +25,6 @@ class Plotter(object):
         if self.config['print_config']:
             print_config(self.config)
 
-        print self.config
         for module in self.path:
             print "Processing {0}...".format(module.label)
             module(self.config)
@@ -49,15 +48,14 @@ class Plotter(object):
 
     def _prepare_config(self):
         config = vars(self.parser.parse_args())
-
         if config['load_config']:
             file_config = read_config(config['load_config'])
             update_settings(file_config, config)
             config = file_config
         self.config = config
 
-        self._ana_modules += [get_module(name) for name in config['ana_modules']]
-        update_with_default(self.config['settings'])
+        self._ana_modules = [get_module(name) for name in config['ana_modules']]
+        update_with_default(self.config['objects'])
 
 
 class SimpleJsonEncoder(json.JSONEncoder):
@@ -73,9 +71,9 @@ def save_config(config, path, indent=4):
     # Remove non serializiable objects from dict.
     out_config = copy.deepcopy(config)
 
-    for id in out_config['settings'].keys():
-        if 'obj' in out_config['settings'][id]:
-            out_config['settings'][id].pop('obj')
+    for id in out_config['objects'].keys():
+        if 'obj' in out_config['objects'][id]:
+            out_config['objects'][id].pop('obj')
 
     # Check that output directory exists
     directory = os.path.dirname(path)
@@ -101,15 +99,18 @@ def read_config(path):
     return config
 
 
-def update_settings(d, u):
+def update_settings(d, u, provided_args=None):
+    """ Update dict d with entries of dict u, but only if key of u not in d."""
+    print provided_args
+    if provided_args is None:
+        provided_args = []
+    provided_args += u.get('provided_args', [])
     for k, v in u.iteritems():
         if isinstance(v, collections.Mapping):
-            r = update_settings(d.get(k, {}), v)
+            r = update_settings(d.get(k, {}), v, provided_args)
             d[k] = r
         else:
-            if 'provided_args' in u.keys() and k in u['provided_args']:
-                d[k] = u[k]
-            elif k not in d:
+            if k in provided_args or k not in d:
                 d[k] = u[k]
             else:
                 pass
