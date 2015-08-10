@@ -1,9 +1,12 @@
+import copy
 import sys
 import inspect
-from ..parser import UserParser
-import ROOT
+import math
+import numpy as np
 import collections
 
+from ..parser import UserParser
+import ROOT
 
 class Module(object):
 
@@ -27,17 +30,17 @@ def get_module(name):
 class RatioToObj(Module):
     def __init__(self):
         super(RatioToObj, self).__init__()
-        self.parser.add_argument('--ratio', nargs='+', default=[], type='str2kvstr', help='')
+        self.parser.add_argument('--ratio', nargs='+', default=[], type='str2kvstr', help='List of id:to_id objects for which the ratio is calculated.')
 
     def __call__(self, config):
         for id, to in config['ratio']:
-            print 'calc ratio', id, to
-            if id not in config['settings']:
+            print 'Calculating ratio', id, to
+            if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
-            if to not in config['settings']:
+            if to not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(to))
 
-            ratio_to_obj(config['settings'][id]['obj'], config['settings'][to]['obj'])
+            ratio_to_obj(config['objects'][id]['obj'], config['objects'][to]['obj'])
 
 class ToTGraph(Module):
     def __init__(self):
@@ -46,31 +49,31 @@ class ToTGraph(Module):
 
     def __call__(self, config):
         for id in config['to_tgraph']:
-            if isinstance(config['settings'][id]['obj'], collections.Iterable):
-                if len(config['settings'][id]['obj']) == 1:
-                    config['settings'][id]['obj'] = ROOT.TGraphAsymmErrors(config['settings'][id]['obj'])
-                elif len(config['settings'][id]['obj']) == 3:
-                    config['settings'][id]['obj'] = get_tgraphasymm_from_histos(*config['settings'][id]['obj'])
+            if isinstance(config['objects'][id]['obj'], collections.Iterable):
+                if len(config['objects'][id]['obj']) == 1:
+                    config['objects'][id]['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
+                elif len(config['objects'][id]['obj']) == 3:
+                    config['objects'][id]['obj'] = get_tgraphasymm_from_histos(*config['objects'][id]['obj'])
                 else:
                     raise ValueError('unsupported conversion requested.')
             else:
-                config['settings'][id]['obj'] = ROOT.TGraphAsymmErrors(config['settings'][id]['obj'])
+                config['objects'][id]['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
 
 
 class SimpleRatioToObj(Module):
     def __init__(self):
         super(SimpleRatioToObj, self).__init__()
-        self.parser.add_argument('--simpleratio', nargs='+', default=[], type='str2kvstr', help='')
+        self.parser.add_argument('--simpleratio', nargs='+', default=[], type='str2kvstr', help='List of id:to_id objects for which the ratio is calculated.')
 
     def __call__(self, config):
         for id, to in config['simpleratio']:
             print 'calc sratio', id, to
-            if id not in config['settings']:
+            if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
-            if to not in config['settings']:
+            if to not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(to))
-            to_obj = config['settings'][to]['obj'].Clone('ref')
-            config['settings'][id]['obj'] = ratio_to_obj(config['settings'][id]['obj'], to_obj, error_prop=False)
+            to_obj = config['objects'][to]['obj'].Clone('ref')
+            config['objects'][id]['obj'] = ratio_to_obj(config['objects'][id]['obj'], to_obj, error_prop=False)
 
 
 class MultiplyObj(Module):
@@ -95,17 +98,78 @@ class NormalizeObj(Module):
 
     def __call__(self, config):
         for id, val in config['scale_obj']:
-            if not id in config['settings']:
+            if not id in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             if val == 'width':
-                config['settings'][id]['obj'].Scale(1.0, 'width')
+                config['objects'][id]['obj'].Scale(1.0, 'width')
             else:
-                config['settings'][id]['obj'].Scale(1.0, float(val))
+                config['objects'][id]['obj'].Scale(1.0, float(val))
 
+
+class FitObj(Module):
+    """ Calls the fit function on an object.
+
+        The function to be fitted is passed via a dict str, e.g.
+        --fit-obj id:'{"fcn":"[0] + [1]/x**[2]", "fcn_0":[1.0, 1.0, 1.0]}'
+    """
+    def __init__(self):
+        super(FitObj, self).__init__()
+        self.parser.add_argument('--fit-obj', nargs='+', default=[], type='str2kvdict', help='')
+
+    def __call__(self, config):
+        for id, settings in config['fit_obj']:
+            if not id in config['objects']:
+                raise ValueError('Requested id {} not found.'.format(id))
+
+            fcn_name = 'fit_{0}'.format(id)
+            fcn = ROOT.TF1(fcn_name, settings['fcn'])
+
+            if 'fcn_0' in settings:
+                fcn.SetParameters(*settings['fcn_0'])
+            options = settings.get('options', '')
+
+            xmin, xmax = config['objects'][id]['obj'].GetXaxis().GetXmin(), config['objects'][id]['obj'].GetXaxis().GetXmax()
+            # Do the fit
+            config['objects'][id]['obj'].Fit(fcn_name, options)
+            vfitter = ROOT.TVirtualFitter.GetFitter()
+            fcn.SetNpx(1000)
+            fcn.SetRange(xmin, xmax)
+            errorgraph = get_tgrapherrors(fcn, vfitter)
+            #TODO fix this shit
+            # config['objects']['fit_{0}'.format(id)] = copy.deepcopy(config['objects'][id])
+            new_obj_name = 'fit_{0}'.format(id)
+            config['objects'].setdefault(new_obj_name, {})['obj'] = errorgraph
 
 #
 # Helper functions
 #
+
+def get_tgrapherrors(fcn, vfitter):
+    # no thinking involved. just copied from the data analysis c macro.
+    npoints = 1000
+    graph = ROOT.TGraphErrors(npoints)
+
+    x_values = np.linspace(fcn.GetXmin(), fcn.GetXmax(), npoints)
+    for i in xrange(0, len(x_values)):
+        graph.SetPoint(i, x_values[i], 0)
+
+    vfitter.GetConfidenceIntervals(graph, 0.683);
+
+    return graph
+    #npoints = 1000
+    #x_values = np.linspace(fcn.GetXmin(), fcn.GetXmax(), npoints)
+
+    #vfitter = ROOT.TVirtualFitter.GetFitter()
+    #graph = ROOT.TGraphErrors(npoints)
+    ## npar = vfitter.GetNumberTotalParameters()
+
+    #x = array.array('d', x_values)
+    #y = array.array('d', [0.]*len(x_values))
+    #vfitter.GetConfidenceIntervals(len(x_values), 1, 1, x, y, 0.683)
+
+    #for i in xrange(0, len(x)):
+    #    g.SetPoint(i, x[i], fcn.Eval(point))
+    #    g.SetPointError(i, 0, math.sqrt(pointerror))
 
 def divide_tgraph(graph1, graph2, error_prop=False):
     assert (graph1.GetN() == graph2.GetN())
