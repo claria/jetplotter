@@ -37,6 +37,8 @@ def get_root_object(input, option="READ"):
 
     if '?' in input:
         input, object_path = input.split('?')
+    else:
+        raise ValueError('No object path specified.')
 
     rootfile = get_root_file(input, option=option)
     obj = rootfile.Get(object_path)
