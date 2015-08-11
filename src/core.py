@@ -11,6 +11,7 @@ from modules.modules import get_module
 
 
 class Plotter(object):
+    """ Core module preparing the config and running all modules."""
     def __init__(self):
         self.config = {}
         self._input_modules = [RootModule()]
