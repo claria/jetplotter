@@ -7,6 +7,5 @@ def main():
     plotter = Plotter()
     plotter()
 
-
 if __name__ == '__main__':
     main()
