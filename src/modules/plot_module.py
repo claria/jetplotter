@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from ..baseplot import BasePlot
 BasePlot.init_matplotlib()
 
-from ..baseplot import plot_errorbar, plot_band, add_axis_text
+from ..baseplot import plot_errorbar, plot_band, plot_line, add_axis_text
 from ..root2mpl import MplObject1D
 from modules import Module
 
@@ -125,6 +125,8 @@ class Plot(BasePlot):
             artist = plot_errorbar(ax=self.ax, **kwargs)
         elif style == 'band':
             artist = plot_band(ax=self.ax, **kwargs)
+        elif style == 'line':
+            artist = plot_line(ax=self.ax, **kwargs)
         else:
             raise ValueError('Style {0} not supported.'.format(style))
         return artist
