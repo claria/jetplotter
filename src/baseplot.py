@@ -269,6 +269,32 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
 
     return artist
 
+def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
+    """ Produce an errorbar plots with or without connecting lines.
+
+    Args:
+        obj: Mplobj representation of a root object.
+        ax: Axis to plot on. If not specified current global axis will be used.
+        x_err: If True, x errorbars will be plotted.
+        yerr: If True, y errorbars will be plotted.
+        emptybins: Not Implemented. Supposed to ignore/plot empty bins.
+    """
+
+    # if no axis passed use current global axis
+    if ax is None:
+        ax = plt.gca()
+
+    x = obj.x
+    y = obj.y
+
+    if step:
+        x = steppify_bin(obj.xbinedges, isx=True)
+        y = steppify_bin(y)
+
+    line_kwargs = {k: v for k, v in kwargs.items() if k in ['alpha', 'color', 'linestyle', 'step', 'zorder']}
+    artist = ax.plot(x, y, **line_kwargs)
+
+    return artist
 
 
 def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, ax=None, alpha=1.0,  **kwargs):
