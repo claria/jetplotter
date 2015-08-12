@@ -72,14 +72,20 @@ class Plotter(object):
             in the config with the values from the lookup dict.
         """
         # Perform global replacements:
-        for k in self.config.keys():
-            if k in lookup_dict and self.config[k] in lookup_dict[k]:
-                self.config[k] = lookup_dict[k][v]
+        for k, v in self.config.items():
+            if isinstance(v, basestring) and k in lookup_dict:
+                for lk, lv in lookup_dict[k].items():
+                    # check if string contains any key from lookup dict
+                    if lk in v:
+                        self.config[k] = self.config[k].replace(lk, lv)
         # perform replacement for object dict keys
         for id in self.config['objects']:
-            for k in self.config['objects'].keys():
-                if k in lookup_dict and self.config['objects']['id'][k] in lookup_dict[k]:
-                    self.config['objects'][id][k] = lookup_dict[k][v]
+            for k, v in self.config['objects'][id].items():
+                if isinstance(v, basestring) and k in lookup_dict:
+                    for lk, lv in lookup_dict[k].items():
+                        # check if string contains any key from lookup dict
+                        if lk in v:
+                            self.config['objects'][id][k] = self.config['objects'][id][k].replace(lk, lv)
 
 
 class SimpleJsonEncoder(json.JSONEncoder):
