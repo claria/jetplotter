@@ -6,7 +6,7 @@ import ROOT
 
 
 class MplObject1D(object):
-    """Simple representation of 1D or 2D Root histogram to be used for matplotlib plotting."""
+    """Simple representation of 1d root objects to be used for matplotlib plotting."""
 
     def __init__(self, root_object):
 
@@ -96,3 +96,93 @@ class MplObject1D(object):
     @property
     def yu(self):
         return self.y + self.yerru
+
+
+class MplObject2D(object):
+    """Simple representation of 1d root objects to be used for matplotlib plotting."""
+
+    def __init__(self, root_object):
+
+        # lists of ROOT classes which can be converted
+        histos_2d = ['TH2D', 'TH2F', 'TProfile2D']
+        self.name = root_object.GetName()
+        self.root_object = root_object
+        self.title = root_object.GetTitle()
+        self.xlabel = root_object.GetXaxis().GetTitle()
+        self.ylabel = root_object.GetYaxis().GetTitle()
+
+        if root_object.ClassName() in histos_2d:
+            # bin center
+            self.x = np.array([root_object.GetXaxis().GetBinCenter(i) for i in xrange(1, root_object.GetNbinsX() + 1)])
+            # lower bin edge
+            self.xl = np.array([root_object.GetXaxis().GetBinLowEdge(i) for i in xrange(1, root_object.GetNbinsX() + 1)])
+            # upper bin edge
+            self.xu = np.array([root_object.GetXaxis().GetBinUpEdge(i) for i in xrange(1, root_object.GetNbinsX() + 1)])
+            self.xerr = self.x - self.xl
+
+            self.y = np.array([root_object.GetYaxis().GetBinCenter(i) for i in xrange(1, root_object.GetNbinsY() + 1)])
+            # lower bin edge
+            self.yl = np.array([root_object.GetYaxis().GetBinLowEdge(i) for i in xrange(1, root_object.GetNbinsY() + 1)])
+            # upper bin edge
+            self.yu = np.array([root_object.GetYaxis().GetBinUpEdge(i) for i in xrange(1, root_object.GetNbinsY() + 1)])
+            self.yerr = self.y - self.yl
+
+            self.z = np.zeros((root_object.GetNbinsY(), root_object.GetNbinsX()))
+            self.zl = np.zeros((root_object.GetNbinsY(), root_object.GetNbinsX()))
+            self.zu = np.zeros((root_object.GetNbinsY(), root_object.GetNbinsX()))
+            for x in xrange(1, root_object.GetNbinsX() + 1):
+                for y in xrange(1, root_object.GetNbinsY() + 1):
+                    self.z[y - 1, x - 1] = root_object.GetBinContent(x, y)
+                    self.zl[y - 1, x - 1] = root_object.GetBinContent(x, y) - root_object.GetBinErrorLow(x, y)
+                    self.zu[y - 1, x - 1] = root_object.GetBinContent(x, y) + root_object.GetBinErrorUp(x, y)
+            self.zerr = self.z - self.zl
+        else:
+            raise TypeError(str(root_object.ClassName()) + ' cannot be converted to an MPLObject1d.')
+
+    @property
+    def xerrl(self):
+        return self.x - self.xl
+
+    @property
+    def xerru(self):
+        return self.xu - self.x
+
+    @property
+    def xbinwidth(self):
+        return self.xu - self.xl
+
+    @property
+    def xbinedges(self):
+        return np.concatenate((self.xl, self.xu[-1:]))
+
+    @property
+    def ybinwidth(self):
+        return self.yu - self.yl
+
+    @property
+    def yerrl(self):
+        return self.y - self.xy
+
+    @property
+    def yerru(self):
+        return self.yu - self.y
+
+    @property
+    def ybinedges(self):
+        return np.concatenate((self.yl, self.yu[-1:]))
+
+    @property
+    def zbinwidth(self):
+        return self.zu - self.zl
+
+    @property
+    def zbinedges(self):
+        return np.concatenate((self.zl, self.zu[-1:]))
+
+    @property
+    def zerrl(self):
+        return self.z - self.zy
+
+    @property
+    def zerru(self):
+        return self.zu - self.z

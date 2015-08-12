@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from ..baseplot import BasePlot
 BasePlot.init_matplotlib()
 
-from ..baseplot import plot_errorbar, plot_band, plot_line, add_axis_text
+from ..baseplot import plot_errorbar, plot_band, plot_line, plot_contour, add_axis_text
 from ..root2mpl import MplObject1D
 from modules import Module
 
@@ -53,9 +53,11 @@ class PlotModule(Module):
         # Axis options
         self.parser.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
         self.parser.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
+        self.parser.add_argument('--z-lims', nargs=2, default=[None, None], help='Z limits of plot (only used in 2d plots).')
 
-        self.parser.add_argument('--x-log', default=False, type='bool', help='Show x-errors.')
-        self.parser.add_argument('--y-log', default=False, type='bool', help='Show y-errors.')
+        self.parser.add_argument('--x-log', default=False, type='bool', help='Use log scale for x-axis.')
+        self.parser.add_argument('--y-log', default=False, type='bool', help='Use log scale for y-axis.')
+        self.parser.add_argument('--z-log', default=False, type='bool', help='Use log scale for z-axis.')
 
         self.parser.add_argument('--x-label', default='', help='xlabel')
         self.parser.add_argument('--y-label', default='', help='ylabel')
@@ -96,9 +98,12 @@ class Plot(BasePlot):
         self.x_lims = [any2float(v) for v in self.x_lims]
         self.y_lims = kwargs.pop('y_lims', (None, None))
         self.y_lims = [any2float(v) for v in self.y_lims]
+        self.z_lims = kwargs.pop('z_lims', (None, None))
+        self.z_lims = [any2float(v) for v in self.z_lims]
 
         self.x_log = kwargs.pop('x_log', False)
         self.y_log = kwargs.pop('y_log', False)
+        self.z_log = kwargs.pop('z_log', False)
 
         self.x_label = kwargs.pop('x_label', '')
         self.y_label = kwargs.pop('y_label', '')
@@ -112,8 +117,9 @@ class Plot(BasePlot):
 
         self.auto_colors = itertools.cycle(matplotlib.rcParams['axes.color_cycle'])
 
+        self.colorbar_mappable = None
+
     def plot(self, **kwargs):
-        kwargs['obj'] = MplObject1D(kwargs.get('obj'))
         style = kwargs.pop('style', 'errorbar')
 
         if kwargs['color'] == 'auto':
@@ -127,6 +133,12 @@ class Plot(BasePlot):
             artist = plot_band(ax=self.ax, **kwargs)
         elif style == 'line':
             artist = plot_line(ax=self.ax, **kwargs)
+        elif style == 'contour':
+            # special case for z scale and lims since they have to be set by the object (not the axis)
+            kwargs['z_log'] = self.z_log
+            kwargs['z_lims'] = self.z_lims
+            artist = plot_contour(ax=self.ax, **kwargs)
+            self.colorbar_mappable = artist
         else:
             raise ValueError('Style {0} not supported.'.format(style))
         return artist
@@ -137,6 +149,10 @@ class Plot(BasePlot):
             self.plot(histo)
 
     def finish(self):
+
+        # Add colorbar if there is a mappable
+        if self.colorbar_mappable:
+            self.fig.colorbar(self.colorbar_mappable, ax=self.ax)
 
         # Add axis texts
         for text in self.texts:

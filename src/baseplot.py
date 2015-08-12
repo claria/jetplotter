@@ -7,6 +7,11 @@ from matplotlib.colors import Normalize
 from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
 
+from root2mpl import MplObject1D, MplObject2D
+
+
+from viridis import viridis_cmap
+plt.register_cmap(cmap=viridis_cmap)
 
 class BasePlot(object):
     __metaclass__ = ABCMeta
@@ -246,7 +251,8 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
         yerr: If True, y errorbars will be plotted.
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
-
+    # Convert root object to mpl readable object
+    obj = MPLObject1d(obj)
     # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
@@ -279,6 +285,8 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         yerr: If True, y errorbars will be plotted.
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
+    # Convert root object to mpl readable object
+    obj = MPLObject1d(obj)
 
     # if no axis passed use current global axis
     if ax is None:
@@ -307,6 +315,9 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
         yerr: If True, y errorbars will be plotted.
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
+    # Convert root object to mpl readable object
+    obj = MPLObject1d(obj)
+
     # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
@@ -344,38 +355,40 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     return artist
 
 
-def plot_contour1d(hist, ax=None, z_log=False, vmin=None, vmax=None, cmap='afmhot'):
+def plot_contour(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis', **kwargs):
     """One dimensional contour plot.
     Args:
-        hist: MplHisto representation of a root histogram.
+        obj: Mplobjo representation of a root objogram.
         ax: Axis to plot on. If not specified current global axis will be used.
         z_log: If True, z axis will be logarithmic.
         vmin: Lower limit of z axis
         vmax: Upper limit of z axis
         cmap: Colormap used to
     """
+    # Convert root object to mpl readable object
+    obj = MplObject2D(obj)
+
     cmap = matplotlib.cm.get_cmap(cmap)
+
+    # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
+
+    # Set z axis limits
+    vmin, vmax = z_lims
     if (vmin, vmax) == (None,)*2:
         if z_log:
-            vmin, vmax = np.min(hist.bincontents[np.nonzero(hist.bincontents)]), np.amax(hist.bincontents)
+            vmin, vmax = np.min(obj.z[np.nonzero(obj.z)]), np.amax(obj.z)
         else:
-            vmin, vmax = np.amin(hist.bincontents), np.amax(hist.bincontents)
+            vmin, vmax = np.amin(obj.z), np.amax(obj.z)
     norm = (LogNorm if z_log else Normalize)(vmin=vmin, vmax=vmax)
 
-    # special settings for masked arrays (TProfile2Ds):
-    if type(hist.bincontents) == np.ma.core.MaskedArray:
-        min_color, max_color = cmap(norm(vmin))[:3], cmap(norm(vmax))[:3]  # get min and max colors from colorbar as rgb-tuples
-
-        # set color for masked entries depending on min and max color of colorbar
-        mask_color = 'white'
-        if any([all([i>0.95 for i in color]) for color in [min_color, max_color]]):  # check if white is min or max color
-            mask_color = 'black'
-            if any([all([i<0.05 for i in color]) for color in [min_color, max_color]]):  # check if black is min or max color
-                mask_color = 'red'
-        cmap.set_bad(mask_color, alpha=None)
-    if z_log:
-        cmap.set_bad('gray', alpha=None)
-    artist = ax.pcolormesh(hist.xbinedges, hist.ybinedges, hist.bincontents, cmap=cmap, norm=norm)
+        # # set color for masked entries depending on min and max color of colorbar
+        # mask_color = 'white'
+        # if any([all([i>0.95 for i in color]) for color in [min_color, max_color]]):  # check if white is min or max color
+        #     mask_color = 'black'
+        #     if any([all([i<0.05 for i in color]) for color in [min_color, max_color]]):  # check if black is min or max color
+        #         mask_color = 'red'
+        # cmap.set_bad(mask_color, alpha=None)
+    artist = ax.pcolormesh(obj.xbinedges, obj.ybinedges, obj.z, cmap=cmap, norm=norm)
     return artist

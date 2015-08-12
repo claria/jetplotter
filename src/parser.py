@@ -12,6 +12,7 @@ class UserParser(argparse.ArgumentParser):
         self.register('type', 'str2kvbool', str2kvbool)
         self.register('type', 'str2kvstr', str2kvstr)
         self.register('type', 'str2kvdict', str2kvdict)
+        self.register('type', 'noneorfloat', noneorfloat)
 
         self.register('action', 'setting', SettingAction)
 
@@ -49,6 +50,12 @@ def str2bool(s):
     else:
         return s.lower() in ("yes", "true", "t", "1")
 
+def noneorfloat(v):
+    """Return float if parseable, else None."""
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
 
 def str2kvfloat(s):
     k, v = get_tuple(s)
