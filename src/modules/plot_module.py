@@ -61,6 +61,7 @@ class PlotModule(Module):
 
         self.parser.add_argument('--x-label', default='', help='xlabel')
         self.parser.add_argument('--y-label', default='', help='ylabel')
+        self.parser.add_argument('--z-label', default='', help='ylabel')
 
         self.parser.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
         self.parser.add_argument('--legend-loc', default='best', help='Legend location.')
@@ -107,6 +108,7 @@ class Plot(BasePlot):
 
         self.x_label = kwargs.pop('x_label', '')
         self.y_label = kwargs.pop('y_label', '')
+        self.z_label = kwargs.pop('z_label', '')
 
         self.show_legend = kwargs.pop('show_legend', True)
         self.legend_loc = kwargs.pop('legend_loc', 'best')
@@ -152,7 +154,10 @@ class Plot(BasePlot):
 
         # Add colorbar if there is a mappable
         if self.colorbar_mappable:
-            self.fig.colorbar(self.colorbar_mappable, ax=self.ax)
+            cb =self.fig.colorbar(self.colorbar_mappable, ax=self.ax)
+            if self.z_label:
+                cb.set_label(self.z_label)
+
 
         # Add axis texts
         for text in self.texts:
