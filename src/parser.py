@@ -4,6 +4,18 @@ import json
 
 
 class UserParser(argparse.ArgumentParser):
+    """Argparser with additional features.
+
+       The main feature are str2kv types which are given as id:value and are
+       all stored in a dict so different settings are automatically matched
+       to the same id. 
+
+       Additionally the parser ensures that the actions are always called for the
+       'setting' action, not only if the argument is supplied.
+       Additionally a list 'provided_args' keeps a list of all args which were actually
+       supplied on the command line.
+
+    """
     def __init__(self, *args, **kwargs):
         super(UserParser, self).__init__(*args, **kwargs)
         self.register('type', 'bool', str2bool)
@@ -17,9 +29,10 @@ class UserParser(argparse.ArgumentParser):
         self.register('action', 'setting', SettingAction)
 
     def parse_args(self, *args, **kwargs):
+        """ Parses args and ensures that all 'setting' actions are called."""
         args = super(UserParser, self).parse_args()
         for a in self._actions:
-            # this is true if setting has not provided on commandline
+            # is_default_arg is true if setting has not provided on commandline
             # in case a setting has not been provided on the commandline,
             # argparse just calls setattr(args, a.dest, a.default) without calling any action.
             # Only if the type of a.default is a string, the type function is called.
@@ -58,26 +71,35 @@ def noneorfloat(v):
         return None
 
 def str2kvfloat(s):
+    """Parses string of format id:value into tuple of (str, float)"""
     k, v = get_tuple(s)
     return k, float(v)
 
 def str2kvdict(s):
+    """Parses string of format id:value into tuple of (str, dict)
+
+       The passed value must be json parseable, eg something like
+       id:{"key0": "val0", "key1": "val1"}
+    """
     k, v = get_tuple(s)
     return k, json.loads(v)
 
 
 def str2kvint(s):
+    """Parses string of format id:value into tuple of (str, int)"""
     id, setting = get_tuple(s)
     return id, int(setting)
 
 
 def str2kvbool(s):
+    """Parses string of format id:value into tuple of (str, bool)"""
     id, setting = get_tuple(s)
     b = setting.lower() in ("yes", "true", "t", "1")
     return id, b
 
 
 def str2kvstr(s):
+    """Parses string of format id:value into tuple of (str, str)"""
     return get_tuple(s)
 
 
