@@ -252,7 +252,7 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
     # Convert root object to mpl readable object
-    obj = MPLObject1d(obj)
+    obj = MplObject1D(obj)
     # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
@@ -286,7 +286,7 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
     # Convert root object to mpl readable object
-    obj = MPLObject1d(obj)
+    obj = MplObject1D(obj)
 
     # if no axis passed use current global axis
     if ax is None:
@@ -316,7 +316,7 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
     # Convert root object to mpl readable object
-    obj = MPLObject1d(obj)
+    obj = MplObject1D(obj)
 
     # if no axis passed use current global axis
     if ax is None:
