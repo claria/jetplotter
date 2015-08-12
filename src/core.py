@@ -8,6 +8,7 @@ from modules.root_module import RootModule
 from modules.plot_module import PlotModule
 from parser import UserParser
 from modules.modules import get_module
+from lookup_dict import lookup_dict
 
 
 class Plotter(object):
@@ -22,6 +23,8 @@ class Plotter(object):
         self._init_parser()
         self._prepare_config()
         self.path = self._input_modules + self._ana_modules + self._output_modules
+
+        self._perform_lookup_replacement()
 
         if self.config['print_config']:
             print_config(self.config)
@@ -41,13 +44,19 @@ class Plotter(object):
         self._ana_modules += [get_module(name) for name in args['ana_modules']]
         add_parsers = [module._parser for module in self._input_modules + self._ana_modules + self._output_modules]
         self.parser = UserParser(parents=add_parsers)
+        # self.parser.add_argument("--input-modules", nargs='+', default=[], help="Analysis modules.")
         self.parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
+        # self.parser.add_argument("--output-modules", nargs='+', default=[], help="Analysis modules.")
         self.parser.add_argument("-p", "--print-config", default=False, action="store_true",
                                  help="Print out the JSON config before running Artus.")
         self.parser.add_argument("-l", "--load-config", default=None,
                                  help="Print out the JSON config before running Artus.")
 
     def _prepare_config(self):
+        """Get config from parser and supplied json file and merges the configs.
+           Then it updates missing keys in the id objects using the values of
+           the _default object.
+        """
         config = vars(self.parser.parse_args())
         if config['load_config']:
             file_config = read_config(config['load_config'])
@@ -58,8 +67,23 @@ class Plotter(object):
         self._ana_modules = [get_module(name) for name in config['ana_modules']]
         update_with_default(self.config['objects'])
 
+    def _perform_lookup_replacement(self):
+        """ Searches for the occurences of keys in the lookup_dict and replaces the values
+            in the config with the values from the lookup dict.
+        """
+        # Perform global replacements:
+        for k in self.config.keys():
+            if k in lookup_dict and self.config[k] in lookup_dict[k]:
+                self.config[k] = lookup_dict[k][v]
+        # perform replacement for object dict keys
+        for id in self.config['objects']:
+            for k in self.config['objects'].keys():
+                if k in lookup_dict and self.config['objects']['id'][k] in lookup_dict[k]:
+                    self.config['objects'][id][k] = lookup_dict[k][v]
+
 
 class SimpleJsonEncoder(json.JSONEncoder):
+    """JSON Encoder which replaces not serializiable objects like root objects with null."""
     def default(self, obj):
         if not isinstance(obj, (dict, list, tuple, str, unicode, int, long, float, bool)):
             return 'null'
@@ -90,6 +114,7 @@ def save_config(config, path, indent=4):
 
 
 def read_config(path):
+    """Read json config from file."""
     with open(path) as json_file:
         try:
             config = json.load(json_file)
