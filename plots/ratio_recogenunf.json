@@ -1,0 +1,195 @@
+{
+    "ana_modules": [
+        "RatioToObj"
+    ], 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "legend_loc": "best", 
+    "load_config": "plots/ratio_recogenunf.json", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_qcdmgp6gen": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_qcdmgp6gen", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_qcdp8gen": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_qcdp8gen", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdmgp6reco": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdmgp6reco", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "MG+P6 (Reco)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdmgp6recounf": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdmgp6recounf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDMGP6.root?h_ptavg", 
+            "label": "MG+P6 (Unf. Reco)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdmgp6recounfnogencut": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdmgp6recounfnogencut", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDMGP6_NOGENCUT.root?h_ptavg", 
+            "label": "MG+P6 (Unf. Reco NOGENCUT)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdp8reco": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdp8reco", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "P8 (Reco)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdp8recounf": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdp8recounf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDP8.root?h_ptavg", 
+            "label": "P8 (Unf. Reco)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_path": "ratio_recogenunf.png", 
+    "output_prefix": "plots/", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "ratio", 
+        "label", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "ana_modules"
+    ], 
+    "ratio": [
+        [
+            "qcdmgp6reco", 
+            "_qcdmgp6gen"
+        ], 
+        [
+            "qcdp8reco", 
+            "_qcdp8gen"
+        ], 
+        [
+            "qcdp8recounf", 
+            "_qcdp8gen"
+        ], 
+        [
+            "qcdmgp6recounf", 
+            "_qcdmgp6gen"
+        ], 
+        [
+            "qcdmgp6recounfnogencut", 
+            "_qcdmgp6gen"
+        ]
+    ], 
+    "show_legend": true, 
+    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_lims": [
+        "50", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio to Gen Level", 
+    "y_lims": [
+        "0.8", 
+        "1.5"
+    ], 
+    "y_log": false, 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

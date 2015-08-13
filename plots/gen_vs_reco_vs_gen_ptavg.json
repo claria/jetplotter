@@ -1,0 +1,77 @@
+{
+    "ana_modules": [], 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "legend_loc": "best", 
+    "load_config": "plots/gen_vs_reco_vs_gen_ptavg.json", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "genreco": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "genreco", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?default/h2_GenVsRecoPt", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "contour", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_path": "gen_vs_reco_vs_gen_ptavg.png", 
+    "output_prefix": "plots/", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "style", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "z_lims", 
+        "y_log", 
+        "z_log", 
+        "x_label", 
+        "y_label"
+    ], 
+    "show_legend": true, 
+    "x_label": "Gen $p_{\\mathrm{T,avg}}$ (GeV) / Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_lims": [
+        "0.5", 
+        "1.5"
+    ], 
+    "x_log": false, 
+    "y_label": "Gen $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "y_lims": [
+        "74.", 
+        "3000."
+    ], 
+    "y_log": true, 
+    "z_label": "Cross Section", 
+    "z_lims": [
+        "1E-6", 
+        "1E6"
+    ], 
+    "z_log": true
+}

@@ -1,0 +1,167 @@
+{
+    "ana_modules": [
+        "SimpleRatioToObj"
+    ], 
+    "ax_hlines": [
+        "1.0?black?2.0"
+    ], 
+    "ax_texts": [
+        "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 
+        "CMS?top left", 
+        "$20\\,fb^{-1}$ (8TeV)?top right"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": [
+        10.0, 
+        7.0
+    ], 
+    "legend_loc": "upper right", 
+    "load_config": "plots/ratio_reco.json", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "Data", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdmgp6": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdmgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "MG+P6", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdmgp6gen": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdmgp6gen", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
+            "label": "MG+P6 Gen", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdp8": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdp8", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "P8", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdp8gen": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "qcdp8gen", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
+            "label": "P8 Gen", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_path": "ratio_reco.png", 
+    "output_prefix": "plots/", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "simpleratio", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "x_label", 
+        "y_label", 
+        "legend_loc", 
+        "ana_modules"
+    ], 
+    "show_legend": true, 
+    "simpleratio": [
+        [
+            "data", 
+            "qcdp8gen"
+        ], 
+        [
+            "qcdmgp6", 
+            "qcdp8gen"
+        ], 
+        [
+            "qcdmgp6gen", 
+            "qcdp8gen"
+        ], 
+        [
+            "qcdp8", 
+            "qcdp8gen"
+        ], 
+        [
+            "qcdp8gen", 
+            "qcdp8gen"
+        ]
+    ], 
+    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio to Gen", 
+    "y_lims": [
+        "0.5", 
+        "1.5"
+    ], 
+    "y_log": false
+}

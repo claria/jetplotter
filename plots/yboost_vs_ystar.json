@@ -1,0 +1,75 @@
+{
+    "ana_modules": [], 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "legend_loc": "best", 
+    "load_config": null, 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "contour", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?default/h2_yb_ys", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "contour", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_path": "yboost_vs_ystar.png", 
+    "output_prefix": "plots/", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "style", 
+        "output_path", 
+        "x_lims", 
+        "z_log", 
+        "x_label", 
+        "y_label", 
+        "z_label"
+    ], 
+    "show_legend": true, 
+    "x_label": "$y_b$", 
+    "x_lims": [
+        "0.0", 
+        "3.0"
+    ], 
+    "x_log": false, 
+    "y_label": "$y_s$", 
+    "y_lims": [
+        null, 
+        null
+    ], 
+    "y_log": false, 
+    "z_label": "Cross Section (pb)", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": true
+}

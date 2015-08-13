@@ -1,0 +1,172 @@
+{
+    "ana_modules": [
+        "NormalizeObj", 
+        "SimpleRatioToObj", 
+        "ToTGraph"
+    ], 
+    "ax_hlines": [
+        "1.0?black?2.0"
+    ], 
+    "ax_texts": [
+        "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 
+        "CMS?top left", 
+        "$20\\,fb^{-1}$ (8TeV)?top right"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": [
+        10.0, 
+        7.0
+    ], 
+    "legend_loc": "best", 
+    "load_config": "plots/ratio_to_data.json", 
+    "log_level": "info", 
+    "object_paths": null, 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "Data", 
+            "linestyle": "", 
+            "marker": "", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "dataunf": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "dataunf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?h_ptavg", 
+            "label": "Data (Unf.)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "dataunfnlo": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "dataunf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?h_ptavg", 
+            "label": "Data (Unf. NLO)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "nlo": {
+            "alpha": 0.5, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edge_color": "auto", 
+            "edgecolor": "auto", 
+            "id": "nlo", 
+            "input_tgraph": "~/XSNLO.root?ptavg_yb_00_10_ys_00_10/xsnlo&~/XSNLO.root?ptavg_yb_00_10_ys_00_10/pdf_unc_lo&~/XSNLO.root?ptavg_yb_00_10_ys_00_10/pdf_unc_up", 
+            "label": "NLO (CT10)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_path": "ratio_to_data.png", 
+    "output_prefix": "plots/", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "output_path"
+    ], 
+    "ratio": [], 
+    "scale_obj": [
+        [
+            "data", 
+            "width"
+        ], 
+        [
+            "dataunfnlo", 
+            "width"
+        ], 
+        [
+            "dataunf", 
+            "width"
+        ]
+    ], 
+    "show_legend": true, 
+    "simpleratio": [
+        [
+            "data", 
+            "nlo"
+        ], 
+        [
+            "dataunf", 
+            "nlo"
+        ], 
+        [
+            "dataunfnlo", 
+            "nlo"
+        ], 
+        [
+            "nlo", 
+            "nlo"
+        ]
+    ], 
+    "to_tgraph": [
+        "data", 
+        "dataunf", 
+        "dataunfnlo", 
+        "nlo"
+    ], 
+    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "x_lims": [
+        50.0, 
+        3000.0
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio to CT10", 
+    "y_lims": [
+        "0.8", 
+        "1.5"
+    ], 
+    "y_log": false, 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
