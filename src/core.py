@@ -32,6 +32,7 @@ class Plotter(object):
         for module in self.path:
             print "Processing {0}...".format(module.label)
             module(self.config)
+            update_with_default(self.config['objects'])
 
         # write config
         path = os.path.join(self.config['output_prefix'], self.config['output_path']).replace('.png', '.json')
@@ -52,7 +53,7 @@ class Plotter(object):
         self.parser.add_argument("-l", "--load-config", default=None,
                                  help="Print out the JSON config before running Artus.")
 
-    def _prepare_config(self):
+    def _prepare_config(self, merge_parser_args=True):
         """Get config from parser and supplied json file and merges the configs.
            Then it updates missing keys in the id objects using the values of
            the _default object.
@@ -60,7 +61,8 @@ class Plotter(object):
         config = vars(self.parser.parse_args())
         if config['load_config']:
             file_config = read_config(config['load_config'])
-            update_settings(file_config, config)
+            if merge_parser_args:
+                update_settings(file_config, config)
             config = file_config
         self.config = config
 
