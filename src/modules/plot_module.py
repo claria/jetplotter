@@ -79,6 +79,7 @@ class PlotModule(Module):
         # plot each object
         for id, item in config['objects'].iteritems():
             if not id.startswith('_'):
+                print 'Processing id {0}'.format(id)
                 plot.plot(**item)
         # Save plot
         plot.finish()
