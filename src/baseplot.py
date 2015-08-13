@@ -90,13 +90,7 @@ class BasePlot(object):
         matplotlib.rcParams['agg.path.chunksize'] = 20000
 
         # default color cycle
-        matplotlib.rcParams['axes.color_cycle'] = ['#4878CF',
-                                                   '#6ACC65', 
-                                                   '#D65F5F',
-                                                   '#B47CC7',
-                                                   '#C4AD66',
-                                                   '#77BEDB']
-
+        matplotlib.rcParams['axes.color_cycle'] = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "#CCB974", "#64B5CD"]
 
         matplotlib.rcParams['axes.formatter.limits'] = [-5, 5]
         # legend
@@ -288,6 +282,9 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     # Convert root object to mpl readable object
     obj = MplObject1D(obj)
 
+    if not kwargs['linestyle']:
+        kwargs['linestyle'] = '-'
+
     # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
@@ -299,7 +296,7 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         x = steppify_bin(obj.xbinedges, isx=True)
         y = steppify_bin(y)
 
-    line_kwargs = {k: v for k, v in kwargs.items() if k in ['alpha', 'color', 'linestyle', 'step', 'zorder']}
+    line_kwargs = {k: v for k, v in kwargs.items() if k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth', 'linestyle']}
     artist = ax.plot(x, y, **line_kwargs)
 
     return artist
@@ -341,7 +338,7 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     # Workaround by plotting line and errorbars separately.
     # http://stackoverflow.com/a/18499120/3243729
 
-    errorbar_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'capsize', 'fmt', 'alpha', 'color']}
+    errorbar_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'capsize', 'marker', 'fmt', 'alpha', 'color']}
     errorbar_kwargs['fmt'] = ''
     errorbar_kwargs['linestyle'] = ''
     artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, **errorbar_kwargs)
