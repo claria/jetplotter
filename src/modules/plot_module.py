@@ -1,4 +1,5 @@
 import itertools
+import re
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -59,12 +60,14 @@ class PlotModule(Module):
         self.parser.add_argument('--y-log', default=False, type='bool', help='Use log scale for y-axis.')
         self.parser.add_argument('--z-log', default=False, type='bool', help='Use log scale for z-axis.')
 
-        self.parser.add_argument('--x-label', default='', help='xlabel')
-        self.parser.add_argument('--y-label', default='', help='ylabel')
-        self.parser.add_argument('--z-label', default='', help='ylabel')
+        self.parser.add_argument('--x-label', default='', help='Label of the x axis.')
+        self.parser.add_argument('--y-label', default='', help='Label of the y axis.')
+        self.parser.add_argument('--z-label', default='', help='Label of the z axis.')
 
         self.parser.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
         self.parser.add_argument('--legend-loc', default='best', help='Legend location.')
+
+        self.parser.add_argument('--plot-id', default=r'^(?!_).*', help='All ids matching are passed to plot-module. Default matches everything not starting with a underscore.')
 
         self.parser.add_argument('--ax-texts', nargs='+', default=[],
                                  help='Add text to plot. Syntax is \'Text?1.0,1.0\' with loc 1.0,1.0')
@@ -77,8 +80,10 @@ class PlotModule(Module):
     def __call__(self, config):
         plot = Plot(**config)
         # plot each object
+        id_regex = config.get('plot_id')
         for id, item in config['objects'].iteritems():
-            if not id.startswith('_'):
+            print item
+            if re.match(id_regex, id):
                 print 'Processing id {0}'.format(id)
                 plot.plot(**item)
         # Save plot
@@ -162,7 +167,10 @@ class Plot(BasePlot):
 
         # Add axis texts
         for text in self.texts:
-            text, loc = text.rsplit('?', 1)
+            if not '?' in text:
+                loc = '0.0,0.0'
+            else:
+                text, loc = text.rsplit('?', 1)
             add_axis_text(self.ax, text, loc=loc)
 
         # Add horizontal lines to ax
@@ -177,8 +185,22 @@ class Plot(BasePlot):
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
 
-        self.ax.set_xlabel(self.x_label, position=(1., 0.), va='top', ha='right')
-        self.ax.set_ylabel(self.y_label)
+        # a specified position of the label can be set via label?centered
+        x_pos = self.x_label.rsplit('?', 1)[-1].lower()
+        if x_pos == 'center':
+            x_pos = { 'position' : (0.5, 0.0), 'va' : 'top', 'ha' : 'center' }
+            self.x_label = self.x_label.rsplit('?', 1)[0]
+        else:
+            x_pos = { 'position' : (1.0, 0.0), 'va' : 'top', 'ha' : 'right' }
+        self.ax.set_xlabel(self.x_label, **x_pos)
+
+        y_pos = self.y_label.rsplit('?', 1)[-1].lower()
+        if y_pos == 'center':
+            y_pos = { 'position' : (0.0, 0.5), 'va' : 'center', 'ha' : 'right' }
+            self.y_label = self.y_label.rsplit('?', 1)[0]
+        else:
+            y_pos = { 'position' : (0.0, 1.0), 'va' : 'top', 'ha' : 'right' }
+        self.ax.set_ylabel(self.y_label, **y_pos)
 
         self.ax.set_xscale('log' if self.x_log else 'linear')
         self.ax.set_yscale('log' if self.y_log else 'linear')
