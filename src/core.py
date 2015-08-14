@@ -80,6 +80,12 @@ class Plotter(object):
                     # check if string contains any key from lookup dict
                     if lk in v:
                         self.config[k] = self.config[k].replace(lk, lv)
+            elif isinstance(v, list) and k in lookup_dict:
+                for i in xrange(len(v)):
+                    for lk, lv in lookup_dict[k].items():
+                        # check if string contains any key from lookup dict
+                        if lk in v[i]:
+                            self.config[k][i] = self.config[k][i].replace(lk, lv)
         # perform replacement for object dict keys
         for id in self.config['objects']:
             for k, v in self.config['objects'][id].items():
@@ -126,9 +132,10 @@ def read_config(path):
     with open(path) as json_file:
         try:
             config = json.load(json_file)
-        except ValueError:
+        except ValueError as err:
             # log.critical('Failed to parse json file {0}'.format(config_name))
             print 'Failed to parse json file {0}'.format(path)
+            print err
             sys.exit(1)
     return config
 
@@ -155,8 +162,15 @@ def print_config(config):
     print json.dumps(config, sort_keys=True, cls=SimpleJsonEncoder, indent=4)
 
 
-def walk_json():
-    pass
+def walk_dic(node, func):
+   """Walks a dic containing dicts, lists or str and calls func(key, val) on each str leaf."""
+   seq_iter = node.keys() if isinstance(node, dict) else xrange(len(node))
+   for k in seq_iter:
+       print 'walk', k
+       if isinstance(node[k], basestring):
+           node[k] = func(k=k, v=node[k])
+       elif isinstance(node[k], dict) or isinstance(node[k], list):
+           walk_dic(node[k], func)
 
 
 def update_with_default(data):
