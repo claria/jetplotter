@@ -1,0 +1,129 @@
+{
+    "ana_modules": [
+        "SimpleRatioToObj"
+    ], 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "legend_loc": "best", 
+    "load_config": null, 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "default": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "default", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?default/h3_ptavg_ysb_ys_0_1_yb_0_1", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "total_dn": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "#4C72B0", 
+            "edgecolor": "auto", 
+            "id": "total_dn", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_dn/h3_ptavg_ysb_ys_0_1_yb_0_1", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": true, 
+            "style": "line", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "total_up": {
+            "alpha": 1.0, 
+            "capsize": 0, 
+            "color": "#4C72B0", 
+            "edgecolor": "auto", 
+            "id": "total_up", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_up/h3_ptavg_ysb_ys_0_1_yb_0_1", 
+            "label": "JEC Uncertainty", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": true, 
+            "style": "line", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_path": "exp_jec_error_yb0ys1.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "simpleratio", 
+        "label", 
+        "color", 
+        "style", 
+        "step", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "x_label", 
+        "y_label", 
+        "ana_modules"
+    ], 
+    "show_legend": true, 
+    "simpleratio": [
+        [
+            "total_up", 
+            "default"
+        ], 
+        [
+            "total_dn", 
+            "default"
+        ], 
+        [
+            "default", 
+            "default"
+        ]
+    ], 
+    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_lims": [
+        "74.", 
+        "2000."
+    ], 
+    "x_log": true, 
+    "y_label": "Fractional Uncertainty?center", 
+    "y_lims": [
+        "0.7", 
+        "1.3"
+    ], 
+    "y_log": false, 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
