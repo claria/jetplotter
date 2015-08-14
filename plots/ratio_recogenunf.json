@@ -88,22 +88,6 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdmgp6recounfnogencut": {
-            "alpha": 1.0, 
-            "capsize": 0, 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "qcdmgp6recounfnogencut", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDMGP6_NOGENCUT.root?h_ptavg", 
-            "label": "MG+P6 (Unf. Reco NOGENCUT)", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
         "qcdp8reco": {
             "alpha": 1.0, 
             "capsize": 0, 
@@ -139,6 +123,7 @@
     }, 
     "output_path": "ratio_recogenunf.png", 
     "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
         "help", 
@@ -166,10 +151,6 @@
         ], 
         [
             "qcdmgp6recounf", 
-            "_qcdmgp6gen"
-        ], 
-        [
-            "qcdmgp6recounfnogencut", 
             "_qcdmgp6gen"
         ]
     ], 

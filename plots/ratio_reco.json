@@ -116,6 +116,7 @@
     }, 
     "output_path": "ratio_reco.png", 
     "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
         "help", 
@@ -163,5 +164,11 @@
         "0.5", 
         "1.5"
     ], 
-    "y_log": false
+    "y_log": false, 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
 }

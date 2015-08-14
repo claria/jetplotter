@@ -3,6 +3,7 @@
         "RatioToObj", 
         "FitObj"
     ], 
+    "argv": "./plotter.py -l plots/np_factors.json", 
     "ax_hlines": [
         "1.0?black?2.0"
     ], 
@@ -88,11 +89,11 @@
         "fit_hwppmpihad": {
             "alpha": 1.0, 
             "capsize": 0, 
-            "color": "auto", 
+            "color": "#4C72B0", 
             "edgecolor": "auto", 
             "id": "hwppmpihad", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_MPIHAD.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
-            "label": "HW++", 
+            "label": "_nolegend_", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -105,11 +106,11 @@
             "": "band", 
             "alpha": 1.0, 
             "capsize": 0, 
-            "color": "auto", 
+            "color": "#55A868", 
             "edgecolor": "auto", 
             "id": "qcdp8mpihad", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_MPIHAD.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
-            "label": "P8", 
+            "label": "_nolegend_", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -121,7 +122,7 @@
         "hwppmpihad": {
             "alpha": 1.0, 
             "capsize": 0, 
-            "color": "auto", 
+            "color": "#4C72B0", 
             "edgecolor": "auto", 
             "id": "hwppmpihad", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_MPIHAD.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
@@ -137,7 +138,7 @@
         "qcdp8mpihad": {
             "alpha": 1.0, 
             "capsize": 0, 
-            "color": "auto", 
+            "color": "#55A868", 
             "edgecolor": "auto", 
             "id": "qcdp8mpihad", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_MPIHAD.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
@@ -153,6 +154,7 @@
     }, 
     "output_path": "np_factors.png", 
     "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
         "help", 
@@ -190,5 +192,11 @@
         "0.8", 
         "1.4"
     ], 
-    "y_log": false
+    "y_log": false, 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
 }
