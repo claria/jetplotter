@@ -105,6 +105,27 @@ class NormalizeObj(Module):
             else:
                 config['objects'][id]['obj'].Scale(1.0, float(val))
 
+class NormalizeToGen(Module):
+    """Normalizes a given TH2 to the sum in a row (y axis), e.g. to the number of true events."""
+    def __init__(self):
+        super(NormalizeToGen, self).__init__()
+        self.parser.add_argument('--normalize-to-gen', nargs='+', default=[], type=str, help='Id of 2d histograms which will be row-normalized.')
+
+    def __call__(self, config):
+        for id in config['normalize_to_gen']:
+            if not id in config['objects']:
+                raise ValueError('Requested id {} not found.'.format(id))
+            obj = config['objects'][id]['obj']
+
+            for y in xrange(1, obj.GetNbinsY()+1):
+                y_sow = np.sum([obj.GetBinContent(x, y) for x in xrange(1, obj.GetNbinsX() + 1)])
+                for x in xrange(1, obj.GetNbinsX() + 1):
+                    obj.SetBinContent(x, y, obj.GetBinContent(x,y)/ y_sow)
+                    obj.SetBinError(x, y, obj.GetBinError(x,y)/ y_sow)
+
+
+
+
 
 class FitObj(Module):
     """ Calls the fit function on an object.
@@ -178,10 +199,10 @@ class ResolutionAna(Module):
                 if (fcn.GetParError(2)/fcn.GetParameter(2)) > 0.05:
                     continue
                 # Uncomment to save also individual gauss fits to dict
-                # config['objects'].setdefault(id_slice, {})
-                # config['objects'][id_slice]['obj'] = pt_bin_obj
-                # config['objects'].setdefault('{0}_fit'.format(id_slice), {})
-                # config['objects']['{0}_fit'.format(id_slice)]['obj'] = error_graph
+                config['objects'].setdefault(id_slice, {})
+                config['objects'][id_slice]['obj'] = pt_bin_obj
+                config['objects'].setdefault('{0}_fit'.format(id_slice), {})
+                config['objects']['{0}_fit'.format(id_slice)]['obj'] = error_graph
                 resolution_graph.SetPoint(i, config['objects'][id]['obj'].GetYaxis().GetBinCenter(i), fcn.GetParameter(2))
                 resolution_graph.SetPointError(i, config['objects'][id]['obj'].GetYaxis().GetBinWidth(i)/2., fcn.GetParError(2))
             # Store TGraph and fit TGraph
@@ -189,8 +210,11 @@ class ResolutionAna(Module):
             config['objects'].setdefault(id_res, {})
             config['objects'][id_res]['obj'] = resolution_graph
 
-            res_fcn = ROOT.TF1("res_fcn", "sqrt(([0]/x)**2 + (([1]**2)/x) + [2]**2)")
+            # res_fcn = ROOT.TF1("res_fcn", "sqrt(([0]/x)**2 + (([1]**2)/x) + [2]**2)")
+            res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x) + [2]**2)")
+            # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*(([0]/x)**2) + (([1]**2)/x)*(x**[2]) + [3]**2)")
             res_fcn.SetParameters(6., 0.5, 0.01)
+            # res_fcn.SetParameters(1., 1, 1, 1)
             res_fcn.SetRange(0., 999999.)
             print 'Fitting id {0}'.format(id_res)
             res = resolution_graph.Fit("res_fcn", "RS", "")
