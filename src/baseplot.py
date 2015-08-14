@@ -58,11 +58,12 @@ class BasePlot(object):
         matplotlib.rcParams['figure.figsize'] = 10., 10.
 
         matplotlib.rcParams['lines.linewidth'] = 2
-        # matplotlib.rcParams['font.family'] = 'sans-serif'
-        # matplotlib.rcParams['font.serif'] = 'lmodern'
-        # matplotlib.rcParams['font.sans-serif'] = 'Helvetica'
+        matplotlib.rcParams['font.family'] = 'sans-serif'
+        matplotlib.rcParams['font.serif'] = 'lmodern'
+        matplotlib.rcParams['font.sans-serif'] = ['Arial', 'Bitstream Vera Sans', 'stixsans']
         matplotlib.rcParams['font.monospace'] = 'Computer Modern Typewriter'
         matplotlib.rcParams['font.style'] = 'normal'
+        matplotlib.rcParams['mathtext.fontset'] = 'stixsans'
         matplotlib.rcParams['font.size'] = 20.
         matplotlib.rcParams['legend.fontsize'] = 14.
         matplotlib.rcParams['text.usetex'] = False
@@ -338,16 +339,17 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     # Workaround by plotting line and errorbars separately.
     # http://stackoverflow.com/a/18499120/3243729
 
-    errorbar_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'capsize', 'marker', 'fmt', 'alpha', 'color']}
+    errorbar_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color']}
     errorbar_kwargs['fmt'] = ''
     errorbar_kwargs['linestyle'] = ''
+    print errorbar_kwargs
     artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, **errorbar_kwargs)
 
     if kwargs['linestyle']:
         if step:
             x = steppify_bin(obj.xbinedges, isx=True)
             y = steppify_bin(y)
-        plot_kwargs = {k: v for k, v in kwargs.items() if k in ['alpha', 'color', 'linestyle', 'step', 'zorder']}
+        plot_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'alpha', 'color', 'linestyle', 'step', 'zorder']}
         ax.plot(x, y, **plot_kwargs)
     return artist
 
@@ -364,7 +366,6 @@ def plot_contour(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis',
     """
     # Convert root object to mpl readable object
     obj = MplObject2D(obj)
-
     cmap = matplotlib.cm.get_cmap(cmap)
 
     # if no axis passed use current global axis
