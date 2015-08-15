@@ -82,7 +82,6 @@ class PlotModule(Module):
         # plot each object
         id_regex = config.get('plot_id')
         for id, item in config['objects'].iteritems():
-            print item
             if re.match(id_regex, id):
                 print 'Processing id {0}'.format(id)
                 plot.plot(**item)
