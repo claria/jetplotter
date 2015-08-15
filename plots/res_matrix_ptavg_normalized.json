@@ -37,7 +37,7 @@
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
-            "style": "contour", 
+            "style": "heatmap", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
