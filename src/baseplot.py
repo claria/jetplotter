@@ -9,9 +9,11 @@ import matplotlib.pyplot as plt
 
 from root2mpl import MplObject1D, MplObject2D
 
-
 from viridis import viridis_cmap
 plt.register_cmap(cmap=viridis_cmap)
+
+import logging
+log = logging.getlogger(__name__)
 
 class BasePlot(object):
     __metaclass__ = ABCMeta
@@ -353,15 +355,14 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     return artist
 
 
-def plot_contour(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis', **kwargs):
-    """One dimensional contour plot.
+def plot_heatmap(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis', **kwargs):
+    """One dimensional heatmap plot.
     Args:
-        obj: Mplobjo representation of a root objogram.
+        obj: 1D Root object to be plotted
         ax: Axis to plot on. If not specified current global axis will be used.
         z_log: If True, z axis will be logarithmic.
-        vmin: Lower limit of z axis
-        vmax: Upper limit of z axis
-        cmap: Colormap used to
+        z_lims: (Lower, Upper) limits of z axis
+        cmap: Colormap
     """
     # Convert root object to mpl readable object
     obj = MplObject2D(obj)
@@ -380,12 +381,5 @@ def plot_contour(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis',
             vmin, vmax = np.amin(obj.z), np.amax(obj.z)
     norm = (LogNorm if z_log else Normalize)(vmin=vmin, vmax=vmax)
 
-        # # set color for masked entries depending on min and max color of colorbar
-        # mask_color = 'white'
-        # if any([all([i>0.95 for i in color]) for color in [min_color, max_color]]):  # check if white is min or max color
-        #     mask_color = 'black'
-        #     if any([all([i<0.05 for i in color]) for color in [min_color, max_color]]):  # check if black is min or max color
-        #         mask_color = 'red'
-        # cmap.set_bad(mask_color, alpha=None)
     artist = ax.pcolormesh(obj.xbinedges, obj.ybinedges, obj.z, cmap=cmap, norm=norm)
     return artist
