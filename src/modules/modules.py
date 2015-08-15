@@ -9,6 +9,9 @@ from abc import ABCMeta, abstractmethod
 from ..parser import UserParser
 import ROOT
 
+import logging
+log = logging.getlogger(__name__)
+
 def get_module(name):
     """Returns instance of module of with class name 'name'."""
     thismodule = sys.modules[__name__]
@@ -24,7 +27,7 @@ class Module(object):
     def __init__(self):
         self.label = self.__class__.__name__
         self._parser = UserParser(add_help=False)
-        self.parser = self._parser.add_argument_group(self.label)
+        self.parser = self._parser.add_argument_group(title=self.label, description=inspect.getdoc(self))
 
     @abstractmethod
     def __call__(self, **args):
