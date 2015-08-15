@@ -1,7 +1,7 @@
 {
     "ana_modules": [
-        "NormalizeObj", 
-        "SimpleRatioToObj", 
+        "Normalize", 
+        "SimpleRatio", 
         "ToTGraph"
     ], 
     "ax_hlines": [
@@ -113,7 +113,7 @@
         "output_path"
     ], 
     "ratio": [], 
-    "scale_obj": [
+    "normalize": [
         [
             "data", 
             "width"

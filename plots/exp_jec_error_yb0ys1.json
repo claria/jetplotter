@@ -1,6 +1,6 @@
 {
     "ana_modules": [
-        "SimpleRatioToObj"
+        "SimpleRatio"
     ], 
     "ax_hlines": [], 
     "ax_texts": [], 
