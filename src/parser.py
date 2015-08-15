@@ -3,6 +3,8 @@ import collections
 import json
 import sys
 
+import logging
+log = logging.getlogger(__name__)
 
 class UserParser(argparse.ArgumentParser):
     """Argparser with additional features.
