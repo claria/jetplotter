@@ -131,7 +131,7 @@ class SettingAction(argparse.Action):
             values = [values]
 
         if not hasattr(namespace, 'objects'):
-            setattr(namespace, 'objects', {})
+            setattr(namespace, 'objects', collections.OrderedDict())
         if hasattr(namespace, self.dest):
             delattr(namespace, self.dest)
         # Ensure all values are list of tuples (id, val)
@@ -142,9 +142,10 @@ class SettingAction(argparse.Action):
                 # values[i] = ('id_{0}'.format(i), values[i][1])
                 values[i] = ('_default'.format(i), values[i][1])
         for id, val in values:
-            if id not in namespace.objects:
-                namespace.objects[id] = {}
-                namespace.objects[id]['id'] = id
+            namespace.objects.setdefault(id, {})['id'] = id
+            # if id not in namespace.objects:
+                # namespace.objects[id] = {}
+                # namespace.objects[id]['id'] = id
             namespace.objects[id][self.dest] = val
 
 
