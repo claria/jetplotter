@@ -6,12 +6,18 @@ import matplotlib.pyplot as plt
 from ..baseplot import BasePlot
 BasePlot.init_matplotlib()
 
-from ..baseplot import plot_errorbar, plot_band, plot_line, plot_contour, add_axis_text
+from ..baseplot import plot_errorbar, plot_band, plot_line, plot_heatmap, add_axis_text
 from ..root2mpl import MplObject1D
 from modules import Module
 
 
 class PlotModule(Module):
+    """Plotting output module for 1d and 2d plots using the matplotlib library. 
+
+       All objects plotted are read from the \'objects\' dict in the configs. You can
+       use all the id based settings to manipulate the appearance of the objects and the
+       standard arguments to adapt the axis and figure.
+    """
     def __init__(self):
         super(PlotModule, self).__init__()
         # Plot object options
@@ -140,11 +146,11 @@ class Plot(BasePlot):
             artist = plot_band(ax=self.ax, **kwargs)
         elif style == 'line':
             artist = plot_line(ax=self.ax, **kwargs)
-        elif style == 'contour':
+        elif style == 'heatmap':
             # special case for z scale and lims since they have to be set by the object (not the axis)
             kwargs['z_log'] = self.z_log
             kwargs['z_lims'] = self.z_lims
-            artist = plot_contour(ax=self.ax, **kwargs)
+            artist = plot_heatmap(ax=self.ax, **kwargs)
             self.colorbar_mappable = artist
         else:
             raise ValueError('Style {0} not supported.'.format(style))
