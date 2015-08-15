@@ -4,6 +4,8 @@ import os
 import sys
 import json
 import collections
+import logging
+log = logging.getLogger(__name__)
 
 from modules.root_module import RootModule
 from modules.plot_module import PlotModule
@@ -40,15 +42,25 @@ class Plotter(object):
         save_config(self.config, path)
 
     def _init_parser(self, parents=[]):
-        self.parser = UserParser(add_help=False)
-        self.parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
-        args = vars(self.parser.parse_known_args()[0])
+        # Defines the base parser, which will be pre-parsed using known args to find additional modules 
+        # with possibly additional parsers
+        base_parser = UserParser(add_help=False)
+        base_parser.add_argument("--input-modules", nargs='+', default=[], help="Analysis modules.")
+        base_parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
+        base_parser.add_argument("--output-modules", nargs='+', default=[], help="Analysis modules.")
+        base_parser.add_argument("--log-level", default="info", help="Log level.")
+        args = vars(base_parser.parse_known_args()[0])
+
+        log_level = getattr(logging, args['log_level'].upper(), None)
+        if not isinstance(log_level, int):
+            raise ValueError('Invalid log level: %s' % loglevel)
+        logging.basicConfig(format='%(message)s', level=log_level)
+
+        # Initialize additional modules specified on command line
         self._ana_modules += [get_module(name) for name in args['ana_modules']]
         add_parsers = [module._parser for module in self._input_modules + self._ana_modules + self._output_modules]
+        add_parsers.append(base_parser)
         self.parser = UserParser(parents=add_parsers)
-        # self.parser.add_argument("--input-modules", nargs='+', default=[], help="Analysis modules.")
-        self.parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
-        # self.parser.add_argument("--output-modules", nargs='+', default=[], help="Analysis modules.")
         self.parser.add_argument("-p", "--print-config", default=False, action="store_true",
                                  help="Print out the JSON config before running Artus.")
         self.parser.add_argument("-l", "--load-config", default=None,
