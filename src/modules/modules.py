@@ -4,20 +4,10 @@ import inspect
 import math
 import numpy as np
 import collections
+from abc import ABCMeta, abstractmethod
 
 from ..parser import UserParser
 import ROOT
-
-class Module(object):
-
-    def __init__(self):
-        self.label = self.__class__.__name__
-        self._parser = UserParser(add_help=False)
-        self.parser = self._parser.add_argument_group(self.label)
-
-    def __call__(self, **args):
-        raise NotImplementedError()
-
 
 def get_module(name):
     """Returns instance of module of with class name 'name'."""
@@ -27,9 +17,27 @@ def get_module(name):
     return module
 
 
-class RatioToObj(Module):
+class Module(object):
+    """Base Module all different modules have to be derived from."""
+    __metaclass__ = ABCMeta
+
     def __init__(self):
-        super(RatioToObj, self).__init__()
+        self.label = self.__class__.__name__
+        self._parser = UserParser(add_help=False)
+        self.parser = self._parser.add_argument_group(self.label)
+
+    @abstractmethod
+    def __call__(self, **args):
+        """This method needs to be overloaded and will be called for all modules."""
+        raise NotImplementedError()
+
+
+class Ratio(Module):
+    """Calculates ratios of objects. without taking into account any error propagation. If you need an
+       proper error propagation use the Divide module.
+    """
+    def __init__(self):
+        super(Ratio, self).__init__()
         self.parser.add_argument('--ratio', nargs='+', default=[], type='str2kvstr', help='List of id:to_id objects for which the ratio is calculated.')
 
     def __call__(self, config):
@@ -42,53 +50,50 @@ class RatioToObj(Module):
 
             ratio_to_obj(config['objects'][id]['obj'], config['objects'][to]['obj'])
 
-class ToTGraph(Module):
-    def __init__(self):
-        super(ToTGraph, self).__init__()
-        self.parser.add_argument('--to-tgraph', nargs='+', default=[], help='')
-
-    def __call__(self, config):
-        for id in config['to_tgraph']:
-            if isinstance(config['objects'][id]['obj'], collections.Iterable):
-                if len(config['objects'][id]['obj']) == 1:
-                    config['objects'][id]['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
-                elif len(config['objects'][id]['obj']) == 3:
-                    config['objects'][id]['obj'] = get_tgraphasymm_from_histos(*config['objects'][id]['obj'])
-                else:
-                    raise ValueError('unsupported conversion requested.')
-            else:
-                config['objects'][id]['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
 
 
-class SimpleRatioToObj(Module):
-    def __init__(self):
-        super(SimpleRatioToObj, self).__init__()
-        self.parser.add_argument('--simpleratio', nargs='+', default=[], type='str2kvstr', help='List of id:to_id objects for which the ratio is calculated.')
+# class SimpleRatioToObj(Module):
+#     def __init__(self):
+#         super(SimpleRatioToObj, self).__init__()
+#         self.parser.add_argument('--simpleratio', nargs='+', default=[], type='str2kvstr', help='List of id:to_id objects for which the ratio is calculated.')
+#
+#     def __call__(self, config):
+#         for id, to in config['simpleratio']:
+#             print 'calc sratio', id, to
+#             if id not in config['objects']:
+#                 raise ValueError('Requested id {} not found.'.format(id))
+#             if to not in config['objects']:
+#                 raise ValueError('Requested id {} not found.'.format(to))
+#             to_obj = config['objects'][to]['obj'].Clone('ref')
+#             config['objects'][id]['obj'] = ratio_to_obj(config['objects'][id]['obj'], to_obj, error_prop=False)
 
-    def __call__(self, config):
-        for id, to in config['simpleratio']:
-            print 'calc sratio', id, to
-            if id not in config['objects']:
-                raise ValueError('Requested id {} not found.'.format(id))
-            if to not in config['objects']:
-                raise ValueError('Requested id {} not found.'.format(to))
-            to_obj = config['objects'][to]['obj'].Clone('ref')
-            config['objects'][id]['obj'] = ratio_to_obj(config['objects'][id]['obj'], to_obj, error_prop=False)
 
-
-class MultiplyObj(Module):
+class Multiply(Module):
 
     def __init__(self):
         super(MultiplyObj, self).__init__()
         self.parser.add_argument('--multiply', nargs='+', type='str2kvstr', action='setting', help='')
 
-    def __call__(self, data):
-        for id, item in data.items():
-            if 'multiply' in item:
-                to_id = item['multiply']
-                if to_id not in data:
-                    raise ValueError('Requested id {} not found.'.format(to_id))
-                item['obj'].Multiply(data[to_id]['obj'])
+    @staticmethod
+    def isfloat(value):
+        try:
+            float(value)
+            return True
+        except ValueError:
+            return False
+
+    def __call__(self, config):
+        for id, val in config['multiply']:
+            if not id in config['objects']:
+                raise ValueError('Requested id {} not found.'.format(id))
+            if val in config['objects']:
+                # Normalize to another object
+                config['objects'][id]['obj'].Multiply(config['objects'][val]['obj'])
+            elif isfloat(val):
+                # Normalize/Scale by an factor
+                config['objects'][id]['obj'].Multiply(float(val))
+            else:
+                raise ValueError('The intended multiplication could not be identified for {0}'.format(val))
 
 
 class Normalize(Module):
@@ -96,8 +101,7 @@ class Normalize(Module):
     def __init__(self):
         super(NormalizeObj, self).__init__()
         self.parser.add_argument('--normalize', nargs='+', default=[], type='str2kvstr', 
-                                 help='Normalize an id to bin widths, unity, to the integral of
-                                       another object or by a float using width/unity/obj_id or a float.')
+                                 help=('Normalize an id to bin widths, unity, to the integral of another object or by a float using width/unity/obj_id or a float.'))
 
     @staticmethod
     def isfloat(value):
@@ -112,14 +116,14 @@ class Normalize(Module):
             if not id in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             if val == 'width':
-                Normalize to bin width
+                # Normalize to bin width
                 config['objects'][id]['obj'].Scale(1.0, 'width')
             elif val == 'unity':
                 # Normalize to Unity
                 config['objects'][id]['obj'].Scale(1.0 / config['objects'][id]['obj'].Integral())
-            elif val is in config['objects']:
+            elif val in config['objects']:
                 # Normalize to another object
-                config['objects'][id]['obj'].Scale(1.0 / config['objects'][id]['obj'].Integral())
+                config['objects'][id]['obj'].Scale(1.0 / config['objects'][val]['obj'].Integral())
             elif isfloat(val):
                 # Normalize/Scale by an factor
                 config['objects'][id]['obj'].Scale(float(val))
@@ -143,9 +147,6 @@ class NormalizeToGen(Module):
                 for x in xrange(1, obj.GetNbinsX() + 1):
                     obj.SetBinContent(x, y, obj.GetBinContent(x,y)/ y_sow)
                     obj.SetBinError(x, y, obj.GetBinError(x,y)/ y_sow)
-
-
-
 
 
 class FitObj(Module):
@@ -251,9 +252,28 @@ class ResolutionAna(Module):
             config['objects'].setdefault('{0}_fit'.format(id_res), {})['obj'] = res_error_graph
 
 
+class ToTGraph(Module):
+    """Converts the object to a TGraphAsymmErrors object."""
+    def __init__(self):
+        super(ToTGraph, self).__init__()
+        self.parser.add_argument('--to-tgraph', nargs='+', default=[], help='')
+
+    def __call__(self, config):
+        for id in config['to_tgraph']:
+            if isinstance(config['objects'][id]['obj'], collections.Iterable):
+                if len(config['objects'][id]['obj']) == 1:
+                    config['objects'][id]['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
+                elif len(config['objects'][id]['obj']) == 3:
+                    config['objects'][id]['obj'] = get_tgraphasymm_from_histos(*config['objects'][id]['obj'])
+                else:
+                    raise ValueError('unsupported conversion requested.')
+            else:
+                config['objects'][id]['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
 
 
-def get_tgrapherrors(fcn, vfitter):
+
+def get_tgrapherrors(fcn, vfitter, cl=0.683):
+    """Returns a TGraph with a confidence interval representing the confidence intervals."""
     # no thinking involved. just copied from the data analysis c macro.
     npoints = 1000
     graph = ROOT.TGraphErrors(npoints)
@@ -262,23 +282,8 @@ def get_tgrapherrors(fcn, vfitter):
     for i in xrange(0, len(x_values)):
         graph.SetPoint(i, x_values[i], 0)
 
-    vfitter.GetConfidenceIntervals(graph, 0.683);
-
+    vfitter.GetConfidenceIntervals(graph, cl);
     return graph
-    #npoints = 1000
-    #x_values = np.linspace(fcn.GetXmin(), fcn.GetXmax(), npoints)
-
-    #vfitter = ROOT.TVirtualFitter.GetFitter()
-    #graph = ROOT.TGraphErrors(npoints)
-    ## npar = vfitter.GetNumberTotalParameters()
-
-    #x = array.array('d', x_values)
-    #y = array.array('d', [0.]*len(x_values))
-    #vfitter.GetConfidenceIntervals(len(x_values), 1, 1, x, y, 0.683)
-
-    #for i in xrange(0, len(x)):
-    #    g.SetPoint(i, x[i], fcn.Eval(point))
-    #    g.SetPointError(i, 0, math.sqrt(pointerror))
 
 def divide_tgraph(graph1, graph2, error_prop=False):
     assert (graph1.GetN() == graph2.GetN())
