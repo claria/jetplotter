@@ -342,7 +342,6 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     errorbar_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color']}
     errorbar_kwargs['fmt'] = ''
     errorbar_kwargs['linestyle'] = ''
-    print errorbar_kwargs
     artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, **errorbar_kwargs)
 
     if kwargs['linestyle']:
