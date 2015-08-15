@@ -91,19 +91,40 @@ class MultiplyObj(Module):
                 item['obj'].Multiply(data[to_id]['obj'])
 
 
-class NormalizeObj(Module):
+class Normalize(Module):
+    """Normalize an obj by binwidth, to unity, to integral of another id or by a float."""
     def __init__(self):
         super(NormalizeObj, self).__init__()
-        self.parser.add_argument('--scale-obj', nargs='+', default=[], type='str2kvstr', help='')
+        self.parser.add_argument('--normalize', nargs='+', default=[], type='str2kvstr', 
+                                 help='Normalize an id to bin widths, unity, to the integral of
+                                       another object or by a float using width/unity/obj_id or a float.')
+
+    @staticmethod
+    def isfloat(value):
+        try:
+            float(value)
+            return True
+        except ValueError:
+            return False
 
     def __call__(self, config):
-        for id, val in config['scale_obj']:
+        for id, val in config['normalize']:
             if not id in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             if val == 'width':
+                Normalize to bin width
                 config['objects'][id]['obj'].Scale(1.0, 'width')
+            elif val == 'unity':
+                # Normalize to Unity
+                config['objects'][id]['obj'].Scale(1.0 / config['objects'][id]['obj'].Integral())
+            elif val is in config['objects']:
+                # Normalize to another object
+                config['objects'][id]['obj'].Scale(1.0 / config['objects'][id]['obj'].Integral())
+            elif isfloat(val):
+                # Normalize/Scale by an factor
+                config['objects'][id]['obj'].Scale(float(val))
             else:
-                config['objects'][id]['obj'].Scale(1.0, float(val))
+                raise ValueError('There intended normalization could not be identified for {0}'.format(val))
 
 class NormalizeToGen(Module):
     """Normalizes a given TH2 to the sum in a row (y axis), e.g. to the number of true events."""
