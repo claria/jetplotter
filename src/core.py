@@ -1,3 +1,4 @@
+from abc import ABCMeta, abstractmethod
 import copy
 import os
 import sys
@@ -131,7 +132,7 @@ def read_config(path):
     """Read json config from file."""
     with open(path) as json_file:
         try:
-            config = json.load(json_file)
+            config = json.load(json_file, object_pairs_hook=collections.OrderedDict)
         except ValueError as err:
             # log.critical('Failed to parse json file {0}'.format(config_name))
             print 'Failed to parse json file {0}'.format(path)
@@ -142,7 +143,6 @@ def read_config(path):
 
 def update_settings(d, u, provided_args=None):
     """ Update dict d with entries of dict u, but only if key of u not in d."""
-    print provided_args
     if provided_args is None:
         provided_args = []
     provided_args += u.get('provided_args', [])
