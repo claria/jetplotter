@@ -1,10 +1,10 @@
 from abc import ABCMeta, abstractmethod
-
 import inspect
 
 from src.user_parser import UserParser
 
-class Module(object):
+
+class BaseModule(object):
     """Base Module all different modules have to be derived from."""
     __metaclass__ = ABCMeta
 
@@ -20,4 +20,3 @@ class Module(object):
     def __call__(self, **args):
         """This method needs to be overloaded and will be called for all modules."""
         raise NotImplementedError()
-
