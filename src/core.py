@@ -7,7 +7,7 @@ import logging
 
 from module_handler import get_all_modules
 from user_parser import UserParser
-from modules.all_modules import get_module
+from modules.various_modules import get_module
 from lookup_dict import lookup_dict
 
 log = logging.getLogger(__name__)
