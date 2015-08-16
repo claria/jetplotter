@@ -1,24 +1,21 @@
-from abc import ABCMeta, abstractmethod
 import copy
-import inspect
 import os
 import sys
 import json
 import collections
 import logging
-log = logging.getLogger(__name__)
 
 from module_handler import get_all_modules
-
-from modules.root_module import RootModule
-from modules.plot_module import PlotModule
 from user_parser import UserParser
 from modules.all_modules import get_module
 from lookup_dict import lookup_dict
 
+log = logging.getLogger(__name__)
+
 
 class Plotter(object):
     """ Core module preparing the config and running all modules."""
+
     def __init__(self):
         self.config = {}
         # All modules found in modules dir
@@ -54,6 +51,7 @@ class Plotter(object):
         save_config(self.config, path)
 
     def _init_parser(self, parents=[]):
+        # TODO replace mutable parents arg
         # Defines the base parser, which will be pre-parsed using known args to find additional modules 
         # with possibly additional parsers
         base_parser = UserParser(add_help=False)
@@ -66,7 +64,7 @@ class Plotter(object):
 
         log_level = getattr(logging, args['log_level'].upper(), None)
         if not isinstance(log_level, int):
-            raise ValueError('Invalid log level: %s' % loglevel)
+            raise ValueError('Invalid log level: %s' % log_level)
         logging.basicConfig(format='%(message)s', level=log_level)
 
         # Initialize additional modules specified on command line
@@ -126,6 +124,7 @@ class Plotter(object):
 
 class SimpleJsonEncoder(json.JSONEncoder):
     """JSON Encoder which replaces not serializiable objects like root objects with null."""
+
     def default(self, obj):
         if not isinstance(obj, (dict, list, tuple, str, unicode, int, long, float, bool)):
             return 'null'
@@ -190,14 +189,14 @@ def print_config(config):
 
 
 def walk_dic(node, func):
-   """Walks a dic containing dicts, lists or str and calls func(key, val) on each str leaf."""
-   seq_iter = node.keys() if isinstance(node, dict) else xrange(len(node))
-   for k in seq_iter:
-       print 'walk', k
-       if isinstance(node[k], basestring):
-           node[k] = func(k=k, v=node[k])
-       elif isinstance(node[k], dict) or isinstance(node[k], list):
-           walk_dic(node[k], func)
+    """Walks a dic containing dicts, lists or str and calls func(key, val) on each str leaf."""
+    seq_iter = node.keys() if isinstance(node, dict) else xrange(len(node))
+    for k in seq_iter:
+        print 'walk', k
+        if isinstance(node[k], basestring):
+            node[k] = func(k=k, v=node[k])
+        elif isinstance(node[k], dict) or isinstance(node[k], list):
+            walk_dic(node[k], func)
 
 
 def update_with_default(data):
