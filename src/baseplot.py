@@ -13,7 +13,7 @@ from viridis import viridis_cmap
 plt.register_cmap(cmap=viridis_cmap)
 
 import logging
-log = logging.getlogger(__name__)
+log = logging.getLogger(__name__)
 
 class BasePlot(object):
     __metaclass__ = ABCMeta
