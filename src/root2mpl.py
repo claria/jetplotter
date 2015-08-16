@@ -161,7 +161,7 @@ class MplObject2D(object):
 
     @property
     def yerrl(self):
-        return self.y - self.xy
+        return self.y - self.xl
 
     @property
     def yerru(self):
@@ -181,7 +181,7 @@ class MplObject2D(object):
 
     @property
     def zerrl(self):
-        return self.z - self.zy
+        return self.z - self.zl
 
     @property
     def zerru(self):
