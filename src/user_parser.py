@@ -4,7 +4,9 @@ import json
 import sys
 
 import logging
+
 log = logging.getLogger(__name__)
+
 
 class UserParser(argparse.ArgumentParser):
     """Argparser with additional features.
@@ -19,6 +21,7 @@ class UserParser(argparse.ArgumentParser):
        supplied on the command line.
 
     """
+
     def __init__(self, *args, **kwargs):
         super(UserParser, self).__init__(*args, **kwargs)
         self.register('type', 'bool', str2bool)
@@ -71,6 +74,7 @@ def str2bool(s):
     else:
         return s.lower() in ("yes", "true", "t", "1")
 
+
 def noneorfloat(v):
     """Return float if parseable, else None."""
     try:
@@ -78,10 +82,12 @@ def noneorfloat(v):
     except (TypeError, ValueError):
         return None
 
+
 def str2kvfloat(s):
     """Parses string of format id:value into tuple of (str, float)"""
     k, v = get_tuple(s)
     return k, float(v)
+
 
 def str2kvdict(s):
     """Parses string of format id:value into tuple of (str, dict)
@@ -146,8 +152,8 @@ class SettingAction(argparse.Action):
         for id, val in values:
             namespace.objects.setdefault(id, {})['id'] = id
             # if id not in namespace.objects:
-                # namespace.objects[id] = {}
-                # namespace.objects[id]['id'] = id
+            # namespace.objects[id] = {}
+            # namespace.objects[id]['id'] = id
             namespace.objects[id][self.dest] = val
 
 
