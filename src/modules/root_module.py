@@ -3,7 +3,7 @@ import ROOT
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
 
-from modules import Module
+from src.modules.base_module import Module
 
 
 class RootModule(Module):

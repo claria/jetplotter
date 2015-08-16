@@ -3,12 +3,15 @@ import re
 import matplotlib
 import matplotlib.pyplot as plt
 
-from ..baseplot import BasePlot
+from src.baseplot import BasePlot
 BasePlot.init_matplotlib()
 
-from ..baseplot import plot_errorbar, plot_band, plot_line, plot_heatmap, add_axis_text
-from ..root2mpl import MplObject1D
-from modules import Module
+from src.baseplot import plot_errorbar, plot_band, plot_line, plot_heatmap, add_axis_text
+from src.root2mpl import MplObject1D
+from src.modules.base_module import Module
+
+import logging
+log = logging.getLogger(__name__)
 
 
 class PlotModule(Module):
@@ -89,7 +92,7 @@ class PlotModule(Module):
         id_regex = config.get('plot_id')
         for id, item in config['objects'].iteritems():
             if re.match(id_regex, id):
-                print 'Processing id {0}'.format(id)
+                log.debug('Drawing id {0}'.format(id))
                 plot.plot(**item)
         # Save plot
         plot.finish()
