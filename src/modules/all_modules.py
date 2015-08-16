@@ -6,7 +6,7 @@ import numpy as np
 import collections
 from abc import ABCMeta, abstractmethod
 
-from ..parser import UserParser
+from src.modules.base_module import Module
 import ROOT
 
 import logging
@@ -18,21 +18,6 @@ def get_module(name):
     cls = getattr(thismodule, name)
     module = cls()
     return module
-
-
-class Module(object):
-    """Base Module all different modules have to be derived from."""
-    __metaclass__ = ABCMeta
-
-    def __init__(self):
-        self.label = self.__class__.__name__
-        self._parser = UserParser(add_help=False)
-        self.parser = self._parser.add_argument_group(title=self.label, description=inspect.getdoc(self))
-
-    @abstractmethod
-    def __call__(self, **args):
-        """This method needs to be overloaded and will be called for all modules."""
-        raise NotImplementedError()
 
 
 class Ratio(Module):
