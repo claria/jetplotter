@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 import copy
+import inspect
 import os
 import sys
 import json
@@ -7,10 +8,12 @@ import collections
 import logging
 log = logging.getLogger(__name__)
 
+from module_handler import get_all_modules
+
 from modules.root_module import RootModule
 from modules.plot_module import PlotModule
-from parser import UserParser
-from modules.modules import get_module
+from user_parser import UserParser
+from modules.all_modules import get_module
 from lookup_dict import lookup_dict
 
 
@@ -18,13 +21,22 @@ class Plotter(object):
     """ Core module preparing the config and running all modules."""
     def __init__(self):
         self.config = {}
-        self._input_modules = [RootModule()]
+        # All modules found in modules dir
+        self._all_modules = get_all_modules()
+        self._input_modules = []
         self._ana_modules = []
-        self._output_modules = [PlotModule()]
+        self._output_modules = []
 
     def __call__(self):
+
         self._init_parser()
         self._prepare_config()
+
+        if self.config['list_modules']:
+            for label, module in self._all_modules.iteritems():
+                print label
+            sys.exit(0)
+
         self.path = self._input_modules + self._ana_modules + self._output_modules
 
         self._perform_lookup_replacement()
@@ -33,7 +45,7 @@ class Plotter(object):
             print_config(self.config)
 
         for module in self.path:
-            print "Processing {0}...".format(module.label)
+            log.info("Processing {0}...".format(module.label()))
             module(self.config)
             update_with_default(self.config['objects'])
 
@@ -45,9 +57,10 @@ class Plotter(object):
         # Defines the base parser, which will be pre-parsed using known args to find additional modules 
         # with possibly additional parsers
         base_parser = UserParser(add_help=False)
-        base_parser.add_argument("--input-modules", nargs='+', default=[], help="Analysis modules.")
+        base_parser.add_argument("--input-modules", nargs='+', default=['RootModule'], help="Input modules .")
         base_parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
-        base_parser.add_argument("--output-modules", nargs='+', default=[], help="Analysis modules.")
+        base_parser.add_argument("--output-modules", nargs='+', default=['PlotModule'], help="Output modules.")
+        base_parser.add_argument("--list-modules", action='store_true', help="List all available modules.")
         base_parser.add_argument("--log-level", default="info", help="Log level.")
         args = vars(base_parser.parse_known_args()[0])
 
@@ -57,7 +70,9 @@ class Plotter(object):
         logging.basicConfig(format='%(message)s', level=log_level)
 
         # Initialize additional modules specified on command line
-        self._ana_modules += [get_module(name) for name in args['ana_modules']]
+        self._input_modules = [self._all_modules[name]() for name in args['input_modules']]
+        self._ana_modules += [self._all_modules[name]() for name in args['ana_modules']]
+        self._output_modules += [self._all_modules[name]() for name in args['output_modules']]
         add_parsers = [module._parser for module in self._input_modules + self._ana_modules + self._output_modules]
         add_parsers.append(base_parser)
         self.parser = UserParser(parents=add_parsers)
