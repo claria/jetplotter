@@ -4,7 +4,7 @@ import os
 import imp
 import logging
 
-from modules.base_module import Module
+from modules.base_module import BaseModule
 
 log = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ def get_all_modules():
             module = imp.load_source(module_name, filename)
             for name, obj in inspect.getmembers(module):
                 if inspect.isclass(obj):
-                    if issubclass(obj, Module):
+                    if issubclass(obj, BaseModule):
                         log.debug("Adding module {0}.".format(obj.label))
                         available_modules[obj.label()] = obj
         except ImportError as e:
