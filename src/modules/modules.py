@@ -10,7 +10,7 @@ from ..parser import UserParser
 import ROOT
 
 import logging
-log = logging.getlogger(__name__)
+log = logging.getLogger(__name__)
 
 def get_module(name):
     """Returns instance of module of with class name 'name'."""
@@ -45,7 +45,7 @@ class Ratio(Module):
 
     def __call__(self, config):
         for id, to in config['ratio']:
-            print 'Calculating ratio', id, to
+            log.debug('Calculating ratio of {0} to {1}'.format(id, to))
             if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             if to not in config['objects']:
@@ -176,6 +176,9 @@ class FitObj(Module):
 
             xmin, xmax = config['objects'][id]['obj'].GetXaxis().GetXmin(), config['objects'][id]['obj'].GetXaxis().GetXmax()
             # Do the fit
+            if not 'N' in options:
+                options += 'N'
+            print options
             config['objects'][id]['obj'].Fit(fcn_name, options)
             vfitter = ROOT.TVirtualFitter.GetFitter()
             fcn.SetNpx(1000)
@@ -210,7 +213,7 @@ class ResolutionAna(Module):
                     continue
                 # If fit fails continue instead of failing
                 id_slice = '_{0}_slice_{1}'.format(id.strip('_'), i)
-                res = pt_bin_obj.Fit("gaus", "SQ")
+                res = pt_bin_obj.Fit("gaus", "SQO")
                 fcn = pt_bin_obj.GetFunction("gaus")
                 if res.Get() == None or res.Status() != 0:
                     continue
@@ -242,7 +245,7 @@ class ResolutionAna(Module):
             # res_fcn.SetParameters(1., 1, 1, 1)
             res_fcn.SetRange(0., 999999.)
             print 'Fitting id {0}'.format(id_res)
-            res = resolution_graph.Fit("res_fcn", "RS", "")
+            res = resolution_graph.Fit("res_fcn", "RSO", "")
             # graph.Write()
             if res.Get() == None or res.Status() != 0:
                 continue
