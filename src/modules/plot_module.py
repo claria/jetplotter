@@ -8,13 +8,13 @@ BasePlot.init_matplotlib()
 
 from src.baseplot import plot_errorbar, plot_band, plot_line, plot_heatmap, add_axis_text
 from src.root2mpl import MplObject1D
-from src.modules.base_module import Module
+from src.modules.base_module import BaseModule
 
 import logging
 log = logging.getLogger(__name__)
 
 
-class PlotModule(Module):
+class PlotModule(BaseModule):
     """Plotting output module for 1d and 2d plots using the matplotlib library. 
 
        All objects plotted are read from the \'objects\' dict in the configs. You can

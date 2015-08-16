@@ -3,10 +3,10 @@ import ROOT
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
 
-from src.modules.base_module import Module
+from src.modules.base_module import BaseModule
 
 
-class RootModule(Module):
+class RootModule(BaseModule):
     def __init__(self):
         super(RootModule, self).__init__()
         self.parser.add_argument('-i', '--input', nargs='+', type='str2kvstr', action='setting',
