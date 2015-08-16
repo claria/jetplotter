@@ -4,7 +4,7 @@ import json
 import sys
 
 import logging
-log = logging.getlogger(__name__)
+log = logging.getLogger(__name__)
 
 class UserParser(argparse.ArgumentParser):
     """Argparser with additional features.
