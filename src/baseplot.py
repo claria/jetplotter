@@ -1,19 +1,38 @@
 import os
 from abc import ABCMeta
-import numpy as np
 
+import numpy as np
 import matplotlib
 from matplotlib.colors import Normalize
+
 from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
 
 from root2mpl import MplObject1D, MplObject2D
-
 from viridis import viridis_cmap
+
 plt.register_cmap(cmap=viridis_cmap)
 
 import logging
+
 log = logging.getLogger(__name__)
+
+
+def set_style(ax, style, show_cme=False):
+    """Some preset styles """
+    if style == 'none':
+        pass
+    elif style == 'cmsprel':
+        add_axis_text(ax, r"\textbf{CMS Preliminary}", loc='topleft')
+        if show_cme:
+            add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
+                          loc='topleft', )
+    else:
+        add_axis_text(ax, r"\textbf{CMS}", loc='topleft')
+        if show_cme:
+            add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
+                          loc='topleft', )
+
 
 class BasePlot(object):
     __metaclass__ = ABCMeta
@@ -42,7 +61,7 @@ class BasePlot(object):
 
         if directory and not os.path.exists(directory):
             os.makedirs(directory)
-        # for ext in self.output_ext:
+            # for ext in self.output_ext:
             # if not m.lower().endswith(('.png', '.jpg', '.jpeg', '.pdf', '.ps'))
             # filename = "{}.{}".format(self.output_path, ext)
         print 'Saved plot to {0}'.format(path)
@@ -106,24 +125,11 @@ class BasePlot(object):
         matplotlib.rcParams['savefig.dpi'] = 150
         matplotlib.rcParams['savefig.format'] = 'png'
         matplotlib.rcParams['agg.path.chunksize'] = 20000
+
     #
     # Helper functions
     #
 
-    def set_style(self, ax, style, show_cme=False):
-        """Some preset styles """
-        if style == 'none':
-            pass
-        elif style == 'cmsprel':
-            add_axis_text(ax, r"\textbf{CMS Preliminary}", loc='topleft')
-            if show_cme:
-                add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
-                                     loc='topleft', )
-        else:
-            add_axis_text(ax, r"\textbf{CMS}", loc='topleft')
-            if show_cme:
-                add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
-                                     loc='topleft', )
 
 def add_axis_text(ax, text, loc='top right', **kwargs):
     """
@@ -173,6 +179,7 @@ def autoscale(ax, xmargin=0.0, ymargin=0.0, margin=0.0):
             y1 *= delta
         ax.set_ylim(y0, y1)
 
+
 def log_locator_filter(x, pos):
     """
     Add minor tick labels in log plots at 2* and 5*
@@ -221,6 +228,7 @@ def ensure_latex(inp_str):
     }
     return ''.join([chars.get(char, char) for char in inp_str])
 
+
 def steppify_bin(arr, isx=False):
     """
     Produce stepped array of arr, needed for example for stepped fill_betweens.
@@ -238,7 +246,7 @@ def steppify_bin(arr, isx=False):
     return newarr
 
 
-def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwargs):
+def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     """ Produce an errorbar plots with or without connecting lines.
 
     Args:
@@ -272,6 +280,7 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, alpha=1.0,  **kwarg
 
     return artist
 
+
 def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     """ Produce an errorbar plots with or without connecting lines.
 
@@ -299,13 +308,14 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         x = steppify_bin(obj.xbinedges, isx=True)
         y = steppify_bin(y)
 
-    line_kwargs = {k: v for k, v in kwargs.items() if k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth', 'linestyle']}
+    line_kwargs = {k: v for k, v in kwargs.items() if
+                   k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth', 'linestyle']}
     artist = ax.plot(x, y, **line_kwargs)
 
     return artist
 
 
-def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, ax=None, alpha=1.0,  **kwargs):
+def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, ax=None, **kwargs):
     """ Produce an errorbar plots with or without connecting lines.
 
     Args:
@@ -341,7 +351,8 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     # Workaround by plotting line and errorbars separately.
     # http://stackoverflow.com/a/18499120/3243729
 
-    errorbar_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color']}
+    errorbar_kwargs = {k: v for k, v in kwargs.items() if
+                       k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color']}
     errorbar_kwargs['fmt'] = ''
     errorbar_kwargs['linestyle'] = ''
     artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, **errorbar_kwargs)
@@ -350,7 +361,8 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
         if step:
             x = steppify_bin(obj.xbinedges, isx=True)
             y = steppify_bin(y)
-        plot_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'alpha', 'color', 'linestyle', 'step', 'zorder']}
+        plot_kwargs = {k: v for k, v in kwargs.items() if
+                       k in ['label', 'alpha', 'color', 'linestyle', 'step', 'zorder']}
         ax.plot(x, y, **plot_kwargs)
     return artist
 
@@ -374,7 +386,7 @@ def plot_heatmap(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis',
 
     # Set z axis limits
     vmin, vmax = z_lims
-    if (vmin, vmax) == (None,)*2:
+    if (vmin, vmax) == (None,) * 2:
         if z_log:
             vmin, vmax = np.min(obj.z[np.nonzero(obj.z)]), np.amax(obj.z)
         else:
