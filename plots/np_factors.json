@@ -36,8 +36,10 @@
             }
         ]
     ], 
+    "input_modules": [], 
     "legend_loc": "upper right", 
     "load_config": "plots/np_factors.json", 
+    "log_level": "debug", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -152,6 +154,7 @@
             "zorder": 1.0
         }
     }, 
+    "output_modules": [], 
     "output_path": "np_factors.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
