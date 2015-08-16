@@ -2,11 +2,10 @@ import inspect
 import fnmatch
 import os
 import imp
+import logging
 
 from modules.base_module import Module
-from modules import base_module
 
-import logging
 log = logging.getLogger(__name__)
 
 
@@ -37,33 +36,3 @@ def get_all_modules():
             log.debug("Error message: {0}.".format(e))
 
     return available_modules
-
-
-#def register_modules_dir(self, module_dir):
-#    """Add directory to list of searched directories for modules."""
-#    # Expand environment variables
-#    module_dir = os.path.expandvars(module_dir)
-#    # absolute path
-#    if os.path.isdir(module_dir):
-#        self._modules_dirs.append(module_dir)
-#    # relative path to current file
-#    elif os.path.isdir(os.path.join(os.path.dirname(os.path.realpath(__file__)), module_dir)):
-#        self._modules_dirs.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), module_dir))
-#    else:
-#        log.critical("Couldnt append %s to list of module directories!" % module_dir)
-#
-#def _print_available_modules(self):
-#    """Prints all available modules to stdout."""
-#    title_strings = ["Input modules:", "Analysis modules:", "Plot modules:"]
-#    baseclasses = [InputBase, AnalysisBase, PlotBase]
-#    for index, (title_string, baseclass) in enumerate(zip(title_strings, baseclasses)):
-#        log.info(("\n" if index > 0 else "")+tools.get_colored_string(title_string, "yellow"))
-#        self._print_module_list(sorted([module for module in self.available_processors if issubclass(self.available_processors[module], baseclass)]))
-#
-def _print_module_list(self, module_list):
-   """Print a list of modules (name and docstring)"""
-   for module in module_list:
-       log.info("\t"+tools.get_colored_string("{}".format(module), "green"))
-       if inspect.getdoc(self.available_processors[module]):
-           log.info(tools.get_indented_text("\t\t", inspect.getdoc(self.available_processors[module])))
-
