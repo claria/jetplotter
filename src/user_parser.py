@@ -58,13 +58,18 @@ class UserParser(argparse.ArgumentParser):
                     # delattr(args, a.dest)
             else:
                 # these args were actually provided on cmd line.
+                # TODO: does not work if provided arg is actually a default
                 if not hasattr(args, 'provided_args'):
                     setattr(args, 'provided_args', [])
                 # but still we want to set the _default value in the dict if they are a SettingAction
                 # we need this if we want to pass an arg for some of the ids but take the default for the rest
                 if isinstance(a, SettingAction):
                     a(self, args, a.default, a.option_strings)
-                args.provided_args.append(a.dest)
+            # Identify actually provided args using sys.argv[1:]
+            for val in sys.argv[1:]:
+                if any([val.startswith(option) for option in a.option_strings]):
+                    args.provided_args.append(a.dest)
+                    break
         return args
 
 
