@@ -1,9 +1,10 @@
 {
     "ana_modules": [
         "Normalize", 
-        "SimpleRatio", 
+        "Ratio", 
         "ToTGraph"
     ], 
+    "argv": "./plotter.py -l plots/ratio_to_data.json", 
     "ax_hlines": [
         "1.0?black?2.0"
     ], 
@@ -17,9 +18,27 @@
         10.0, 
         7.0
     ], 
+    "input_modules": [
+        "RootModule"
+    ], 
     "legend_loc": "upper right", 
+    "list_modules": false, 
     "load_config": "plots/ratio_to_data.json", 
-    "log_level": "info", 
+    "log_level": "debug", 
+    "normalize": [
+        [
+            "data", 
+            "width"
+        ], 
+        [
+            "dataunfnlo", 
+            "width"
+        ], 
+        [
+            "dataunf", 
+            "width"
+        ]
+    ], 
     "object_paths": null, 
     "objects": {
         "_default": {
@@ -104,6 +123,9 @@
             "zorder": 1.0
         }
     }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
     "output_path": "ratio_to_data.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
@@ -112,23 +134,7 @@
         "help", 
         "output_path"
     ], 
-    "ratio": [], 
-    "normalize": [
-        [
-            "data", 
-            "width"
-        ], 
-        [
-            "dataunfnlo", 
-            "width"
-        ], 
-        [
-            "dataunf", 
-            "width"
-        ]
-    ], 
-    "show_legend": true, 
-    "simpleratio": [
+    "ratio": [
         [
             "data", 
             "nlo"
@@ -146,6 +152,7 @@
             "nlo"
         ]
     ], 
+    "show_legend": true, 
     "to_tgraph": [
         "data", 
         "dataunf", 
