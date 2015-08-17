@@ -1,16 +1,24 @@
 {
+    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
+    "argv": "./plotter.py -l plots/ratio_recogenunf.json", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
     "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
     "legend_loc": "best", 
+    "list_modules": false, 
     "load_config": "plots/ratio_recogenunf.json", 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -26,6 +34,7 @@
         }, 
         "_qcdmgp6gen": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -42,6 +51,7 @@
         }, 
         "_qcdp8gen": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -58,6 +68,7 @@
         }, 
         "qcdmgp6reco": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -74,6 +85,7 @@
         }, 
         "qcdmgp6recounf": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -90,6 +102,7 @@
         }, 
         "qcdp8reco": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -106,6 +119,7 @@
         }, 
         "qcdp8recounf": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -121,6 +135,9 @@
             "zorder": 1.0
         }
     }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
     "output_path": "ratio_recogenunf.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
@@ -167,6 +184,11 @@
         "1.5"
     ], 
     "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
     "z_label": "", 
     "z_lims": [
         null, 

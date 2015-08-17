@@ -1,4 +1,5 @@
 {
+    "add_subplot": false, 
     "ana_modules": [
         "Ratio", 
         "FitObj"
@@ -38,11 +39,13 @@
     ], 
     "input_modules": [], 
     "legend_loc": "upper right", 
+    "list_modules": false, 
     "load_config": "plots/np_factors.json", 
     "log_level": "debug", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -58,6 +61,7 @@
         }, 
         "_hwppnompinohad": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -74,6 +78,7 @@
         }, 
         "_qcdp8nompinohad": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -90,6 +95,7 @@
         }, 
         "fit_hwppmpihad": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#4C72B0", 
             "edgecolor": "auto", 
@@ -107,6 +113,7 @@
         "fit_qcdp8mpihad": {
             "": "band", 
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#55A868", 
             "edgecolor": "auto", 
@@ -123,6 +130,7 @@
         }, 
         "hwppmpihad": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#4C72B0", 
             "edgecolor": "auto", 
@@ -139,6 +147,7 @@
         }, 
         "qcdp8mpihad": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#55A868", 
             "edgecolor": "auto", 
@@ -196,6 +205,11 @@
         "1.4"
     ], 
     "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
     "z_label": "", 
     "z_lims": [
         null, 

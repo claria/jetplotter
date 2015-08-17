@@ -1,14 +1,22 @@
 {
+    "add_subplot": false, 
     "ana_modules": [], 
+    "argv": "./plotter.py -l plots/yboost_vs_ystar.json", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
     "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
     "legend_loc": "best", 
-    "load_config": null, 
+    "list_modules": false, 
+    "load_config": "plots/yboost_vs_ystar.json", 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -24,6 +32,7 @@
         }, 
         "data": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -39,8 +48,12 @@
             "zorder": 1.0
         }
     }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
     "output_path": "yboost_vs_ystar.png", 
     "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
         "help", 
@@ -54,22 +67,27 @@
         "z_label"
     ], 
     "show_legend": true, 
-    "x_label": "$y_b$", 
+    "x_label": "_y_boost_", 
     "x_lims": [
         "0.0", 
         "3.0"
     ], 
     "x_log": false, 
-    "y_label": "$y_s$", 
+    "y_label": "_y_star_", 
     "y_lims": [
         null, 
         null
     ], 
     "y_log": false, 
-    "z_label": "Cross Section (pb)", 
-    "z_lims": [
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
         null, 
         null
+    ], 
+    "z_label": "Cross Section (pb)", 
+    "z_lims": [
+        "1E4", 
+        "1E6"
     ], 
     "z_log": true
 }

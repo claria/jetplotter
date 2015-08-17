@@ -1,15 +1,22 @@
 {
+    "add_subplot": false, 
     "ana_modules": [], 
     "argv": "./plotter.py -l plots/res_matrix_ptavg.json", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
     "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
     "legend_loc": "best", 
+    "list_modules": false, 
     "load_config": "plots/res_matrix_ptavg.json", 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -25,6 +32,7 @@
         }, 
         "resmatrix": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -40,6 +48,9 @@
             "zorder": 1.0
         }
     }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
     "output_path": "res_matrix_ptavg.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
@@ -72,6 +83,11 @@
         "3000."
     ], 
     "y_log": true, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
     "z_label": "", 
     "z_lims": [
         "none", 

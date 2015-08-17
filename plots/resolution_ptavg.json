@@ -1,16 +1,24 @@
 {
+    "add_subplot": false, 
     "ana_modules": [
         "ResolutionAna"
     ], 
+    "argv": "./plotter.py -l plots/resolution_ptavg.json", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
     "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
     "legend_loc": "best", 
+    "list_modules": false, 
     "load_config": "plots/resolution_ptavg.json", 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -26,6 +34,7 @@
         }, 
         "_ys0yb0": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -42,6 +51,7 @@
         }, 
         "_ys0yb0_slice_1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -57,6 +67,7 @@
         }, 
         "_ys0yb0_slice_10": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -72,6 +83,7 @@
         }, 
         "_ys0yb0_slice_10_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -87,6 +99,7 @@
         }, 
         "_ys0yb0_slice_11": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -102,6 +115,7 @@
         }, 
         "_ys0yb0_slice_11_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -117,6 +131,7 @@
         }, 
         "_ys0yb0_slice_12": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -132,6 +147,7 @@
         }, 
         "_ys0yb0_slice_12_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -147,6 +163,7 @@
         }, 
         "_ys0yb0_slice_13": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -162,6 +179,7 @@
         }, 
         "_ys0yb0_slice_13_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -177,6 +195,7 @@
         }, 
         "_ys0yb0_slice_14": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -192,6 +211,7 @@
         }, 
         "_ys0yb0_slice_14_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -207,6 +227,7 @@
         }, 
         "_ys0yb0_slice_15": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -222,6 +243,7 @@
         }, 
         "_ys0yb0_slice_15_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -237,6 +259,7 @@
         }, 
         "_ys0yb0_slice_16": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -252,6 +275,7 @@
         }, 
         "_ys0yb0_slice_16_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -267,6 +291,7 @@
         }, 
         "_ys0yb0_slice_17": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -282,6 +307,7 @@
         }, 
         "_ys0yb0_slice_17_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -297,6 +323,7 @@
         }, 
         "_ys0yb0_slice_18": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -312,6 +339,7 @@
         }, 
         "_ys0yb0_slice_18_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -327,6 +355,7 @@
         }, 
         "_ys0yb0_slice_19": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -342,6 +371,7 @@
         }, 
         "_ys0yb0_slice_19_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -357,6 +387,7 @@
         }, 
         "_ys0yb0_slice_1_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -372,6 +403,7 @@
         }, 
         "_ys0yb0_slice_2": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -387,6 +419,7 @@
         }, 
         "_ys0yb0_slice_20": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -402,6 +435,7 @@
         }, 
         "_ys0yb0_slice_20_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -417,6 +451,7 @@
         }, 
         "_ys0yb0_slice_21": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -432,6 +467,7 @@
         }, 
         "_ys0yb0_slice_21_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -447,6 +483,7 @@
         }, 
         "_ys0yb0_slice_22": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -462,6 +499,7 @@
         }, 
         "_ys0yb0_slice_22_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -477,6 +515,7 @@
         }, 
         "_ys0yb0_slice_23": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -492,6 +531,7 @@
         }, 
         "_ys0yb0_slice_23_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -507,6 +547,7 @@
         }, 
         "_ys0yb0_slice_24": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -522,6 +563,7 @@
         }, 
         "_ys0yb0_slice_24_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -537,6 +579,7 @@
         }, 
         "_ys0yb0_slice_25": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -552,6 +595,7 @@
         }, 
         "_ys0yb0_slice_25_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -567,6 +611,7 @@
         }, 
         "_ys0yb0_slice_26": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -582,6 +627,7 @@
         }, 
         "_ys0yb0_slice_26_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -597,6 +643,7 @@
         }, 
         "_ys0yb0_slice_27": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -612,6 +659,7 @@
         }, 
         "_ys0yb0_slice_27_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -627,6 +675,7 @@
         }, 
         "_ys0yb0_slice_28": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -642,6 +691,7 @@
         }, 
         "_ys0yb0_slice_28_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -657,6 +707,7 @@
         }, 
         "_ys0yb0_slice_29": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -672,6 +723,7 @@
         }, 
         "_ys0yb0_slice_29_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -687,6 +739,7 @@
         }, 
         "_ys0yb0_slice_2_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -702,6 +755,7 @@
         }, 
         "_ys0yb0_slice_3": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -717,6 +771,7 @@
         }, 
         "_ys0yb0_slice_30": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -732,6 +787,7 @@
         }, 
         "_ys0yb0_slice_30_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -747,6 +803,7 @@
         }, 
         "_ys0yb0_slice_31": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -762,6 +819,7 @@
         }, 
         "_ys0yb0_slice_31_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -777,6 +835,7 @@
         }, 
         "_ys0yb0_slice_32": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -792,6 +851,7 @@
         }, 
         "_ys0yb0_slice_32_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -807,6 +867,7 @@
         }, 
         "_ys0yb0_slice_33": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -822,6 +883,7 @@
         }, 
         "_ys0yb0_slice_33_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -837,6 +899,7 @@
         }, 
         "_ys0yb0_slice_34": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -852,6 +915,7 @@
         }, 
         "_ys0yb0_slice_34_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -867,6 +931,7 @@
         }, 
         "_ys0yb0_slice_35": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -882,6 +947,7 @@
         }, 
         "_ys0yb0_slice_35_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -897,6 +963,7 @@
         }, 
         "_ys0yb0_slice_36": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -912,6 +979,7 @@
         }, 
         "_ys0yb0_slice_36_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -927,6 +995,7 @@
         }, 
         "_ys0yb0_slice_37": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -942,6 +1011,7 @@
         }, 
         "_ys0yb0_slice_37_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -957,6 +1027,7 @@
         }, 
         "_ys0yb0_slice_39": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -972,6 +1043,7 @@
         }, 
         "_ys0yb0_slice_39_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -987,6 +1059,7 @@
         }, 
         "_ys0yb0_slice_3_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1002,6 +1075,7 @@
         }, 
         "_ys0yb0_slice_4": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1017,6 +1091,7 @@
         }, 
         "_ys0yb0_slice_40": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1032,6 +1107,7 @@
         }, 
         "_ys0yb0_slice_40_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1047,6 +1123,7 @@
         }, 
         "_ys0yb0_slice_4_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1062,6 +1139,7 @@
         }, 
         "_ys0yb0_slice_5": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1077,6 +1155,7 @@
         }, 
         "_ys0yb0_slice_5_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1092,6 +1171,7 @@
         }, 
         "_ys0yb0_slice_6": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1107,6 +1187,7 @@
         }, 
         "_ys0yb0_slice_6_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1122,6 +1203,7 @@
         }, 
         "_ys0yb0_slice_7": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1137,6 +1219,7 @@
         }, 
         "_ys0yb0_slice_7_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1152,6 +1235,7 @@
         }, 
         "_ys0yb0_slice_8": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1167,6 +1251,7 @@
         }, 
         "_ys0yb0_slice_8_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1182,6 +1267,7 @@
         }, 
         "_ys0yb0_slice_9": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1197,6 +1283,7 @@
         }, 
         "_ys0yb0_slice_9_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1212,6 +1299,7 @@
         }, 
         "_ys0yb1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1228,6 +1316,7 @@
         }, 
         "_ys0yb1_slice_1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1243,6 +1332,7 @@
         }, 
         "_ys0yb1_slice_10": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1258,6 +1348,7 @@
         }, 
         "_ys0yb1_slice_10_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1273,6 +1364,7 @@
         }, 
         "_ys0yb1_slice_11": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1288,6 +1380,7 @@
         }, 
         "_ys0yb1_slice_11_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1303,6 +1396,7 @@
         }, 
         "_ys0yb1_slice_12": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1318,6 +1412,7 @@
         }, 
         "_ys0yb1_slice_12_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1333,6 +1428,7 @@
         }, 
         "_ys0yb1_slice_13": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1348,6 +1444,7 @@
         }, 
         "_ys0yb1_slice_13_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1363,6 +1460,7 @@
         }, 
         "_ys0yb1_slice_14": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1378,6 +1476,7 @@
         }, 
         "_ys0yb1_slice_14_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1393,6 +1492,7 @@
         }, 
         "_ys0yb1_slice_15": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1408,6 +1508,7 @@
         }, 
         "_ys0yb1_slice_15_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1423,6 +1524,7 @@
         }, 
         "_ys0yb1_slice_16": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1438,6 +1540,7 @@
         }, 
         "_ys0yb1_slice_16_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1453,6 +1556,7 @@
         }, 
         "_ys0yb1_slice_17": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1468,6 +1572,7 @@
         }, 
         "_ys0yb1_slice_17_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1483,6 +1588,7 @@
         }, 
         "_ys0yb1_slice_18": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1498,6 +1604,7 @@
         }, 
         "_ys0yb1_slice_18_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1513,6 +1620,7 @@
         }, 
         "_ys0yb1_slice_19": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1528,6 +1636,7 @@
         }, 
         "_ys0yb1_slice_19_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1543,6 +1652,7 @@
         }, 
         "_ys0yb1_slice_1_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1558,6 +1668,7 @@
         }, 
         "_ys0yb1_slice_2": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1573,6 +1684,7 @@
         }, 
         "_ys0yb1_slice_20": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1588,6 +1700,7 @@
         }, 
         "_ys0yb1_slice_20_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1603,6 +1716,7 @@
         }, 
         "_ys0yb1_slice_21": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1618,6 +1732,7 @@
         }, 
         "_ys0yb1_slice_21_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1633,6 +1748,7 @@
         }, 
         "_ys0yb1_slice_22": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1648,6 +1764,7 @@
         }, 
         "_ys0yb1_slice_22_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1663,6 +1780,7 @@
         }, 
         "_ys0yb1_slice_23": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1678,6 +1796,7 @@
         }, 
         "_ys0yb1_slice_23_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1693,6 +1812,7 @@
         }, 
         "_ys0yb1_slice_24": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1708,6 +1828,7 @@
         }, 
         "_ys0yb1_slice_24_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1723,6 +1844,7 @@
         }, 
         "_ys0yb1_slice_25": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1738,6 +1860,7 @@
         }, 
         "_ys0yb1_slice_25_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1753,6 +1876,7 @@
         }, 
         "_ys0yb1_slice_26": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1768,6 +1892,7 @@
         }, 
         "_ys0yb1_slice_26_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1783,6 +1908,7 @@
         }, 
         "_ys0yb1_slice_27": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1798,6 +1924,7 @@
         }, 
         "_ys0yb1_slice_27_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1813,6 +1940,7 @@
         }, 
         "_ys0yb1_slice_28": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1828,6 +1956,7 @@
         }, 
         "_ys0yb1_slice_28_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1843,6 +1972,7 @@
         }, 
         "_ys0yb1_slice_29": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1858,6 +1988,7 @@
         }, 
         "_ys0yb1_slice_29_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1873,6 +2004,7 @@
         }, 
         "_ys0yb1_slice_2_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1888,6 +2020,7 @@
         }, 
         "_ys0yb1_slice_3": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1903,6 +2036,7 @@
         }, 
         "_ys0yb1_slice_30": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1918,6 +2052,7 @@
         }, 
         "_ys0yb1_slice_30_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1933,6 +2068,7 @@
         }, 
         "_ys0yb1_slice_31": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1948,6 +2084,7 @@
         }, 
         "_ys0yb1_slice_31_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1963,6 +2100,7 @@
         }, 
         "_ys0yb1_slice_32": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1978,6 +2116,7 @@
         }, 
         "_ys0yb1_slice_32_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -1993,6 +2132,7 @@
         }, 
         "_ys0yb1_slice_3_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2008,6 +2148,7 @@
         }, 
         "_ys0yb1_slice_4": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2023,6 +2164,7 @@
         }, 
         "_ys0yb1_slice_4_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2038,6 +2180,7 @@
         }, 
         "_ys0yb1_slice_5": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2053,6 +2196,7 @@
         }, 
         "_ys0yb1_slice_5_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2068,6 +2212,7 @@
         }, 
         "_ys0yb1_slice_6": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2083,6 +2228,7 @@
         }, 
         "_ys0yb1_slice_6_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2098,6 +2244,7 @@
         }, 
         "_ys0yb1_slice_7": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2113,6 +2260,7 @@
         }, 
         "_ys0yb1_slice_7_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2128,6 +2276,7 @@
         }, 
         "_ys0yb1_slice_8": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2143,6 +2292,7 @@
         }, 
         "_ys0yb1_slice_8_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2158,6 +2308,7 @@
         }, 
         "_ys0yb1_slice_9": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2173,6 +2324,7 @@
         }, 
         "_ys0yb1_slice_9_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2188,6 +2340,7 @@
         }, 
         "_ys0yb2": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2204,6 +2357,7 @@
         }, 
         "_ys0yb2_slice_1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2219,6 +2373,7 @@
         }, 
         "_ys0yb2_slice_10": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2234,6 +2389,7 @@
         }, 
         "_ys0yb2_slice_10_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2249,6 +2405,7 @@
         }, 
         "_ys0yb2_slice_11": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2264,6 +2421,7 @@
         }, 
         "_ys0yb2_slice_11_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2279,6 +2437,7 @@
         }, 
         "_ys0yb2_slice_12": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2294,6 +2453,7 @@
         }, 
         "_ys0yb2_slice_12_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2309,6 +2469,7 @@
         }, 
         "_ys0yb2_slice_13": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2324,6 +2485,7 @@
         }, 
         "_ys0yb2_slice_13_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2339,6 +2501,7 @@
         }, 
         "_ys0yb2_slice_14": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2354,6 +2517,7 @@
         }, 
         "_ys0yb2_slice_14_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2369,6 +2533,7 @@
         }, 
         "_ys0yb2_slice_15": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2384,6 +2549,7 @@
         }, 
         "_ys0yb2_slice_15_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2399,6 +2565,7 @@
         }, 
         "_ys0yb2_slice_16": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2414,6 +2581,7 @@
         }, 
         "_ys0yb2_slice_16_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2429,6 +2597,7 @@
         }, 
         "_ys0yb2_slice_17": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2444,6 +2613,7 @@
         }, 
         "_ys0yb2_slice_17_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2459,6 +2629,7 @@
         }, 
         "_ys0yb2_slice_18": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2474,6 +2645,7 @@
         }, 
         "_ys0yb2_slice_18_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2489,6 +2661,7 @@
         }, 
         "_ys0yb2_slice_19": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2504,6 +2677,7 @@
         }, 
         "_ys0yb2_slice_19_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2519,6 +2693,7 @@
         }, 
         "_ys0yb2_slice_1_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2534,6 +2709,7 @@
         }, 
         "_ys0yb2_slice_2": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2549,6 +2725,7 @@
         }, 
         "_ys0yb2_slice_20": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2564,6 +2741,7 @@
         }, 
         "_ys0yb2_slice_20_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2579,6 +2757,7 @@
         }, 
         "_ys0yb2_slice_2_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2594,6 +2773,7 @@
         }, 
         "_ys0yb2_slice_3": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2609,6 +2789,7 @@
         }, 
         "_ys0yb2_slice_3_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2624,6 +2805,7 @@
         }, 
         "_ys0yb2_slice_4": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2639,6 +2821,7 @@
         }, 
         "_ys0yb2_slice_4_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2654,6 +2837,7 @@
         }, 
         "_ys0yb2_slice_5": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2669,6 +2853,7 @@
         }, 
         "_ys0yb2_slice_5_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2684,6 +2869,7 @@
         }, 
         "_ys0yb2_slice_6": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2699,6 +2885,7 @@
         }, 
         "_ys0yb2_slice_6_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2714,6 +2901,7 @@
         }, 
         "_ys0yb2_slice_7": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2729,6 +2917,7 @@
         }, 
         "_ys0yb2_slice_7_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2744,6 +2933,7 @@
         }, 
         "_ys0yb2_slice_8": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2759,6 +2949,7 @@
         }, 
         "_ys0yb2_slice_8_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2774,6 +2965,7 @@
         }, 
         "_ys0yb2_slice_9": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2789,6 +2981,7 @@
         }, 
         "_ys0yb2_slice_9_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2804,6 +2997,7 @@
         }, 
         "_ys1yb0": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2820,6 +3014,7 @@
         }, 
         "_ys1yb0_slice_1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2835,6 +3030,7 @@
         }, 
         "_ys1yb0_slice_10": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2850,6 +3046,7 @@
         }, 
         "_ys1yb0_slice_10_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2865,6 +3062,7 @@
         }, 
         "_ys1yb0_slice_11": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2880,6 +3078,7 @@
         }, 
         "_ys1yb0_slice_11_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2895,6 +3094,7 @@
         }, 
         "_ys1yb0_slice_12": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2910,6 +3110,7 @@
         }, 
         "_ys1yb0_slice_12_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2925,6 +3126,7 @@
         }, 
         "_ys1yb0_slice_13": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2940,6 +3142,7 @@
         }, 
         "_ys1yb0_slice_13_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2955,6 +3158,7 @@
         }, 
         "_ys1yb0_slice_14": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2970,6 +3174,7 @@
         }, 
         "_ys1yb0_slice_14_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -2985,6 +3190,7 @@
         }, 
         "_ys1yb0_slice_15": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3000,6 +3206,7 @@
         }, 
         "_ys1yb0_slice_15_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3015,6 +3222,7 @@
         }, 
         "_ys1yb0_slice_16": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3030,6 +3238,7 @@
         }, 
         "_ys1yb0_slice_16_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3045,6 +3254,7 @@
         }, 
         "_ys1yb0_slice_17": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3060,6 +3270,7 @@
         }, 
         "_ys1yb0_slice_17_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3075,6 +3286,7 @@
         }, 
         "_ys1yb0_slice_18": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3090,6 +3302,7 @@
         }, 
         "_ys1yb0_slice_18_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3105,6 +3318,7 @@
         }, 
         "_ys1yb0_slice_19": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3120,6 +3334,7 @@
         }, 
         "_ys1yb0_slice_19_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3135,6 +3350,7 @@
         }, 
         "_ys1yb0_slice_1_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3150,6 +3366,7 @@
         }, 
         "_ys1yb0_slice_2": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3165,6 +3382,7 @@
         }, 
         "_ys1yb0_slice_20": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3180,6 +3398,7 @@
         }, 
         "_ys1yb0_slice_20_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3195,6 +3414,7 @@
         }, 
         "_ys1yb0_slice_21": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3210,6 +3430,7 @@
         }, 
         "_ys1yb0_slice_21_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3225,6 +3446,7 @@
         }, 
         "_ys1yb0_slice_22": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3240,6 +3462,7 @@
         }, 
         "_ys1yb0_slice_22_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3255,6 +3478,7 @@
         }, 
         "_ys1yb0_slice_23": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3270,6 +3494,7 @@
         }, 
         "_ys1yb0_slice_23_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3285,6 +3510,7 @@
         }, 
         "_ys1yb0_slice_24": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3300,6 +3526,7 @@
         }, 
         "_ys1yb0_slice_24_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3315,6 +3542,7 @@
         }, 
         "_ys1yb0_slice_25": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3330,6 +3558,7 @@
         }, 
         "_ys1yb0_slice_25_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3345,6 +3574,7 @@
         }, 
         "_ys1yb0_slice_26": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3360,6 +3590,7 @@
         }, 
         "_ys1yb0_slice_26_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3375,6 +3606,7 @@
         }, 
         "_ys1yb0_slice_27": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3390,6 +3622,7 @@
         }, 
         "_ys1yb0_slice_27_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3405,6 +3638,7 @@
         }, 
         "_ys1yb0_slice_28": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3420,6 +3654,7 @@
         }, 
         "_ys1yb0_slice_28_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3435,6 +3670,7 @@
         }, 
         "_ys1yb0_slice_29": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3450,6 +3686,7 @@
         }, 
         "_ys1yb0_slice_29_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3465,6 +3702,7 @@
         }, 
         "_ys1yb0_slice_2_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3480,6 +3718,7 @@
         }, 
         "_ys1yb0_slice_3": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3495,6 +3734,7 @@
         }, 
         "_ys1yb0_slice_30": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3510,6 +3750,7 @@
         }, 
         "_ys1yb0_slice_30_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3525,6 +3766,7 @@
         }, 
         "_ys1yb0_slice_31": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3540,6 +3782,7 @@
         }, 
         "_ys1yb0_slice_31_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3555,6 +3798,7 @@
         }, 
         "_ys1yb0_slice_32": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3570,6 +3814,7 @@
         }, 
         "_ys1yb0_slice_32_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3585,6 +3830,7 @@
         }, 
         "_ys1yb0_slice_33": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3600,6 +3846,7 @@
         }, 
         "_ys1yb0_slice_33_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3615,6 +3862,7 @@
         }, 
         "_ys1yb0_slice_34": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3630,6 +3878,7 @@
         }, 
         "_ys1yb0_slice_34_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3645,6 +3894,7 @@
         }, 
         "_ys1yb0_slice_3_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3660,6 +3910,7 @@
         }, 
         "_ys1yb0_slice_4": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3675,6 +3926,7 @@
         }, 
         "_ys1yb0_slice_4_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3690,6 +3942,7 @@
         }, 
         "_ys1yb0_slice_5": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3705,6 +3958,7 @@
         }, 
         "_ys1yb0_slice_5_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3720,6 +3974,7 @@
         }, 
         "_ys1yb0_slice_6": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3735,6 +3990,7 @@
         }, 
         "_ys1yb0_slice_6_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3750,6 +4006,7 @@
         }, 
         "_ys1yb0_slice_7": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3765,6 +4022,7 @@
         }, 
         "_ys1yb0_slice_7_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3780,6 +4038,7 @@
         }, 
         "_ys1yb0_slice_8": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3795,6 +4054,7 @@
         }, 
         "_ys1yb0_slice_8_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3810,6 +4070,7 @@
         }, 
         "_ys1yb0_slice_9": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3825,6 +4086,7 @@
         }, 
         "_ys1yb0_slice_9_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3840,6 +4102,7 @@
         }, 
         "_ys1yb1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3856,6 +4119,7 @@
         }, 
         "_ys1yb1_slice_1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3871,6 +4135,7 @@
         }, 
         "_ys1yb1_slice_10": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3886,6 +4151,7 @@
         }, 
         "_ys1yb1_slice_10_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3901,6 +4167,7 @@
         }, 
         "_ys1yb1_slice_11": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3916,6 +4183,7 @@
         }, 
         "_ys1yb1_slice_11_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3931,6 +4199,7 @@
         }, 
         "_ys1yb1_slice_12": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3946,6 +4215,7 @@
         }, 
         "_ys1yb1_slice_12_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3961,6 +4231,7 @@
         }, 
         "_ys1yb1_slice_13": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3976,6 +4247,7 @@
         }, 
         "_ys1yb1_slice_13_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -3991,6 +4263,7 @@
         }, 
         "_ys1yb1_slice_14": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4006,6 +4279,7 @@
         }, 
         "_ys1yb1_slice_14_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4021,6 +4295,7 @@
         }, 
         "_ys1yb1_slice_15": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4036,6 +4311,7 @@
         }, 
         "_ys1yb1_slice_15_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4051,6 +4327,7 @@
         }, 
         "_ys1yb1_slice_16": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4066,6 +4343,7 @@
         }, 
         "_ys1yb1_slice_16_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4081,6 +4359,7 @@
         }, 
         "_ys1yb1_slice_17": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4096,6 +4375,7 @@
         }, 
         "_ys1yb1_slice_17_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4111,6 +4391,7 @@
         }, 
         "_ys1yb1_slice_18": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4126,6 +4407,7 @@
         }, 
         "_ys1yb1_slice_18_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4141,6 +4423,7 @@
         }, 
         "_ys1yb1_slice_19": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4156,6 +4439,7 @@
         }, 
         "_ys1yb1_slice_19_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4171,6 +4455,7 @@
         }, 
         "_ys1yb1_slice_1_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4186,6 +4471,7 @@
         }, 
         "_ys1yb1_slice_2": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4201,6 +4487,7 @@
         }, 
         "_ys1yb1_slice_20": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4216,6 +4503,7 @@
         }, 
         "_ys1yb1_slice_20_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4231,6 +4519,7 @@
         }, 
         "_ys1yb1_slice_21": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4246,6 +4535,7 @@
         }, 
         "_ys1yb1_slice_21_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4261,6 +4551,7 @@
         }, 
         "_ys1yb1_slice_22": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4276,6 +4567,7 @@
         }, 
         "_ys1yb1_slice_22_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4291,6 +4583,7 @@
         }, 
         "_ys1yb1_slice_23": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4306,6 +4599,7 @@
         }, 
         "_ys1yb1_slice_23_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4321,6 +4615,7 @@
         }, 
         "_ys1yb1_slice_24": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4336,6 +4631,7 @@
         }, 
         "_ys1yb1_slice_24_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4351,6 +4647,7 @@
         }, 
         "_ys1yb1_slice_25": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4366,6 +4663,7 @@
         }, 
         "_ys1yb1_slice_25_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4381,6 +4679,7 @@
         }, 
         "_ys1yb1_slice_26": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4396,6 +4695,7 @@
         }, 
         "_ys1yb1_slice_26_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4411,6 +4711,7 @@
         }, 
         "_ys1yb1_slice_27": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4426,6 +4727,7 @@
         }, 
         "_ys1yb1_slice_27_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4441,6 +4743,7 @@
         }, 
         "_ys1yb1_slice_2_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4456,6 +4759,7 @@
         }, 
         "_ys1yb1_slice_3": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4471,6 +4775,7 @@
         }, 
         "_ys1yb1_slice_3_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4486,6 +4791,7 @@
         }, 
         "_ys1yb1_slice_4": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4501,6 +4807,7 @@
         }, 
         "_ys1yb1_slice_4_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4516,6 +4823,7 @@
         }, 
         "_ys1yb1_slice_5": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4531,6 +4839,7 @@
         }, 
         "_ys1yb1_slice_5_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4546,6 +4855,7 @@
         }, 
         "_ys1yb1_slice_6": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4561,6 +4871,7 @@
         }, 
         "_ys1yb1_slice_6_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4576,6 +4887,7 @@
         }, 
         "_ys1yb1_slice_7": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4591,6 +4903,7 @@
         }, 
         "_ys1yb1_slice_7_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4606,6 +4919,7 @@
         }, 
         "_ys1yb1_slice_8": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4621,6 +4935,7 @@
         }, 
         "_ys1yb1_slice_8_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4636,6 +4951,7 @@
         }, 
         "_ys1yb1_slice_9": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4651,6 +4967,7 @@
         }, 
         "_ys1yb1_slice_9_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4666,6 +4983,7 @@
         }, 
         "_ys2yb0": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4682,6 +5000,7 @@
         }, 
         "_ys2yb0_slice_1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4697,6 +5016,7 @@
         }, 
         "_ys2yb0_slice_10": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4712,6 +5032,7 @@
         }, 
         "_ys2yb0_slice_10_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4727,6 +5048,7 @@
         }, 
         "_ys2yb0_slice_11": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4742,6 +5064,7 @@
         }, 
         "_ys2yb0_slice_11_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4757,6 +5080,7 @@
         }, 
         "_ys2yb0_slice_12": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4772,6 +5096,7 @@
         }, 
         "_ys2yb0_slice_12_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4787,6 +5112,7 @@
         }, 
         "_ys2yb0_slice_13": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4802,6 +5128,7 @@
         }, 
         "_ys2yb0_slice_13_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4817,6 +5144,7 @@
         }, 
         "_ys2yb0_slice_14": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4832,6 +5160,7 @@
         }, 
         "_ys2yb0_slice_14_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4847,6 +5176,7 @@
         }, 
         "_ys2yb0_slice_15": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4862,6 +5192,7 @@
         }, 
         "_ys2yb0_slice_15_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4877,6 +5208,7 @@
         }, 
         "_ys2yb0_slice_16": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4892,6 +5224,7 @@
         }, 
         "_ys2yb0_slice_16_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4907,6 +5240,7 @@
         }, 
         "_ys2yb0_slice_17": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4922,6 +5256,7 @@
         }, 
         "_ys2yb0_slice_17_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4937,6 +5272,7 @@
         }, 
         "_ys2yb0_slice_18": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4952,6 +5288,7 @@
         }, 
         "_ys2yb0_slice_18_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4967,6 +5304,7 @@
         }, 
         "_ys2yb0_slice_19": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4982,6 +5320,7 @@
         }, 
         "_ys2yb0_slice_19_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -4997,6 +5336,7 @@
         }, 
         "_ys2yb0_slice_1_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5012,6 +5352,7 @@
         }, 
         "_ys2yb0_slice_2": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5027,6 +5368,7 @@
         }, 
         "_ys2yb0_slice_20": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5042,6 +5384,7 @@
         }, 
         "_ys2yb0_slice_20_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5057,6 +5400,7 @@
         }, 
         "_ys2yb0_slice_21": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5072,6 +5416,7 @@
         }, 
         "_ys2yb0_slice_21_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5087,6 +5432,7 @@
         }, 
         "_ys2yb0_slice_22": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5102,6 +5448,7 @@
         }, 
         "_ys2yb0_slice_22_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5117,6 +5464,7 @@
         }, 
         "_ys2yb0_slice_23": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5132,6 +5480,7 @@
         }, 
         "_ys2yb0_slice_23_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5147,6 +5496,7 @@
         }, 
         "_ys2yb0_slice_24": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5162,6 +5512,7 @@
         }, 
         "_ys2yb0_slice_24_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5177,6 +5528,7 @@
         }, 
         "_ys2yb0_slice_2_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5192,6 +5544,7 @@
         }, 
         "_ys2yb0_slice_3": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5207,6 +5560,7 @@
         }, 
         "_ys2yb0_slice_3_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5222,6 +5576,7 @@
         }, 
         "_ys2yb0_slice_4": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5237,6 +5592,7 @@
         }, 
         "_ys2yb0_slice_4_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5252,6 +5608,7 @@
         }, 
         "_ys2yb0_slice_5": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5267,6 +5624,7 @@
         }, 
         "_ys2yb0_slice_5_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5282,6 +5640,7 @@
         }, 
         "_ys2yb0_slice_6": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5297,6 +5656,7 @@
         }, 
         "_ys2yb0_slice_6_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5312,6 +5672,7 @@
         }, 
         "_ys2yb0_slice_7": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5327,6 +5688,7 @@
         }, 
         "_ys2yb0_slice_7_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5342,6 +5704,7 @@
         }, 
         "_ys2yb0_slice_8": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5357,6 +5720,7 @@
         }, 
         "_ys2yb0_slice_8_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5372,6 +5736,7 @@
         }, 
         "_ys2yb0_slice_9": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5387,6 +5752,7 @@
         }, 
         "_ys2yb0_slice_9_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -5402,6 +5768,7 @@
         }, 
         "resolution_ys0yb0": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#4C72B0", 
             "edgecolor": "_color0_", 
@@ -5417,11 +5784,12 @@
         }, 
         "resolution_ys0yb0_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#4C72B0", 
             "edgecolor": "_color0_", 
             "id": "resolution_ys0yb0_fit", 
-            "label": "$0.0 < y_b \\leq 1.0$, $0.0 < y_b \\leq 1.0$", 
+            "label": "_yb0ys0_", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -5432,6 +5800,7 @@
         }, 
         "resolution_ys0yb1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#55A868", 
             "edgecolor": "auto", 
@@ -5447,11 +5816,12 @@
         }, 
         "resolution_ys0yb1_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#55A868", 
             "edgecolor": "auto", 
             "id": "resolution_ys0yb1_fit", 
-            "label": "$1.0 < y_b \\leq 2.0$, $0.0 < y_b \\leq 1.0$", 
+            "label": "_yb1ys0_", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -5462,6 +5832,7 @@
         }, 
         "resolution_ys0yb2": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#C44E52", 
             "edgecolor": "auto", 
@@ -5477,11 +5848,12 @@
         }, 
         "resolution_ys0yb2_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#C44E52", 
             "edgecolor": "auto", 
             "id": "resolution_ys0yb2_fit", 
-            "label": "$2.0 < y_b \\leq 3.0$, $0.0 < y_b \\leq 1.0$", 
+            "label": "_yb2ys0_", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -5492,6 +5864,7 @@
         }, 
         "resolution_ys1yb0": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#8172B2", 
             "edgecolor": "auto", 
@@ -5507,11 +5880,12 @@
         }, 
         "resolution_ys1yb0_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#8172B2", 
             "edgecolor": "auto", 
             "id": "resolution_ys1yb0_fit", 
-            "label": "$0.0 < y_b \\leq 1.0$, $1.0 < y_b \\leq 2.0$", 
+            "label": "_yb0ys1_", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -5522,6 +5896,7 @@
         }, 
         "resolution_ys1yb1": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#CCB974", 
             "edgecolor": "auto", 
@@ -5537,11 +5912,12 @@
         }, 
         "resolution_ys1yb1_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#CCB974", 
             "edgecolor": "auto", 
             "id": "resolution_ys1yb1_fit", 
-            "label": "$1.0 < y_b \\leq 2.0$, $1.0 < y_b \\leq 2.0$", 
+            "label": "_yb1ys1_", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -5552,6 +5928,7 @@
         }, 
         "resolution_ys2yb0": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#64B5CD", 
             "edgecolor": "auto", 
@@ -5567,11 +5944,12 @@
         }, 
         "resolution_ys2yb0_fit": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "#64B5CD", 
             "edgecolor": "auto", 
             "id": "resolution_ys2yb0_fit", 
-            "label": "$0.0 < y_b \\leq 1.0$, $2.0 < y_b \\leq 3.0$", 
+            "label": "_yb0ys2_", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -5581,8 +5959,12 @@
             "zorder": 1.0
         }
     }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
     "output_path": "resolution_ptavg.png", 
     "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
         "help", 
@@ -5607,7 +5989,7 @@
         "_ys1yb1"
     ], 
     "show_legend": true, 
-    "x_label": "Gen $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_label": "Gen _ptavg_", 
     "x_lims": [
         "50.", 
         "3000"
@@ -5619,6 +6001,11 @@
         "0.25"
     ], 
     "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
     "z_label": "", 
     "z_lims": [
         null, 

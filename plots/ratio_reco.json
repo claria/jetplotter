@@ -1,7 +1,9 @@
 {
+    "add_subplot": false, 
     "ana_modules": [
-        "SimpleRatio"
+        "Ratio"
     ], 
+    "argv": "./plotter.py -l plots/ratio_reco.json", 
     "ax_hlines": [
         "1.0?black?2.0"
     ], 
@@ -15,11 +17,17 @@
         10.0, 
         7.0
     ], 
+    "input_modules": [
+        "RootModule"
+    ], 
     "legend_loc": "upper right", 
+    "list_modules": false, 
     "load_config": "plots/ratio_reco.json", 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -35,6 +43,7 @@
         }, 
         "data": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "black", 
             "edgecolor": "auto", 
@@ -51,6 +60,7 @@
         }, 
         "qcdmgp6": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -67,6 +77,7 @@
         }, 
         "qcdmgp6gen": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -83,6 +94,7 @@
         }, 
         "qcdp8": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -99,6 +111,7 @@
         }, 
         "qcdp8gen": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
@@ -114,13 +127,16 @@
             "zorder": 1.0
         }
     }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
     "output_path": "ratio_reco.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
         "help", 
-        "simpleratio", 
+        "ratio", 
         "output_path", 
         "x_lims", 
         "y_lims", 
@@ -130,8 +146,7 @@
         "legend_loc", 
         "ana_modules"
     ], 
-    "show_legend": true, 
-    "simpleratio": [
+    "ratio": [
         [
             "data", 
             "qcdp8gen"
@@ -153,6 +168,7 @@
             "qcdp8gen"
         ]
     ], 
+    "show_legend": true, 
     "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
     "x_lims": [
         "50.", 
@@ -165,6 +181,11 @@
         "1.5"
     ], 
     "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
     "z_label": "", 
     "z_lims": [
         null, 

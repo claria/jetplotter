@@ -1,11 +1,16 @@
 {
-    "add_subplot": false, 
+    "add_subplot": true, 
     "ana_modules": [
+        "Normalize", 
         "Ratio"
     ], 
-    "argv": "./plotter.py -l plots/exp_jec_error_yb0ys1.json", 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_jet1rap mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_jet1rap --x-log False --y-log True --x-lims -3 3 --y-lims 1E-8 1E8 --color data:black ratio_mgp6:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Leading Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Normalize Ratio --normalize mgp6:data --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data --output-path jet1rap_yb0ys0.png --y-subplot-lims 0.8 1.2 --ax-texts _cmsp_ _20fb_ _yb0ys0_?0.03,0.9", 
     "ax_hlines": [], 
-    "ax_texts": [], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_", 
+        "_yb0ys0_?0.03,0.9"
+    ], 
     "ax_vlines": [], 
     "fig_size": null, 
     "input_modules": [
@@ -13,8 +18,14 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/exp_jec_error_yb0ys1.json", 
+    "load_config": "plots/jet1rap_yb0ys0.json", 
     "log_level": "info", 
+    "normalize": [
+        [
+            "mgp6", 
+            "data"
+        ]
+    ], 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -32,15 +43,15 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "default": {
+        "data": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
-            "color": "auto", 
+            "color": "black", 
             "edgecolor": "auto", 
-            "id": "default", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?default/h3_ptavg_ysb_ys_0_1_yb_0_1", 
-            "label": "__nolegend__", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_jet1rap", 
+            "label": "Data", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -49,36 +60,35 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "total_dn": {
+        "mgp6": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
-            "color": "#4C72B0", 
+            "color": "auto", 
             "edgecolor": "auto", 
-            "id": "total_dn", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_dn/h3_ptavg_ysb_ys_0_1_yb_0_1", 
-            "label": "__nolegend__", 
+            "id": "mgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_jet1rap", 
+            "label": "MG+P6", 
             "linestyle": "", 
             "marker": ".", 
-            "step": true, 
-            "style": "line", 
+            "step": false, 
+            "style": "histo", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "total_up": {
+        "ratio_mgp6": {
             "alpha": 1.0, 
-            "axis": "ax", 
+            "axis": "ax1", 
             "capsize": 0, 
-            "color": "#4C72B0", 
+            "color": "black", 
             "edgecolor": "auto", 
-            "id": "total_up", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_up/h3_ptavg_ysb_ys_0_1_yb_0_1", 
-            "label": "JEC Uncertainty", 
+            "id": "ratio_mgp6", 
+            "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
-            "step": true, 
-            "style": "line", 
+            "step": false, 
+            "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
@@ -87,57 +97,55 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "exp_jec_error_yb0ys1.png", 
+    "output_path": "jet1rap_yb0ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
         "help", 
         "input", 
-        "ratio", 
+        "normalize", 
+        "ratio_copy", 
         "label", 
         "color", 
         "style", 
-        "step", 
+        "axis", 
         "output_path", 
+        "add_subplot", 
         "x_lims", 
         "y_lims", 
-        "x_log", 
+        "y_subplot_lims", 
+        "y_log", 
         "x_label", 
         "y_label", 
+        "y_subplot_label", 
+        "ax_texts", 
         "ana_modules"
     ], 
-    "ratio": [
+    "ratio": [], 
+    "ratio_copy": [
         [
-            "total_up", 
-            "default"
-        ], 
-        [
-            "total_dn", 
-            "default"
-        ], 
-        [
-            "default", 
-            "default"
+            "mgp6", 
+            "data"
         ]
     ], 
     "show_legend": true, 
-    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_label": "Leading Jet _pt_", 
     "x_lims": [
-        "74.", 
-        "2000."
+        "-3", 
+        "3"
     ], 
-    "x_log": true, 
-    "y_label": "Fractional Uncertainty?center", 
+    "x_log": false, 
+    "y_label": "Cross Section (pb/GeV)", 
     "y_lims": [
-        "0.7", 
-        "1.3"
+        "1E-8", 
+        "1E8"
     ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
+    "y_log": true, 
+    "y_subplot_label": "Ratio to Data", 
     "y_subplot_lims": [
-        null, 
-        null
+        "0.8", 
+        "1.2"
     ], 
     "z_label": "", 
     "z_lims": [

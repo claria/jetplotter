@@ -1,6 +1,9 @@
 {
-    "ana_modules": [], 
-    "argv": "./plotter.py --list-modules", 
+    "add_subplot": true, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_jet1pt mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_jet1pt --x-log True --y-log True --x-lims 74. 2500. --y-lims 1E-8 1E8 --color data:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Leading Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Ratio --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
@@ -9,16 +12,67 @@
         "RootModule"
     ], 
     "legend_loc": "best", 
-    "list_modules": true, 
-    "load_config": null, 
+    "list_modules": false, 
+    "load_config": "plots/plot.json", 
     "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
+            "axis": "ax", 
             "capsize": 0, 
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_jet1pt", 
+            "label": "Data", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "mgp6": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "mgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_jet1pt", 
+            "label": "MG+P6", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "histo", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "ratio_mgp6": {
+            "alpha": 1.0, 
+            "axis": "ax1", 
+            "capsize": 0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "ratio_mgp6", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -38,21 +92,47 @@
     "print_config": false, 
     "provided_args": [
         "help", 
-        "list_modules"
+        "input", 
+        "ratio_copy", 
+        "label", 
+        "color", 
+        "style", 
+        "axis", 
+        "add_subplot", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "y_log", 
+        "x_label", 
+        "y_label", 
+        "y_subplot_label", 
+        "ana_modules"
+    ], 
+    "ratio": [], 
+    "ratio_copy": [
+        [
+            "mgp6", 
+            "data"
+        ]
     ], 
     "show_legend": true, 
-    "x_label": "", 
+    "x_label": "Leading Jet _pt_", 
     "x_lims": [
-        null, 
-        null
+        "74.", 
+        "2500."
     ], 
-    "x_log": false, 
-    "y_label": "", 
+    "x_log": true, 
+    "y_label": "Cross Section (pb/GeV)", 
     "y_lims": [
+        "1E-8", 
+        "1E8"
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "Ratio to Data", 
+    "y_subplot_lims": [
         null, 
         null
     ], 
-    "y_log": false, 
     "z_label": "", 
     "z_lims": [
         null, 
