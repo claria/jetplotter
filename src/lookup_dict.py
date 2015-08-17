@@ -32,7 +32,13 @@ lookup_dict = {
         '_cms_': 'CMS?top left',
         '_cmsp_': 'CMS Preliminary?top left',
         '_20fb_': '$20\\,\mathrm{fb}^{-1}$ (8TeV)?top right',
-        '_yb0ys0_': '$0.0 \leq y_b < 1.0$  $0.0 \leq y^* < 1.0$?0.03,0.85',
+        '_yb0ys0_': '$0.0 \leq y_b < 1.0$  $0.0 \leq y^* < 1.0$',
+        '_yb1ys0_': '$1.0 \leq y_b < 2.0$  $0.0 \leq y^* < 1.0$',
+        '_yb2ys0_': '$2.0 \leq y_b < 3.0$  $0.0 \leq y^* < 1.0$',
+        '_yb0ys1_': '$0.0 \leq y_b < 1.0$  $1.0 \leq y^* < 2.0$',
+        '_yb0ys2_': '$0.0 \leq y_b < 1.0$  $2.0 \leq y^* < 3.0$',
+        '_yb1ys1_': '$1.0 \leq y_b < 2.0$  $1.0 \leq y^* < 2.0$',
+        '_yb0ys0auto_': '$0.0 \leq y_b < 1.0$  $0.0 \leq y^* < 1.0$?0.03,0.85',
     }
 
 }
