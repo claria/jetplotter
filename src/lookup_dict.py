@@ -5,6 +5,7 @@ settings.
 lookup_dict = {
     'x_label': {
         '_ptavg_': '$p_{\mathrm{T,avg}}$ (GeV)',
+        '_pt_': '$p_{\mathrm{T}}$ (GeV)',
         '_y_boost_': '$y_b$'
     },
     'y_label': {
