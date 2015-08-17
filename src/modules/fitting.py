@@ -2,7 +2,7 @@ import numpy as np
 import ROOT
 
 from src.modules.base_module import BaseModule
-from helpers import get_tgrapherrors
+from src.modules.helpers import get_tgrapherrors
 
 import logging
 log = logging.getLogger(__name__)
