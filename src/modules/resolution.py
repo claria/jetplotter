@@ -3,7 +3,7 @@ import logging
 import ROOT
 
 from src.modules.base_module import BaseModule
-from helpers import get_tgrapherrors
+from src.modules.helpers import get_tgrapherrors
 
 log = logging.getLogger(__name__)
 
@@ -62,11 +62,12 @@ class ResolutionAna(BaseModule):
             # res_fcn = ROOT.TF1("res_fcn", "sqrt(([0]/x)**2 + (([1]**2)/x) + [2]**2)")
             res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x) + [2]**2)")
             # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*(([0]/x)**2) + (([1]**2)/x)*(x**[2]) + [3]**2)")
-            res_fcn.SetParameters(6., 0.5, 0.01)
-            # res_fcn.SetParameters(1., 1, 1, 1)
-            res_fcn.SetRange(0., 999999.)
+            res_fcn.SetParameters(-1., 1.0, 0.01)
+            # res_fcn.SetParameters(1., 1., 1., 1.,)
+            res_fcn.SetRange(00., 999999.)
             print 'Fitting id {0}'.format(id_res)
-            res = resolution_graph.Fit("res_fcn", "RSO", "")
+            res = resolution_graph.Fit("res_fcn", "RSOEX0", "")
+            # res = resolution_graph.Fit("res_fcn", "RSMO", "")
             # graph.Write()
             if res.Get() == None or res.Status() != 0:
                 continue
