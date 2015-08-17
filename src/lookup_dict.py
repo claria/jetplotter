@@ -10,7 +10,7 @@ lookup_dict = {
     },
     'y_label': {
         '_ptavg_': '$p_{\mathrm{T,avg}}$ (GeV)',
-        '_y_star_': '$y_s$'
+        '_y_star_': '$y^*$'
     },
     'label': {
         '_yb0ys0_': '$0.0 \leq y_b < 1.0$  $0.0 \leq y^* < 1.0$',
@@ -36,3 +36,11 @@ lookup_dict = {
     }
 
 }
+
+def get_lookup_val(key, s):
+    """ Replaces all occurences of lookup keys in string with lookups."""
+    if key in lookup_dict:
+        for lk, lv in lookup_dict[key].iteritems():
+            if lk in s:
+                s = s.replace(lk, lv)
+    return s

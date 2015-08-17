@@ -13,6 +13,8 @@ from src.modules.base_module import BaseModule
 
 import logging
 
+from src.lookup_dict import get_lookup_val
+
 log = logging.getLogger(__name__)
 
 
@@ -136,9 +138,9 @@ class Plot(BasePlot):
         self.y_log = kwargs.pop('y_log', False)
         self.z_log = kwargs.pop('z_log', False)
 
-        self.x_label = kwargs.pop('x_label', '')
-        self.y_label = kwargs.pop('y_label', '')
-        self.z_label = kwargs.pop('z_label', '')
+        self.x_label = get_lookup_val('x_label', kwargs.pop('x_label', ''))
+        self.y_label = get_lookup_val('y_label', kwargs.pop('y_label', ''))
+        self.z_label = get_lookup_val('z_label', kwargs.pop('z_label', ''))
 
         self.show_legend = kwargs.pop('show_legend', True)
         self.legend_loc = kwargs.pop('legend_loc', 'best')
@@ -153,6 +155,7 @@ class Plot(BasePlot):
 
     def plot(self, **kwargs):
         style = kwargs.pop('style', 'errorbar')
+        kwargs['label'] = get_lookup_val('label', kwargs.get('label'))
         # Plot object on this axis
         try:
             axis_name = kwargs.pop('axis', 'ax')
@@ -166,6 +169,8 @@ class Plot(BasePlot):
             kwargs['color'] = next(self.auto_colors)
         if kwargs['edgecolor'] == 'auto':
             kwargs['edgecolor'] = kwargs['color']
+        kwargs['color'] = get_lookup_val('color', kwargs.get('color'))
+        kwargs['edgecolor'] = get_lookup_val('edgecolor', kwargs.get('edgecolor'))
 
         if style == 'errorbar':
             artist = plot_errorbar(ax=ax, **kwargs)
@@ -201,6 +206,7 @@ class Plot(BasePlot):
 
         # Add axis texts
         for text in self.texts:
+            text = get_lookup_val('ax_texts', text)
             if not '?' in text:
                 loc = '0.0,0.0'
             else:

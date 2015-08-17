@@ -34,7 +34,7 @@ class Plotter(object):
 
         self.path = self._input_modules + self._ana_modules + self._output_modules
 
-        self._perform_lookup_replacement()
+        # self._perform_lookup_replacement()
 
         if self.config['print_config']:
             print_config(self.config)
