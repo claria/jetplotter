@@ -1,9 +1,4 @@
-import sys
-import collections
 import logging
-
-import numpy as np
-import ROOT
 
 from src.modules.base_module import BaseModule
 
@@ -15,17 +10,9 @@ class Multiply(BaseModule):
         super(Multiply, self).__init__()
         self.parser.add_argument('--multiply', nargs='+', type='str2kvstr', action='setting', help='')
 
-    @staticmethod
-    def isfloat(value):
-        try:
-            float(value)
-            return True
-        except ValueError:
-            return False
-
     def __call__(self, config):
         for id, val in config['multiply']:
-            if not id in config['objects']:
+            if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             if val in config['objects']:
                 # Normalize to another object
@@ -36,3 +23,11 @@ class Multiply(BaseModule):
             else:
                 raise ValueError('The intended multiplication could not be identified for {0}'.format(val))
 
+
+def isfloat(value):
+    """Return true if value can be converted to float."""
+    try:
+        float(value)
+        return True
+    except ValueError:
+        return False

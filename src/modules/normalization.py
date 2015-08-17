@@ -1,11 +1,8 @@
-import sys
-import collections
 import logging
-
 import numpy as np
-import ROOT
 
 from src.modules.base_module import BaseModule
+from helpers import ratio_to_obj, isfloat
 
 log = logging.getLogger(__name__)
 
@@ -38,14 +35,6 @@ class Normalize(BaseModule):
         super(Normalize, self).__init__()
         self.parser.add_argument('--normalize', nargs='+', default=[], type='str2kvstr',
                                  help='Normalize an id to bin widths, unity, to the integral of another object or by a float using width/unity/obj_id or a float.')
-
-    @staticmethod
-    def isfloat(value):
-        try:
-            float(value)
-            return True
-        except ValueError:
-            return False
 
     def __call__(self, config):
         for id, val in config['normalize']:
@@ -86,3 +75,5 @@ class NormalizeToGen(BaseModule):
                 for x in xrange(1, obj.GetNbinsX() + 1):
                     obj.SetBinContent(x, y, obj.GetBinContent(x, y) / y_sow)
                     obj.SetBinError(x, y, obj.GetBinError(x, y) / y_sow)
+
+

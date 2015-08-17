@@ -1,16 +1,18 @@
 import itertools
 import re
+
 import matplotlib
 import matplotlib.pyplot as plt
 
 from src.baseplot import BasePlot
+
 BasePlot.init_matplotlib()
 
 from src.baseplot import plot_errorbar, plot_band, plot_line, plot_heatmap, add_axis_text
-from src.root2mpl import MplObject1D
 from src.modules.base_module import BaseModule
 
 import logging
+
 log = logging.getLogger(__name__)
 
 
@@ -21,6 +23,7 @@ class PlotModule(BaseModule):
        use all the id based settings to manipulate the appearance of the objects and the
        standard arguments to adapt the axis and figure.
     """
+
     def __init__(self):
         super(PlotModule, self).__init__()
         # Plot object options
@@ -63,7 +66,8 @@ class PlotModule(BaseModule):
         # Axis options
         self.parser.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
         self.parser.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
-        self.parser.add_argument('--z-lims', nargs=2, default=[None, None], help='Z limits of plot (only used in 2d plots).')
+        self.parser.add_argument('--z-lims', nargs=2, default=[None, None],
+                                 help='Z limits of plot (only used in 2d plots).')
 
         self.parser.add_argument('--x-log', default=False, type='bool', help='Use log scale for x-axis.')
         self.parser.add_argument('--y-log', default=False, type='bool', help='Use log scale for y-axis.')
@@ -76,7 +80,8 @@ class PlotModule(BaseModule):
         self.parser.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
         self.parser.add_argument('--legend-loc', default='best', help='Legend location.')
 
-        self.parser.add_argument('--plot-id', default=r'^(?!_).*', help='All ids matching are passed to plot-module. Default matches everything not starting with a underscore.')
+        self.parser.add_argument('--plot-id', default=r'^(?!_).*',
+                                 help='All ids matching are passed to plot-module. Default matches everything not starting with a underscore.')
 
         self.parser.add_argument('--ax-texts', nargs='+', default=[],
                                  help='Add text to plot. Syntax is \'Text?1.0,1.0\' with loc 1.0,1.0')
@@ -84,7 +89,6 @@ class PlotModule(BaseModule):
                                  help='Add vertical lines to plot. Syntax is y_pos?color?lw.')
         self.parser.add_argument('--ax-hlines', nargs='+', default=[],
                                  help='Add horizontal lines to plot. Syntax is y_pos?color?lw.')
-
 
     def __call__(self, config):
         plot = Plot(**config)
@@ -150,7 +154,7 @@ class Plot(BasePlot):
         elif style == 'line':
             artist = plot_line(ax=self.ax, **kwargs)
         elif style == 'heatmap':
-            # special case for z scale and lims since they have to be set by the object (not the axis)
+            # special case for z scale and lims in heatmaps since they have to be set by the object instead of the axis.
             kwargs['z_log'] = self.z_log
             kwargs['z_lims'] = self.z_lims
             artist = plot_heatmap(ax=self.ax, **kwargs)
@@ -168,7 +172,7 @@ class Plot(BasePlot):
 
         # Add colorbar if there is a mappable
         if self.colorbar_mappable:
-            cb =self.fig.colorbar(self.colorbar_mappable, ax=self.ax)
+            cb = self.fig.colorbar(self.colorbar_mappable, ax=self.ax)
             if self.z_label:
                 cb.set_label(self.z_label)
 
@@ -196,18 +200,18 @@ class Plot(BasePlot):
         # a specified position of the label can be set via label?centered
         x_pos = self.x_label.rsplit('?', 1)[-1].lower()
         if x_pos == 'center':
-            x_pos = { 'position' : (0.5, 0.0), 'va' : 'top', 'ha' : 'center' }
+            x_pos = {'position': (0.5, 0.0), 'va': 'top', 'ha': 'center'}
             self.x_label = self.x_label.rsplit('?', 1)[0]
         else:
-            x_pos = { 'position' : (1.0, 0.0), 'va' : 'top', 'ha' : 'right' }
+            x_pos = {'position': (1.0, 0.0), 'va': 'top', 'ha': 'right'}
         self.ax.set_xlabel(self.x_label, **x_pos)
 
         y_pos = self.y_label.rsplit('?', 1)[-1].lower()
         if y_pos == 'center':
-            y_pos = { 'position' : (0.0, 0.5), 'va' : 'center', 'ha' : 'right' }
+            y_pos = {'position': (0.0, 0.5), 'va': 'center', 'ha': 'right'}
             self.y_label = self.y_label.rsplit('?', 1)[0]
         else:
-            y_pos = { 'position' : (0.0, 1.0), 'va' : 'top', 'ha' : 'right' }
+            y_pos = {'position': (0.0, 1.0), 'va': 'top', 'ha': 'right'}
         self.ax.set_ylabel(self.y_label, **y_pos)
 
         self.ax.set_xscale('log' if self.x_log else 'linear')

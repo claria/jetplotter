@@ -1,11 +1,9 @@
-import sys
-import collections
 import logging
 
-import numpy as np
 import ROOT
 
 from src.modules.base_module import BaseModule
+from helpers import get_tgrapherrors
 
 log = logging.getLogger(__name__)
 

@@ -1,13 +1,12 @@
-import sys
-import collections
-import logging
-
 import numpy as np
 import ROOT
 
 from src.modules.base_module import BaseModule
+from helpers import get_tgrapherrors
 
+import logging
 log = logging.getLogger(__name__)
+
 
 class FitObj(BaseModule):
     """ Calls the fit function on an object.
@@ -47,3 +46,5 @@ class FitObj(BaseModule):
             # config['objects']['fit_{0}'.format(id)] = copy.deepcopy(config['objects'][id])
             new_obj_name = 'fit_{0}'.format(id)
             config['objects'].setdefault(new_obj_name, {})['obj'] = errorgraph
+
+
