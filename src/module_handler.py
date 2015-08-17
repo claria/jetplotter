@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 def get_all_modules():
     """Detect all modules in modules_dirs and add them to avalaible modules."""
 
-    modules_dirs = ['src/modules']
+    modules_dirs = [os.path.join(os.path.dirname(__file__), 'modules')]
     # Loop over all possible module files
     matches = []
     for module_dir in modules_dirs:
@@ -21,9 +21,10 @@ def get_all_modules():
                 matches.append(os.path.join(root, filename))
 
     available_modules = {}
+    print matches
     for filename in matches:
         try:
-            log.info("Try to import module from path {0}.".format(filename))
+            log.debug("Try to import modules from path {0}.".format(filename))
             module_name = os.path.splitext(os.path.basename(filename))[0]
             module = imp.load_source(module_name, filename)
             for name, obj in inspect.getmembers(module):
@@ -32,6 +33,7 @@ def get_all_modules():
                         log.debug("Adding module {0}.".format(obj.label))
                         available_modules[obj.label()] = obj
         except ImportError as e:
+            print filename, e
             log.debug("Failed to import module {0} from {1}.".format(module_name, filename))
             log.debug("Error message: {0}.".format(e))
 
