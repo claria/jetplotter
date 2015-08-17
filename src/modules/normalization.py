@@ -1,4 +1,5 @@
 import logging
+import copy
 import numpy as np
 
 from src.modules.base_module import BaseModule
@@ -16,7 +17,10 @@ class Ratio(BaseModule):
     def __init__(self):
         super(Ratio, self).__init__()
         self.parser.add_argument('--ratio', nargs='+', default=[], type='str2kvstr',
-                                 help='List of id:to_id objects for which the ratio is calculated.')
+                help='Calculates the ratio of id:val for each entry and and puts the result in the id setting.')
+        self.parser.add_argument('--ratio-copy', nargs='+', default=[], type='str2kvstr',
+                help='Calculates the ratio of id:val for each entry and creates a new item ratio_id for the ratio.')
+
 
     def __call__(self, config):
         for id, to in config['ratio']:
@@ -25,24 +29,43 @@ class Ratio(BaseModule):
                 raise ValueError('Requested id {} not found.'.format(id))
             if to not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(to))
-
-            # ratio_to_obj(config['objects'][id]['obj'], config['objects'][to]['obj'])
             obj = config['objects'][id]['obj']
             to_obj = config['objects'][to]['obj']
-            if isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TH1):
-                if not (obj.GetNbinsX() == to_obj.GetNbinsX()):
-                    raise ValueError('The two histograms have different numbers of bins.')
-                for i in xrange(1, obj.GetNbinsX() + 1):
-                    obj.SetBinContent(i, obj.GetBinContent(i) / obj.GetBinContent(i))
-                    obj.SetBinError(i, obj.GetBinError(i) / obj.GetBinContent(i))
-            elif isinstance(obj, ROOT.TGraph) and isinstance(to_obj, ROOT.TGraph):
-                divide_tgraph(obj, to_obj, error_prop=False)
-            elif isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TGraph):
-                obj = ROOT.TGraphAsymmErrors(obj)
-                divide_tgraph(obj, to_obj, error_prop=False)
-                config['objects'][id]['obj'] = obj
-            else:
-                raise TypeError('Invalid types passed: {0} and {1}'.format(type(obj), type(to_obj)))
+            config['objects'][id]['obj'] = calc_ratio(obj, to_obj)
+        for id, to in config.get('ratio_copy', []):
+            log.debug('Calculating ratio of {0} to {1}'.format(id, to))
+            if id not in config['objects']:
+                raise ValueError('Requested id {} not found.'.format(id))
+            if to not in config['objects']:
+                raise ValueError('Requested id {} not found.'.format(to))
+            obj = config['objects'][id]['obj']
+            to_obj = config['objects'][to]['obj']
+            new_id = 'ratio_{0}'.format(id)
+            config['objects'].setdefault(new_id, {})
+            config['objects'][new_id]['obj'] = calc_ratio(obj, to_obj)
+
+
+
+def calc_ratio(obj, to_obj):
+    obj = obj.Clone('ratio_{0}'.format(obj.GetName()))
+    if isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TH1):
+        if not (obj.GetNbinsX() == to_obj.GetNbinsX()):
+            raise ValueError('The two histograms have different numbers of bins.')
+        for i in xrange(1, obj.GetNbinsX() +1):
+            try:
+                obj.SetBinContent(i, obj.GetBinContent(i) / to_obj.GetBinContent(i))
+                obj.SetBinError(i, obj.GetBinError(i) / to_obj.GetBinContent(i))
+            except ZeroDivisionError:
+                obj.SetBinContent(i, 0.)
+                obj.SetBinError(i, 0.)
+    elif isinstance(obj, ROOT.TGraph) and isinstance(to_obj, ROOT.TGraph):
+        divide_tgraph(obj, to_obj, error_prop=False)
+    elif isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TGraph):
+        obj = ROOT.TGraphAsymmErrors(obj)
+        divide_tgraph(obj, to_obj, error_prop=False)
+    else:
+        raise TypeError('Invalid types passed: {0} and {1}'.format(type(obj), type(to_obj)))
+    return obj
 
 
 class Normalize(BaseModule):
@@ -66,7 +89,7 @@ class Normalize(BaseModule):
                 config['objects'][id]['obj'].Scale(1.0 / config['objects'][id]['obj'].Integral())
             elif val in config['objects']:
                 # Normalize to another object
-                config['objects'][id]['obj'].Scale(1.0 / config['objects'][val]['obj'].Integral())
+                config['objects'][id]['obj'].Scale(config['objects'][val]['obj'].Integral() / config['objects'][id]['obj'].Integral())
             elif isfloat(val):
                 # Normalize/Scale by an factor
                 config['objects'][id]['obj'].Scale(float(val))
