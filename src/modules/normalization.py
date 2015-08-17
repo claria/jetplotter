@@ -2,7 +2,8 @@ import logging
 import numpy as np
 
 from src.modules.base_module import BaseModule
-from helpers import ratio_to_obj, isfloat
+from helpers import divide_tgraph, isfloat
+import ROOT
 
 log = logging.getLogger(__name__)
 
@@ -25,7 +26,23 @@ class Ratio(BaseModule):
             if to not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(to))
 
-            ratio_to_obj(config['objects'][id]['obj'], config['objects'][to]['obj'])
+            # ratio_to_obj(config['objects'][id]['obj'], config['objects'][to]['obj'])
+            obj = config['objects'][id]['obj']
+            to_obj = config['objects'][to]['obj']
+            if isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TH1):
+                if not (obj.GetNbinsX() == to_obj.GetNbinsX()):
+                    raise ValueError('The two histograms have different numbers of bins.')
+                for i in xrange(1, obj.GetNbinsX() + 1):
+                    obj.SetBinContent(i, obj.GetBinContent(i) / obj.GetBinContent(i))
+                    obj.SetBinError(i, obj.GetBinError(i) / obj.GetBinContent(i))
+            elif isinstance(obj, ROOT.TGraph) and isinstance(to_obj, ROOT.TGraph):
+                divide_tgraph(obj, to_obj, error_prop=False)
+            elif isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TGraph):
+                obj = ROOT.TGraphAsymmErrors(obj)
+                divide_tgraph(obj, to_obj, error_prop=False)
+                config['objects'][id]['obj'] = obj
+            else:
+                raise TypeError('Invalid types passed: {0} and {1}'.format(type(obj), type(to_obj)))
 
 
 class Normalize(BaseModule):
@@ -38,6 +55,7 @@ class Normalize(BaseModule):
 
     def __call__(self, config):
         for id, val in config['normalize']:
+            log.debug('Normalizing id {0} using {1}.'.format(id, val))
             if not id in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             if val == 'width':
