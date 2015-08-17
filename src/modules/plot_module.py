@@ -8,7 +8,7 @@ from src.baseplot import BasePlot
 
 BasePlot.init_matplotlib()
 
-from src.baseplot import plot_errorbar, plot_band, plot_line, plot_heatmap, add_axis_text
+from src.baseplot import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap, add_axis_text
 from src.modules.base_module import BaseModule
 
 import logging
@@ -58,14 +58,19 @@ class PlotModule(BaseModule):
                                  help='Style of the plotted object.')
         self.parser.add_argument('--step', type='str2kvbool', nargs='+', default=False, action='setting',
                                  help='Plot the data stepped at the xerr edges.')
+        self.parser.add_argument('--axis', type='str2kvstr', nargs='+', default='ax', action='setting',
+                                 help='Plot the object in the following axis.')
+
         # Figure options
         self.parser.add_argument('--fig-size', type=float, nargs=2, default=None, help='Size of figure.')
         self.parser.add_argument('--output-path', default='plot.png', help='Path to output file.')
         self.parser.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
 
         # Axis options
+        self.parser.add_argument('--add-subplot', default=False, type='bool', help='Add subplot with name ax1.')
         self.parser.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
         self.parser.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
+        self.parser.add_argument('--y-subplot-lims', nargs=2, default=[None, None], help='Y limits of subplot.')
         self.parser.add_argument('--z-lims', nargs=2, default=[None, None],
                                  help='Z limits of plot (only used in 2d plots).')
 
@@ -110,13 +115,20 @@ class Plot(BasePlot):
     def __init__(self, histos=None, **kwargs):
 
         super(Plot, self).__init__(**kwargs)
-        self.ax = self.fig.add_subplot(111)
+        if not kwargs['add_subplot']:
+            self.ax = self.fig.add_subplot(111)
+            self.ax1 = None
+        else:
+            self.ax = plt.subplot2grid((4,1), (0, 0), rowspan=3)
+            self.ax1 = plt.subplot2grid((4,1), (3, 0), rowspan=1)
         self.histos = histos
 
         self.x_lims = kwargs.pop('x_lims', (None, None))
         self.x_lims = [any2float(v) for v in self.x_lims]
         self.y_lims = kwargs.pop('y_lims', (None, None))
         self.y_lims = [any2float(v) for v in self.y_lims]
+        self.y_subplot_lims = kwargs.pop('y_subplot_lims', (None, None))
+        self.y_subplot_lims = [any2float(v) for v in self.y_subplot_lims]
         self.z_lims = kwargs.pop('z_lims', (None, None))
         self.z_lims = [any2float(v) for v in self.z_lims]
 
@@ -141,6 +153,14 @@ class Plot(BasePlot):
 
     def plot(self, **kwargs):
         style = kwargs.pop('style', 'errorbar')
+        # Plot object on this axis
+        try:
+            axis_name = kwargs.pop('axis', 'ax')
+            ax = getattr(self, axis_name)
+        except AttributeError as e:
+            log.critical('The axis name {0} does not exist.'.format(axis_name))
+            log.critical(e)
+            raise
 
         if kwargs['color'] == 'auto':
             kwargs['color'] = next(self.auto_colors)
@@ -148,11 +168,13 @@ class Plot(BasePlot):
             kwargs['edgecolor'] = kwargs['color']
 
         if style == 'errorbar':
-            artist = plot_errorbar(ax=self.ax, **kwargs)
+            artist = plot_errorbar(ax=ax, **kwargs)
         elif style == 'band':
-            artist = plot_band(ax=self.ax, **kwargs)
+            artist = plot_band(ax=ax, **kwargs)
+        elif style == 'histo':
+            artist = plot_histo(ax=ax, **kwargs)
         elif style == 'line':
-            artist = plot_line(ax=self.ax, **kwargs)
+            artist = plot_line(ax=ax, **kwargs)
         elif style == 'heatmap':
             # special case for z scale and lims in heatmaps since they have to be set by the object instead of the axis.
             kwargs['z_log'] = self.z_log
@@ -196,7 +218,8 @@ class Plot(BasePlot):
 
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
-
+        if self.ax1:
+            self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
         # a specified position of the label can be set via label?centered
         x_pos = self.x_label.rsplit('?', 1)[-1].lower()
         if x_pos == 'center':
@@ -204,7 +227,10 @@ class Plot(BasePlot):
             self.x_label = self.x_label.rsplit('?', 1)[0]
         else:
             x_pos = {'position': (1.0, 0.0), 'va': 'top', 'ha': 'right'}
-        self.ax.set_xlabel(self.x_label, **x_pos)
+        if self.ax1:
+            self.ax1.set_xlabel(self.x_label, **x_pos)
+        else:
+            self.ax.set_xlabel(self.x_label, **x_pos)
 
         y_pos = self.y_label.rsplit('?', 1)[-1].lower()
         if y_pos == 'center':
@@ -215,10 +241,22 @@ class Plot(BasePlot):
         self.ax.set_ylabel(self.y_label, **y_pos)
 
         self.ax.set_xscale('log' if self.x_log else 'linear')
-        self.ax.set_yscale('log' if self.y_log else 'linear')
+        if self.y_log:
+            self.ax.set_yscale('log', nonposy='clip')
+        else:
+            self.ax.set_yscale('linear')
 
         if self.show_legend:
             self.ax.legend(loc=self.legend_loc)
+
+        if self.ax1:
+            # self.ax.get_xaxis().set_ticks([])
+            plt.setp(self.ax.get_xticklabels(),visible=False)
+            self.ax1.set_xscale(self.ax.get_xscale())
+            self.ax1.set_xlim(self.ax.get_xlim())
+            plt.subplots_adjust(hspace=0.1)
+
+
 
         self.save_fig()
         plt.close(self.fig)
