@@ -21,7 +21,6 @@ def get_all_modules():
                 matches.append(os.path.join(root, filename))
 
     available_modules = {}
-    print matches
     for filename in matches:
         try:
             log.debug("Try to import modules from path {0}.".format(filename))
@@ -33,7 +32,6 @@ def get_all_modules():
                         log.debug("Adding module {0}.".format(obj.label))
                         available_modules[obj.label()] = obj
         except ImportError as e:
-            print filename, e
             log.debug("Failed to import module {0} from {1}.".format(module_name, filename))
             log.debug("Error message: {0}.".format(e))
 
