@@ -82,6 +82,7 @@ class PlotModule(BaseModule):
 
         self.parser.add_argument('--x-label', default='', help='Label of the x axis.')
         self.parser.add_argument('--y-label', default='', help='Label of the y axis.')
+        self.parser.add_argument('--y-subplot-label', default='', help='Label of the y axis.')
         self.parser.add_argument('--z-label', default='', help='Label of the z axis.')
 
         self.parser.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
@@ -140,6 +141,7 @@ class Plot(BasePlot):
 
         self.x_label = get_lookup_val('x_label', kwargs.pop('x_label', ''))
         self.y_label = get_lookup_val('y_label', kwargs.pop('y_label', ''))
+        self.y_subplot_label = get_lookup_val('y_label', kwargs.pop('y_subplot_label', ''))
         self.z_label = get_lookup_val('z_label', kwargs.pop('z_label', ''))
 
         self.show_legend = kwargs.pop('show_legend', True)
@@ -171,7 +173,6 @@ class Plot(BasePlot):
             kwargs['edgecolor'] = kwargs['color']
         kwargs['color'] = get_lookup_val('color', kwargs.get('color'))
         kwargs['edgecolor'] = get_lookup_val('edgecolor', kwargs.get('edgecolor'))
-
         if style == 'errorbar':
             artist = plot_errorbar(ax=ax, **kwargs)
         elif style == 'band':
@@ -224,6 +225,7 @@ class Plot(BasePlot):
 
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
+
         if self.ax1:
             self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
         # a specified position of the label can be set via label?centered
@@ -246,6 +248,9 @@ class Plot(BasePlot):
             y_pos = {'position': (0.0, 1.0), 'va': 'top', 'ha': 'right'}
         self.ax.set_ylabel(self.y_label, **y_pos)
 
+        if self.ax1:
+            self.ax1.set_ylabel(self.y_subplot_label)
+
         self.ax.set_xscale('log' if self.x_log else 'linear')
         if self.y_log:
             self.ax.set_yscale('log', nonposy='clip')
@@ -260,7 +265,7 @@ class Plot(BasePlot):
             plt.setp(self.ax.get_xticklabels(),visible=False)
             self.ax1.set_xscale(self.ax.get_xscale())
             self.ax1.set_xlim(self.ax.get_xlim())
-            plt.subplots_adjust(hspace=0.1)
+            plt.subplots_adjust(hspace=0.15)
 
 
 
