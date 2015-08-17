@@ -37,6 +37,7 @@ class UserParser(argparse.ArgumentParser):
     def parse_args(self, *args, **kwargs):
         """ Parses args and ensures that all 'setting' actions are called."""
         args = super(UserParser, self).parse_args()
+        # Put also cmd call in args
         setattr(args, 'argv', ' '.join(sys.argv))
         for a in self._actions:
             # is_default_arg is true if setting has not provided on commandline
