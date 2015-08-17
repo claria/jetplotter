@@ -7,9 +7,11 @@ import logging
 
 from module_handler import get_all_modules
 from user_parser import UserParser
-from modules.various_modules import get_module
+# from modules.various_modules import get_module
 from lookup_dict import lookup_dict
 
+
+# logging.basicConfig(format='%(message)s', level='INFO')
 log = logging.getLogger(__name__)
 
 
@@ -19,7 +21,7 @@ class Plotter(object):
     def __init__(self):
         self.config = {}
         # All modules found in modules dir
-        self._all_modules = get_all_modules()
+        self._all_modules = {}
         self._input_modules = []
         self._ana_modules = []
         self._output_modules = []
@@ -29,10 +31,6 @@ class Plotter(object):
         self._init_parser()
         self._prepare_config()
 
-        if self.config['list_modules']:
-            for label, module in self._all_modules.iteritems():
-                print label
-            sys.exit(0)
 
         self.path = self._input_modules + self._ana_modules + self._output_modules
 
@@ -67,6 +65,8 @@ class Plotter(object):
             raise ValueError('Invalid log level: %s' % log_level)
         logging.basicConfig(format='%(message)s', level=log_level)
 
+        # Find all available modules in modules directory.
+        self._all_modules = get_all_modules()
         # Initialize additional modules specified on command line
         self._input_modules = [self._all_modules[name]() for name in args['input_modules']]
         self._ana_modules += [self._all_modules[name]() for name in args['ana_modules']]
@@ -85,6 +85,11 @@ class Plotter(object):
            the _default object.
         """
         config = vars(self.parser.parse_args())
+        if config['list_modules']:
+            for label, module in self._all_modules.iteritems():
+                print label
+            sys.exit(0)
+
         if config['load_config']:
             file_config = read_config(config['load_config'])
             if merge_parser_args:
@@ -92,7 +97,7 @@ class Plotter(object):
             config = file_config
         self.config = config
 
-        self._ana_modules = [get_module(name) for name in config['ana_modules']]
+        self._ana_modules = [self._all_modules[name]() for name in config['ana_modules']]
         update_with_default(self.config['objects'])
 
     def _perform_lookup_replacement(self):
