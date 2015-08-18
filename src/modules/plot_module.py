@@ -33,10 +33,13 @@ class PlotModule(BaseModule):
                                  help='Legend labels for each plot')
         self.parser.add_argument('--color', type='str2kvstr', nargs='+',
                                  default='auto', action='setting',
-                                 help='Colors for each plot')
+                                 help='Colors for each plot.')
         self.parser.add_argument('--edgecolor', type='str2kvstr', nargs='+',
                                  default='auto', action='setting',
-                                 help='Edgecolor for each plot')
+                                 help='Edgecolor for each plot.')
+        self.parser.add_argument('--cmap', type='str2kvstr', nargs='+',
+                                 default='viridis', action='setting',
+                                 help='Colormap used for heatmaps.')
         self.parser.add_argument('--hatch', type='str2kvstr', nargs='+',
                                  default=None, action='setting',
                                  help='Hatch for each plot')
@@ -183,6 +186,7 @@ class Plot(BasePlot):
             artist = plot_line(ax=ax, **kwargs)
         elif style == 'heatmap':
             # special case for z scale and lims in heatmaps since they have to be set by the object instead of the axis.
+            print kwargs
             kwargs['z_log'] = self.z_log
             kwargs['z_lims'] = self.z_lims
             artist = plot_heatmap(ax=self.ax, **kwargs)
