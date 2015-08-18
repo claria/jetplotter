@@ -66,10 +66,8 @@ class UserParser(argparse.ArgumentParser):
                 if isinstance(a, SettingAction):
                     a(self, args, a.default, a.option_strings)
             # Identify actually provided args using sys.argv[1:]
-            for val in sys.argv[1:]:
-                if any([val.startswith(option) for option in a.option_strings]):
-                    args.provided_args.append(a.dest)
-                    break
+            if any([arg.startswith(option) for arg in sys.argv[1:] for option in a.option_strings]):
+                args.provided_args.append(a.dest)
         return args
 
 
