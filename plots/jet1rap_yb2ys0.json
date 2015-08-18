@@ -138,10 +138,10 @@
     "x_log": false, 
     "y_label": "Cross Section (pb/GeV)", 
     "y_lims": [
-        "1E-8", 
-        "1E8"
+        "0", 
+        "none"
     ], 
-    "y_log": true, 
+    "y_log": false, 
     "y_subplot_label": "Ratio to Data", 
     "y_subplot_lims": [
         "0.8", 

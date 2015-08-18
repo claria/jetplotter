@@ -1,36 +1,32 @@
 {
-    "add_subplot": true, 
+    "add_subplot": false, 
     "ana_modules": [
-        "Normalize", 
-        "Ratio"
+        "Efficiency"
     ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_20_30/h_jet1rap mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_20_30/h_jet1rap --x-log False --y-log True --x-lims -3 3 --y-lims 1E-8 1E8 --color data:black ratio_mgp6:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Leading Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Normalize Ratio --normalize mgp6:data --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data --output-path jet1rap_yb0ys2.png --y-subplot-lims 0.8 1.2 --ax-texts _cmsp_ _20fb_ _yb0ys2_?0.03,0.9", 
+    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/emul_HLT_PFJET80 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/HLT_PFJET40 --label _emul:emul _trg:trg --ana-modules Efficiency --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_80 --output-path trigger_eff_hltpfjet80.png", 
     "ax_hlines": [], 
-    "ax_texts": [
-        "_cmsp_", 
-        "_20fb_", 
-        "_yb0ys2_?0.03,0.9"
-    ], 
+    "ax_texts": [], 
     "ax_vlines": [], 
+    "efficiency": [
+        [
+            "_emul", 
+            "_trg"
+        ]
+    ], 
     "fig_size": null, 
     "input_modules": [
         "RootModule"
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/jet1rap_yb0ys2.json", 
+    "load_config": null, 
     "log_level": "info", 
-    "normalize": [
-        [
-            "mgp6", 
-            "data"
-        ]
-    ], 
     "objects": {
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
+            "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "_default", 
@@ -43,15 +39,16 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "data": {
+        "_emul": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
-            "color": "black", 
+            "cmap": "viridis", 
+            "color": "auto", 
             "edgecolor": "auto", 
-            "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_20_30/h_jet1rap", 
-            "label": "Data", 
+            "id": "_emul", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/emul_HLT_PFJET80", 
+            "label": "emul", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -60,31 +57,33 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "mgp6": {
+        "_trg": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
+            "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "mgp6", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_20_30/h_jet1rap", 
-            "label": "MG+P6", 
+            "id": "_trg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/HLT_PFJET40", 
+            "label": "trg", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
-            "style": "histo", 
+            "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "ratio_mgp6": {
+        "eff_emul": {
             "alpha": 1.0, 
-            "axis": "ax1", 
+            "axis": "ax", 
             "capsize": 0, 
+            "cmap": "viridis", 
             "color": "black", 
             "edgecolor": "auto", 
-            "id": "ratio_mgp6", 
-            "label": "__nolegend__", 
+            "id": "eff_emul", 
+            "label": "HLT_PFJet_80", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -97,55 +96,37 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "jet1rap_yb0ys2.png", 
+    "output_path": "trigger_eff_hltpfjet80.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
-        "help", 
         "input", 
-        "normalize", 
-        "ratio_copy", 
+        "efficiency", 
         "label", 
         "color", 
-        "style", 
-        "axis", 
         "output_path", 
-        "add_subplot", 
-        "x_lims", 
-        "y_lims", 
-        "y_subplot_lims", 
-        "y_log", 
         "x_label", 
         "y_label", 
-        "y_subplot_label", 
-        "ax_texts", 
         "ana_modules"
     ], 
-    "ratio": [], 
-    "ratio_copy": [
-        [
-            "mgp6", 
-            "data"
-        ]
-    ], 
     "show_legend": true, 
-    "x_label": "Leading Jet _pt_", 
+    "x_label": "_ptavg_", 
     "x_lims": [
-        "-3", 
-        "3"
+        null, 
+        null
     ], 
     "x_log": false, 
-    "y_label": "Cross Section (pb/GeV)", 
+    "y_label": "Efficiency", 
     "y_lims": [
-        "0", 
-        "none"
+        "0.0", 
+        "1.1"
     ], 
     "y_log": false, 
-    "y_subplot_label": "Ratio to Data", 
+    "y_subplot_label": "", 
     "y_subplot_lims": [
-        "0.8", 
-        "1.2"
+        null, 
+        null
     ], 
     "z_label": "", 
     "z_lims": [
