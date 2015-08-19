@@ -23,6 +23,8 @@ class UserParser(argparse.ArgumentParser):
     """
 
     def __init__(self, *args, **kwargs):
+        if not 'formatter_class' in kwargs:
+            kwargs['formatter_class'] = argparse.ArgumentDefaultsHelpFormatter
         super(UserParser, self).__init__(*args, **kwargs)
         self.register('type', 'bool', str2bool)
         self.register('type', 'str2kvfloat', str2kvfloat)
