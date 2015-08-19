@@ -1,0 +1,246 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Normalize", 
+        "Ratio", 
+        "ToTGraph"
+    ], 
+    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "ax_hlines": [
+        "1.0?black?2.0"
+    ], 
+    "ax_texts": [
+        "_yb0ys0_?0.05,0.92", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": [
+        10.0, 
+        7.0
+    ], 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "upper right", 
+    "list_modules": false, 
+    "load_config": "plots/ratio_to_data_yb0ys0.json", 
+    "log_level": "debug", 
+    "normalize": [
+        [
+            "data", 
+            "width"
+        ], 
+        [
+            "dataunfnlo", 
+            "width"
+        ], 
+        [
+            "dataunf", 
+            "width"
+        ]
+    ], 
+    "object_paths": null, 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "Data", 
+            "linestyle": "", 
+            "marker": "", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "dataunf": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "dataunf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "Data (Unf.)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "dataunfnlo": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "dataunf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "label": "Data (Unf. NLO)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "nloct10": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edge_color": "auto", 
+            "edgecolor": "auto", 
+            "id": "nloct10", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_pdfunc_u", 
+            "label": "NLO (CT10)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "nlommht2014": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edge_color": "auto", 
+            "edgecolor": "auto", 
+            "id": "nlommht2014", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/MMHT2014_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/MMHT2014_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/MMHT2014_pdfunc_u", 
+            "label": "NLO (MMHT 2014)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "nlonnpdf30": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edge_color": "auto", 
+            "edgecolor": "auto", 
+            "id": "nlonnpdf30", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/NNPDF30_pdfunc_u", 
+            "label": "NLO (NNPDF30)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "ratio_to_data_yb0ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "output_path"
+    ], 
+    "ratio": [
+        [
+            "data", 
+            "nloct10"
+        ], 
+        [
+            "dataunf", 
+            "nloct10"
+        ], 
+        [
+            "dataunfnlo", 
+            "nloct10"
+        ], 
+        [
+            "nlommht2014", 
+            "nloct10"
+        ], 
+        [
+            "nlonnpdf30", 
+            "nloct10"
+        ], 
+        [
+            "nloct10", 
+            "nloct10"
+        ]
+    ], 
+    "show_legend": true, 
+    "to_tgraph": [
+        "data", 
+        "dataunf", 
+        "dataunfnlo", 
+        "nlonnpdf30", 
+        "nlommht2014", 
+        "nloct10"
+    ], 
+    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "x_lims": [
+        "74.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio to CT10?center", 
+    "y_lims": [
+        "0.5", 
+        "1.5"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
