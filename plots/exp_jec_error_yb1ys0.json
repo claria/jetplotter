@@ -3,10 +3,10 @@
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -l plots/exp_jec_error_yb0ys1.json", 
+    "argv": "./plotter.py -l plots/exp_jec_error_yb1ys0.json", 
     "ax_hlines": [], 
     "ax_texts": [
-        "_yb0ys1_?0.05,0.95"
+        "_yb1ys0_?0.05,0.95"
     ], 
     "ax_vlines": [], 
     "fig_size": null, 
@@ -15,7 +15,7 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/exp_jec_error_yb0ys1.json", 
+    "load_config": "plots/exp_jec_error_yb1ys0.json", 
     "log_level": "info", 
     "objects": {
         "_default": {
@@ -43,7 +43,7 @@
             "color": "black", 
             "edgecolor": "auto", 
             "id": "default", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?default/h3_ptavg_ysb_ys_1_2_yb_0_1", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?default/h3_ptavg_ysb_ys_0_1_yb_1_2", 
             "label": "Stat. Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -61,7 +61,7 @@
             "color": "_color2_", 
             "edgecolor": "auto", 
             "id": "lumi_dw", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?ptavg_yb_00_10_ys_10_20/lumi_unc_dw", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?ptavg_yb_10_20_ys_00_10/lumi_unc_dw", 
             "label": "Lumi unc.", 
             "linestyle": "", 
             "marker": ".", 
@@ -79,7 +79,7 @@
             "color": "_color2_", 
             "edgecolor": "auto", 
             "id": "lumi_up", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?ptavg_yb_00_10_ys_10_20/lumi_unc_up", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?ptavg_yb_10_20_ys_00_10/lumi_unc_up", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -97,7 +97,7 @@
             "color": "#4C72B0", 
             "edgecolor": "auto", 
             "id": "total_dn", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_dn/h3_ptavg_ysb_ys_1_2_yb_0_1", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_dn/h3_ptavg_ysb_ys_0_1_yb_1_2", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -115,7 +115,7 @@
             "color": "#4C72B0", 
             "edgecolor": "auto", 
             "id": "total_up", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_up/h3_ptavg_ysb_ys_1_2_yb_0_1", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_up/h3_ptavg_ysb_ys_0_1_yb_1_2", 
             "label": "JEC Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -129,7 +129,7 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "exp_jec_error_yb0ys1.png", 
+    "output_path": "exp_jec_error_yb1ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
@@ -167,7 +167,7 @@
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
         "74.", 
-        "1032"
+        "1327"
     ], 
     "x_log": true, 
     "y_label": "Fractional Uncertainty?center", 
