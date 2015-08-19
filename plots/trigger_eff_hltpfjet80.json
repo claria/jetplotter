@@ -1,9 +1,10 @@
 {
     "add_subplot": false, 
     "ana_modules": [
-        "Efficiency"
+        "Efficiency", 
+        "TriggerEfficiencyFit"
     ], 
-    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/emul_HLT_PFJET80 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/HLT_PFJET40 --label _emul:emul _trg:trg --ana-modules Efficiency --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_80 --output-path trigger_eff_hltpfjet80.png", 
+    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/emul_HLT_PFJET80 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/HLT_PFJET40 --label _emul:emul _trg:trg --ana-modules Efficiency TriggerEfficiencyFit --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_80 --output-path trigger_eff_hltpfjet80.png --trigger-efficiency-fit eff_emul:{} --style fit_eff_emul:line", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
@@ -91,6 +92,23 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
+        }, 
+        "fit_eff_emul": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "fit_eff_emul", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "line", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
         }
     }, 
     "output_modules": [
@@ -103,14 +121,22 @@
     "provided_args": [
         "input", 
         "efficiency", 
+        "trigger_efficiency_fit", 
         "label", 
         "color", 
+        "style", 
         "output_path", 
         "x_label", 
         "y_label", 
         "ana_modules"
     ], 
     "show_legend": true, 
+    "trigger_efficiency_fit": [
+        [
+            "eff_emul", 
+            {}
+        ]
+    ], 
     "x_label": "_ptavg_", 
     "x_lims": [
         null, 
