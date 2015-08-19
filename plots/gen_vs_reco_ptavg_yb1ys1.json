@@ -1,0 +1,99 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plotter.py -l plots/gen_vs_reco_ptavg_yb1ys1.json", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb1ys1_?0.05,0.92"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": "plots/gen_vs_reco_ptavg_yb1ys1.json", 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "genreco": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "genreco", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?ptavg_yb_10_20_ys_10_20/h2_genreco_ptavg", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "heatmap", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "gen_vs_reco_ptavg_yb1ys1.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "style", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "y_log", 
+        "z_log", 
+        "x_label", 
+        "y_label"
+    ], 
+    "show_legend": true, 
+    "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_lims": [
+        "40", 
+        "3000"
+    ], 
+    "x_log": true, 
+    "y_label": "Gen $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "y_lims": [
+        "40", 
+        "3000"
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "Cross Section (pb)", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": true
+}
