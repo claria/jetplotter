@@ -53,11 +53,12 @@ class Plotter(object):
         # Defines the base parser, which will be pre-parsed using known args to find additional modules 
         # with possibly additional parsers
         base_parser = UserParser(add_help=False)
-        base_parser.add_argument("--input-modules", nargs='+', default=['RootModule'], help="Input modules .")
-        base_parser.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
-        base_parser.add_argument("--output-modules", nargs='+', default=['PlotModule'], help="Output modules.")
-        base_parser.add_argument("--list-modules", action='store_true', help="List all available modules.")
-        base_parser.add_argument("--log-level", default="info", help="Log level.")
+        base_parser_group = base_parser.add_argument_group(title='Base Parser', description='')
+        base_parser_group.add_argument("--input-modules", nargs='+', default=['RootModule'], help="Input modules .")
+        base_parser_group.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
+        base_parser_group.add_argument("--output-modules", nargs='+', default=['PlotModule'], help="Output modules.")
+        base_parser_group.add_argument("--list-modules", action='store_true', help="List all available modules.")
+        base_parser_group.add_argument("--log-level", default="info", help="Set the log level.")
         args = vars(base_parser.parse_known_args()[0])
 
         log_level = getattr(logging, args['log_level'].upper(), None)
@@ -73,11 +74,12 @@ class Plotter(object):
         self._output_modules += [self._all_modules[name]() for name in args['output_modules']]
         add_parsers = [module._parser for module in self._input_modules + self._ana_modules + self._output_modules]
         add_parsers.append(base_parser)
-        self.parser = UserParser(parents=add_parsers)
+        self.parser = UserParser(parents=add_parsers, 
+                                 description='''Plotting tool to read, manipulate and plot root objects.''')
         self.parser.add_argument("-p", "--print-config", default=False, action="store_true",
                                  help="Print out the JSON config before running Artus.")
         self.parser.add_argument("-l", "--load-config", default=None,
-                                 help="Print out the JSON config before running Artus.")
+                                 help="Load a json config from a file.")
 
     def _prepare_config(self, merge_parser_args=True):
         """Get config from parser and supplied json file and merges the configs.
