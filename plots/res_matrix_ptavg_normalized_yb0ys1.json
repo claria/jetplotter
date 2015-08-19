@@ -1,0 +1,106 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "NormalizeToGen"
+    ], 
+    "argv": "./plotter.py -l plots/res_matrix_ptavg_normalized_yb0ys1.json", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb0ys1_?0.05,0.92"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": "plots/res_matrix_ptavg_normalized_yb0ys1.json", 
+    "log_level": "info", 
+    "normalize_to_gen": [
+        "resmatrix"
+    ], 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "resmatrix": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "Blues", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "resmatrix", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?ptavg_yb_00_10_ys_10_20/res_matrix_ptavg_response", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "heatmap", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "res_matrix_ptavg_normalized_yb0ys1.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "normalize_to_gen", 
+        "style", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "z_lims", 
+        "x_log", 
+        "y_log", 
+        "x_label", 
+        "y_label", 
+        "ana_modules"
+    ], 
+    "show_legend": true, 
+    "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "True $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "y_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        "0.0", 
+        "1.0"
+    ], 
+    "z_log": false
+}
