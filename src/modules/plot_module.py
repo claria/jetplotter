@@ -107,7 +107,7 @@ class PlotModule(BaseModule):
         id_regex = config.get('plot_id')
         for id, item in config['objects'].iteritems():
             if re.match(id_regex, id):
-                log.debug('Drawing id {0}'.format(id))
+                log.info('Drawing id {0}'.format(id))
                 plot.plot(**item)
         # Save plot
         plot.finish()
