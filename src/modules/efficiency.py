@@ -10,7 +10,8 @@ class Efficiency(BaseModule):
     def __init__(self):
         super(Efficiency, self).__init__()
         print 'hallo'
-        self.parser.add_argument('--efficiency', nargs='+', type='str2kvstr', help='')
+        self.parser.add_argument('--efficiency', nargs='+', type='str2kvstr', 
+                help='Calculates the efficiency of numerator:denominator and returns a TGraph.')
 
     def __call__(self, config):
         print config.keys()
