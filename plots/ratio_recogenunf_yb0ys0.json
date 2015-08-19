@@ -15,9 +15,9 @@
     "input_modules": [
         "RootModule"
     ], 
-    "legend_loc": "best", 
+    "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/ratio_recogenunf.json", 
+    "load_config": "plots/ratio_recogenunf_yb0ys0.json", 
     "log_level": "info", 
     "objects": {
         "_default": {
@@ -99,7 +99,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "qcdmgp6recounf", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDMGP6.root?h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
             "label": "MG+P6 (Unf. Reco)", 
             "linestyle": "", 
             "marker": ".", 
@@ -135,7 +135,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "qcdp8recounf", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDP8.root?h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDP8.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
             "label": "P8 (Unf. Reco)", 
             "linestyle": "", 
             "marker": ".", 
@@ -149,7 +149,7 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "ratio_recogenunf.png", 
+    "output_path": "ratio_recogenunf_yb0ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 

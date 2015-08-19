@@ -1,11 +1,11 @@
 {
     "add_subplot": false, 
-    "ana_modules": [
-        "NormalizeToGen"
-    ], 
-    "argv": "./plotter.py -l plots/res_matrix_ptavg_normalized.json", 
+    "ana_modules": [], 
+    "argv": "./plotter.py -i corr:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?ptavg_yb_00_10_ys_00_10/corr_h_ptavg --style corr:heatmap --cmap corr:seismic --z-lims -1.0 1.0 --x-label Reco _ptavg_ --y-label Gen _ptavg_ --z-label Correlation Factor --ax-texts _yb0ys1_?0.05,0.95 --x-log True --y-log True --x-lims 74. 3000. --y-lims 74. 3000. --output-path unf_nlo_corr_yb0ys1.png", 
     "ax_hlines": [], 
-    "ax_texts": [], 
+    "ax_texts": [
+        "_yb0ys1_?0.05,0.95"
+    ], 
     "ax_vlines": [], 
     "fig_size": null, 
     "input_modules": [
@@ -13,16 +13,14 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/res_matrix_ptavg_normalized.json", 
+    "load_config": "plots/unf_nlo_corr_yb0ys1.json", 
     "log_level": "info", 
-    "normalize_to_gen": [
-        "resmatrix"
-    ], 
     "objects": {
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
+            "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "_default", 
@@ -35,14 +33,15 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "resmatrix": {
+        "corr": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
+            "cmap": "seismic", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "resmatrix", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?ptavg_yb_00_10_ys_00_10/res_matrix_ptavg_response", 
+            "id": "corr", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?ptavg_yb_00_10_ys_10_20/corr_h_ptavg", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -56,14 +55,13 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "res_matrix_ptavg_normalized.png", 
+    "output_path": "unf_nlo_corr_yb0ys1.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
-        "help", 
         "input", 
-        "normalize_to_gen", 
+        "cmap", 
         "style", 
         "output_path", 
         "x_lims", 
@@ -73,18 +71,19 @@
         "y_log", 
         "x_label", 
         "y_label", 
-        "ana_modules"
+        "z_label", 
+        "ax_texts"
     ], 
     "show_legend": true, 
-    "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_label": "Reco _ptavg_", 
     "x_lims": [
-        "50.", 
+        "74.", 
         "3000."
     ], 
     "x_log": true, 
-    "y_label": "True $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "y_label": "Gen _ptavg_", 
     "y_lims": [
-        "50.", 
+        "74.", 
         "3000."
     ], 
     "y_log": true, 
@@ -93,9 +92,9 @@
         null, 
         null
     ], 
-    "z_label": "", 
+    "z_label": "Correlation Factor", 
     "z_lims": [
-        "0.0", 
+        "-1.0", 
         "1.0"
     ], 
     "z_log": false
