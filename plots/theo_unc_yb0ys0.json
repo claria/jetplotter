@@ -3,7 +3,7 @@
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_xs pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_pdfunc_l pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_pdfunc_u scunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_scunc_l scunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_scunc_u --ana-modules Ratio --ratio pdfunc_l:nlo pdfunc_u:nlo scunc_l:nlo scunc_u:nlo nlo:nlo --style nlo:line pdfunc_u:line pdfunc_l:line scunc_u:line scunc_l:line --step nlo:True pdfunc_u:True pdfunc_l:True scunc_u:True scunc_l:True --color pdfunc_l:_color1_ pdfunc_u:_color1_ scunc_l:_color2_ scunc_u:_color2_ --label pdfunc_l:PDF Uncertainty scunc_l:Scale Uncertainty --legend-loc upper right --x-lims 74. 3000. --x-log True --y-lims 0.5 2.0 --x-label _ptavg_ --y-label Fractional Uncertainty?center --ax-texts _yb0ys0_?0.05,0.92 _cmsp_ _20fb_", 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_xs pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_pdfunc_l pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_pdfunc_u scunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_scunc_l scunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_00_10/CT10nlo_scunc_u --ana-modules Ratio --ratio pdfunc_l:nlo pdfunc_u:nlo scunc_l:nlo scunc_u:nlo nlo:nlo --style nlo:line pdfunc_u:line pdfunc_l:line scunc_u:line scunc_l:line --step nlo:True pdfunc_u:True pdfunc_l:True scunc_u:True scunc_l:True --color pdfunc_l:_color1_ pdfunc_u:_color1_ scunc_l:_color2_ scunc_u:_color2_ --label pdfunc_l:PDF Uncertainty scunc_l:Scale Uncertainty --legend-loc upper right --x-lims 74. 3000. --x-log True --y-lims 0.5 2.0 --x-label _ptavg_ --y-label Fractional Uncertainty?center --ax-texts _yb0ys0_?0.05,0.92 _cmsp_ _20fb_ --output-path theo_unc_yb0ys0.png", 
     "ax_hlines": [], 
     "ax_texts": [
         "_yb0ys0_?0.05,0.92", 
@@ -17,7 +17,7 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/plot.json", 
+    "load_config": "plots/theo_unc_yb0ys0.json", 
     "log_level": "info", 
     "objects": {
         "_default": {
@@ -131,7 +131,7 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "plot.png", 
+    "output_path": "theo_unc_yb0ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
@@ -142,6 +142,7 @@
         "color", 
         "style", 
         "step", 
+        "output_path", 
         "x_lims", 
         "y_lims", 
         "x_log", 

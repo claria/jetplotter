@@ -13,7 +13,7 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": null, 
+    "load_config": "plots/unf_nlo_corr_yb0ys0.json", 
     "log_level": "info", 
     "objects": {
         "_default": {

@@ -8,7 +8,11 @@
     "ax_hlines": [
         "1.0?black?2.0"
     ], 
-    "ax_texts": [], 
+    "ax_texts": [
+        "_yb0ys0_?0.05,0.92", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
     "ax_vlines": [], 
     "fig_size": null, 
     "fit_obj": [

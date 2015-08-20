@@ -20,7 +20,7 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": null, 
+    "load_config": "plots/trigger_eff_hltpfjet80.json", 
     "log_level": "info", 
     "objects": {
         "_default": {

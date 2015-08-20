@@ -1,29 +1,51 @@
 {
     "add_subplot": false, 
     "ana_modules": [
-        "Ratio"
+        "Ratio", 
+        "FitObj"
     ], 
-    "argv": "./plotter.py -l plots/ratio_reco.json", 
+    "argv": "./plotter.py -l plots/np_factors.json", 
     "ax_hlines": [
         "1.0?black?2.0"
     ], 
     "ax_texts": [
-        "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 
-        "CMS?top left", 
-        "$20\\,fb^{-1}$ (8TeV)?top right"
+        "_yb1ys1_?0.05,0.92", 
+        "_cmsp_", 
+        "_20fb_"
     ], 
     "ax_vlines": [], 
-    "fig_size": [
-        10.0, 
-        7.0
+    "fig_size": null, 
+    "fit_obj": [
+        [
+            "qcdp8mpihad", 
+            {
+                "fcn": "[0] + [1]/x**[2]", 
+                "fcn_0": [
+                    1.0, 
+                    1.0, 
+                    1.0
+                ], 
+                "options": "I"
+            }
+        ], 
+        [
+            "hwppmpihad", 
+            {
+                "fcn": "[0] + [1]/x**[2]", 
+                "fcn_0": [
+                    1.0, 
+                    1.0, 
+                    1.0
+                ], 
+                "options": "I"
+            }
+        ]
     ], 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "input_modules": [], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/ratio_reco.json", 
-    "log_level": "info", 
+    "load_config": "plots/np_factors_yb1ys1.json", 
+    "log_level": "debug", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -42,16 +64,16 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "data": {
+        "_hwppnompinohad": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "black", 
+            "color": "auto", 
             "edgecolor": "auto", 
-            "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
-            "label": "Data", 
+            "id": "_hwppnompinohad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_NOMPINOHAD.root?genptavg_yb_10_20_ys_10_20/h_genptavg", 
+            "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -60,16 +82,16 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdmgp6": {
+        "_qcdp8nompinohad": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "qcdmgp6", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
-            "label": "MG+P6", 
+            "id": "_qcdp8nompinohad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_NOMPINOHAD.root?genptavg_yb_10_20_ys_10_20/h_genptavg", 
+            "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -78,52 +100,71 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdmgp6gen": {
+        "fit_hwppmpihad": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "auto", 
+            "color": "#4C72B0", 
             "edgecolor": "auto", 
-            "id": "qcdmgp6gen", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
-            "label": "MG+P6 Gen", 
+            "id": "hwppmpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_MPIHAD.root?genptavg_yb_10_20_ys_10_20/h_genptavg", 
+            "label": "_nolegend_", 
             "linestyle": "", 
             "marker": ".", 
+            "step": false, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "fit_qcdp8mpihad": {
+            "": "band", 
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "#55A868", 
+            "edgecolor": "auto", 
+            "id": "qcdp8mpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_MPIHAD.root?genptavg_yb_10_20_ys_10_20/h_genptavg", 
+            "label": "_nolegend_", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "hwppmpihad": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "#4C72B0", 
+            "edgecolor": "auto", 
+            "id": "hwppmpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_MPIHAD.root?genptavg_yb_10_20_ys_10_20/h_genptavg", 
+            "label": "HW++", 
+            "linestyle": "", 
+            "marker": "o", 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdp8": {
+        "qcdp8mpihad": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "auto", 
+            "color": "#55A868", 
             "edgecolor": "auto", 
-            "id": "qcdp8", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "id": "qcdp8mpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_MPIHAD.root?genptavg_yb_10_20_ys_10_20/h_genptavg", 
             "label": "P8", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "qcdp8gen": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "qcdp8gen", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
-            "label": "P8 Gen", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -133,10 +174,8 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "ratio_reco.png", 
+    "output_modules": [], 
+    "output_path": "np_factors_yb1ys1.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
@@ -150,41 +189,31 @@
         "x_label", 
         "y_label", 
         "legend_loc", 
+        "ax_hlines", 
         "ana_modules"
     ], 
     "ratio": [
         [
-            "data", 
-            "qcdp8gen"
+            "hwppmpihad", 
+            "_hwppnompinohad"
         ], 
         [
-            "qcdmgp6", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdmgp6gen", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdp8", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdp8gen", 
-            "qcdp8gen"
+            "qcdp8mpihad", 
+            "_qcdp8nompinohad"
         ]
     ], 
     "show_legend": true, 
-    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "simpleratio": [], 
+    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
         "50.", 
         "3000."
     ], 
     "x_log": true, 
-    "y_label": "Ratio to Gen", 
+    "y_label": "NP Correction factor", 
     "y_lims": [
-        "0.5", 
-        "1.5"
+        "0.8", 
+        "1.4"
     ], 
     "y_log": false, 
     "y_subplot_label": "", 

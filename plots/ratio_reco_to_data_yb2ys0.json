@@ -1,29 +1,43 @@
 {
     "add_subplot": false, 
     "ana_modules": [
+        "Normalize", 
         "Ratio"
     ], 
-    "argv": "./plotter.py -l plots/ratio_reco.json", 
-    "ax_hlines": [
-        "1.0?black?2.0"
-    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_20_30_ys_00_10/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?ptavg_yb_20_30_ys_00_10/h_ptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_20_30_ys_00_10/h_ptavg genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?genptavg_yb_20_30_ys_00_10/h_genptavg nlo:~/PTAVG_YBYS_NLO.root?ptavg_yb_20_30_ys_00_10/CT10nlo_xs --ana Normalize Ratio --ratio genmgp6:data mgp6:data p8:data nlo:data data:data --y-lims 0.0 2.0 --x-lims 74. 3000. --x-log True --normalize mgp6:width p8:width data:width genmgp6:width --label mgp6:MG+P6 p8:P8 data:DATA nlo:NLO (CT10) genmgp6:MG+P6 --x-label _ptavg_ --y-label Ratio to Data?center --legend-loc upper right --ax-texts _yb2ys0_?0.05,0.92 _cmsp_ _20fb_ --output-path ratio_reco_to_data_yb2ys0.png --color data:black", 
+    "ax_hlines": [], 
     "ax_texts": [
-        "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 
-        "CMS?top left", 
-        "$20\\,fb^{-1}$ (8TeV)?top right"
+        "_yb2ys0_?0.05,0.92", 
+        "_cmsp_", 
+        "_20fb_"
     ], 
     "ax_vlines": [], 
-    "fig_size": [
-        10.0, 
-        7.0
-    ], 
+    "fig_size": null, 
     "input_modules": [
         "RootModule"
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/ratio_reco.json", 
+    "load_config": "plots/ratio_reco_to_data_yb2ys0.json", 
     "log_level": "info", 
+    "normalize": [
+        [
+            "mgp6", 
+            "width"
+        ], 
+        [
+            "p8", 
+            "width"
+        ], 
+        [
+            "data", 
+            "width"
+        ], 
+        [
+            "genmgp6", 
+            "width"
+        ]
+    ], 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -50,8 +64,8 @@
             "color": "black", 
             "edgecolor": "auto", 
             "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
-            "label": "Data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_20_30_ys_00_10/h_ptavg", 
+            "label": "DATA", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -60,15 +74,15 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdmgp6": {
+        "genmgp6": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "qcdmgp6", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "id": "genmgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?genptavg_yb_20_30_ys_00_10/h_genptavg", 
             "label": "MG+P6", 
             "linestyle": "", 
             "marker": ".", 
@@ -78,16 +92,16 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdmgp6gen": {
+        "mgp6": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "qcdmgp6gen", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
-            "label": "MG+P6 Gen", 
+            "id": "mgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_20_30_ys_00_10/h_ptavg", 
+            "label": "MG+P6", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -96,34 +110,34 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdp8": {
+        "nlo": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "qcdp8", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?ptavg_yb_00_10_ys_00_10/h_ptavg", 
+            "id": "nlo", 
+            "input": "~/PTAVG_YBYS_NLO.root?ptavg_yb_20_30_ys_00_10/CT10nlo_xs", 
+            "label": "NLO (CT10)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "p8": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "p8", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?ptavg_yb_20_30_ys_00_10/h_ptavg", 
             "label": "P8", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "qcdp8gen": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "qcdp8gen", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?genptavg_yb_00_10_ys_00_10/h_genptavg", 
-            "label": "P8 Gen", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -136,13 +150,16 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "ratio_reco.png", 
+    "output_path": "ratio_reco_to_data_yb2ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
-        "help", 
+        "input", 
+        "normalize", 
         "ratio", 
+        "label", 
+        "color", 
         "output_path", 
         "x_lims", 
         "y_lims", 
@@ -150,41 +167,42 @@
         "x_label", 
         "y_label", 
         "legend_loc", 
-        "ana_modules"
+        "ax_texts"
     ], 
     "ratio": [
         [
+            "genmgp6", 
+            "data"
+        ], 
+        [
+            "mgp6", 
+            "data"
+        ], 
+        [
+            "p8", 
+            "data"
+        ], 
+        [
+            "nlo", 
+            "data"
+        ], 
+        [
             "data", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdmgp6", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdmgp6gen", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdp8", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdp8gen", 
-            "qcdp8gen"
+            "data"
         ]
     ], 
+    "ratio_copy": [], 
     "show_legend": true, 
-    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "x_label": "_ptavg_", 
     "x_lims": [
-        "50.", 
+        "74.", 
         "3000."
     ], 
     "x_log": true, 
-    "y_label": "Ratio to Gen", 
+    "y_label": "Ratio to Data?center", 
     "y_lims": [
-        "0.5", 
-        "1.5"
+        "0.0", 
+        "2.0"
     ], 
     "y_log": false, 
     "y_subplot_label": "", 
