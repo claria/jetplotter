@@ -8,7 +8,7 @@ import logging
 log = logging.getLogger(__name__)
 
 
-class UserParser(argparse.ArgumentParser):
+class SettingParser(argparse.ArgumentParser):
     """Argparser with additional features.
 
        The main feature are str2kv types which are given as id:value and are
@@ -23,9 +23,9 @@ class UserParser(argparse.ArgumentParser):
     """
 
     def __init__(self, *args, **kwargs):
-        if not 'formatter_class' in kwargs:
+        if 'formatter_class' not in kwargs:
             kwargs['formatter_class'] = argparse.ArgumentDefaultsHelpFormatter
-        super(UserParser, self).__init__(*args, **kwargs)
+        super(SettingParser, self).__init__(*args, **kwargs)
         self.register('type', 'bool', str2bool)
         self.register('type', 'str2kvfloat', str2kvfloat)
         self.register('type', 'str2kvint', str2kvint)
@@ -38,7 +38,7 @@ class UserParser(argparse.ArgumentParser):
 
     def parse_args(self, *args, **kwargs):
         """ Parses args and ensures that all 'setting' actions are called."""
-        args = super(UserParser, self).parse_args()
+        args = super(SettingParser, self).parse_args()
         # Put also cmd call in args
         setattr(args, 'argv', ' '.join(sys.argv))
         for a in self._actions:
@@ -144,82 +144,31 @@ class SettingAction(argparse.Action):
         if isinstance(values, basestring) or not isinstance(values, collections.Iterable):
             values = [values]
 
+        # Ensure that namespace has the objects OrderedDict
         if not hasattr(namespace, 'objects'):
             setattr(namespace, 'objects', collections.OrderedDict())
+
+        # Argparse does not call the action for default arguments. The SettingsParser ensures that all
+        # setting action are called, but there is still the possibility that argparse used setattr to store the arg
+        # in the namespace. Just make sure it isn't there.
         if hasattr(namespace, self.dest):
             delattr(namespace, self.dest)
-        # Ensure all values are list of tuples (id, val)
-        for i in xrange(0, len(values)):
-            if not isinstance(values[i], tuple):
+
+        # All arguments should have been parsed to a tuple of (id, value). If no id is provided or if the id is None
+        # we fallback to the '_default' id. This is used to provide default args directly.
+        # But each id still has to be unique.
+        for i in xrange(len(values)):
+            if not isinstance(values[i], collections.iterable) or len(values[i]) != 2:
+                # Make it to a tuple
                 values[i] = (None, values[i])
-            if values[i][0] is None:
-                # values[i] = ('id_{0}'.format(i), values[i][1])
-                values[i] = ('_default'.format(i), values[i][1])
+            if not values[i][0] or not isinstance(values[i][0], basestring):
+                values[i] = ('_default', values[i][1])
+        # Check if all ids for one setting are unique.
+        id_list = zip(*values)[0]
+        if len(id_list) > len(set(id_list)):
+            raise ValueError('The ids of the argument {0} are not unique. Ids : {1}'.format(self.dest, id_list))
+        # All checks are done.
+        # Store all (id, val) pairs in the objects dictionary
         for id, val in values:
-            namespace.objects.setdefault(id, {})['id'] = id
-            # if id not in namespace.objects:
-            # namespace.objects[id] = {}
-            # namespace.objects[id]['id'] = id
+            # namespace.objects.setdefault(id, {})['id'] = id
             namespace.objects[id][self.dest] = val
-
-
-class AutoGrowListAction(argparse.Action):
-    """Stores a setting list object in the Parser namespace."""
-
-    def __init__(self, list_default=None, *args, **kwargs):
-        self.list_default = list_default
-        super(AutoGrowListAction, self).__init__(*args, **kwargs)
-
-    def __call__(self, parser, namespace, values, option_string=None):
-        setattr(namespace, self.dest, AutoGrowList(values, self.list_default))
-
-
-class AutoGrowList(list):
-    """Contains list of settings values.
-
-       Returns item of idx in list if available, otherwise returns default
-       value. Currently default value is just last accessible item in list.
-       If item is set outside range of list, list is automatically extended
-       to that idx filling the items inbetween with default values.
-    """
-
-    def __init__(self, setting, default=None):
-        if default:
-            self.default = default
-        else:
-            self.default = 'last'
-
-        if isinstance(setting, basestring) or not isinstance(setting, collections.Iterable):
-            setting = [setting]
-        super(AutoGrowList, self).__init__(setting)
-
-        if len(self) == 0 and self.default in [None, 'last', 'first']:
-            raise ValueError('You either have to provide a list with len>0 or a valid default.')
-
-    def __getitem__(self, idx):
-        """Return item at idx if in list, else grow list and return default value."""
-        if idx >= len(self):
-            self._grow(idx)
-        return super(AutoGrowList, self).__getitem__(idx)
-
-    def _get_default(self):
-        """Return default value. For now, default is just last accessible value in list."""
-        if self.default == 'last':
-            return self[-1]
-        elif self.default == 'first':
-            return self[0]
-        elif self.default:
-            return self.default
-        else:
-            raise ValueError('No default value provided. Thats not good.')
-
-    def __setitem__(self, idx, value):
-        """Set item if idx in list, else increase list up to idx."""
-        if idx >= len(self):
-            # Extend list up to idx with default vals.
-            self._grow(idx)
-        super(AutoGrowList, self).__setitem__(idx, value)
-
-    def _grow(self, idx):
-        """Grow list up to idx using default values."""
-        self.extend((idx - len(self) + 1) * [self._get_default()])
