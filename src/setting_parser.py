@@ -48,8 +48,8 @@ class SettingParser(argparse.ArgumentParser):
             # Only if the type of a.default is a string, the type function is called.
             is_default_arg = False
             if hasattr(args, a.dest):
-                if isinstance(a.default, basestring) and getattr(args, a.dest) == self._registry_get('type', a.type,
-                                                                                                     a.type)(a.default):
+                if isinstance(a.default, basestring) and \
+                                getattr(args, a.dest) == self._registry_get('type', a.type, a.type)(a.default):
                     is_default_arg = True
                 elif getattr(args, a.dest) == a.default:
                     is_default_arg = True
@@ -139,6 +139,7 @@ class SettingAction(argparse.Action):
         super(SettingAction, self).__init__(*args, **kwargs)
 
     def __call__(self, parser, namespace, values, option_string=None):
+
         if values is None:
             values = []
         if isinstance(values, basestring) or not isinstance(values, collections.Iterable):
@@ -158,17 +159,19 @@ class SettingAction(argparse.Action):
         # we fallback to the '_default' id. This is used to provide default args directly.
         # But each id still has to be unique.
         for i in xrange(len(values)):
-            if not isinstance(values[i], collections.iterable) or len(values[i]) != 2:
+            if not isinstance(values[i], tuple) or len(values[i]) != 2:
                 # Make it to a tuple
                 values[i] = (None, values[i])
             if not values[i][0] or not isinstance(values[i][0], basestring):
                 values[i] = ('_default', values[i][1])
         # Check if all ids for one setting are unique.
-        id_list = zip(*values)[0]
-        if len(id_list) > len(set(id_list)):
-            raise ValueError('The ids of the argument {0} are not unique. Ids : {1}'.format(self.dest, id_list))
+        if values:
+            id_list = zip(*values)[0]
+            if len(id_list) > len(set(id_list)):
+                raise ValueError('The ids of the argument {0} are not unique. Ids : {1}'.format(self.dest, id_list))
         # All checks are done.
         # Store all (id, val) pairs in the objects dictionary
         for id, val in values:
-            # namespace.objects.setdefault(id, {})['id'] = id
+            namespace.objects.setdefault(id, {})
             namespace.objects[id][self.dest] = val
+        print namespace.objects
