@@ -1,18 +1,13 @@
 {
     "add_subplot": false, 
     "ana_modules": [
-        "Efficiency"
+        "Normalize", 
+        "Ratio"
     ], 
-    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/emul_HLT_PFJET80 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/HLT_PFJET40 --label _emul:emul _trg:trg --ana-modules Efficiency --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_80", 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_20_30_ys_00_10/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?ptavg_yb_20_30_ys_00_10/h_ptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_20_30_ys_00_10/h_ptavg genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?genptavg_yb_20_30_ys_00_10/h_genptavg nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_20_30/CT10nlo_xs --ana Normalize Ratio --ratio genmgp6:data mgp6:data p8:data nlo:data data:data --y-lims 0.0 2.0 --x-lims 74. 3000. --x-log True --normalize mgp6:width p8:width data:width genmgp6:width --label mgp6:mgp6 p8:p8 data:data nlo:nlo genmgp6:genmgp6", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
-    "efficiency": [
-        [
-            "_emul", 
-            "_trg"
-        ]
-    ], 
     "fig_size": null, 
     "input_modules": [
         "RootModule"
@@ -21,6 +16,24 @@
     "list_modules": false, 
     "load_config": null, 
     "log_level": "info", 
+    "normalize": [
+        [
+            "mgp6", 
+            "width"
+        ], 
+        [
+            "p8", 
+            "width"
+        ], 
+        [
+            "data", 
+            "width"
+        ], 
+        [
+            "genmgp6", 
+            "width"
+        ]
+    ], 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -39,16 +52,16 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "_emul": {
+        "data": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "_emul", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/emul_HLT_PFJET80", 
-            "label": "emul", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?ptavg_yb_20_30_ys_00_10/h_ptavg", 
+            "label": "data", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -57,16 +70,16 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "_trg": {
+        "genmgp6": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "_trg", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_DATA.root?default/TriggerEffs/HLT_PFJET40", 
-            "label": "trg", 
+            "id": "genmgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?genptavg_yb_20_30_ys_00_10/h_genptavg", 
+            "label": "genmgp6", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -75,15 +88,52 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "eff_emul": {
+        "mgp6": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "black", 
+            "color": "auto", 
             "edgecolor": "auto", 
-            "id": "eff_emul", 
-            "label": "HLT_PFJet_80", 
+            "id": "mgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?ptavg_yb_20_30_ys_00_10/h_ptavg", 
+            "label": "mgp6", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "nlo": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "nlo", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?ptavg_yb_00_10_ys_20_30/CT10nlo_xs", 
+            "label": "nlo", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "p8": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "p8", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?ptavg_yb_20_30_ys_00_10/h_ptavg", 
+            "label": "p8", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -102,24 +152,47 @@
     "print_config": false, 
     "provided_args": [
         "input", 
-        "efficiency", 
+        "normalize", 
+        "ratio", 
         "label", 
-        "color", 
-        "x_label", 
-        "y_label", 
-        "ana_modules"
+        "x_lims", 
+        "y_lims", 
+        "x_log"
     ], 
+    "ratio": [
+        [
+            "genmgp6", 
+            "data"
+        ], 
+        [
+            "mgp6", 
+            "data"
+        ], 
+        [
+            "p8", 
+            "data"
+        ], 
+        [
+            "nlo", 
+            "data"
+        ], 
+        [
+            "data", 
+            "data"
+        ]
+    ], 
+    "ratio_copy": [], 
     "show_legend": true, 
-    "x_label": "_ptavg_", 
+    "x_label": "", 
     "x_lims": [
-        null, 
-        null
+        "74.", 
+        "3000."
     ], 
-    "x_log": false, 
-    "y_label": "Efficiency", 
+    "x_log": true, 
+    "y_label": "", 
     "y_lims": [
         "0.0", 
-        "1.1"
+        "2.0"
     ], 
     "y_log": false, 
     "y_subplot_label": "", 
