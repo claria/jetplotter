@@ -1,7 +1,7 @@
 {
     "add_subplot": false, 
     "ana_modules": [], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys0/h2_y12 --style data:heatmap --z-log True --y-lims -3.0 3.0 --x-lims -3.0 3.0 --x-label Leading Jet Rapidity --y-label Second Jed Rapidity --z-label Cross Section (pb/GeV) --ax-texts _yb0ys0_?0.05,0.95 _cmsp_ _20fb_ --output-path jet12_rapidity_yb0ys0.png", 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_y12 --style data:heatmap --z-log True --y-lims -3.0 3.0 --x-lims -3.0 3.0 --x-label Leading Jet Rapidity --y-label Second Jed Rapidity --z-label Cross Section (pb/GeV) --ax-texts _yb0ys0_?0.05,0.95 _cmsp_ _20fb_ --output-path jet12_rapidity_yb0ys0.png", 
     "ax_hlines": [], 
     "ax_texts": [
         "_yb0ys0_?0.05,0.95", 
@@ -43,7 +43,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys0/h2_y12", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_y12", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
