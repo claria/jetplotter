@@ -1,0 +1,100 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h2_y12 --style data:heatmap --z-log True --y-lims -3.0 3.0 --x-lims -3.0 3.0 --x-label Leading Jet Rapidity --y-label Second Jed Rapidity --z-label Cross Section (pb/GeV) --ax-texts _yb2ys0_?0.05,0.95 _cmsp_ _20fb_ --output-path jet12_rapidity_yb2ys0.png", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb2ys0_?0.05,0.95", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": null, 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h2_y12", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "heatmap", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "jet12_rapidity_yb2ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "input", 
+        "style", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "z_log", 
+        "x_label", 
+        "y_label", 
+        "z_label", 
+        "ax_texts"
+    ], 
+    "show_legend": true, 
+    "x_label": "Leading Jet Rapidity", 
+    "x_lims": [
+        "-3.0", 
+        "3.0"
+    ], 
+    "x_log": false, 
+    "y_label": "Second Jed Rapidity", 
+    "y_lims": [
+        "-3.0", 
+        "3.0"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "Cross Section (pb/GeV)", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": true
+}
