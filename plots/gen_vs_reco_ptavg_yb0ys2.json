@@ -41,7 +41,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "genreco", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?ptavg_yb_00_10_ys_20_30/h2_genreco_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?yb0ys2/h2_genreco_ptavg", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 

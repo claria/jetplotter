@@ -39,7 +39,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "resmatrix", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?ptavg_yb_00_10_ys_00_10/res_matrix_ptavg_response", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?yb0ys0/res_matrix_ptavg_response", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
