@@ -43,6 +43,7 @@ lookup_dict = {
 
 }
 
+
 def get_lookup_val(key, s):
     """ Replaces all occurences of lookup keys in string with lookups."""
     if key in lookup_dict:

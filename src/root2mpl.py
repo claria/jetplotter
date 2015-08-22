@@ -115,14 +115,16 @@ class MplObject2D(object):
             # bin center
             self.x = np.array([root_object.GetXaxis().GetBinCenter(i) for i in xrange(1, root_object.GetNbinsX() + 1)])
             # lower bin edge
-            self.xl = np.array([root_object.GetXaxis().GetBinLowEdge(i) for i in xrange(1, root_object.GetNbinsX() + 1)])
+            self.xl = np.array(
+                [root_object.GetXaxis().GetBinLowEdge(i) for i in xrange(1, root_object.GetNbinsX() + 1)])
             # upper bin edge
             self.xu = np.array([root_object.GetXaxis().GetBinUpEdge(i) for i in xrange(1, root_object.GetNbinsX() + 1)])
             self.xerr = self.x - self.xl
 
             self.y = np.array([root_object.GetYaxis().GetBinCenter(i) for i in xrange(1, root_object.GetNbinsY() + 1)])
             # lower bin edge
-            self.yl = np.array([root_object.GetYaxis().GetBinLowEdge(i) for i in xrange(1, root_object.GetNbinsY() + 1)])
+            self.yl = np.array(
+                [root_object.GetYaxis().GetBinLowEdge(i) for i in xrange(1, root_object.GetNbinsY() + 1)])
             # upper bin edge
             self.yu = np.array([root_object.GetYaxis().GetBinUpEdge(i) for i in xrange(1, root_object.GetNbinsY() + 1)])
             self.yerr = self.y - self.yl

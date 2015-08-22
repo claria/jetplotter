@@ -4,6 +4,7 @@ import ROOT
 
 from src.modules.base_module import BaseModule
 from src.modules.helpers import get_tgrapherrors
+
 log = logging.getLogger(__name__)
 
 
@@ -45,7 +46,6 @@ class FitObj(BaseModule):
             # config['objects']['fit_{0}'.format(id)] = copy.deepcopy(config['objects'][id])
             new_obj_name = 'fit_{0}'.format(id)
             config['objects'].setdefault(new_obj_name, {})['obj'] = errorgraph
-
 
 
 class TriggerEfficiencyFit(BaseModule):
@@ -93,13 +93,10 @@ class TriggerEfficiencyFit(BaseModule):
 
             vfitter = ROOT.TVirtualFitter.GetFitter()
             eff_fcn.SetNpx(1000)
-            xmin, xmax = config['objects'][id]['obj'].GetXaxis().GetXmin(), config['objects'][id]['obj'].GetXaxis().GetXmax()
+            xmin, xmax = config['objects'][id]['obj'].GetXaxis().GetXmin(), config['objects'][id][
+                'obj'].GetXaxis().GetXmax()
             eff_fcn.SetRange(xmin, xmax)
             eff_error_graph = get_tgrapherrors(eff_fcn, vfitter)
 
             id_fit = 'fit_{0}'.format(id.strip('_'))
             config['objects'].setdefault(id_fit, {})['obj'] = eff_error_graph
-
-
-
-

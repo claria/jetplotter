@@ -1,6 +1,7 @@
 import ROOT
 import numpy as np
 
+
 def divide_tgraph(graph1, graph2, error_prop=False):
     assert (graph1.GetN() == graph2.GetN())
     for i in xrange(graph1.GetN()):
@@ -26,6 +27,7 @@ def multiply_tgraph(graph1, graph2, error_prop=False):
         graph1.SetPointEYlow(i, graph1.GetErrorYlow(i) / graph2Y if graph2Y != 0. else 0.)
         graph1.SetPointEYhigh(i, graph1.GetErrorYhigh(i) / graph2Y if graph2Y != 0. else 0.)
 
+
 def get_tgrapherrors(fcn, vfitter, cl=0.683):
     """Returns a TGraph with a confidence interval representing the confidence intervals."""
     # no thinking involved. just copied from the data analysis c macro.
@@ -39,12 +41,14 @@ def get_tgrapherrors(fcn, vfitter, cl=0.683):
     vfitter.GetConfidenceIntervals(graph, cl);
     return graph
 
+
 def isfloat(value):
     try:
         float(value)
         return True
     except ValueError:
         return False
+
 
 def ratio_to_obj(obj, to_obj, error_prop=True):
     if isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TH1):
@@ -61,4 +65,3 @@ def ratio_to_obj(obj, to_obj, error_prop=True):
     else:
         raise TypeError('Invalid types passed: {0} and {1}'.format(type(obj), type(to_obj)))
     return obj
-

@@ -174,4 +174,3 @@ class SettingAction(argparse.Action):
         for id, val in values:
             namespace.objects.setdefault(id, {})
             namespace.objects[id][self.dest] = val
-        print namespace.objects

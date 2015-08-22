@@ -30,41 +30,41 @@ class PlotModule(BaseModule):
         super(PlotModule, self).__init__()
         # Plot object options
         self.arg_group.add_argument('--label', type='str2kvstr', nargs='+', default=['__nolegend__'], action='setting',
-                                 help='Legend labels for each plot')
+                                    help='Legend labels for each plot')
         self.arg_group.add_argument('--color', type='str2kvstr', nargs='+',
-                                 default='auto', action='setting',
-                                 help='Colors for each plot.')
+                                    default='auto', action='setting',
+                                    help='Colors for each plot.')
         self.arg_group.add_argument('--edgecolor', type='str2kvstr', nargs='+',
-                                 default='auto', action='setting',
-                                 help='Edgecolor for each plot.')
+                                    default='auto', action='setting',
+                                    help='Edgecolor for each plot.')
         self.arg_group.add_argument('--cmap', type='str2kvstr', nargs='+',
-                                 default='viridis', action='setting',
-                                 help='Colormap used for heatmaps.')
+                                    default='viridis', action='setting',
+                                    help='Colormap used for heatmaps.')
         self.arg_group.add_argument('--hatch', type='str2kvstr', nargs='+',
-                                 default=None, action='setting',
-                                 help='Hatch for each plot')
+                                    default=None, action='setting',
+                                    help='Hatch for each plot')
         self.arg_group.add_argument('--linestyle', type='str2kvstr', nargs='+',
-                                 default='', action='setting',
-                                 help='Linestyle for each plot')
+                                    default='', action='setting',
+                                    help='Linestyle for each plot')
         self.arg_group.add_argument('--marker', type='str2kvstr', nargs='+',
-                                 default='.', action='setting',
-                                 help='Marker for errorbars for each plot.')
+                                    default='.', action='setting',
+                                    help='Marker for errorbars for each plot.')
         self.arg_group.add_argument('--x-err', type='str2kvbool', nargs='+', default=True, action='setting',
-                                 help='Show x-errors.')
+                                    help='Show x-errors.')
         self.arg_group.add_argument('--y-err', type='str2kvbool', nargs='+', default=True, action='setting',
-                                 help='Show y-errors.')
+                                    help='Show y-errors.')
         self.arg_group.add_argument('--alpha', type='str2kvfloat', nargs='+', default=1.0, action='setting',
-                                 help='Alpha value in plot.')
+                                    help='Alpha value in plot.')
         self.arg_group.add_argument('--capsize', type='str2kvint', nargs='+', default=0, action='setting',
-                                 help='Capsize of errorbars in plot.')
+                                    help='Capsize of errorbars in plot.')
         self.arg_group.add_argument('--zorder', type='str2kvfloat', nargs='+', default=1.0, action='setting',
-                                 help='Alpha value in plot.')
+                                    help='Alpha value in plot.')
         self.arg_group.add_argument('--style', default='errorbar', type='str2kvstr', nargs='+', action='setting',
-                                 help='Style of the plotted object.')
+                                    help='Style of the plotted object.')
         self.arg_group.add_argument('--step', type='str2kvbool', nargs='+', default=False, action='setting',
-                                 help='Plot the data stepped at the xerr edges.')
+                                    help='Plot the data stepped at the xerr edges.')
         self.arg_group.add_argument('--axis', type='str2kvstr', nargs='+', default='ax', action='setting',
-                                 help='Plot the object in the following axis.')
+                                    help='Plot the object in the following axis.')
 
         # Figure options
         self.arg_group.add_argument('--fig-size', type=float, nargs=2, default=None, help='Size of figure.')
@@ -77,7 +77,7 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
         self.arg_group.add_argument('--y-subplot-lims', nargs=2, default=[None, None], help='Y limits of subplot.')
         self.arg_group.add_argument('--z-lims', nargs=2, default=[None, None],
-                                 help='Z limits of plot (only used in 2d plots).')
+                                    help='Z limits of plot (only used in 2d plots).')
 
         self.arg_group.add_argument('--x-log', default=False, type='bool', help='Use log scale for x-axis.')
         self.arg_group.add_argument('--y-log', default=False, type='bool', help='Use log scale for y-axis.')
@@ -92,14 +92,14 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--legend-loc', default='best', help='Legend location.')
 
         self.arg_group.add_argument('--plot-id', default=r'^(?!_).*',
-                                 help='All ids matching are passed to plot-module. Default matches everything not starting with a underscore.')
-
+                                    help='All ids matching are passed to plot-module.'
+                                         ' Default matches everything not starting with a underscore.')
         self.arg_group.add_argument('--ax-texts', nargs='+', default=[],
-                                 help='Add text to plot. Syntax is \'Text?1.0,1.0\' with loc 1.0,1.0')
+                                    help='Add text to plot. Syntax is \'Text?1.0,1.0\' with loc 1.0,1.0')
         self.arg_group.add_argument('--ax-vlines', nargs='+', default=[],
-                                 help='Add vertical lines to plot. Syntax is y_pos?color?lw.')
+                                    help='Add vertical lines to plot. Syntax is y_pos?color?lw.')
         self.arg_group.add_argument('--ax-hlines', nargs='+', default=[],
-                                 help='Add horizontal lines to plot. Syntax is y_pos?color?lw.')
+                                    help='Add horizontal lines to plot. Syntax is y_pos?color?lw.')
 
     def __call__(self, config):
         plot = Plot(**config)
@@ -125,8 +125,8 @@ class Plot(BasePlot):
             self.ax = self.fig.add_subplot(111)
             self.ax1 = None
         else:
-            self.ax = plt.subplot2grid((4,1), (0, 0), rowspan=3)
-            self.ax1 = plt.subplot2grid((4,1), (3, 0), rowspan=1)
+            self.ax = plt.subplot2grid((4, 1), (0, 0), rowspan=3)
+            self.ax1 = plt.subplot2grid((4, 1), (3, 0), rowspan=1)
         self.histos = histos
 
         self.x_lims = kwargs.pop('x_lims', (None, None))
@@ -162,8 +162,8 @@ class Plot(BasePlot):
         style = kwargs.pop('style', 'errorbar')
         kwargs['label'] = get_lookup_val('label', kwargs.get('label'))
         # Plot object on this axis
+        axis_name = kwargs.pop('axis', 'ax')
         try:
-            axis_name = kwargs.pop('axis', 'ax')
             ax = getattr(self, axis_name)
         except AttributeError as e:
             log.critical('The axis name {0} does not exist.'.format(axis_name))
@@ -174,7 +174,11 @@ class Plot(BasePlot):
             kwargs['color'] = next(self.auto_colors)
         if kwargs['edgecolor'] == 'auto':
             kwargs['edgecolor'] = kwargs['color']
+
         kwargs['color'] = get_lookup_val('color', kwargs.get('color'))
+        # Facecolor is always set using the color argument.
+        kwargs['facecolor'] = kwargs['color']
+
         kwargs['edgecolor'] = get_lookup_val('edgecolor', kwargs.get('edgecolor'))
         if style == 'errorbar':
             artist = plot_errorbar(ax=ax, **kwargs)
@@ -207,7 +211,6 @@ class Plot(BasePlot):
             cb = self.fig.colorbar(self.colorbar_mappable, ax=self.ax)
             if self.z_label:
                 cb.set_label(self.z_label)
-
 
         # Add axis texts
         for text in self.texts:
@@ -262,16 +265,19 @@ class Plot(BasePlot):
             self.ax.set_yscale('linear')
 
         if self.show_legend:
-            self.ax.legend(loc=self.legend_loc)
+            handles, labels = self.ax.get_legend_handles_labels()
+            if any(labels):
+                self.ax.legend(handles, labels, loc=self.legend_loc)
+            else:
+                pass
+                log.debug('Omit legend since all labels are empty.')
 
         if self.ax1:
             # self.ax.get_xaxis().set_ticks([])
-            plt.setp(self.ax.get_xticklabels(),visible=False)
+            plt.setp(self.ax.get_xticklabels(), visible=False)
             self.ax1.set_xscale(self.ax.get_xscale())
             self.ax1.set_xlim(self.ax.get_xlim())
             plt.subplots_adjust(hspace=0.15)
-
-
 
         self.save_fig()
         plt.close(self.fig)

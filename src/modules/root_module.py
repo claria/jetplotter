@@ -10,9 +10,9 @@ class RootModule(BaseModule):
     def __init__(self):
         super(RootModule, self).__init__()
         self.arg_group.add_argument('-i', '--input', nargs='+', type='str2kvstr', action='setting',
-                                 help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+                                    help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
         self.arg_group.add_argument('--input_tgraph', nargs='+', type='str2kvstr', action='setting',
-                                 help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+                                    help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
 
     def __call__(self, config):
         for id, item in config['objects'].iteritems():
@@ -20,7 +20,8 @@ class RootModule(BaseModule):
                 item['obj'] = get_root_object(item['input'])
             elif 'input_tgraph' in item:
                 if '&' in item['input_tgraph']:
-                    item['obj'] = get_tgraphasymm_from_histos(*[get_root_object(input) for input in item['input_tgraph'].split('&')])
+                    item['obj'] = get_tgraphasymm_from_histos(
+                        *[get_root_object(input) for input in item['input_tgraph'].split('&')])
                 else:
                     item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input_tgraph']))
             elif 'input_asymmerrgraph' in item:
@@ -34,7 +35,6 @@ def get_root_objects(input, option=None, **kwargs):
 
 
 def get_root_object(input, option="READ"):
-
     if '?' in input:
         input, object_path = input.split('?')
     else:

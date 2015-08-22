@@ -126,9 +126,9 @@ class BasePlot(object):
         matplotlib.rcParams['savefig.format'] = 'png'
         matplotlib.rcParams['agg.path.chunksize'] = 20000
 
-    #
-    # Helper functions
-    #
+        #
+        # Helper functions
+        #
 
 
 def add_axis_text(ax, text, loc='top right', **kwargs):
@@ -273,12 +273,13 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         y_errl = steppify_bin(y_errl)
         y_erru = steppify_bin(y_erru)
 
-    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'color', 'alpha', 'edgecolor']}
+    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'facecolor', 'alpha', 'edgecolor']}
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
     p = matplotlib.patches.Rectangle((0, 0), 1, 1, **fill_between_kwargs)
     ax.add_patch(p)
 
     return artist
+
 
 def plot_histo(obj=None, emptybins=True, ax=None, **kwargs):
     """ Produce an errorbar plots with or without connecting lines.
@@ -303,12 +304,13 @@ def plot_histo(obj=None, emptybins=True, ax=None, **kwargs):
     y = steppify_bin(y)
     y_0 = np.zeros(y.shape)
 
-    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'color', 'alpha', 'edgecolor']}
+    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'facecolor', 'alpha', 'edgecolor']}
     artist = ax.fill_between(x, y, y_0, **fill_between_kwargs)
     p = matplotlib.patches.Rectangle((0, 0), 1, 1, **fill_between_kwargs)
     ax.add_patch(p)
 
     return artist
+
 
 def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     """ Produce an errorbar plots with or without connecting lines.

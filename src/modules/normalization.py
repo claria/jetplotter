@@ -17,10 +17,9 @@ class Ratio(BaseModule):
     def __init__(self):
         super(Ratio, self).__init__()
         self.arg_group.add_argument('--ratio', nargs='+', default=[], type='str2kvstr',
-                help='Calculates the ratio of id:val for each entry and and puts the result in the id setting.')
+                                    help='Calculates the ratio of id:val for each entry and and puts the result in the id setting.')
         self.arg_group.add_argument('--ratio-copy', nargs='+', default=[], type='str2kvstr',
-                help='Calculates the ratio of id:val for each entry and creates a new item ratio_id for the ratio.')
-
+                                    help='Calculates the ratio of id:val for each entry and creates a new item ratio_id for the ratio.')
 
     def __call__(self, config):
         for id, to in config['ratio']:
@@ -45,13 +44,12 @@ class Ratio(BaseModule):
             config['objects'][new_id]['obj'] = calc_ratio(obj, to_obj)
 
 
-
 def calc_ratio(obj, to_obj):
     obj = obj.Clone('ratio_{0}'.format(obj.GetName()))
     if isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TH1):
         if not (obj.GetNbinsX() == to_obj.GetNbinsX()):
             raise ValueError('The two histograms have different numbers of bins.')
-        for i in xrange(1, obj.GetNbinsX() +1):
+        for i in xrange(1, obj.GetNbinsX() + 1):
             try:
                 obj.SetBinContent(i, obj.GetBinContent(i) / to_obj.GetBinContent(i))
                 obj.SetBinError(i, obj.GetBinError(i) / to_obj.GetBinContent(i))
@@ -74,7 +72,7 @@ class Normalize(BaseModule):
     def __init__(self):
         super(Normalize, self).__init__()
         self.arg_group.add_argument('--normalize', nargs='+', default=[], type='str2kvstr',
-                                 help='Normalize an id to bin widths, unity, to the integral of another object or by a float using width/unity/obj_id or a float.')
+                                    help='Normalize an id to bin widths, unity, to the integral of another object or by a float using width/unity/obj_id or a float.')
 
     def __call__(self, config):
         for id, val in config['normalize']:
@@ -89,7 +87,8 @@ class Normalize(BaseModule):
                 config['objects'][id]['obj'].Scale(1.0 / config['objects'][id]['obj'].Integral())
             elif val in config['objects']:
                 # Normalize to another object
-                config['objects'][id]['obj'].Scale(config['objects'][val]['obj'].Integral() / config['objects'][id]['obj'].Integral())
+                config['objects'][id]['obj'].Scale(
+                    config['objects'][val]['obj'].Integral() / config['objects'][id]['obj'].Integral())
             elif isfloat(val):
                 # Normalize/Scale by an factor
                 config['objects'][id]['obj'].Scale(float(val))
@@ -103,7 +102,7 @@ class NormalizeToGen(BaseModule):
     def __init__(self):
         super(NormalizeToGen, self).__init__()
         self.arg_group.add_argument('--normalize-to-gen', nargs='+', default=[], type=str,
-                                 help='Id of 2d histograms which will be row-normalized.')
+                                    help='Id of 2d histograms which will be row-normalized.')
 
     def __call__(self, config):
         for id in config['normalize_to_gen']:
@@ -116,5 +115,3 @@ class NormalizeToGen(BaseModule):
                 for x in xrange(1, obj.GetNbinsX() + 1):
                     obj.SetBinContent(x, y, obj.GetBinContent(x, y) / y_sow)
                     obj.SetBinError(x, y, obj.GetBinError(x, y) / y_sow)
-
-
