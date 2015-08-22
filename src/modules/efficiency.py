@@ -1,6 +1,7 @@
 import logging
 
 import ROOT
+
 from src.modules.base_module import BaseModule
 
 log = logging.getLogger(__name__)
@@ -10,7 +11,7 @@ class Efficiency(BaseModule):
     def __init__(self):
         super(Efficiency, self).__init__()
         print 'hallo'
-        self.parser.add_argument('--efficiency', nargs='+', type='str2kvstr', 
+        self.arg_group.add_argument('--efficiency', nargs='+', type='str2kvstr',
                 help='Calculates the efficiency of numerator:denominator and returns a TGraph.')
 
     def __call__(self, config):

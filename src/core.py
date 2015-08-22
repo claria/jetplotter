@@ -6,7 +6,8 @@ import collections
 import logging
 
 from module_handler import get_all_modules
-from user_parser import UserParser
+from setting_parser import SettingParser
+
 # from modules.various_modules import get_module
 from lookup_dict import lookup_dict
 
@@ -28,9 +29,17 @@ class Plotter(object):
 
     def __call__(self):
 
+        # TODO:
+        # Organize in 3 parts
+        # Parsing should be done in 3 steps,
+        # 1. log level (batch mode)
+        # 2. modules loading
+        # 3. all arguments...
+        # Module loading
+        # Config building
+        # Module running
         self._init_parser()
         self._prepare_config()
-
 
         self.path = self._input_modules + self._ana_modules + self._output_modules
 
@@ -50,9 +59,9 @@ class Plotter(object):
 
     def _init_parser(self, parents=[]):
         # TODO replace mutable parents arg
-        # Defines the base parser, which will be pre-parsed using known args to find additional modules 
+        # Defines the base arg_group, which will be pre-parsed using known args to find additional modules
         # with possibly additional parsers
-        base_parser = UserParser(add_help=False)
+        base_parser = SettingParser(add_help=False)
         base_parser_group = base_parser.add_argument_group(title='Base Parser', description='')
         base_parser_group.add_argument("--input-modules", nargs='+', default=['RootModule'], help="Input modules .")
         base_parser_group.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
@@ -74,7 +83,7 @@ class Plotter(object):
         self._output_modules += [self._all_modules[name]() for name in args['output_modules']]
         add_parsers = [module._parser for module in self._input_modules + self._ana_modules + self._output_modules]
         add_parsers.append(base_parser)
-        self.parser = UserParser(parents=add_parsers, 
+        self.parser = SettingParser(parents=add_parsers, 
                                  description='''Plotting tool to read, manipulate and plot root objects.''')
         self.parser.add_argument("-p", "--print-config", default=False, action="store_true",
                                  help="Print out the JSON config before running Artus.")
@@ -82,7 +91,7 @@ class Plotter(object):
                                  help="Load a json config from a file.")
 
     def _prepare_config(self, merge_parser_args=True):
-        """Get config from parser and supplied json file and merges the configs.
+        """Get config from arg_group and supplied json file and merges the configs.
            Then it updates missing keys in the id objects using the values of
            the _default object.
         """

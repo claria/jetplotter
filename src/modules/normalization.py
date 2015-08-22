@@ -1,10 +1,10 @@
 import logging
-import copy
+
 import numpy as np
+import ROOT
 
 from src.modules.base_module import BaseModule
 from helpers import divide_tgraph, isfloat
-import ROOT
 
 log = logging.getLogger(__name__)
 
@@ -16,9 +16,9 @@ class Ratio(BaseModule):
 
     def __init__(self):
         super(Ratio, self).__init__()
-        self.parser.add_argument('--ratio', nargs='+', default=[], type='str2kvstr',
+        self.arg_group.add_argument('--ratio', nargs='+', default=[], type='str2kvstr',
                 help='Calculates the ratio of id:val for each entry and and puts the result in the id setting.')
-        self.parser.add_argument('--ratio-copy', nargs='+', default=[], type='str2kvstr',
+        self.arg_group.add_argument('--ratio-copy', nargs='+', default=[], type='str2kvstr',
                 help='Calculates the ratio of id:val for each entry and creates a new item ratio_id for the ratio.')
 
 
@@ -73,7 +73,7 @@ class Normalize(BaseModule):
 
     def __init__(self):
         super(Normalize, self).__init__()
-        self.parser.add_argument('--normalize', nargs='+', default=[], type='str2kvstr',
+        self.arg_group.add_argument('--normalize', nargs='+', default=[], type='str2kvstr',
                                  help='Normalize an id to bin widths, unity, to the integral of another object or by a float using width/unity/obj_id or a float.')
 
     def __call__(self, config):
@@ -102,7 +102,7 @@ class NormalizeToGen(BaseModule):
 
     def __init__(self):
         super(NormalizeToGen, self).__init__()
-        self.parser.add_argument('--normalize-to-gen', nargs='+', default=[], type=str,
+        self.arg_group.add_argument('--normalize-to-gen', nargs='+', default=[], type=str,
                                  help='Id of 2d histograms which will be row-normalized.')
 
     def __call__(self, config):

@@ -29,76 +29,76 @@ class PlotModule(BaseModule):
     def __init__(self):
         super(PlotModule, self).__init__()
         # Plot object options
-        self.parser.add_argument('--label', type='str2kvstr', nargs='+', default=['__nolegend__'], action='setting',
+        self.arg_group.add_argument('--label', type='str2kvstr', nargs='+', default=['__nolegend__'], action='setting',
                                  help='Legend labels for each plot')
-        self.parser.add_argument('--color', type='str2kvstr', nargs='+',
+        self.arg_group.add_argument('--color', type='str2kvstr', nargs='+',
                                  default='auto', action='setting',
                                  help='Colors for each plot.')
-        self.parser.add_argument('--edgecolor', type='str2kvstr', nargs='+',
+        self.arg_group.add_argument('--edgecolor', type='str2kvstr', nargs='+',
                                  default='auto', action='setting',
                                  help='Edgecolor for each plot.')
-        self.parser.add_argument('--cmap', type='str2kvstr', nargs='+',
+        self.arg_group.add_argument('--cmap', type='str2kvstr', nargs='+',
                                  default='viridis', action='setting',
                                  help='Colormap used for heatmaps.')
-        self.parser.add_argument('--hatch', type='str2kvstr', nargs='+',
+        self.arg_group.add_argument('--hatch', type='str2kvstr', nargs='+',
                                  default=None, action='setting',
                                  help='Hatch for each plot')
-        self.parser.add_argument('--linestyle', type='str2kvstr', nargs='+',
+        self.arg_group.add_argument('--linestyle', type='str2kvstr', nargs='+',
                                  default='', action='setting',
                                  help='Linestyle for each plot')
-        self.parser.add_argument('--marker', type='str2kvstr', nargs='+',
+        self.arg_group.add_argument('--marker', type='str2kvstr', nargs='+',
                                  default='.', action='setting',
                                  help='Marker for errorbars for each plot.')
-        self.parser.add_argument('--x-err', type='str2kvbool', nargs='+', default=True, action='setting',
+        self.arg_group.add_argument('--x-err', type='str2kvbool', nargs='+', default=True, action='setting',
                                  help='Show x-errors.')
-        self.parser.add_argument('--y-err', type='str2kvbool', nargs='+', default=True, action='setting',
+        self.arg_group.add_argument('--y-err', type='str2kvbool', nargs='+', default=True, action='setting',
                                  help='Show y-errors.')
-        self.parser.add_argument('--alpha', type='str2kvfloat', nargs='+', default=1.0, action='setting',
+        self.arg_group.add_argument('--alpha', type='str2kvfloat', nargs='+', default=1.0, action='setting',
                                  help='Alpha value in plot.')
-        self.parser.add_argument('--capsize', type='str2kvint', nargs='+', default=0, action='setting',
+        self.arg_group.add_argument('--capsize', type='str2kvint', nargs='+', default=0, action='setting',
                                  help='Capsize of errorbars in plot.')
-        self.parser.add_argument('--zorder', type='str2kvfloat', nargs='+', default=1.0, action='setting',
+        self.arg_group.add_argument('--zorder', type='str2kvfloat', nargs='+', default=1.0, action='setting',
                                  help='Alpha value in plot.')
-        self.parser.add_argument('--style', default='errorbar', type='str2kvstr', nargs='+', action='setting',
+        self.arg_group.add_argument('--style', default='errorbar', type='str2kvstr', nargs='+', action='setting',
                                  help='Style of the plotted object.')
-        self.parser.add_argument('--step', type='str2kvbool', nargs='+', default=False, action='setting',
+        self.arg_group.add_argument('--step', type='str2kvbool', nargs='+', default=False, action='setting',
                                  help='Plot the data stepped at the xerr edges.')
-        self.parser.add_argument('--axis', type='str2kvstr', nargs='+', default='ax', action='setting',
+        self.arg_group.add_argument('--axis', type='str2kvstr', nargs='+', default='ax', action='setting',
                                  help='Plot the object in the following axis.')
 
         # Figure options
-        self.parser.add_argument('--fig-size', type=float, nargs=2, default=None, help='Size of figure.')
-        self.parser.add_argument('--output-path', default='plot.png', help='Path to output file.')
-        self.parser.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
+        self.arg_group.add_argument('--fig-size', type=float, nargs=2, default=None, help='Size of figure.')
+        self.arg_group.add_argument('--output-path', default='plot.png', help='Path to output file.')
+        self.arg_group.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
 
         # Axis options
-        self.parser.add_argument('--add-subplot', default=False, type='bool', help='Add subplot with name ax1.')
-        self.parser.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
-        self.parser.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
-        self.parser.add_argument('--y-subplot-lims', nargs=2, default=[None, None], help='Y limits of subplot.')
-        self.parser.add_argument('--z-lims', nargs=2, default=[None, None],
+        self.arg_group.add_argument('--add-subplot', default=False, type='bool', help='Add subplot with name ax1.')
+        self.arg_group.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
+        self.arg_group.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
+        self.arg_group.add_argument('--y-subplot-lims', nargs=2, default=[None, None], help='Y limits of subplot.')
+        self.arg_group.add_argument('--z-lims', nargs=2, default=[None, None],
                                  help='Z limits of plot (only used in 2d plots).')
 
-        self.parser.add_argument('--x-log', default=False, type='bool', help='Use log scale for x-axis.')
-        self.parser.add_argument('--y-log', default=False, type='bool', help='Use log scale for y-axis.')
-        self.parser.add_argument('--z-log', default=False, type='bool', help='Use log scale for z-axis.')
+        self.arg_group.add_argument('--x-log', default=False, type='bool', help='Use log scale for x-axis.')
+        self.arg_group.add_argument('--y-log', default=False, type='bool', help='Use log scale for y-axis.')
+        self.arg_group.add_argument('--z-log', default=False, type='bool', help='Use log scale for z-axis.')
 
-        self.parser.add_argument('--x-label', default='', help='Label of the x axis.')
-        self.parser.add_argument('--y-label', default='', help='Label of the y axis.')
-        self.parser.add_argument('--y-subplot-label', default='', help='Label of the y axis.')
-        self.parser.add_argument('--z-label', default='', help='Label of the z axis.')
+        self.arg_group.add_argument('--x-label', default='', help='Label of the x axis.')
+        self.arg_group.add_argument('--y-label', default='', help='Label of the y axis.')
+        self.arg_group.add_argument('--y-subplot-label', default='', help='Label of the y axis.')
+        self.arg_group.add_argument('--z-label', default='', help='Label of the z axis.')
 
-        self.parser.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
-        self.parser.add_argument('--legend-loc', default='best', help='Legend location.')
+        self.arg_group.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
+        self.arg_group.add_argument('--legend-loc', default='best', help='Legend location.')
 
-        self.parser.add_argument('--plot-id', default=r'^(?!_).*',
+        self.arg_group.add_argument('--plot-id', default=r'^(?!_).*',
                                  help='All ids matching are passed to plot-module. Default matches everything not starting with a underscore.')
 
-        self.parser.add_argument('--ax-texts', nargs='+', default=[],
+        self.arg_group.add_argument('--ax-texts', nargs='+', default=[],
                                  help='Add text to plot. Syntax is \'Text?1.0,1.0\' with loc 1.0,1.0')
-        self.parser.add_argument('--ax-vlines', nargs='+', default=[],
+        self.arg_group.add_argument('--ax-vlines', nargs='+', default=[],
                                  help='Add vertical lines to plot. Syntax is y_pos?color?lw.')
-        self.parser.add_argument('--ax-hlines', nargs='+', default=[],
+        self.arg_group.add_argument('--ax-hlines', nargs='+', default=[],
                                  help='Add horizontal lines to plot. Syntax is y_pos?color?lw.')
 
     def __call__(self, config):

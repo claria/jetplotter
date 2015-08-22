@@ -14,7 +14,7 @@ class ToTGraph(BaseModule):
 
     def __init__(self):
         super(ToTGraph, self).__init__()
-        self.parser.add_argument('--to-tgraph', nargs='+', default=[], help='')
+        self.arg_group.add_argument('--to-tgraph', nargs='+', default=[], help='')
 
     def __call__(self, config):
         for id in config['to_tgraph']:

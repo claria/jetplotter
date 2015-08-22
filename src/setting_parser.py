@@ -15,7 +15,7 @@ class SettingParser(argparse.ArgumentParser):
        all stored in a dict so different settings are automatically matched
        to the same id. 
 
-       Additionally the parser ensures that the actions are always called for the
+       Additionally the arg_group ensures that the actions are always called for the
        'setting' action, not only if the argument is supplied.
        Additionally a list 'provided_args' keeps a list of all args which were actually
        supplied on the command line.

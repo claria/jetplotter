@@ -8,7 +8,7 @@ log = logging.getLogger(__name__)
 class Multiply(BaseModule):
     def __init__(self):
         super(Multiply, self).__init__()
-        self.parser.add_argument('--multiply', nargs='+', type='str2kvstr', action='setting', help='')
+        self.arg_group.add_argument('--multiply', nargs='+', type='str2kvstr', action='setting', help='')
 
     def __call__(self, config):
         for id, val in config['multiply']:

@@ -9,9 +9,9 @@ from src.modules.base_module import BaseModule
 class RootModule(BaseModule):
     def __init__(self):
         super(RootModule, self).__init__()
-        self.parser.add_argument('-i', '--input', nargs='+', type='str2kvstr', action='setting',
+        self.arg_group.add_argument('-i', '--input', nargs='+', type='str2kvstr', action='setting',
                                  help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
-        self.parser.add_argument('--input_tgraph', nargs='+', type='str2kvstr', action='setting',
+        self.arg_group.add_argument('--input_tgraph', nargs='+', type='str2kvstr', action='setting',
                                  help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
 
     def __call__(self, config):

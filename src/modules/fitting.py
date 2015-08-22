@@ -1,10 +1,9 @@
-import numpy as np
+import logging
+
 import ROOT
 
 from src.modules.base_module import BaseModule
 from src.modules.helpers import get_tgrapherrors
-
-import logging
 log = logging.getLogger(__name__)
 
 
@@ -17,7 +16,7 @@ class FitObj(BaseModule):
 
     def __init__(self):
         super(FitObj, self).__init__()
-        self.parser.add_argument('--fit-obj', nargs='+', default=[], type='str2kvdict', help='')
+        self.arg_group.add_argument('--fit-obj', nargs='+', default=[], type='str2kvdict', help='')
 
     def __call__(self, config):
         for id, settings in config['fit_obj']:
@@ -58,7 +57,7 @@ class TriggerEfficiencyFit(BaseModule):
 
     def __init__(self):
         super(TriggerEfficiencyFit, self).__init__()
-        self.parser.add_argument('--trigger-efficiency-fit', nargs='+', default=[], type='str2kvdict', help='')
+        self.arg_group.add_argument('--trigger-efficiency-fit', nargs='+', default=[], type='str2kvdict', help='')
 
     def __call__(self, config):
         for id, settings in config['trigger_efficiency_fit']:

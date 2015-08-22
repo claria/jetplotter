@@ -15,7 +15,7 @@ class ResolutionAna(BaseModule):
 
     def __init__(self):
         super(ResolutionAna, self).__init__()
-        self.parser.add_argument('--resolution', nargs='+', default=[], help='')
+        self.arg_group.add_argument('--resolution', nargs='+', default=[], help='')
 
     def __call__(self, config):
         for id in config['resolution']:
