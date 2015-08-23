@@ -3,8 +3,8 @@ import logging
 import numpy as np
 import ROOT
 
-from src.modules.base_module import BaseModule
-from helpers import divide_tgraph, isfloat
+from modules.base_module import BaseModule
+from modules.helpers import divide_tgraph, isfloat
 
 log = logging.getLogger(__name__)
 

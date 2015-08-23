@@ -3,8 +3,8 @@ import sys
 import logging
 
 from module_handler import discover_modules
-from json_helpers import merge, read_config, save_config
-from setting_parser import SettingParser
+from util.config_tools import merge, read_config, save_config
+from util.setting_parser import SettingParser
 
 log = logging.getLogger(__name__)
 

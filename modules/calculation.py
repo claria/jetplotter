@@ -1,6 +1,6 @@
 import logging
 
-from src.modules.base_module import BaseModule
+from modules.base_module import BaseModule
 
 log = logging.getLogger(__name__)
 

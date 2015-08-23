@@ -4,12 +4,12 @@ import re
 import matplotlib
 import matplotlib.pyplot as plt
 
-from src.baseplot import BasePlot
+from util.baseplot import BasePlot
 
 BasePlot.init_matplotlib()
 
-from src.baseplot import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap, add_axis_text
-from src.modules.base_module import BaseModule
+from util.baseplot import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap, add_axis_text
+from modules.base_module import BaseModule
 
 import logging
 

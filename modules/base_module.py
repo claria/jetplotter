@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 import inspect
 
-from src.setting_parser import SettingParser
+from util.setting_parser import SettingParser
 
 
 class BaseModule(object):

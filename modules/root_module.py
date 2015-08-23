@@ -3,7 +3,7 @@ import ROOT
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
 
-from src.modules.base_module import BaseModule
+from modules.base_module import BaseModule
 
 
 class RootModule(BaseModule):
@@ -72,7 +72,7 @@ def get_root_file(root_filename, option="READ"):
 
 def normalize_to(histo, factor=1.0):
     histo.Sumw2()
-    histo.Scale(1.0 / histo.Integral())
+    histo.Scale(factor / histo.Integral())
 
 
 def normalize_to_histo(histo, ref_histo):

@@ -9,7 +9,7 @@ from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
 
 from root2mpl import MplObject1D, MplObject2D
-from viridis import viridis_cmap
+from util.viridis import viridis_cmap
 
 plt.register_cmap(cmap=viridis_cmap)
 

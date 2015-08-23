@@ -3,8 +3,8 @@ import logging
 
 import ROOT
 
-from src.modules.base_module import BaseModule
-from root_module import get_tgraphasymm_from_histos
+from modules.base_module import BaseModule
+from modules.root_module import get_tgraphasymm_from_histos
 
 log = logging.getLogger(__name__)
 

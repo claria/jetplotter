@@ -2,8 +2,8 @@ import logging
 
 import ROOT
 
-from src.modules.base_module import BaseModule
-from src.modules.helpers import get_tgrapherrors
+from modules.base_module import BaseModule
+from modules.helpers import get_tgrapherrors
 
 log = logging.getLogger(__name__)
 
