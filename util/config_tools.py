@@ -1,8 +1,10 @@
 import collections
-import copy
 import json
 import os
 import sys
+import logging
+
+log = logging.getLogger(__name__)
 
 
 def merge(a, b, precedence_keys=None):
@@ -31,10 +33,8 @@ def read_config(path):
     with open(path) as json_file:
         try:
             config = json.load(json_file, object_pairs_hook=collections.OrderedDict)
-        except ValueError as err:
-            # log.critical('Failed to parse json file {0}'.format(config_name))
-            print 'Failed to parse json file {0}'.format(path)
-            print err
+        except ValueError as e:
+            log.critical('Failed to parse json file {0}. Error message is \n{1}'.format(path, e))
             sys.exit(1)
     return config
 
@@ -49,14 +49,8 @@ class SimpleJsonEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-def save_config(config, path, indent=4):
+def write_config(config, path, indent=4):
     """Save json config to file."""
-    # Remove non serializiable objects from dict.
-    out_config = copy.deepcopy(config)
-
-    for id in out_config['objects'].keys():
-        if 'obj' in out_config['objects'][id]:
-            out_config['objects'][id].pop('obj')
 
     # Check that output directory exists
     directory = os.path.dirname(path)
@@ -64,14 +58,17 @@ def save_config(config, path, indent=4):
         os.makedirs(directory)
     # Write config.
     with open(path, "w") as f:
-        json.dump(out_config, f, skipkeys=True, indent=indent, sort_keys=True)
+        json.dump(config, f, skipkeys=True, indent=indent, sort_keys=True, cls=SimpleJsonEncoder)
 
     # log.debug("Config written to \"{0}\"".format(path))
-    print "Config written to \"{0}\"".format(path)
-    return path
+    log.info('Config written to \"{0}\"'.format(path))
 
 
 def print_config(config):
+    """ Print the config to the screen
+    :param config:
+    :return:
+    """
     print json.dumps(config, sort_keys=True, cls=SimpleJsonEncoder, indent=4)
 
 
