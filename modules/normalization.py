@@ -17,9 +17,11 @@ class Ratio(BaseModule):
     def __init__(self):
         super(Ratio, self).__init__()
         self.arg_group.add_argument('--ratio', nargs='+', default=[], type='str2kvstr',
-                                    help='Calculates the ratio of id:val for each entry and and puts the result in the id setting.')
+                                    help='Calculates the ratio of id:val for each entry '
+                                         'and puts the result in the id setting.')
         self.arg_group.add_argument('--ratio-copy', nargs='+', default=[], type='str2kvstr',
-                                    help='Calculates the ratio of id:val for each entry and creates a new item ratio_id for the ratio.')
+                                    help='Calculates the ratio of id:val for each entry '
+                                         'and creates a new item ratio_id for the ratio.')
 
     def __call__(self, config):
         for id, to in config['ratio']:
@@ -72,7 +74,8 @@ class Normalize(BaseModule):
     def __init__(self):
         super(Normalize, self).__init__()
         self.arg_group.add_argument('--normalize', nargs='+', default=[], type='str2kvstr',
-                                    help='Normalize an id to bin widths, unity, to the integral of another object or by a float using width/unity/obj_id or a float.')
+                                    help='Normalize an id to bin widths, unity, to the integral of another '
+                                         'object or by a float using width/unity/obj_id or a float.')
 
     def __call__(self, config):
         for id, val in config['normalize']:
@@ -96,12 +99,12 @@ class Normalize(BaseModule):
                 raise ValueError('There intended normalization could not be identified for {0}'.format(val))
 
 
-class NormalizeToGen(BaseModule):
-    """Normalizes a given TH2 to the sum in a row (y axis), e.g. to the number of true events."""
+class NormalizeToRow(BaseModule):
+    """Normalizes a given TH2 to the sum in a row (y axis), e.g. to the number of true events for a response matrix."""
 
     def __init__(self):
-        super(NormalizeToGen, self).__init__()
-        self.arg_group.add_argument('--normalize-to-gen', nargs='+', default=[], type=str,
+        super(NormalizeToRow, self).__init__()
+        self.arg_group.add_argument('--normalize-to-row', nargs='+', default=[], type=str,
                                     help='Id of 2d histograms which will be row-normalized.')
 
     def __call__(self, config):

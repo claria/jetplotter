@@ -34,7 +34,7 @@ class FitObj(BaseModule):
             xmin, xmax = config['objects'][id]['obj'].GetXaxis().GetXmin(), config['objects'][id][
                 'obj'].GetXaxis().GetXmax()
             # Do the fit
-            if not 'N' in options:
+            if 'N' not in options:
                 options += 'N'
             print options
             config['objects'][id]['obj'].Fit(fcn_name, options)
@@ -66,7 +66,6 @@ class TriggerEfficiencyFit(BaseModule):
 
             eff_fcn = ROOT.TF1("eff_fcn", "(1./2.)*(1 + TMath::Erf((x-[0])/(sqrt(2)*[1])))")
             # eff_fcn = ROOT.TF1("eff_fcn", "sqrt(TMath::Sign(1.,[0])*(([0]/x)**2) + (([1]**2)/x)*(x**[2]) + [3]**2)")
-
 
             # threshold = float(eff.GetName().split('_')[1].replace('PFJET',''))
             print 'Fitting id {0}'.format(id)

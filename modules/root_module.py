@@ -7,12 +7,20 @@ from modules.base_module import BaseModule
 
 
 class RootModule(BaseModule):
+    """ Input module to load histograms and graphs from a root file.
+
+        This modules runs at the beginning to load objects from root files and puts these objects into the config dict.
+        Therefore you always have to give the id in which the object will be stored. The --input-graph options has a few
+        more options to construct a TGraphAsymmErrors from multiple histograms.
+    """
     def __init__(self):
         super(RootModule, self).__init__()
         self.arg_group.add_argument('-i', '--input', nargs='+', type='str2kvstr', action='setting',
-                                    help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+                                    help='Path to root file or objects in root files with syntax '
+                                         'id:rootfile?path/to/object.')
         self.arg_group.add_argument('--input_tgraph', nargs='+', type='str2kvstr', action='setting',
-                                    help='Path to root file or objects in root files with syntax rootfile:path/to/object.')
+                                    help='Path to root file or objects in root files with '
+                                         'syntax id:rootfile?path/to/object.')
 
     def __call__(self, config):
         for id, item in config['objects'].iteritems():
