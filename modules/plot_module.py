@@ -8,12 +8,13 @@ from util.baseplot import BasePlot
 
 BasePlot.init_matplotlib()
 
-from util.baseplot import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap, add_axis_text
+from util.baseplot import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap
 from modules.base_module import BaseModule
 
 import logging
 
 from src.lookup_dict import get_lookup_val
+from util.config_tools import parse_optionstring
 
 log = logging.getLogger(__name__)
 
@@ -215,48 +216,40 @@ class Plot(BasePlot):
         # Add axis texts
         for text in self.texts:
             text = get_lookup_val('ax_texts', text)
-            if not '?' in text:
-                loc = '0.0,0.0'
-            else:
-                text, loc = text.rsplit('?', 1)
-            add_axis_text(self.ax, text, loc=loc)
+            default_text_kwargs = {'x': 0.05, 'y': 0.95, 'va': 'top', 'ha': 'left'}
+            text, text_kwargs = parse_optionstring(text)
+            default_text_kwargs.update(text_kwargs)
+            self.ax.text(s=text, transform=self.ax.transAxes, **default_text_kwargs)
 
         # Add horizontal lines to ax
         for hline in self.hlines:
-            ypos, color, lw = hline.split('?')
-            self.ax.axhline(y=float(ypos), color=color, lw=lw, zorder=0.99)
+            ypos, hline_kwargs = parse_optionstring(hline)
+            self.ax.axhline(y=float(ypos), **hline_kwargs)
+
         # Add vertical lines to ax
         for vline in self.vlines:
-            xpos, color, lw = vline.split('?')
-            self.ax.axvline(y=float(ypos), color=color, lw=lw)
+            xpos, vline_kwargs = parse_optionstring(vline)
+            self.ax.axvline(x=float(xpos), **vline_kwargs)
 
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
 
         if self.ax1:
             self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
-        # a specified position of the label can be set via label?centered
-        x_pos = self.x_label.rsplit('?', 1)[-1].lower()
-        if x_pos == 'center':
-            x_pos = {'position': (0.5, 0.0), 'va': 'top', 'ha': 'center'}
-            self.x_label = self.x_label.rsplit('?', 1)[0]
-        else:
-            x_pos = {'position': (1.0, 0.0), 'va': 'top', 'ha': 'right'}
-        if self.ax1:
-            self.ax1.set_xlabel(self.x_label, **x_pos)
-        else:
-            self.ax.set_xlabel(self.x_label, **x_pos)
 
-        y_pos = self.y_label.rsplit('?', 1)[-1].lower()
-        if y_pos == 'center':
-            y_pos = {'position': (0.0, 0.5), 'va': 'center', 'ha': 'right'}
-            self.y_label = self.y_label.rsplit('?', 1)[0]
+        # a specified position of the label can be set via label?json_dict
+        x_label, x_label_kwargs = parse_optionstring(self.x_label)
+        if self.ax1:
+            self.ax1.set_xlabel(x_label, **x_label_kwargs)
         else:
-            y_pos = {'position': (0.0, 1.0), 'va': 'top', 'ha': 'right'}
-        self.ax.set_ylabel(self.y_label, **y_pos)
+            self.ax.set_xlabel(x_label, **x_label_kwargs)
+
+        y_label, y_label_kwargs = parse_optionstring(self.y_label)
+        self.ax.set_ylabel(y_label, **y_label_kwargs)
 
         if self.ax1:
-            self.ax1.set_ylabel(self.y_subplot_label)
+            y_subplot_label, y_subplot_label_kwargs = parse_optionstring(self.y_subplot_label)
+            self.ax1.set_ylabel(y_subplot_label, **y_subplot_label_kwargs)
 
         self.ax.set_xscale('log' if self.x_log else 'linear')
         if self.y_log:

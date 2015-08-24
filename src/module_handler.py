@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 def discover_modules():
     """Detect all modules in modules_dirs and add them to avalaible modules."""
 
-    modules_dirs = [os.path.join(os.path.dirname(__file__), 'modules')]
+    modules_dirs = [os.path.join(os.path.dirname(__file__), '../modules')]
     # Loop over all possible module files
     matches = []
     for module_dir in modules_dirs:

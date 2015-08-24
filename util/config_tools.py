@@ -7,6 +7,26 @@ import logging
 log = logging.getLogger(__name__)
 
 
+def parse_optionstring(s):
+    """Splits the string at last occurence of '?' and tries to parse everything
+       after it into a dict.
+    """
+    try:
+        label, kwargs = s.rsplit('?', 1)
+    except ValueError as e:
+        log.debug('Could not split {0}'.format(s))
+        log.debug(e)
+        return s, {}
+    if kwargs:
+        try:
+            kwargs = json.loads(kwargs)
+        except ValueError as e:
+            log.debug('Failed parsing {0}.'.format(kwargs))
+            log.debug(e)
+            return s, {}
+    return label, kwargs
+
+
 def merge(a, b, precedence_keys=None):
     """Merges b into a, but only if key of b is not in a. If key of b in list precedence_keys,
        then the value of b overrides the value of a."""
@@ -41,7 +61,6 @@ def read_config(path):
 
 class SimpleJsonEncoder(json.JSONEncoder):
     """JSON Encoder which replaces not serializiable objects like root objects with null."""
-
     def default(self, obj):
         if not isinstance(obj, (dict, list, tuple, str, unicode, int, long, float, bool)):
             return 'null'
@@ -52,7 +71,7 @@ class SimpleJsonEncoder(json.JSONEncoder):
 def write_config(config, path, indent=4):
     """Save json config to file."""
 
-    # Check that output directory exists
+    # Create output directory if not existing
     directory = os.path.dirname(path)
     if directory and not os.path.exists(directory):
         os.makedirs(directory)
@@ -66,8 +85,6 @@ def write_config(config, path, indent=4):
 
 def print_config(config):
     """ Print the config to the screen
-    :param config:
-    :return:
     """
     print json.dumps(config, sort_keys=True, cls=SimpleJsonEncoder, indent=4)
 

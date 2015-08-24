@@ -1,69 +1,79 @@
 {
-  "add_subplot": false,
-  "ana_modules": [],
-  "argv": "./plotter.py -i /home/aem/DATA.root?yb0ys0/h_ptavg",
-  "ax_hlines": [],
-  "ax_texts": [],
-  "ax_vlines": [],
-  "fig_size": null,
-  "input_modules": [
-    "RootModule"
-  ],
-  "legend_loc": "best",
-  "list_modules": false,
-  "load_config": null,
-  "log_level": "info",
-  "objects": {
-    "_default": {
-      "alpha": 1.0,
-      "axis": "ax",
-      "capsize": 0,
-      "cmap": "viridis",
-      "color": "auto",
-      "edgecolor": "auto",
-      "input": "/home/aem/DATA.root?yb0ys0/h_ptavg",
-      "label": "__nolegend__",
-      "linestyle": "",
-      "marker": ".",
-      "step": false,
-      "style": "errorbar",
-      "x_err": true,
-      "y_err": true,
-      "zorder": 1.0
-    }
-  },
-  "output_modules": [
-    "PlotModule"
-  ],
-  "output_path": "plot.png",
-  "output_prefix": "plots/",
-  "plot_id": "^(?!_).*",
-  "print_config": false,
-  "provided_args": [
-    "input"
-  ],
-  "show_legend": true,
-  "x_label": "",
-  "x_lims": [
-    null,
-    null
-  ],
-  "x_log": false,
-  "y_label": "",
-  "y_lims": [
-    null,
-    null
-  ],
-  "y_log": false,
-  "y_subplot_label": "",
-  "y_subplot_lims": [
-    null,
-    null
-  ],
-  "z_label": "",
-  "z_lims": [
-    null,
-    null
-  ],
-  "z_log": false
+    "add_subplot": false,
+    "ana_modules": [],
+    "argv": "./plotter.py -i id_0:~/DATA.root?yb0ys0/h_ptavg --x-label hallo?_right_ --y-label fetzig?_center_ --ax-hlines 0.5E5?{\"color\":\"black\", \"lw\" : 1.0 } --ax-texts hallo?_upperleft_",
+    "ax_hlines": [
+        "0.5E5?{\"color\":\"black\", \"lw\" : 1.0 }"
+    ],
+    "ax_texts": [
+        "hallo?_upperleft_"
+    ],
+    "ax_vlines": [],
+    "fig_size": null,
+    "input_modules": [
+        "RootModule"
+    ],
+    "legend_loc": "best",
+    "list_modules": false,
+    "load_config": null,
+    "log_level": "info",
+    "objects": {
+        "_default": {
+            "alpha": 1.0,
+            "axis": "ax",
+            "capsize": 0,
+            "cmap": "viridis",
+            "color": "auto",
+            "edgecolor": "auto",
+            "label": "__nolegend__",
+            "linestyle": "",
+            "marker": ".",
+            "step": false,
+            "style": "errorbar",
+            "x_err": true,
+            "y_err": true,
+            "zorder": 1.0
+        },
+        "id_0": {
+            "input": "~/DATA.root?yb0ys0/h_ptavg"
+        }
+    },
+    "output_modules": [
+        "PlotModule"
+    ],
+    "output_path": "plot.png",
+    "output_prefix": "plots/",
+    "plot_id": "^(?!_).*",
+    "print_config": false,
+    "provided_args": [
+        "input",
+        "x_label",
+        "y_label",
+        "ax_texts",
+        "ax_hlines"
+    ],
+    "show_legend": true,
+    "x_label": "hallo?_right_",
+    "x_lims": [
+        null,
+        null
+    ],
+    "x_log": false,
+    "y_label": "fetzig?_center_",
+    "y_lims": [
+        null,
+        null
+    ],
+    "y_log": false,
+    "y_subplot_label": "",
+    "y_subplot_lims": [
+        null,
+        null
+    ],
+    "z_label": "",
+    "z_lims": [
+        null,
+        null
+    ],
+    "z_log": false
 }

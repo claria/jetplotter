@@ -3,7 +3,7 @@ import sys
 import logging
 
 from module_handler import discover_modules
-from util.config_tools import merge, read_config, save_config
+from util.config_tools import merge, read_config, write_config
 from util.setting_parser import SettingParser
 
 log = logging.getLogger(__name__)
@@ -39,7 +39,7 @@ class Plotter(object):
         # and can be saved to disk.
         if config.pop('store_json'):
             path = os.path.join(config['output_prefix'], config['output_path']).replace('.png', '.json')
-            save_config(config, path)
+            write_config(config, path)
 
         # Construct path in which all the modules are run.
         path = self._input_modules + self._ana_modules + self._output_modules
