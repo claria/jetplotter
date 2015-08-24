@@ -42,7 +42,7 @@ class Plotter(object):
             write_config(config, path)
 
         # Construct path in which all the modules are run.
-        path = self._input_modules + self._ana_modules + self._output_modules
+        path = [self._all_modules[name]() for name in config['input_modules'] + config['ana_modules'] + config['output_modules']]
 
         for module in path:
             log.info("Processing {0}...".format(module.label()))
@@ -77,11 +77,7 @@ class Plotter(object):
         # Parse also the modules to add their parsers
         args = vars(base_parser.parse_known_args()[0])
 
-        # TODO: Move block to separate function
-        self._input_modules = [self._all_modules[name]() for name in args['input_modules']]
-        self._ana_modules = [self._all_modules[name]() for name in args['ana_modules']]
-        self._output_modules = [self._all_modules[name]() for name in args['output_modules']]
-        module_parsers = [module.parser for module in self._input_modules + self._ana_modules + self._output_modules]
+        module_parsers = [self._all_modules[name]().parser for name in args['input_modules'] + args['ana_modules'] +args['output_modules']]
 
         # Additional arguments for complete parser
         base_parser_group.add_argument("-p", "--print-config", default=False, action="store_true",
