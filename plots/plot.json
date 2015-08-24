@@ -1,79 +1,116 @@
 {
-    "add_subplot": false,
-    "ana_modules": [],
-    "argv": "./plotter.py -i id_0:~/DATA.root?yb0ys0/h_ptavg --x-label hallo?_right_ --y-label fetzig?_center_ --ax-hlines 0.5E5?{\"color\":\"black\", \"lw\" : 1.0 } --ax-texts hallo?_upperleft_",
-    "ax_hlines": [
-        "0.5E5?{\"color\":\"black\", \"lw\" : 1.0 }"
-    ],
-    "ax_texts": [
-        "hallo?_upperleft_"
-    ],
-    "ax_vlines": [],
-    "fig_size": null,
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plotter.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg --ana-modules Ratio --ratio reco:gen recounf:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf --x-log True --x-lims 50. 3000.", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "fig_size": null, 
     "input_modules": [
         "RootModule"
-    ],
-    "legend_loc": "best",
-    "list_modules": false,
-    "load_config": null,
-    "log_level": "info",
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": null, 
+    "log_level": "info", 
     "objects": {
         "_default": {
-            "alpha": 1.0,
-            "axis": "ax",
-            "capsize": 0,
-            "cmap": "viridis",
-            "color": "auto",
-            "edgecolor": "auto",
-            "label": "__nolegend__",
-            "linestyle": "",
-            "marker": ".",
-            "step": false,
-            "style": "errorbar",
-            "x_err": true,
-            "y_err": true,
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
             "zorder": 1.0
-        },
-        "id_0": {
-            "input": "~/DATA.root?yb0ys0/h_ptavg"
+        }, 
+        "gen": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg", 
+            "label": "Gen"
+        }, 
+        "mgp6gen": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg"
+        }, 
+        "mgp6reco": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg"
+        }, 
+        "reco": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg", 
+            "label": "Reco"
+        }, 
+        "recounf": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg", 
+            "label": "Reco Unf"
         }
-    },
+    }, 
     "output_modules": [
         "PlotModule"
-    ],
-    "output_path": "plot.png",
-    "output_prefix": "plots/",
-    "plot_id": "^(?!_).*",
-    "print_config": false,
+    ], 
+    "output_path": "plot.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
     "provided_args": [
-        "input",
-        "x_label",
-        "y_label",
-        "ax_texts",
-        "ax_hlines"
-    ],
-    "show_legend": true,
-    "x_label": "hallo?_right_",
+        "ana_modules", 
+        "input", 
+        "ratio", 
+        "label", 
+        "x_lims", 
+        "x_log"
+    ], 
+    "ratio": [
+        [
+            "reco", 
+            "gen"
+        ], 
+        [
+            "recounf", 
+            "gen"
+        ], 
+        [
+            "gen", 
+            "gen"
+        ], 
+        [
+            "mgp6reco", 
+            "mgp6gen"
+        ], 
+        [
+            "mgp6gen", 
+            "mgp6gen"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "x_label": "", 
     "x_lims": [
-        null,
-        null
-    ],
-    "x_log": false,
-    "y_label": "fetzig?_center_",
+        "50.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "", 
     "y_lims": [
-        null,
+        null, 
         null
-    ],
-    "y_log": false,
-    "y_subplot_label": "",
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
     "y_subplot_lims": [
-        null,
+        null, 
         null
-    ],
-    "z_label": "",
+    ], 
+    "z_label": "", 
     "z_lims": [
-        null,
+        null, 
         null
-    ],
+    ], 
     "z_log": false
 }

@@ -6,10 +6,10 @@
     ], 
     "argv": "./plotter.py -l plots/np_factors.json", 
     "ax_hlines": [
-        "1.0?black?2.0"
+        "1.0?{\"color\":\"black\",\"lw\":2.0}"
     ], 
     "ax_texts": [
-        "_yb2ys0_?0.05,0.92", 
+        "_yb2ys0_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
@@ -41,7 +41,9 @@
             }
         ]
     ], 
-    "input_modules": [], 
+    "input_modules": [
+        "RootModule"
+    ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": "plots/np_factors_yb2ys0.json", 
@@ -174,7 +176,9 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [], 
+    "output_modules": [
+        "PlotModule"
+    ], 
     "output_path": "np_factors_yb2ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 

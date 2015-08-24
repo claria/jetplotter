@@ -5,7 +5,7 @@
     ], 
     "argv": "./plotter.py -l plots/ratio_reco.json", 
     "ax_hlines": [
-        "1.0?black?2.0"
+        "1.0?{\"color\":\"black\",\"lw\":2.0}"
     ], 
     "ax_texts": [
         "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 

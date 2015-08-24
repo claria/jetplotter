@@ -7,10 +7,10 @@
     ], 
     "argv": "./plotter.py -l plots/ratio_to_data.json", 
     "ax_hlines": [
-        "1.0?black?2.0"
+        "1.0?{\"color\":\"black\",\"lw\":2.0}"
     ], 
     "ax_texts": [
-        "_yb0ys0_?0.05,0.92", 
+        "_yb0ys0_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
@@ -226,7 +226,7 @@
         "3000."
     ], 
     "x_log": true, 
-    "y_label": "Ratio to CT10?center", 
+    "y_label": "Ratio to CT10?_center_", 
     "y_lims": [
         "0.0", 
         "2.0"

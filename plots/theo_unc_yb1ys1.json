@@ -3,10 +3,10 @@
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_xs pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_pdfunc_l pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_pdfunc_u scunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_scunc_l scunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_scunc_u --ana-modules Ratio --ratio pdfunc_l:nlo pdfunc_u:nlo scunc_l:nlo scunc_u:nlo nlo:nlo --style nlo:line pdfunc_u:line pdfunc_l:line scunc_u:line scunc_l:line --step nlo:True pdfunc_u:True pdfunc_l:True scunc_u:True scunc_l:True --color pdfunc_l:_color1_ pdfunc_u:_color1_ scunc_l:_color2_ scunc_u:_color2_ --label pdfunc_l:PDF Uncertainty scunc_l:Scale Uncertainty --legend-loc upper right --x-lims 74. 3000. --x-log True --y-lims 0.5 2.0 --x-label _ptavg_ --y-label Fractional Uncertainty?center --ax-texts _yb1ys1_?0.05,0.92 _cmsp_ _20fb_ --output-path theo_unc_yb1ys1.png", 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_xs pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_pdfunc_l pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_pdfunc_u scunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_scunc_l scunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_scunc_u --ana-modules Ratio --ratio pdfunc_l:nlo pdfunc_u:nlo scunc_l:nlo scunc_u:nlo nlo:nlo --style nlo:line pdfunc_u:line pdfunc_l:line scunc_u:line scunc_l:line --step nlo:True pdfunc_u:True pdfunc_l:True scunc_u:True scunc_l:True --color pdfunc_l:_color1_ pdfunc_u:_color1_ scunc_l:_color2_ scunc_u:_color2_ --label pdfunc_l:PDF Uncertainty scunc_l:Scale Uncertainty --legend-loc upper right --x-lims 74. 3000. --x-log True --y-lims 0.5 2.0 --x-label _ptavg_ --y-label Fractional Uncertainty?_center_ --ax-texts _yb1ys1_?_upperleft_ _cmsp_ _20fb_ --output-path theo_unc_yb1ys1.png", 
     "ax_hlines": [], 
     "ax_texts": [
-        "_yb1ys1_?0.05,0.92", 
+        "_yb1ys1_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
@@ -182,7 +182,7 @@
         "3000."
     ], 
     "x_log": true, 
-    "y_label": "Fractional Uncertainty?center", 
+    "y_label": "Fractional Uncertainty?_center_", 
     "y_lims": [
         "0.5", 
         "2.0"

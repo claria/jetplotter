@@ -6,7 +6,7 @@
     "argv": "./plotter.py -l plots/res_matrix_ptavg_normalized_yb1ys0.json", 
     "ax_hlines": [], 
     "ax_texts": [
-        "_yb1ys0_?0.05,0.92"
+        "_yb1ys0_?_upperleft_"
     ], 
     "ax_vlines": [], 
     "fig_size": null, 

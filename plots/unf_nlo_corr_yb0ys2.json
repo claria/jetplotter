@@ -1,10 +1,10 @@
 {
     "add_subplot": false, 
     "ana_modules": [], 
-    "argv": "./plotter.py -i corr:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/corr_h_ptavg --style corr:heatmap --cmap corr:seismic --z-lims -1.0 1.0 --x-label Reco _ptavg_ --y-label Gen _ptavg_ --z-label Correlation Factor --ax-texts _yb0ys2_?0.05,0.95 --x-log True --y-log True --x-lims 74. 3000. --y-lims 74. 3000. --output-path unf_nlo_corr_yb0ys2.png", 
+    "argv": "./plotter.py -i corr:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/corr_h_ptavg --style corr:heatmap --cmap corr:seismic --z-lims -1.0 1.0 --x-label Reco _ptavg_ --y-label Gen _ptavg_ --z-label Correlation Factor --ax-texts _yb0ys2_?_upperleft_ --x-log True --y-log True --x-lims 74. 3000. --y-lims 74. 3000. --output-path unf_nlo_corr_yb0ys2.png", 
     "ax_hlines": [], 
     "ax_texts": [
-        "_yb0ys2_?0.05,0.95"
+        "_yb0ys2_?_upperleft_"
     ], 
     "ax_vlines": [], 
     "fig_size": null, 
