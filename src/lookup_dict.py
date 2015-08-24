@@ -13,8 +13,8 @@ lookup_dict = {
     'y_label': {
         '_ptavg_': '$p_{\mathrm{T,avg}}$ (GeV)',
         '_y_star_': '$y^*$',
-        '_top_': '{"position" : [0.0,1.0], "va" : "bottom", "ha" : "right"}',
-        '_center_': '{"position" : [0.0,0.5], "va" : "bottom", "ha" : "center"}'
+        '_top_': '{"position" : [0.0,1.0], "va" : "top", "ha" : "right"}',
+        '_center_': '{"position" : [0.0,0.5], "va" : "center", "ha" : "right"}'
 
     },
     'label': {
