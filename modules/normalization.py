@@ -108,7 +108,7 @@ class NormalizeToRow(BaseModule):
                                     help='Id of 2d histograms which will be row-normalized.')
 
     def __call__(self, config):
-        for id in config['normalize_to_gen']:
+        for id in config['normalize_to_row']:
             if not id in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             obj = config['objects'][id]['obj']
