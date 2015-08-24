@@ -60,7 +60,7 @@
     "provided_args": [
         "help", 
         "input", 
-        "normalize_to_gen", 
+        "normalize_to_row", 
         "style", 
         "output_path", 
         "x_lims", 
