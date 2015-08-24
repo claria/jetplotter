@@ -18,6 +18,7 @@ class ResolutionAna(BaseModule):
         self.arg_group.add_argument('--resolution', nargs='+', default=[], help='')
 
     def __call__(self, config):
+        ROOT.TVirtualFitter.SetMaxIterations(9999)
         for id in config['resolution']:
             if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
@@ -59,18 +60,15 @@ class ResolutionAna(BaseModule):
             config['objects'].setdefault(id_res, {})
             config['objects'][id_res]['obj'] = resolution_graph
 
-            # res_fcn = ROOT.TF1("res_fcn", "sqrt(([0]/x)**2 + (([1]**2)/x) + [2]**2)")
-            res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x) + [2]**2)")
-            # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*(([0]/x)**2) + (([1]**2)/x)*(x**[2]) + [3]**2)")
-            res_fcn.SetParameters(-1., 1.0, 0.01)
-            # res_fcn.SetParameters(1., 1., 1., 1.,)
-            res_fcn.SetRange(00., 999999.)
+            res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x)*(x**[3]) + [2]**2)")
+            # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x) + [2]**2)")
+            # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]**2) + ((x)**[1])*([2]**2/x) + [3]**2)")
+            res_fcn.SetParameters(5., 1.0, 0.03, -0.5)
+            res_fcn.SetRange(0., 9999.)
             print 'Fitting id {0}'.format(id_res)
             res = resolution_graph.Fit("res_fcn", "RSOEX0", "")
-            # res = resolution_graph.Fit("res_fcn", "RSMO", "")
-            # graph.Write()
             if res.Get() == None or res.Status() != 0:
-                continue
+                raise Exception('Fit Failed')
             xmin, xmax = resolution_graph.GetXaxis().GetXmin(), resolution_graph.GetXaxis().GetXmax()
             vfitter = ROOT.TVirtualFitter.GetFitter()
             res_fcn.SetNpx(1000)
