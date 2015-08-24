@@ -3,7 +3,7 @@
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg --ana-modules Ratio --ratio reco:gen recounf:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf --x-log True --x-lims 50. 3000. --y-lims 0.0 3.0", 
+    "argv": "./plotter.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg --ana-modules Ratio --ratio reco:gen recounf:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf --x-log True --x-lims 50. 3000. --y-lims 0.0 3.0 --output-path reco_to_gen_nlo_smeared_yb0ys0.png", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
@@ -54,7 +54,7 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "plot.png", 
+    "output_path": "reco_to_gen_nlo_smeared_yb0ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
@@ -63,6 +63,7 @@
         "input", 
         "ratio", 
         "label", 
+        "output_path", 
         "x_lims", 
         "y_lims", 
         "x_log"
