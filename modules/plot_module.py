@@ -22,7 +22,7 @@ log = logging.getLogger(__name__)
 class PlotModule(BaseModule):
     """Plotting output module for 1d and 2d plots using the matplotlib library. 
 
-       All objects plotted are read from the \'objects\' dict in the configs. You can
+       All objects plotted are read from the 'objects' dict in the configs. You can
        use all the id based settings to manipulate the appearance of the objects and the
        standard arguments to adapt the axis and figure.
     """
@@ -238,13 +238,17 @@ class Plot(BasePlot):
             self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
 
         # a specified position of the label can be set via label?json_dict
-        x_label, x_label_kwargs = parse_optionstring(self.x_label)
+        x_label_kwargs = { 'position' : (1.0, 0.0), 'ha' : 'right', 'va' : 'top'}
+        x_label, user_x_label_kwargs = parse_optionstring(self.x_label)
+        x_label_kwargs.update(user_x_label_kwargs)
         if self.ax1:
             self.ax1.set_xlabel(x_label, **x_label_kwargs)
         else:
             self.ax.set_xlabel(x_label, **x_label_kwargs)
 
-        y_label, y_label_kwargs = parse_optionstring(self.y_label)
+        y_label_kwargs = { 'position' : (0.0, 1.0), 'ha' : 'right', 'va' : 'top'}
+        y_label, user_y_label_kwargs = parse_optionstring(self.y_label)
+        y_label_kwargs.update(user_y_label_kwargs)
         self.ax.set_ylabel(y_label, **y_label_kwargs)
 
         if self.ax1:
