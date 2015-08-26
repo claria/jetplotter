@@ -36,6 +36,32 @@ class RootModule(BaseModule):
                 item['obj'] = ROOT.TGraphAsymmErrors(get_root_object(item['input']))
 
 
+class RootOutputModule(BaseModule):
+    def __init__(self):
+        super(RootOutputModule, self).__init__()
+        self.arg_group.add_argument('--root-output', default=None, nargs='+', type='str',
+                                    help='List of ids, which objects will be written out to a root file.')
+
+    def __call__(self, config):
+        if config['root-output']:
+            ids = config['root-output']
+        else:
+            ids = config['objects'].keys()
+
+        root_output_filename = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[0] + '.root'
+
+        f = get_root_file(root_output_filename, "RECREATE")
+        f.cd('/')
+
+        for id in ids:
+            if id not in config['objects']:
+                raise ValueError('Id {0} not found within objects. Check your supplied ids.'.format(id))
+            config[objects][id]['obj'].Write(id)
+
+        f.Close()
+
+
+
 def get_root_objects(input, option=None, **kwargs):
     if input is None:
         input = []
