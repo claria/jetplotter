@@ -83,7 +83,7 @@
             "edgecolor": "auto", 
             "id": "genmgp6", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg", 
-            "label": "MG+P6", 
+            "label": "Gen MG+P6", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
