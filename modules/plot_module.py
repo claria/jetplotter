@@ -231,9 +231,6 @@ class Plot(BasePlot):
             xpos, vline_kwargs = parse_optionstring(vline)
             self.ax.axvline(x=float(xpos), **vline_kwargs)
 
-        self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
-        self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
-
         if self.ax1:
             self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
 
@@ -260,6 +257,9 @@ class Plot(BasePlot):
             self.ax.set_yscale('log', nonposy='clip')
         else:
             self.ax.set_yscale('linear')
+
+        self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
+        self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
 
         if self.show_legend:
             handles, labels = self.ax.get_legend_handles_labels()
