@@ -75,7 +75,7 @@ class BasePlot(object):
         """
         Initialize matplotlib with rc settings.
         """
-        # figure
+        # Figure
         matplotlib.rcParams['figure.figsize'] = 10., 10.
 
         matplotlib.rcParams['lines.linewidth'] = 2
@@ -84,12 +84,12 @@ class BasePlot(object):
         matplotlib.rcParams['font.sans-serif'] = ['Arial', 'Bitstream Vera Sans', 'stixsans']
         matplotlib.rcParams['font.monospace'] = 'Computer Modern Typewriter'
         matplotlib.rcParams['font.style'] = 'normal'
-        matplotlib.rcParams['mathtext.fontset'] = 'stixsans'
+        # matplotlib.rcParams['mathtext.fontset'] = 'stixsans'
         matplotlib.rcParams['font.size'] = 20.
         matplotlib.rcParams['legend.fontsize'] = 14.
-        matplotlib.rcParams['text.usetex'] = False
-        # matplotlib.rc('text.latex', preamble=r'\usepackage{helvet},\usepackage{sfmath}')
-        # matplotlib.rc('text.latex', preamble=r'\usepackage{helvet}')
+        # matplotlib.rcParams['text.usetex'] = False
+        matplotlib.rcParams['text.usetex'] = True
+        matplotlib.rc('text.latex', preamble=r'\usepackage{helvet},\usepackage{sfmath}')
         # Axes
         matplotlib.rcParams['axes.linewidth'] = 2
         matplotlib.rcParams['axes.labelsize'] = 20
