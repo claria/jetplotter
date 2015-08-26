@@ -1,11 +1,14 @@
 {
     "add_subplot": false, 
     "ana_modules": [
+        "Normalize", 
         "Ratio"
     ], 
-    "argv": "./plotter.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg --ana-modules Ratio --ratio reco:gen recounf:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf --x-log True --x-lims 50. 3000. --y-lims 0.0 3.0 --output-path reco_to_gen_nlo_smeared_yb0ys0.png", 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg --ana-modules Normalize Ratio --normalize reco:width gen:width recounf:width mgp6reco:width mgp6gen:width nlo:gen --ratio reco:gen recounf:gen nlo:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf mgp6gen:MG+P6 Gen mgp6reco:MG+P6 Reco nlo:NLO --x-log True --x-lims 50. 3000. --y-lims 0.0 3.0 --output-path reco_to_gen_nlo_smeared_yb0ys0.png --x-label _ptavg_ --y-label Ratio to Gen?_center_ --ax-texts _yb0ys0_?_upperleft_ --zorder reco:100", 
     "ax_hlines": [], 
-    "ax_texts": [], 
+    "ax_texts": [
+        "_yb0ys0_?_upperleft_"
+    ], 
     "ax_vlines": [], 
     "fig_size": null, 
     "input_modules": [
@@ -13,8 +16,34 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": null, 
+    "load_config": "plots/reco_to_gen_nlo_smeared_yb0ys0.json", 
     "log_level": "info", 
+    "normalize": [
+        [
+            "reco", 
+            "width"
+        ], 
+        [
+            "gen", 
+            "width"
+        ], 
+        [
+            "recounf", 
+            "width"
+        ], 
+        [
+            "mgp6reco", 
+            "width"
+        ], 
+        [
+            "mgp6gen", 
+            "width"
+        ], 
+        [
+            "nlo", 
+            "gen"
+        ]
+    ], 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -37,18 +66,25 @@
             "label": "Gen"
         }, 
         "mgp6gen": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg"
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg", 
+            "label": "MG+P6 Gen"
         }, 
         "mgp6reco": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg"
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg", 
+            "label": "MG+P6 Reco"
+        }, 
+        "nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs", 
+            "label": "NLO"
         }, 
         "reco": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg", 
-            "label": "Reco"
+            "label": "Reco", 
+            "zorder": 100.0
         }, 
         "recounf": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg", 
-            "label": "Reco"
+            "label": "Reco Unf"
         }
     }, 
     "output_modules": [
@@ -61,12 +97,17 @@
     "provided_args": [
         "ana_modules", 
         "input", 
+        "normalize", 
         "ratio", 
         "label", 
+        "zorder", 
         "output_path", 
         "x_lims", 
         "y_lims", 
-        "x_log"
+        "x_log", 
+        "x_label", 
+        "y_label", 
+        "ax_texts"
     ], 
     "ratio": [
         [
@@ -75,6 +116,10 @@
         ], 
         [
             "recounf", 
+            "gen"
+        ], 
+        [
+            "nlo", 
             "gen"
         ], 
         [
@@ -92,13 +137,13 @@
     ], 
     "ratio_copy": [], 
     "show_legend": true, 
-    "x_label": "", 
+    "x_label": "_ptavg_", 
     "x_lims": [
         "50.", 
         "3000."
     ], 
     "x_log": true, 
-    "y_label": "", 
+    "y_label": "Ratio to Gen?_center_", 
     "y_lims": [
         "0.0", 
         "3.0"

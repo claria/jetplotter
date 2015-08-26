@@ -6,8 +6,8 @@
     "argv": "./plotter.py -i yb0ys0:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg yb1ys0:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys0/h_ptavg yb2ys0:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h_ptavg yb0ys1:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg yb0ys2:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys2/h_ptavg yb1ys1:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg --x-log True --y-log True --x-lims 74. 3000. --y-lims 1E-6 1E6 --x-label _ptavg_ --y-label Cross Section (pb/GeV) --color yb0ys0:black --label yb0ys0:_yb0ys0_ yb1ys0:_yb1ys0_ yb2ys0:_yb2ys0_ yb0ys1:_yb0ys1_ yb0ys2:_yb0ys2_ yb1ys1:_yb1ys1_ --output-path ptavg_spectrum.png --ax-texts _cms_ _20fb_ --ana-modules Normalize --normalize yb0ys0:width yb1ys0:width yb2ys0:width yb0ys1:width yb0ys2:width yb1ys1:width", 
     "ax_hlines": [], 
     "ax_texts": [
-        "CMS?top left", 
-        "$20\\,\\mathrm{fb}^{-1}$ (8TeV)?top right"
+        "CMS?_topleft_", 
+        "$20\\,\\mathrm{fb}^{-1}$ (8TeV)?_topright_"
     ], 
     "ax_vlines": [], 
     "fig_size": null, 

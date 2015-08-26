@@ -1,11 +1,14 @@
 {
     "add_subplot": false, 
     "ana_modules": [
-        "Ratio"
+        "Normalize"
     ], 
-    "argv": "./plotter.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg --ana-modules Ratio --ratio reco:gen recounf:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf --x-log True --x-lims 50. 3000. --y-lims 0.0 3.0", 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_DATA.root?yb0ys0/h_nPV mc:~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV --ana-modules Normalize --normalize mc:data --color data:black mc:_color0_ --x-label NPV --y-label arb. u. --label data:Data mc:MC --ax-texts _cmsp_ _20fb_", 
     "ax_hlines": [], 
-    "ax_texts": [], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_"
+    ], 
     "ax_vlines": [], 
     "fig_size": null, 
     "input_modules": [
@@ -13,8 +16,14 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": null, 
+    "load_config": "plots/plot.json", 
     "log_level": "info", 
+    "normalize": [
+        [
+            "mc", 
+            "data"
+        ]
+    ], 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -32,23 +41,15 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "gen": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg", 
-            "label": "Gen"
+        "data": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_DATA.root?yb0ys0/h_nPV", 
+            "label": "Data"
         }, 
-        "mgp6gen": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg"
-        }, 
-        "mgp6reco": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg"
-        }, 
-        "reco": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg", 
-            "label": "Reco"
-        }, 
-        "recounf": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg", 
-            "label": "Reco"
+        "mc": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV", 
+            "label": "MC"
         }
     }, 
     "output_modules": [
@@ -61,46 +62,24 @@
     "provided_args": [
         "ana_modules", 
         "input", 
-        "ratio", 
+        "normalize", 
         "label", 
-        "x_lims", 
-        "y_lims", 
-        "x_log"
+        "color", 
+        "x_label", 
+        "y_label", 
+        "ax_texts"
     ], 
-    "ratio": [
-        [
-            "reco", 
-            "gen"
-        ], 
-        [
-            "recounf", 
-            "gen"
-        ], 
-        [
-            "gen", 
-            "gen"
-        ], 
-        [
-            "mgp6reco", 
-            "mgp6gen"
-        ], 
-        [
-            "mgp6gen", 
-            "mgp6gen"
-        ]
-    ], 
-    "ratio_copy": [], 
     "show_legend": true, 
-    "x_label": "", 
+    "x_label": "NPV", 
     "x_lims": [
-        "50.", 
-        "3000."
+        null, 
+        null
     ], 
-    "x_log": true, 
-    "y_label": "", 
+    "x_log": false, 
+    "y_label": "arb. u.", 
     "y_lims": [
-        "0.0", 
-        "3.0"
+        null, 
+        null
     ], 
     "y_log": false, 
     "y_subplot_label": "", 

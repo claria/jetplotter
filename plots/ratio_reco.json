@@ -9,8 +9,8 @@
     ], 
     "ax_texts": [
         "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 
-        "CMS?top left", 
-        "$20\\,fb^{-1}$ (8TeV)?top right"
+        "CMS?_topleft_", 
+        "$20\\,fb^{-1}$ (8TeV)?_topright_"
     ], 
     "ax_vlines": [], 
     "fig_size": [
