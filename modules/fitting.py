@@ -4,6 +4,7 @@ import ROOT
 
 from modules.base_module import BaseModule
 from modules.helpers import get_tgrapherrors
+import math
 
 log = logging.getLogger(__name__)
 
@@ -65,25 +66,24 @@ class TriggerEfficiencyFit(BaseModule):
                 raise ValueError('Requested id {} not found.'.format(id))
 
             eff_fcn = ROOT.TF1("eff_fcn", "(1./2.)*(1 + TMath::Erf((x-[0])/(sqrt(2)*[1])))")
-            # eff_fcn = ROOT.TF1("eff_fcn", "sqrt(TMath::Sign(1.,[0])*(([0]/x)**2) + (([1]**2)/x)*(x**[2]) + [3]**2)")
 
-            # threshold = float(eff.GetName().split('_')[1].replace('PFJET',''))
             print 'Fitting id {0}'.format(id)
             eff_fcn.SetParameters(100., 20.0, 1.)
-            print 'fit1'
             res = config['objects'][id]['obj'].Fit("eff_fcn", "SEX0", "")
 
             xmin = eff_fcn.GetX(0.5)
             eff_fcn.SetRange(xmin, 1000)
-            print 'fit2'
             res = config['objects'][id]['obj'].Fit("eff_fcn", "SREX0", "")
             xmin = eff_fcn.GetParameter(0)
             xmin = eff_fcn.GetX(0.7)
             eff_fcn.SetRange(xmin, 1000)
-            print 'fit3'
             res = config['objects'][id]['obj'].Fit("eff_fcn", "SREX0", "")
 
-            x99 = eff_fcn.GetX(0.99)
+            x99 = math.ceil(eff_fcn.GetX(0.99))
+            print 'x99 at {0:.2f}'.format(x99)
+            # Add label with the efficiency factor
+            text = '.99 eff. at {0} GeV'.format(x99)
+            config['ax_texts'].append(text + '?_bottomright_')
 
             print res.Get()
             print res.Status()
