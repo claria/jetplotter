@@ -1,0 +1,97 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Normalize"
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_DATA.root?yb0ys0/h_nPV mc:~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV --ana-modules Normalize --normalize mc:data --color data:black mc:_color0_ --x-label NPV --y-label arb. u. --label data:Data mc:MC --ax-texts _cmsp_ _20fb_ --output-path npv_afterreweighting.png", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": "plots/npv_afterreweighting.json", 
+    "log_level": "info", 
+    "normalize": [
+        [
+            "mc", 
+            "data"
+        ]
+    ], 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_DATA.root?yb0ys0/h_nPV", 
+            "label": "Data"
+        }, 
+        "mc": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV", 
+            "label": "MC"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "npv_afterreweighting.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "ana_modules", 
+        "input", 
+        "normalize", 
+        "label", 
+        "color", 
+        "output_path", 
+        "x_label", 
+        "y_label", 
+        "ax_texts"
+    ], 
+    "show_legend": true, 
+    "x_label": "NPV", 
+    "x_lims": [
+        null, 
+        null
+    ], 
+    "x_log": false, 
+    "y_label": "arb. u.", 
+    "y_lims": [
+        null, 
+        null
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
