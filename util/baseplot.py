@@ -273,7 +273,7 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         y_errl = steppify_bin(y_errl)
         y_erru = steppify_bin(y_erru)
 
-    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'facecolor', 'alpha', 'edgecolor']}
+    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'facecolor', 'alpha', 'edgecolor', 'zorder']}
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
     p = matplotlib.patches.Rectangle((0, 0), 1, 1, **fill_between_kwargs)
     ax.add_patch(p)
@@ -304,7 +304,7 @@ def plot_histo(obj=None, emptybins=True, ax=None, **kwargs):
     y = steppify_bin(y)
     y_0 = np.zeros(y.shape)
 
-    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'facecolor', 'alpha', 'edgecolor']}
+    fill_between_kwargs = {k: v for k, v in kwargs.items() if k in ['label', 'facecolor', 'alpha', 'edgecolor', 'zorder']}
     artist = ax.fill_between(x, y, y_0, **fill_between_kwargs)
     p = matplotlib.patches.Rectangle((0, 0), 1, 1, **fill_between_kwargs)
     ax.add_patch(p)
@@ -383,7 +383,7 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     # http://stackoverflow.com/a/18499120/3243729
 
     errorbar_kwargs = {k: v for k, v in kwargs.items() if
-                       k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color']}
+                       k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color', 'zorder']}
     errorbar_kwargs['fmt'] = ''
     errorbar_kwargs['linestyle'] = ''
     artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, **errorbar_kwargs)
