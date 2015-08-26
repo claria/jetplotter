@@ -4,10 +4,10 @@
         "Normalize", 
         "Ratio"
     ], 
-    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg --ana-modules Normalize Ratio --normalize reco:width gen:width recounf:width mgp6reco:width mgp6gen:width nlo:gen --ratio reco:gen recounf:gen nlo:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf mgp6gen:MG+P6 Gen mgp6reco:MG+P6 Reco nlo:NLO --x-log True --x-lims 50. 3000. --y-lims 0.0 3.0 --output-path reco_to_gen_nlo_smeared_yb0ys0.png --x-label _ptavg_ --y-label Ratio to Gen?_center_ --ax-texts _yb0ys0_?_upperleft_ --zorder reco:100", 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb2ys0/CT10nlo_xs reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb2ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb2ys0/h_genptavg --ana-modules Normalize Ratio --normalize reco:width gen:width recounf:width mgp6reco:width mgp6gen:width nlo:gen --ratio reco:gen recounf:gen nlo:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf mgp6gen:MG+P6 Gen mgp6reco:MG+P6 Reco nlo:NLO --x-log True --x-lims 50. 3000. --y-lims 0.0 3.0 --output-path reco_to_gen_nlo_smeared_yb2ys0.png --x-label _ptavg_ --y-label Ratio to Gen?_center_ --ax-texts _yb2ys0_?_upperleft_ --zorder reco:100", 
     "ax_hlines": [], 
     "ax_texts": [
-        "_yb0ys0_?_upperleft_"
+        "_yb2ys0_?_upperleft_"
     ], 
     "ax_vlines": [], 
     "fig_size": null, 
@@ -16,7 +16,7 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/reco_to_gen_nlo_smeared_yb0ys0.json", 
+    "load_config": "plots/reco_to_gen_nlo_smeared_yb2ys0.json", 
     "log_level": "info", 
     "normalize": [
         [
@@ -62,35 +62,35 @@
             "zorder": 1.0
         }, 
         "gen": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_genptavg", 
             "label": "Gen"
         }, 
         "mgp6gen": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb2ys0/h_genptavg", 
             "label": "MG+P6 Gen"
         }, 
         "mgp6reco": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h_ptavg", 
             "label": "MG+P6 Reco"
         }, 
         "nlo": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb2ys0/CT10nlo_xs", 
             "label": "NLO"
         }, 
         "reco": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_recoptavg", 
             "label": "Reco", 
             "zorder": 100.0
         }, 
         "recounf": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb2ys0/h_recoptavg", 
             "label": "Reco Unf"
         }
     }, 
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "reco_to_gen_nlo_smeared_yb0ys0.png", 
+    "output_path": "reco_to_gen_nlo_smeared_yb2ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 

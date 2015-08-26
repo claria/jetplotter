@@ -1,0 +1,96 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Normalize"
+    ], 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg --output-path test_genfit.png --label nlo:NLO gen:GEN --ana-modules Normalize --normalize gen:unity nlo:unity --x-log True --y-log True --x-lims 30. 3000. --y-lims 1E-10 1E0", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": "plots/test_genfit.json", 
+    "log_level": "info", 
+    "normalize": [
+        [
+            "gen", 
+            "unity"
+        ], 
+        [
+            "nlo", 
+            "unity"
+        ]
+    ], 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "gen": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg", 
+            "label": "GEN"
+        }, 
+        "nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs", 
+            "label": "NLO"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "test_genfit.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "ana_modules", 
+        "input", 
+        "normalize", 
+        "label", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "y_log"
+    ], 
+    "show_legend": true, 
+    "x_label": "", 
+    "x_lims": [
+        "30.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "", 
+    "y_lims": [
+        "1E-10", 
+        "1E0"
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

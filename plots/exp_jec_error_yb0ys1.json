@@ -6,7 +6,9 @@
     "argv": "./plotter.py -l plots/exp_jec_error_yb0ys1.json", 
     "ax_hlines": [], 
     "ax_texts": [
-        "_yb0ys1_?_upperleft_"
+        "_yb0ys1_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
     ], 
     "ax_vlines": [], 
     "fig_size": null, 

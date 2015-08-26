@@ -5,7 +5,12 @@
     ], 
     "argv": "./plotter.py -l plots/resolution_yb0ys0_bin10.json", 
     "ax_hlines": [], 
-    "ax_texts": [], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_", 
+        "_yb0ys0_?_upperleft_", 
+        "ptbin 10?_upperright_"
+    ], 
     "ax_vlines": [], 
     "fig_size": null, 
     "input_modules": [

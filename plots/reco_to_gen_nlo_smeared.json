@@ -1,0 +1,118 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plotter.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg gen:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg recounf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg mgp6reco:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg mgp6gen:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg --ana-modules Ratio --ratio reco:gen recounf:gen gen:gen mgp6reco:mgp6gen mgp6gen:mgp6gen --label reco:Reco gen:Gen recounf:Reco Unf --x-log True --x-lims 50. 3000. --y-lims 0.0 3.0 --output-path reco_to_gen_nlo_smeared.png", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": "plots/reco_to_gen_nlo_smeared.json", 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "gen": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_genptavg", 
+            "label": "Gen"
+        }, 
+        "mgp6gen": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg"
+        }, 
+        "mgp6reco": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg"
+        }, 
+        "reco": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb0ys0/h_recoptavg", 
+            "label": "Reco"
+        }, 
+        "recounf": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLOfromNLO.root?yb0ys0/h_recoptavg", 
+            "label": "Reco"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "reco_to_gen_nlo_smeared.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "ana_modules", 
+        "input", 
+        "ratio", 
+        "label", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log"
+    ], 
+    "ratio": [
+        [
+            "reco", 
+            "gen"
+        ], 
+        [
+            "recounf", 
+            "gen"
+        ], 
+        [
+            "gen", 
+            "gen"
+        ], 
+        [
+            "mgp6reco", 
+            "mgp6gen"
+        ], 
+        [
+            "mgp6gen", 
+            "mgp6gen"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "x_label": "", 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "", 
+    "y_lims": [
+        "0.0", 
+        "3.0"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

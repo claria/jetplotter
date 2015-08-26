@@ -1,0 +1,103 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "FitObj"
+    ], 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs --ana-modules FitObj --fit-obj nlo:{\"fcn\": \"[0]*(x/[3])**(-1*[1])*(1-(x/[3]))**[2]\", \"fcn_0\":[1.56951e-04, 4.72895e+00, 1.25370e+01, 4.41885e+03]} --x-log True --x-lims 30. 3000. --y-log True --y-lims 1E-8 1E8 --style fit_nlo:band --output-path fit_nlo.png --label nlo:NLO fit_nlo:Fit --x-label _ptavg_ --y-label Cross Section", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "fit_obj": [
+        [
+            "nlo", 
+            {
+                "fcn": "[0]*(x/[3])**(-1*[1])*(1-(x/[3]))**[2]", 
+                "fcn_0": [
+                    0.000156951, 
+                    4.72895, 
+                    12.537, 
+                    4418.85
+                ]
+            }
+        ]
+    ], 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": "plots/fit_nlo.json", 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "fit_nlo": {
+            "label": "Fit", 
+            "style": "band"
+        }, 
+        "nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs", 
+            "label": "NLO"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "fit_nlo.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "ana_modules", 
+        "input", 
+        "fit_obj", 
+        "label", 
+        "style", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "y_log", 
+        "x_label", 
+        "y_label"
+    ], 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "30.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "Cross Section", 
+    "y_lims": [
+        "1E-8", 
+        "1E8"
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
