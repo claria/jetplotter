@@ -3,12 +3,14 @@ import re
 
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter
 
 from util.baseplot import BasePlot
 
 BasePlot.init_matplotlib()
 
 from util.baseplot import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap
+from util.baseplot import log_locator_filter
 from modules.base_module import BaseModule
 
 import logging
@@ -191,7 +193,6 @@ class Plot(BasePlot):
             artist = plot_line(ax=ax, **kwargs)
         elif style == 'heatmap':
             # special case for z scale and lims in heatmaps since they have to be set by the object instead of the axis.
-            print kwargs
             kwargs['z_log'] = self.z_log
             kwargs['z_lims'] = self.z_lims
             artist = plot_heatmap(ax=self.ax, **kwargs)
@@ -252,7 +253,18 @@ class Plot(BasePlot):
             y_subplot_label, y_subplot_label_kwargs = parse_optionstring(self.y_subplot_label)
             self.ax1.set_ylabel(y_subplot_label, **y_subplot_label_kwargs)
 
-        self.ax.set_xscale('log' if self.x_log else 'linear')
+        if self.x_log:
+            self.ax.set_xscale('log')
+            # x-axis tick formatting, only for log plots
+            # TODO: also for subplots
+            self.ax.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
+            xfmt = ScalarFormatter()
+            xfmt.set_powerlimits((-9, 9))
+            self.ax.xaxis.set_major_formatter(xfmt)
+        else:
+            self.ax.set_xscale('linear')
+
+
         if self.y_log:
             self.ax.set_yscale('log', nonposy='clip')
         else:
@@ -260,6 +272,7 @@ class Plot(BasePlot):
 
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
+
 
         if self.show_legend:
             handles, labels = self.ax.get_legend_handles_labels()
