@@ -36,7 +36,8 @@ lookup_dict = {
     'ax_texts': {
         '_cms_': 'CMS?{"x": 0.0, "y":1.01, "va": "bottom", "ha" : "left"}',
         '_cmsp_': 'CMS Preliminary?{"x": 0.0, "y":1.01, "va": "bottom", "ha" : "left"}',
-        '_20fb_': '$19.8\\,\mathrm{fb}^{-1}$ (8TeV)?{"x": 1.0, "y":1.01, "va": "bottom", "ha" : "right"}',
+        '_20fb_': '$19.7\\,\mathrm{fb}^{-1}$ (8TeV)?{"x": 1.0, "y":1.01, "va": "bottom", "ha" : "right"}',
+        '_8tev_': '$\sqrt{s}$ = (8TeV)?{"x": 1.0, "y":1.01, "va": "bottom", "ha" : "right"}',
         '_yb0ys0_': '$0.0 \leq y_b < 1.0$  $0.0 \leq y^* < 1.0$',
         '_yb1ys0_': '$1.0 \leq y_b < 2.0$  $0.0 \leq y^* < 1.0$',
         '_yb2ys0_': '$2.0 \leq y_b < 3.0$  $0.0 \leq y^* < 1.0$',
