@@ -5,6 +5,7 @@ import logging
 from module_handler import discover_modules
 from util.config_tools import merge, read_config, write_config
 from util.setting_parser import SettingParser
+from util.events import EventHandler
 
 log = logging.getLogger(__name__)
 
@@ -22,6 +23,7 @@ class Plotter(object):
     def __call__(self):
 
         # Discover all available modules
+        EventHandler().trigger('before_module_discovery')
         self._all_modules = discover_modules()
 
         # Command line args
