@@ -1,0 +1,83 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plotter.py -i kfactor:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT10nlo_kfac --x-log True --x-lims 74. 3000. --y-lims 0.5 2.0 --x-label _ptavg_ --y-label k factor?_center_ --ax-texts _yb1ys0_?_upperleft_ _cmsp_ --label kfactor:CT10 (NLO) --output-path kfactor_yb1ys0.png", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb1ys0_?_upperleft_", 
+        "_cmsp_"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": "plots/kfactor_yb1ys0.json", 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "kfactor": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT10nlo_kfac", 
+            "label": "CT10 (NLO)"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "kfactor_yb1ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "input", 
+        "label", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "x_label", 
+        "y_label", 
+        "ax_texts"
+    ], 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "74.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "k factor?_center_", 
+    "y_lims": [
+        "0.5", 
+        "2.0"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

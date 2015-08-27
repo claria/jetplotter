@@ -1,0 +1,97 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plotter.py -i _reco:~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?yb0ys0/res_matrix_ptavg_measured fakes:~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?yb0ys0/res_matrix_ptavg_fakes --y-log False --ana-modules Ratio --ratio fakes:_reco --y-lims 0.0 1.0 --x-log True --x-lims 0 3000 --x-label Reco _ptavg_ --y-label Ratio Fakes/Reco --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _8tev_ --output-path ratio_fakes_vs_reco_yb0ys0.png", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb0ys0_?_upperleft_", 
+        "_cmsp_", 
+        "_8tev_"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": null, 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_reco": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?yb0ys0/res_matrix_ptavg_measured"
+        }, 
+        "fakes": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?yb0ys0/res_matrix_ptavg_fakes"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "ratio_fakes_vs_reco_yb0ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "ana_modules", 
+        "input", 
+        "ratio", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "y_log", 
+        "x_label", 
+        "y_label", 
+        "ax_texts"
+    ], 
+    "ratio": [
+        [
+            "fakes", 
+            "_reco"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "x_label": "Reco _ptavg_", 
+    "x_lims": [
+        "0", 
+        "3000"
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio Fakes/Reco", 
+    "y_lims": [
+        "0.0", 
+        "1.0"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
