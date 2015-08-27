@@ -9,17 +9,16 @@ log = logging.getLogger(__name__)
 
 
 class SettingParser(argparse.ArgumentParser):
-    """Argparser with additional features.
+    """ Argparser with additional features for key/value based options.
 
-       The main feature are str2kv types which are given as id:value and are
-       all stored in a dict so different settings are automatically matched
-       to the same id. 
+        The main feature are str2kv types which are given as id:value and are
+        all stored in a dict so different settings are automatically matched
+        to the same id.
 
-       Additionally the arg_group ensures that the actions are always called for the
-       'setting' action, not only if the argument is supplied.
-       Additionally a list 'provided_args' keeps a list of all args which were actually
-       supplied on the command line.
-
+        Additionally the arg_group ensures that the actions are always called for the
+        'setting' action, not only if the argument is supplied.
+        Additionally a list 'provided_args' keeps a list of all args which were actually
+        supplied on the command line.
     """
 
     def __init__(self, *args, **kwargs):
@@ -37,7 +36,11 @@ class SettingParser(argparse.ArgumentParser):
         self.register('action', 'setting', SettingAction)
 
     def parse_args(self, *args, **kwargs):
-        """ Parses args and ensures that all 'setting' actions are called."""
+        """ Parses args and ensures that all 'setting' actions are called.
+
+            Argparser only calls action for non-default arguments. To ensure that all argument actions are called,
+            all actions are called again.
+        """
         args = super(SettingParser, self).parse_args()
         # Put also cmd call in args
         setattr(args, 'argv', ' '.join(sys.argv))
@@ -82,7 +85,7 @@ def str2bool(s):
 
 
 def noneorfloat(v):
-    """Return float if parseable, else None."""
+    """ Return float if parseable, else None."""
     try:
         return float(v)
     except (TypeError, ValueError):
@@ -90,16 +93,16 @@ def noneorfloat(v):
 
 
 def str2kvfloat(s):
-    """Parses string of format id:value into tuple of (str, float)"""
+    """ Parses string of format id:value into tuple of (str, float)."""
     k, v = get_tuple(s)
     return k, float(v)
 
 
 def str2kvdict(s):
-    """Parses string of format id:value into tuple of (str, dict)
+    """ Parses string of format id:value into tuple of (str, dict)
 
-       The passed value must be json parseable, eg something like
-       id:{"key0": "val0", "key1": "val1"}
+        The passed value must be json parseable, eg something like
+        id:{"key0": "val0", "key1": "val1"}
     """
     k, v = get_tuple(s)
     return k, json.loads(v)
@@ -112,19 +115,19 @@ def str2kvint(s):
 
 
 def str2kvbool(s):
-    """Parses string of format id:value into tuple of (str, bool)"""
+    """ Parses string of format id:value into tuple of (str, bool)."""
     id, setting = get_tuple(s)
     b = setting.lower() in ("yes", "true", "t", "1")
     return id, b
 
 
 def str2kvstr(s):
-    """Parses string of format id:value into tuple of (str, str)"""
+    """ Parses string of format id:value into tuple of (str, str)."""
     return get_tuple(s)
 
 
 def get_tuple(s):
-    """Try to split s into key value pair at ':' delimiter. Set key to None if ':' not in s."""
+    """ Try to split s into key value pair at ':' delimiter. Set key to None if ':' not in s."""
     try:
         (id, setting) = s.split(':', 1)
     except ValueError:
@@ -133,7 +136,16 @@ def get_tuple(s):
 
 
 class SettingAction(argparse.Action):
-    """Stores a setting list object in the Parser namespace."""
+    """ Stores a setting list object in the Parser namespace.
+
+        All SettingAction argument values must have the structure --argument id_0:value_0 id_1:value_1.
+        These are stored in a OrderedDict 'objects' with the structure
+            objects['id_0']['argument'] = value_0
+            objects['id_1']['argument'] = value_1
+
+        In case the passed values is a string (currently only possible for default values) the id _default is used.
+        Later in the code, setting lookups which fail, fall_back to the _default dict.
+    """
 
     def __init__(self, *args, **kwargs):
         super(SettingAction, self).__init__(*args, **kwargs)
@@ -142,8 +154,12 @@ class SettingAction(argparse.Action):
 
         if values is None:
             values = []
+
+        # In case the passed values are not a list-like object
+        # we assume they originate from the argparse default values.
+        # We then set the id to \'_default\'
         if isinstance(values, basestring) or not isinstance(values, collections.Iterable):
-            values = [values]
+            values = [('_default', values)]
 
         # Ensure that namespace has the objects OrderedDict
         if not hasattr(namespace, 'objects'):
@@ -161,10 +177,12 @@ class SettingAction(argparse.Action):
         for i in xrange(len(values)):
             if not isinstance(values[i], tuple) or len(values[i]) != 2:
                 # Make it to a tuple
+                print values
                 values[i] = (None, values[i])
             if not values[i][0] or not isinstance(values[i][0], basestring):
-                values[i] = ('_default', values[i][1])
-                # raise ValueError('The provided argument {0} for the setting {1} is not of the format id:value.'.format(values[i], self.dest),)
+                # values[i] = ('_default', values[i][1])
+                raise ValueError('The provided argument {0} for the setting {1} '
+                                 'is not of the format id:value.'.format(values[i], self.dest), )
         # Check if all ids for one setting are unique.
         if values:
             id_list = zip(*values)[0]

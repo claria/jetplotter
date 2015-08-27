@@ -9,9 +9,7 @@ log = logging.getLogger(__name__)
 
 
 class ResolutionAna(BaseModule):
-    """ Calls the fit function on an object.
-
-    """
+    """ Fits the resolution from a TH2D assuming gaussian errors. """
 
     def __init__(self):
         super(ResolutionAna, self).__init__()

@@ -1,3 +1,4 @@
+""" Colormap viridis copied from matplotlib. Will be the default colormap in matplotlib 2.0 """
 from matplotlib.colors import LinearSegmentedColormap
 
 viridis_data = [[0.26700401, 0.00487433, 0.32941519],

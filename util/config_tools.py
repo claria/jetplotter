@@ -85,8 +85,7 @@ def write_config(config, path, indent=4):
 
 
 def print_config(config):
-    """ Print the config to the screen
-    """
+    """ Print the config to the screen."""
     print json.dumps(config, sort_keys=True, cls=SimpleJsonEncoder, indent=4)
 
 

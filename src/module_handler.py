@@ -30,7 +30,7 @@ def discover_modules():
                 if inspect.isclass(obj):
                     if issubclass(obj, BaseModule):
                         log.debug("Adding module {0}.".format(obj.label))
-                        available_modules[obj.label()] = obj
+                        available_modules[obj.label] = obj
         except ImportError as e:
             log.debug("Failed to import module {0} from {1}.".format(module_name, filename))
             log.debug("Error message: {0}.".format(e))

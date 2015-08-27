@@ -58,7 +58,7 @@ lookup_dict = {
 
 
 def get_lookup_val(key, s):
-    """ Replaces all occurences of lookup keys in string with lookups."""
+    """ Replaces all occurences of lookup keys in string with lookup dict values."""
     if key in lookup_dict:
         for lk, lv in lookup_dict[key].iteritems():
             if lk in s:

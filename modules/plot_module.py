@@ -5,12 +5,12 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.ticker import ScalarFormatter
 
-from util.baseplot import BasePlot
+from util.plot_tools import BasePlot
 
 BasePlot.init_matplotlib()
 
-from util.baseplot import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap
-from util.baseplot import log_locator_filter
+from util.plot_tools import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap
+from util.plot_tools import log_locator_filter
 from modules.base_module import BaseModule
 
 import logging
@@ -32,7 +32,8 @@ class PlotModule(BaseModule):
     def __init__(self):
         super(PlotModule, self).__init__()
         # Plot object options
-        self.arg_group.add_argument('--label', type='str2kvstr', nargs='+', default=['__nolegend__'], action='setting',
+        # TODO: Split into arg groups for setting based arguments and standard arguments.
+        self.arg_group.add_argument('--label', type='str2kvstr', nargs='+', default='__nolegend__', action='setting',
                                     help='Legend labels for each plot')
         self.arg_group.add_argument('--color', type='str2kvstr', nargs='+',
                                     default='auto', action='setting',
@@ -76,9 +77,15 @@ class PlotModule(BaseModule):
 
         # Axis options
         self.arg_group.add_argument('--add-subplot', default=False, type='bool', help='Add subplot with name ax1.')
-        self.arg_group.add_argument('--x-lims', nargs=2, default=[None, None], help='X limits of plot.')
-        self.arg_group.add_argument('--y-lims', nargs=2, default=[None, None], help='Y limits of plot.')
-        self.arg_group.add_argument('--y-subplot-lims', nargs=2, default=[None, None], help='Y limits of subplot.')
+        self.arg_group.add_argument('--x-lims', nargs=2, default=[None, None],
+                                    help='X limits of plot. \'none\' can be passed as xmin or xmax '
+                                         'resulting in auto scaling.')
+        self.arg_group.add_argument('--y-lims', nargs=2, default=[None, None],
+                                    help='Y limits of plot. \'none\' can be passed as ymin or ymax '
+                                         'resulting in auto scaling.')
+        self.arg_group.add_argument('--y-subplot-lims', nargs=2, default=[None, None],
+                                    help='Y limits of plot. \'none\' can be passed as ymin or ymax '
+                                         'resulting in auto scaling.')
         self.arg_group.add_argument('--z-lims', nargs=2, default=[None, None],
                                     help='Z limits of plot (only used in 2d plots).')
 
@@ -88,21 +95,24 @@ class PlotModule(BaseModule):
 
         self.arg_group.add_argument('--x-label', default='', help='Label of the x axis.')
         self.arg_group.add_argument('--y-label', default='', help='Label of the y axis.')
-        self.arg_group.add_argument('--y-subplot-label', default='', help='Label of the y axis.')
+        self.arg_group.add_argument('--y-subplot-label', default='', help='Label of the y subplot axis.')
         self.arg_group.add_argument('--z-label', default='', help='Label of the z axis.')
 
-        self.arg_group.add_argument('--show-legend', type='bool', default=True, help='Show a legend.')
-        self.arg_group.add_argument('--legend-loc', default='best', help='Legend location.')
+        self.arg_group.add_argument('--show-legend', type='bool', default=True, help='Plot a legend on axis ax.')
+        self.arg_group.add_argument('--legend-loc', default='best', help='Location of legend on axis ax.')
 
         self.arg_group.add_argument('--plot-id', default=r'^(?!_).*',
                                     help='All ids matching are passed to plot-module.'
                                          ' Default matches everything not starting with a underscore.')
         self.arg_group.add_argument('--ax-texts', nargs='+', default=[],
-                                    help='Add text to plot. Syntax is \'Text?1.0,1.0\' with loc 1.0,1.0')
+                                    help='Add text to plot. Syntax is \'Text?json_dict. The options have to be '
+                                         'something like \'text?{"x": 0.95, "y":0.05, "va": "bottom", "ha" : "right"}\'')
         self.arg_group.add_argument('--ax-vlines', nargs='+', default=[],
-                                    help='Add vertical lines to plot. Syntax is y_pos?color?lw.')
+                                    help='Add vertical lines to plot. Syntax is y_pos?json_dict. All matplotlib '
+                                         'Line2D kwargs are valid e.g. 1.0?{"lw" : 2.0, "color" : "green"}')
         self.arg_group.add_argument('--ax-hlines', nargs='+', default=[],
-                                    help='Add horizontal lines to plot. Syntax is y_pos?color?lw.')
+                                    help='Add horizontal lines to plot. All matplotlib '
+                                         'Line2D kwargs are valid e.g. 1.0?{"lw" : 2.0, "color" : "green"}')
 
     def __call__(self, config):
         plot = Plot(**config)
@@ -200,11 +210,6 @@ class Plot(BasePlot):
         else:
             raise ValueError('Style {0} not supported.'.format(style))
         return artist
-
-    def make_plots(self):
-
-        for i, histo in enumerate(self.histos):
-            self.plot(histo)
 
     def finish(self):
 

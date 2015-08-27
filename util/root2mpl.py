@@ -6,7 +6,7 @@ import ROOT
 
 
 class MplObject1D(object):
-    """Simple representation of 1d root objects to be used for matplotlib plotting."""
+    """Python representation of 1d root objects to be used for matplotlib plotting."""
 
     def __init__(self, root_object):
 
@@ -99,7 +99,7 @@ class MplObject1D(object):
 
 
 class MplObject2D(object):
-    """Simple representation of 1d root objects to be used for matplotlib plotting."""
+    """Python representation of 2d root objects to be used for matplotlib plotting."""
 
     def __init__(self, root_object):
 

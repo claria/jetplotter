@@ -17,22 +17,6 @@ import logging
 log = logging.getLogger(__name__)
 
 
-def set_style(ax, style, show_cme=False):
-    """Some preset styles """
-    if style == 'none':
-        pass
-    elif style == 'cmsprel':
-        add_axis_text(ax, r"\textbf{CMS Preliminary}", loc='topleft')
-        if show_cme:
-            add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
-                          loc='topleft', )
-    else:
-        add_axis_text(ax, r"\textbf{CMS}", loc='topleft')
-        if show_cme:
-            add_axis_text(ax, r"$\sqrt{s} = 7\/ \mathrm{TeV}$",
-                          loc='topleft', )
-
-
 class BasePlot(object):
     __metaclass__ = ABCMeta
 

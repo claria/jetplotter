@@ -48,7 +48,7 @@ class Plotter(object):
                 config['input_modules'] + config['ana_modules'] + config['output_modules']]
 
         for module in path:
-            log.info("Processing {0}...".format(module.label()))
+            log.info("Processing {0}...".format(module.label))
             module(config)
             update_with_default(config['objects'])
 
