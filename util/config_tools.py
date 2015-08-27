@@ -61,6 +61,7 @@ def read_config(path):
 
 class SimpleJsonEncoder(json.JSONEncoder):
     """JSON Encoder which replaces not serializiable objects like root objects with null."""
+
     def default(self, obj):
         if not isinstance(obj, (dict, list, tuple, str, unicode, int, long, float, bool)):
             return 'null'

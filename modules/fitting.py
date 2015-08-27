@@ -1,10 +1,10 @@
 import logging
+import math
 
 import ROOT
 
 from modules.base_module import BaseModule
 from modules.helpers import get_tgrapherrors
-import math
 
 log = logging.getLogger(__name__)
 

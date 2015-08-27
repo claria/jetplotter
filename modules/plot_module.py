@@ -236,7 +236,7 @@ class Plot(BasePlot):
             self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
 
         # a specified position of the label can be set via label?json_dict
-        x_label_kwargs = { 'position' : (1.0, 0.0), 'ha' : 'right', 'va' : 'top'}
+        x_label_kwargs = {'position': (1.0, 0.0), 'ha': 'right', 'va': 'top'}
         x_label, user_x_label_kwargs = parse_optionstring(self.x_label)
         x_label_kwargs.update(user_x_label_kwargs)
         if self.ax1:
@@ -244,7 +244,7 @@ class Plot(BasePlot):
         else:
             self.ax.set_xlabel(x_label, **x_label_kwargs)
 
-        y_label_kwargs = { 'position' : (0.0, 1.0), 'ha' : 'right', 'va' : 'top'}
+        y_label_kwargs = {'position': (0.0, 1.0), 'ha': 'right', 'va': 'top'}
         y_label, user_y_label_kwargs = parse_optionstring(self.y_label)
         y_label_kwargs.update(user_y_label_kwargs)
         self.ax.set_ylabel(y_label, **y_label_kwargs)
@@ -264,7 +264,6 @@ class Plot(BasePlot):
         else:
             self.ax.set_xscale('linear')
 
-
         if self.y_log:
             self.ax.set_yscale('log', nonposy='clip')
         else:
@@ -272,7 +271,6 @@ class Plot(BasePlot):
 
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
-
 
         if self.show_legend:
             handles, labels = self.ax.get_legend_handles_labels()

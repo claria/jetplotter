@@ -1,3 +1,4 @@
+import os
 import ROOT
 
 ROOT.PyConfig.IgnoreCommandLineOptions = True
@@ -13,6 +14,7 @@ class RootModule(BaseModule):
         Therefore you always have to give the id in which the object will be stored. The --input-graph options has a few
         more options to construct a TGraphAsymmErrors from multiple histograms.
     """
+
     def __init__(self):
         super(RootModule, self).__init__()
         self.arg_group.add_argument('-i', '--input', nargs='+', type='str2kvstr', action='setting',
@@ -48,7 +50,8 @@ class RootOutputModule(BaseModule):
         else:
             ids = config['objects'].keys()
 
-        root_output_filename = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[0] + '.root'
+        root_output_filename = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[
+                                   0] + '.root'
 
         f = get_root_file(root_output_filename, "RECREATE")
         f.cd('/')
@@ -56,10 +59,9 @@ class RootOutputModule(BaseModule):
         for id in ids:
             if id not in config['objects']:
                 raise ValueError('Id {0} not found within objects. Check your supplied ids.'.format(id))
-            config[objects][id]['obj'].Write(id)
+            config['objects'][id]['obj'].Write(id)
 
         f.Close()
-
 
 
 def get_root_objects(input, option=None, **kwargs):
