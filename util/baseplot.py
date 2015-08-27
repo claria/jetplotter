@@ -4,7 +4,6 @@ from abc import ABCMeta
 import numpy as np
 import matplotlib
 from matplotlib.colors import Normalize
-
 from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
 
