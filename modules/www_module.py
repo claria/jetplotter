@@ -13,6 +13,6 @@ class CopyToWeb(BaseModule):
     def __call__(self, config):
         # what should it do.
         # create folder on target machine for current day.
-        # copy plot&json to folder
+        # copy plot & json to folder
         # run update_gallery script
         pass
