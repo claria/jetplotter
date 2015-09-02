@@ -15,4 +15,6 @@ but is less powerful though the code structure is much simpler and nicer.
   - make modules robust vs. relative imports (maybe it is not even possible)
   - rename id (shadows builtin)
   - keep order of legend entries (difficult due to dict, probably another setting with list of ids)
-  - Callback Handler
+  X Callback Handler
+  - move output stuff to core.
+  - do not store provided_args in config
