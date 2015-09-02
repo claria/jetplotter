@@ -4,7 +4,7 @@ import logging
 import ROOT
 
 from modules.base_module import BaseModule
-from modules.root_module import get_tgraphasymm_from_histos
+from util.root_tools import get_tgraphasymm_from_histos
 
 log = logging.getLogger(__name__)
 
