@@ -1,0 +1,249 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio", 
+        "FitObj", 
+        "BuildTGraph", 
+        "RootOutputModule"
+    ], 
+    "argv": "./plotter.py -l plots/np_factors.json", 
+    "ax_hlines": [
+        "1.0?{\"color\":\"black\",\"lw\":2.0}"
+    ], 
+    "ax_texts": [
+        "_yb0ys0_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "build_tgraph": [
+        [
+            "res_np_factor", 
+            [
+                "_fit_graph_origbin_hwppmpihad", 
+                "_fit_graph_origbin_qcdp8mpihad"
+            ]
+        ]
+    ], 
+    "fig_size": null, 
+    "fit_obj": [
+        [
+            "qcdp8mpihad", 
+            {
+                "fcn": "[0] + [1]/x**[2]", 
+                "fcn_0": [
+                    1.0, 
+                    1.0, 
+                    1.0
+                ], 
+                "options": "I"
+            }
+        ], 
+        [
+            "hwppmpihad", 
+            {
+                "fcn": "[0] + [1]/x**[2]", 
+                "fcn_0": [
+                    1.0, 
+                    1.0, 
+                    1.0
+                ], 
+                "options": "I"
+            }
+        ]
+    ], 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "upper right", 
+    "list_modules": false, 
+    "load_config": "plots/np_factors_calc_yb0ys0.json", 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_hwppnompinohad": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_hwppnompinohad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_qcdp8nompinohad": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_qcdp8nompinohad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "fit_hwppmpihad": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "#4C72B0", 
+            "edgecolor": "auto", 
+            "id": "hwppmpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "_nolegend_", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "fit_qcdp8mpihad": {
+            "": "band", 
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "#55A868", 
+            "edgecolor": "auto", 
+            "id": "qcdp8mpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "_nolegend_", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "hwppmpihad": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "#4C72B0", 
+            "edgecolor": "auto", 
+            "id": "hwppmpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "HW++", 
+            "linestyle": "", 
+            "marker": "o", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "qcdp8mpihad": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "#55A868", 
+            "edgecolor": "auto", 
+            "id": "qcdp8mpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "P8", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "res_np_factor": {
+            "color": "black", 
+            "label": "NP Fac."
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "np_factors_calc_yb0ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "ratio", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "x_label", 
+        "y_label", 
+        "legend_loc", 
+        "ax_hlines", 
+        "ana_modules"
+    ], 
+    "ratio": [
+        [
+            "hwppmpihad", 
+            "_hwppnompinohad"
+        ], 
+        [
+            "qcdp8mpihad", 
+            "_qcdp8nompinohad"
+        ]
+    ], 
+    "show_legend": true, 
+    "simpleratio": [], 
+    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "NP Correction factor", 
+    "y_lims": [
+        "0.8", 
+        "1.4"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
