@@ -1,5 +1,6 @@
 import itertools
 import re
+import collections
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -101,7 +102,7 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--show-legend', type='bool', default=True, help='Plot a legend on axis ax.')
         self.arg_group.add_argument('--legend-loc', default='best', help='Location of legend on axis ax.')
 
-        self.arg_group.add_argument('--plot-id', default=r'^(?!_).*',
+        self.arg_group.add_argument('--plot-id', default=[r'^(?!_).*'], nargs='+',
                                     help='All ids matching are passed to plot-module.'
                                          ' Default matches everything not starting with a underscore.')
         self.arg_group.add_argument('--ax-texts', nargs='+', default=[],
@@ -117,11 +118,19 @@ class PlotModule(BaseModule):
     def __call__(self, config):
         plot = Plot(**config)
         # plot each object
-        id_regex = config.get('plot_id')
+        id_regex = config.get('plot_id', '')
+        if isinstance(id_regex, basestring) or not isinstance(id_regex, collections.Iterable):
+            id_regex = [id_regex]
+        print id_regex
         for id, item in config['objects'].iteritems():
-            if re.match(id_regex, id):
-                log.info('Drawing id {0}'.format(id))
-                plot.plot(**item)
+            if not any([re.match(regex, id) for regex in id_regex]):
+                log.debug('Omitting id {0} since it does not match the regex.'.format(id))
+                continue
+            if not item.get('obj', None):
+                log.warning('Not obj found for id {0}. Skipping this id.'.format(id))
+                continue
+            log.info('Drawing id {0}'.format(id))
+            plot.plot(**item)
         # Save plot
         plot.finish()
 
