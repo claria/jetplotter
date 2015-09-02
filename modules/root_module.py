@@ -2,14 +2,17 @@ import os
 
 import ROOT
 
+from util.root_tools import get_root_object, get_tgraphasymm_from_histos, get_root_file
+
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
 
 from modules.base_module import BaseModule
 
-
 import logging
+
 log = logging.getLogger('__name__')
+
 
 class RootModule(BaseModule):
     """ Input module to load histograms and graphs from a root file.
@@ -85,7 +88,7 @@ class BuildTGraph(BaseModule):
             for id, input_ids in config['build_tgraph']:
                 if len(input_ids) == 1:
                     # Basically only copies th TGraph
-                    new_graph =  ROOT.TGraphErrors(config['objects'][input_ids[0]]['obj'])
+                    new_graph = ROOT.TGraphErrors(config['objects'][input_ids[0]]['obj'])
                 elif len(input_ids) == 2:
                     # The both inputs define the minimum maximum and the center is set by the mean of both.
                     tmp_tgraph1 = config['objects'][input_ids[0]]['obj']
@@ -101,11 +104,11 @@ class BuildTGraph(BaseModule):
                         tmp_tgraph2x, tmp_tgraph2y = ROOT.Double(0), ROOT.Double(0)
                         tmp_tgraph2.GetPoint(i, tmp_tgraph2x, tmp_tgraph2y)
 
-                        center = 0.5*(tmp_tgraph1y + tmp_tgraph2y)
+                        center = 0.5 * (tmp_tgraph1y + tmp_tgraph2y)
 
-                        new_graph.SetPoint(i, tmp_tgraph1x, 0.5*(tmp_tgraph1y + tmp_tgraph2y))
-                        new_graph.SetPointEYlow(i, abs(tmp_tgraph1y - tmp_tgraph2y)/2.)
-                        new_graph.SetPointEYhigh(i, abs(tmp_tgraph1y - tmp_tgraph2y)/2.)
+                        new_graph.SetPoint(i, tmp_tgraph1x, 0.5 * (tmp_tgraph1y + tmp_tgraph2y))
+                        new_graph.SetPointEYlow(i, abs(tmp_tgraph1y - tmp_tgraph2y) / 2.)
+                        new_graph.SetPointEYhigh(i, abs(tmp_tgraph1y - tmp_tgraph2y) / 2.)
 
                         new_graph.SetPointEXlow(i, tmp_tgraph1.GetErrorX(i))
                         new_graph.SetPointEXhigh(i, tmp_tgraph1.GetErrorX(i))
@@ -120,7 +123,7 @@ class BuildTGraph(BaseModule):
 
                     new_graph = ROOT.TGraphAsymmErrors(tmp_tgraph1)
 
-                    for i in xrange(graph1.GetN()):
+                    for i in xrange(tmp_tgraph1.GetN()):
                         tmp_tgraph1x, tmp_tgraph1y = ROOT.Double(0), ROOT.Double(0)
                         tmp_tgraph1.GetPoint(i, tmp_tgraph1x, tmp_tgraph1y)
 
@@ -130,7 +133,7 @@ class BuildTGraph(BaseModule):
                         tmp_tgraph3x, tmp_tgraph3y = ROOT.Double(0), ROOT.Double(0)
                         tmp_tgraph3.GetPoint(i, tmp_tgraph3x, tmp_tgraph3y)
 
-                        new_graph.SetPoint(i, tmp_tgraph1X, tmp_tgraph1Y)
+                        new_graph.SetPoint(i, tmp_tgraph1x, tmp_tgraph1y)
                         new_graph.SetPointEYlow(i, tmp_tgraph1y - tmp_tgraph2y)
                         new_graph.SetPointEYhigh(i, tmp_tgraph3y - tmp_tgraph1y)
 
@@ -138,62 +141,3 @@ class BuildTGraph(BaseModule):
                         new_graph.SetPointEXhigh(i, tmp_tgraph1.GetErrorX(i))
 
                 config['objects'].setdefault(id, {})['obj'] = new_graph
-
-
-
-
-def get_root_objects(input, option=None, **kwargs):
-    if input is None:
-        input = []
-    return [get_root_object(filename) for filename in input]
-
-
-def get_root_object(input, option="READ"):
-    if '?' in input:
-        input, object_path = input.split('?')
-    else:
-        raise ValueError('No object path specified.')
-
-    rootfile = get_root_file(input, option=option)
-    obj = rootfile.Get(object_path)
-    ROOT.SetOwnership(obj, 0)
-    if obj == None:
-        raise Exception("Requested object {0} not found in rootfile {1}.".format(object_path, input))
-    return obj
-
-
-def get_tgraphasymm_err(central_histo, err_low_histo, err_hi_histo):
-    graph = ROOT.TGraphAsymmErrors(central_histo)
-    for i in xrange(graph.GetN()):
-        graph.SetPointEYlow(i, err_low_histo.GetBinContent(i + 1))
-        graph.SetPointEYhigh(i, err_hi_histo.GetBinContent(i + 1))
-    return graph
-
-
-def get_tgraphasymm_from_histos(central_histo, low_histo, hi_histo):
-    graph = ROOT.TGraphAsymmErrors(central_histo)
-    for i in xrange(graph.GetN()):
-        graph.SetPointEYlow(i, central_histo.GetBinContent(i + 1) - low_histo.GetBinContent(i + 1))
-        graph.SetPointEYhigh(i, hi_histo.GetBinContent(i + 1) - central_histo.GetBinContent(i + 1))
-    return graph
-
-
-def get_root_file(root_filename, option="READ"):
-    rootfile = ROOT.TFile(root_filename, option)
-    ROOT.SetOwnership(rootfile, 0)
-    return rootfile
-
-
-def normalize_to(histo, factor=1.0):
-    histo.Sumw2()
-    histo.Scale(factor / histo.Integral())
-
-
-def normalize_to_histo(histo, ref_histo):
-    histo.Sumw2()
-    histo.Scale(ref_histo.Integral() / histo.Integral())
-
-
-def normalize_to_binwidth(histo):
-    histo.Sumw2()
-    histo.Scale(1.0, "width")
