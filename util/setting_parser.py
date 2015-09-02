@@ -31,6 +31,7 @@ class SettingParser(argparse.ArgumentParser):
         self.register('type', 'str2kvbool', str2kvbool)
         self.register('type', 'str2kvstr', str2kvstr)
         self.register('type', 'str2kvdict', str2kvdict)
+        self.register('type', 'str2dict', str2dict)
         self.register('type', 'noneorfloat', noneorfloat)
 
         self.register('action', 'setting', SettingAction)
@@ -107,6 +108,13 @@ def str2kvdict(s):
     k, v = get_tuple(s)
     return k, json.loads(v)
 
+def str2dict(s):
+    """ Parses string of format id:value into tuple of (str, dict)
+
+        The passed value must be json parseable, eg something like
+        {"key0": "val0", "key1": "val1"}
+    """
+    return json.loads(s)
 
 def str2kvint(s):
     """Parses string of format id:value into tuple of (str, int)"""
@@ -124,7 +132,6 @@ def str2kvbool(s):
 def str2kvstr(s):
     """ Parses string of format id:value into tuple of (str, str)."""
     return get_tuple(s)
-
 
 def get_tuple(s):
     """ Try to split s into key value pair at ':' delimiter. Set key to None if ':' not in s."""
