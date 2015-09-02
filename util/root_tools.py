@@ -1,5 +1,7 @@
 import ROOT
 
+import root2np
+
 
 def get_root_objects(input, option=None, **kwargs):
     if input is None:
@@ -11,7 +13,7 @@ def get_root_object(input, option="READ"):
     if '?' in input:
         input, object_path = input.split('?')
     else:
-        raise ValueError('No object path specified.')
+        raise ValueError('No object path specified. Syntax: File.root?path/to/histo')
 
     rootfile = get_root_file(input, option=option)
     obj = rootfile.Get(object_path)
@@ -19,6 +21,14 @@ def get_root_object(input, option="READ"):
     if obj == None:
         raise Exception("Requested object {0} not found in rootfile {1}.".format(object_path, input))
     return obj
+
+
+def get_np_object(root_object_path):
+    root_object = get_root_object(root_object_path)
+    np_object = root2np.R2npObject1D(root_object)
+
+    return np_object
+
 
 
 def get_tgraphasymm_err(central_histo, err_low_histo, err_hi_histo):

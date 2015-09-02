@@ -7,7 +7,7 @@ from matplotlib.colors import Normalize
 from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
 
-from root2mpl import MplObject1D, MplObject2D
+from root2np import R2npObject1D, R2npObject2D
 from util.viridis import viridis_cmap
 
 plt.register_cmap(cmap=viridis_cmap)
@@ -240,7 +240,7 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
     # Convert root object to mpl readable object
-    obj = MplObject1D(obj)
+    obj = R2npObject1D(obj)
     # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
@@ -276,7 +276,7 @@ def plot_histo(obj=None, emptybins=True, ax=None, **kwargs):
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
     # Convert root object to mpl readable object
-    obj = MplObject1D(obj)
+    obj = R2npObject1D(obj)
     # if no axis passed use current global axis
     if ax is None:
         ax = plt.gca()
@@ -308,7 +308,7 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
     # Convert root object to mpl readable object
-    obj = MplObject1D(obj)
+    obj = R2npObject1D(obj)
 
     if not kwargs['linestyle']:
         kwargs['linestyle'] = '-'
@@ -342,7 +342,7 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
     """
     # Convert root object to mpl readable object
-    obj = MplObject1D(obj)
+    obj = R2npObject1D(obj)
 
     # if no axis passed use current global axis
     if ax is None:
@@ -393,7 +393,7 @@ def plot_heatmap(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis',
         cmap: Colormap
     """
     # Convert root object to mpl readable object
-    obj = MplObject2D(obj)
+    obj = R2npObject2D(obj)
     cmap = matplotlib.cm.get_cmap(cmap)
 
     # if no axis passed use current global axis

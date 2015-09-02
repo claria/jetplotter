@@ -5,7 +5,7 @@ import numpy as np
 import ROOT
 
 
-class MplObject1D(object):
+class R2npObject1D(object):
     """Python representation of 1d root objects to be used for matplotlib plotting."""
 
     def __init__(self, root_object):
@@ -98,7 +98,7 @@ class MplObject1D(object):
         return self.y + self.yerru
 
 
-class MplObject2D(object):
+class R2npObject2D(object):
     """Python representation of 2d root objects to be used for matplotlib plotting."""
 
     def __init__(self, root_object):
