@@ -32,12 +32,10 @@ class FitObj(BaseModule):
                 fcn.SetParameters(*settings['fcn_0'])
             options = settings.get('options', '')
 
-            xmin, xmax = config['objects'][id]['obj'].GetXaxis().GetXmin(), config['objects'][id][
-                'obj'].GetXaxis().GetXmax()
+            xmin, xmax = config['objects'][id]['obj'].GetXaxis().GetXmin(), config['objects'][id]['obj'].GetXaxis().GetXmax()
             # Do the fit
             if 'N' not in options:
                 options += 'N'
-            print options
             config['objects'][id]['obj'].Fit(fcn_name, options)
             vfitter = ROOT.TVirtualFitter.GetFitter()
             fcn.SetNpx(1000)
@@ -47,6 +45,20 @@ class FitObj(BaseModule):
             # config['objects']['fit_{0}'.format(id)] = copy.deepcopy(config['objects'][id])
             new_obj_name = 'fit_{0}'.format(id)
             config['objects'].setdefault(new_obj_name, {})['obj'] = errorgraph
+
+            #TGraph with the same number of points as the fitted object, but y values and errors taken from the fit.
+            histo_fit_id = '_fit_graph_origbin_{0}'.format(id)
+            #tmp tgraph of original obj.
+            config['objects'].setdefault(histo_fit_id, {})['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
+            config['objects'][histo_fit_id]['obj']
+            for i in xrange(config['objects'][histo_fit_id]['obj'].GetN()):
+                tmp_x, tmp_y = ROOT.Double(0), ROOT.Double(0)
+                config['objects'][histo_fit_id]['obj'].GetPoint(i, tmp_x, tmp_y)
+                config['objects'][histo_fit_id]['obj'].SetPoint(i, tmp_x, fcn.Eval(tmp_x))
+                config['objects'][histo_fit_id]['obj'].SetPointEYhigh(i, 0.)
+                config['objects'][histo_fit_id]['obj'].SetPointEYlow(i, 0.)
+
+
 
 
 class TriggerEfficiencyFit(BaseModule):
@@ -99,3 +111,4 @@ class TriggerEfficiencyFit(BaseModule):
 
             id_fit = 'fit_{0}'.format(id.strip('_'))
             config['objects'].setdefault(id_fit, {})['obj'] = eff_error_graph
+
