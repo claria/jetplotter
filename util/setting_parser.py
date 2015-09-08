@@ -108,6 +108,17 @@ def str2kvdict(s):
     k, v = get_tuple(s)
     return k, json.loads(v)
 
+def str2kvquery(s):
+    """ Parses string of format id:value into tuple of (str, dict)
+
+        The passed value must be json parseable, eg something like
+        id:{"key0": "val0", "key1": "val1"}
+    """
+    k, query = get_tuple(s)
+    kwargs = {v.split('=')[0]:json.loads(v.split('=')[1]) for v in query.split('&')}
+    return k, kwargs
+
+
 def str2dict(s):
     """ Parses string of format id:value into tuple of (str, dict)
 
