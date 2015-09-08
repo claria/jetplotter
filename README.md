@@ -18,3 +18,4 @@ but is less powerful though the code structure is much simpler and nicer.
   X Callback Handler
   - move output stuff to core.
   - do not store provided_args in config
+  - move from json to url args ?key=value&key2=value
