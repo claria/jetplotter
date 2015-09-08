@@ -1,11 +1,12 @@
 import os
 import sys
 import logging
+import runpy
 
 from module_handler import discover_modules
 from util.config_tools import merge, read_config, write_config
 from util.setting_parser import SettingParser
-from util.events import EventHandler
+import util.callbacks as callbacks
 
 log = logging.getLogger(__name__)
 
@@ -23,18 +24,24 @@ class Plotter(object):
     def __call__(self):
 
         # Discover all available modules
-        EventHandler().trigger('before_module_discovery')
+        callbacks.trigger('before_module_discovery')
         self._all_modules = discover_modules()
 
         # Command line args
         cmd_config = self.parse_args()
 
         # load config from files if requested
-        if cmd_config['load_config']:
+        if cmd_config['load_config'] and cmd_config['load_config'].endswith('.json'):
             file_config = read_config(cmd_config['load_config'])
             config = self.build_config(cmd_config=cmd_config, file_config=file_config)
+        elif cmd_config['load_config'] and cmd_config['load_config'].endswith('.py'):
+            config = cmd_config
+            runpy.run_path(cmd_config['load_config'])
         else:
             config = cmd_config
+
+        # trigger after_config_build callback
+        callbacks.trigger('after_config_build', config=config)
 
         # At this point the config is 'complete'
         # While modules may add settings/etc to the config later on, the actual config is feature complete now
