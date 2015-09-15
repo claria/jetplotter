@@ -29,6 +29,18 @@
             }
         ], 
         [
+            "qcdp6mpihad", 
+            {
+                "fcn": "[0] + [1]/x**[2]", 
+                "fcn_0": [
+                    1.0, 
+                    1.0, 
+                    1.0
+                ], 
+                "options": "I"
+            }
+        ], 
+        [
             "hwppmpihad", 
             {
                 "fcn": "[0] + [1]/x**[2]", 
@@ -76,6 +88,24 @@
             "id": "_hwppnompinohad", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg", 
             "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_qcdp6nompinohad": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "#55A868", 
+            "edgecolor": "auto", 
+            "id": "qcdp6mpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P6_Z2S_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "P6", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -157,6 +187,24 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
+        "qcdp6mpihad": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "_color2_", 
+            "edgecolor": "auto", 
+            "id": "qcdp6mpihad", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P6_Z2S_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "P6", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
         "qcdp8mpihad": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -204,6 +252,10 @@
         [
             "qcdp8mpihad", 
             "_qcdp8nompinohad"
+        ], 
+        [
+            "qcdp6mpihad", 
+            "_qcdp6nompinohad"
         ]
     ], 
     "show_legend": true, 
