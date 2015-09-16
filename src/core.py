@@ -47,7 +47,7 @@ class Plotter(object):
         # While modules may add settings/etc to the config later on, the actual config is feature complete now
         # and can be saved to disk.
         if config.pop('store_json'):
-            path = os.path.join(config['output_prefix'], config['output_path']).replace('.png', '.json')
+            path = os.path.join(config['output_prefix'], config['output_path']) + '.json'
             write_config(config, path)
 
         # Construct path in which all the modules are run.
