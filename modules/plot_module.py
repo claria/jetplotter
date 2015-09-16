@@ -201,7 +201,7 @@ class Plot(BasePlot):
         # Facecolor is always set using the color argument.
         kwargs['facecolor'] = kwargs['color']
 
-        kwargs['edgecolor'] = get_lookup_val('edgecolor', kwargs.get('edgecolor'))
+        kwargs['edgecolor'] = get_lookup_val('color', kwargs.get('edgecolor'))
         if style == 'errorbar':
             artist = plot_errorbar(ax=ax, **kwargs)
         elif style == 'band':
