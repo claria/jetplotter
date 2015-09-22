@@ -195,7 +195,6 @@ class SettingAction(argparse.Action):
         for i in xrange(len(values)):
             if not isinstance(values[i], tuple) or len(values[i]) != 2:
                 # Make it to a tuple
-                print values
                 values[i] = (None, values[i])
             if not values[i][0] or not isinstance(values[i][0], basestring):
                 # values[i] = ('_default', values[i][1])

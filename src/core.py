@@ -4,7 +4,7 @@ import logging
 import runpy
 
 from module_handler import discover_modules
-from util.config_tools import merge, read_config, write_config
+from util.config_tools import merge, read_config, write_config, ConfigDict
 from util.setting_parser import SettingParser
 import util.callbacks as callbacks
 
@@ -131,7 +131,8 @@ class Plotter(object):
         else:
             config = args
 
-        return config
+        # ConfigDict is just a simple wrapper around a dict with some helper functions.
+        return ConfigDict(config)
 
 def update_with_default(data):
     for id, item in data.iteritems():

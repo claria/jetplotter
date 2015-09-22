@@ -1,10 +1,24 @@
 import collections
+import copy
 import json
 import os
 import sys
 import logging
 
 log = logging.getLogger(__name__)
+
+class ConfigDict(dict):
+    """ It is a normal dict, just a few convenience methods added.
+    """
+    def __init__(self, *args, **kwargs):
+        super(self, ConfigDict).__init__(*args, **kwargs)
+        self.setdefault('objects', {})
+
+    def add_object(self, name):
+        if '_default' in self['objects']:
+            self['objects'][name] = copy.deepcopy(self['objects']['_default'])
+        else:
+            self['objects'][name] = {}
 
 
 def parse_optionstring(s):
