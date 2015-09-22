@@ -6,16 +6,27 @@ import collections
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from util.root_tools import get_np_object
+from util.root_tools import get_np_object, get_root_object
+from util.root2np import R2npObject1D
 
 
 def main():
     pass
     ybys_bins = ['yb0ys0', 'yb0ys1', 'yb0ys2', 'yb1ys0', 'yb1ys1', 'yb2ys0']
+    def get_coltype(s):
+        if s in ['yb_low', 'yb_high', 'ys_low', 'ys_high',  'pt_low', 'pt_high', 'NPCorr']:
+            return 'Bin'
+        elif s in ['sigma']:
+            return 'Sigma'
+        else:
+            return 'Error'
 
 
     for ybys_bin in ybys_bins:
-        unf_data = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?{0}/h_ptavg'.format(ybys_bin))
+        # unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
+        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?{0}/h_ptavg'.format(ybys_bin))
+        unf_data_root.Scale(1.0, 'width')
+        unf_data = R2npObject1D(unf_data_root)
 
         data = collections.OrderedDict()
         data['yb_low'] = np.array([float(ybys_bin[2])] * len(unf_data.xl))
@@ -25,6 +36,8 @@ def main():
         data['pt_low'] = unf_data.xl
         data['pt_high'] = unf_data.xu
         data['sigma'] = unf_data.y
+        data['NPCorr'] = np.array([1.0] * len(unf_data.y))
+        data['stat'] = unf_data.yerr/unf_data.y * 100.
         # lumi
         lumi_unc = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?{0}/lumi_unc_up'.format(ybys_bin))
         data['lumi'] = (lumi_unc.y - 1.) * 100.
@@ -53,33 +66,47 @@ def main():
             jec_dn = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/JEC_DATA.root?{0}_{1}_dn/h_ptavg'.format(ybys_bin, jec_source))
             # data['{0}_up'.format(jec_source)] = jec_up.y/jec_default.y -1.
             # data['{0}_dn'.format(jec_source)] = 1. - jec_dn.y/jec_default.y
-            data['{0}'.format(jec_source)] = np.abs((jec_up.y - jec_dn.y)/2.0)/jec_default.y
+            data['{0}'.format(jec_source)] = np.abs((jec_up.y - jec_dn.y)/2.0)/jec_default.y * 100.
 
         for k,v in data.iteritems():
             v[np.isnan(v)] = 0.
+            v[np.isinf(v)] = 0.
 
         if 'yb0ys0' == ybys_bin:
             labels = data.keys()
-            print ' '.join(['{0:<15}'.format(label) for label in labels])
-        print_data(data, labels=labels)
+            print ', '.join(['\'{0}\''.format(label) for label in labels])
+            print ', '.join(['\'{0}\''.format(get_coltype(label)) for label in labels])
+            print 'NColumn', len(labels)
+        print_data(data, labels=labels, ybys_bin=ybys_bin)
 
-def print_data(data, labels):
+def infinalrange(pt_low, ybys_bin):
+    return True
+    cuts = {
+            'yb0ys0' : (74.,2116),
+            'yb0ys1' : (74.,1032),
+            'yb0ys2' : (74.,430),
+            'yb1ys0' : (74.,1327),
+            'yb1ys1' : (74.,686),
+            'yb2ys0' : (74.,548),
+            }
+    if pt_low >= cuts[ybys_bin][0] and pt_low < cuts[ybys_bin][1]:
+        return True
+    return False
+
+def print_data(data, labels, ybys_bin):
     # labels = data.keys()
     # labels.sort()
     nbins = len(data[labels[0]])
     for i in xrange(nbins):
-        vals = ['{0:<15.4e}'.format(data[label][i]) for label in labels]
-        print ' '.join(vals)
+        if infinalrange(data['pt_low'][i], ybys_bin):
+            vals = ['{0:<15.4g}'.format(data[label][i]) for label in labels]
+            print ' '.join(vals)
 
 # unfolded data
 # stat unc
 # correlations
 # jec
 # systematic unfolding
-
-
-
-
 
 if __name__ == '__main__':
     main()

@@ -40,24 +40,47 @@ class Plotter(object):
         else:
             config = cmd_config
 
-        # trigger after_config_build callback
-        callbacks.trigger('after_config_build', config=config)
+        # Triggered after config built
+        callbacks.trigger('after_config', config=config)
 
         # At this point the config is 'complete'
         # While modules may add settings/etc to the config later on, the actual config is feature complete now
         # and can be saved to disk.
         if config.pop('store_json'):
-            path = os.path.join(config['output_prefix'], config['output_path']) + '.json'
-            write_config(config, path)
+            path = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[0]
+            write_config(config, path + '.json')
 
-        # Construct path in which all the modules are run.
-        path = [self._all_modules[name]() for name in
-                config['input_modules'] + config['ana_modules'] + config['output_modules']]
-
-        for module in path:
+        # Run all modules
+        for module in [self._all_modules[name]() for name in config['input_modules']]:
             log.info("Processing {0}...".format(module.label))
+            callbacks.trigger('before_module_{0}'.format(module), config=config)
             module(config)
+            callbacks.trigger('after_module_{0}'.format(module), config=config)
             update_with_default(config['objects'])
+
+        # Triggered after all input modules processed.
+        callbacks.trigger('after_input_modules', config=config)
+
+        for module in [self._all_modules[name]() for name in config['ana_modules']]:
+            log.info("Processing {0}...".format(module.label))
+            callbacks.trigger('before_module_{0}'.format(module), config=config)
+            module(config)
+            callbacks.trigger('after_module_{0}'.format(module), config=config)
+            update_with_default(config['objects'])
+
+        # Triggered after all ana modules processed.
+        callbacks.trigger('after_ana_modules', config=config)
+
+        for module in [self._all_modules[name]() for name in config['output_modules']]:
+            log.info("Processing {0}...".format(module.label))
+            callbacks.trigger('before_module_{0}'.format(module), config=config)
+            module(config)
+            callbacks.trigger('after_module_{0}'.format(module), config=config)
+            update_with_default(config['objects'])
+
+        # Triggered after all output modules processed.
+        callbacks.trigger('after_ana_modules', config=config)
+
 
     def parse_args(self):
         """ Parse arguments. To set log level, load additional module parsers etc. the sys.args[1:] are parsed
