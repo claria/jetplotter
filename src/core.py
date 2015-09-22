@@ -24,21 +24,9 @@ class Plotter(object):
     def __call__(self):
 
         # Discover all available modules
-        callbacks.trigger('before_module_discovery')
         self._all_modules = discover_modules()
-
-        # Command line args
-        cmd_config = self.parse_args()
-
-        # load config from files if requested
-        if cmd_config['load_config'] and cmd_config['load_config'].endswith('.json'):
-            file_config = read_config(cmd_config['load_config'])
-            config = self.build_config(cmd_config=cmd_config, file_config=file_config)
-        elif cmd_config['load_config'] and cmd_config['load_config'].endswith('.py'):
-            config = cmd_config
-            runpy.run_path(cmd_config['load_config'])
-        else:
-            config = cmd_config
+        # Prepare configs from parsed args and provided input configs/python files
+        config = self.build_config()
 
         # Triggered after config built
         callbacks.trigger('after_config', config=config)
@@ -81,8 +69,7 @@ class Plotter(object):
         # Triggered after all output modules processed.
         callbacks.trigger('after_ana_modules', config=config)
 
-
-    def parse_args(self):
+    def build_config(self):
         """ Parse arguments. To set log level, load additional module parsers etc. the sys.args[1:] are parsed
             multiple times.
         :return: dict of parsed args
@@ -91,6 +78,9 @@ class Plotter(object):
         base_parser_group = base_parser.add_argument_group(title='Base Parser', description='')
         base_parser_group.add_argument("--log-level", default="info", help="Set the log level.")
         base_parser_group.add_argument("--list-modules", action='store_true', help="List all available modules.")
+        base_parser_group.add_argument("-l", "--load-config", default=None,
+                                       help="Load a json config or a python script from a file.")
+
         # Parse only log level to set it as early as possible
         args = vars(base_parser.parse_known_args()[0])
         # Set log level
@@ -104,6 +94,14 @@ class Plotter(object):
                 print label
             sys.exit(0)
 
+        if args['load_config'] and args['load_config'].endswith('.json'):
+            file_config = read_config(args['load_config'])
+        elif args['load_config'] and args['load_config'].endswith('.py'):
+            runpy.run_path(args['load_config'])
+            file_config = None
+        else:
+            file_config = None
+
         base_parser_group.add_argument("--input-modules", nargs='+', default=['RootModule'], help="Input modules .")
         base_parser_group.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
         base_parser_group.add_argument("--output-modules", nargs='+', default=['PlotModule'], help="Output modules.")
@@ -116,8 +114,6 @@ class Plotter(object):
         # Additional arguments for complete parser
         base_parser_group.add_argument("-p", "--print-config", default=False, action="store_true",
                                        help="Print out the JSON config before running Artus.")
-        base_parser_group.add_argument("-l", "--load-config", default=None,
-                                       help="Load a json config from a file.")
         base_parser_group.add_argument("--store-json", type='bool', default=True,
                                        help="Save the config as json file.")
 
@@ -126,43 +122,16 @@ class Plotter(object):
                                description='''Plotting tool to read, manipulate and plot root objects.''')
 
         args = vars(parser.parse_args())
-        return args
 
-    def build_config(self, cmd_config, file_config):
+        # If a config was loaded, merge it with the args
+        if file_config:
+            provided_args = args.pop('provided_args')
+            merge(file_config, args, precedence_keys=provided_args)
+            config = file_config
+        else:
+            config = args
 
-        # list of args provided on command line
-        provided_args = cmd_config.pop('provided_args')
-        merge(file_config, cmd_config, precedence_keys=provided_args)
-
-        config = file_config
         return config
-
-        # def _perform_lookup_replacement(self):
-        #     """ Searches for the occurences of keys in the lookup_dict and replaces the values
-        #         in the config with the values from the lookup dict.
-        #     """
-        #     # Perform global replacements:
-        #     for k, v in self.config.items():
-        #         if isinstance(v, basestring) and k in lookup_dict:
-        #             for lk, lv in lookup_dict[k].items():
-        #                 # check if string contains any key from lookup dict
-        #                 if lk in v:
-        #                     self.config[k] = self.config[k].replace(lk, lv)
-        #         elif isinstance(v, list) and k in lookup_dict:
-        #             for i in xrange(len(v)):
-        #                 for lk, lv in lookup_dict[k].items():
-        #                     # check if string contains any key from lookup dict
-        #                     if lk in v[i]:
-        #                         self.config[k][i] = self.config[k][i].replace(lk, lv)
-        #     # perform replacement for object dict keys
-        #     for id in self.config['objects']:
-        #         for k, v in self.config['objects'][id].items():
-        #             if isinstance(v, basestring) and k in lookup_dict:
-        #                 for lk, lv in lookup_dict[k].items():
-        #                     # check if string contains any key from lookup dict
-        #                     if lk in v:
-        #                         self.config['objects'][id][k] = self.config['objects'][id][k].replace(lk, lv)
-
 
 def update_with_default(data):
     for id, item in data.iteritems():
