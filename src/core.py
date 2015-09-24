@@ -88,19 +88,21 @@ class Plotter(object):
         if not isinstance(log_level, int):
             raise ValueError('Invalid log level: %s' % log_level)
         logging.basicConfig(format='%(message)s', level=log_level)
+
         # If module list requested, print it and exit program
         if args['list_modules']:
             for label, module in self._all_modules.iteritems():
                 print label
             sys.exit(0)
 
+        # Load configs/python scripts from files if requested
         if args['load_config'] and args['load_config'].endswith('.json'):
             file_config = read_config(args['load_config'])
         elif args['load_config'] and args['load_config'].endswith('.py'):
             runpy.run_path(args['load_config'])
-            file_config = None
+            file_config = ConfigDict()
         else:
-            file_config = None
+            file_config = ConfigDict()
 
         base_parser_group.add_argument("--input-modules", nargs='+', default=['RootModule'], help="Input modules .")
         base_parser_group.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
@@ -121,6 +123,10 @@ class Plotter(object):
         parser = SettingParser(parents=[base_parser] + module_parsers,
                                description='''Plotting tool to read, manipulate and plot root objects.''')
 
+        # Triggers before actual parameters are parsed.
+        callbacks.trigger('before_parsing', config=file_config)
+
+        # Final parsing of parameters
         args = vars(parser.parse_args())
 
         # If a config was loaded, merge it with the args
@@ -135,6 +141,9 @@ class Plotter(object):
         return ConfigDict(config)
 
 def update_with_default(data):
+    """
+    Updates all objects with values from '_default' object.
+    """
     for id, item in data.iteritems():
         if id == '_default':
             continue
