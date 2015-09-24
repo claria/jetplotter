@@ -45,7 +45,7 @@
             "color": "black", 
             "edgecolor": "auto", 
             "id": "default", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?default/h3_ptavg_ysb_ys_1_2_yb_0_1", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_DATA.root?yb0ys1/h_ptavg", 
             "label": "Stat. Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -99,7 +99,7 @@
             "color": "#4C72B0", 
             "edgecolor": "auto", 
             "id": "total_dn", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_dn/h3_ptavg_ysb_ys_1_2_yb_0_1", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_DATA.root?yb0ys1_Total_dn/h_ptavg", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -117,7 +117,7 @@
             "color": "#4C72B0", 
             "edgecolor": "auto", 
             "id": "total_up", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC.root?jecu_Total_up/h3_ptavg_ysb_ys_1_2_yb_0_1", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_DATA.root?yb0ys1_Total_up/h_ptavg", 
             "label": "JEC Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -169,7 +169,7 @@
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
         "74.", 
-        "1032"
+        "2000."
     ], 
     "x_log": true, 
     "y_label": "Fractional Uncertainty?_center_", 
