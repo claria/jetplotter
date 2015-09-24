@@ -11,7 +11,7 @@ class ConfigDict(dict):
     """ It is a normal dict, just a few convenience methods added.
     """
     def __init__(self, *args, **kwargs):
-        super(self, ConfigDict).__init__(*args, **kwargs)
+        super(ConfigDict, self).__init__(*args, **kwargs)
         self.setdefault('objects', {})
 
     def add_object(self, name):
