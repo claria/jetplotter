@@ -10,7 +10,7 @@ all : $(TARGETS)
 
 # To obtain object files
 %.png: %.json
-	./plotter.py -l $< 
+	./plot.py -l $< 
 
 # To remove generated files
 clean:
