@@ -22,7 +22,7 @@ class FitObj(BaseModule):
 
     def __call__(self, config):
         for id, settings in config['fit_obj']:
-            if not id in config['objects']:
+            if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
 
             fcn_name = 'fit_{0}'.format(id)
@@ -46,9 +46,9 @@ class FitObj(BaseModule):
             new_obj_name = 'fit_{0}'.format(id)
             config['objects'].setdefault(new_obj_name, {})['obj'] = errorgraph
 
-            #TGraph with the same number of points as the fitted object, but y values and errors taken from the fit.
+            # TGraph with the same number of points as the fitted object, but y values and errors taken from the fit.
             histo_fit_id = '_fit_graph_origbin_{0}'.format(id)
-            #tmp tgraph of original obj.
+            # tmp tgraph of original obj.
             config['objects'].setdefault(histo_fit_id, {})['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
             config['objects'][histo_fit_id]['obj']
             for i in xrange(config['objects'][histo_fit_id]['obj'].GetN()):
