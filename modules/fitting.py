@@ -14,6 +14,11 @@ class FitObj(BaseModule):
 
         The function to be fitted is passed via a dict str, e.g.
         --fit-obj id:'{"fcn":"[0] + [1]/x**[2]", "fcn_0":[1.0, 1.0, 1.0]}'
+        The options which can be passed are
+            fcn : the fit function
+            options : the root-style object string
+            xmin : the minimum x used in the fit
+            xmax : the maximum x used in the fit
     """
 
     def __init__(self):
@@ -32,7 +37,8 @@ class FitObj(BaseModule):
                 fcn.SetParameters(*settings['fcn_0'])
             options = settings.get('options', '')
 
-            xmin, xmax = config['objects'][id]['obj'].GetXaxis().GetXmin(), config['objects'][id]['obj'].GetXaxis().GetXmax()
+            xmin = settings.get('xmin', config['objects'][id]['obj'].GetXaxis().GetXmin())
+            xmax = settings.get('xmax', config['objects'][id]['obj'].GetXaxis().GetXmax())
             # Do the fit
             if 'N' not in options:
                 options += 'N'
@@ -50,15 +56,12 @@ class FitObj(BaseModule):
             histo_fit_id = '_fit_graph_origbin_{0}'.format(id)
             # tmp tgraph of original obj.
             config['objects'].setdefault(histo_fit_id, {})['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
-            config['objects'][histo_fit_id]['obj']
             for i in xrange(config['objects'][histo_fit_id]['obj'].GetN()):
                 tmp_x, tmp_y = ROOT.Double(0), ROOT.Double(0)
                 config['objects'][histo_fit_id]['obj'].GetPoint(i, tmp_x, tmp_y)
                 config['objects'][histo_fit_id]['obj'].SetPoint(i, tmp_x, fcn.Eval(tmp_x))
                 config['objects'][histo_fit_id]['obj'].SetPointEYhigh(i, 0.)
                 config['objects'][histo_fit_id]['obj'].SetPointEYlow(i, 0.)
-
-
 
 
 class TriggerEfficiencyFit(BaseModule):

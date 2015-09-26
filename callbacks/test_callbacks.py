@@ -20,9 +20,8 @@ def before_parsing(*args, **kwargs):
     config["ax_texts"] = ["_cmsp_", "_yb0ys0_?_upperleft_"] 
 
 
-@callbacks.register('after_ana_modules')
-def after_modules(*args, **kwargs):
-    
+@callbacks.register('after_input_modules')
+def after_input_modules(*args, **kwargs):
     config['objects']['qcdp8mpihad']['obj'] = config['objects']['qcdp8mpihad']['obj'].Divide(config['objects']['qcdp8nompinohad']['obj'])
     del config['objects']['qcdp8nompinohad']
     config['objects']['hwppmpihad']['obj'] = config['objects']['hwppmpihad']['obj'].Divide(config['objects']['hwppnompinohad']['obj'])

@@ -106,7 +106,12 @@ def str2kvdict(s):
         id:{"key0": "val0", "key1": "val1"}
     """
     k, v = get_tuple(s)
-    return k, json.loads(v)
+    try:
+        d = json.loads(v)
+    except ValueError:
+        d = parse_query(v)
+
+    return k, v
 
 def str2kvquery(s):
     """ Parses string of format id:value into tuple of (str, dict)
@@ -115,7 +120,7 @@ def str2kvquery(s):
         id:{"key0": "val0", "key1": "val1"}
     """
     k, query = get_tuple(s)
-    kwargs = {v.split('=')[0]:json.loads(v.split('=')[1]) for v in query.split('&')}
+    kwargs = parse_query(query)
     return k, kwargs
 
 
@@ -151,6 +156,10 @@ def get_tuple(s):
     except ValueError:
         (id, setting) = None, s
     return id, setting
+
+def parse_query(query):
+    return {v.split('=')[0]:json.loads(v.split('=')[1]) for v in query.split('%')}
+
 
 
 class SettingAction(argparse.Action):
