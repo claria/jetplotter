@@ -19,7 +19,7 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": null, 
+    "load_config": "plots/ratio_to_nlo+np_yb0ys0.json", 
     "log_level": "info", 
     "multiply": [
         [

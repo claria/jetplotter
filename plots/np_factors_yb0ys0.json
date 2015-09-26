@@ -4,7 +4,7 @@
         "Ratio", 
         "FitObj"
     ], 
-    "argv": "./plotter.py -i qcdp8mpihad:~/dust/dijetana/ana/CMSSW_7_2_3/P8CUETP8_4C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg _qcdp8nompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/P8CUETP8_4C_FLAT_NOMPINOHAD2.root?gen_yb0ys0/h_genptavg _hwppnompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg hwppmpihad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg qcdp6mpihad:~/dust/dijetana/ana/CMSSW_7_2_3/P6_Z2S_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg _qcdp6nompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/P6_Z2S_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg --ratio qcdp8mpihad:_qcdp8nompinohad hwppmpihad:_hwppnompinohad qcdp6mpihad:_qcdp6nompinohad --ana-modules Ratio FitObj --label qcdp8mpihad:P8 hwppmpihad:HW++ qcdp6mpihad:P6 --y-lims 0.8 1.4 --x-lims 50. 3000. --x-log True --fit-obj qcdp8mpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} hwppmpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} qcdp6mpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} --color qcdp8mpihad:_color0_ fit_qcdp8mpihad:_color0_ hwppmpihad:_color1_ fit_hwppmpihad:_color1_ qcdp6mpihad:_color2_ fit_qcdp6mpihad:_color2_ --output-path np_factors_yb0ys0 --style fit_qcdp8mpihad:band fit_hwppmpihad:band fit_qcdp6mpihad:band --ax-texts _cmsp_ _yb0ys0_?_upperleft_ --x-label _ptavg_ --y-label NP Correction", 
+    "argv": "./plotter.py -i qcdp8mpihad:~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg _qcdp8nompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg _hwppnompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg hwppmpihad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg --ratio qcdp8mpihad:_qcdp8nompinohad hwppmpihad:_hwppnompinohad --ana-modules Ratio FitObj --label qcdp8mpihad:P8 hwppmpihad:HW++ --y-lims 0.5 1.4 --x-lims 50. 3000. --x-log True --fit-obj qcdp8mpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} hwppmpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} --color qcdp8mpihad:_color0_ fit_qcdp8mpihad:_color0_ hwppmpihad:_color1_ fit_hwppmpihad:_color1_ qcdp6mpihad:_color2_ --output-path np_factors_yb0ys0 --style fit_qcdp8mpihad:band fit_hwppmpihad:band fit_qcdp6mpihad:band --ax-texts _cmsp_ _yb0ys0_?_upperleft_ --x-label _ptavg_ --y-label NP Correction", 
     "ax_hlines": [], 
     "ax_texts": [
         "_cmsp_", 
@@ -27,18 +27,6 @@
         ], 
         [
             "hwppmpihad", 
-            {
-                "fcn": "[0] + [1]/x**[2]", 
-                "fcn_0": [
-                    1.0, 
-                    1.0, 
-                    1.0
-                ], 
-                "options": "I"
-            }
-        ], 
-        [
-            "qcdp6mpihad", 
             {
                 "fcn": "[0] + [1]/x**[2]", 
                 "fcn_0": [
@@ -75,20 +63,16 @@
             "zorder": 1.0
         }, 
         "_hwppnompinohad": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg"
-        }, 
-        "_qcdp6nompinohad": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P6_Z2S_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg"
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg"
         }, 
         "_qcdp8nompinohad": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8CUETP8_4C_FLAT_NOMPINOHAD2.root?gen_yb0ys0/h_genptavg"
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg"
         }, 
         "fit_hwppmpihad": {
             "color": "_color1_", 
             "style": "band"
         }, 
         "fit_qcdp6mpihad": {
-            "color": "_color2_", 
             "style": "band"
         }, 
         "fit_qcdp8mpihad": {
@@ -97,17 +81,15 @@
         }, 
         "hwppmpihad": {
             "color": "_color1_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE3C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
             "label": "HW++"
         }, 
         "qcdp6mpihad": {
-            "color": "_color2_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P6_Z2S_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
-            "label": "P6"
+            "color": "_color2_"
         }, 
         "qcdp8mpihad": {
             "color": "_color0_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8CUETP8_4C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
             "label": "P8"
         }
     }, 
@@ -144,10 +126,6 @@
         [
             "hwppmpihad", 
             "_hwppnompinohad"
-        ], 
-        [
-            "qcdp6mpihad", 
-            "_qcdp6nompinohad"
         ]
     ], 
     "ratio_copy": [], 
@@ -160,7 +138,7 @@
     "x_log": true, 
     "y_label": "NP Correction", 
     "y_lims": [
-        "0.8", 
+        "0.5", 
         "1.4"
     ], 
     "y_log": false, 
