@@ -78,7 +78,7 @@ class Plotter(object):
         base_parser_group = base_parser.add_argument_group(title='Base Parser', description='')
         base_parser_group.add_argument("--log-level", default="info", help="Set the log level.")
         base_parser_group.add_argument("--list-modules", action='store_true', help="List all available modules.")
-        base_parser_group.add_argument("-l", "--load-config", default=[],
+        base_parser_group.add_argument("-l", "--load-config", default=[], nargs='+',
                                        help="Load json configs, with decreasing precedence,  or a python scripts from file.")
 
         # Parse only log level to set it as early as possible
@@ -99,9 +99,9 @@ class Plotter(object):
         file_config = ConfigDict()
         for item in args['load_config']:
             if item.endswith('.json'):
-                merge(file_config, read_config(args['load_config']))
+                merge(file_config, read_config(item))
             elif item.endswith('.py'):
-                runpy.run_path(args['load_config'])
+                runpy.run_path(item)
             else:
                 raise ValueError('The file type of {0} is not compatible.'.format(item))
 
