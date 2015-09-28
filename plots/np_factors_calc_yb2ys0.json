@@ -57,7 +57,9 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/np_factors_calc_yb2ys0.json", 
+    "load_config": [
+        "plots/np_factors_calc_yb2ys0.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {
@@ -103,7 +105,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "_qcdp8nompinohad", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_NOMPINOHAD.root?gen_yb2ys0/h_genptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_NOMPINOHAD.root?gen_yb2ys0/h_genptavg", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -140,7 +142,7 @@
             "color": "#55A868", 
             "edgecolor": "auto", 
             "id": "qcdp8mpihad", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_MPIHAD.root?gen_yb2ys0/h_genptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb2ys0/h_genptavg", 
             "label": "_nolegend_", 
             "linestyle": "", 
             "marker": ".", 
@@ -176,7 +178,7 @@
             "color": "#55A868", 
             "edgecolor": "auto", 
             "id": "qcdp8mpihad", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_4C_FLAT_MPIHAD.root?gen_yb2ys0/h_genptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb2ys0/h_genptavg", 
             "label": "P8", 
             "linestyle": "", 
             "marker": ".", 
