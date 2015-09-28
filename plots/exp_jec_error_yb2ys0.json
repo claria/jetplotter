@@ -17,7 +17,9 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/exp_jec_error_yb2ys0.json", 
+    "load_config": [
+        "plots/exp_jec_error_yb2ys0.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {
