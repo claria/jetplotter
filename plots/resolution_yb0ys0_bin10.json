@@ -18,7 +18,9 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/resolution_yb0ys0_bin10.json", 
+    "load_config": [
+        "plots/resolution_yb0ys0_bin10.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {

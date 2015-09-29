@@ -15,7 +15,9 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/jet12_rapidity_yb1ys0.json", 
+    "load_config": [
+        "plots/jet12_rapidity_yb1ys0.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {

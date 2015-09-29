@@ -16,7 +16,9 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/reco_to_gen_nlo_smeared_yb0ys2.json", 
+    "load_config": [
+        "plots/reco_to_gen_nlo_smeared_yb0ys2.json"
+    ], 
     "log_level": "info", 
     "normalize": [
         [

@@ -27,7 +27,9 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/fit_nlo.json", 
+    "load_config": [
+        "plots/fit_nlo.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {

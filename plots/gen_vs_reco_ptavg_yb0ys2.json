@@ -13,7 +13,9 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/gen_vs_reco_ptavg_yb0ys2.json", 
+    "load_config": [
+        "plots/gen_vs_reco_ptavg_yb0ys2.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {

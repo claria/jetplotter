@@ -14,7 +14,9 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/kfactor_yb1ys1.json", 
+    "load_config": [
+        "plots/kfactor_yb1ys1.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {

@@ -11,7 +11,9 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/res_matrix_ptavg.json", 
+    "load_config": [
+        "plots/res_matrix_ptavg.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {
