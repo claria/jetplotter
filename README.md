@@ -18,3 +18,4 @@ Tool to manipulate and plot data from histograms.
   - move output stuff to core.
   - do not store provided args in config
   - move from json to url args ?key=value&key2=value
+  - omit load-config arg in config
