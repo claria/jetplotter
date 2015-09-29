@@ -5,7 +5,7 @@
         "Multiply", 
         "Ratio"
     ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?yb0ys2/h_ptavg ct14nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys2/CT14nlo_xs nnpdf30:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys2/NNPDF30_xs _np:~/jetplotter/plots/np_factors_calc_yb0ys2.root?res_np_factor --x-log True --x-lims 50. 3000. --y-lims 0.5 1.5 --ana-modules Normalize Multiply Ratio --ratio data:ct14nlo nnpdf30:ct14nlo ct14nlo:ct14nlo --normalize data:width --multiply ct14nlo:_np nnpdf30:_np --color data:black --output-path ratio_to_nlo+np_yb0ys2.png --label data:Data ct14nlo:CT14 NLOxNP nnpdf30:NNPDF 3.0xNP --x-label _ptavg_ --y-label Ratio to CT14?_center_ --ax-texts _cmsp_ _20fb_ _yb0ys2_?_upperleft_ --legend-loc upper right", 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys2/h_ptavg ct14nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys2/CT14nlo_xs nnpdf30:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys2/NNPDF30_xs _np:~/plot/plots/np_factors_calc_yb0ys2.root?res_np_factor --x-log True --x-lims 50. 3000. --y-lims 0.5 1.5 --ana-modules Normalize Multiply Ratio --ratio data:ct14nlo nnpdf30:ct14nlo ct14nlo:ct14nlo --normalize data:width --multiply ct14nlo:_np nnpdf30:_np --color data:black --output-path ratio_to_nlo+np_yb0ys2.png --label data:Data ct14nlo:CT14 NLOxNP nnpdf30:NNPDF 3.0xNP --x-label _ptavg_ --y-label Ratio to CT14?_center_ --ax-texts _cmsp_ _20fb_ _yb0ys2_?_upperleft_ --legend-loc upper right", 
     "ax_hlines": [], 
     "ax_texts": [
         "_cmsp_", 
@@ -19,7 +19,9 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/ratio_to_nlo+np_yb0ys2.json", 
+    "load_config": [
+        "plots/ratio_to_nlo+np_yb0ys2.json"
+    ], 
     "log_level": "info", 
     "multiply": [
         [
@@ -55,7 +57,7 @@
             "zorder": 1.0
         }, 
         "_np": {
-            "input": "~/jetplotter/plots/np_factors_calc_yb0ys2.root?res_np_factor"
+            "input": "~/plot/plots/np_factors_calc_yb0ys2.root?res_np_factor"
         }, 
         "ct14nlo": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys2/CT14nlo_xs", 
@@ -63,7 +65,7 @@
         }, 
         "data": {
             "color": "black", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?yb0ys2/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys2/h_ptavg", 
             "label": "Data"
         }, 
         "nnpdf30": {

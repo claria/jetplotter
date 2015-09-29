@@ -22,7 +22,9 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/ratio_reco.json", 
+    "load_config": [
+        "plots/ratio_reco.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {

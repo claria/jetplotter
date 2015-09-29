@@ -17,7 +17,9 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/ratio_recogenunf_yb1ys1.json", 
+    "load_config": [
+        "plots/ratio_recogenunf_yb1ys1.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {

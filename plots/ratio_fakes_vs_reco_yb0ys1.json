@@ -17,7 +17,9 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": "plots/ratio_fakes_vs_reco_yb0ys1.json", 
+    "load_config": [
+        "plots/ratio_fakes_vs_reco_yb0ys1.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {

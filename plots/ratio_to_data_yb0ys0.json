@@ -24,7 +24,9 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": "plots/ratio_to_data_yb0ys0.json", 
+    "load_config": [
+        "plots/ratio_to_data_yb0ys0.json"
+    ], 
     "log_level": "debug", 
     "normalize": [
         [
