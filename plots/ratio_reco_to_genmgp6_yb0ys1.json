@@ -18,7 +18,9 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": [], 
+    "load_config": [
+        "plots/ratio_reco_to_genmgp6_yb0ys1.json"
+    ], 
     "log_level": "info", 
     "normalize": [
         [
