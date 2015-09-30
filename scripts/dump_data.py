@@ -36,7 +36,8 @@ def main():
         data['pt_low'] = unf_data.xl
         data['pt_high'] = unf_data.xu
         data['sigma'] = unf_data.y
-        data['NPCorr'] = np.array([1.0] * len(unf_data.y))
+        data['NPCorr'] = get_np_object('~/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin)).y
+        data['uncor'] = np.array([1.0] * len(unf_data.xl))
         data['stat'] = unf_data.yerr/unf_data.y * 100.
         # lumi
         lumi_unc = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?{0}/lumi_unc_up'.format(ybys_bin))
@@ -80,7 +81,6 @@ def main():
         print_data(data, labels=labels, ybys_bin=ybys_bin)
 
 def infinalrange(pt_low, ybys_bin):
-    return True
     cuts = {
             'yb0ys0' : (74.,2116),
             'yb0ys1' : (74.,1032),
