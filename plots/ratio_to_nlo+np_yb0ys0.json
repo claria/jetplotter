@@ -3,17 +3,23 @@
     "ana_modules": [
         "Normalize", 
         "Multiply", 
-        "Ratio"
+        "Ratio", 
+        "ToTGraph"
     ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg ct14nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs nnpdf30:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_xs _np:~/plot/plots/np_factors_calc_yb0ys0.root?res_np_factor --x-log True --x-lims 50. 3000. --y-lims 0.5 1.5 --ana-modules Normalize Multiply Ratio --ratio data:ct14nlo nnpdf30:ct14nlo ct14nlo:ct14nlo --normalize data:width --multiply ct14nlo:_np nnpdf30:_np --color data:black --output-path ratio_to_nlo+np_yb0ys0.png --label data:Data ct14nlo:CT14 NLOxNP nnpdf30:NNPDF 3.0xNP --x-label _ptavg_ --y-label Ratio to CT14?_center_ --ax-texts _cmsp_ _20fb_ _yb0ys0_?_upperleft_ --legend-loc upper right", 
-    "ax_hlines": [], 
+    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "ax_hlines": [
+        "1.0?{\"color\":\"black\",\"lw\":2.0}"
+    ], 
     "ax_texts": [
+        "_yb0ys0_?_upperleft_", 
         "_cmsp_", 
-        "_20fb_", 
-        "_yb0ys0_?_upperleft_"
+        "_20fb_"
     ], 
     "ax_vlines": [], 
-    "fig_size": null, 
+    "fig_size": [
+        10.0, 
+        7.0
+    ], 
     "input_modules": [
         "RootModule"
     ], 
@@ -22,14 +28,18 @@
     "load_config": [
         "plots/ratio_to_nlo+np_yb0ys0.json"
     ], 
-    "log_level": "info", 
+    "log_level": "debug", 
     "multiply": [
         [
-            "ct14nlo", 
+            "nloct14", 
             "_np"
         ], 
         [
-            "nnpdf30", 
+            "nlommht2014", 
+            "_np"
+        ], 
+        [
+            "nlonnpdf30", 
             "_np"
         ]
     ], 
@@ -37,8 +47,13 @@
         [
             "data", 
             "width"
+        ], 
+        [
+            "dataunf", 
+            "width"
         ]
     ], 
+    "object_paths": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -47,7 +62,47 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "id": "_default", 
             "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_np": {
+            "input": "~/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "grey", 
+            "edgecolor": "grey", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg", 
+            "label": "Data (Reco)", 
+            "linestyle": "", 
+            "marker": "", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "dataunf": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "black", 
+            "id": "dataunf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?yb0ys0/h_ptavg", 
+            "label": "Data (Unf.)", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -56,21 +111,62 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "_np": {
-            "input": "~/plot/plots/np_factors_calc_yb0ys0.root?res_np_factor"
+        "nloct14": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "_color1_", 
+            "edgecolor": "_color1_", 
+            "id": "nloct14", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_pdfunc_u", 
+            "label": "NLOxNP (CT14)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
         }, 
-        "ct14nlo": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs", 
-            "label": "CT14 NLOxNP"
+        "nlommht2014": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "_color2_", 
+            "edgecolor": "_color2_", 
+            "id": "nlommht2014", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/MMHT2014_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/MMHT2014_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/MMHT2014_pdfunc_u", 
+            "label": "NLOxNP (MMHT 2014)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
         }, 
-        "data": {
-            "color": "black", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg", 
-            "label": "Data"
-        }, 
-        "nnpdf30": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_xs", 
-            "label": "NNPDF 3.0xNP"
+        "nlonnpdf30": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "_color3_", 
+            "edgecolor": "_color3_", 
+            "id": "nlonnpdf30", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_pdfunc_u", 
+            "label": "NLOxNP (NNPDF30)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
         }
     }, 
     "output_modules": [
@@ -78,53 +174,52 @@
     ], 
     "output_path": "ratio_to_nlo+np_yb0ys0.png", 
     "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
+    "plot_id": "^(?!_).*", 
     "print_config": false, 
     "provided_args": [
-        "ana_modules", 
-        "input", 
-        "normalize", 
-        "multiply", 
-        "ratio", 
-        "label", 
-        "color", 
-        "output_path", 
-        "x_lims", 
-        "y_lims", 
-        "x_log", 
-        "x_label", 
-        "y_label", 
-        "legend_loc", 
-        "ax_texts"
+        "help", 
+        "output_path"
     ], 
     "ratio": [
         [
             "data", 
-            "ct14nlo"
+            "nloct14"
         ], 
         [
-            "nnpdf30", 
-            "ct14nlo"
+            "dataunf", 
+            "nloct14"
         ], 
         [
-            "ct14nlo", 
-            "ct14nlo"
+            "nlommht2014", 
+            "nloct14"
+        ], 
+        [
+            "nlonnpdf30", 
+            "nloct14"
+        ], 
+        [
+            "nloct14", 
+            "nloct14"
         ]
     ], 
-    "ratio_copy": [], 
     "show_legend": true, 
-    "x_label": "_ptavg_", 
+    "to_tgraph": [
+        "data", 
+        "dataunf", 
+        "nlonnpdf30", 
+        "nlommht2014", 
+        "nloct14"
+    ], 
+    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
     "x_lims": [
-        "50.", 
+        "74.", 
         "3000."
     ], 
     "x_log": true, 
     "y_label": "Ratio to CT14?_center_", 
     "y_lims": [
-        "0.5", 
-        "1.5"
+        "0.0", 
+        "2.0"
     ], 
     "y_log": false, 
     "y_subplot_label": "", 
