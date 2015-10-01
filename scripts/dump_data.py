@@ -14,7 +14,7 @@ def main():
     pass
     ybys_bins = ['yb0ys0', 'yb0ys1', 'yb0ys2', 'yb1ys0', 'yb1ys1', 'yb2ys0']
     def get_coltype(s):
-        if s in ['yb_low', 'yb_high', 'ys_low', 'ys_high',  'pt_low', 'pt_high', 'NPCorr']:
+        if s in ['yb_low', 'yb_high', 'ys_low', 'ys_high',  'pt_low', 'pt_high', 'NPCorr', 'nbin']:
             return 'Bin'
         elif s in ['sigma']:
             return 'Sigma'
@@ -22,13 +22,15 @@ def main():
             return 'Error'
 
 
-    for ybys_bin in ybys_bins:
+    for i, ybys_bin in enumerate(ybys_bins):
         # unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
-        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?{0}/h_ptavg'.format(ybys_bin))
+        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
         unf_data_root.Scale(1.0, 'width')
         unf_data = R2npObject1D(unf_data_root)
+        np_factor = get_np_object('~/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
 
         data = collections.OrderedDict()
+        data['nbin'] = np.array([i] * len(unf_data.xl))
         data['yb_low'] = np.array([float(ybys_bin[2])] * len(unf_data.xl))
         data['yb_high'] = np.array([float(ybys_bin[2]) + 1.0] * len(unf_data.xl))
         data['ys_low'] = np.array([float(ybys_bin[5])] * len(unf_data.xl))
@@ -36,7 +38,8 @@ def main():
         data['pt_low'] = unf_data.xl
         data['pt_high'] = unf_data.xu
         data['sigma'] = unf_data.y
-        data['NPCorr'] = get_np_object('~/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin)).y
+        data['NPCorr'] = np_factor.y
+        data['nperr'] = 0.5 * (np_factor.yu - np_factor.yl)/np_factor.y * 100.
         data['uncor'] = np.array([1.0] * len(unf_data.xl))
         data['stat'] = unf_data.yerr/unf_data.y * 100.
         # lumi
@@ -82,12 +85,12 @@ def main():
 
 def infinalrange(pt_low, ybys_bin):
     cuts = {
-            'yb0ys0' : (74.,2116),
-            'yb0ys1' : (74.,1032),
-            'yb0ys2' : (74.,430),
-            'yb1ys0' : (74.,1327),
+            'yb0ys0' : (74.,1784.),
+            'yb0ys1' : (74.,1248.),
+            'yb0ys2' : (74.,548.),
+            'yb1ys0' : (74.,1032.),
             'yb1ys1' : (74.,686),
-            'yb2ys0' : (74.,548),
+            'yb2ys0' : (74.,430.),
             }
     if pt_low >= cuts[ybys_bin][0] and pt_low < cuts[ybys_bin][1]:
         return True
