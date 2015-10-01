@@ -19,6 +19,7 @@ class Multiply(BaseModule):
                 raise ValueError('Requested id {} not found.'.format(id))
             if val in config['objects']:
                 # Normalize to another object
+                print id, val
                 config['objects'][id]['obj'] = multiply(config['objects'][id]['obj'], config['objects'][val]['obj'])
             elif isfloat(val):
                 # Normalize/Scale by an factor
@@ -44,7 +45,7 @@ def multiply(obj, with_obj):
         for i in xrange(1, with_obj.GetNbinsX() + 1):
             mult_vals[i-1] = with_obj.GetBinContent(i)
     elif isinstance(with_obj, ROOT.TGraph):
-        mult_vals = np.zeros(obj.GetNbinsX())
+        mult_vals = np.zeros(with_obj.GetN())
         for i in xrange(with_obj.GetN()):
             tmp_x, tmp_y = ROOT.Double(0), ROOT.Double(0)
             with_obj.GetPoint(i, tmp_x, tmp_y)
