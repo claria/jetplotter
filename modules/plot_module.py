@@ -273,7 +273,7 @@ class Plot(BasePlot):
             # TODO: also for subplots
             self.ax.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
             xfmt = ScalarFormatter()
-            xfmt.set_powerlimits((-9, 9))
+            xfmt.set_powerlimits((-5, 5))
             self.ax.xaxis.set_major_formatter(xfmt)
         else:
             self.ax.set_xscale('linear')
