@@ -140,7 +140,7 @@
     "x_log": true, 
     "y_label": "NP Correction", 
     "y_lims": [
-        "0.5", 
+        "0.9", 
         "1.4"
     ], 
     "y_log": false, 

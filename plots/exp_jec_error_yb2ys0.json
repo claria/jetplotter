@@ -171,7 +171,7 @@
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
         "74.", 
-        "2000."
+        "430."
     ], 
     "x_log": true, 
     "y_label": "Fractional Uncertainty?_center_", 

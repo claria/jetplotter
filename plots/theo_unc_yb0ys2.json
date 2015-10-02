@@ -181,7 +181,7 @@
     "x_label": "_ptavg_", 
     "x_lims": [
         "74.", 
-        "3000."
+        "548."
     ], 
     "x_log": true, 
     "y_label": "Fractional Uncertainty?_center_", 
