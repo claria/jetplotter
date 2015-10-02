@@ -44,7 +44,7 @@ class SettingParser(argparse.ArgumentParser):
         """
         args = super(SettingParser, self).parse_args()
         # Put also cmd call in args
-        setattr(args, 'argv', ' '.join(sys.argv))
+        setattr(args, 'argv', ' '.join(['\'{0}\''.format(item) if ' ' in item else '{0}'.format(item) for item in sys.argv ]))
         for a in self._actions:
             # is_default_arg is true if setting has not provided on commandline
             # in case a setting has not been provided on the commandline,
