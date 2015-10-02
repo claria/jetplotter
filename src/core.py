@@ -97,7 +97,7 @@ class Plotter(object):
 
         # Load configs/python scripts from files if requested
         file_config = ConfigDict()
-        for item in args['load_config']:
+        for item in args.pop('load_config', []):
             if item.endswith('.json'):
                 merge(file_config, read_config(item))
             elif item.endswith('.py'):
