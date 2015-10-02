@@ -46,6 +46,18 @@ def get_tgraphasymm_from_histos(central_histo, low_histo, hi_histo):
         graph.SetPointEYhigh(i, hi_histo.GetBinContent(i + 1) - central_histo.GetBinContent(i + 1))
     return graph
 
+def build_tgraph_from_lists(x, y, xerrl=None, xerru=None, yerrl=None, yerru=None):
+    """ Builds a TGraphErrors from python lists containing the data."""
+    graph = ROOT.TGraphAsymmErrors(len(x))
+    for i in xrange(graph.GetN()):
+        graph.SetPoint(i, x[i], y[i])
+        xerrl_i = xerrl[i] if xerrl is not None else 0.
+        xerru_i = xerru[i] if xerru is not None else 0.
+        yerrl_i = yerrl[i] if yerrl is not None else 0.
+        yerru_i = yerru[i] if yerru is not None else 0.
+        graph.SetPointError(i, xerrl_i, xerru_i, yerrl_i, yerru_i)
+    return graph
+
 
 def get_root_file(root_filename, option="READ"):
     rootfile = ROOT.TFile(root_filename, option)
