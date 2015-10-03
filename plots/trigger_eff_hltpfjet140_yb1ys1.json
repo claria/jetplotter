@@ -4,7 +4,7 @@
         "Efficiency", 
         "TriggerEfficiencyFit"
     ], 
-    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/emul_HLT_PFJET140 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/HLT_PFJET80 --label _emul:emul _trg:trg --ana-modules Efficiency TriggerEfficiencyFit --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_140 --output-path trigger_eff_hltpfjet140.png --trigger-efficiency-fit eff_emul:{} --style fit_eff_emul:line --ax-texts _cmsp_ _20fb_", 
+    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb1ys1/TriggerEffs/emul_HLT_PFJET140 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb1ys1/TriggerEffs/HLT_PFJET80 --label _emul:emul _trg:trg --ana-modules Efficiency TriggerEfficiencyFit --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_140 --output-path trigger_eff_hltpfjet140.png --trigger-efficiency-fit eff_emul:{} --style fit_eff_emul:line --ax-texts _cmsp_ _20fb_", 
     "ax_hlines": [], 
     "ax_texts": [
         "_cmsp_", 
@@ -24,7 +24,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/trigger_eff_hltpfjet140.json"
+        "plots/trigger_eff_hltpfjet140_yb1ys1.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -45,11 +45,11 @@
             "zorder": 1.0
         }, 
         "_emul": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/emul_HLT_PFJET140", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb1ys1/TriggerEffs/emul_HLT_PFJET140", 
             "label": "emul"
         }, 
         "_trg": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/HLT_PFJET80", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb1ys1/TriggerEffs/HLT_PFJET80", 
             "label": "trg"
         }, 
         "eff_emul": {
@@ -63,7 +63,7 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "trigger_eff_hltpfjet140.png", 
+    "output_path": "trigger_eff_hltpfjet140_yb1ys1.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 
