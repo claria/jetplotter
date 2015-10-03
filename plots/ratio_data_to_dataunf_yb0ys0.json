@@ -1,0 +1,116 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg unfdata_mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?yb0ys0/h_ptavg unfdata_p8:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_QCDP8.root?yb0ys0/h_ptavg unfdata_nlo:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg --ana-modules Ratio --ratio-copy data:unfdata_mgp6 data:unfdata_p8 data:unfdata_nlo --ax-hline y=1.0?color=black --plot-id ratio_data_to_unfdata_p8 ratio_data_to_unfdata_nlo ratio_data_to_unfdata_mgp6 --x-lims 50 3000 --x-log True --y-lims 0.9 1.5 --x-label _ptavg_ --y-label 'Ratio to Unf.' --label ratio_data_to_unfdata_p8:P8 ratio_data_to_unfdata_nlo:NLO ratio_data_to_unfdata_mgp6:MG+P6 --output-path ratio_data_to_dataunf_yb0ys0.png --ax-texts _cmsp_ _20fb_ _yb0ys0_?_upperleft_", 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "y": 1.0
+        }
+    ], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_", 
+        "_yb0ys0_?_upperleft_"
+    ], 
+    "ax_vlines": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg"
+        }, 
+        "ratio_data_to_unfdata_mgp6": {
+            "label": "MG+P6"
+        }, 
+        "ratio_data_to_unfdata_nlo": {
+            "label": "NLO"
+        }, 
+        "ratio_data_to_unfdata_p8": {
+            "label": "P8"
+        }, 
+        "unfdata_mgp6": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?yb0ys0/h_ptavg"
+        }, 
+        "unfdata_nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg"
+        }, 
+        "unfdata_p8": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_QCDP8.root?yb0ys0/h_ptavg"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "ratio_data_to_dataunf_yb0ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "ratio_data_to_unfdata_p8", 
+        "ratio_data_to_unfdata_nlo", 
+        "ratio_data_to_unfdata_mgp6"
+    ], 
+    "print_config": false, 
+    "ratio": [], 
+    "ratio_copy": [
+        [
+            "data", 
+            "unfdata_mgp6"
+        ], 
+        [
+            "data", 
+            "unfdata_p8"
+        ], 
+        [
+            "data", 
+            "unfdata_nlo"
+        ]
+    ], 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "50", 
+        "3000"
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio to Unf.", 
+    "y_lims": [
+        "0.9", 
+        "1.5"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
