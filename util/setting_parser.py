@@ -131,7 +131,11 @@ def str2dict(s):
         The passed value must be json parseable, eg something like
         {"key0": "val0", "key1": "val1"}
     """
-    return json.loads(s)
+    try:
+        return json.loads(s)
+    except ValueError:
+        return parse_query(s)
+
 
 def str2kvint(s):
     """Parses string of format id:value into tuple of (str, int)"""
