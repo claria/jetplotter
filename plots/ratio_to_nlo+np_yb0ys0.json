@@ -8,8 +8,11 @@
     ], 
     "argv": "./plotter.py -l plots/ratio_to_data.json", 
     "ax_hlines": [
-        "1.0?{\"color\":\"black\",\"lw\":2.0}"
-    ], 
+        {
+            "color": "black",
+            "y": 1.0
+        }
+    ],
     "ax_texts": [
         "_yb0ys0_?_upperleft_", 
         "_cmsp_", 
