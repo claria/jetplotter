@@ -73,7 +73,7 @@
             "zorder": 1.0
         }, 
         "_np": {
-            "input": "~/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
+            "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
         }, 
         "data": {
             "alpha": 1.0, 
@@ -101,7 +101,7 @@
             "color": "black", 
             "edgecolor": "black", 
             "id": "dataunf", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA.root?yb0ys1/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys1/h_ptavg", 
             "label": "Data (Unf.)", 
             "linestyle": "", 
             "marker": ".", 
