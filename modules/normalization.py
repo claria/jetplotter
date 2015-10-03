@@ -41,7 +41,7 @@ class Ratio(BaseModule):
                 raise ValueError('Requested id {} not found.'.format(to))
             obj = config['objects'][id]['obj']
             to_obj = config['objects'][to]['obj']
-            new_id = 'ratio_{0}'.format(id)
+            new_id = 'ratio_{0}_to_{1}'.format(id, to)
             config['objects'].setdefault(new_id, {})
             config['objects'][new_id]['obj'] = calc_ratio(obj, to_obj)
 
