@@ -109,11 +109,11 @@ class PlotModule(BaseModule):
                                     help='Add text to plot. Syntax is \'Text?json_dict. The options have to be '
                                          'something like \'text?{"x": 0.95, "y":0.05, "va": "bottom", "ha" : "right"}\'')
         self.arg_group.add_argument('--ax-vlines', nargs='+', default=[],
-                                    help='Add vertical lines to plot. Syntax is y_pos?json_dict. All matplotlib '
-                                         'Line2D kwargs are valid e.g. 1.0?{"lw" : 2.0, "color" : "green"}')
-        self.arg_group.add_argument('--ax-hlines', nargs='+', default=[],
-                                    help='Add horizontal lines to plot. All matplotlib '
-                                         'Line2D kwargs are valid e.g. 1.0?{"lw" : 2.0, "color" : "green"}')
+                                    help='Add vertical lines to plot. Syntax is y=1.0?lw=2.0?color=green. All matplotlib '
+                                         'Line2D kwargs are valid.')
+        self.arg_group.add_argument('--ax-hlines', nargs='+', default=[], type='str2dict',
+                                    help='Add horizontal lines to plot. Syntax is y=1.0?lw=2.0?color=green. All matplotlib '
+                                         'Line2D kwargs are valid.')
 
     def __call__(self, config):
         plot = Plot(**config)
@@ -237,14 +237,12 @@ class Plot(BasePlot):
             self.ax.text(s=text, transform=self.ax.transAxes, **default_text_kwargs)
 
         # Add horizontal lines to ax
-        for hline in self.hlines:
-            ypos, hline_kwargs = parse_optionstring(hline)
-            self.ax.axhline(y=float(ypos), **hline_kwargs)
+        for hline_kwargs in self.hlines:
+            self.ax.axhline(**hline_kwargs)
 
         # Add vertical lines to ax
-        for vline in self.vlines:
-            xpos, vline_kwargs = parse_optionstring(vline)
-            self.ax.axvline(x=float(xpos), **vline_kwargs)
+        for vline_kwargs in self.vlines:
+            self.ax.axvline(**vline_kwargs)
 
         if self.ax1:
             self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
