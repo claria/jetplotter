@@ -5,7 +5,12 @@
         "FitObj"
     ], 
     "argv": "./plotter.py -i qcdp8mpihad:~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb1ys0/h_genptavg _qcdp8nompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_NOMPINOHAD.root?gen_yb1ys0/h_genptavg _hwppnompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_NOMPINOHAD.root?gen_yb1ys0/h_genptavg hwppmpihad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_MPIHAD.root?gen_yb1ys0/h_genptavg --ratio qcdp8mpihad:_qcdp8nompinohad hwppmpihad:_hwppnompinohad --ana-modules Ratio FitObj --label qcdp8mpihad:P8 hwppmpihad:HW++ --y-lims 0.5 1.4 --x-lims 50. 3000. --x-log True --fit-obj qcdp8mpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} hwppmpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} --color qcdp8mpihad:_color0_ fit_qcdp8mpihad:_color0_ hwppmpihad:_color1_ fit_hwppmpihad:_color1_ qcdp6mpihad:_color2_ --output-path np_factors_yb1ys0 --style fit_qcdp8mpihad:band fit_hwppmpihad:band fit_qcdp6mpihad:band --ax-texts _cmsp_ _yb1ys0_?_upperleft_ --x-label _ptavg_ --y-label NP Correction", 
-    "ax_hlines": [], 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "y": 1.0
+        }
+    ], 
     "ax_texts": [
         "_cmsp_", 
         "_yb1ys0_?_upperleft_"
