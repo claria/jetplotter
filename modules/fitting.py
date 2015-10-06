@@ -83,18 +83,15 @@ class TriggerEfficiencyFit(BaseModule):
             eff_fcn = ROOT.TF1("eff_fcn", "(1./2.)*(1 + TMath::Erf((x-[0])/(sqrt(2)*[1])))")
 
             print 'Fitting id {0}'.format(id)
-            # eff_fcn.SetRange(80., 1000)
-            print 'Fit 1: Full Range'
-            eff_fcn.SetParameters(100., 20.0)
-            res = config['objects'][id]['obj'].Fit("eff_fcn", "SREX0", "")
+            eff_fcn.SetParameters(100., 20.0, 1.)
+            res = config['objects'][id]['obj'].Fit("eff_fcn", "SEX0", "")
+
             xmin = eff_fcn.GetX(0.5)
-            eff_fcn.SetRange(xmin, 99999999)
-            print 'Fit 2 : Starting at {0}.'.format(xmin)
+            eff_fcn.SetRange(xmin, 1000)
             res = config['objects'][id]['obj'].Fit("eff_fcn", "SREX0", "")
             xmin = eff_fcn.GetParameter(0)
             xmin = eff_fcn.GetX(0.7)
             eff_fcn.SetRange(xmin, 1000)
-            print 'Fit 3 : Starting at {0}.'.format(xmin)
             res = config['objects'][id]['obj'].Fit("eff_fcn", "SREX0", "")
 
             x99 = math.ceil(eff_fcn.GetX(0.99))
@@ -105,8 +102,8 @@ class TriggerEfficiencyFit(BaseModule):
 
             print res.Get()
             print res.Status()
-            # if res.Get() == None or res.Status() != 0:
-                # raise Exception('Could not fit that function shit.')
+            if res.Get() == None or res.Status() != 0:
+                log.critical('Could not fit that function shit.')
 
             vfitter = ROOT.TVirtualFitter.GetFitter()
             eff_fcn.SetNpx(1000)
