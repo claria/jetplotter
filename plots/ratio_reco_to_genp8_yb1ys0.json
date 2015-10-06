@@ -4,7 +4,7 @@
         "Normalize", 
         "Ratio"
     ], 
-    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys0/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb1ys0/h_ptavg genp8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?gen_yb1ys0/h_genptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys0/h_ptavg genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb1ys0/h_genptavg nlo:~/PTAVG_YBYS_NLO.root?yb1ys0/CT10nlo_xs --ana Normalize Ratio --ratio mgp6:genp8 p8:genp8 nlo:genp8 data:genp8 genmgp6:genp8 genp8:genp8 --y-lims 0.0 2.0 --x-lims 74. 3000. --x-log True --normalize mgp6:width p8:width data:width genmgp6:width genp8:width --label 'genp8:P8 (Gen)' 'mgp6:MG+P6 (Reco)' 'p8:P8 (Reco)' 'data:Data (Reco)' 'nlo:NLO (CT10)' 'genmgp6:MG+P6 (Gen)' --x-label _ptavg_ --y-label 'Ratio to P8 (Gen)?_center_' --legend-loc 'upper right' --ax-texts _yb1ys0_?_upperleft_ _cmsp_ _20fb_ --output-path ratio_reco_to_genp8_yb1ys0.png --color data:black", 
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys0/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb1ys0/h_ptavg genp8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?gen_yb1ys0/h_genptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys0/h_ptavg genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb1ys0/h_genptavg nlo:~/PTAVG_YBYS_NLO.root?yb1ys0/CT10nlo_xs --ana Normalize Ratio --ratio mgp6:genp8 p8:genp8 nlo:genp8 data:genp8 genmgp6:genp8 genp8:genp8 --y-lims 0.0 2.0 --x-lims 133. 3000. --x-log True --normalize mgp6:width p8:width data:width genmgp6:width genp8:width --label 'genp8:P8 (Gen)' 'mgp6:MG+P6 (Reco)' 'p8:P8 (Reco)' 'data:Data (Reco)' 'nlo:NLO (CT10)' 'genmgp6:MG+P6 (Gen)' --x-label _ptavg_ --y-label 'Ratio to P8 (Gen)?_center_' --legend-loc 'upper right' --ax-texts _yb1ys0_?_upperleft_ _cmsp_ _20fb_ --output-path ratio_reco_to_genp8_yb1ys0.png --color data:black", 
     "ax_hlines": [], 
     "ax_texts": [
         "_yb1ys0_?_upperleft_", 
@@ -126,7 +126,7 @@
     "show_legend": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
-        "74.", 
+        "133.", 
         "3000."
     ], 
     "x_log": true, 

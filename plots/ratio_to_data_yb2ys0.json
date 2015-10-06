@@ -197,7 +197,7 @@
     ], 
     "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
     "x_lims": [
-        "74.", 
+        "133.", 
         "3000."
     ], 
     "x_log": true, 
