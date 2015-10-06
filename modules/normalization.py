@@ -118,3 +118,23 @@ class NormalizeToRow(BaseModule):
                 for x in xrange(1, obj.GetNbinsX() + 1):
                     obj.SetBinContent(x, y, obj.GetBinContent(x, y) / y_sow)
                     obj.SetBinError(x, y, obj.GetBinError(x, y) / y_sow)
+
+class NormalizeToColumn(BaseModule):
+    """Normalizes a given TH2 to the sum in a column (x axis), e.g. to the number of true events for a response matrix."""
+
+    def __init__(self):
+        super(NormalizeToColumn, self).__init__()
+        self.arg_group.add_argument('--normalize-to-column', nargs='+', default=[], type=str,
+                                    help='Id of 2d histograms which will be column-normalized.')
+
+    def __call__(self, config):
+        for id in config['normalize_to_column']:
+            if not id in config['objects']:
+                raise ValueError('Requested id {} not found.'.format(id))
+            obj = config['objects'][id]['obj']
+
+            for x in xrange(1, obj.GetNbinsX() + 1):
+                x_sow = np.sum([obj.GetBinContent(x, y) for y in xrange(1, obj.GetNbinsY() + 1)])
+                for y in xrange(1, obj.GetNbinsY() + 1):
+                    obj.SetBinContent(x, y, obj.GetBinContent(x, y) / x_sow)
+                    # obj.SetBinError(x, y, obj.GetBinError(x, y) / x_sow)
