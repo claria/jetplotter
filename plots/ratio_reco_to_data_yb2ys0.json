@@ -4,7 +4,7 @@
         "Normalize", 
         "Ratio"
     ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb2ys0/h_ptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h_ptavg _genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb2ys0/h_genptavg nlo:~/PTAVG_YBYS_NLO.root?yb2ys0/CT10nlo_xs --ana Normalize Ratio --ratio _genmgp6:data mgp6:data p8:data nlo:data data:data --y-lims 0.0 2.0 --x-lims 74. 3000. --x-log True --normalize mgp6:width p8:width data:width _genmgp6:width --label mgp6:MG+P6 p8:P8 data:DATA nlo:NLO (CT10) _genmgp6:MG+P6 --x-label _ptavg_ --y-label Ratio to Data?_center_ --legend-loc upper right --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --output-path ratio_reco_to_data_yb2ys0.png --color data:black", 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb2ys0/h_ptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h_ptavg _genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb2ys0/h_genptavg nlo:~/PTAVG_YBYS_NLO.root?yb2ys0/CT10nlo_xs --ana Normalize Ratio --ratio _genmgp6:data mgp6:data p8:data nlo:data data:data --y-lims 0.0 2.0 --x-lims 133. 3000. --x-log True --normalize mgp6:width p8:width data:width _genmgp6:width --label mgp6:MG+P6 p8:P8 data:DATA nlo:NLO (CT10) _genmgp6:MG+P6 --x-label _ptavg_ --y-label Ratio to Data?_center_ --legend-loc upper right --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --output-path ratio_reco_to_data_yb2ys0.png --color data:black", 
     "ax_hlines": [], 
     "ax_texts": [
         "_yb2ys0_?_upperleft_", 
@@ -197,7 +197,7 @@
     "show_legend": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
-        "74.", 
+        "133.", 
         "3000."
     ], 
     "x_log": true, 
