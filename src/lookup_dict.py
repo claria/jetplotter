@@ -6,7 +6,8 @@ lookup_dict = {
     'x_label': {
         '_ptavg_': '$p_{\mathrm{T,avg}}$ (GeV)',
         '_pt_': '$p_{\mathrm{T}}$ (GeV)',
-        '_y_boost_': '$y_b$',
+        '_y_boost_': '$y_\mathrm{b}$',
+        '_y_star_': '$y*$',
         '_right_': '{"position" : [1.0,0.0], "va" : "top", "ha" : "right"}',
         '_center_': '{"position" : [0.5,0.0], "va" : "top", "ha" : "center"}'
     },
@@ -33,6 +34,21 @@ lookup_dict = {
         '_color4_': '#CCB974',
         '_color5_': '#64B5CD'
     },
+    'x_lims': {
+        '_yb0ys0_xmin_' : 133.,
+        '_yb0ys1_xmin_' : 133.,
+        '_yb0ys2_xmin_' : 133.,
+        '_yb1ys0_xmin_' : 133.,
+        '_yb1ys1_xmin_' : 133.,
+        '_yb2ys0_xmin_' : 133.,
+        '_yb0ys0_xmax_' : 1784.,
+        '_yb0ys1_xmax_' : 1248.,
+        '_yb0ys2_xmax_' : 548.,
+        '_yb1ys0_xmax_' : 1032.,
+        '_yb1ys1_xmax_' : 686.,
+        '_yb2ys0_xmax_' : 430.,
+    },
+    'y_lims': {},
     'ax_texts': {
         '_cms_': 'CMS?{"x": 0.0, "y":1.01, "va": "bottom", "ha" : "left"}',
         '_cmsp_': 'CMS Preliminary?{"x": 0.0, "y":1.01, "va": "bottom", "ha" : "left"}',
@@ -62,6 +78,6 @@ def get_lookup_val(key, s):
     """ Replaces all occurences of lookup keys in string with lookup dict values."""
     if key in lookup_dict:
         for lk, lv in lookup_dict[key].iteritems():
-            if lk in s:
-                s = s.replace(lk, lv)
+            if isinstance(s, basestring) and lk in s:
+                s = s.replace(lk, str(lv))
     return s
