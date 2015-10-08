@@ -27,7 +27,7 @@ def main():
         unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
         unf_data_root.Scale(1.0, 'width')
         unf_data = R2npObject1D(unf_data_root)
-        np_factor = get_np_object('~/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
+        np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
 
         data = collections.OrderedDict()
         data['nbin'] = np.array([i] * len(unf_data.xl))
@@ -52,8 +52,6 @@ def main():
                        'SinglePionECAL',
                        'SinglePionHCAL',
                        'FlavorQCD',
-                       'TimeEta',
-                       'TimePt',
                        'RelativeJEREC1','RelativeJEREC2','RelativeJERHF',
                        'RelativePtBB','RelativePtEC1','RelativePtEC2','RelativePtHF',
                        'RelativeFSR',
@@ -85,12 +83,12 @@ def main():
 
 def infinalrange(pt_low, ybys_bin):
     cuts = {
-            'yb0ys0' : (74.,1784.),
-            'yb0ys1' : (74.,1248.),
-            'yb0ys2' : (74.,548.),
-            'yb1ys0' : (74.,1032.),
-            'yb1ys1' : (74.,686),
-            'yb2ys0' : (74.,430.),
+            'yb0ys0' : (133.,1784.),
+            'yb0ys1' : (133.,1248.),
+            'yb0ys2' : (133.,548.),
+            'yb1ys0' : (133.,1032.),
+            'yb1ys1' : (133.,686),
+            'yb2ys0' : (133.,430.),
             }
     if pt_low >= cuts[ybys_bin][0] and pt_low < cuts[ybys_bin][1]:
         return True
