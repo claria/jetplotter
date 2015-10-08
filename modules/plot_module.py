@@ -151,9 +151,10 @@ class Plot(BasePlot):
             self.ax1 = plt.subplot2grid((4, 1), (3, 0), rowspan=1)
         self.histos = histos
 
-        self.x_lims = kwargs.pop('x_lims', (None, None))
+        self.x_lims = [get_lookup_val('x_lims', val) for val in kwargs.pop('x_lims', [None, None])]
+        print self.x_lims
         self.x_lims = [any2float(v) for v in self.x_lims]
-        self.y_lims = kwargs.pop('y_lims', (None, None))
+        self.y_lims = [get_lookup_val('y_lims', val) for val in kwargs.pop('y_lims', [None, None])]
         self.y_lims = [any2float(v) for v in self.y_lims]
         self.y_subplot_lims = kwargs.pop('y_subplot_lims', (None, None))
         self.y_subplot_lims = [any2float(v) for v in self.y_subplot_lims]
