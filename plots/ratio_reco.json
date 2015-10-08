@@ -6,10 +6,10 @@
     "argv": "./plotter.py -l plots/ratio_reco.json", 
     "ax_hlines": [
         {
-            "color": "black",
+            "color": "black", 
             "y": 1.0
         }
-    ],
+    ], 
     "ax_texts": [
         "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 
         "CMS?_topleft_", 

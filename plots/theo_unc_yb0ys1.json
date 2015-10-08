@@ -3,7 +3,7 @@
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_xs pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_pdfunc_l pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_pdfunc_u scunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_scunc_l scunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_scunc_u --ana-modules Ratio --ratio pdfunc_l:nlo pdfunc_u:nlo scunc_l:nlo scunc_u:nlo nlo:nlo --style nlo:line pdfunc_u:line pdfunc_l:line scunc_u:line scunc_l:line --step nlo:True pdfunc_u:True pdfunc_l:True scunc_u:True scunc_l:True --color pdfunc_l:_color1_ pdfunc_u:_color1_ scunc_l:_color2_ scunc_u:_color2_ --label pdfunc_l:PDF Uncertainty scunc_l:Scale Uncertainty --legend-loc upper right --x-lims 74. 3000. --x-log True --y-lims 0.5 2.0 --x-label _ptavg_ --y-label Fractional Uncertainty?_center_ --ax-texts _yb0ys1_?_upperleft_ _cmsp_ _20fb_ --output-path theo_unc_yb0ys1.png", 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_xs pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_l pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_u scunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_scunc_l scunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_scunc_u --ana-modules Ratio --ratio pdfunc_l:nlo pdfunc_u:nlo scunc_l:nlo scunc_u:nlo nlo:nlo --style nlo:line pdfunc_u:line pdfunc_l:line scunc_u:line scunc_l:line --step nlo:True pdfunc_u:True pdfunc_l:True scunc_u:True scunc_l:True --color pdfunc_l:_color1_ pdfunc_u:_color1_ scunc_l:_color2_ scunc_u:_color2_ --label pdfunc_l:PDF Uncertainty scunc_l:Scale Uncertainty --legend-loc upper right --x-lims 74. 3000. --x-log True --y-lims 0.5 2.0 --x-label _ptavg_ --y-label Fractional Uncertainty?_center_ --ax-texts _yb0ys1_?_upperleft_ _cmsp_ _20fb_ --output-path theo_unc_yb0ys1.png", 
     "ax_hlines": [], 
     "ax_texts": [
         "_yb0ys1_?_upperleft_", 
@@ -47,7 +47,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "nlo", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_xs", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_xs", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -65,7 +65,7 @@
             "color": "_color1_", 
             "edgecolor": "auto", 
             "id": "pdfunc_l", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_pdfunc_l", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_l", 
             "label": "PDF Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -83,7 +83,7 @@
             "color": "_color1_", 
             "edgecolor": "auto", 
             "id": "pdfunc_u", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_pdfunc_u", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_u", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -101,7 +101,7 @@
             "color": "_color2_", 
             "edgecolor": "auto", 
             "id": "scunc_l", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_scunc_l", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_scunc_l", 
             "label": "Scale Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -119,7 +119,7 @@
             "color": "_color2_", 
             "edgecolor": "auto", 
             "id": "scunc_u", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_scunc_u", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_scunc_u", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -180,14 +180,14 @@
     "show_legend": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
-        "74.", 
-        "1248."
+        "_yb0ys1_xmin_", 
+        "_yb0ys1_xmax_"
     ], 
     "x_log": true, 
     "y_label": "Fractional Uncertainty?_center_", 
     "y_lims": [
-        "0.5", 
-        "2.0"
+        "0.7", 
+        "1.3"
     ], 
     "y_log": false, 
     "y_subplot_label": "", 

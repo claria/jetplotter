@@ -197,8 +197,8 @@
     "show_legend": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
-        "133.", 
-        "3000."
+        "_yb2ys0_xmin_", 
+        "_yb2ys0_xmax_"
     ], 
     "x_log": true, 
     "y_label": "Ratio to Data?_center_", 

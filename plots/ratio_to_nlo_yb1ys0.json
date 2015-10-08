@@ -2,7 +2,6 @@
     "add_subplot": false, 
     "ana_modules": [
         "Normalize", 
-        "Multiply", 
         "Ratio", 
         "ToTGraph"
     ], 
@@ -26,23 +25,9 @@
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": [
-        "plots/ratio_to_nlo+np_yb1ys0.json"
+        "plots/ratio_to_nlo_yb1ys0.json"
     ], 
     "log_level": "debug", 
-    "multiply": [
-        [
-            "nloct14", 
-            "_np"
-        ], 
-        [
-            "nlommht2014", 
-            "_np"
-        ], 
-        [
-            "nlonnpdf30", 
-            "_np"
-        ]
-    ], 
     "normalize": [
         [
             "data", 
@@ -72,9 +57,6 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "_np": {
-            "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
-        }, 
         "data": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -83,7 +65,7 @@
             "color": "grey", 
             "edgecolor": "grey", 
             "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys0/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TEST_DATA.root?yb1ys0/h_ptavg", 
             "label": "Data (Reco)", 
             "linestyle": "", 
             "marker": "", 
@@ -120,7 +102,7 @@
             "edgecolor": "_color1_", 
             "id": "nloct14", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_pdfunc_u", 
-            "label": "NLOxNP (CT14)", 
+            "label": "NLO (CT14)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": true, 
@@ -139,7 +121,7 @@
             "edgecolor": "_color2_", 
             "id": "nlommht2014", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/MMHT2014_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/MMHT2014_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/MMHT2014_pdfunc_u", 
-            "label": "NLOxNP (MMHT 2014)", 
+            "label": "NLO (MMHT 2014)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": true, 
@@ -158,7 +140,7 @@
             "edgecolor": "_color3_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_pdfunc_u", 
-            "label": "NLOxNP (NNPDF30)", 
+            "label": "NLO (NNPDF30)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": true, 
@@ -172,7 +154,7 @@
     "output_modules": [
         "PlotModule"
     ], 
-    "output_path": "ratio_to_nlo+np_yb1ys0.png", 
+    "output_path": "ratio_to_nlo_yb1ys0.png", 
     "output_prefix": "plots/", 
     "plot_id": "^(?!_).*", 
     "print_config": false, 

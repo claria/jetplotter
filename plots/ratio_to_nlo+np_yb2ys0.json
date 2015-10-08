@@ -19,10 +19,7 @@
         "_20fb_"
     ], 
     "ax_vlines": [], 
-    "fig_size": [
-        10.0, 
-        7.0
-    ], 
+    "fig_size": null, 
     "input_modules": [
         "RootModule"
     ], 
@@ -215,7 +212,7 @@
     ], 
     "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
     "x_lims": [
-        "74.", 
+        "133.", 
         "3000."
     ], 
     "x_log": true, 

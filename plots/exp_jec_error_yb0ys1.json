@@ -70,7 +70,7 @@
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
-            "style": "errorbar", 
+            "style": "line", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
@@ -88,7 +88,7 @@
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
-            "style": "errorbar", 
+            "style": "line", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
@@ -170,8 +170,8 @@
     "show_legend": true, 
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
-        "74.", 
-        "1248."
+        "_yb0ys1_xmin_", 
+        "_yb0ys1_xmax_"
     ], 
     "x_log": true, 
     "y_label": "Fractional Uncertainty?_center_", 
