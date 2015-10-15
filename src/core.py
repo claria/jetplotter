@@ -23,8 +23,6 @@ class Plotter(object):
 
     def __call__(self):
 
-        # Discover all available modules
-        self._all_modules = discover_modules()
         # Prepare configs from parsed args and provided input configs/python files
         config = self.build_config()
 
@@ -88,6 +86,9 @@ class Plotter(object):
         if not isinstance(log_level, int):
             raise ValueError('Invalid log level: %s' % log_level)
         logging.basicConfig(format='%(message)s', level=log_level)
+
+        # Discover all available modules
+        self._all_modules = discover_modules()
 
         # If module list requested, print it and exit program
         if args['list_modules']:
