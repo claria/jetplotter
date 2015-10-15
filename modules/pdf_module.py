@@ -12,7 +12,7 @@ from util.root_tools import build_tgraph_from_lists
 import logging
 log = logging.getLogger('__name__')
 
-def get_pdf(pdfset, xs, q, flavour=21):
+def get_pdf(pdfset, q, flavour=21):
     """ Return the LHAPDF pdfset using errors."""
 
     pdfset = lhapdf.getPDFSet(pdfset)
@@ -29,6 +29,25 @@ def get_pdf(pdfset, xs, q, flavour=21):
     errminus = np.array([pdfset.uncertainty(xfxs[i]).errminus for i in range(len(xfxs))])
 
     return xs, central, errminus, errplus 
+
+def get_correlation(pdfset, fnlo_table, flavour=21):
+    """ Return the correlation between the fnlo table in a bin vs. pdfset flavour."""
+
+    pdfset = lhapdf.getPDFSet(pdfset)
+    pdfs = pdfset.mkPDFs()
+
+    xs = [x for x in np.logspace(-5, 0, 500)]
+    xfxs = np.empty((len(xs), len(pdfs)))
+    for imem in xrange(len(pdfs)):
+        for ix, x in enumerate(xs):
+            xfxs[ix,imem] = pdfs[imem].xfxQ(flavour, x, q)
+
+    central = np.array([pdfset.uncertainty(xfxs[i]).central for i in range(len(xfxs))])
+    errplus = np.array([pdfset.uncertainty(xfxs[i]).errplus for i in range(len(xfxs))])
+    errminus = np.array([pdfset.uncertainty(xfxs[i]).errminus for i in range(len(xfxs))])
+
+    return xs, central, errminus, errplus 
+
 
 class PDFModule(BaseModule):
     """ The PDF sets are read from the LHAPDF file and converted into a TGraph using
@@ -55,4 +74,5 @@ class PDFModule(BaseModule):
             xs, central, down, up = get_pdf(pdfset, flavour, q)
             graph = build_tgraph_from_lists(xs, central, yerrl=down, yerru=up)
             config['objects'].setdefault(id, {})['obj'] = graph
+
 
