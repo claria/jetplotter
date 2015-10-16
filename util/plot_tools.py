@@ -63,11 +63,15 @@ class BasePlot(object):
 
         matplotlib.rcParams['lines.linewidth'] = 2
         matplotlib.rcParams['font.family'] = 'sans-serif'
-        matplotlib.rcParams['font.serif'] = 'lmodern'
-        matplotlib.rcParams['font.sans-serif'] = ['Arial', 'Bitstream Vera Sans', 'stixsans']
-        matplotlib.rcParams['font.monospace'] = 'Computer Modern Typewriter'
+        matplotlib.rcParams['font.serif'] = ['DejaVu Serif']
+        matplotlib.rcParams['font.sans-serif'] = ['DejaVu Sans']
+        matplotlib.rcParams['font.monospace'] = ['DejaVu Sans Mono']
         matplotlib.rcParams['font.style'] = 'normal'
-        matplotlib.rcParams['mathtext.fontset'] = 'stixsans'
+        matplotlib.rcParams['mathtext.rm'] = 'DejaVu Sans'
+        matplotlib.rcParams['mathtext.it'] = 'DejaVu Sans:italic'
+        matplotlib.rcParams['mathtext.bf'] = 'DejaVu Sans:weight=bold'
+        matplotlib.rcParams['mathtext.sf'] = 'DejaVu Sans'
+        matplotlib.rcParams['mathtext.tt'] = 'DejaVu Sans Mono'
         matplotlib.rcParams['font.size'] = 20.
         matplotlib.rcParams['legend.fontsize'] = 14.
         matplotlib.rcParams['text.usetex'] = False
@@ -285,7 +289,7 @@ def plot_histo(obj=None, emptybins=True, ax=None, **kwargs):
     fill_between_kwargs = {k: v for k, v in kwargs.items() if
                            k in ['label', 'facecolor', 'alpha', 'edgecolor', 'zorder']}
     artist = ax.fill_between(x, y, y_0, **fill_between_kwargs)
-    p = matplotlib.patches.Rectangle((0, 0), 1, 1, **fill_between_kwargs)
+    p = matplotlib.patches.Rectangle((0, 0), 0, 0, **fill_between_kwargs)
     ax.add_patch(p)
 
     return artist
