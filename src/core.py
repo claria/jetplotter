@@ -104,7 +104,7 @@ class Plotter(object):
             elif item.endswith('.py'):
                 runpy.run_path(item)
             else:
-                raise ValueError('The file type of {0} is not compatible.'.format(item))
+                raise ValueError('The file type of {0} is not supported.'.format(item))
 
         base_parser_group.add_argument("--input-modules", nargs='+', default=['RootModule'], help="Input modules .")
         base_parser_group.add_argument("--ana-modules", nargs='+', default=[], help="Analysis modules.")
@@ -120,6 +120,9 @@ class Plotter(object):
                                        help="Print out the JSON config before running Artus.")
         base_parser_group.add_argument("--store-json", type='bool', default=True,
                                        help="Save the config as json file.")
+        base_parser_group.add_argument("--merge-args", nargs='+', default=[],
+                                       help=("If json file configs and command line configs are provided the settings are "
+                                       "merged for the provided args. Works only for list arguments."))
 
         # Final parser consists of baseparser + active module parsers
         parser = SettingParser(parents=[base_parser] + module_parsers,
@@ -134,7 +137,10 @@ class Plotter(object):
         # If a config was loaded, merge it with the args
         if file_config:
             provided_args = args.pop('provided_args')
-            merge(file_config, args, precedence_keys=provided_args)
+            merge_args = args.pop('merge_args')
+            print provided_args
+            print merge_args
+            merge(file_config, args, precedence_keys=provided_args, merge_keys=merge_args)
             config = file_config
         else:
             config = args

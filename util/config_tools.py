@@ -41,17 +41,26 @@ def parse_optionstring(s):
     return label, kwargs
 
 
-def merge(a, b, precedence_keys=None):
+def merge(a, b, precedence_keys=None, merge_keys=None):
     """Merges b into a, but only if key of b is not in a. If key of b in list precedence_keys,
-       then the value of b overrides the value of a."""
+       then the value of b overrides the value of a. If key of b in list merge_keys, arguments of
+       a and b are merged by adding list arguments. This only works for lists."""
     if precedence_keys is None:
         precedence_keys = []
+    if merge_keys is None:
+        merge_keys = []
     for key in b:
         if key in a:
             if isinstance(a[key], collections.Mapping) and isinstance(b[key], collections.Mapping):
                 merge(a[key], b[key], precedence_keys=precedence_keys)
             elif a[key] == b[key]:
                 pass  # same leaf value
+            elif key in merge_keys:
+                try:
+                    a[key] = a[key] + b[key]
+                except TypeError:
+                    log.error('Both arguments have to be of list type to be able to merge them.')
+                    sys.exit(1)
             elif key in precedence_keys:
                 a[key] = b[key]
             else:
