@@ -123,6 +123,7 @@ class PlotModule(BaseModule):
             id_regex = [id_regex]
         print id_regex
         for id, item in config['objects'].iteritems():
+            print 'item', item
             if not any([re.match(regex, id) for regex in id_regex]):
                 log.debug('Omitting id {0} since it does not match the regex.'.format(id))
                 continue
@@ -239,14 +240,25 @@ class Plot(BasePlot):
 
         # Add horizontal lines to ax
         for hline_kwargs in self.hlines:
-            self.ax.axhline(**hline_kwargs)
+            ax_name = hline_kwargs.pop('axis', 'ax')
+            try:
+                ax = getattr(self, ax_name)
+            except AttributeError as e:
+                log.critical('The axis name {0} does not exist.'.format(ax_name))
+                log.critical(e)
+                raise
+            ax.axhline(**hline_kwargs)
 
         # Add vertical lines to ax
         for vline_kwargs in self.vlines:
+            ax_name = vline_kwargs.pop('axis', 'ax')
+            try:
+                ax = getattr(self, ax_name)
+            except AttributeError as e:
+                log.critical('The axis name {0} does not exist.'.format(ax_name))
+                log.critical(e)
+                raise
             self.ax.axvline(**vline_kwargs)
-
-        if self.ax1:
-            self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
 
         # a specified position of the label can be set via label?json_dict
         x_label_kwargs = {'position': (1.0, 0.0), 'ha': 'right', 'va': 'top'}
@@ -270,12 +282,17 @@ class Plot(BasePlot):
             self.ax.set_xscale('log')
             # x-axis tick formatting, only for log plots
             # TODO: also for subplots
-            self.ax.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
             xfmt = ScalarFormatter()
             xfmt.set_powerlimits((-5, 5))
+            self.ax.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
             self.ax.xaxis.set_major_formatter(xfmt)
+            if self.ax1:
+                self.ax1.set_xscale('log')
+                self.ax1.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
+                self.ax1.xaxis.set_major_formatter(xfmt)
         else:
             self.ax.set_xscale('linear')
+
 
         if self.y_log:
             self.ax.set_yscale('log', nonposy='clip')
@@ -294,11 +311,13 @@ class Plot(BasePlot):
                 log.debug('Omit legend since all labels are empty.')
 
         if self.ax1:
-            # self.ax.get_xaxis().set_ticks([])
+            self.ax1.set_ylim(ymin=self.y_subplot_lims[0], ymax=self.y_subplot_lims[1])
             plt.setp(self.ax.get_xticklabels(), visible=False)
-            self.ax1.set_xscale(self.ax.get_xscale())
+            plt.setp(self.ax.get_xticklabels(minor=True), visible=False)
+            # self.ax1.set_xscale(self.ax.get_xscale())
             self.ax1.set_xlim(self.ax.get_xlim())
             plt.subplots_adjust(hspace=0.15)
+
 
         self.save_fig()
         plt.close(self.fig)
