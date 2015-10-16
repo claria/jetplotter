@@ -56,7 +56,7 @@ class Plotter(object):
 
         # Triggered after all ana modules processed.
         callbacks.trigger('after_ana_modules', config=config)
-
+        print config
         for module in [self._all_modules[name]() for name in config['output_modules']]:
             log.info("Processing {0}...".format(module.label))
             callbacks.trigger('before_module_{0}'.format(module), config=config)
@@ -138,8 +138,6 @@ class Plotter(object):
         if file_config:
             provided_args = args.pop('provided_args')
             merge_args = args.pop('merge_args')
-            print provided_args
-            print merge_args
             merge(file_config, args, precedence_keys=provided_args, merge_keys=merge_args)
             config = file_config
         else:
