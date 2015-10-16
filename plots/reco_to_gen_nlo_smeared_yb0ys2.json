@@ -90,7 +90,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "reco_to_gen_nlo_smeared_yb0ys2.png", 
     "output_prefix": "plots/", 

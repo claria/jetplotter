@@ -55,7 +55,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "unf_nlo_corr_yb2ys0.png", 
     "output_prefix": "plots/", 

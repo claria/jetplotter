@@ -55,7 +55,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "gen_vs_reco_ptavg_yb1ys0.png", 
     "output_prefix": "plots/", 

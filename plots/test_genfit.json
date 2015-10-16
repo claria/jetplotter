@@ -54,7 +54,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "test_genfit.png", 
     "output_prefix": "plots/", 

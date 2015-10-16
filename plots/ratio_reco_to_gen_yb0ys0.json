@@ -101,7 +101,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "ratio_reco_to_gen_yb0ys0.png", 
     "output_prefix": "plots/", 

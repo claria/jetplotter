@@ -41,7 +41,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "kfactor_yb1ys0.png", 
     "output_prefix": "plots/", 

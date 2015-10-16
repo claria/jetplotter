@@ -101,7 +101,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "np_factors_yb2ys0", 
     "output_prefix": "plots/", 

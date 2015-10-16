@@ -57,7 +57,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "jet12_rapidity_yb2ys0.png", 
     "output_prefix": "plots/", 

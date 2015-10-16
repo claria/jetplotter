@@ -131,7 +131,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "exp_jec_error_yb2ys0.png", 
     "output_prefix": "plots/", 

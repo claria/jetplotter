@@ -66,7 +66,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "ratio_data_to_dataunf_yb0ys0.png", 
     "output_prefix": "plots/", 

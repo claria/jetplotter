@@ -174,7 +174,9 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "ptavg_spectrum.png", 
     "output_prefix": "plots/", 

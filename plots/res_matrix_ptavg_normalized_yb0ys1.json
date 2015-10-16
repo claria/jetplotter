@@ -60,7 +60,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "res_matrix_ptavg_normalized_yb0ys1.png", 
     "output_prefix": "plots/", 

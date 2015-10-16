@@ -58,7 +58,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "fit_nlo.png", 
     "output_prefix": "plots/", 

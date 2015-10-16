@@ -139,7 +139,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "ratio_reco.png", 
     "output_prefix": "plots/", 

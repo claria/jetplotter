@@ -55,7 +55,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "npv_beforereweighting.png", 
     "output_prefix": "plots/", 

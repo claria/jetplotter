@@ -16,7 +16,7 @@
     "load_config": [
         "plots/resolution_ptavg.json"
     ], 
-    "log_level": "info", 
+    "log_level": "debug", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -193,7 +193,9 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "RootOutputModule", 
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "resolution_ptavg.png", 
     "output_prefix": "plots/", 
@@ -221,6 +223,7 @@
         "_yb0ys2", 
         "_yb1ys1"
     ], 
+    "root_output": null, 
     "show_legend": true, 
     "x_label": "Gen _ptavg_", 
     "x_lims": [

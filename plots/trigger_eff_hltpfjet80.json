@@ -61,7 +61,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "trigger_eff_hltpfjet80.png", 
     "output_prefix": "plots/", 

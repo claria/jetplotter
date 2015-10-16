@@ -53,7 +53,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "yboost_vs_ystar.png", 
     "output_prefix": "plots/", 

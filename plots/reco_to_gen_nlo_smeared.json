@@ -54,7 +54,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "reco_to_gen_nlo_smeared.png", 
     "output_prefix": "plots/", 

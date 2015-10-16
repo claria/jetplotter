@@ -94,7 +94,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "jet1pt_yb0ys1.png", 
     "output_prefix": "plots/", 

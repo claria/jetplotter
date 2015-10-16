@@ -43,7 +43,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "gen_pt1vspt2vsptavg_yb0ys0.png", 
     "output_prefix": "plots/", 

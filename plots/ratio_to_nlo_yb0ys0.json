@@ -152,7 +152,9 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "ratio_to_nlo_yb0ys0.png", 
     "output_prefix": "plots/", 

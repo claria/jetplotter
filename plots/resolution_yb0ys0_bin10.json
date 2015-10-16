@@ -1454,7 +1454,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "resolution_yb0ys0_bin10.png", 
     "output_prefix": "plots/", 
