@@ -65,13 +65,15 @@ class BasePlot(object):
         matplotlib.rcParams['font.family'] = 'sans-serif'
         matplotlib.rcParams['font.serif'] = ['DejaVu Serif']
         matplotlib.rcParams['font.sans-serif'] = ['DejaVu Sans']
+        matplotlib.rcParams['font.cursive'] = ['DejaVu Sans']
         matplotlib.rcParams['font.monospace'] = ['DejaVu Sans Mono']
         matplotlib.rcParams['font.style'] = 'normal'
+        matplotlib.rcParams['mathtext.fontset'] = 'custom'
         matplotlib.rcParams['mathtext.rm'] = 'DejaVu Sans'
-        matplotlib.rcParams['mathtext.it'] = 'DejaVu Sans:italic'
+        matplotlib.rcParams['mathtext.it'] = 'DejaVu Sans:oblique'
         matplotlib.rcParams['mathtext.bf'] = 'DejaVu Sans:weight=bold'
         matplotlib.rcParams['mathtext.sf'] = 'DejaVu Sans'
-        matplotlib.rcParams['mathtext.tt'] = 'DejaVu Sans Mono'
+        matplotlib.rcParams['mathtext.tt'] = 'DejaVu Sans'
         matplotlib.rcParams['font.size'] = 20.
         matplotlib.rcParams['legend.fontsize'] = 14.
         matplotlib.rcParams['text.usetex'] = False
