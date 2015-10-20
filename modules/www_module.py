@@ -16,7 +16,7 @@ def scp(src, remote, destination, args=''):
     return rc
 
 def ssh(remote, cmd, args=''):
-    cmd = 'ssh {2} {0} {1}'.format(remote, cmd, args)
+    cmd = 'ssh -x {2} {0} {1}'.format(remote, cmd, args)
     log.debug('Executing command \'{0}\''.format(cmd))
     rc = subprocess.call(cmd.split())
     return rc
@@ -32,7 +32,7 @@ class CopyToWebModule(BaseModule):
         remote_basedir = 'public_html/private/plots/'
 
 
-        if (ssh(remote_host, args='-oNumberOfPasswordPrompts=0', cmd='echo hello') == 0):
+        if (ssh(remote_host, args='-oNumberOfPasswordPrompts=0', cmd='echo Connection succeded.') == 0):
             log.debug('Passwordless mode is working. Continue with copying stuff.')
             folder_name = date.today().isoformat()
 
