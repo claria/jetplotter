@@ -123,7 +123,6 @@ class PlotModule(BaseModule):
             id_regex = [id_regex]
         print id_regex
         for id, item in config['objects'].iteritems():
-            print 'item', item
             if not any([re.match(regex, id) for regex in id_regex]):
                 log.debug('Omitting id {0} since it does not match the regex.'.format(id))
                 continue
@@ -153,7 +152,6 @@ class Plot(BasePlot):
         self.histos = histos
 
         self.x_lims = [get_lookup_val('x_lims', val) for val in kwargs.pop('x_lims', [None, None])]
-        print self.x_lims
         self.x_lims = [any2float(v) for v in self.x_lims]
         self.y_lims = [get_lookup_val('y_lims', val) for val in kwargs.pop('y_lims', [None, None])]
         self.y_lims = [any2float(v) for v in self.y_lims]
