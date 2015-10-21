@@ -65,7 +65,7 @@
             "color": "grey", 
             "edgecolor": "grey", 
             "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TEST_DATA.root?yb0ys1/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg", 
             "label": "Data (Reco)", 
             "linestyle": "", 
             "marker": "", 
