@@ -4,7 +4,7 @@
         "Efficiency", 
         "TriggerEfficiencyFit"
     ], 
-    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/emul_HLT_DiPFJETAve320 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/HLT_DiPFJETAve260 --label _emul:emul _trg:trg --ana-modules Efficiency TriggerEfficiencyFit --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_320 --output-path trigger_eff_hltpfjet320.png --trigger-efficiency-fit eff_emul:{} --style fit_eff_emul:line --ax-texts _cmsp_ _20fb_", 
+    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/emul_HLT_PFJET320 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/HLT_PFJET260 --label _emul:emul _trg:trg --ana-modules Efficiency TriggerEfficiencyFit --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_320 --output-path trigger_eff_hltpfjet320.png --trigger-efficiency-fit eff_emul:{} --style fit_eff_emul:line --ax-texts _cmsp_ _20fb_", 
     "ax_hlines": [], 
     "ax_texts": [
         "_cmsp_", 
@@ -45,11 +45,11 @@
             "zorder": 1.0
         }, 
         "_emul": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/emul_HLT_DiPFJETAve320", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/emul_HLT_PFJET320", 
             "label": "emul"
         }, 
         "_trg": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/HLT_DiPFJETAve260", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?default/TriggerEffs/HLT_PFJET260", 
             "label": "trg"
         }, 
         "eff_emul": {
