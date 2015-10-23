@@ -1,0 +1,251 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Normalize", 
+        "ReBinning"
+    ], 
+    "argv": "./plot.py -i yb0ys0:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg yb0ys1:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys1/h_ptavg yb0ys2:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys2/h_ptavg yb1ys0:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb1ys0/h_ptavg yb1ys1:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb1ys1/h_ptavg yb2ys0:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb2ys0/h_ptavg yb0ys0nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs yb0ys1nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_xs yb0ys2nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys2/CT14nlo_xs yb1ys0nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs yb1ys1nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT14nlo_xs yb2ys0nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb2ys0/CT14nlo_xs --x-log True --y-log True --x-lims 120. 2000. --y-lims 1E-6 1E6 --x-label _ptavg_ --y-label '$\\frac{d^3\\sigma}{dp_{\\mathrm{T,avg}} dy_b dy*}$ (pb/GeV)' --color yb0ys0:black yb0ys1:black yb0ys2:black yb1ys0:black yb1ys1:black yb2ys0:black --style yb0ys0nlo:line yb0ys1nlo:line yb0ys2nlo:line yb1ys0nlo:line yb1ys1nlo:line yb2ys0nlo:line --step yb0ys0nlo:True yb0ys1nlo:True yb0ys2nlo:True yb1ys0nlo:True yb1ys1nlo:True yb2ys0nlo:True --ana-modules Normalize ReBinning --normalize yb0ys0:width yb0ys1:width yb0ys2:width yb1ys0:width yb1ys1:width yb2ys0:width --label yb0ys0:_yb0ys0_ yb0ys1:_yb0ys1_ yb0ys2:_yb0ys2_ yb1ys0:_yb1ys0_ yb1ys1:_yb1ys1_ yb2ys0:_yb2ys0_ --marker yb0ys0:x yb0ys1:4 yb0ys2:. yb1ys0:* yb1ys1:d yb2ys0:h --ax-texts _cmsp_ _20fb_ --data-lims yb0ys0:min=133.0?max=1784.0 yb0ys1:min=133.0?max=1248.0 yb0ys2:min=133.0?max=548.0 yb1ys0:min=133.0?max=1032.0 yb1ys1:min=133.0?max=686.0 yb2ys0:min=133.0?max=430.0 yb0ys0nlo:min=133.0?max=1784.0 yb0ys1nlo:min=133.0?max=1248.0 yb0ys2nlo:min=133.0?max=548.0 yb1ys0nlo:min=133.0?max=1032.0 yb1ys1nlo:min=133.0?max=686.0 yb2ys0nlo:min=133.0?max=430.0 --output-path ptavg_spectrum_unf.png", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "data_lims": [
+        [
+            "yb0ys0", 
+            {
+                "max": 1784.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb0ys1", 
+            {
+                "max": 1248.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb0ys2", 
+            {
+                "max": 548.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb1ys0", 
+            {
+                "max": 1032.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb1ys1", 
+            {
+                "max": 686.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb2ys0", 
+            {
+                "max": 430.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb0ys0nlo", 
+            {
+                "max": 1784.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb0ys1nlo", 
+            {
+                "max": 1248.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb0ys2nlo", 
+            {
+                "max": 548.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb1ys0nlo", 
+            {
+                "max": 1032.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb1ys1nlo", 
+            {
+                "max": 686.0, 
+                "min": 133.0
+            }
+        ], 
+        [
+            "yb2ys0nlo", 
+            {
+                "max": 430.0, 
+                "min": 133.0
+            }
+        ]
+    ], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [], 
+    "log_level": "info", 
+    "normalize": [
+        [
+            "yb0ys0", 
+            "width"
+        ], 
+        [
+            "yb0ys1", 
+            "width"
+        ], 
+        [
+            "yb0ys2", 
+            "width"
+        ], 
+        [
+            "yb1ys0", 
+            "width"
+        ], 
+        [
+            "yb1ys1", 
+            "width"
+        ], 
+        [
+            "yb2ys0", 
+            "width"
+        ]
+    ], 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "yb0ys0": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg", 
+            "label": "_yb0ys0_", 
+            "marker": "x"
+        }, 
+        "yb0ys0nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs", 
+            "step": true, 
+            "style": "line"
+        }, 
+        "yb0ys1": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys1/h_ptavg", 
+            "label": "_yb0ys1_", 
+            "marker": "4"
+        }, 
+        "yb0ys1nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_xs", 
+            "step": true, 
+            "style": "line"
+        }, 
+        "yb0ys2": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys2/h_ptavg", 
+            "label": "_yb0ys2_", 
+            "marker": "."
+        }, 
+        "yb0ys2nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys2/CT14nlo_xs", 
+            "step": true, 
+            "style": "line"
+        }, 
+        "yb1ys0": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb1ys0/h_ptavg", 
+            "label": "_yb1ys0_", 
+            "marker": "*"
+        }, 
+        "yb1ys0nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs", 
+            "step": true, 
+            "style": "line"
+        }, 
+        "yb1ys1": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb1ys1/h_ptavg", 
+            "label": "_yb1ys1_", 
+            "marker": "d"
+        }, 
+        "yb1ys1nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys1/CT14nlo_xs", 
+            "step": true, 
+            "style": "line"
+        }, 
+        "yb2ys0": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb2ys0/h_ptavg", 
+            "label": "_yb2ys0_", 
+            "marker": "h"
+        }, 
+        "yb2ys0nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb2ys0/CT14nlo_xs", 
+            "step": true, 
+            "style": "line"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "ptavg_spectrum_unf.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "120.", 
+        "2000."
+    ], 
+    "x_log": true, 
+    "y_label": "$\\frac{d^3\\sigma}{dp_{\\mathrm{T,avg}} dy_b dy*}$ (pb/GeV)", 
+    "y_lims": [
+        "1E-6", 
+        "1E6"
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
