@@ -93,6 +93,7 @@ class BasePlot(object):
         matplotlib.rcParams['ytick.minor.size'] = 6
         matplotlib.rcParams['ytick.minor.width'] = 1.
         matplotlib.rcParams['lines.markersize'] = 8
+        matplotlib.rcParams['lines.markeredgewidth'] = 1.0
         matplotlib.rcParams['axes.formatter.limits'] = [-2, 5]
 
         # Saving
