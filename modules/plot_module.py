@@ -51,6 +51,9 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--linestyle', type='str2kvstr', nargs='+',
                                     default='', action='setting',
                                     help='Linestyle for each plot')
+        self.arg_group.add_argument('--linewidth', type='str2kvfloat', nargs='+',
+                                    default=None, action='setting',
+                                    help='Linewidth for each plot')
         self.arg_group.add_argument('--marker', type='str2kvstr', nargs='+',
                                     default='.', action='setting',
                                     help='Marker for errorbars for each plot.')
