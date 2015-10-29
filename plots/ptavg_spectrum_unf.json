@@ -233,7 +233,8 @@
         }
     }, 
     "output_modules": [
-        "PlotModule"
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "output_path": "ptavg_spectrum_unf.png", 
     "output_prefix": "plots/", 
