@@ -43,6 +43,7 @@ class CopyToWebModule(BaseModule):
             ssh(remote_host, 'mkdir -p {0}'.format(os.path.join(remote_basedir, folder_name)))
             log.debug('Copying the output file.')
             scp(os.path.join(config['output_prefix'], config['output_path']), remote_host, os.path.join(remote_basedir, folder_name, remote_filename))
+            scp(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.json')), remote_host, os.path.join(remote_basedir, folder_name, remote_filename.replace('.png','.json')))
             log.debug('Calling the gallery preparation file.')
             ssh(remote_host, '{0}/prep_gallery.py'.format(remote_basedir))
         else:
