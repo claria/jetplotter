@@ -69,8 +69,8 @@ def main():
             # data['{0}_up'.format(jec_source)] = jec_up.y/jec_default.y -1.
             # data['{0}_dn'.format(jec_source)] = 1. - jec_dn.y/jec_default.y
             # data['{0}'.format(jec_source)] = np.abs((jec_up.y - jec_dn.y)/2.0)/jec_default.y * 100.
-            # data['{0}'.format(jec_source)] = np.maximum(np.abs(1 - jec_up.y/jec_default.y), np.abs(1 - jec_dn.y/jec_default.y)) * 100.
-            data['{0}'.format(jec_source)] = np.abs(1 - jec_up.y/jec_default.y) * 100.
+            data['{0}'.format(jec_source)] = np.maximum(np.abs(1. - jec_up.y/jec_default.y), np.abs(1. - jec_dn.y/jec_default.y)) * 100.
+            # data['{0}'.format(jec_source)] = np.abs(1 - jec_up.y/jec_default.y) * 100.
 
         for k,v in data.iteritems():
             v[np.isnan(v)] = 0.
