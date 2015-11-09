@@ -103,6 +103,8 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--z-label', default='', help='Label of the z axis.')
 
         self.arg_group.add_argument('--show-legend', type='bool', default=True, help='Plot a legend on axis ax.')
+        self.arg_group.add_argument('--combine-legend-entries', type='str2kvstr', nargs='+', default=[],
+                                    help='Combines multiple legend entries into one if possible.')
         self.arg_group.add_argument('--legend-loc', default='best', help='Location of legend on axis ax.')
 
         self.arg_group.add_argument('--plot-id', default=[r'^(?!_).*'], nargs='+',
@@ -118,6 +120,7 @@ class PlotModule(BaseModule):
                                     help='Add horizontal lines to plot. Syntax is y=1.0?lw=2.0?color=green. All matplotlib '
                                          'Line2D kwargs are valid.')
 
+
     def __call__(self, config):
         plot = Plot(**config)
         # plot each object
@@ -126,6 +129,7 @@ class PlotModule(BaseModule):
             id_regex = [id_regex]
         print id_regex
         for id, item in config['objects'].iteritems():
+            item['id'] = id
             if not any([re.match(regex, id) for regex in id_regex]):
                 log.debug('Omitting id {0} since it does not match the regex.'.format(id))
                 continue
@@ -133,7 +137,8 @@ class PlotModule(BaseModule):
                 log.warning('Not obj found for id {0}. Skipping this id.'.format(id))
                 continue
             log.info('Drawing id {0}'.format(id))
-            plot.plot(**item)
+            artist = plot.plot(**item)
+
         # Save plot
         plot.finish()
 
@@ -173,6 +178,7 @@ class Plot(BasePlot):
         self.z_label = get_lookup_val('z_label', kwargs.pop('z_label', ''))
 
         self.show_legend = kwargs.pop('show_legend', True)
+        self.combine_legend_entries = kwargs.pop('combine_legend_entries', [])
         self.legend_loc = kwargs.pop('legend_loc', 'best')
 
         self.texts = kwargs.pop('ax_texts', [])
@@ -182,6 +188,12 @@ class Plot(BasePlot):
         self.auto_colors = itertools.cycle(matplotlib.rcParams['axes.color_cycle'])
 
         self.colorbar_mappable = None
+
+        # helpers for legend labels/artists
+        self._ids = []
+        self._legend_handles = []
+        self._legend_labels = []
+
 
     def plot(self, **kwargs):
         style = kwargs.pop('style', 'errorbar')
@@ -221,6 +233,11 @@ class Plot(BasePlot):
             self.colorbar_mappable = artist
         else:
             raise ValueError('Style {0} not supported.'.format(style))
+
+        self._ids.append(kwargs['id'])
+        self._legend_handles.append(artist)
+        self._legend_labels.append(kwargs['label'])
+
         return artist
 
     def finish(self):
@@ -304,11 +321,24 @@ class Plot(BasePlot):
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
 
         if self.show_legend:
-            handles, labels = self.ax.get_legend_handles_labels()
-            if any(labels):
+            # handles, labels = self.ax.get_legend_handles_labels()
+            no_legend_ids = ['nolegend', '_nolegend_', '__nolegend__','none', '']
+
+            # handles = self._legend_handles
+            # labels = self._legend_labels
+            # TODO combine legend entries
+            for id, id2 in self.combine_legend_entries:
+                if id in self._ids and id2 in self._ids:
+                    self._legend_handles[self._ids.index(id)] = (self._legend_handles[self._ids.index(id2)],self._legend_handles[self._ids.index(id)]) 
+            leg_entry_dict = dict(zip(self._legend_labels, self._legend_handles))
+            for key in leg_entry_dict.keys():
+                if key.lower() in no_legend_ids:
+                    del leg_entry_dict[key]
+            
+            if leg_entry_dict:
+                labels, handles = zip(*leg_entry_dict.items())
                 self.ax.legend(handles, labels, loc=self.legend_loc)
             else:
-                pass
                 log.debug('Omit legend since all labels are empty.')
 
         if self.ax1:
