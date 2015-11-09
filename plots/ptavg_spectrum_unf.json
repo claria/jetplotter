@@ -11,6 +11,32 @@
         "_20fb_"
     ], 
     "ax_vlines": [], 
+    "combine_legend_entries": [
+        [
+            "yb0ys0", 
+            "yb0ys0nlo"
+        ], 
+        [
+            "yb0ys1", 
+            "yb0ys1nlo"
+        ], 
+        [
+            "yb0ys2", 
+            "yb0ys2nlo"
+        ], 
+        [
+            "yb1ys0", 
+            "yb1ys0nlo"
+        ], 
+        [
+            "yb1ys1", 
+            "yb1ys1nlo"
+        ], 
+        [
+            "yb2ys0", 
+            "yb2ys0nlo"
+        ]
+    ], 
     "data_lims": [
         [
             "yb0ys0", 
