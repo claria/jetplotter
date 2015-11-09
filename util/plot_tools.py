@@ -5,11 +5,11 @@ import numpy as np
 import matplotlib
 from matplotlib.colors import Normalize
 from matplotlib.colors import LogNorm
+from matplotlib.colors import colorConverter
 import matplotlib.pyplot as plt
 
 from root2np import R2npObject1D, R2npObject2D
 from util.viridis import viridis_cmap
-
 plt.register_cmap(cmap=viridis_cmap)
 
 import logging
@@ -257,13 +257,19 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         y_errl = steppify_bin(y_errl)
         y_erru = steppify_bin(y_erru)
 
+    #
+    kwargs['facecolor'] = colorConverter.to_rgba(kwargs['facecolor'], kwargs.get('alpha', 1.0))
+    kwargs['edgecolor'] = colorConverter.to_rgba(kwargs['edgecolor'], 1.0)
+
     fill_between_kwargs = {k: v for k, v in kwargs.items() if
-                           k in ['label', 'facecolor', 'alpha', 'edgecolor', 'zorder']}
+                           k in ['label', 'facecolor', 'edgecolor', 'zorder']}
+
+
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
-    p = matplotlib.patches.Rectangle((0, 0), 1, 1, **fill_between_kwargs)
+    p = matplotlib.patches.Rectangle((0, 0), 1, 1, alpha=kwargs['alpha'], **fill_between_kwargs)
     ax.add_patch(p)
 
-    return artist
+    return p
 
 
 def plot_histo(obj=None, emptybins=True, ax=None, **kwargs):
@@ -327,7 +333,7 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
 
     line_kwargs = {k: v for k, v in kwargs.items() if
                    k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth']}
-    artist = ax.plot(x, y, **line_kwargs)
+    artist, = ax.plot(x, y, **line_kwargs)
 
     return artist
 
