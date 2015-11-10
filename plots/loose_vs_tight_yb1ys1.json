@@ -1,0 +1,104 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plot.py -i tight:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg loose:~/dust/dijetana/ana/CMSSW_7_2_3/LOOSEID_DATA.root?yb1ys1/h_ptavg --y-log False --ana-modules Ratio --ratio loose:tight tight:tight --label loose:loose tight:tight --y-lims 0.0 3.0 --ax-texts _yb1ys1_?_upperleft_ _cmsp_ _20fb_ --legend-loc 'upper right' --output-path loose_vs_tight_yb1ys1.png --output-modules PlotModule CopyToWebModule", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb1ys1_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "upper right", 
+    "list_modules": false, 
+    "load_config": [
+        "plots/loose_vs_tight_yb1ys1.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "loose": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/LOOSEID_DATA.root?yb1ys1/h_ptavg", 
+            "label": "loose"
+        }, 
+        "noid": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NOJETID_DATA.root?yb1ys1/h_ptavg", 
+            "label": "noid"
+        }, 
+        "tight": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg", 
+            "label": "tight"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "output_path": "loose_vs_tight_yb1ys1.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "ratio": [
+        [
+            "loose", 
+            "tight"
+        ], 
+        [
+            "noid", 
+            "tight"
+        ], 
+        [
+            "tight", 
+            "tight"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "130", 
+        "2500."
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio to Tight ID", 
+    "y_lims": [
+        "0.8", 
+        "2.0"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
