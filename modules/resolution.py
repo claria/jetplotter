@@ -17,6 +17,7 @@ class ResolutionAna(BaseModule):
 
     def __call__(self, config):
         ROOT.TVirtualFitter.SetMaxIterations(9999)
+        res_pars = {}
         for id in config['resolution']:
             if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
@@ -67,6 +68,7 @@ class ResolutionAna(BaseModule):
             res = resolution_graph.Fit("res_fcn", "RSOEX0", "")
             if res.Get() == None or res.Status() != 0:
                 raise Exception('Fit Failed')
+            res_pars[id] = [res_fcn.GetParameter(0),res_fcn.GetParameter(1),res_fcn.GetParameter(2),res_fcn.GetParameter(3)]
             xmin, xmax = resolution_graph.GetXaxis().GetXmin(), resolution_graph.GetXaxis().GetXmax()
             vfitter = ROOT.TVirtualFitter.GetFitter()
             res_fcn.SetNpx(1000)
@@ -74,3 +76,6 @@ class ResolutionAna(BaseModule):
             res_error_graph = get_tgrapherrors(res_fcn, vfitter)
 
             config['objects'].setdefault('{0}_fit'.format(id_res), {})['obj'] = res_error_graph
+        print res_pars
+        for k,v in res_pars.iteritems():
+            print '\'{0}\' : {1},'.format(k, v)
