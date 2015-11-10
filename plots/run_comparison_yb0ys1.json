@@ -1,0 +1,131 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Normalize", 
+        "Ratio"
+    ], 
+    "argv": "./plot.py -i run_a:~/dust/ARTUS/artus_2015-11-10_08-50/DATA_A.root?yb0ys1/h_ptavg run_b:~/dust/ARTUS/artus_2015-11-10_08-50/DATA_B.root?yb0ys1/h_ptavg run_c:~/dust/ARTUS/artus_2015-11-10_08-50/DATA_C.root?yb0ys1/h_ptavg run_d:~/dust/ARTUS/artus_2015-11-10_08-50/DATA_D.root?yb0ys1/h_ptavg --ana-modules Normalize Ratio --ratio run_a:run_d run_b:run_d run_c:run_d run_d:run_d --normalize run_a:1.1363 run_b:0.222 run_c:0.141643 run_d:0.1356 --label 'run_a:Run A' 'run_b:Run B' 'run_c:Run C' 'run_d:Run D' --legend-loc 'upper right' --x-label _ptavg_ --y-label 'Ratio to Run D?_center_' --ax-texts _yb0ys1_?_upperleft_ _cmsp_ _20fb_ --output-modules PlotModule CopyToWebModule --output-path run_comparison_yb0ys1.png --y-lims 0.0 2.0 --x-log True --x-lims 120. 2500.", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb0ys1_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "upper right", 
+    "list_modules": false, 
+    "load_config": [
+        "plots/run_comparison_yb0ys1.json"
+    ], 
+    "log_level": "info", 
+    "normalize": [
+        [
+            "run_a", 
+            "1.1363"
+        ], 
+        [
+            "run_b", 
+            "0.222"
+        ], 
+        [
+            "run_c", 
+            "0.141643"
+        ], 
+        [
+            "run_d", 
+            "0.1356"
+        ]
+    ], 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "run_a": {
+            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_A.root?yb0ys1/h_ptavg", 
+            "label": "Run A"
+        }, 
+        "run_b": {
+            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_B.root?yb0ys1/h_ptavg", 
+            "label": "Run B"
+        }, 
+        "run_c": {
+            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_C.root?yb0ys1/h_ptavg", 
+            "label": "Run C"
+        }, 
+        "run_d": {
+            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_D.root?yb0ys1/h_ptavg", 
+            "label": "Run D"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "output_path": "run_comparison_yb0ys1.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "ratio": [
+        [
+            "run_a", 
+            "run_d"
+        ], 
+        [
+            "run_b", 
+            "run_d"
+        ], 
+        [
+            "run_c", 
+            "run_d"
+        ], 
+        [
+            "run_d", 
+            "run_d"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "120.", 
+        "2500."
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio to Run D?_center_", 
+    "y_lims": [
+        "0.0", 
+        "2.0"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
