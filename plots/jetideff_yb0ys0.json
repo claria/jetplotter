@@ -1,0 +1,91 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Efficiency"
+    ], 
+    "argv": "./plot.py -i all:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys0/h_allpassjetid pass:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys0/h_probepassjetid --ana-modules Efficiency --efficiency pass:all --plot-id eff_pass --y-lims 0.9 1.1 --x-log True --x-lim 100 2500. --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _20fb_ --x-label _ptavg_ --y-label Efficiency --y-lims 0.5 1.1 --output-path jetideff_yb0ys0.png", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb0ys0_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "efficiency": [
+        [
+            "pass", 
+            "all"
+        ]
+    ], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "plots/jetideff_yb0ys0.json"
+    ], 
+    "log_level": "debug", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "all": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys0/h_allpassjetid"
+        }, 
+        "eff_pass": {
+            "label": "Tight ID"
+        }, 
+        "pass": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys0/h_probepassjetid"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "jetideff_yb0ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "eff_pass"
+    ], 
+    "print_config": false, 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "100", 
+        "2500."
+    ], 
+    "x_log": true, 
+    "y_label": "Efficiency", 
+    "y_lims": [
+        "0.5", 
+        "1.1"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
