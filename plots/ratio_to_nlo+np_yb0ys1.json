@@ -19,6 +19,7 @@
         "_20fb_"
     ], 
     "ax_vlines": [], 
+    "combine_legend_entries": [], 
     "fig_size": null, 
     "input_modules": [
         "RootModule"
@@ -45,7 +46,7 @@
     ], 
     "normalize": [
         [
-            "data", 
+            "_data", 
             "width"
         ], 
         [
@@ -55,6 +56,24 @@
     ], 
     "object_paths": null, 
     "objects": {
+        "_data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "grey", 
+            "edgecolor": "grey", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg", 
+            "label": "Data (Reco)", 
+            "linestyle": "", 
+            "marker": "", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -74,24 +93,6 @@
         }, 
         "_np": {
             "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
-        }, 
-        "data": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "grey", 
-            "edgecolor": "grey", 
-            "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg", 
-            "label": "Data (Reco)", 
-            "linestyle": "", 
-            "marker": "", 
-            "step": true, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
         }, 
         "dataunf": {
             "alpha": 1.0, 
@@ -116,8 +117,8 @@
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color1_", 
-            "edgecolor": "_color1_", 
+            "color": "_color0_", 
+            "edgecolor": "_color0_", 
             "id": "nloct14", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_u", 
             "label": "NLOxNP (CT14)", 
@@ -135,8 +136,8 @@
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color2_", 
-            "edgecolor": "_color2_", 
+            "color": "_color1_", 
+            "edgecolor": "_color1_", 
             "id": "nlommht2014", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_pdfunc_u", 
             "label": "NLOxNP (MMHT 2014)", 
@@ -154,8 +155,8 @@
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color3_", 
-            "edgecolor": "_color3_", 
+            "color": "_color2_", 
+            "edgecolor": "_color2_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_pdfunc_u", 
             "label": "NLOxNP (NNPDF30)", 
@@ -183,7 +184,7 @@
     ], 
     "ratio": [
         [
-            "data", 
+            "_data", 
             "nloct14"
         ], 
         [
@@ -205,7 +206,7 @@
     ], 
     "show_legend": true, 
     "to_tgraph": [
-        "data", 
+        "_data", 
         "dataunf", 
         "nlonnpdf30", 
         "nlommht2014", 

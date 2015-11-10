@@ -12,6 +12,7 @@
         "ptbin 10?_upperright_"
     ], 
     "ax_vlines": [], 
+    "combine_legend_entries": [], 
     "fig_size": null, 
     "input_modules": [
         "RootModule"

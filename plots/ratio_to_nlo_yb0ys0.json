@@ -18,6 +18,7 @@
         "_20fb_"
     ], 
     "ax_vlines": [], 
+    "combine_legend_entries": [], 
     "fig_size": null, 
     "input_modules": [
         "RootModule"
@@ -98,12 +99,13 @@
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color1_", 
-            "edgecolor": "_color1_", 
+            "color": "_color0_", 
+            "edgecolor": "_color0_", 
             "id": "nloct14", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_pdfunc_u", 
             "label": "NLO (CT14)", 
             "linestyle": "", 
+            "linewidth": 3.0, 
             "marker": ".", 
             "plot": true, 
             "step": true, 
@@ -117,8 +119,8 @@
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color2_", 
-            "edgecolor": "_color2_", 
+            "color": "_color1_", 
+            "edgecolor": "_color1_", 
             "id": "nlommht2014", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/MMHT2014_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/MMHT2014_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/MMHT2014_pdfunc_u", 
             "label": "NLO (MMHT 2014)", 
@@ -136,8 +138,8 @@
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color3_", 
-            "edgecolor": "_color3_", 
+            "color": "_color2_", 
+            "edgecolor": "_color2_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_pdfunc_u", 
             "label": "NLO (NNPDF30)", 
@@ -153,7 +155,6 @@
     }, 
     "output_modules": [
         "PlotModule", 
-        "CopyToWebModule", 
         "CopyToWebModule"
     ], 
     "output_path": "ratio_to_nlo_yb0ys0.png", 

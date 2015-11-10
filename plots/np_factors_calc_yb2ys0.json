@@ -28,6 +28,7 @@
             ]
         ]
     ], 
+    "combine_legend_entries": [], 
     "fig_size": null, 
     "fit_obj": [
         [

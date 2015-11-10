@@ -16,6 +16,7 @@
         "$20\\,fb^{-1}$ (8TeV)?_topright_"
     ], 
     "ax_vlines": [], 
+    "combine_legend_entries": [], 
     "fig_size": [
         10.0, 
         7.0
