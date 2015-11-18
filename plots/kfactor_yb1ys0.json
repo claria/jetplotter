@@ -2,7 +2,12 @@
     "add_subplot": false, 
     "ana_modules": [], 
     "argv": "./plotter.py -i kfactor:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT10nlo_kfac --x-log True --x-lims 74. 3000. --y-lims 0.5 2.0 --x-label _ptavg_ --y-label k factor?_center_ --ax-texts _yb1ys0_?_upperleft_ _cmsp_ --label kfactor:CT10 (NLO) --output-path kfactor_yb1ys0.png", 
-    "ax_hlines": [], 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "y": 1.0
+        }
+    ], 
     "ax_texts": [
         "_yb1ys0_?_upperleft_", 
         "_cmsp_"
