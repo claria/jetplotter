@@ -40,15 +40,11 @@
             "zorder": 1.0
         }, 
         "loose": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/LOOSEID_DATA.root?yb1ys1/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETID_LOOSE_DATA.root?yb1ys1/h_ptavg", 
             "label": "loose"
         }, 
-        "noid": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NOJETID_DATA.root?yb1ys1/h_ptavg", 
-            "label": "noid"
-        }, 
         "tight": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETID_TIGHT_DATA.root?yb1ys1/h_ptavg", 
             "label": "tight"
         }
     }, 
@@ -65,10 +61,6 @@
     "ratio": [
         [
             "loose", 
-            "tight"
-        ], 
-        [
-            "noid", 
             "tight"
         ], 
         [
