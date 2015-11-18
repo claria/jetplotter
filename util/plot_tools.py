@@ -49,6 +49,7 @@ class BasePlot(object):
             # filename = "{}.{}".format(self.output_path, ext)
         print 'Saved plot to {0}'.format(path)
         self.fig.savefig(path, bbox_inches='tight')
+        self.fig.savefig(path.replace('.png', '.pdf'), bbox_inches='tight')
 
         if close_fig:
             plt.close(self.fig)
@@ -301,7 +302,7 @@ def plot_histo(obj=None, emptybins=True, ax=None, **kwargs):
     p = matplotlib.patches.Rectangle((0, 0), 0, 0, **fill_between_kwargs)
     ax.add_patch(p)
 
-    return artist
+    return p
 
 
 def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):

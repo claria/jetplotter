@@ -1,0 +1,95 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plot.py -i ptavg:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs ptmax:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO_PTMAX.root?yb1ys0/CT14nlo_xs --ana-modules Ratio --ratio ptmax:ptavg ptavg:ptavg --label ptmax:ptmax ptavg:ptavg --output-path ptmax_vs_ptavg_nlo_yb1ys0.png --ax-texts _yb1ys0_?_upperleft_ _cmsp_ _8tev_ --x-label _ptavg_ --y-label 'Ratio to ptavg' --x-log True --x-lims 50. 3000.", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb1ys0_?_upperleft_", 
+        "_cmsp_", 
+        "_8tev_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "plots/ptmax_vs_ptavg_nlo_yb1ys0.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "ptavg": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs", 
+            "label": "ptavg"
+        }, 
+        "ptmax": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO_PTMAX.root?yb1ys0/CT14nlo_xs", 
+            "label": "ptmax exp(0.3y*)"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "ptmax_vs_ptavg_nlo_yb1ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "ratio": [
+        [
+            "ptmax", 
+            "ptavg"
+        ], 
+        [
+            "ptavg", 
+            "ptavg"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio to ptavg", 
+    "y_lims": [
+        null, 
+        null
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

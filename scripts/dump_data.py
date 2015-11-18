@@ -68,8 +68,8 @@ def main():
             jec_dn = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/JEC_DATA.root?{0}_{1}_dn/h_ptavg'.format(ybys_bin, jec_source))
             # data['{0}_up'.format(jec_source)] = jec_up.y/jec_default.y -1.
             # data['{0}_dn'.format(jec_source)] = 1. - jec_dn.y/jec_default.y
-            # data['{0}'.format(jec_source)] = np.abs((jec_up.y - jec_dn.y)/2.0)/jec_default.y * 100.
-            data['{0}'.format(jec_source)] = np.maximum(np.abs(1. - jec_up.y/jec_default.y), np.abs(1. - jec_dn.y/jec_default.y)) * 100.
+            data['{0}'.format(jec_source)] = np.abs((jec_up.y - jec_dn.y)/2.0)/jec_default.y * 100.
+            # data['{0}'.format(jec_source)] = np.maximum(np.abs(1. - jec_up.y/jec_default.y), np.abs(1. - jec_dn.y/jec_default.y)) * 100.
             # data['{0}'.format(jec_source)] = np.abs(1 - jec_up.y/jec_default.y) * 100.
 
         for k,v in data.iteritems():
@@ -85,12 +85,12 @@ def main():
 
 def infinalrange(pt_low, ybys_bin):
     cuts = {
-            'yb0ys0' : (133.,1784.),
-            'yb0ys1' : (133.,1248.),
-            'yb0ys2' : (133.,548.),
-            'yb1ys0' : (133.,1032.),
-            'yb1ys1' : (133.,686),
-            'yb2ys0' : (133.,430.),
+            'yb0ys0' : (74.,1784.),
+            'yb0ys1' : (74.,1248.),
+            'yb0ys2' : (74.,548.),
+            'yb1ys0' : (74.,1032.),
+            'yb1ys1' : (74.,686),
+            'yb2ys0' : (74.,430.),
             }
     if pt_low >= cuts[ybys_bin][0] and pt_low < cuts[ybys_bin][1]:
         return True
