@@ -203,7 +203,11 @@
     ], 
     "output_path": "np_factors_calc_yb2ys0.png", 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
+    "plot_id": [
+        "fit_qcdp8mpihad", 
+        "fit_hwppmpihad", 
+        "res_np_factor"
+    ], 
     "print_config": false, 
     "provided_args": [
         "help", 
