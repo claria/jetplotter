@@ -1,0 +1,163 @@
+{
+    "add_subplot": true, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys1/h_ptavg --x-log True --y-log True --x-lims 74. 2500. --y-lims 1E-8 1E8 --color data:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Leading Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Ratio --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data --output-path ptavg_yb1ys1.png", 
+    "ax_hlines": [
+        {
+            "axis": "ax1", 
+            "color": "black", 
+            "ls": "--", 
+            "lw": 2.0, 
+            "y": 1.0
+        }
+    ], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_", 
+        "_yb1ys1_?_upperleft_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "plots/jetptavg_yb1ys1.json"
+    ], 
+    "log_level": "debug", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg", 
+            "label": "Data", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "mgp6": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "mgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys1/h_ptavg", 
+            "label": "MG+P6", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "histo", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "ratio_mgp6_to_data": {
+            "alpha": 1.0, 
+            "axis": "ax1", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "black", 
+            "id": "ratio_mgp6_to_data", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "output_path": "jetptavg_yb1ys1.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "ratio_copy", 
+        "label", 
+        "color", 
+        "style", 
+        "axis", 
+        "output_path", 
+        "add_subplot", 
+        "x_lims", 
+        "y_lims", 
+        "x_log", 
+        "y_log", 
+        "x_label", 
+        "y_label", 
+        "y_subplot_label", 
+        "ana_modules"
+    ], 
+    "ratio": [], 
+    "ratio_copy": [
+        [
+            "mgp6", 
+            "data"
+        ]
+    ], 
+    "show_legend": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "74.", 
+        "2500."
+    ], 
+    "x_log": true, 
+    "y_label": "Cross Section (pb/GeV)", 
+    "y_lims": [
+        "1E-8", 
+        "1E8"
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "Ratio to Data", 
+    "y_subplot_lims": [
+        0.0, 
+        2.0
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
