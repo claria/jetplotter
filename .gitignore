@@ -3,3 +3,6 @@
 *.root
 *.pyc
 plots/plot.json
+statcorrs.txt
+data.txt
+*.yoda
