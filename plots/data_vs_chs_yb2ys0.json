@@ -1,0 +1,96 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plot.py -i chs:~/dust/dijetana/ana/CMSSW_7_2_3/CHS_DATA.root?yb2ys0/h_ptavg data:~/dust/dijetana/ana/CMSSW_7_2_3/PF_DATA.root?yb2ys0/h_ptavg --y-log False --ana-modules Ratio --ratio data:chs chs:chs --label chs:chs data:data --y-lims 0.5 1.5 --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --legend-loc 'upper right' --output-path data_vs_chs_yb2ys0.png --output-modules PlotModule CopyToWebModule --x-log True --x-lims 130. 1784.", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb2ys0_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "upper right", 
+    "list_modules": false, 
+    "load_config": [
+        "plots/data_vs_chs_yb2ys0.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "chs": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/CHS_DATA.root?yb2ys0/h_ptavg", 
+            "label": "chs"
+        }, 
+        "data": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PF_DATA.root?yb2ys0/h_ptavg", 
+            "label": "data"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "output_path": "data_vs_chs_yb2ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "ratio": [
+        [
+            "data", 
+            "chs"
+        ], 
+        [
+            "chs", 
+            "chs"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "x_label": "", 
+    "x_lims": [
+        "130.", 
+        "1784."
+    ], 
+    "x_log": true, 
+    "y_label": "", 
+    "y_lims": [
+        "0.5", 
+        "1.5"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
