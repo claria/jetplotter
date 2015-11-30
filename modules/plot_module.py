@@ -76,8 +76,6 @@ class PlotModule(BaseModule):
 
         # Figure options
         self.arg_group.add_argument('--fig-size', type=float, nargs=2, default=None, help='Size of figure.')
-        self.arg_group.add_argument('--output-path', default='plot.png', help='Path to output file.')
-        self.arg_group.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
 
         # Axis options
         self.arg_group.add_argument('--add-subplot', default=False, type='bool', help='Add subplot with name ax1.')

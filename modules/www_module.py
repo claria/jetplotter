@@ -32,8 +32,8 @@ class CopyToWebModule(BaseModule):
         remote_basedir = 'public_html/private/plots/'
 
 
-        if (ssh(remote_host, args='-oNumberOfPasswordPrompts=0', cmd='echo Connection succeded.') == 0):
-            log.debug('Passwordless mode is working. Continue with copying stuff.')
+        if (ssh(remote_host, args='-oNumberOfPasswordPrompts=0 -o ConnectTimeout=5', cmd='echo Connection succeded.') == 0):
+            log.debug('Passwordless ssh is working. Continue with copying stuff.')
             folder_name = date.today().isoformat()
 
             output_file = config['output_path']
@@ -48,5 +48,5 @@ class CopyToWebModule(BaseModule):
             log.debug('Calling the gallery preparation file.')
             ssh(remote_host, '{0}/prep_gallery.py'.format(remote_basedir))
         else:
-            log.error('Passwordless mode is not working. Omitting the plot backup.')
+            log.error('Passwordless ssh is not working. Omitting the plot backup.')
 
