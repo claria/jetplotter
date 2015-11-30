@@ -1,8 +1,9 @@
 # Declaration of variables
 PLOTDIR = plots
+CONFIGDIR = configs
 
 # File names
-SOURCES = $(wildcard $(PLOTDIR)/*.json)
+SOURCES = $(wildcard $(CONFIGDIR)/*.json)
 TARGETS = $(SOURCES:.json=.png)
 
 REMOTE = sieber@ekplx77.physik.uni-karlsruhe.de
