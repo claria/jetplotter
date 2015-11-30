@@ -4,8 +4,9 @@ import logging
 import runpy
 
 from module_handler import discover_modules
-from util.config_tools import merge, read_config, write_config, ConfigDict
+from util.config_tools import merge, read_config, write_config, ConfigDict, walk_dic
 from util.setting_parser import SettingParser
+from src.lookup_dict import perform_lookup_replacement
 import util.callbacks as callbacks
 
 log = logging.getLogger(__name__)
@@ -32,39 +33,50 @@ class Plotter(object):
         # At this point the config is 'complete'
         # While modules may add settings/etc to the config later on, the actual config is feature complete now
         # and can be saved to disk.
-        if config.pop('store_json'):
-            path = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[0]
+        if config.get('store_json', False):
+            path = os.path.splitext(os.path.join('configs', config['output_path']))[0]
             write_config(config, path + '.json')
 
+        # Replace values with lookup values
+        perform_lookup_replacement(config)
+        # Replace all environment variables
+        walk_dic(config, os.path.expandvars)
+
         # Run all modules
+        # Input modules
         for module in [self._all_modules[name]() for name in config['input_modules']]:
             log.info("Processing {0}...".format(module.label))
             callbacks.trigger('before_module_{0}'.format(module), config=config)
             module(config)
             callbacks.trigger('after_module_{0}'.format(module), config=config)
             update_with_default(config['objects'])
-
         # Triggered after all input modules processed.
         callbacks.trigger('after_input_modules', config=config)
 
+        # Ana modules
         for module in [self._all_modules[name]() for name in config['ana_modules']]:
             log.info("Processing {0}...".format(module.label))
             callbacks.trigger('before_module_{0}'.format(module), config=config)
             module(config)
             callbacks.trigger('after_module_{0}'.format(module), config=config)
             update_with_default(config['objects'])
-
         # Triggered after all ana modules processed.
         callbacks.trigger('after_ana_modules', config=config)
+
+        # Output modules
         for module in [self._all_modules[name]() for name in config['output_modules']]:
             log.info("Processing {0}...".format(module.label))
             callbacks.trigger('before_module_{0}'.format(module), config=config)
             module(config)
             callbacks.trigger('after_module_{0}'.format(module), config=config)
             update_with_default(config['objects'])
-
         # Triggered after all output modules processed.
         callbacks.trigger('after_ana_modules', config=config)
+
+        if config.pop('store_json'):
+            path = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[0]
+            write_config(config, path + '.json')
+
 
     def build_config(self):
         """ Parse arguments. To set log level, load additional module parsers etc. the sys.args[1:] are parsed
@@ -122,6 +134,9 @@ class Plotter(object):
         base_parser_group.add_argument("--merge-args", nargs='+', default=[],
                                        help=("If json file configs and command line configs are provided the settings are "
                                        "merged for the provided args. Works only for list arguments."))
+        base_parser_group.add_argument('--output-path', default='plot.png', help='Path to output file.')
+        base_parser_group.add_argument('--output-prefix', default='plots/', help='Prefix to output paths.')
+
 
         # Final parser consists of baseparser + active module parsers
         parser = SettingParser(parents=[base_parser] + module_parsers,
