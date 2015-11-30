@@ -218,7 +218,7 @@ class SettingAction(argparse.Action):
                 values[i] = (None, values[i])
             if not values[i][0] or not isinstance(values[i][0], basestring):
                 # values[i] = ('_default', values[i][1])
-                raise ValueError('The provided argument {0} for the setting {1} '
+                raise ValueError('One of the supplied argument for --{1} '
                                  'is not of the format id:value.'.format(values[i], self.dest), )
         # Check if all ids for one setting are unique.
         if values:
