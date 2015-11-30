@@ -19,7 +19,7 @@
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": [
-        "plots/exp_jec_error_yb0ys1.json"
+        "configs/exp_jec_error_yb0ys1.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -170,6 +170,7 @@
         ]
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
         "_yb0ys1_xmin_", 

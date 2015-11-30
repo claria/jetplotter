@@ -15,7 +15,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/pt1vspt2vsptavg_yb0ys1.json"
+        "configs/pt1vspt2vsptavg_yb0ys1.json"
     ], 
     "log_level": "info", 
     "normalize_to_column": [
@@ -54,6 +54,7 @@
     ], 
     "print_config": false, 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "133", 

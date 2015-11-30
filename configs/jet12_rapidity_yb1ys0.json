@@ -17,7 +17,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/jet12_rapidity_yb1ys0.json"
+        "configs/jet12_rapidity_yb1ys0.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -78,6 +78,7 @@
         "ax_texts"
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "Leading Jet Rapidity", 
     "x_lims": [
         "-3.0", 

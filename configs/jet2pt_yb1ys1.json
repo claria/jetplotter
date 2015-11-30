@@ -27,7 +27,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/jet2pt_yb1ys1.json"
+        "configs/jet2pt_yb1ys1.json"
     ], 
     "log_level": "debug", 
     "objects": {
@@ -137,6 +137,7 @@
         ]
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "Second Jet _pt_", 
     "x_lims": [
         "74.", 

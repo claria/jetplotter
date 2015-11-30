@@ -19,7 +19,7 @@
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": [
-        "plots/loose_vs_tight_yb0ys0.json"
+        "configs/loose_vs_tight_yb0ys0.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -70,6 +70,7 @@
     ], 
     "ratio_copy": [], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "130", 

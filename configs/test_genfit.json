@@ -15,7 +15,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/test_genfit.json"
+        "configs/test_genfit.json"
     ], 
     "log_level": "info", 
     "normalize": [
@@ -74,6 +74,7 @@
         "y_log"
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "", 
     "x_lims": [
         "30.", 

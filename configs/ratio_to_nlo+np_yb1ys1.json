@@ -27,7 +27,7 @@
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": [
-        "plots/ratio_to_nlo+np_yb1ys1.json"
+        "configs/ratio_to_nlo+np_yb1ys1.json"
     ], 
     "log_level": "debug", 
     "multiply": [
@@ -205,6 +205,7 @@
         ]
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "to_tgraph": [
         "_data", 
         "dataunf", 

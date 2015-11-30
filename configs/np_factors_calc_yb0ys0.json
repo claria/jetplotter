@@ -62,7 +62,7 @@
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": [
-        "plots/np_factors_calc_yb0ys0.json"
+        "configs/np_factors_calc_yb0ys0.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -234,6 +234,7 @@
     ], 
     "show_legend": true, 
     "simpleratio": [], 
+    "store_json": true, 
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
         "50.", 

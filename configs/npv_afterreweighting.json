@@ -18,7 +18,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/npv_afterreweighting.json"
+        "configs/npv_afterreweighting.json"
     ], 
     "log_level": "info", 
     "normalize": [
@@ -75,6 +75,7 @@
         "ax_texts"
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "NPV", 
     "x_lims": [
         null, 

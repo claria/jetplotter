@@ -20,7 +20,7 @@
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": [
-        "plots/ratio_reco_to_ct10nlo_yb2ys0.json"
+        "configs/ratio_reco_to_ct10nlo_yb2ys0.json"
     ], 
     "log_level": "info", 
     "normalize": [
@@ -126,6 +126,7 @@
     ], 
     "ratio_copy": [], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "133.", 

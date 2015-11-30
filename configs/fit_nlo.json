@@ -29,7 +29,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/fit_nlo.json"
+        "configs/fit_nlo.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -81,6 +81,7 @@
         "y_label"
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "30.", 

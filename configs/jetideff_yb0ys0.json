@@ -25,7 +25,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/jetideff_yb0ys0.json"
+        "configs/jetideff_yb0ys0.json"
     ], 
     "log_level": "debug", 
     "objects": {
@@ -65,6 +65,7 @@
     ], 
     "print_config": false, 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "100", 

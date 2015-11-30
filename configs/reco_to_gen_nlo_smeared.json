@@ -15,7 +15,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/reco_to_gen_nlo_smeared.json"
+        "configs/reco_to_gen_nlo_smeared.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -96,6 +96,7 @@
     ], 
     "ratio_copy": [], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "", 
     "x_lims": [
         "50.", 

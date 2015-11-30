@@ -15,7 +15,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/gen_vs_reco_ptavg_yb1ys0.json"
+        "configs/gen_vs_reco_ptavg_yb1ys0.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -77,6 +77,7 @@
         "y_label"
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
         "40", 

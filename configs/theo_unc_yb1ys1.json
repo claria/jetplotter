@@ -19,7 +19,7 @@
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": [
-        "plots/theo_unc_yb1ys1.json"
+        "configs/theo_unc_yb1ys1.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -180,6 +180,7 @@
     ], 
     "ratio_copy": [], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "_yb1ys1_xmin_", 

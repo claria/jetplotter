@@ -27,7 +27,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/jet1pt_yb0ys1.json"
+        "configs/jet1pt_yb0ys1.json"
     ], 
     "log_level": "debug", 
     "objects": {
@@ -138,6 +138,7 @@
         ]
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "Leading Jet _pt_", 
     "x_lims": [
         "74.", 

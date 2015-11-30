@@ -15,7 +15,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/resolution_ptavg.json"
+        "configs/resolution_ptavg.json"
     ], 
     "log_level": "debug", 
     "objects": {
@@ -226,6 +226,7 @@
     ], 
     "root_output": null, 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "Gen _ptavg_", 
     "x_lims": [
         "50.", 

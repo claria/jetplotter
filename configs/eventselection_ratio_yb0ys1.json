@@ -19,7 +19,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/eventselection_ratio_yb0ys1.json"
+        "configs/eventselection_ratio_yb0ys1.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -65,6 +65,7 @@
     ], 
     "ratio_copy": [], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "", 
     "x_lims": [
         "100", 

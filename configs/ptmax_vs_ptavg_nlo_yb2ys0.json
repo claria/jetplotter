@@ -19,7 +19,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/ptmax_vs_ptavg_nlo_yb2ys0.json"
+        "configs/ptmax_vs_ptavg_nlo_yb2ys0.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -69,6 +69,7 @@
     ], 
     "ratio_copy": [], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "50.", 

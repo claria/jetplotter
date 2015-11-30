@@ -19,7 +19,7 @@
     "legend_loc": "upper right", 
     "list_modules": false, 
     "load_config": [
-        "plots/ratio_recogenunf_yb0ys2.json"
+        "configs/ratio_recogenunf_yb0ys2.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -187,6 +187,7 @@
         ]
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
     "x_lims": [
         "50", 

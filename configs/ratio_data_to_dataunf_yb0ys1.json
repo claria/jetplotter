@@ -24,7 +24,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/ratio_data_to_dataunf_yb0ys1.json"
+        "configs/ratio_data_to_dataunf_yb0ys1.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -94,6 +94,7 @@
         ]
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "50", 

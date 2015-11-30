@@ -130,7 +130,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/ptavg_spectrum_unf.json"
+        "configs/ptavg_spectrum_unf.json"
     ], 
     "log_level": "info", 
     "normalize": [
@@ -269,6 +269,7 @@
     ], 
     "print_config": false, 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "120.", 
