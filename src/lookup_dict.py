@@ -81,3 +81,15 @@ def get_lookup_val(key, s):
             if isinstance(s, basestring) and lk in s:
                 s = s.replace(lk, str(lv))
     return s
+
+
+def perform_lookup_replacement(node):
+    """Walks the dict recursively and replaces all strs with the lookups."""
+    for k in node.keys():
+        if isinstance(node[k], basestring):
+            node[k] = get_lookup_val(k, node[k])
+        elif isinstance(node[k], list):
+            for i in xrange(len(node[k])):
+                node[k][i] = get_lookup_val(k, node[k][i])
+        elif isinstance(node[k], dict):
+            perform_lookup_replacement(node[k])
