@@ -120,3 +120,17 @@ def walk_dic(node, func):
             node[k] = func(node[k])
         elif isinstance(node[k], dict) or isinstance(node[k], list):
             walk_dic(node[k], func)
+
+def relpath_replace(s):
+    """Checks if s is a path to an existing file and replaces relative paths or symlinks by the real path."""
+    def replace_path(path):
+        path = os.path.expanduser(path)
+        path = os.path.expandvars(path)
+        if os.path.isfile(path):
+            return os.path.realpath(path)
+        else:
+            return path
+    s = s.split('?')
+    s = [replace_path(s) for s in s]
+    return '?'.join(s)
+

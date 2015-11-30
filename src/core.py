@@ -4,7 +4,7 @@ import logging
 import runpy
 
 from module_handler import discover_modules
-from util.config_tools import merge, read_config, write_config, ConfigDict, walk_dic
+from util.config_tools import merge, read_config, write_config, ConfigDict, walk_dic, relpath_replace
 from util.setting_parser import SettingParser
 from src.lookup_dict import perform_lookup_replacement
 import util.callbacks as callbacks
@@ -41,6 +41,8 @@ class Plotter(object):
         perform_lookup_replacement(config)
         # Replace all environment variables
         walk_dic(config, os.path.expandvars)
+        # Replace all symlinks with the real path
+        walk_dic(config, relpath_replace)
 
         # Run all modules
         # Input modules
