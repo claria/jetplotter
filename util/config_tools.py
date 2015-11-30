@@ -116,8 +116,7 @@ def walk_dic(node, func):
     """Walks a dic containing dicts, lists or str and calls func(key, val) on each str leaf."""
     seq_iter = node.keys() if isinstance(node, dict) else xrange(len(node))
     for k in seq_iter:
-        print 'walk', k
         if isinstance(node[k], basestring):
-            node[k] = func(k=k, v=node[k])
+            node[k] = func(node[k])
         elif isinstance(node[k], dict) or isinstance(node[k], list):
             walk_dic(node[k], func)
