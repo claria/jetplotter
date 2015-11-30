@@ -26,7 +26,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/trigger_eff_hltpfjet80_yb1ys0.json"
+        "configs/trigger_eff_hltpfjet80_yb1ys0.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -73,6 +73,7 @@
     ], 
     "print_config": false, 
     "show_legend": true, 
+    "store_json": true, 
     "trigger_efficiency_fit": [
         [
             "eff_emul", 

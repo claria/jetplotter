@@ -13,7 +13,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/yboost_vs_ystar.json"
+        "configs/yboost_vs_ystar.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -73,6 +73,7 @@
         "z_label"
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_y_boost_", 
     "x_lims": [
         "0.0", 

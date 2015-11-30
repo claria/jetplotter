@@ -25,7 +25,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/trigger_eff_mc_hltpfjet80_yb0ys1.json"
+        "configs/trigger_eff_mc_hltpfjet80_yb0ys1.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -65,6 +65,7 @@
     ], 
     "print_config": false, 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
         "100.", 

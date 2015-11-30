@@ -15,7 +15,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "plots/unf_nlo_corr_yb0ys0.json"
+        "configs/unf_nlo_corr_yb0ys0.json"
     ], 
     "log_level": "info", 
     "objects": {
@@ -79,6 +79,7 @@
         "ax_texts"
     ], 
     "show_legend": true, 
+    "store_json": true, 
     "x_label": "Reco _ptavg_", 
     "x_lims": [
         "74.", 
