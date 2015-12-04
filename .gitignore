@@ -2,7 +2,7 @@
 *.pdf
 *.root
 *.pyc
-plots/plot.json
+plots/*
 statcorrs.txt
 data.txt
 *.yoda
