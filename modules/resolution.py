@@ -66,8 +66,8 @@ class ResolutionAna(BaseModule):
             res_fcn.SetRange(0., 9999.)
             print 'Fitting id {0}'.format(id_res)
             res = resolution_graph.Fit("res_fcn", "RSOEX0", "")
-            if res.Get() == None or res.Status() != 0:
-                raise Exception('Fit Failed')
+            # if res.Get() == None or res.Status() != 0:
+                # raise Exception('Fit Failed')
             res_pars[id] = [res_fcn.GetParameter(0),res_fcn.GetParameter(1),res_fcn.GetParameter(2),res_fcn.GetParameter(3)]
             xmin, xmax = resolution_graph.GetXaxis().GetXmin(), resolution_graph.GetXaxis().GetXmax()
             vfitter = ROOT.TVirtualFitter.GetFitter()
