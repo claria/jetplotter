@@ -80,7 +80,7 @@
     "y_label": "Ratio to Tight ID", 
     "y_lims": [
         "0.8", 
-        "2.0"
+        "1.2"
     ], 
     "y_log": false, 
     "y_subplot_label": "", 
