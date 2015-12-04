@@ -6,6 +6,7 @@ log = logging.getLogger(__name__)
 
 import subprocess
 import os
+import shlex
 from datetime import date
 from datetime import datetime
 
@@ -18,7 +19,8 @@ def scp(src, remote, destination, args=''):
 def ssh(remote, cmd, args=''):
     cmd = 'ssh -x {2} {0} {1}'.format(remote, cmd, args)
     log.debug('Executing command \'{0}\''.format(cmd))
-    rc = subprocess.call(cmd.split())
+    print cmd.split()
+    rc = subprocess.call(shlex.split(cmd))
     return rc
 
 
@@ -46,7 +48,7 @@ class CopyToWebModule(BaseModule):
             scp(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.json')), remote_host, os.path.join(remote_basedir, folder_name, remote_filename.replace('.png','.json')))
             scp(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.pdf')), remote_host, os.path.join(remote_basedir, folder_name, remote_filename.replace('.png','.pdf')))
             log.debug('Calling the gallery preparation file.')
-            ssh(remote_host, '{0}/prep_gallery.py'.format(remote_basedir))
+            ssh(remote_host, '\'{0}/prep_gallery.py {1}\''.format(remote_basedir, os.path.join(remote_basedir, folder_name)))
         else:
             log.error('Passwordless ssh is not working. Omitting the plot backup.')
 
