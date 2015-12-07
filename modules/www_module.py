@@ -1,14 +1,17 @@
 import logging
-
 from modules.base_module import BaseModule
 
 log = logging.getLogger(__name__)
 
+import tempfile
 import subprocess
 import os
+import shutil
 import shlex
 from datetime import date
 from datetime import datetime
+import time
+import random 
 
 def scp(src, remote, destination, args=''):
     cmd = 'scp {0} {3} {1}:{2}'.format(src, remote, destination, args)
@@ -23,6 +26,17 @@ def ssh(remote, cmd, args=''):
     rc = subprocess.call(shlex.split(cmd))
     return rc
 
+def create_copy(filelist, suffix=None):
+    tempdir = tempfile.gettempdir()
+    new_filelist = []
+    for filename in filelist:
+        new_filename = os.path.join(tempdir, '{0}{1}{2}'.format(os.path.splitext(os.path.basename(filename))[0], 
+                                                                 '_' + suffix if suffix else '', 
+                                                                 os.path.splitext(filename)[1]))
+        shutil.copy(filename, new_filename)
+        new_filelist.append(new_filename)
+    return new_filelist
+
 
 class CopyToWebModule(BaseModule):
     def __init__(self):
@@ -31,24 +45,26 @@ class CopyToWebModule(BaseModule):
 
     def __call__(self, config):
         remote_host = 'sieber@ekplx77.physik.uni-karlsruhe.de' 
-        remote_basedir = 'public_html/private/plots/'
+        remote_basedir = '/autofs/ekpwww/web/sieber/public_html/private/plots/'
+        remote_dir = os.path.join(remote_basedir, date.today().isoformat())
+        current_datetime = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+
+        file_list = []
+        file_list.append(os.path.join(config['output_prefix'], config['output_path']))
+        file_list.append(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.json')))
+        file_list.append(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.pdf')))
+
+        files_to_copy = create_copy(file_list, current_datetime)
+        files_to_copy += create_copy(['index.php'])
+
+        time.sleep(random.uniform(1,10))
+        rsync(files_to_copy, remote_host, remote_dir)
 
 
-        if (ssh(remote_host, args='-oNumberOfPasswordPrompts=0 -o ConnectTimeout=5', cmd='echo Connection succeded.') == 0):
-            log.debug('Passwordless ssh is working. Continue with copying stuff.')
-            folder_name = date.today().isoformat()
+def rsync(filelist, remote_host, remote_dir):
+    cmd = 'rsync -uavz --remove-source-files {0} {1}:{2}'.format(' '.join(filelist), remote_host, remote_dir)
+    log.debug('Executing command \'{0}\''.format(cmd))
+    rc = subprocess.call(cmd.split())
+    return rc
 
-            output_file = config['output_path']
-            current_datetime = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
-            remote_filename = '{0}_{1}{2}'.format(os.path.splitext(config['output_path'])[0], current_datetime, os.path.splitext(config['output_path'])[1])
-            log.debug('Try to create folder {0} on remote host.'.format(os.path.join(remote_basedir, folder_name)))
-            ssh(remote_host, 'mkdir -p {0}'.format(os.path.join(remote_basedir, folder_name)))
-            log.debug('Copying the output file.')
-            scp(os.path.join(config['output_prefix'], config['output_path']), remote_host, os.path.join(remote_basedir, folder_name, remote_filename))
-            scp(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.json')), remote_host, os.path.join(remote_basedir, folder_name, remote_filename.replace('.png','.json')))
-            scp(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.pdf')), remote_host, os.path.join(remote_basedir, folder_name, remote_filename.replace('.png','.pdf')))
-            log.debug('Calling the gallery preparation file.')
-            ssh(remote_host, '\'{0}/prep_gallery.py {1}\''.format(remote_basedir, os.path.join(remote_basedir, folder_name)))
-        else:
-            log.error('Passwordless ssh is not working. Omitting the plot backup.')
 
