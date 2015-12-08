@@ -8,6 +8,7 @@
     "ax_hlines": [
         {
             "color": "black", 
+            "axis": "ax1", 
             "ls": "--", 
             "lw": 2.0, 
             "y": 1.0
@@ -26,7 +27,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "configs/ef_default.json"
+        "plots/jetprop_ef_default.json"
     ], 
     "log_level": "info", 
     "normalize": [
@@ -65,7 +66,7 @@
             "color": "black", 
             "edgecolor": "auto", 
             "id": "data", 
-            "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-11-27_11-32/DATA.root?default/h_electronFraction", 
+            "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-12-08_10-32/DATA.root?default/h_electronFraction", 
             "label": "Data", 
             "linestyle": "", 
             "marker": ".", 
@@ -84,7 +85,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "mgp6", 
-            "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-12-01_11-33/QCDMGP6.root?default/h_electronFraction", 
+            "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-12-08_10-32/QCDMGP6.root?default/h_electronFraction", 
             "label": "MG+P6", 
             "linestyle": "", 
             "marker": ".", 
@@ -166,8 +167,8 @@
     "y_log": true, 
     "y_subplot_label": "Ratio to Data", 
     "y_subplot_lims": [
-        "0.8", 
-        "1.2"
+        "0.0", 
+        "2.0"
     ], 
     "z_label": "", 
     "z_lims": [
