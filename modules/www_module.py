@@ -44,23 +44,24 @@ class CopyToWebModule(BaseModule):
         self.arg_group.add_argument('--www', nargs='+', type='str2kvstr', action='setting', help='')
 
     def __call__(self, config):
-        remote_host = 'sieber@ekplx77.physik.uni-karlsruhe.de' 
-        remote_basedir = '/autofs/ekpwww/web/sieber/public_html/private/plots/'
-        remote_dir = os.path.join(remote_basedir, date.today().isoformat())
-        current_datetime = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
-
-        file_list = []
-        file_list.append(os.path.join(config['output_prefix'], config['output_path']))
-        file_list.append(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.json')))
-        file_list.append(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.pdf')))
-
-        files_to_copy = create_copy(file_list, current_datetime)
-        files_to_copy += create_copy(['index.php'])
-
-        time.sleep(random.uniform(1,10))
-        rsync(files_to_copy, remote_host, remote_dir)
-
-
+        pass
+#         remote_host = 'sieber@ekplx77.physik.uni-karlsruhe.de' 
+#         remote_basedir = '/autofs/ekpwww/web/sieber/public_html/private/plots/'
+#         remote_dir = os.path.join(remote_basedir, date.today().isoformat())
+#         current_datetime = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+#
+#         file_list = []
+#         file_list.append(os.path.join(config['output_prefix'], config['output_path']))
+#         file_list.append(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.json')))
+#         file_list.append(os.path.join(config['output_prefix'], config['output_path'].replace('.png', '.pdf')))
+#
+#         files_to_copy = create_copy(file_list, current_datetime)
+#         files_to_copy += create_copy(['index.php'])
+#
+#         time.sleep(random.uniform(1,10))
+#         rsync(files_to_copy, remote_host, remote_dir)
+#
+#
 def rsync(filelist, remote_host, remote_dir):
     cmd = 'rsync -uavz --remove-source-files {0} {1}:{2}'.format(' '.join(filelist), remote_host, remote_dir)
     log.debug('Executing command \'{0}\''.format(cmd))
