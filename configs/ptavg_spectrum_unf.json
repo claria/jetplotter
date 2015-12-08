@@ -8,7 +8,8 @@
     "ax_hlines": [], 
     "ax_texts": [
         "_cmsp_", 
-        "_20fb_"
+        "_20fb_", 
+        "anti-$k_\\mathrm{T} = 0.7$?{\"x\" : 0.7, \"y\" : 0.6}"
     ], 
     "ax_vlines": [], 
     "combine_legend_entries": [
@@ -132,7 +133,7 @@
     "load_config": [
         "configs/ptavg_spectrum_unf.json"
     ], 
-    "log_level": "info", 
+    "log_level": "debug", 
     "normalize": [
         [
             "yb0ys0", 
