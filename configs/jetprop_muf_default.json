@@ -1,0 +1,178 @@
+{
+    "add_subplot": true, 
+    "ana_modules": [
+        "Normalize", 
+        "Ratio"
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?default/h_muonFraction mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?default/h_muonFraction --x-log False --y-log True --x-lims -3 3 --y-lims 1E-8 1E8 --color data:black ratio_mgp6:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Leading Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Normalize Ratio --normalize mgp6:data --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data --output-path chf_default.png --y-subplot-lims 0.8 1.2 --ax-texts _cmsp_ _20fb_ _default_?_upperleft_", 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "ls": "--", 
+            "lw": 2.0, 
+            "y": 1.0
+        }
+    ], 
+    "ax_texts": [
+        "CMS Preliminary?{\"x\": 0.0, \"y\":1.01, \"va\": \"bottom\", \"ha\" : \"left\"}", 
+        "$19.7\\,\\mathrm{fb}^{-1}$ (8TeV)?{\"x\": 1.0, \"y\":1.01, \"va\": \"bottom\", \"ha\" : \"right\"}"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "configs/muf_default.json"
+    ], 
+    "log_level": "info", 
+    "normalize": [
+        [
+            "mgp6", 
+            "unity"
+        ], 
+        [
+            "data", 
+            "unity"
+        ]
+    ], 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-11-27_11-32/DATA.root?default/h_muonFraction", 
+            "label": "Data", 
+            "linestyle": "", 
+            "marker": ".", 
+            "obj": "null", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 2.0
+        }, 
+        "mgp6": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "mgp6", 
+            "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-12-01_11-33/QCDMGP6.root?default/h_muonFraction", 
+            "label": "MG+P6", 
+            "linestyle": "", 
+            "marker": ".", 
+            "obj": "null", 
+            "step": false, 
+            "style": "histo", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "ratio_mgp6_to_data": {
+            "alpha": 1.0, 
+            "axis": "ax1", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "ratio_mgp6_to_data", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "obj": "null", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "output_path": "jetprop_muf_default.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "normalize", 
+        "ratio_copy", 
+        "label", 
+        "color", 
+        "style", 
+        "axis", 
+        "output_path", 
+        "add_subplot", 
+        "x_lims", 
+        "y_lims", 
+        "y_subplot_lims", 
+        "y_log", 
+        "x_label", 
+        "y_label", 
+        "y_subplot_label", 
+        "ax_texts", 
+        "ana_modules"
+    ], 
+    "ratio": [], 
+    "ratio_copy": [
+        [
+            "mgp6", 
+            "data"
+        ]
+    ], 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "Muon Fraction", 
+    "x_lims": [
+        "0.0", 
+        "1.0"
+    ], 
+    "x_log": false, 
+    "y_label": "a.u.", 
+    "y_lims": [
+        "1E-4", 
+        "1.0"
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "Ratio to Data", 
+    "y_subplot_lims": [
+        "0.8", 
+        "1.2"
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
