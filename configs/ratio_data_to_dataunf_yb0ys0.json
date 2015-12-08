@@ -23,10 +23,6 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [
-        "configs/ratio_data_to_dataunf_yb0ys0.json"
-    ], 
-    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 

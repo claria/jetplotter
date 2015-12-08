@@ -26,10 +26,6 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [
-        "configs/jet2pt_yb1ys1.json"
-    ], 
-    "log_level": "debug", 
     "objects": {
         "_default": {
             "alpha": 1.0, 

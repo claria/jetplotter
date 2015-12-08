@@ -130,10 +130,6 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [
-        "configs/ptavg_spectrum_unf.json"
-    ], 
-    "log_level": "debug", 
     "normalize": [
         [
             "yb0ys0", 

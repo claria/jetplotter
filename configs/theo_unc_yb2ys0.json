@@ -18,10 +18,6 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": [
-        "configs/theo_unc_yb2ys0.json"
-    ], 
-    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 

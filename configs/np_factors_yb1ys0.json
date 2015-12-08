@@ -49,10 +49,6 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [
-        "configs/np_factors_yb1ys0.json"
-    ], 
-    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 

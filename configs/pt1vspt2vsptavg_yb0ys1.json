@@ -14,10 +14,6 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [
-        "configs/pt1vspt2vsptavg_yb0ys1.json"
-    ], 
-    "log_level": "info", 
     "normalize_to_column": [
         "data"
     ], 

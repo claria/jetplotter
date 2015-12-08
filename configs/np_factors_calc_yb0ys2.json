@@ -61,10 +61,6 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": [
-        "configs/np_factors_calc_yb0ys2.json"
-    ], 
-    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 

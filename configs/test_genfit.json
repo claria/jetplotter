@@ -14,10 +14,6 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [
-        "configs/test_genfit.json"
-    ], 
-    "log_level": "info", 
     "normalize": [
         [
             "gen", 

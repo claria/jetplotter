@@ -14,10 +14,6 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [
-        "configs/gen_vs_reco_ptavg_yb2ys0.json"
-    ], 
-    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 

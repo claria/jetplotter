@@ -26,10 +26,6 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": [
-        "configs/ratio_reco.json"
-    ], 
-    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 

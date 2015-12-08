@@ -17,10 +17,6 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": [
-        "configs/reco_to_gen_nlo_smeared_yb0ys0.json"
-    ], 
-    "log_level": "info", 
     "normalize": [
         [
             "reco", 

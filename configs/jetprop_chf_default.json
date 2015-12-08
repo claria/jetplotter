@@ -25,10 +25,6 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [
-        "plots/jetprop_chf_default.json"
-    ], 
-    "log_level": "info", 
     "normalize": [
         [
             "mgp6", 

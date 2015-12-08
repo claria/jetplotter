@@ -26,10 +26,6 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
-    "load_config": [
-        "configs/ratio_to_nlo+np_yb1ys0.json"
-    ], 
-    "log_level": "debug", 
     "multiply": [
         [
             "nloct14", 
