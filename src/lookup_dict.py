@@ -48,6 +48,21 @@ lookup_dict = {
         '_yb1ys1_xmax_' : 686.,
         '_yb2ys0_xmax_' : 430.,
     },
+    'data_lims': {
+        '_yb0ys0_xmin_' : 133.,
+        '_yb0ys1_xmin_' : 133.,
+        '_yb0ys2_xmin_' : 133.,
+        '_yb1ys0_xmin_' : 133.,
+        '_yb1ys1_xmin_' : 133.,
+        '_yb2ys0_xmin_' : 133.,
+        '_yb0ys0_xmax_' : 1784.,
+        '_yb0ys1_xmax_' : 1248.,
+        '_yb0ys2_xmax_' : 548.,
+        '_yb1ys0_xmax_' : 1032.,
+        '_yb1ys1_xmax_' : 686.,
+        '_yb2ys0_xmax_' : 430.,
+    },
+
     'y_lims': {},
     'ax_texts': {
         '_cms_': 'CMS?{"x": 0.0, "y":1.01, "va": "bottom", "ha" : "left"}',
