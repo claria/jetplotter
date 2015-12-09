@@ -1,0 +1,167 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plot.py -l configs/jec_relunc_5_yb0ys0.py", 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "y": 1.0
+        }
+    ], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_yb0ys0_?_upperleft_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "data_lims": [
+        "_yb0ys0_xmin_", 
+        "_yb0ys0_xmax_"
+    ], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "objects": {
+        "PileUpDataMC_dn": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpDataMC_dn/h_genptavg", 
+            "label": "PileUpDataMC", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpDataMC_up": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpDataMC_up/h_genptavg", 
+            "label": "PileUpDataMC", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtBB_dn": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtBB_dn/h_genptavg", 
+            "label": "PileUpPtBB", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtBB_up": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtBB_up/h_genptavg", 
+            "label": "PileUpPtBB", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtEC1_dn": {
+            "color": "_color3_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtEC1_dn/h_genptavg", 
+            "label": "PileUpPtEC1", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtEC1_up": {
+            "color": "_color3_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtEC1_up/h_genptavg", 
+            "label": "PileUpPtEC1", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtEC2_dn": {
+            "color": "_color4_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtEC2_dn/h_genptavg", 
+            "label": "PileUpPtEC2", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtEC2_up": {
+            "color": "_color4_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtEC2_up/h_genptavg", 
+            "label": "PileUpPtEC2", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtHF_dn": {
+            "color": "_color5_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtHF_dn/h_genptavg", 
+            "label": "PileUpPtHF", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtHF_up": {
+            "color": "_color5_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtHF_up/h_genptavg", 
+            "label": "PileUpPtHF", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtRef_dn": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtRef_dn/h_genptavg", 
+            "label": "PileUpPtRef", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "PileUpPtRef_up": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_PileUpPtRef_up/h_genptavg", 
+            "label": "PileUpPtRef", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "central": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0/h_genptavg"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "jec_relunc_5_yb0ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "133.", 
+        "2000."
+    ], 
+    "x_log": true, 
+    "y_label": "Uncertainty?_center_", 
+    "y_lims": [
+        "0.9", 
+        "1.1"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

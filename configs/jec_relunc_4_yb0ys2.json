@@ -1,0 +1,125 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plot.py -l configs/jec_relunc_4_yb0ys2.py", 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "y": 1.0
+        }
+    ], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_yb0ys2_?_upperleft_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "data_lims": [
+        "_yb0ys2_xmin_", 
+        "_yb0ys2_xmax_"
+    ], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "objects": {
+        "RelativeStatEC2_dn": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_RelativeStatEC2_dn/h_genptavg", 
+            "label": "RelativeStatEC2", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativeStatEC2_up": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_RelativeStatEC2_up/h_genptavg", 
+            "label": "RelativeStatEC2", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativeStatFSR_dn": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_RelativeStatFSR_dn/h_genptavg", 
+            "label": "RelativeStatFSR", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativeStatFSR_up": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_RelativeStatFSR_up/h_genptavg", 
+            "label": "RelativeStatFSR", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativeStatHF_dn": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_RelativeStatHF_dn/h_genptavg", 
+            "label": "RelativeStatHF", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativeStatHF_up": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_RelativeStatHF_up/h_genptavg", 
+            "label": "RelativeStatHF", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "central": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2/h_genptavg"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "jec_relunc_4_yb0ys2.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "133.", 
+        "2000."
+    ], 
+    "x_log": true, 
+    "y_label": "Uncertainty?_center_", 
+    "y_lims": [
+        "0.9", 
+        "1.1"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

@@ -1,0 +1,125 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plot.py -l configs/jec_relunc_1_yb0ys2.py", 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "y": 1.0
+        }
+    ], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_yb0ys2_?_upperleft_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "data_lims": [
+        "_yb0ys2_xmin_", 
+        "_yb0ys2_xmax_"
+    ], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "objects": {
+        "FlavorQCD_dn": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_FlavorQCD_dn/h_genptavg", 
+            "label": "FlavorQCD", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "FlavorQCD_up": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_FlavorQCD_up/h_genptavg", 
+            "label": "FlavorQCD", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "SinglePionECAL_dn": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_SinglePionECAL_dn/h_genptavg", 
+            "label": "SinglePionECAL", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "SinglePionECAL_up": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_SinglePionECAL_up/h_genptavg", 
+            "label": "SinglePionECAL", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "SinglePionHCAL_dn": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_SinglePionHCAL_dn/h_genptavg", 
+            "label": "SinglePionHCAL", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "SinglePionHCAL_up": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_SinglePionHCAL_up/h_genptavg", 
+            "label": "SinglePionHCAL", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "central": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2/h_genptavg"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "jec_relunc_1_yb0ys2.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "133.", 
+        "2000."
+    ], 
+    "x_log": true, 
+    "y_label": "Uncertainty?_center_", 
+    "y_lims": [
+        "0.9", 
+        "1.1"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

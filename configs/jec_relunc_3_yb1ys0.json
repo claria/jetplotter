@@ -1,0 +1,139 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plot.py -l configs/jec_relunc_3_yb1ys0.py", 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "y": 1.0
+        }
+    ], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_yb1ys0_?_upperleft_", 
+        "_20fb_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "data_lims": [
+        "_yb1ys0_xmin_", 
+        "_yb1ys0_xmax_"
+    ], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "objects": {
+        "RelativeFSR_dn": {
+            "color": "_color3_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0_RelativeFSR_dn/h_genptavg", 
+            "label": "RelativeFSR", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativeFSR_up": {
+            "color": "_color3_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0_RelativeFSR_up/h_genptavg", 
+            "label": "RelativeFSR", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativePtEC1_dn": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0_RelativePtEC1_dn/h_genptavg", 
+            "label": "RelativePtEC1", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativePtEC1_up": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0_RelativePtEC1_up/h_genptavg", 
+            "label": "RelativePtEC1", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativePtEC2_dn": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0_RelativePtEC2_dn/h_genptavg", 
+            "label": "RelativePtEC2", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativePtEC2_up": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0_RelativePtEC2_up/h_genptavg", 
+            "label": "RelativePtEC2", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativePtHF_dn": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0_RelativePtHF_dn/h_genptavg", 
+            "label": "RelativePtHF", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "RelativePtHF_up": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0_RelativePtHF_up/h_genptavg", 
+            "label": "RelativePtHF", 
+            "step": "True", 
+            "style": "line"
+        }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "central": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb1ys0/h_genptavg"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "jec_relunc_3_yb1ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "133.", 
+        "2000."
+    ], 
+    "x_log": true, 
+    "y_label": "Uncertainty?_center_", 
+    "y_lims": [
+        "0.9", 
+        "1.1"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
