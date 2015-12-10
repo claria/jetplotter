@@ -18,7 +18,29 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
+    "load_config": [
+        "configs/exp_jec_error_yb2ys0.json"
+    ], 
+    "log_level": "info", 
     "objects": {
+        "_central": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "_central", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb2ys0/h_genptavg", 
+            "label": "Stat. Uncertainty", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -36,15 +58,15 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "default": {
+        "dataunf": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "black", 
             "edgecolor": "auto", 
-            "id": "default", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_DATA.root?yb2ys0/h_ptavg", 
+            "id": "central", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb2ys0/h_ptavg", 
             "label": "Stat. Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -98,7 +120,7 @@
             "color": "#4C72B0", 
             "edgecolor": "auto", 
             "id": "total_dn", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_DATA.root?yb2ys0_Total_dn/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb2ys0_Total_dn/h_genptavg", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -116,7 +138,7 @@
             "color": "#4C72B0", 
             "edgecolor": "auto", 
             "id": "total_up", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_DATA.root?yb2ys0_Total_up/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb2ys0_Total_up/h_genptavg", 
             "label": "JEC Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -154,15 +176,15 @@
     "ratio": [
         [
             "total_up", 
-            "default"
+            "_central"
         ], 
         [
             "total_dn", 
-            "default"
+            "_central"
         ], 
         [
-            "default", 
-            "default"
+            "dataunf", 
+            "dataunf"
         ]
     ], 
     "show_legend": true, 
