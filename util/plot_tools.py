@@ -193,25 +193,6 @@ def setval(obj, *args, **kwargs):
             setattr(obj, attr, val)
 
 
-def ensure_latex(inp_str):
-    """
-    Return string with escaped latex incompatible characters.
-    :param inp_str:
-    :return:
-    """
-    chars = {
-        '&': r'\&',
-        '%': r'\%',
-        '$': r'\$',
-        '#': r'\#',
-        '_': r'\_',
-        '{': r'\letteropenbrace{}',
-        '}': r'\letterclosebrace{}',
-        '~': r'\lettertilde{}',
-        '^': r'\letterhat{}',
-        '\\': r'\letterbackslash{}',
-    }
-    return ''.join([chars.get(char, char) for char in inp_str])
 
 
 def steppify_bin(arr, isx=False):
