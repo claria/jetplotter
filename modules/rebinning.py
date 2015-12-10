@@ -15,7 +15,6 @@ class ReBinning(BaseModule):
                                     help='Removes bins not within bin edges. Options are min and max.')
 
     def __call__(self, config):
-        print config['data_lims']
         for id, kwargs in config['data_lims']:
             if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
@@ -29,7 +28,6 @@ class ReBinning(BaseModule):
 
 def rebin_histo(obj, min_val, max_val):
     new_binedges = []
-    print min_val, max_val
     for i in xrange(obj.GetNbinsX() +1):
         if (min_val <= obj.GetBinLowEdge(i+1)) and (obj.GetBinLowEdge(i+2) <= max_val):
             new_binedges.append(obj.GetBinLowEdge(i+1))
