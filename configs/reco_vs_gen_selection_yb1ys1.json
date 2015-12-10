@@ -1,0 +1,96 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plot.py -i recocuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys1/h_ptavg gencuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb1ys1/h_ptavg --label 'recocuts:Reco selection' 'gencuts:Gen Selection' --ana-modules Ratio --ratio recocuts:gencuts gencuts:gencuts --x-lims _yb1ys1_xmin_ _yb1ys1_xmax_ --x-log True --y-lims 0.9 1.1 --x-label _ptavg_ --y-label 'Ratio selection vs Gen' --ax-texts _cmsp_ _8tev_ _yb1ys1_?_upperleft_ --legend-loc 'upper right' --output-path reco_vs_gen_selection_yb1ys1.png", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_cmsp_", 
+        "_8tev_", 
+        "_yb1ys1_?_upperleft_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "upper right", 
+    "list_modules": false, 
+    "load_config": [
+        "configs/reco_vs_gen_selection_yb1ys1.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "gencuts": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb1ys1/h_ptavg", 
+            "label": "Gen Selection"
+        }, 
+        "recocuts": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys1/h_ptavg", 
+            "label": "Reco selection"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "reco_vs_gen_selection_yb1ys1.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "ratio": [
+        [
+            "recocuts", 
+            "gencuts"
+        ], 
+        [
+            "gencuts", 
+            "gencuts"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "_ptavg_", 
+    "x_lims": [
+        "_yb1ys1_xmin_", 
+        "_yb1ys1_xmax_"
+    ], 
+    "x_log": true, 
+    "y_label": "Ratio selection vs Gen", 
+    "y_lims": [
+        "0.9", 
+        "1.1"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}
