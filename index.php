@@ -26,8 +26,9 @@ h3  h1 {
   $allsubnames = array();
   foreach($allplots as $filename) {
     $baseplotname = basename($filename);
-    $splitname  = explode("_", $baseplotname, -1);
-    $subname = implode("_", $splitname);
+    // $splitname  = explode("_", $baseplotname, -1);
+    // $subname = implode("_", $splitname);
+    $subname = substr($filename, 0, strrpos($filename, "_"));
     $allsubnames[] = $subname;
   }
   $uniqueplots = array_unique($allsubnames, SORT_REGULAR);
@@ -43,7 +44,7 @@ function sort_datewise($x, $y) {
 foreach($uniqueplots as $uniqueplot): 
   echo "<div class=\"plot\">";
   echo "<h3>" . $uniqueplot . "</h3>";
-  $allversions = array_filter($allplots, function ($var) use(&$uniqueplot) { return (stripos($var, $uniqueplot) !== false); });
+  $allversions = array_filter($allplots, function ($var) use(&$uniqueplot) { return ($uniqueplot === substr($var, 0, strrpos($var, "_"))); });
   usort($allversions, 'sort_datewise');
   if (sizeof($allversions) > 1) {
   foreach($allversions as $key=>$plotfilename): 
