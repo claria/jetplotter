@@ -2,6 +2,7 @@ import argparse
 import collections
 import json
 import sys
+import re
 
 import logging
 
@@ -106,7 +107,6 @@ def str2kvdict(s):
         id:{"key0": "val0", "key1": "val1"}
     """
     k, v = get_tuple(s)
-    print k,v
     try:
         d = json.loads(v)
     except ValueError:
@@ -164,13 +164,30 @@ def get_tuple(s):
 
 def parse_query(query_str):
     d = {}
-    for item in query_str.split('?'):
-        k, v = item.split('=')
+    for item in re.split('[?|]+',  query_str):
+
+        k, v = item.split('=', 1)
         try:
             d[k] = json.loads(v)
-        except ValueError:
-            d[k] = json.loads('"{0}"'.format(v))
+        except ValueError as e:
+            print 'asdf', v
+            print 'repr', repr(v)
+            print'escape', escape(v)
+            d[k] = json.loads('"{0}"'.format(escape(v)))
     return d
+
+def escape(inp_str):
+    """
+    Return string with escaped latex incompatible characters.
+    :param inp_str:
+    :return:
+    """
+    chars = {
+        '\\': '\\\\',
+        '\n': '\\n',
+    }
+    return ''.join([chars.get(char, char) for char in inp_str])
+
 
 
 class SettingAction(argparse.Action):
