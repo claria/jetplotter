@@ -18,6 +18,7 @@ import logging
 
 from src.lookup_dict import get_lookup_val
 from util.config_tools import parse_optionstring
+from util.setting_parser import parse_query
 
 log = logging.getLogger(__name__)
 
@@ -249,10 +250,11 @@ class Plot(BasePlot):
         # Add axis texts
         for text in self.texts:
             text = get_lookup_val('ax_texts', text)
+            print text
             default_text_kwargs = {'x': 0.05, 'y': 0.95, 'va': 'top', 'ha': 'left'}
-            text, text_kwargs = parse_optionstring(text)
+            text_kwargs = parse_query(text)
             default_text_kwargs.update(text_kwargs)
-            self.ax.text(s=text, transform=self.ax.transAxes, **default_text_kwargs)
+            self.ax.text(transform=self.ax.transAxes, **default_text_kwargs)
 
         # Add horizontal lines to ax
         for hline_kwargs in self.hlines:
@@ -298,14 +300,15 @@ class Plot(BasePlot):
             self.ax.set_xscale('log')
             # x-axis tick formatting, only for log plots
             # TODO: also for subplots
-            xfmt = ScalarFormatter()
-            xfmt.set_powerlimits((-5, 5))
+            # xfmt = ScalarFormatter()
+            # xfmt.set_scientific(True)
+            # xfmt.set_powerlimits((-2, 5))
             self.ax.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
-            self.ax.xaxis.set_major_formatter(xfmt)
+            # self.ax.xaxis.set_major_formatter(xfmt)
             if self.ax1:
                 self.ax1.set_xscale('log')
                 self.ax1.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
-                self.ax1.xaxis.set_major_formatter(xfmt)
+                # self.ax1.xaxis.set_major_formatter(xfmt)
         else:
             self.ax.set_xscale('linear')
 
@@ -332,7 +335,7 @@ class Plot(BasePlot):
             for key in leg_entry_dict.keys():
                 if key.lower() in no_legend_ids:
                     del leg_entry_dict[key]
-            
+
             if leg_entry_dict:
                 labels, handles = zip(*leg_entry_dict.items())
                 self.ax.legend(handles, labels, loc=self.legend_loc)
