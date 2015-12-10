@@ -11,8 +11,8 @@ def divide_tgraph(graph1, graph2, error_prop=False):
         graph2.GetPoint(i, graph2X, graph2Y)
 
         graph1.SetPoint(i, graph1X, graph1Y / graph2Y if graph2Y != 0. else 0.)
-        graph1.SetPointEYlow(i, graph1.GetErrorYlow(i) / graph2Y if graph2Y != 0. else 0.)
-        graph1.SetPointEYhigh(i, graph1.GetErrorYhigh(i) / graph2Y if graph2Y != 0. else 0.)
+        graph1.SetPointEYlow(i, np.abs(graph1.GetErrorYlow(i) / graph2Y) if graph2Y != 0. else 0.)
+        graph1.SetPointEYhigh(i, np.abs(graph1.GetErrorYhigh(i) / graph2Y) if graph2Y != 0. else 0.)
 
 
 def multiply_tgraph(graph1, graph2, error_prop=False):
@@ -23,9 +23,9 @@ def multiply_tgraph(graph1, graph2, error_prop=False):
         graph2X, graph2Y = ROOT.Double(0), ROOT.Double(0)
         graph2.GetPoint(i, graph2X, graph2Y)
 
-        graph1.SetPoint(i, graph1X, graph1Y / graph2Y if graph2Y != 0. else 0.)
-        graph1.SetPointEYlow(i, graph1.GetErrorYlow(i) / graph2Y if graph2Y != 0. else 0.)
-        graph1.SetPointEYhigh(i, graph1.GetErrorYhigh(i) / graph2Y if graph2Y != 0. else 0.)
+        graph1.SetPoint(i, graph1X, graph1Y * graph2Y if graph2Y != 0. else 0.)
+        graph1.SetPointEYlow(i, np.abs(graph1.GetErrorYlow(i) * graph2Y) if graph2Y != 0. else 0.)
+        graph1.SetPointEYhigh(i, np.abs(graph1.GetErrorYhigh(i) * graph2Y) if graph2Y != 0. else 0.)
 
 
 def get_tgrapherrors(fcn, vfitter, cl=0.683):
