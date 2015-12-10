@@ -18,6 +18,13 @@ all : $(TARGETS)
 %.png: %.json
 	./plot.py -l $< 
 
+%.json: 
+	./plot.py -l $@ 
+
+%.py: 
+	./plot.py -l $@ 
+
+
 web:
 	ssh $(REMOTE) "mkdir -p $(REMOTE_DIR)/$(FOLDERNAME)"
 	scp $(TARGETS) "$(REMOTE):$(REMOTE_DIR)/$(FOLDERNAME)/"
