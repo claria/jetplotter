@@ -21,11 +21,22 @@ def get_pdf(pdfset, q, flavour=21):
     pdfset = lhapdf.getPDFSet(pdfset)
     pdfs = pdfset.mkPDFs()
 
-    xs = [x for x in np.logspace(-5, 0, 500)]
+    xs = [x for x in np.logspace(-5, 0, 500)][:-1]
     xfxs = np.empty((len(xs), len(pdfs)))
+    print flavour, q
     for imem in xrange(len(pdfs)):
         for ix, x in enumerate(xs):
-            xfxs[ix,imem] = pdfs[imem].xfxQ(flavour, x, q)
+            if flavour == 7:
+                #DVAL 1-(-1)
+                xfxs[ix,imem] = pdfs[imem].xfxQ(1, x, q) - pdfs[imem].xfxQ(-1, x, q)
+            elif flavour == 8:
+                #UVAL 2-(-2)
+                xfxs[ix,imem] = pdfs[imem].xfxQ(2, x, q) - pdfs[imem].xfxQ(-2, x, q)
+            elif flavour == 9:
+                #Light sea: xS=2(xubar + xdbar + xsbar)
+                xfxs[ix,imem] = 2* (pdfs[imem].xfxQ(-1, x, q) + pdfs[imem].xfxQ(-2, x, q) + pdfs[imem].xfxQ(-3, x, q))
+            else:
+                xfxs[ix,imem] = pdfs[imem].xfxQ(flavour, x, q)
 
     central = np.array([pdfset.uncertainty(xfxs[i]).central for i in range(len(xfxs))])
     errplus = np.array([pdfset.uncertainty(xfxs[i]).errplus for i in range(len(xfxs))])
@@ -90,7 +101,7 @@ class PDFModule(BaseModule):
             pdfset = settings.get('pdfset', '')
             flavour = settings.get('flavour', 21)
             q = settings.get('q', 10)
-            xs, central, down, up = get_pdf(pdfset, flavour, q)
+            xs, central, down, up = get_pdf(pdfset, q, flavour)
             graph = build_tgraph_from_lists(xs, central, yerrl=down, yerru=up)
             config['objects'].setdefault(id, {})['obj'] = graph
 
