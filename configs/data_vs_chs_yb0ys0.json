@@ -18,6 +18,10 @@
     ], 
     "legend_loc": "upper right", 
     "list_modules": false, 
+    "load_config": [
+        "configs/data_vs_chs_yb0ys0.json"
+    ], 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -26,9 +30,11 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 

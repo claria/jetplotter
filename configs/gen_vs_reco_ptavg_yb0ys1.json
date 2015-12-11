@@ -14,6 +14,10 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
+    "load_config": [
+        "configs/gen_vs_reco_ptavg_yb0ys1.json"
+    ], 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -22,10 +26,12 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "id": "_default", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 

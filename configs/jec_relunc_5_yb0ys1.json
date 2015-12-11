@@ -25,6 +25,10 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
+    "load_config": [
+        "configs/jec_relunc_5_yb0ys1.json"
+    ], 
+    "log_level": "info", 
     "objects": {
         "PileUpDataMC_dn": {
             "color": "_color0_", 
@@ -117,9 +121,11 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 

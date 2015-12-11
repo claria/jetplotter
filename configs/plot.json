@@ -1,22 +1,14 @@
 {
-    "add": [
-        [
-            "_sum", 
-            "qq,qg,gg"
-        ]
-    ], 
     "add_subplot": false, 
     "ana_modules": [
-        "Add", 
-        "Ratio", 
-        "Stack"
+        "Ratio"
     ], 
-    "argv": "./plot.py -i gg:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_dijet_flavour_gg qg:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_dijet_flavour_qg qq:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_dijet_flavour_qq --ana-modules Add Ratio Stack --stack qq qg gg --add _sum:qq,qg,gg --ratio qq:_sum qg:_sum gg:_sum --y-err qq:False qg:False gg:False --style gg:histo qg:histo qq:histo --label gg:gg qg:qg qq:qq --zorder gq:1 qg:2 qq:3 --x-lims 133. 1780 --x-log True --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _8tev_ --x-label _ptavg_ --y-label Fraction --y-lims 0.0 1.0", 
+    "argv": "./plot.py -i recocuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg gencuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_ptavg --label 'recocuts:Reco selection' 'gencuts:Gen Selection' --ana-modules Ratio --ratio recocuts:gencuts gencuts:gencuts --x-lims _yb0ys0_xmin_ _yb0ys0_xmax_ --x-log True --y-lims 0.9 1.1 --x-label _ptavg_ --y-label 'Ratio selection vs Gen' --ax-texts _cmsp_ _8tev_ _yb0ys0_?_upperleft_ --legend-loc 'upper left'", 
     "ax_hlines": [], 
     "ax_texts": [
-        "_yb0ys0_?_upperleft_", 
         "_cmsp_", 
-        "_8tev_"
+        "_8tev_", 
+        "_yb0ys0_?_upperleft_"
     ], 
     "ax_vlines": [], 
     "combine_legend_entries": [], 
@@ -24,8 +16,10 @@
     "input_modules": [
         "RootModule"
     ], 
-    "legend_loc": "best", 
+    "legend_loc": "upper left", 
     "list_modules": false, 
+    "load_config": [], 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -43,28 +37,13 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "gg": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_dijet_flavour_gg", 
-            "label": "gg", 
-            "style": "histo", 
-            "y_err": false
+        "gencuts": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_ptavg", 
+            "label": "Gen Selection"
         }, 
-        "gq": {
-            "zorder": 1.0
-        }, 
-        "qg": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_dijet_flavour_qg", 
-            "label": "qg", 
-            "style": "histo", 
-            "y_err": false, 
-            "zorder": 2.0
-        }, 
-        "qq": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_dijet_flavour_qq", 
-            "label": "qq", 
-            "style": "histo", 
-            "y_err": false, 
-            "zorder": 3.0
+        "recocuts": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg", 
+            "label": "Reco selection"
         }
     }, 
     "output_modules": [
@@ -78,36 +57,27 @@
     "print_config": false, 
     "ratio": [
         [
-            "qq", 
-            "_sum"
+            "recocuts", 
+            "gencuts"
         ], 
         [
-            "qg", 
-            "_sum"
-        ], 
-        [
-            "gg", 
-            "_sum"
+            "gencuts", 
+            "gencuts"
         ]
     ], 
     "ratio_copy": [], 
     "show_legend": true, 
-    "stack": [
-        "qq", 
-        "qg", 
-        "gg"
-    ], 
     "store_json": true, 
     "x_label": "_ptavg_", 
     "x_lims": [
-        "133.", 
-        "1780"
+        "_yb0ys0_xmin_", 
+        "_yb0ys0_xmax_"
     ], 
     "x_log": true, 
-    "y_label": "Fraction", 
+    "y_label": "Ratio selection vs Gen", 
     "y_lims": [
-        "0.0", 
-        "1.0"
+        "0.9", 
+        "1.1"
     ], 
     "y_log": false, 
     "y_subplot_label": "", 

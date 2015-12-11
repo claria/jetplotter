@@ -26,6 +26,10 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
+    "load_config": [
+        "configs/jetprop_nhf_default.json"
+    ], 
+    "log_level": "info", 
     "normalize": [
         [
             "mgp6", 
@@ -44,10 +48,12 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "id": "_default", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
