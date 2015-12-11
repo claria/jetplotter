@@ -240,15 +240,21 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         y_erru = steppify_bin(y_erru)
 
     #
+    if kwargs['facecolor'] == 'none':
+        fill = False
+    else:
+        fill = True
+
     kwargs['facecolor'] = colorConverter.to_rgba(kwargs['facecolor'], kwargs.get('alpha', 1.0))
     kwargs['edgecolor'] = colorConverter.to_rgba(kwargs['edgecolor'], 1.0)
 
     fill_between_kwargs = {k: v for k, v in kwargs.items() if
-                           k in ['label', 'facecolor', 'edgecolor', 'zorder']}
+                           k in ['label', 'facecolor', 'edgecolor', 'zorder', 'hatch', 'rasterized', 'linewidth']}
 
 
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
-    p = matplotlib.patches.Rectangle((0, 0), 1, 1, alpha=kwargs['alpha'], **fill_between_kwargs)
+    print kwargs['facecolor']
+    p = matplotlib.patches.Rectangle((0, 0), 1, 1, fill=fill, alpha=kwargs['alpha'], **fill_between_kwargs)
     ax.add_patch(p)
 
     return p
