@@ -49,6 +49,12 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--hatch', type='str2kvstr', nargs='+',
                                     default=None, action='setting',
                                     help='Hatch for each plot')
+        self.arg_group.add_argument('--fill', type='str2kvbool', nargs='+',
+                                    default=True, action='setting',
+                                    help='Hatch for each plot')
+        self.arg_group.add_argument('--rasterized', type='str2kvbool', nargs='+',
+                                    default=True, action='setting',
+                                    help='Hatch for each plot')
         self.arg_group.add_argument('--linestyle', type='str2kvstr', nargs='+',
                                     default='', action='setting',
                                     help='Linestyle for each plot')
