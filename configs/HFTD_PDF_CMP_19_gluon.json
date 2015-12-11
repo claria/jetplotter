@@ -49,9 +49,11 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
@@ -59,28 +61,44 @@
             "zorder": 1.0
         }, 
         "hera": {
-            "alpha": 0.7, 
-            "color": "_color0_", 
+            "alpha": 1.0, 
+            "color": "_color1_", 
+            "edgecolor": "_color0_", 
+            "fill": false, 
+            "hatch": "", 
             "label": "HERA", 
-            "style": "band"
+            "rasterized": true, 
+            "style": "band", 
+            "zorder": 1.0
         }, 
         "heracms": {
-            "alpha": 0.7, 
-            "color": "_color1_", 
+            "alpha": 1.0, 
+            "color": "none", 
+            "edgecolor": "_color0_", 
+            "hatch": "//", 
             "label": "HERA+CMS", 
-            "style": "band"
+            "linewidth": 2.0, 
+            "rasterized": true, 
+            "style": "band", 
+            "zorder": 2.0
         }, 
         "ratio_hera_to_hera": {
-            "alpha": 0.7, 
-            "axis": "ax1", 
-            "color": "_color0_", 
-            "style": "band"
-        }, 
-        "ratio_heracms_to_heracms": {
-            "alpha": 0.7, 
+            "alpha": 1.0, 
             "axis": "ax1", 
             "color": "_color1_", 
-            "style": "band"
+            "style": "band", 
+            "zorder": 1.0
+        }, 
+        "ratio_heracms_to_heracms": {
+            "alpha": 1.0, 
+            "axis": "ax1", 
+            "color": "none", 
+            "edgecolor": "_color0_", 
+            "hatch": "//", 
+            "linewidth": 2.0, 
+            "rasterized": true, 
+            "style": "band", 
+            "zorder": 2.0
         }
     }, 
     "output_modules": [

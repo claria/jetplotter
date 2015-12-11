@@ -3,13 +3,13 @@
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plot.py --input-modules PDFModule --input-pdfsets hera:pdfset=HFTD_HERA_V003_EIG?flavour=7?q=1.378 heracms:pdfset=HFTD_HERACMS_V003_EIG?flavour=7?q=1.378 --log-level debug --x-log True --x-lims 1E-4 1.0 --y-lims 0.0 1.0 --style hera:band heracms:band ratio_hera_to_hera:band ratio_heracms_to_heracms:band --label hera:HERA heracms:HERA+CMS --add-subplot True --ana-modules Ratio --ratio-copy hera:hera heracms:heracms --axis ratio_hera_to_hera:ax1 ratio_heracms_to_heracms:ax1 --y-subplot-lims 0.81 1.19 --color hera:_color0_ heracms:_color1_ ratio_hera_to_hera:_color0_ ratio_heracms_to_heracms:_color1_ --alpha hera:0.7 heracms:0.7 ratio_hera_to_hera:0.7 ratio_heracms_to_heracms:0.7 --x-label $x$ --y-label $xf(x)$ --ax-texts _cmsp_ _8tev_ s=$Q^2=1.9\\,\\mathrm{GeV}^2$?_upperleft_ 's=d valence quark?_upperleft2_' --output-path HFTD_PDF_CMP_19_dval.png --legend-loc 'upper right'", 
+    "argv": "./plot.py --input-modules PDFModule --input-pdfsets hera:pdfset=HFTD_HERA_V003_EIG?flavour=7?q=1.378 heracms:pdfset=HFTD_HERACMS_V003_EIG?flavour=7?q=1.378 --log-level debug --x-log True --x-lims 1E-4 1.0 --y-lims 0.0 5.0 --style hera:band heracms:band ratio_hera_to_hera:band ratio_heracms_to_heracms:band --label hera:HERA heracms:HERA+CMS --add-subplot True --ana-modules Ratio --ratio-copy hera:hera heracms:heracms --axis ratio_hera_to_hera:ax1 ratio_heracms_to_heracms:ax1 --y-subplot-lims 0.81 1.19 --color hera:_color0_ heracms:_color1_ ratio_hera_to_hera:_color0_ ratio_heracms_to_heracms:_color1_ --alpha hera:0.7 heracms:0.7 ratio_hera_to_hera:0.7 ratio_heracms_to_heracms:0.7 --x-label $x$ --y-label $xf(x)$ --ax-texts _cmsp_ _8tev_ s=$Q^2=1.9\\,\\mathrm{GeV}^2$?_upperleft_ s=dval?_upperleft2_ --output-path HFTD_PDF_CMP_19_dval.png", 
     "ax_hlines": [], 
     "ax_texts": [
         "_cmsp_", 
         "_8tev_", 
         "s=$Q^2=1.9\\,\\mathrm{GeV}^2$?_upperleft_", 
-        "s=d valence quark?_upperleft2_"
+        "s=dval?_upperleft2_"
     ], 
     "ax_vlines": [], 
     "combine_legend_entries": [], 
@@ -35,7 +35,7 @@
             }
         ]
     ], 
-    "legend_loc": "upper right", 
+    "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
         "configs/HFTD_PDF_CMP_19_dval.json"
@@ -49,9 +49,11 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
@@ -59,28 +61,44 @@
             "zorder": 1.0
         }, 
         "hera": {
-            "alpha": 0.7, 
-            "color": "_color0_", 
+            "alpha": 1.0, 
+            "color": "_color1_", 
+            "edgecolor": "_color0_", 
+            "fill": false, 
+            "hatch": "", 
             "label": "HERA", 
-            "style": "band"
+            "rasterized": true, 
+            "style": "band", 
+            "zorder": 1.0
         }, 
         "heracms": {
-            "alpha": 0.7, 
-            "color": "_color1_", 
+            "alpha": 1.0, 
+            "color": "none", 
+            "edgecolor": "_color0_", 
+            "hatch": "//", 
             "label": "HERA+CMS", 
-            "style": "band"
+            "linewidth": 2.0, 
+            "rasterized": true, 
+            "style": "band", 
+            "zorder": 2.0
         }, 
         "ratio_hera_to_hera": {
-            "alpha": 0.7, 
-            "axis": "ax1", 
-            "color": "_color0_", 
-            "style": "band"
-        }, 
-        "ratio_heracms_to_heracms": {
-            "alpha": 0.7, 
+            "alpha": 1.0, 
             "axis": "ax1", 
             "color": "_color1_", 
-            "style": "band"
+            "style": "band", 
+            "zorder": 1.0
+        }, 
+        "ratio_heracms_to_heracms": {
+            "alpha": 1.0, 
+            "axis": "ax1", 
+            "color": "none", 
+            "edgecolor": "_color0_", 
+            "hatch": "//", 
+            "linewidth": 2.0, 
+            "rasterized": true, 
+            "style": "band", 
+            "zorder": 2.0
         }
     }, 
     "output_modules": [
@@ -114,7 +132,7 @@
     "y_label": "$xf(x)$", 
     "y_lims": [
         "0.0", 
-        "1.0"
+        "5.0"
     ], 
     "y_log": false, 
     "y_subplot_label": "", 
