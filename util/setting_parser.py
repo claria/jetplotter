@@ -170,9 +170,6 @@ def parse_query(query_str):
         try:
             d[k] = json.loads(v)
         except ValueError as e:
-            print 'asdf', v
-            print 'repr', repr(v)
-            print'escape', escape(v)
             d[k] = json.loads('"{0}"'.format(escape(v)))
     return d
 
