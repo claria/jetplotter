@@ -40,11 +40,11 @@
             "zorder": 1.0
         }, 
         "gencuts": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys2/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys2/h_genmatchptavg", 
             "label": "Gen Selection"
         }, 
         "recocuts": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys2/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys2/h_genmatchptavg", 
             "label": "Reco selection"
         }
     }, 
