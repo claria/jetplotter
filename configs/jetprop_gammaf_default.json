@@ -15,8 +15,8 @@
         }
     ], 
     "ax_texts": [
-        "CMS Preliminary?{\"x\": 0.0, \"y\":1.01, \"va\": \"bottom\", \"ha\" : \"left\"}", 
-        "$19.7\\,\\mathrm{fb}^{-1}$ (8TeV)?{\"x\": 1.0, \"y\":1.01, \"va\": \"bottom\", \"ha\" : \"right\"}"
+        "_cmsp_", 
+        "_20fb_"
     ], 
     "ax_vlines": [], 
     "combine_legend_entries": [], 
@@ -26,6 +26,10 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
+    "load_config": [
+        "configs/jetprop_gammaf_default.json"
+    ], 
+    "log_level": "info", 
     "normalize": [
         [
             "mgp6", 
@@ -149,7 +153,7 @@
     ], 
     "show_legend": true, 
     "store_json": true, 
-    "x_label": "Muon Fraction", 
+    "x_label": "Photon Fraction", 
     "x_lims": [
         "0.0", 
         "1.0"

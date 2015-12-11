@@ -14,8 +14,8 @@
         }
     ], 
     "ax_texts": [
-        "CMS Preliminary?{\"x\": 0.0, \"y\":1.01, \"va\": \"bottom\", \"ha\" : \"left\"}", 
-        "$19.7\\,\\mathrm{fb}^{-1}$ (8TeV)?{\"x\": 1.0, \"y\":1.01, \"va\": \"bottom\", \"ha\" : \"right\"}"
+        "_cmsp_", 
+        "_20fb_"
     ], 
     "ax_vlines": [], 
     "combine_legend_entries": [], 
@@ -25,6 +25,7 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
+    "log_level": "info", 
     "normalize": [
         [
             "mgp6", 
