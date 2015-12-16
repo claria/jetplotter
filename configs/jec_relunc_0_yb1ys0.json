@@ -26,7 +26,7 @@
     "legend_loc": "best", 
     "list_modules": false, 
     "load_config": [
-        "configs/jec_relunc_0_yb1ys0.json"
+        "configs/jec_relunc_0_yb1ys0.py"
     ], 
     "log_level": "info", 
     "objects": {
