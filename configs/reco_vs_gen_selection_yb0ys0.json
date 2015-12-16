@@ -30,9 +30,11 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
@@ -40,11 +42,11 @@
             "zorder": 1.0
         }, 
         "gencuts": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genmatchptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_ptavg", 
             "label": "Gen Selection"
         }, 
         "recocuts": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_genmatchptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg", 
             "label": "Reco selection"
         }
     }, 
