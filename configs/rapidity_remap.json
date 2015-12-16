@@ -1,0 +1,92 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Profile", 
+        "RemapRapidity"
+    ], 
+    "argv": "./plot.py -i res:~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?default/h2_GenVsRecoY --ana-modules Profile RemapRapidity --profile-x res:option= --y-lims -1 1. --output-modules RootOutputModule PlotModule --y-lims -4.0 4.0 --y-label 'Gen y' --x-label 'Reco y' --x-err res:True --remap res --output-path rapidity_remap.png", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "fill": true, 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "rasterized": true, 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "res": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?default/h2_GenVsRecoY", 
+            "x_err": true
+        }
+    }, 
+    "output_modules": [
+        "RootOutputModule", 
+        "PlotModule"
+    ], 
+    "output_path": "rapidity_remap.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "profile_x": [
+        [
+            "res", 
+            {
+                "option": ""
+            }
+        ]
+    ], 
+    "profile_y": [], 
+    "remap": [
+        "res"
+    ], 
+    "root_output": null, 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "Reco y", 
+    "x_lims": [
+        null, 
+        null
+    ], 
+    "x_log": false, 
+    "y_label": "Gen y", 
+    "y_lims": [
+        "-4.0", 
+        "4.0"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

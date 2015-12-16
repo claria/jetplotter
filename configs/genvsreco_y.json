@@ -1,0 +1,77 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?default/h2_GenVsRecoY --style data:heatmap --z-log True --z-lims 1E-1 2E5 --y-label 'Gen Rapidity' --x-label 'Reco y - Gen y' --y-lims -3.5 3.5 --output-path genvsreco_y.png", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "configs/genvsreco_y.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "fill": true, 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "rasterized": true, 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?default/h2_GenVsRecoY", 
+            "style": "heatmap"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "genvsreco_y.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "Gen Rapidity", 
+    "x_lims": [
+        "-3.5", 
+        "3.5"
+    ], 
+    "x_log": false, 
+    "y_label": "Reco y - Gen y", 
+    "y_lims": [
+        "-1.5", 
+        "1.5"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        "1E-1", 
+        "2E5"
+    ], 
+    "z_log": true
+}
