@@ -115,9 +115,10 @@ class NormalizeToRow(BaseModule):
 
             for y in xrange(1, obj.GetNbinsY() + 1):
                 y_sow = np.sum([obj.GetBinContent(x, y) for x in xrange(1, obj.GetNbinsX() + 1)])
+                print y_sow
                 for x in xrange(1, obj.GetNbinsX() + 1):
-                    obj.SetBinContent(x, y, obj.GetBinContent(x, y) / y_sow)
-                    obj.SetBinError(x, y, obj.GetBinError(x, y) / y_sow)
+                    obj.SetBinContent(x, y, obj.GetBinContent(x, y) / y_sow if y_sow != 0. else 0.)
+                    obj.SetBinError(x, y, obj.GetBinError(x, y) / y_sow if y_sow != 0. else 0.)
 
 class NormalizeToColumn(BaseModule):
     """Normalizes a given TH2 to the sum in a column (x axis), e.g. to the number of true events for a response matrix."""
