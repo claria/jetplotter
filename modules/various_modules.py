@@ -27,3 +27,27 @@ class ToTGraph(BaseModule):
                     raise ValueError('unsupported conversion requested.')
             else:
                 config['objects'][id]['obj'] = ROOT.TGraphAsymmErrors(config['objects'][id]['obj'])
+
+class FractionalUncertainty(BaseModule):
+    """Converts the object to a TGraphAsymmErrors object."""
+
+    def __init__(self):
+        super(FractionalUncertainty, self).__init__()
+        self.arg_group.add_argument('--fractional-uncertainty', nargs='+', default=[], help='')
+
+    def __call__(self, config):
+        for id in config['fractional_uncertainty']:
+            obj = config['objects'][id]['obj']
+            if isinstance(obj, ROOT.TH1):
+                for i in xrange(1, obj.GetNbinsX() + 1):
+                    if obj.GetBinContent(i) != 0.:
+                        bc = obj.GetBinError(i) / obj.GetBinContent(i)
+                    else:
+                        bc = 0.0
+                    obj.SetBinContent(i, bc)
+                    obj.SetBinError(i, 0.0)
+            elif isinstance(obj, ROOT.TGraph):
+                for i in xrange(obj.GetN()):
+                    tmp_x, tmp_y = ROOT.Double(0), ROOT.Double(0)
+                    obj.GetPoint(i, tmp_x, tmp_y)
+                    obj.SetPoint(i, tmp_x, tmp_y)
