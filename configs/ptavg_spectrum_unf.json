@@ -9,7 +9,8 @@
     "ax_texts": [
         "_cmsp_", 
         "_20fb_", 
-        "anti-$k_\\mathrm{T} = 0.7$?{\"x\" : 0.7, \"y\" : 0.6}"
+        "s=anti-$k_\\mathrm{T}\\,\\mathrm{R}=0.7$?x=0.97|y=0.65|ha=right|va=top", 
+        "s=CT14-NLOxNP?x=0.97|y=0.60|ha=right|va=top"
     ], 
     "ax_vlines": [], 
     "combine_legend_entries": [
@@ -130,6 +131,10 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
+    "load_config": [
+        "configs/ptavg_spectrum_unf.json"
+    ], 
+    "log_level": "info", 
     "normalize": [
         [
             "yb0ys0", 
@@ -164,9 +169,11 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
