@@ -62,6 +62,20 @@ lookup_dict = {
         '_yb1ys1_xmax_' : 686.,
         '_yb2ys0_xmax_' : 430.,
     },
+    'global': {
+        '_yb0ys0_xmin_' : 133.,
+        '_yb0ys1_xmin_' : 133.,
+        '_yb0ys2_xmin_' : 133.,
+        '_yb1ys0_xmin_' : 133.,
+        '_yb1ys1_xmin_' : 133.,
+        '_yb2ys0_xmin_' : 133.,
+        '_yb0ys0_xmax_' : 1784.,
+        '_yb0ys1_xmax_' : 1248.,
+        '_yb0ys2_xmax_' : 548.,
+        '_yb1ys0_xmax_' : 1032.,
+        '_yb1ys1_xmax_' : 686.,
+        '_yb2ys0_xmax_' : 430.,
+    },
 
     'y_lims': {},
     'ax_texts': {
@@ -104,8 +118,12 @@ def perform_lookup_replacement(node):
     for k in node.keys():
         if isinstance(node[k], basestring):
             node[k] = get_lookup_val(k, node[k])
+            node[k] = get_lookup_val('global', node[k])
         elif isinstance(node[k], list):
             for i in xrange(len(node[k])):
-                node[k][i] = get_lookup_val(k, node[k][i])
+                if isinstance(node[k][i], basestring):
+                    node[k][i] = get_lookup_val(k, node[k][i])
+                elif isinstance(node[k][i], dict):
+                    perform_lookup_replacement(node[k][i])
         elif isinstance(node[k], dict):
             perform_lookup_replacement(node[k])
