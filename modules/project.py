@@ -39,6 +39,22 @@ class Project3D(BaseModule):
             newobj = obj.Project3D(option)
             config['objects'][id]['obj'] = newobj
 
+class Project3DProfile(BaseModule):
+    """Calls the Project3D function."""
+
+    def __init__(self):
+        super(Project3DProfile, self).__init__()
+        self.arg_group.add_argument('--project3dprofile', nargs='+', type='str2kvdict', default=[], help='')
+
+    def __call__(self, config):
+        for id, kwargs in config['project3dprofile']:
+            obj = config['objects'][id]['obj']
+            option = kwargs.get('option', 'xy')
+            newobj = obj.Project3DProfile(option)
+            config['objects'][id]['obj'] = newobj
+
+
+
 class Profile(BaseModule):
     """Calls the Project3D function."""
 
