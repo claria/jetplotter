@@ -68,7 +68,8 @@ class RootOutputModule(BaseModule):
                 raise ValueError('Id {0} not found within objects. Check your supplied ids.'.format(id))
             if 'obj' in config['objects'][id]:
                 log.info('Writing id {0} to file {1}'.format(id, root_output_filename))
-                config['objects'][id]['obj'].Write(id)
+                if config['objects'][id]['obj']:
+                    config['objects'][id]['obj'].Write(id)
             else:
                 log.debug('Omitting id {0} since no root object found.'.format(id))
                 continue
