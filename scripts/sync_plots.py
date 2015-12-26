@@ -8,6 +8,7 @@ import tempfile
 import glob
 import subprocess
 import os
+import sys
 import shutil
 import shlex
 from datetime import date
@@ -46,7 +47,10 @@ def main():
     remote_dir = os.path.join(remote_basedir, date.today().isoformat())
     current_datetime = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
 
-    file_list = glob.glob('plots/*.png')
+    if len(sys.argv) > 1:
+        file_list = sys.argv[1:]
+    else:
+        file_list = glob.glob('plots/*.png')
 
     for filename in file_list[:]:
         print 'checking file', filename
