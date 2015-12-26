@@ -20,13 +20,18 @@ class ReBinning(BaseModule):
                 raise ValueError('Requested id {} not found.'.format(id))
 
             obj = config['objects'][id]['obj']
+            print kwargs
 
-            min_val = kwargs.get('min', None)
-            max_val = kwargs.get('max', None)
-
-            config['objects'][id]['obj'] = rebin_histo(obj, min_val, max_val)
+            min_val = float(kwargs.get('min', None))
+            max_val = float(kwargs.get('max', None))
+            if isinstance(obj, ROOT.TH1):
+                config['objects'][id]['obj'] = rebin_histo(obj, min_val, max_val)
+            elif isinstance(obj, ROOT.TGraph):
+                config['objects'][id]['obj'] = rebin_tgraph(obj, min_val, max_val)
+                pass
 
 def rebin_histo(obj, min_val, max_val):
+
     new_binedges = []
     for i in xrange(obj.GetNbinsX() +1):
         if (min_val <= obj.GetBinLowEdge(i+1)) and (obj.GetBinLowEdge(i+2) <= max_val):
@@ -35,3 +40,19 @@ def rebin_histo(obj, min_val, max_val):
     new_binedges = array.array("d", new_binedges)
     new_obj = obj.Rebin(len(new_binedges) -1, '{0}_reb'.format(obj.GetName()), new_binedges)
     return new_obj
+
+def rebin_tgraph(obj, min_val, max_val):
+    i=1
+    while (i < obj.GetN()):
+        X, Y = ROOT.Double(0), ROOT.Double(0)
+        obj.GetPoint(i, X, Y)
+        print X, Y, min_val, max_val
+        if (min_val <= X) and (X <= max_val):
+            pass
+        else:
+            print 'remove point at ', X
+            obj.RemovePoint(i)
+            i=1
+        i+=1
+    return obj
+
