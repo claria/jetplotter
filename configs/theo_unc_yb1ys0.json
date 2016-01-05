@@ -1,51 +1,69 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_pdfunc_l pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_pdfunc_u scunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_scunc_l scunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_scunc_u --ana-modules Ratio --ratio pdfunc_l:nlo pdfunc_u:nlo scunc_l:nlo scunc_u:nlo nlo:nlo --style nlo:line pdfunc_u:line pdfunc_l:line scunc_u:line scunc_l:line --step nlo:True pdfunc_u:True pdfunc_l:True scunc_u:True scunc_l:True --color pdfunc_l:_color1_ pdfunc_u:_color1_ scunc_l:_color2_ scunc_u:_color2_ --label pdfunc_l:PDF Uncertainty scunc_l:Scale Uncertainty --legend-loc upper right --x-lims 74. 3000. --x-log True --y-lims 0.5 2.0 --x-label _ptavg_ --y-label Fractional Uncertainty?_center_ --ax-texts _yb1ys0_?_upperleft_ _cmsp_ _20fb_ --output-path theo_unc_yb1ys0.png", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "npunc", 
+        "scunc_l", 
+        "scunc_u", 
+        "pdfunc_l", 
+        "pdfunc_u"
+    ], 
+    "y_label": "Fractional Uncertainty?_center_", 
     "ax_texts": [
         "_yb1ys0_?_upperleft_", 
-        "_cmsp_", 
-        "_20fb_"
+        "s=NNPDF 3.0-NLO?_upperleft2_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "load_config": [
+        "configs/theo_unc_yb1ys0.json"
     ], 
-    "legend_loc": "upper right", 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "linestyle": "--", 
+            "y": 1.0
+        }
+    ], 
+    "ratio_copy": [], 
+    "print_config": false, 
+    "add_subplot": false, 
     "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        "0.7", 
+        "1.3"
+    ], 
+    "x_label": "_ptavg_", 
+    "legend_loc": "upper right", 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "_yb1ys0_xmin_", 
+        "_yb1ys0_xmax_"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_xs pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_pdfunc_l pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_pdfunc_u scunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_scunc_l scunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_scunc_u --ana-modules Ratio --ratio pdfunc_l:nlo pdfunc_u:nlo scunc_l:nlo scunc_u:nlo nlo:nlo --style nlo:line pdfunc_u:line pdfunc_l:line scunc_u:line scunc_l:line --step nlo:True pdfunc_u:True pdfunc_l:True scunc_u:True scunc_l:True --color pdfunc_l:_color1_ pdfunc_u:_color1_ scunc_l:_color2_ scunc_u:_color2_ --label pdfunc_l:PDF Uncertainty scunc_l:Scale Uncertainty --legend-loc upper right --x-lims 74. 3000. --x-log True --y-lims 0.5 2.0 --x-label _ptavg_ --y-label Fractional Uncertainty?_center_ --ax-texts _yb1ys0_?_upperleft_ _cmsp_ _20fb_ --output-path theo_unc_yb1ys0.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
-        "_default": {
+        "scunc_l": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "auto", 
+            "color": "_color2_", 
             "edgecolor": "auto", 
-            "id": "_default", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "nlo": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "nlo", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs", 
-            "label": "__nolegend__", 
+            "id": "scunc_l", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_scunc_l", 
+            "label": "Scale Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
             "step": true, 
@@ -62,7 +80,7 @@
             "color": "_color1_", 
             "edgecolor": "auto", 
             "id": "pdfunc_l", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_pdfunc_l", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_pdfunc_l", 
             "label": "PDF Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
@@ -80,7 +98,7 @@
             "color": "_color1_", 
             "edgecolor": "auto", 
             "id": "pdfunc_u", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_pdfunc_u", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_pdfunc_u", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -90,20 +108,39 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "scunc_l": {
+        "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color2_", 
+            "color": "auto", 
             "edgecolor": "auto", 
-            "id": "scunc_l", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_scunc_l", 
-            "label": "Scale Uncertainty", 
+            "fill": true, 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "rasterized": true, 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "npunc": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "nlo", 
+            "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb1ys0.root?res_np_factor", 
+            "label": "NP Uncertainty", 
             "linestyle": "", 
             "marker": ".", 
             "step": true, 
-            "style": "line", 
+            "style": "errorlines", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
@@ -116,7 +153,25 @@
             "color": "_color2_", 
             "edgecolor": "auto", 
             "id": "scunc_u", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_scunc_u", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_scunc_u", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": true, 
+            "style": "line", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "nlo": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "nlo", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/NNPDF30_xs", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -127,14 +182,42 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "ratio": [
+        [
+            "pdfunc_l", 
+            "nlo"
+        ], 
+        [
+            "pdfunc_u", 
+            "nlo"
+        ], 
+        [
+            "scunc_l", 
+            "nlo"
+        ], 
+        [
+            "npunc", 
+            "npunc"
+        ], 
+        [
+            "scunc_u", 
+            "nlo"
+        ], 
+        [
+            "nlo", 
+            "nlo"
+        ]
     ], 
-    "output_path": "theo_unc_yb1ys0.png", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "show_legend": true, 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "theo_unc_yb1ys0.png", 
+    "x_log": true, 
     "provided_args": [
         "input", 
         "ratio", 
@@ -152,52 +235,9 @@
         "ax_texts", 
         "ana_modules"
     ], 
-    "ratio": [
-        [
-            "pdfunc_l", 
-            "nlo"
-        ], 
-        [
-            "pdfunc_u", 
-            "nlo"
-        ], 
-        [
-            "scunc_l", 
-            "nlo"
-        ], 
-        [
-            "scunc_u", 
-            "nlo"
-        ], 
-        [
-            "nlo", 
-            "nlo"
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "_yb1ys0_xmin_", 
-        "_yb1ys0_xmax_"
-    ], 
-    "x_log": true, 
-    "y_label": "Fractional Uncertainty?_center_", 
-    "y_lims": [
-        "0.7", 
-        "1.3"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.1, 
+    "z_label": ""
 }

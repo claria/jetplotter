@@ -1,0 +1,102 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "argv": "./plot.py -i ptmaxexp:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb2ys0/CT14nlo_xs ptavgexp:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?yb2ys0/CT14nlo_xs ptavg:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?yb2ys0/CT14nlo_xs --ana-modules Ratio --ratio ptmaxexp:ptavgexp ptavg:ptavgexp ptavgexp:ptavgexp --label ptavg:ptavg ptmaxexp:ptmaxexp ptavgexp:ptavgexp --output-path ratio-scale_ptmaxexp_ptavgexp_yb2ys0.png --y-lims 0.8 1.2 --x-lims 133 2000 --x-log True", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "configs/ratio-scale_ptmaxexp_ptavgexp_yb2ys0.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "fill": true, 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "rasterized": true, 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "ptavg": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?yb2ys0/CT14nlo_xs", 
+            "label": "ptavg"
+        }, 
+        "ptavgexp": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?yb2ys0/CT14nlo_xs", 
+            "label": "ptavgexp"
+        }, 
+        "ptmaxexp": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb2ys0/CT14nlo_xs", 
+            "label": "ptmaxexp"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "ratio-scale_ptmaxexp_ptavgexp_yb2ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "ratio": [
+        [
+            "ptmaxexp", 
+            "ptavgexp"
+        ], 
+        [
+            "ptavg", 
+            "ptavgexp"
+        ], 
+        [
+            "ptavgexp", 
+            "ptavgexp"
+        ]
+    ], 
+    "ratio_copy": [], 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "", 
+    "x_lims": [
+        "133", 
+        "2000"
+    ], 
+    "x_log": true, 
+    "y_label": "", 
+    "y_lims": [
+        "0.8", 
+        "1.2"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

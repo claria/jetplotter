@@ -1,0 +1,210 @@
+{
+    "data_lims": [
+        [
+            "ct14nlo_pdfunc_l", 
+            {
+                "max": "_yb0ys2_xmax_", 
+                "min": "_yb0ys2_xmin_"
+            }
+        ], 
+        [
+            "ct14nlo_pdfunc_u", 
+            {
+                "max": "_yb0ys2_xmax_", 
+                "min": "_yb0ys2_xmin_"
+            }
+        ], 
+        [
+            "mmht_pdfunc_l", 
+            {
+                "max": "_yb0ys2_xmax_", 
+                "min": "_yb0ys2_xmin_"
+            }
+        ], 
+        [
+            "mmht_pdfunc_u", 
+            {
+                "max": "_yb0ys2_xmax_", 
+                "min": "_yb0ys2_xmin_"
+            }
+        ], 
+        [
+            "nnpdf_pdfunc_l", 
+            {
+                "max": "_yb0ys2_xmax_", 
+                "min": "_yb0ys2_xmin_"
+            }
+        ], 
+        [
+            "nnpdf_pdfunc_u", 
+            {
+                "max": "_yb0ys2_xmax_", 
+                "min": "_yb0ys2_xmin_"
+            }
+        ]
+    ], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "Fractional Uncertainty?_center_", 
+    "ax_texts": [
+        "_yb0ys2_?_upperleft_"
+    ], 
+    "load_config": [
+        "configs/pdf_unc_comparison_yb0ys2.json"
+    ], 
+    "ax_hlines": [
+        {
+            "y": 1.0, 
+            "color": "black", 
+            "linestyle": "--"
+        }
+    ], 
+    "ratio_copy": [], 
+    "print_config": false, 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "log_level": "info", 
+    "y_subplot_label": "", 
+    "x_label": "_ptavg_", 
+    "legend_loc": "upper right", 
+    "y_log": false, 
+    "x_lims": [
+        "133.", 
+        "none"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i ct14nlo_pdfunc_c:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/CT14nlo_xs ct14nlo_pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/CT14nlo_pdfunc_l ct14nlo_pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/CT14nlo_pdfunc_u mmht_pdfunc_c:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/MMHT2014_xs mmht_pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/MMHT2014_pdfunc_l mmht_pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/MMHT2014_pdfunc_u nnpdf_pdfunc_c:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/NNPDF30_xs nnpdf_pdfunc_l:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/NNPDF30_pdfunc_l nnpdf_pdfunc_u:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/NNPDF30_pdfunc_u --ana-modules Ratio Remove ReBinning --ratio ct14nlo_pdfunc_l:ct14nlo_pdfunc_c ct14nlo_pdfunc_u:ct14nlo_pdfunc_c mmht_pdfunc_l:mmht_pdfunc_c mmht_pdfunc_u:mmht_pdfunc_c nnpdf_pdfunc_l:nnpdf_pdfunc_c nnpdf_pdfunc_u:nnpdf_pdfunc_c --remove ct14nlo_pdfunc_c mmht_pdfunc_c nnpdf_pdfunc_c --color ct14nlo_pdfunc_l:_color0_ ct14nlo_pdfunc_u:_color0_ mmht_pdfunc_l:_color1_ mmht_pdfunc_u:_color1_ nnpdf_pdfunc_l:_color2_ nnpdf_pdfunc_u:_color2_ --label ct14nlo_pdfunc_u:CT14-NLO 'mmht_pdfunc_u:MMHT 2014 - NLO' 'nnpdf_pdfunc_u:NNPDF3.0 - NLO' --y-lims 0.5 1.5 --style ct14nlo_pdfunc_u:line ct14nlo_pdfunc_l:line --step ct14nlo_pdfunc_l:true ct14nlo_pdfunc_u:true --data-lims ct14nlo_pdfunc_l:min=_yb0ys2_xmin_?max=_yb0ys2_xmax_ ct14nlo_pdfunc_u:min=_yb0ys2_xmin_?max=_yb0ys2_xmax_ mmht_pdfunc_l:min=_yb0ys2_xmin_?max=_yb0ys2_xmax_ mmht_pdfunc_u:min=_yb0ys2_xmin_?max=_yb0ys2_xmax_ nnpdf_pdfunc_l:min=_yb0ys2_xmin_?max=_yb0ys2_xmax_ nnpdf_pdfunc_u:min=_yb0ys2_xmin_?max=_yb0ys2_xmax_", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
+    "objects": {
+        "nnpdf_pdfunc_u": {
+            "color": "_color2_", 
+            "style": "line", 
+            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/NNPDF30_pdfunc_u", 
+            "label": "NNPDF3.0 - NLO"
+        }, 
+        "mmht_pdfunc_u": {
+            "color": "_color1_", 
+            "style": "line", 
+            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/MMHT2014_pdfunc_u", 
+            "label": "MMHT 2014 - NLO"
+        }, 
+        "ct14nlo_pdfunc_u": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/CT14nlo_pdfunc_u", 
+            "style": "line", 
+            "step": true, 
+            "label": "CT14-NLO"
+        }, 
+        "nnpdf_pdfunc_l": {
+            "color": "_color2_", 
+            "style": "line", 
+            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/NNPDF30_pdfunc_l"
+        }, 
+        "mmht_pdfunc_l": {
+            "color": "_color1_", 
+            "style": "line", 
+            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/MMHT2014_pdfunc_l"
+        }, 
+        "ct14nlo_pdfunc_l": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/CT14nlo_pdfunc_l", 
+            "style": "line", 
+            "step": true
+        }, 
+        "ct14nlo_pdfunc_c": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/CT14nlo_xs"
+        }, 
+        "mmht_pdfunc_c": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/MMHT2014_xs"
+        }, 
+        "_default": {
+            "edgecolor": "auto", 
+            "style": "errorbar", 
+            "rasterized": true, 
+            "capsize": 0, 
+            "x_err": true, 
+            "color": "auto", 
+            "y_err": true, 
+            "label": "__nolegend__", 
+            "step": true, 
+            "cmap": "viridis", 
+            "zorder": 1.0, 
+            "marker": ".", 
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "linestyle": "", 
+            "fill": true
+        }, 
+        "nnpdf_pdfunc_c": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb0ys2/NNPDF30_xs"
+        }
+    }, 
+    "z_log": false, 
+    "ratio": [
+        [
+            "ct14nlo_pdfunc_l", 
+            "ct14nlo_pdfunc_c"
+        ], 
+        [
+            "ct14nlo_pdfunc_u", 
+            "ct14nlo_pdfunc_c"
+        ], 
+        [
+            "mmht_pdfunc_l", 
+            "mmht_pdfunc_c"
+        ], 
+        [
+            "mmht_pdfunc_u", 
+            "mmht_pdfunc_c"
+        ], 
+        [
+            "nnpdf_pdfunc_l", 
+            "nnpdf_pdfunc_c"
+        ], 
+        [
+            "nnpdf_pdfunc_u", 
+            "nnpdf_pdfunc_c"
+        ]
+    ], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "store_json": true, 
+    "ana_modules": [
+        "Ratio", 
+        "Remove", 
+        "ReBinning"
+    ], 
+    "show_legend": true, 
+    "remove": [
+        "ct14nlo_pdfunc_c", 
+        "mmht_pdfunc_c", 
+        "nnpdf_pdfunc_c"
+    ], 
+    "y_lims": [
+        "0.7", 
+        "1.3"
+    ], 
+    "output_prefix": "plots/", 
+    "output_path": "pdf_unc_comparison_yb0ys2.png", 
+    "z_label": "", 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "margin": 0.01, 
+    "x_log": true
+}

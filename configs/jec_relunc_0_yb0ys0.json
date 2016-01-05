@@ -1,145 +1,94 @@
 {
-    "add_subplot": false, 
     "ana_modules": [], 
-    "argv": "./plot.py -l configs/jec_relunc_0_yb0ys0.py", 
-    "ax_hlines": [
-        {
-            "color": "black", 
-            "y": 1.0
-        }
+    "plot_id": [
+        "^(?!_).*"
     ], 
+    "y_label": "Uncertainty?_center_", 
     "ax_texts": [
         "_cmsp_", 
         "_yb0ys0_?_upperleft_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "data_lims": [
-        "_yb0ys0_xmin_", 
-        "_yb0ys0_xmax_"
+    "load_config": [
+        "configs/kfactor_comp_yb0ys0.py"
     ], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "ax_hlines": [
+        {
+            "y": 1.0, 
+            "color": "black"
+        }
     ], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
-    "load_config": [
-        "configs/jec_relunc_0_yb0ys0.py"
-    ], 
     "log_level": "info", 
-    "objects": {
-        "FlavorQCD_dn": {
-            "color": "_color2_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_FlavorQCD_dn/h_genptavg", 
-            "label": "FlavorQCD", 
-            "step": "True", 
-            "style": "line"
-        }, 
-        "FlavorQCD_up": {
-            "color": "_color2_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_FlavorQCD_up/h_genptavg", 
-            "label": "FlavorQCD", 
-            "step": "True", 
-            "style": "line"
-        }, 
-        "Fragmentation_dn": {
-            "color": "_color3_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_Fragmentation_dn/h_genptavg", 
-            "label": "Fragmentation", 
-            "step": "True", 
-            "style": "line"
-        }, 
-        "Fragmentation_up": {
-            "color": "_color3_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_Fragmentation_up/h_genptavg", 
-            "label": "Fragmentation", 
-            "step": "True", 
-            "style": "line"
-        }, 
-        "SinglePionECAL_dn": {
-            "color": "_color0_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_SinglePionECAL_dn/h_genptavg", 
-            "label": "SinglePionECAL", 
-            "step": "True", 
-            "style": "line"
-        }, 
-        "SinglePionECAL_up": {
-            "color": "_color0_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_SinglePionECAL_up/h_genptavg", 
-            "label": "SinglePionECAL", 
-            "step": "True", 
-            "style": "line"
-        }, 
-        "SinglePionHCAL_dn": {
-            "color": "_color1_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_SinglePionHCAL_dn/h_genptavg", 
-            "label": "SinglePionHCAL", 
-            "step": "True", 
-            "style": "line"
-        }, 
-        "SinglePionHCAL_up": {
-            "color": "_color1_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_SinglePionHCAL_up/h_genptavg", 
-            "label": "SinglePionHCAL", 
-            "step": "True", 
-            "style": "line"
-        }, 
-        "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "fill": true, 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "rasterized": true, 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "central": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0/h_genptavg"
-        }
-    }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "jec_relunc_0_yb0ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "show_legend": true, 
-    "store_json": true, 
+    "y_subplot_label": "", 
     "x_label": "_ptavg_", 
+    "print_config": false, 
+    "y_log": false, 
     "x_lims": [
         "133.", 
         "2000."
     ], 
-    "x_log": true, 
-    "y_label": "Uncertainty?_center_", 
-    "y_lims": [
-        "0.9", 
-        "1.1"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
     "z_lims": [
         null, 
         null
     ], 
-    "z_log": false
+    "argv": "./plot.py -l configs/kfactor_comp_yb0ys0.py", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
+    "objects": {
+        "_default": {
+            "edgecolor": "auto", 
+            "style": "errorbar", 
+            "rasterized": true, 
+            "capsize": 0, 
+            "x_err": true, 
+            "color": "auto", 
+            "y_err": true, 
+            "label": "__nolegend__", 
+            "step": false, 
+            "cmap": "viridis", 
+            "zorder": 1.0, 
+            "marker": ".", 
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "linestyle": "", 
+            "fill": true
+        }, 
+        "ct14nlo_kfac_ptavg": {
+            "color": "_color0_", 
+            "input": "/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?yb0ys0/CT14nlo_kfac", 
+            "style": "line", 
+            "step": "True", 
+            "label": "CT10 (NLO)"
+        }
+    }, 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "store_json": true, 
+    "data_lims": [
+        "_yb0ys0_xmin_", 
+        "_yb0ys0_xmax_"
+    ], 
+    "show_legend": true, 
+    "y_lims": [
+        "0.9", 
+        "1.1"
+    ], 
+    "output_prefix": "plots/", 
+    "output_path": "jec_relunc_0_yb0ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "margin": 0.1, 
+    "z_label": ""
 }

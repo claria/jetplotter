@@ -5,7 +5,6 @@
     "ax_hlines": [], 
     "ax_texts": [
         "_yb1ys1_?_upperleft_", 
-        "_cmsp_", 
         "_20fb_"
     ], 
     "ax_vlines": [], 
@@ -16,6 +15,10 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
+    "load_config": [
+        "configs/jet12_rapidity_yb1ys1.json"
+    ], 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -24,10 +27,12 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "id": "_default", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
@@ -46,6 +51,7 @@
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "mask_value": 0.0, 
             "step": false, 
             "style": "heatmap", 
             "x_err": true, 
@@ -92,10 +98,10 @@
         null, 
         null
     ], 
-    "z_label": "Cross Section (pb/GeV)", 
+    "z_label": "a.u.", 
     "z_lims": [
         null, 
         null
     ], 
-    "z_log": true
+    "z_log": false
 }

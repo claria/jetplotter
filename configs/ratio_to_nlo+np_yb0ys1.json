@@ -1,183 +1,28 @@
 {
-    "add_subplot": false, 
-    "ana_modules": [
-        "Normalize", 
-        "Multiply", 
-        "Ratio", 
-        "ToTGraph"
+    "to_tgraph": [
+        "_data", 
+        "dataunf", 
+        "nlonnpdf30", 
+        "nlommht2014", 
+        "nloct14"
     ], 
-    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Ratio to CT14?_center_", 
+    "ax_texts": [
+        "_yb0ys1_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "show_legend": true, 
     "ax_hlines": [
         {
             "color": "black", 
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "_yb0ys1_?_upperleft_", 
-        "_cmsp_", 
-        "_20fb_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
     "legend_loc": "upper right", 
+    "add_subplot": false, 
     "list_modules": false, 
-    "multiply": [
-        [
-            "nloct14", 
-            "_np"
-        ], 
-        [
-            "nlommht2014", 
-            "_np"
-        ], 
-        [
-            "nlonnpdf30", 
-            "_np"
-        ]
-    ], 
-    "normalize": [
-        [
-            "_data", 
-            "width"
-        ], 
-        [
-            "dataunf", 
-            "width"
-        ]
-    ], 
-    "object_paths": null, 
-    "objects": {
-        "_data": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "grey", 
-            "edgecolor": "grey", 
-            "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg", 
-            "label": "Data (Reco)", 
-            "linestyle": "", 
-            "marker": "", 
-            "step": true, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "_default", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": true, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "_np": {
-            "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
-        }, 
-        "dataunf": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "black", 
-            "edgecolor": "black", 
-            "id": "dataunf", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys1/h_ptavg", 
-            "label": "Data (Unf.)", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "nloct14": {
-            "alpha": 0.5, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "_color0_", 
-            "edgecolor": "_color0_", 
-            "id": "nloct14", 
-            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_u", 
-            "label": "NLOxNP (CT14)", 
-            "linestyle": "", 
-            "marker": ".", 
-            "plot": true, 
-            "step": true, 
-            "style": "band", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "nlommht2014": {
-            "alpha": 0.5, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "_color1_", 
-            "edgecolor": "_color1_", 
-            "id": "nlommht2014", 
-            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_pdfunc_u", 
-            "label": "NLOxNP (MMHT 2014)", 
-            "linestyle": "", 
-            "marker": ".", 
-            "plot": true, 
-            "step": true, 
-            "style": "band", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "nlonnpdf30": {
-            "alpha": 0.5, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "_color2_", 
-            "edgecolor": "_color2_", 
-            "id": "nlonnpdf30", 
-            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_pdfunc_u", 
-            "label": "NLOxNP (NNPDF30)", 
-            "linestyle": "", 
-            "marker": ".", 
-            "plot": true, 
-            "step": true, 
-            "style": "band", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }
-    }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "ratio_to_nlo+np_yb0ys1.png", 
-    "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
-    "provided_args": [
-        "help", 
-        "output_path"
-    ], 
     "ratio": [
         [
             "_data", 
@@ -200,36 +45,198 @@
             "nloct14"
         ]
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "to_tgraph": [
-        "_data", 
-        "dataunf", 
-        "nlonnpdf30", 
-        "nlommht2014", 
-        "nloct14"
-    ], 
+    "y_subplot_label": "", 
     "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "normalize": [
+        [
+            "_data", 
+            "width"
+        ], 
+        [
+            "dataunf", 
+            "width"
+        ]
+    ], 
     "x_lims": [
         "133.", 
         "3000."
     ], 
-    "x_log": true, 
-    "y_label": "Ratio to CT14?_center_", 
-    "y_lims": [
-        "0.0", 
-        "2.0"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
     "z_lims": [
         null, 
         null
     ], 
-    "z_log": false
+    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
+    "objects": {
+        "nlonnpdf30": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "_color2_", 
+            "edgecolor": "_color2_", 
+            "id": "nlonnpdf30", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/NNPDF30_pdfunc_u", 
+            "label": "NLOxNP (NNPDF30)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
+        }, 
+        "nloct14": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "_color0_", 
+            "edgecolor": "_color0_", 
+            "id": "nloct14", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/CT14nlo_pdfunc_u", 
+            "label": "NLOxNP (CT14)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_np": {
+            "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
+        }, 
+        "nlommht2014": {
+            "alpha": 0.5, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "_color1_", 
+            "edgecolor": "_color1_", 
+            "id": "nlommht2014", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys1/MMHT2014_pdfunc_u", 
+            "label": "NLOxNP (MMHT 2014)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": true, 
+            "step": true, 
+            "style": "band", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "_data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "grey", 
+            "edgecolor": "grey", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg", 
+            "label": "Data (Reco)", 
+            "linestyle": "", 
+            "marker": "", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "dataunf": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "black", 
+            "id": "dataunf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys1/h_ptavg", 
+            "label": "Data (Unf.)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "z_log": false, 
+    "multiply": [
+        [
+            "nloct14", 
+            "_np"
+        ], 
+        [
+            "nlommht2014", 
+            "_np"
+        ], 
+        [
+            "nlonnpdf30", 
+            "_np"
+        ]
+    ], 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "ana_modules": [
+        "Normalize", 
+        "Multiply", 
+        "Ratio", 
+        "ToTGraph"
+    ], 
+    "load_config": [
+        "configs/ratio_to_nlo+np_yb0ys1.json"
+    ], 
+    "object_paths": null, 
+    "y_lims": [
+        "0.0", 
+        "2.0"
+    ], 
+    "output_prefix": "plots/", 
+    "output_path": "ratio_to_nlo+np_yb0ys1.png", 
+    "x_log": true, 
+    "provided_args": [
+        "help", 
+        "output_path"
+    ], 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "margin": 0.1, 
+    "z_label": ""
 }

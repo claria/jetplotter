@@ -1,0 +1,106 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plotter.py -l plots/gen_vs_reco_vs_gen_ptavg.json", 
+    "ax_hlines": [], 
+    "ax_texts": [
+        "_yb0ys0_?_upperleft_"
+    ], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "configs/gen_vs_reco_vs_gen_ptavg_yb0ys0.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "fill": true, 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "rasterized": true, 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "genreco": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "genreco", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?yb0ys0/h2_GenVsRecoPt", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "heatmap", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }
+    }, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "output_path": "gen_vs_reco_vs_gen_ptavg_yb0ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": "^(?!_).*", 
+    "print_config": false, 
+    "provided_args": [
+        "help", 
+        "input", 
+        "style", 
+        "output_path", 
+        "x_lims", 
+        "y_lims", 
+        "z_lims", 
+        "y_log", 
+        "z_log", 
+        "x_label", 
+        "y_label"
+    ], 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "Gen $p_{\\mathrm{T,avg}}$ / Reco $p_{\\mathrm{T,avg}}$", 
+    "x_lims": [
+        "0.5", 
+        "1.5"
+    ], 
+    "x_log": false, 
+    "y_label": "Gen $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "y_lims": [
+        "50.", 
+        "4000."
+    ], 
+    "y_log": true, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "a.u.", 
+    "z_lims": [
+        "1E-6", 
+        "1E6"
+    ], 
+    "z_log": true
+}

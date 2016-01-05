@@ -1,0 +1,81 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [], 
+    "argv": "./plot.py -i ptmaxexp:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb1ys0/CT14nlo_kfac ptavgexp:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?yb1ys0/CT14nlo_kfac --label ptmaxexp:ptmaxexp ptavgexp:ptavgexp --output-path nlo_kfac_ptmaxexp_ptavgexp_yb1ys0.png --y-lims 0.0 2.0 --x-lims 133 2000 --x-log True", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "configs/nlo_kfac_ptmaxexp_ptavgexp_yb1ys0.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "fill": true, 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "rasterized": true, 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "ptavgexp": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?yb1ys0/CT14nlo_kfac", 
+            "label": "ptavgexp"
+        }, 
+        "ptmaxexp": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb1ys0/CT14nlo_kfac", 
+            "label": "ptmaxexp"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "nlo_kfac_ptmaxexp_ptavgexp_yb1ys0.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "", 
+    "x_lims": [
+        "133", 
+        "2000"
+    ], 
+    "x_log": true, 
+    "y_label": "", 
+    "y_lims": [
+        "0.0", 
+        "2.0"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "", 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "z_log": false
+}

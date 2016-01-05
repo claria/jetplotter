@@ -6,10 +6,9 @@
     "argv": "./plotter.py -l plots/resolution_yb0ys0_bin10.json", 
     "ax_hlines": [], 
     "ax_texts": [
-        "_cmsp_", 
-        "_20fb_", 
+        "_8tev_", 
         "_yb0ys0_?_upperleft_", 
-        "ptbin 10?_upperright_"
+        "s=$133 \\leq p_{\\mathrm{T,avg}} < 153$?_upperright_"
     ], 
     "ax_vlines": [], 
     "combine_legend_entries": [], 
@@ -19,6 +18,10 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
+    "load_config": [
+        "configs/resolution_yb0ys0_bin10.json"
+    ], 
+    "log_level": "info", 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -27,10 +30,12 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
+            "fill": true, 
             "id": "_default", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
+            "rasterized": true, 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
@@ -1475,13 +1480,13 @@
     ], 
     "show_legend": true, 
     "store_json": true, 
-    "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV) / Gen $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "x_label": "Reco $p_{\\mathrm{T,avg}}$ / Gen $p_{\\mathrm{T,avg}}$", 
     "x_lims": [
         null, 
         null
     ], 
     "x_log": false, 
-    "y_label": "arb. u.", 
+    "y_label": "a.u.", 
     "y_lims": [
         "1", 
         "1E4"

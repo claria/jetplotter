@@ -1,0 +1,92 @@
+{
+    "add_subplot": false, 
+    "ana_modules": [
+        "Profile"
+    ], 
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoEta data_proj:~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoEta --style data:heatmap --z-log True --z-lims 1E-3 none --y-lims -0.7 0.7 --x-label 'Gen Eta' --y-label 'Reco eta - Gen eta' --x-lims -4 4 --output-path genvsreco_eta.png --z-label a.u. --ana-modules Profile --profile-x data_proj:option= --label data_proj:mean", 
+    "ax_hlines": [], 
+    "ax_texts": [], 
+    "ax_vlines": [], 
+    "combine_legend_entries": [], 
+    "fig_size": null, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "legend_loc": "best", 
+    "list_modules": false, 
+    "load_config": [
+        "configs/genvsreco_eta.json"
+    ], 
+    "log_level": "info", 
+    "objects": {
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "fill": true, 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "rasterized": true, 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "data": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoEta", 
+            "style": "heatmap"
+        }, 
+        "data_proj": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoEta", 
+            "label": "mean"
+        }
+    }, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "output_path": "genvsreco_eta.png", 
+    "output_prefix": "plots/", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "print_config": false, 
+    "profile_x": [
+        [
+            "data_proj", 
+            {
+                "option": ""
+            }
+        ]
+    ], 
+    "profile_y": [], 
+    "show_legend": true, 
+    "store_json": true, 
+    "x_label": "Gen Eta", 
+    "x_lims": [
+        "-4", 
+        "4"
+    ], 
+    "x_log": false, 
+    "y_label": "Reco eta - Gen eta", 
+    "y_lims": [
+        "-0.7", 
+        "0.7"
+    ], 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "z_label": "a.u.", 
+    "z_lims": [
+        "1E-3", 
+        "none"
+    ], 
+    "z_log": true
+}

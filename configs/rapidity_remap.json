@@ -4,7 +4,7 @@
         "Profile", 
         "RemapRapidity"
     ], 
-    "argv": "./plot.py -i res:~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?default/h2_GenVsRecoY --ana-modules Profile RemapRapidity --profile-x res:option= --y-lims -1 1. --output-modules RootOutputModule PlotModule --y-lims -4.0 4.0 --y-label 'Gen y' --x-label 'Reco y' --x-err res:True --remap res --output-path rapidity_remap.png", 
+    "argv": "./plot.py -i res:~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?default/h2_GenVsRecoY --ana-modules Profile RemapRapidity --profile-x res:option= --y-lims -1 1. --output-modules RootOutputModule PlotModule --y-lims -4.0 4.0 --y-label 'Gen y' --x-label 'Reco y' --x-err res:True --remap res --output-path rapidity_remap.png --y-lims -3.0 3.0 --x-lims -3.0 3.0", 
     "ax_hlines": [], 
     "ax_texts": [], 
     "ax_vlines": [], 
@@ -15,7 +15,9 @@
     ], 
     "legend_loc": "best", 
     "list_modules": false, 
-    "load_config": [], 
+    "load_config": [
+        "configs/rapidity_remap.json"
+    ], 
     "log_level": "info", 
     "objects": {
         "_default": {
@@ -37,7 +39,7 @@
             "zorder": 1.0
         }, 
         "res": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/resolution_QCDMGP6.root?default/h2_GenVsRecoY", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY", 
             "x_err": true
         }
     }, 
@@ -68,8 +70,8 @@
     "store_json": true, 
     "x_label": "Reco y", 
     "x_lims": [
-        null, 
-        null
+        "-4.0", 
+        "4.0"
     ], 
     "x_log": false, 
     "y_label": "Gen y", 
