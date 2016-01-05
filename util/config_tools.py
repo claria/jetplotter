@@ -33,7 +33,7 @@ def parse_optionstring(s):
         return s, {}
     if kwargs:
         try:
-            kwargs = json.loads(kwargs)
+            kwargs = json.loads(kwargs, object_pairs_hook=collections.OrderedDict)
         except ValueError as e:
             log.debug('Failed parsing {0}.'.format(kwargs))
             log.debug(e)
@@ -101,7 +101,7 @@ def write_config(config, path, indent=4):
         os.makedirs(directory)
     # Write config.
     with open(path, "w") as f:
-        json.dump(config, f, skipkeys=True, indent=indent, sort_keys=True, cls=SimpleJsonEncoder)
+        json.dump(config, f, skipkeys=True, indent=indent, cls=SimpleJsonEncoder)
 
     # log.debug("Config written to \"{0}\"".format(path))
     log.info('Config written to \"{0}\"'.format(path))
@@ -109,7 +109,7 @@ def write_config(config, path, indent=4):
 
 def print_config(config):
     """ Print the config to the screen."""
-    print json.dumps(config, sort_keys=True, cls=SimpleJsonEncoder, indent=4)
+    print json.dumps(config, cls=SimpleJsonEncoder, indent=4)
 
 
 def walk_dic(node, func):

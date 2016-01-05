@@ -4,6 +4,7 @@ import array
 import ROOT
 
 from modules.base_module import BaseModule
+from src.lookup_dict import get_lookup_val
 
 log = logging.getLogger(__name__)
 
@@ -20,21 +21,20 @@ class ReBinning(BaseModule):
                 raise ValueError('Requested id {} not found.'.format(id))
 
             obj = config['objects'][id]['obj']
-            print kwargs
-
-            min_val = float(kwargs.get('min', None))
-            max_val = float(kwargs.get('max', None))
+            min_val = float(get_lookup_val('data_lims', kwargs.get('min', None)))
+            max_val = float(get_lookup_val('data_lims', kwargs.get('max', None)))
             if isinstance(obj, ROOT.TH1):
                 config['objects'][id]['obj'] = rebin_histo(obj, min_val, max_val)
             elif isinstance(obj, ROOT.TGraph):
                 config['objects'][id]['obj'] = rebin_tgraph(obj, min_val, max_val)
                 pass
 
-def rebin_histo(obj, min_val, max_val):
 
+
+def rebin_histo(obj, min_val, max_val):
     new_binedges = []
     for i in xrange(obj.GetNbinsX() +1):
-        if (min_val <= obj.GetBinLowEdge(i+1)) and (obj.GetBinLowEdge(i+2) <= max_val):
+        if (min_val <= obj.GetBinLowEdge(i+1)) and (obj.GetBinLowEdge(i+1) <= max_val):
             new_binedges.append(obj.GetBinLowEdge(i+1))
 
     new_binedges = array.array("d", new_binedges)
@@ -46,11 +46,9 @@ def rebin_tgraph(obj, min_val, max_val):
     while (i < obj.GetN()):
         X, Y = ROOT.Double(0), ROOT.Double(0)
         obj.GetPoint(i, X, Y)
-        print X, Y, min_val, max_val
         if (min_val <= X) and (X <= max_val):
             pass
         else:
-            print 'remove point at ', X
             obj.RemovePoint(i)
             i=1
         i+=1

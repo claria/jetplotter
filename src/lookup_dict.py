@@ -83,7 +83,7 @@ lookup_dict = {
         '_cmsp_': 's=CMS Preliminary|x=0.0|y=1.01|va=bottom|ha=left',
         '_cmss_': 's=CMS Simulation|x=0.0|y=1.01|va=bottom|ha=left',
         '_20fb_': 's=$19.7\\,\mathrm{fb}^{-1}$ (8TeV)|x=1.0|y=1.01|va=bottom|ha=right',
-        '_8tev_': 's=$\sqrt{s}$ = (8TeV)|x=1.0|y=1.01|va=bottom|ha=right',
+        '_8tev_': 's=(8 TeV)|x=1.0|y=1.01|va=bottom|ha=right',
         '_yb0ys0_': 's=$0.0 \leq \, y_b < 1.0$\n$0.0 \leq \, y^* < 1.0$',
         '_yb1ys0_': 's=$1.0 \leq \, y_b < 2.0$\n$0.0 \leq \, y^* < 1.0$',
         '_yb2ys0_': 's=$2.0 \leq \, y_b < 3.0$\n$0.0 \leq \, y^* < 1.0$',
@@ -113,17 +113,24 @@ def get_lookup_val(key, s):
     return s
 
 
-def perform_lookup_replacement(node):
+def perform_lookup_replacement(node, parent=None):
     """Walks the dict recursively and replaces all strs with the lookups."""
+    if parent is None:
+        parent = []
     for k in node.keys():
         if isinstance(node[k], basestring):
             node[k] = get_lookup_val(k, node[k])
-            node[k] = get_lookup_val('global', node[k])
+            for par in parent:
+                node[k] = get_lookup_val(par, node[k])
         elif isinstance(node[k], list):
             for i in xrange(len(node[k])):
                 if isinstance(node[k][i], basestring):
                     node[k][i] = get_lookup_val(k, node[k][i])
+                    for par in parent:
+                        node[k] = get_lookup_val(par, node[k])
                 elif isinstance(node[k][i], dict):
-                    perform_lookup_replacement(node[k][i])
+                    parent.append(k)
+                    perform_lookup_replacement(node[k][i], parent=parent)
         elif isinstance(node[k], dict):
-            perform_lookup_replacement(node[k])
+            parent.append(k)
+            perform_lookup_replacement(node[k], parent=parent)

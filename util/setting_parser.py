@@ -50,7 +50,7 @@ class SettingParser(argparse.ArgumentParser):
             # is_default_arg is true if setting has not provided on commandline
             # in case a setting has not been provided on the commandline,
             # argparse just calls setattr(args, a.dest, a.default) without calling any action.
-            # Only if the type of a.default is a string, the type function is called.
+            # Only if the type of a.default is not a string, the type function is called.
             is_default_arg = False
             if hasattr(args, a.dest):
                 if isinstance(a.default, basestring) and \
@@ -62,7 +62,6 @@ class SettingParser(argparse.ArgumentParser):
             if is_default_arg:
                 if isinstance(a, SettingAction):
                     a(self, args, a.default, a.option_strings)
-                    # delattr(args, a.dest)
             else:
                 # these args were actually provided on cmd line.
                 # TODO: does not work if provided arg is actually a default
@@ -108,7 +107,7 @@ def str2kvdict(s):
     """
     k, v = get_tuple(s)
     try:
-        d = json.loads(v)
+        d = json.loads(v, object_pairs_hook=collections.OrderedDict)
     except ValueError:
         d = parse_query(v)
 
@@ -132,7 +131,7 @@ def str2dict(s):
         {"key0": "val0", "key1": "val1"}
     """
     try:
-        return json.loads(s)
+        return json.loads(s, object_pairs_hook=collections.OrderedDict)
     except ValueError:
         return parse_query(s)
 
@@ -168,9 +167,9 @@ def parse_query(query_str):
 
         k, v = item.split('=', 1)
         try:
-            d[k] = json.loads(v)
+            d[k] = json.loads(v, object_pairs_hook=collections.OrderedDict)
         except ValueError as e:
-            d[k] = json.loads('"{0}"'.format(escape(v)))
+            d[k] = json.loads('"{0}"'.format(escape(v)), object_pairs_hook=collections.OrderedDict)
     return d
 
 def escape(inp_str):
@@ -184,7 +183,6 @@ def escape(inp_str):
         '\n': '\\n',
     }
     return ''.join([chars.get(char, char) for char in inp_str])
-
 
 
 class SettingAction(argparse.Action):

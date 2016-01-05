@@ -2,6 +2,7 @@ import os
 from abc import ABCMeta
 
 import numpy as np
+import numpy.ma as ma
 import matplotlib
 from matplotlib.colors import Normalize
 from matplotlib.colors import LogNorm
@@ -62,7 +63,6 @@ class BasePlot(object):
         # figure
         matplotlib.rcParams['figure.figsize'] = 10., 10.
 
-        matplotlib.rcParams['lines.linewidth'] = 2
         matplotlib.rcParams['font.family'] = 'sans-serif'
         matplotlib.rcParams['font.serif'] = ['DejaVu Serif']
         matplotlib.rcParams['font.sans-serif'] = ['DejaVu Sans']
@@ -83,17 +83,18 @@ class BasePlot(object):
         # Axes
         matplotlib.rcParams['axes.linewidth'] = 2
         matplotlib.rcParams['axes.labelsize'] = 20
-        matplotlib.rcParams['xtick.labelsize'] = 16
+        matplotlib.rcParams['xtick.labelsize'] = 'medium'
         matplotlib.rcParams['xtick.major.size'] = 8
         matplotlib.rcParams['xtick.major.width'] = 1.5
         matplotlib.rcParams['xtick.minor.size'] = 6
         matplotlib.rcParams['xtick.minor.width'] = 1.
-        matplotlib.rcParams['ytick.labelsize'] = 16
+        matplotlib.rcParams['ytick.labelsize'] = 'medium'
         matplotlib.rcParams['ytick.major.width'] = 1.5
         matplotlib.rcParams['ytick.major.size'] = 8
         matplotlib.rcParams['ytick.minor.size'] = 6
         matplotlib.rcParams['ytick.minor.width'] = 1.
         matplotlib.rcParams['lines.markersize'] = 8
+        matplotlib.rcParams['lines.linewidth'] = 3
         matplotlib.rcParams['lines.markeredgewidth'] = 1.0
         matplotlib.rcParams['axes.formatter.limits'] = [-2, 5]
 
@@ -136,8 +137,13 @@ def add_axis_text(ax, text, loc='top right', **kwargs):
     ax.text(s=text, transform=ax.transAxes, **kwargs)
 
 
-def autoscale(ax, xmargin=0.0, ymargin=0.0, margin=0.0):
+def set_margin(ax=None, xmargin=0.0, ymargin=0.0, margin=0.0):
     # User defined autoscale with margins
+
+    # if no axis passed use current global axis
+    if ax is None:
+        ax = plt.gca()
+
     x0, x1 = tuple(ax.dataLim.intervalx)
     if margin > 0:
         xmargin = margin
@@ -325,6 +331,45 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
 
     return artist
 
+def plot_errorlines(obj=None, step=False, emptybins=True, ax=None, **kwargs):
+    """ Produce an errorbar plots with or without connecting lines.
+
+    Args:
+        obj: Mplobj representation of a root object.
+        ax: Axis to plot on. If not specified current global axis will be used.
+        x_err: If True, x errorbars will be plotted.
+        yerr: If True, y errorbars will be plotted.
+        emptybins: Not Implemented. Supposed to ignore/plot empty bins.
+    """
+    # Convert root object to mpl readable object
+    obj = R2npObject1D(obj)
+
+    if not kwargs['linestyle']:
+        kwargs['linestyle'] = '-'
+
+    # if no axis passed use current global axis
+    if ax is None:
+        ax = plt.gca()
+
+    x = obj.x
+    y = obj.y
+
+    y_errl = obj.yerrl
+    y_erru = obj.yerru
+    if step:
+        x = steppify_bin(obj.xbinedges, isx=True)
+        y = steppify_bin(y)
+        y_errl = steppify_bin(y_errl)
+        y_erru = steppify_bin(y_erru)
+
+    line_kwargs = {k: v for k, v in kwargs.items() if
+                   k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth']}
+    artist, = ax.plot(x, y + y_erru, **line_kwargs)
+    artist, = ax.plot(x, y - y_errl, **line_kwargs)
+
+    return artist
+
+
 
 def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, ax=None, **kwargs):
     """ Produce an errorbar plots with or without connecting lines.
@@ -402,7 +447,15 @@ def plot_heatmap(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis',
             vmin, vmax = np.min(obj.z[np.nonzero(obj.z)]), np.amax(obj.z)
         else:
             vmin, vmax = np.amin(obj.z), np.amax(obj.z)
+    # Log or linear
     norm = (LogNorm if z_log else Normalize)(vmin=vmin, vmax=vmax)
+    x = obj.xbinedges
+    y = obj.ybinedges
+    z = obj.z
+    if kwargs.get('mask_value') is not None:
+        print 'Masking value', kwargs.get('mask_value')
+        z = ma.masked_equal(z, kwargs.get('mask_value'))
 
-    artist = ax.pcolormesh(obj.xbinedges, obj.ybinedges, obj.z, cmap=cmap, norm=norm)
+    artist = ax.pcolormesh(x, y, z, linewidth=0., rasterized=True, cmap=cmap, norm=norm)
+    artist.set_edgecolor('face')
     return artist

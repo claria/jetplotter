@@ -1,6 +1,7 @@
 import itertools
 import re
 import collections
+from collections import OrderedDict
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -10,7 +11,8 @@ from util.plot_tools import BasePlot
 
 BasePlot.init_matplotlib()
 
-from util.plot_tools import plot_errorbar, plot_band, plot_line, plot_histo, plot_heatmap
+from util import plot_tools
+from util.plot_tools import plot_errorbar, plot_band, plot_line, plot_errorlines, plot_histo, plot_heatmap
 from util.plot_tools import log_locator_filter
 from modules.base_module import BaseModule
 
@@ -74,6 +76,8 @@ class PlotModule(BaseModule):
                                     help='Capsize of errorbars in plot.')
         self.arg_group.add_argument('--zorder', type='str2kvfloat', nargs='+', default=1.0, action='setting',
                                     help='Alpha value in plot.')
+        self.arg_group.add_argument('--mask-value', type='str2kvfloat', nargs='+', default=None, action='setting',
+                                    help='Mask value equal to setting.')
         self.arg_group.add_argument('--style', default='errorbar', type='str2kvstr', nargs='+', action='setting',
                                     help='Style of the plotted object.')
         self.arg_group.add_argument('--step', type='str2kvbool', nargs='+', default=False, action='setting',
@@ -106,6 +110,8 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--y-label', default='', help='Label of the y axis.')
         self.arg_group.add_argument('--y-subplot-label', default='', help='Label of the y subplot axis.')
         self.arg_group.add_argument('--z-label', default='', help='Label of the z axis.')
+
+        self.arg_group.add_argument('--margin', type=float, default=0.1, help='Relative margin between datalims and axis lims.')
 
         self.arg_group.add_argument('--show-legend', type='bool', default=True, help='Plot a legend on axis ax.')
         self.arg_group.add_argument('--combine-legend-entries', type='str2kvstr', nargs='+', default=[],
@@ -173,6 +179,9 @@ class Plot(BasePlot):
         self.z_lims = kwargs.pop('z_lims', (None, None))
         self.z_lims = [any2float(v) for v in self.z_lims]
 
+        self.margin = kwargs.pop('margin', 0.1)
+
+
         self.x_log = kwargs.pop('x_log', False)
         self.y_log = kwargs.pop('y_log', False)
         self.z_log = kwargs.pop('z_log', False)
@@ -230,6 +239,8 @@ class Plot(BasePlot):
             artist = plot_histo(ax=ax, **kwargs)
         elif style == 'line':
             artist = plot_line(ax=ax, **kwargs)
+        elif style == 'errorlines':
+            artist = plot_errorlines(ax=ax, **kwargs)
         elif style == 'heatmap':
             # special case for z scale and lims in heatmaps since they have to be set by the object instead of the axis.
             kwargs['z_log'] = self.z_log
@@ -250,6 +261,7 @@ class Plot(BasePlot):
         # Add colorbar if there is a mappable
         if self.colorbar_mappable:
             cb = self.fig.colorbar(self.colorbar_mappable, ax=self.ax)
+            cb.solids.set_rasterized(True)
             if self.z_label:
                 cb.set_label(self.z_label)
 
@@ -323,6 +335,9 @@ class Plot(BasePlot):
             self.ax.set_yscale('log', nonposy='clip')
         else:
             self.ax.set_yscale('linear')
+       
+        # By default set a 10% margin
+        plot_tools.set_margin(margin=self.margin)
 
         self.ax.set_ylim(ymin=self.y_lims[0], ymax=self.y_lims[1])
         self.ax.set_xlim(xmin=self.x_lims[0], xmax=self.x_lims[1])
@@ -337,7 +352,7 @@ class Plot(BasePlot):
             for id, id2 in self.combine_legend_entries:
                 if id in self._ids and id2 in self._ids:
                     self._legend_handles[self._ids.index(id)] = (self._legend_handles[self._ids.index(id2)],self._legend_handles[self._ids.index(id)]) 
-            leg_entry_dict = dict(zip(self._legend_labels, self._legend_handles))
+            leg_entry_dict = OrderedDict(zip(self._legend_labels, self._legend_handles))
             for key in leg_entry_dict.keys():
                 if key.lower() in no_legend_ids:
                     del leg_entry_dict[key]

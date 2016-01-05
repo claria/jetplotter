@@ -26,6 +26,7 @@ class ResolutionAna(BaseModule):
             resolution_graph = ROOT.TGraphErrors(gen_bins)
             for i in xrange(1, gen_bins + 1):
                 # Get slice of 2d histogram
+                print 'ptbin', i, config['objects'][id]['obj'].GetYaxis().GetBinLowEdge(i), config['objects'][id]['obj'].GetYaxis().GetBinLowEdge(i+1)
                 pt_bin_obj = config['objects'][id]['obj'].ProjectionX("{0}_slice_{1}".format(id, i), i, i)
                 # Continue if histogram if empty
                 if pt_bin_obj.GetEntries() < 1:

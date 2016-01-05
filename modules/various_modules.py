@@ -9,6 +9,18 @@ from util.root_tools import get_tgraphasymm_from_histos
 log = logging.getLogger(__name__)
 
 
+class Remove(BaseModule):
+    """Just removes the object."""
+
+    def __init__(self):
+        super(Remove, self).__init__()
+        self.arg_group.add_argument('--remove', nargs='+', default=[], help='')
+
+    def __call__(self, config):
+        for id in config['remove']:
+            del config['objects'][id]
+
+
 class ToTGraph(BaseModule):
     """Converts the object to a TGraphAsymmErrors object."""
 
