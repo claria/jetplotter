@@ -75,9 +75,8 @@ class Plotter(object):
         # Triggered after all output modules processed.
         callbacks.trigger('after_ana_modules', config=config)
 
-        if config.pop('store_json'):
-            path = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[0]
-            write_config(config, path + '.json')
+        path = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[0]
+        write_config(config, path + '.json')
 
 
     def build_config(self):
