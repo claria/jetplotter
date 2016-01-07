@@ -111,7 +111,7 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--y-subplot-label', default='', help='Label of the y subplot axis.')
         self.arg_group.add_argument('--z-label', default='', help='Label of the z axis.')
 
-        self.arg_group.add_argument('--margin', type=float, default=0.1, help='Relative margin between datalims and axis lims.')
+        self.arg_group.add_argument('--margin', type=float, default=0.0, help='Relative margin between datalims and axis lims.')
 
         self.arg_group.add_argument('--show-legend', type='bool', default=True, help='Plot a legend on axis ax.')
         self.arg_group.add_argument('--combine-legend-entries', type='str2kvstr', nargs='+', default=[],
@@ -272,29 +272,36 @@ class Plot(BasePlot):
             default_text_kwargs = {'x': 0.05, 'y': 0.95, 'va': 'top', 'ha': 'left'}
             text_kwargs = parse_query(text)
             default_text_kwargs.update(text_kwargs)
-            self.ax.text(transform=self.ax.transAxes, **default_text_kwargs)
+            ax_name = default_text_kwargs.pop('axis', 'ax')
+            try:
+                cax = getattr(self, ax_name)
+            except AttributeError as e:
+                log.critical('The axis name {0} does not exist.'.format(ax_name))
+                log.critical(e)
+                raise
+            cax.text(transform=cax.transAxes, **default_text_kwargs)
 
         # Add horizontal lines to ax
         for hline_kwargs in self.hlines:
             ax_name = hline_kwargs.pop('axis', 'ax')
             try:
-                ax = getattr(self, ax_name)
+                cax = getattr(self, ax_name)
             except AttributeError as e:
                 log.critical('The axis name {0} does not exist.'.format(ax_name))
                 log.critical(e)
                 raise
-            ax.axhline(**hline_kwargs)
+            cax.axhline(**hline_kwargs)
 
         # Add vertical lines to ax
         for vline_kwargs in self.vlines:
             ax_name = vline_kwargs.pop('axis', 'ax')
             try:
-                ax = getattr(self, ax_name)
+                cax = getattr(self, ax_name)
             except AttributeError as e:
                 log.critical('The axis name {0} does not exist.'.format(ax_name))
                 log.critical(e)
                 raise
-            self.ax.axvline(**vline_kwargs)
+            cax.axvline(**vline_kwargs)
 
         # a specified position of the label can be set via label?json_dict
         x_label_kwargs = {'position': (1.0, 0.0), 'ha': 'right', 'va': 'top'}
