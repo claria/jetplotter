@@ -14,11 +14,11 @@ from src.core import Plotter
 log = logging.getLogger(__name__)
 
 
-def main():
+def plot(config=None):
     """Initializes and runs the core."""
     plotter = Plotter()
-    plotter()
+    plotter(config=config)
 
 
 if __name__ == '__main__':
-    main()
+    plot()
