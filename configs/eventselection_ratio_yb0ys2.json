@@ -1,27 +1,49 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plot.py -i oldsel:/afs/desy.de/user/g/gsieber/dust/ARTUS/artus_2015-10-16_17-08/DATA.root?yb0ys2/h_ptavg _newsel:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys2/h_ptavg --ana-modules Ratio --ratio oldsel:_newsel --y-lims 0.99 1.01 --label 'oldsel:Old selection/New Selection' --x-log True --x-lims 100 3000 --ax-texts _cmsp_ _20fb_ _yb0ys2_?_upperleft_ --output-path eventselection_ratio_yb0ys2.png --output-modules PlotModule CopyToWebModule", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "", 
     "ax_texts": [
         "_cmsp_", 
         "_20fb_", 
         "_yb0ys2_?_upperleft_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
     "load_config": [
         "configs/eventselection_ratio_yb0ys2.json"
     ], 
+    "ax_hlines": [], 
+    "ratio_copy": [], 
+    "print_config": false, 
+    "add_subplot": false, 
+    "list_modules": false, 
     "log_level": "info", 
+    "y_lims": [
+        "0.99", 
+        "1.01"
+    ], 
+    "x_label": "", 
+    "legend_loc": "best", 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "100", 
+        "3000"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i oldsel:/afs/desy.de/user/g/gsieber/dust/ARTUS/artus_2015-10-16_17-08/DATA.root?yb0ys2/h_ptavg _newsel:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys2/h_ptavg --ana-modules Ratio --ratio oldsel:_newsel --y-lims 0.99 1.01 --label 'oldsel:Old selection/New Selection' --x-log True --x-lims 100 3000 --ax-texts _cmsp_ _20fb_ _yb0ys2_?_upperleft_ --output-path eventselection_ratio_yb0ys2.png --output-modules PlotModule CopyToWebModule", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -49,46 +71,25 @@
             "label": "Old selection/New Selection"
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "eventselection_ratio_yb0ys2.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
+    "z_log": false, 
     "ratio": [
         [
             "oldsel", 
             "_newsel"
         ]
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "", 
-    "x_lims": [
-        "100", 
-        "3000"
-    ], 
-    "x_log": true, 
-    "y_label": "", 
-    "y_lims": [
-        "0.99", 
-        "1.01"
-    ], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "eventselection_ratio_yb0ys2.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

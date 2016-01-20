@@ -1,30 +1,62 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Normalize", 
         "Ratio", 
         "ToTGraph"
     ], 
-    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "to_tgraph": [
+        "data", 
+        "dataunf", 
+        "nlonnpdf30", 
+        "nlommht2014", 
+        "nloct14"
+    ], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Ratio to CT14?_center_", 
+    "ax_texts": [
+        "_yb1ys1_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "show_legend": true, 
     "ax_hlines": [
         {
             "color": "black", 
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "_yb1ys1_?_upperleft_", 
-        "_cmsp_", 
-        "_20fb_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "upper right", 
+    "print_config": false, 
+    "add_subplot": false, 
     "list_modules": false, 
+    "ratio": [
+        [
+            "data", 
+            "nloct14"
+        ], 
+        [
+            "dataunf", 
+            "nloct14"
+        ], 
+        [
+            "nlommht2014", 
+            "nloct14"
+        ], 
+        [
+            "nlonnpdf30", 
+            "nloct14"
+        ], 
+        [
+            "nloct14", 
+            "nloct14"
+        ]
+    ], 
+    "y_subplot_label": "", 
+    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "legend_loc": "upper right", 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
     "normalize": [
         [
             "data", 
@@ -35,7 +67,20 @@
             "width"
         ]
     ], 
-    "object_paths": null, 
+    "x_lims": [
+        "133.", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -52,7 +97,9 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "data": {
             "alpha": 1.0, 
@@ -149,70 +196,28 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "ratio_to_nlo_yb1ys1.png", 
-    "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
-    "provided_args": [
-        "help", 
-        "output_path"
-    ], 
-    "ratio": [
-        [
-            "data", 
-            "nloct14"
-        ], 
-        [
-            "dataunf", 
-            "nloct14"
-        ], 
-        [
-            "nlommht2014", 
-            "nloct14"
-        ], 
-        [
-            "nlonnpdf30", 
-            "nloct14"
-        ], 
-        [
-            "nloct14", 
-            "nloct14"
-        ]
-    ], 
-    "show_legend": true, 
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
     "store_json": true, 
-    "to_tgraph": [
-        "data", 
-        "dataunf", 
-        "nlonnpdf30", 
-        "nlommht2014", 
-        "nloct14"
-    ], 
-    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
-    "x_lims": [
-        "133.", 
-        "3000."
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio to CT14?_center_", 
     "y_lims": [
         "0.0", 
         "2.0"
     ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "load_config": [], 
+    "object_paths": null, 
+    "output_prefix": "plots/", 
+    "output_path": "ratio_to_nlo_yb1ys1.png", 
+    "x_log": true, 
+    "provided_args": [
+        "help", 
+        "output_path"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

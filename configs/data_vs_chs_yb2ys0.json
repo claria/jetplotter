@@ -1,27 +1,49 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plot.py -i chs:~/dust/dijetana/ana/CMSSW_7_2_3/CHS_DATA.root?yb2ys0/h_ptavg data:~/dust/dijetana/ana/CMSSW_7_2_3/PF_DATA.root?yb2ys0/h_ptavg --y-log False --ana-modules Ratio --ratio data:chs chs:chs --label chs:chs data:data --y-lims 0.5 1.5 --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --legend-loc 'upper right' --output-path data_vs_chs_yb2ys0.png --output-modules PlotModule CopyToWebModule --x-log True --x-lims 130. 1784.", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "", 
     "ax_texts": [
         "_yb2ys0_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "upper right", 
-    "list_modules": false, 
     "load_config": [
         "configs/data_vs_chs_yb2ys0.json"
     ], 
+    "ax_hlines": [], 
+    "ratio_copy": [], 
+    "print_config": false, 
+    "add_subplot": false, 
+    "list_modules": false, 
     "log_level": "info", 
+    "y_lims": [
+        "0.5", 
+        "1.5"
+    ], 
+    "x_label": "", 
+    "legend_loc": "upper right", 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "130.", 
+        "1784."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i chs:~/dust/dijetana/ana/CMSSW_7_2_3/CHS_DATA.root?yb2ys0/h_ptavg data:~/dust/dijetana/ana/CMSSW_7_2_3/PF_DATA.root?yb2ys0/h_ptavg --y-log False --ana-modules Ratio --ratio data:chs chs:chs --label chs:chs data:data --y-lims 0.5 1.5 --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --legend-loc 'upper right' --output-path data_vs_chs_yb2ys0.png --output-modules PlotModule CopyToWebModule --x-log True --x-lims 130. 1784.", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -50,16 +72,7 @@
             "label": "data"
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "data_vs_chs_yb2ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
+    "z_log": false, 
     "ratio": [
         [
             "data", 
@@ -70,30 +83,18 @@
             "chs"
         ]
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "", 
-    "x_lims": [
-        "130.", 
-        "1784."
-    ], 
-    "x_log": true, 
-    "y_label": "", 
-    "y_lims": [
-        "0.5", 
-        "1.5"
-    ], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "data_vs_chs_yb2ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

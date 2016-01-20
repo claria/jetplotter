@@ -1,24 +1,45 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "NormalizeToRow"
     ], 
-    "argv": "./plotter.py -l plots/res_matrix_ptavg_normalized_yb0ys1.json", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "True $p_{\\mathrm{T,avg}}$ (GeV)", 
     "ax_texts": [
         "_yb0ys1_?_upperleft_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "show_legend": true, 
+    "ax_hlines": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "log_level": "info", 
+    "z_lims": [
+        "0.0", 
+        "1.0"
+    ], 
+    "y_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
     "normalize_to_row": [
         "resmatrix"
     ], 
+    "argv": "./plotter.py -l plots/res_matrix_ptavg_normalized_yb0ys1.json", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -35,7 +56,9 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "resmatrix": {
             "alpha": 1.0, 
@@ -56,14 +79,16 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "res_matrix_ptavg_normalized_yb0ys1.png", 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": true, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "load_config": [], 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "res_matrix_ptavg_normalized_yb0ys1.png", 
+    "x_log": true, 
     "provided_args": [
         "help", 
         "input", 
@@ -79,29 +104,9 @@
         "y_label", 
         "ana_modules"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
-    "x_lims": [
-        "50.", 
-        "3000."
+    "input_modules": [
+        "RootModule"
     ], 
-    "x_log": true, 
-    "y_label": "True $p_{\\mathrm{T,avg}}$ (GeV)", 
-    "y_lims": [
-        "50.", 
-        "3000."
-    ], 
-    "y_log": true, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        "0.0", 
-        "1.0"
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

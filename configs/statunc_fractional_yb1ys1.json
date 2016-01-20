@@ -1,31 +1,46 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "FractionalUncertainty"
     ], 
-    "argv": "./plot.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg unf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb1ys1/h_ptavg --ana-modules FractionalUncertainty --fractional-uncertainty reco unf --y-lims 0.0 0.3 --x-lims _yb1ys1_xmin_ _yb1ys1_xmax_ --x-label _ptavg_ --y-label 'Fractional Uncertainty' --label 'reco:Stat. unc. Reco' 'unf:Stat. unc. Unf.' --legend-loc 'upper right' --ax-texts _cmsp_ _20fb_ _yb1ys1_?_upperleft_ --output-path statunc_fractional_yb1ys1.png", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "Fractional Uncertainty", 
     "ax_texts": [
-        "_cmsp_", 
         "_20fb_", 
         "_yb1ys1_?_upperleft_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "fractional_uncertainty": [
-        "reco", 
-        "unf"
-    ], 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "upper right", 
-    "list_modules": false, 
     "load_config": [
         "configs/statunc_fractional_yb1ys1.json"
     ], 
+    "ax_hlines": [], 
+    "legend_loc": "upper right", 
+    "add_subplot": false, 
+    "list_modules": false, 
     "log_level": "info", 
+    "y_lims": [
+        "0.0", 
+        "0.3"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "_yb1ys1_xmin_", 
+        "_yb1ys1_xmax_"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg unf:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb1ys1/h_ptavg --ana-modules FractionalUncertainty --fractional-uncertainty reco unf --y-lims 0.0 0.3 --x-lims _yb1ys1_xmin_ _yb1ys1_xmax_ --x-label _ptavg_ --y-label 'Fractional Uncertainty' --label 'reco:Stat. unc. Reco' 'unf:Stat. unc. Unf.' --legend-loc 'upper right' --ax-texts _cmsp_ _20fb_ _yb1ys1_?_upperleft_ --output-path statunc_fractional_yb1ys1.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -54,38 +69,23 @@
             "label": "Stat. unc. Unf."
         }
     }, 
-    "output_modules": [
-        "PlotModule"
+    "z_log": false, 
+    "fractional_uncertainty": [
+        "reco", 
+        "unf"
     ], 
-    "output_path": "statunc_fractional_yb1ys1.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "_yb1ys1_xmin_", 
-        "_yb1ys1_xmax_"
-    ], 
-    "x_log": false, 
-    "y_label": "Fractional Uncertainty", 
-    "y_lims": [
-        "0.0", 
-        "0.3"
-    ], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "statunc_fractional_yb1ys1.png", 
+    "x_log": false, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

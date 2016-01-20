@@ -1,5 +1,4 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Normalize", 
         "Multiply", 
@@ -7,73 +6,58 @@
         "ToTGraph", 
         "ReBinning"
     ], 
-    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "to_tgraph": [
+        "_data", 
+        "dataunf", 
+        "nlonnpdf30", 
+        "nlommht2014", 
+        "nloct14"
+    ], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Ratio to CT14?_center_", 
+    "ax_texts": [
+        "_yb0ys0_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "show_legend": true, 
     "ax_hlines": [
         {
             "color": "black", 
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "_yb0ys0_?_upperleft_", 
-        "_cmsp_", 
-        "_20fb_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "data_lims": [
+    "print_config": false, 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "ratio": [
+        [
+            "_data", 
+            "nloct14"
+        ], 
         [
             "dataunf", 
-            {
-                "max": 1784.0, 
-                "min": 133.0
-            }
-        ], 
-        [
-            "nlonnpdf30", 
-            {
-                "max": 1784.0, 
-                "min": 133.0
-            }
-        ], 
-        [
-            "nloct14", 
-            {
-                "max": 1784.0, 
-                "min": 133.0
-            }
+            "nloct14"
         ], 
         [
             "nlommht2014", 
-            {
-                "max": 1784.0, 
-                "min": 133.0
-            }
+            "nloct14"
+        ], 
+        [
+            "nlonnpdf30", 
+            "nloct14"
+        ], 
+        [
+            "nloct14", 
+            "nloct14"
         ]
     ], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "y_subplot_label": "", 
+    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
     "legend_loc": "upper right", 
-    "list_modules": false, 
-    "load_config": [
-        "configs/ratio_to_Ct10nlo+np_pdfcomp_yb0ys0.json"
-    ], 
-    "log_level": "info", 
-    "multiply": [
-        [
-            "nloct14", 
-            "_np"
-        ], 
-        [
-            "nlommht2014", 
-            "_np"
-        ], 
-        [
-            "nlonnpdf30", 
-            "_np"
-        ]
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "normalize": [
         [
@@ -85,7 +69,20 @@
             "width"
         ]
     ], 
-    "object_paths": null, 
+    "x_lims": [
+        "133.", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_data": {
             "alpha": 1.0, 
@@ -112,17 +109,17 @@
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "fill": true, 
             "id": "_default", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
-            "rasterized": true, 
             "step": true, 
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "_np": {
             "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
@@ -143,7 +140,7 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 3.0
+            "zorder": 1.0
         }, 
         "nloct14": {
             "alpha": 0.5, 
@@ -203,71 +200,42 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "ratio_to_Ct10nlo+np_pdfcomp_yb0ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
-    "provided_args": [
-        "help", 
-        "output_path"
-    ], 
-    "ratio": [
+    "z_log": false, 
+    "multiply": [
         [
-            "_data", 
-            "nloct14"
-        ], 
-        [
-            "dataunf", 
-            "nloct14"
+            "nloct14", 
+            "_np"
         ], 
         [
             "nlommht2014", 
-            "nloct14"
+            "_np"
         ], 
         [
             "nlonnpdf30", 
-            "nloct14"
-        ], 
-        [
-            "nloct14", 
-            "nloct14"
+            "_np"
         ]
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
     "store_json": true, 
-    "to_tgraph": [
-        "_data", 
-        "dataunf", 
-        "nlonnpdf30", 
-        "nlommht2014", 
-        "nloct14"
-    ], 
-    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
-    "x_lims": [
-        "133.", 
-        "3000."
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio to CT14?_center_", 
     "y_lims": [
         "0.0", 
         "2.0"
     ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "load_config": [], 
+    "object_paths": null, 
+    "output_prefix": "plots/", 
+    "output_path": "ratio_to_Ct10nlo+np_pdfcomp_yb0ys0.png", 
+    "x_log": true, 
+    "provided_args": [
+        "help", 
+        "output_path"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

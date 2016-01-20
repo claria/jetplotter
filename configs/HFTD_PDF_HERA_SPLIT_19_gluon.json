@@ -1,22 +1,4 @@
 {
-    "add_subplot": true, 
-    "ana_modules": [
-        "Ratio"
-    ], 
-    "argv": "./plot.py --input-modules PDFModule --input-pdfsets exp:pdfset=HFTD_HERA_V003_EIG?flavour=21?q=1.378 model:pdfset=HFTD_HERA_V003_VAR?flavour=21?q=1.378?errortype=eig?start_member=1?end_member=9 par:pdfset=HFTD_HERA_V003_VAR?flavour=21?q=1.378?errortype=envelope?start_member=10?end_member=18 --x-log True --x-lims 1E-4 1.0 --y-lims 0.0 5.0 --style exp:band model:band par:band --label exp:Exp 'model:Model Unc.' 'par:Par unc.' --add-subplot True --ana-modules Ratio --ratio-copy exp:exp --axis ratio_exp_to_exp:ax1 --y-subplot-lims 0.81 1.19 --color exp:yellow model:red par:green --x-label $x$ --y-label $xf(x)$ --ax-texts _cmsp_ _8tev_ s=$Q^2=1.9\\,\\mathrm{GeV}^2$?_upperleft_ s=gluon?_upperleft2_ --output-path HFTD_PDF_HERA_SPLIT_19_gluon.png --zorder exp:1 model:2 par:3", 
-    "ax_hlines": [], 
-    "ax_texts": [
-        "_cmsp_", 
-        "_8tev_", 
-        "s=$Q^2=1.9\\,\\mathrm{GeV}^2$?_upperleft_", 
-        "s=gluon?_upperleft2_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "PDFModule"
-    ], 
     "input_pdfsets": [
         [
             "exp", 
@@ -49,12 +31,56 @@
             }
         ]
     ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "$xf(x)$", 
+    "ax_texts": [
+        "_cmsp_", 
+        "_8tev_", 
+        "s=$Q^2=1.9\\,\\mathrm{GeV}^2$?_upperleft_", 
+        "s=gluon?_upperleft2_"
+    ], 
     "load_config": [
         "configs/HFTD_PDF_HERA_SPLIT_19_gluon.json"
     ], 
+    "ax_hlines": [], 
+    "ratio_copy": [
+        [
+            "exp", 
+            "exp"
+        ]
+    ], 
+    "print_config": false, 
+    "add_subplot": true, 
+    "list_modules": false, 
     "log_level": "info", 
+    "y_lims": [
+        "0.0", 
+        "5.0"
+    ], 
+    "x_label": "$x$", 
+    "legend_loc": "best", 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "1E-4", 
+        "1.0"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py --input-modules PDFModule --input-pdfsets exp:pdfset=HFTD_HERA_V003_EIG?flavour=21?q=1.378 model:pdfset=HFTD_HERA_V003_VAR?flavour=21?q=1.378?errortype=eig?start_member=1?end_member=9 par:pdfset=HFTD_HERA_V003_VAR?flavour=21?q=1.378?errortype=envelope?start_member=10?end_member=18 --x-log True --x-lims 1E-4 1.0 --y-lims 0.0 5.0 --style exp:band model:band par:band --label exp:Exp 'model:Model Unc.' 'par:Par unc.' --add-subplot True --ana-modules Ratio --ratio-copy exp:exp --axis ratio_exp_to_exp:ax1 --y-subplot-lims 0.81 1.19 --color exp:yellow model:red par:green --x-label $x$ --y-label $xf(x)$ --ax-texts _cmsp_ _8tev_ s=$Q^2=1.9\\,\\mathrm{GeV}^2$?_upperleft_ s=gluon?_upperleft2_ --output-path HFTD_PDF_HERA_SPLIT_19_gluon.png --zorder exp:1 model:2 par:3", 
+    "y_subplot_lims": [
+        "0.81", 
+        "1.19"
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -74,11 +100,8 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "exp": {
-            "color": "yellow", 
-            "label": "Exp", 
-            "style": "band", 
-            "zorder": 1.0
+        "ratio_exp_to_exp": {
+            "axis": "ax1"
         }, 
         "model": {
             "color": "red", 
@@ -86,55 +109,33 @@
             "style": "band", 
             "zorder": 2.0
         }, 
+        "exp": {
+            "color": "yellow", 
+            "label": "Exp", 
+            "style": "band", 
+            "zorder": 1.0
+        }, 
         "par": {
             "color": "green", 
             "label": "Par unc.", 
             "style": "band", 
             "zorder": 3.0
-        }, 
-        "ratio_exp_to_exp": {
-            "axis": "ax1"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "HFTD_PDF_HERA_SPLIT_19_gluon.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
+    "z_log": false, 
     "ratio": [], 
-    "ratio_copy": [
-        [
-            "exp", 
-            "exp"
-        ]
-    ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "$x$", 
-    "x_lims": [
-        "1E-4", 
-        "1.0"
-    ], 
-    "x_log": true, 
-    "y_label": "$xf(x)$", 
-    "y_lims": [
-        "0.0", 
-        "5.0"
-    ], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        "0.81", 
-        "1.19"
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "HFTD_PDF_HERA_SPLIT_19_gluon.png", 
+    "x_log": true, 
+    "input_modules": [
+        "PDFModule"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

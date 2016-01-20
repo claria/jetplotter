@@ -61,13 +61,13 @@
         }
     ], 
     "ratio_copy": [], 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
     "y_subplot_label": "", 
     "x_label": "_ptavg_", 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "y_log": false, 
     "x_lims": [
         "133.", 

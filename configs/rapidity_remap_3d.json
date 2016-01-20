@@ -1,60 +1,4 @@
 {
-    "add_subplot": false, 
-    "ana_modules": [
-        "Project3DProfile", 
-        "RemapRapidity2D"
-    ], 
-    "argv": "./plot.py -i res:~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoY --ana-modules Project3DProfile RemapRapidity2D --project3dprofile res:option=xy --output-modules RootOutputModule PlotModule --y-label 'Gen y' --x-label 'Reco y' --x-err res:True --remap res --output-path rapidity_remap_3d.png --style res:heatmap tg_res:heatmap --plot-id asdf", 
-    "ax_hlines": [], 
-    "ax_texts": [], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
-    "load_config": [], 
-    "log_level": "info", 
-    "objects": {
-        "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "fill": true, 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "rasterized": true, 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "res": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoY", 
-            "style": "heatmap", 
-            "x_err": true
-        }, 
-        "tg_res": {
-            "style": "heatmap"
-        }
-    }, 
-    "output_modules": [
-        "RootOutputModule", 
-        "PlotModule"
-    ], 
-    "output_path": "rapidity_remap_3d.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "asdf"
-    ], 
-    "print_config": false, 
     "project3dprofile": [
         [
             "res", 
@@ -63,33 +7,90 @@
             }
         ]
     ], 
-    "remap": [
-        "res"
+    "plot_id": [
+        "asdf"
     ], 
-    "root_output": null, 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "Reco y", 
-    "x_lims": [
-        null, 
-        null
-    ], 
-    "x_log": false, 
     "y_label": "Gen y", 
+    "ax_texts": [], 
+    "load_config": [], 
+    "ax_hlines": [], 
+    "root_output": null, 
+    "legend_loc": "best", 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "log_level": "info", 
     "y_lims": [
         null, 
         null
     ], 
+    "x_label": "Reco y", 
+    "print_config": false, 
     "y_log": false, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
+    "remap": [
+        "res"
+    ], 
+    "x_lims": [
         null, 
         null
     ], 
-    "z_label": "", 
     "z_lims": [
         null, 
         null
     ], 
-    "z_log": false
+    "argv": "./plot.py -i res:~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoY --ana-modules Project3DProfile RemapRapidity2D --project3dprofile res:option=xy --output-modules RootOutputModule PlotModule --y-label 'Gen y' --x-label 'Reco y' --x-err res:True --remap res --output-path rapidity_remap_3d.png --style res:heatmap tg_res:heatmap --plot-id asdf", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
+    "objects": {
+        "res": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoY", 
+            "style": "heatmap", 
+            "x_err": true
+        }, 
+        "tg_res": {
+            "style": "heatmap"
+        }, 
+        "_default": {
+            "edgecolor": "auto", 
+            "style": "errorbar", 
+            "rasterized": true, 
+            "capsize": 0, 
+            "x_err": true, 
+            "color": "auto", 
+            "y_err": true, 
+            "label": "__nolegend__", 
+            "step": false, 
+            "cmap": "viridis", 
+            "zorder": 1.0, 
+            "marker": ".", 
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "linestyle": "", 
+            "fill": true
+        }
+    }, 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "output_modules": [
+        "RootOutputModule", 
+        "PlotModule"
+    ], 
+    "store_json": true, 
+    "ana_modules": [
+        "Project3DProfile", 
+        "RemapRapidity2D"
+    ], 
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "rapidity_remap_3d.png", 
+    "z_label": "", 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "margin": 0.0, 
+    "x_log": false
 }

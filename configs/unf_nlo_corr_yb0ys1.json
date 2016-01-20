@@ -1,19 +1,40 @@
 {
-    "add_subplot": false, 
     "ana_modules": [], 
-    "argv": "./plotter.py -i corr:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/corr_h_ptavg --style corr:heatmap --cmap corr:seismic --z-lims -1.0 1.0 --x-label Reco _ptavg_ --y-label Gen _ptavg_ --z-label Correlation Factor --ax-texts _yb0ys1_?_upperleft_ --x-log True --y-log True --x-lims 74. 3000. --y-lims 74. 3000. --output-path unf_nlo_corr_yb0ys1.png", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "_ptavg_", 
     "ax_texts": [
         "_yb0ys1_?_upperleft_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "best", 
+    "show_legend": true, 
+    "ax_hlines": [], 
+    "print_config": false, 
+    "add_subplot": false, 
     "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        "_yb0ys1_xmin_", 
+        "_yb0ys1_xmax_"
+    ], 
+    "x_label": "_ptavg_", 
+    "legend_loc": "best", 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "_yb0ys1_xmin_", 
+        "_yb0ys1_xmax_"
+    ], 
+    "z_lims": [
+        "-1.0", 
+        "1.0"
+    ], 
+    "argv": "./plotter.py -i corr:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys1/corr_h_ptavg --style corr:heatmap --cmap corr:seismic --z-lims -1.0 1.0 --x-label Reco _ptavg_ --y-label Gen _ptavg_ --z-label Correlation Factor --ax-texts _yb0ys1_?_upperleft_ --x-log True --y-log True --x-lims 74. 3000. --y-lims 74. 3000. --output-path unf_nlo_corr_yb0ys1.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -30,7 +51,9 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "corr": {
             "alpha": 1.0, 
@@ -51,14 +74,18 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": true, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "load_config": [
+        "configs/unf_nlo_corr_yb0ys1.json"
     ], 
-    "output_path": "unf_nlo_corr_yb0ys1.png", 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "unf_nlo_corr_yb0ys1.png", 
+    "x_log": true, 
     "provided_args": [
         "input", 
         "cmap", 
@@ -74,29 +101,9 @@
         "z_label", 
         "ax_texts"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "Reco _ptavg_", 
-    "x_lims": [
-        "74.", 
-        "3000."
+    "input_modules": [
+        "RootModule"
     ], 
-    "x_log": true, 
-    "y_label": "Gen _ptavg_", 
-    "y_lims": [
-        "74.", 
-        "3000."
-    ], 
-    "y_log": true, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "Correlation Factor", 
-    "z_lims": [
-        "-1.0", 
-        "1.0"
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": "Correlation Factor"
 }

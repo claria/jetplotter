@@ -1,26 +1,4 @@
 {
-    "add_subplot": false, 
-    "ana_modules": [
-        "Normalize", 
-        "Multiply", 
-        "Ratio", 
-        "ToTGraph", 
-        "ReBinning"
-    ], 
-    "argv": "./plotter.py -l plots/ratio_to_data.json", 
-    "ax_hlines": [
-        {
-            "color": "black", 
-            "y": 1.0
-        }
-    ], 
-    "ax_texts": [
-        "_yb0ys2_?_upperleft_", 
-        "_cmsp_", 
-        "_20fb_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
     "data_lims": [
         [
             "dataunf", 
@@ -51,29 +29,40 @@
             }
         ]
     ], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "to_tgraph": [
+        "_data", 
+        "dataunf", 
+        "nlonnpdf30", 
+        "nlommht2014", 
+        "nloct14"
     ], 
-    "legend_loc": "upper right", 
-    "list_modules": false, 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Ratio to CT14?_center_", 
+    "ax_texts": [
+        "_yb0ys2_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
     "load_config": [
         "configs/ratio_to_Ct10nlo+np_pdfcomp_yb0ys2.json"
     ], 
+    "ax_hlines": [
+        {
+            "color": "black", 
+            "y": 1.0
+        }
+    ], 
+    "ratio_copy": [], 
+    "legend_loc": "upper right", 
+    "add_subplot": false, 
+    "list_modules": false, 
     "log_level": "info", 
-    "multiply": [
-        [
-            "nloct14", 
-            "_np"
-        ], 
-        [
-            "nlommht2014", 
-            "_np"
-        ], 
-        [
-            "nlonnpdf30", 
-            "_np"
-        ]
+    "y_subplot_label": "", 
+    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
     ], 
     "normalize": [
         [
@@ -85,7 +74,20 @@
             "width"
         ]
     ], 
-    "object_paths": null, 
+    "x_lims": [
+        "133.", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -l plots/ratio_to_data.json", 
+    "y_lims": [
+        "0.0", 
+        "2.0"
+    ], 
+    "fig_size": null, 
     "objects": {
         "_data": {
             "alpha": 1.0, 
@@ -203,17 +205,20 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "ratio_to_Ct10nlo+np_pdfcomp_yb0ys2.png", 
-    "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
-    "provided_args": [
-        "help", 
-        "output_path"
+    "z_log": false, 
+    "multiply": [
+        [
+            "nloct14", 
+            "_np"
+        ], 
+        [
+            "nlommht2014", 
+            "_np"
+        ], 
+        [
+            "nlonnpdf30", 
+            "_np"
+        ]
     ], 
     "ratio": [
         [
@@ -237,37 +242,33 @@
             "nloct14"
         ]
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "to_tgraph": [
-        "_data", 
-        "dataunf", 
-        "nlonnpdf30", 
-        "nlommht2014", 
-        "nloct14"
-    ], 
-    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
-    "x_lims": [
-        "133.", 
-        "3000."
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio to CT14?_center_", 
-    "y_lims": [
-        "0.0", 
-        "2.0"
-    ], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
-    "y_subplot_label": "", 
+    "store_json": true, 
     "y_subplot_lims": [
         null, 
         null
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "ana_modules": [
+        "Normalize", 
+        "Multiply", 
+        "Ratio", 
+        "ToTGraph", 
+        "ReBinning"
     ], 
-    "z_log": false
+    "show_legend": true, 
+    "object_paths": null, 
+    "output_prefix": "plots/", 
+    "output_path": "ratio_to_Ct10nlo+np_pdfcomp_yb0ys2.png", 
+    "x_log": true, 
+    "provided_args": [
+        "help", 
+        "output_path"
+    ], 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "margin": 0.1, 
+    "z_label": ""
 }
