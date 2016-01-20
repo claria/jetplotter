@@ -1,27 +1,48 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plot.py -i recocuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg gencuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_ptavg --label 'recocuts:Reco selection' 'gencuts:Gen Selection' --ana-modules Ratio --ratio recocuts:gencuts gencuts:gencuts --x-lims _yb0ys0_xmin_ _yb0ys0_xmax_ --x-log True --y-lims 0.9 1.1 --x-label _ptavg_ --y-label 'Ratio selection vs Gen' --ax-texts _cmsp_ _8tev_ _yb0ys0_?_upperleft_ --legend-loc 'upper right' --output-path reco_vs_gen_selection_yb0ys0.png", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "Ratio selection vs Gen", 
     "ax_texts": [
         "_cmsp_", 
         "_8tev_", 
         "_yb0ys0_?_upperleft_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "upper right", 
-    "list_modules": false, 
     "load_config": [
         "configs/reco_vs_gen_selection_yb0ys0.json"
     ], 
+    "ax_hlines": [], 
+    "ratio_copy": [], 
+    "print_config": false, 
+    "add_subplot": false, 
+    "list_modules": false, 
     "log_level": "info", 
+    "y_lims": [
+        "0.9", 
+        "1.1"
+    ], 
+    "x_label": "_ptavg_", 
+    "legend_loc": "upper right", 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "_yb0ys0_xmin_", 
+        "_yb0ys0_xmax_"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i recocuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys0/h_ptavg gencuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_ptavg --label 'recocuts:Reco selection' 'gencuts:Gen Selection' --ana-modules Ratio --ratio recocuts:gencuts gencuts:gencuts --x-lims _yb0ys0_xmin_ _yb0ys0_xmax_ --x-log True --y-lims 0.9 1.1 --x-label _ptavg_ --y-label 'Ratio selection vs Gen' --ax-texts _cmsp_ _8tev_ _yb0ys0_?_upperleft_ --legend-loc 'upper right' --output-path reco_vs_gen_selection_yb0ys0.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -50,15 +71,7 @@
             "label": "Reco selection"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "reco_vs_gen_selection_yb0ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
+    "z_log": false, 
     "ratio": [
         [
             "recocuts", 
@@ -69,30 +82,18 @@
             "gencuts"
         ]
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "_yb0ys0_xmin_", 
-        "_yb0ys0_xmax_"
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio selection vs Gen", 
-    "y_lims": [
-        "0.9", 
-        "1.1"
-    ], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "reco_vs_gen_selection_yb0ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

@@ -9,14 +9,14 @@
     "ax_texts": [
         "_cmsp_", 
         "_8tev_", 
-        "_yb0ys1_?_upperleft_"
+        "_yb1ys0_?_upperleft_"
     ], 
     "load_config": [
-        "configs/reco_vs_gen_selection_yb0ys1.json"
+        "configs/reco_vs_gen_selection_yb1ys0.json"
     ], 
     "ax_hlines": [], 
     "ratio_copy": [], 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -24,20 +24,20 @@
         "0.9", 
         "1.1"
     ], 
-    "x_label": "_ptavg_", 
-    "legend_loc": "upper right", 
+    "x_label": "_genptavg_", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 
     "x_lims": [
-        "_yb0ys1_xmin_", 
-        "_yb0ys1_xmax_"
+        "_yb1ys0_xmin_", 
+        "_yb1ys0_xmax_"
     ], 
     "z_lims": [
         null, 
         null
     ], 
-    "argv": "./plot.py -i recocuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_ptavg gencuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys1/h_ptavg --label 'recocuts:Reco selection' 'gencuts:Gen Selection' --ana-modules Ratio --ratio recocuts:gencuts gencuts:gencuts --x-lims _yb0ys1_xmin_ _yb0ys1_xmax_ --x-log True --y-lims 0.9 1.1 --x-label _ptavg_ --y-label 'Ratio selection vs Gen' --ax-texts _cmsp_ _8tev_ _yb0ys1_?_upperleft_ --legend-loc 'upper right' --output-path reco_vs_gen_selection_yb0ys1.png", 
+    "argv": "./plot.py -i recocuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys0/h_ptavg gencuts:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb1ys0/h_ptavg --label 'recocuts:Reco selection' 'gencuts:Gen Selection' --ana-modules Ratio --ratio recocuts:gencuts gencuts:gencuts --x-lims _yb1ys0_xmin_ _yb1ys0_xmax_ --x-log True --y-lims 0.9 1.1 --x-label _ptavg_ --y-label 'Ratio selection vs Gen' --ax-texts _cmsp_ _8tev_ _yb1ys0_?_upperleft_ --legend-loc 'upper right' --output-path reco_vs_gen_selection_yb1ys0.png", 
     "y_subplot_lims": [
         null, 
         null
@@ -63,11 +63,11 @@
             "zorder": 1.0
         }, 
         "gencuts": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys1/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb1ys0/h_genptavg", 
             "label": "Gen Selection"
         }, 
         "recocuts": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys0/h_genptavg", 
             "label": "Reco selection"
         }
     }, 
@@ -89,7 +89,7 @@
     "y_subplot_label": "", 
     "show_legend": true, 
     "output_prefix": "plots/", 
-    "output_path": "reco_vs_gen_selection_yb0ys1.png", 
+    "output_path": "reco_vs_gen_selection_genpt_yb1ys0.png", 
     "x_log": true, 
     "input_modules": [
         "RootModule"
