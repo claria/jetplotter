@@ -48,6 +48,21 @@ lookup_dict = {
         '_yb1ys1_xmax_' : 686.,
         '_yb2ys0_xmax_' : 430.,
     },
+    'y_lims': {
+        '_yb0ys0_xmin_' : 133.,
+        '_yb0ys1_xmin_' : 133.,
+        '_yb0ys2_xmin_' : 133.,
+        '_yb1ys0_xmin_' : 133.,
+        '_yb1ys1_xmin_' : 133.,
+        '_yb2ys0_xmin_' : 133.,
+        '_yb0ys0_xmax_' : 1784.,
+        '_yb0ys1_xmax_' : 1248.,
+        '_yb0ys2_xmax_' : 548.,
+        '_yb1ys0_xmax_' : 1032.,
+        '_yb1ys1_xmax_' : 686.,
+        '_yb2ys0_xmax_' : 430.,
+    },
+
     'data_lims': {
         '_yb0ys0_xmin_' : 133.,
         '_yb0ys1_xmin_' : 133.,
@@ -76,14 +91,12 @@ lookup_dict = {
         '_yb1ys1_xmax_' : 686.,
         '_yb2ys0_xmax_' : 430.,
     },
-
-    'y_lims': {},
     'ax_texts': {
         '_cms_': 's=CMS|x=0.0|y=1.01|va=bottom|ha=left',
         '_cmsp_': 's=CMS Preliminary|x=0.0|y=1.01|va=bottom|ha=left',
         '_cmss_': 's=CMS Simulation|x=0.0|y=1.01|va=bottom|ha=left',
         '_20fb_': 's=$19.7\\,\mathrm{fb}^{-1}$ (8TeV)|x=1.0|y=1.01|va=bottom|ha=right',
-        '_8tev_': 's=(8 TeV)|x=1.0|y=1.01|va=bottom|ha=right',
+        '_8tev_': 's=8 TeV|x=1.0|y=1.01|va=bottom|ha=right',
         '_yb0ys0_': 's=$0.0 \leq \, y_b < 1.0$\n$0.0 \leq \, y^* < 1.0$',
         '_yb1ys0_': 's=$1.0 \leq \, y_b < 2.0$\n$0.0 \leq \, y^* < 1.0$',
         '_yb2ys0_': 's=$2.0 \leq \, y_b < 3.0$\n$0.0 \leq \, y^* < 1.0$',
