@@ -37,6 +37,7 @@ def get_config():
                 'alpha' : 0.7,
                 'step' : 'True',
                 'label' : 'CT14 (NLO)',
+                "zorder": 1.0,
                 }
         config['objects']['ratio_mmht2014nlo_xs_to_ct14nlo_xs'] = {
                 'axis' : 'ax',
@@ -44,6 +45,7 @@ def get_config():
                 'style' : 'line',
                 'step' : 'True',
                 'label' : 'MMHT2014 (NLO)',
+                "zorder": 2.0,
                 }
         config['objects']['ratio_nnpdf30nlo_xs_to_ct14nlo_xs'] = {
                 'axis' : 'ax',
@@ -51,6 +53,7 @@ def get_config():
                 'style' : 'line',
                 'step' : 'True',
                 'label' : 'NNPDF30 (NLO)',
+                "zorder": 2.0,
                 }
 
         config['objects']['ratio_hw7_to_ct14nlo_xs'] = {
@@ -62,6 +65,7 @@ def get_config():
                 "x_err": True, 
                 "y_err": True, 
                 'label' : 'HW7 (NLO+PS)',
+                "zorder": 2.0,
                 }
 
         config['objects']['ratio_dataunf_to_ct14nlo_xs'] = {
@@ -79,13 +83,13 @@ def get_config():
                 "style": "errorbar", 
                 "x_err": True, 
                 "y_err": True, 
-                "zorder": 1.0
+                "zorder": 3.0,
                 }
 
 
         config['objects']['ct14nlo_xs'] = {
                 # 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
-                "input_tgraph": "/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_pdfunc_u", 
+                "input_tgraph": "/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_pdfunc_u".format(rap_bin), 
                 'color' : '_color1_',
                 'style' : 'line',
                 'step' : 'True',
@@ -141,6 +145,7 @@ def get_config():
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["x_label"] = "_ptavg_"
+        config["legend_loc"] = "upper right"
         config["y_label"] = "Ratio to CT14 (NLO)?_center_"
         config["plot_id"] = ["ratio*"]
         config["ax_hlines"] = [
