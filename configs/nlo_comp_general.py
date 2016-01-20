@@ -17,8 +17,8 @@ def get_config():
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)})]
         config['ratio_copy'] = [
                                 ('ct14nlo_xs','ct14nlo_xs'),
-                                ('mmht2014_xs','ct14nlo_xs'),
-                                ('nnpdf30_xs','ct14nlo_xs'),
+                                ('mmht2014nlo_xs','ct14nlo_xs'),
+                                ('nnpdf30nlo_xs','ct14nlo_xs'),
                                 ('hw7','ct14nlo_xs'),
                                 ('dataunf','ct14nlo_xs'),
                                 ]
@@ -33,7 +33,8 @@ def get_config():
         config['objects']['ratio_ct14nlo_xs_to_ct14nlo_xs'] = {
                 'axis' : 'ax',
                 'color' : '_color1_',
-                'style' : 'line',
+                'style' : 'band',
+                'alpha' : 0.7,
                 'step' : 'True',
                 'label' : 'CT14 (NLO)',
                 }
@@ -60,8 +61,9 @@ def get_config():
                 "style": "errorbar", 
                 "x_err": True, 
                 "y_err": True, 
-
+                'label' : 'HW7 (NLO+PS)',
                 }
+
         config['objects']['ratio_dataunf_to_ct14nlo_xs'] = {
                 'axis' : 'ax',
                 "alpha": 1.0, 
@@ -82,7 +84,8 @@ def get_config():
 
 
         config['objects']['ct14nlo_xs'] = {
-                'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
+                # 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
+                "input_tgraph": "/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_pdfunc_u", 
                 'color' : '_color1_',
                 'style' : 'line',
                 'step' : 'True',
@@ -109,7 +112,7 @@ def get_config():
                 'style' : 'line',
                 'yerr' : True,
                 'step' : 'True',
-                'label' : 'HW7 - NLO+PS',
+                'label' : 'HW7 (NLO+PS)',
                 }
         config['objects']['_np'] = {
             "input": "~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor".format(rap_bin)
@@ -134,21 +137,19 @@ def get_config():
         }
 
         config["y_subplot_lims"] = [0.5, 1.5]
-        config["y_lims"] = [1E-5, 1E5]
-        config['y_log'] = True
+        config["y_lims"] = [0.5, 1.5]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Cross Section (pb/GeV)"
-        config["y_subplot_label"] = "Ratio"
-        config["add_subplot"] = True
+        config["y_label"] = "Ratio to CT14 (NLO)?_center_"
         config["plot_id"] = ["ratio*"]
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--', 'axis' : 'ax'}
                 ]
         config["ax_texts"] = ["_{0}_?_upperleft_".format(rap_bin), 
-                              '_8tev_',
-                              's=Ratio to $\mu=p_{\mathrm{T,avg}}\cdot e^{(0.3y^*)}$?_bottomleft_?axis=ax'] 
+                              '_20fb_',
+                              # 's=Ratio to $\mu=p_{\mathrm{T,avg}}\cdot e^{(0.3y^*)}$?_bottomleft_?axis=ax'
+                              ] 
 
         config["output_path"] = 'nlo_comp_general_{0}.png'.format(rap_bin)
         configs.append(config)
