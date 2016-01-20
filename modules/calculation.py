@@ -13,13 +13,11 @@ class Multiply(BaseModule):
         self.arg_group.add_argument('--multiply', nargs='+', type='str2kvstr', help='')
 
     def __call__(self, config):
-        print config.keys()
         for id, val in config['multiply']:
             if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             if val in config['objects']:
-                # Normalize to another object
-                print id, val
+                print 'Multiplying {0} with {1}'.format(id, val)
                 config['objects'][id]['obj'] = multiply(config['objects'][id]['obj'], config['objects'][val]['obj'])
             elif isfloat(val):
                 # Normalize/Scale by an factor
@@ -50,6 +48,7 @@ def multiply(obj, with_obj):
             tmp_x, tmp_y = ROOT.Double(0), ROOT.Double(0)
             with_obj.GetPoint(i, tmp_x, tmp_y)
             mult_vals[i] = tmp_y
+            print tmp_x, tmp_y
 
     if isinstance(obj, ROOT.TH1):
         for i in xrange(1, obj.GetNbinsX() + 1):

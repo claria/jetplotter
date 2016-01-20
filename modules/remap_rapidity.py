@@ -47,9 +47,8 @@ class RemapRapidity2D(BaseModule):
             obj = config['objects'][id]['obj']
 
             nbins = obj.GetNbinsX() * obj.GetNbinsY()
-
-            tg_orig = ROOT.TGraph2DErrors(nbins)
-            ROOT.SetOwnership(tg_orig, 0)
+            h2_new = obj.ProjectionXY()
+            ROOT.SetOwnership(h2_new, 0)
 
 #             for i in xrange(tg_orig.GetN()):
 #                 origX, origY = ROOT.Double(0), ROOT.Double(0)
@@ -62,15 +61,14 @@ class RemapRapidity2D(BaseModule):
             for x in xrange(1, obj.GetNbinsX() + 1):
                 for y in xrange(1, obj.GetNbinsY() + 1):
                     xval = obj.GetXaxis().GetBinCenter(x)
-                    yval = obj.GetYaxis().GetBinCenter(y) + obj.GetBinContent(x,y)
-                    zval = obj.GetYaxis().GetBinCenter(y)
+                    print 'a', obj.GetBinContent(x,y)
+                    yval = obj.GetYaxis().GetBinCenter(y)
+                    zval = obj.GetBinContent(x,y)
 
-                    tg_orig.SetPoint(tg_orig.GetN(), xval, yval, zval)
+                    # h2_new.SetPoint(h2_new.GetN(), xval, yval, zval)
+                    i = h2_new.FindBin(xval, yval)
+                    print xval, yval, zval
+                    h2_new.SetBinContent(i, zval)
+                    h2_new.SetBinError(i, 0.)
 
-            # config['objects']['_tg_{0}'.format(id)] = {}
-
-            histo2d = tg_orig.GetHistogram().Clone('hallo')
-            ROOT.SetOwnership(histo2d, 0)
-            print histo2d
-            # config['objects']['_tg_{0}'.format(id)]['obj'] = tg_orig
-            config['objects'][id]['obj'] = tg_orig
+            config['objects'][id]['obj'] = h2_new

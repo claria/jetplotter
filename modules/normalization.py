@@ -24,26 +24,28 @@ class Ratio(BaseModule):
                                          'and creates a new item ratio_id for the ratio.')
 
     def __call__(self, config):
-        for id, to in config['ratio']:
-            log.debug('Calculating ratio of {0} to {1}'.format(id, to))
-            if id not in config['objects']:
-                raise ValueError('Requested id {} not found.'.format(id))
-            if to not in config['objects']:
-                raise ValueError('Requested id {} not found.'.format(to))
-            obj = config['objects'][id]['obj']
-            to_obj = config['objects'][to]['obj']
-            config['objects'][id]['obj'] = calc_ratio(obj, to_obj)
-        for id, to in config.get('ratio_copy', []):
-            log.debug('Calculating ratio of {0} to {1}'.format(id, to))
-            if id not in config['objects']:
-                raise ValueError('Requested id {} not found.'.format(id))
-            if to not in config['objects']:
-                raise ValueError('Requested id {} not found.'.format(to))
-            obj = config['objects'][id]['obj']
-            to_obj = config['objects'][to]['obj']
-            new_id = 'ratio_{0}_to_{1}'.format(id, to)
-            config['objects'].setdefault(new_id, {})
-            config['objects'][new_id]['obj'] = calc_ratio(obj, to_obj)
+        if 'ratio' in config.keys():
+            for id, to in config['ratio']:
+                log.debug('Calculating ratio of {0} to {1}'.format(id, to))
+                if id not in config['objects']:
+                    raise ValueError('Requested id {} not found.'.format(id))
+                if to not in config['objects']:
+                    raise ValueError('Requested id {} not found.'.format(to))
+                obj = config['objects'][id]['obj']
+                to_obj = config['objects'][to]['obj']
+                config['objects'][id]['obj'] = calc_ratio(obj, to_obj)
+        if 'ratio_copy' in config.keys():
+            for id, to in config.get('ratio_copy', []):
+                log.debug('Calculating ratio of {0} to {1}'.format(id, to))
+                if id not in config['objects']:
+                    raise ValueError('Requested id {} not found.'.format(id))
+                if to not in config['objects']:
+                    raise ValueError('Requested id {} not found.'.format(to))
+                obj = config['objects'][id]['obj']
+                to_obj = config['objects'][to]['obj']
+                new_id = 'ratio_{0}_to_{1}'.format(id, to)
+                config['objects'].setdefault(new_id, {})
+                config['objects'][new_id]['obj'] = calc_ratio(obj, to_obj)
 
 
 def calc_ratio(obj, to_obj):
