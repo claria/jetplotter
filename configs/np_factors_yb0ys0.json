@@ -1,23 +1,121 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio", 
         "FitObj"
     ], 
-    "argv": "./plotter.py -i qcdp8mpihad:~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg _qcdp8nompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg _hwppnompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg hwppmpihad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg --ratio qcdp8mpihad:_qcdp8nompinohad hwppmpihad:_hwppnompinohad --ana-modules Ratio FitObj --label qcdp8mpihad:P8 hwppmpihad:HW++ --y-lims 0.5 1.4 --x-lims 50. 3000. --x-log True --fit-obj qcdp8mpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} hwppmpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} --color qcdp8mpihad:_color0_ fit_qcdp8mpihad:_color0_ hwppmpihad:_color1_ fit_hwppmpihad:_color1_ qcdp6mpihad:_color2_ --output-path np_factors_yb0ys0 --style fit_qcdp8mpihad:band fit_hwppmpihad:band fit_qcdp6mpihad:band --ax-texts _cmsp_ _yb0ys0_?_upperleft_ --x-label _ptavg_ --y-label NP Correction", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "NP Correction", 
+    "ax_texts": [
+        "_cmsp_", 
+        "_yb0ys0_?_upperleft_"
+    ], 
+    "show_legend": true, 
     "ax_hlines": [
         {
             "color": "black", 
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "_cmsp_", 
-        "_yb0ys0_?_upperleft_"
+    "ratio_copy": [], 
+    "legend_loc": "best", 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "ratio": [
+        [
+            "qcdp8mpihad", 
+            "_qcdp8nompinohad"
+        ], 
+        [
+            "hwppmpihad", 
+            "_hwppnompinohad"
+        ]
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
+    "y_lims": [
+        "0.9", 
+        "1.4"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i qcdp8mpihad:~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg _qcdp8nompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg _hwppnompinohad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg hwppmpihad:~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg --ratio qcdp8mpihad:_qcdp8nompinohad hwppmpihad:_hwppnompinohad --ana-modules Ratio FitObj --label qcdp8mpihad:P8 hwppmpihad:HW++ --y-lims 0.5 1.4 --x-lims 50. 3000. --x-log True --fit-obj qcdp8mpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} hwppmpihad:{\"fcn\":\"[0] + [1]/x**[2]\", \"fcn_0\":[1.0,1.0,1.0], \"options\":\"I\"} --color qcdp8mpihad:_color0_ fit_qcdp8mpihad:_color0_ hwppmpihad:_color1_ fit_hwppmpihad:_color1_ qcdp6mpihad:_color2_ --output-path np_factors_yb0ys0 --style fit_qcdp8mpihad:band fit_hwppmpihad:band fit_qcdp6mpihad:band --ax-texts _cmsp_ _yb0ys0_?_upperleft_ --x-label _ptavg_ --y-label NP Correction", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
     "fig_size": null, 
+    "objects": {
+        "qcdp6mpihad": {
+            "color": "_color2_"
+        }, 
+        "qcdp8mpihad": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "P8"
+        }, 
+        "_qcdp8nompinohad": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg"
+        }, 
+        "_hwppnompinohad": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg"
+        }, 
+        "hwppmpihad": {
+            "color": "_color1_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
+            "label": "HW++"
+        }, 
+        "fit_qcdp6mpihad": {
+            "style": "band"
+        }, 
+        "fit_qcdp8mpihad": {
+            "color": "_color0_", 
+            "style": "band"
+        }, 
+        "fit_hwppmpihad": {
+            "color": "_color1_", 
+            "style": "band"
+        }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
+        }
+    }, 
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "load_config": [
+        "configs/np_factors_yb0ys0.json"
+    ], 
     "fit_obj": [
         [
             "qcdp8mpihad", 
@@ -44,69 +142,9 @@
             }
         ]
     ], 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
-    "objects": {
-        "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "_hwppnompinohad": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg"
-        }, 
-        "_qcdp8nompinohad": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_NOMPINOHAD.root?gen_yb0ys0/h_genptavg"
-        }, 
-        "fit_hwppmpihad": {
-            "color": "_color1_", 
-            "style": "band"
-        }, 
-        "fit_qcdp6mpihad": {
-            "style": "band"
-        }, 
-        "fit_qcdp8mpihad": {
-            "color": "_color0_", 
-            "style": "band"
-        }, 
-        "hwppmpihad": {
-            "color": "_color1_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/HWPP_EE5C_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
-            "label": "HW++"
-        }, 
-        "qcdp6mpihad": {
-            "color": "_color2_"
-        }, 
-        "qcdp8mpihad": {
-            "color": "_color0_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/P8_CUETP8S1_FLAT_MPIHAD.root?gen_yb0ys0/h_genptavg", 
-            "label": "P8"
-        }
-    }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "np_factors_yb0ys0", 
     "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
+    "output_path": "np_factors_yb0ys0", 
+    "x_log": true, 
     "provided_args": [
         "ana_modules", 
         "input", 
@@ -123,40 +161,9 @@
         "y_label", 
         "ax_texts"
     ], 
-    "ratio": [
-        [
-            "qcdp8mpihad", 
-            "_qcdp8nompinohad"
-        ], 
-        [
-            "hwppmpihad", 
-            "_hwppnompinohad"
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "50.", 
-        "3000."
-    ], 
-    "x_log": true, 
-    "y_label": "NP Correction", 
-    "y_lims": [
-        "0.9", 
-        "1.4"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

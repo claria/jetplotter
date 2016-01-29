@@ -1,82 +1,24 @@
 {
-    "add": [
-        [
-            "_sum", 
-            "qq,qg,gg"
-        ]
-    ], 
-    "add_subplot": false, 
     "ana_modules": [
         "Add", 
         "Ratio", 
         "Stack"
     ], 
-    "argv": "./plot.py -i gg:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_gg qg:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_qg qq:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_qq --ana-modules Add Ratio Stack --stack qq qg gg --add _sum:qq,qg,gg --ratio qq:_sum qg:_sum gg:_sum --y-err qq:False qg:False gg:False --style gg:histo qg:histo qq:histo --label gg:gg qg:qg qq:qq --zorder gq:1 qg:2 qq:3 --x-lims 133. 1780 --x-log True --ax-texts _yb0ys1_?_upperleft_ _cmsp_ _8tev_ --x-label _ptavg_ --y-label Fraction --y-lims 0.0 1.0 --output-path subprocess_fraction_yb0ys1.png --output-modules PlotModule CopyToWebModule", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "Fraction", 
     "ax_texts": [
         "_yb0ys1_?_upperleft_", 
         "_cmsp_", 
         "_8tev_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "show_legend": true, 
+    "ax_hlines": [], 
+    "ratio_copy": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
-    "objects": {
-        "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "gg": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_gg", 
-            "label": "gg", 
-            "style": "histo", 
-            "y_err": false
-        }, 
-        "gq": {
-            "zorder": 1.0
-        }, 
-        "qg": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_qg", 
-            "label": "qg", 
-            "style": "histo", 
-            "y_err": false, 
-            "zorder": 2.0
-        }, 
-        "qq": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_qq", 
-            "label": "qq", 
-            "style": "histo", 
-            "y_err": false, 
-            "zorder": 3.0
-        }
-    }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "subprocess_fraction_yb0ys1.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
     "ratio": [
         [
             "qq", 
@@ -91,35 +33,100 @@
             "_sum"
         ]
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
+    "y_lims": [
+        "0.0", 
+        "1.0"
+    ], 
+    "x_label": "_ptavg_", 
+    "add": [
+        [
+            "_sum", 
+            "qq,qg,gg"
+        ]
+    ], 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "133.", 
+        "1780"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i gg:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_gg qg:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_qg qq:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_qq --ana-modules Add Ratio Stack --stack qq qg gg --add _sum:qq,qg,gg --ratio qq:_sum qg:_sum gg:_sum --y-err qq:False qg:False gg:False --style gg:histo qg:histo qq:histo --label gg:gg qg:qg qq:qq --zorder gq:1 qg:2 qq:3 --x-lims 133. 1780 --x-log True --ax-texts _yb0ys1_?_upperleft_ _cmsp_ _8tev_ --x-label _ptavg_ --y-label Fraction --y-lims 0.0 1.0 --output-path subprocess_fraction_yb0ys1.png --output-modules PlotModule CopyToWebModule", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
+    "objects": {
+        "gg": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_gg", 
+            "label": "gg", 
+            "style": "histo", 
+            "y_err": false
+        }, 
+        "qq": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_qq", 
+            "label": "qq", 
+            "style": "histo", 
+            "y_err": false, 
+            "zorder": 3.0
+        }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
+        }, 
+        "gq": {
+            "zorder": 1.0
+        }, 
+        "qg": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_dijet_flavour_qg", 
+            "label": "qg", 
+            "style": "histo", 
+            "y_err": false, 
+            "zorder": 2.0
+        }
+    }, 
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "stack": [
         "qq", 
         "qg", 
         "gg"
     ], 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "133.", 
-        "1780"
-    ], 
-    "x_log": true, 
-    "y_label": "Fraction", 
-    "y_lims": [
-        "0.0", 
-        "1.0"
-    ], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "load_config": [
+        "configs/subprocess_fraction_yb0ys1.json"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "output_prefix": "plots/", 
+    "output_path": "subprocess_fraction_yb0ys1.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

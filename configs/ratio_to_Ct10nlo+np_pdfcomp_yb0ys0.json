@@ -1,11 +1,4 @@
 {
-    "ana_modules": [
-        "Normalize", 
-        "Multiply", 
-        "Ratio", 
-        "ToTGraph", 
-        "ReBinning"
-    ], 
     "to_tgraph": [
         "_data", 
         "dataunf", 
@@ -27,7 +20,7 @@
             "y": 1.0
         }
     ], 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "add_subplot": false, 
     "list_modules": false, 
     "ratio": [
@@ -54,7 +47,7 @@
     ], 
     "y_subplot_label": "", 
     "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -84,20 +77,21 @@
     ], 
     "fig_size": null, 
     "objects": {
-        "_data": {
+        "nlonnpdf30": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "grey", 
-            "edgecolor": "grey", 
-            "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg", 
-            "label": "Data (Reco)", 
+            "color": "_color2_", 
+            "edgecolor": "_color2_", 
+            "id": "nlonnpdf30", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_pdfunc_u", 
+            "label": "NLOxNP (NNPDF30)", 
             "linestyle": "", 
-            "marker": "", 
+            "marker": ".", 
+            "plot": true, 
             "step": true, 
-            "style": "errorbar", 
+            "style": "line", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
@@ -121,27 +115,6 @@
             "rasterized": true, 
             "fill": true
         }, 
-        "_np": {
-            "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
-        }, 
-        "dataunf": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "black", 
-            "edgecolor": "black", 
-            "id": "dataunf", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg", 
-            "label": "Data (Unf.)", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
         "nloct14": {
             "alpha": 0.5, 
             "axis": "ax", 
@@ -160,6 +133,9 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
+        }, 
+        "_np": {
+            "input": "~/dust/dijetana/plot/plots/np_factors_calc_yb0ys1.root?res_np_factor"
         }, 
         "nlommht2014": {
             "alpha": 1.0, 
@@ -180,21 +156,38 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "nlonnpdf30": {
+        "_data": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color2_", 
-            "edgecolor": "_color2_", 
-            "id": "nlonnpdf30", 
-            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/NNPDF30_pdfunc_u", 
-            "label": "NLOxNP (NNPDF30)", 
+            "color": "grey", 
+            "edgecolor": "grey", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg", 
+            "label": "Data (Reco)", 
+            "linestyle": "", 
+            "marker": "", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "dataunf": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "black", 
+            "id": "dataunf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg", 
+            "label": "Data (Unf.)", 
             "linestyle": "", 
             "marker": ".", 
-            "plot": true, 
-            "step": true, 
-            "style": "line", 
+            "step": false, 
+            "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
@@ -220,12 +213,21 @@
     "ax_vlines": [], 
     "y_log": false, 
     "store_json": true, 
+    "ana_modules": [
+        "Normalize", 
+        "Multiply", 
+        "Ratio", 
+        "ToTGraph", 
+        "ReBinning"
+    ], 
+    "load_config": [
+        "configs/ratio_to_Ct10nlo+np_pdfcomp_yb0ys0.json"
+    ], 
+    "object_paths": null, 
     "y_lims": [
         "0.0", 
         "2.0"
     ], 
-    "load_config": [], 
-    "object_paths": null, 
     "output_prefix": "plots/", 
     "output_path": "ratio_to_Ct10nlo+np_pdfcomp_yb0ys0.png", 
     "x_log": true, 

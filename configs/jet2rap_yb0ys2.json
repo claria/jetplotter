@@ -1,10 +1,12 @@
 {
-    "add_subplot": true, 
-    "ana_modules": [
-        "Normalize", 
-        "Ratio"
+    "plot_id": "^(?!_).*", 
+    "y_label": "Cross Section (pb/GeV)", 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_", 
+        "_yb0ys2_?_upperleft_"
     ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys2/h_jet2rap mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys2/h_jet2rap --x-log False --y-log True --x-lims -3 3 --y-lims 1E-8 1E8 --color data:black ratio_mgp6:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Second Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Normalize Ratio --normalize mgp6:data --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data --output-path jet2rap_yb0ys2.png --y-subplot-lims 0.8 1.2 --ax-texts _cmsp_ _20fb_ _yb0ys2_?_upperleft_", 
+    "show_legend": true, 
     "ax_hlines": [
         {
             "axis": "ax1", 
@@ -14,25 +16,43 @@
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "_cmsp_", 
-        "_20fb_", 
-        "_yb0ys2_?_upperleft_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "ratio_copy": [
+        [
+            "mgp6", 
+            "data"
+        ]
     ], 
     "legend_loc": "best", 
+    "add_subplot": true, 
     "list_modules": false, 
+    "ratio": [], 
+    "y_subplot_label": "Ratio to Data", 
+    "x_label": "Second Jet Rapidity", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
     "normalize": [
         [
             "mgp6", 
             "data"
         ]
     ], 
+    "x_lims": [
+        "-3", 
+        "3"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys2/h_jet2rap mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys2/h_jet2rap --x-log False --y-log True --x-lims -3 3 --y-lims 1E-8 1E8 --color data:black ratio_mgp6:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Second Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Normalize Ratio --normalize mgp6:data --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data --output-path jet2rap_yb0ys2.png --y-subplot-lims 0.8 1.2 --ax-texts _cmsp_ _20fb_ _yb0ys2_?_upperleft_", 
+    "y_subplot_lims": [
+        "0.8", 
+        "1.2"
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -42,6 +62,25 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
+        }, 
+        "ratio_mgp6_to_data": {
+            "alpha": 1.0, 
+            "axis": "ax1", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "ratio_mgp6_to_data", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -86,33 +125,28 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
-        }, 
-        "ratio_mgp6_to_data": {
-            "alpha": 1.0, 
-            "axis": "ax1", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "black", 
-            "edgecolor": "auto", 
-            "id": "ratio_mgp6_to_data", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": true, 
+    "store_json": true, 
+    "ana_modules": [
+        "Normalize", 
+        "Ratio"
     ], 
-    "output_path": "jet2rap_yb0ys2.png", 
+    "load_config": [
+        "configs/jet2rap_yb0ys2.json"
+    ], 
+    "y_lims": [
+        "1E-8", 
+        "1E8"
+    ], 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "jet2rap_yb0ys2.png", 
+    "x_log": false, 
     "provided_args": [
         "help", 
         "input", 
@@ -134,36 +168,9 @@
         "ax_texts", 
         "ana_modules"
     ], 
-    "ratio": [], 
-    "ratio_copy": [
-        [
-            "mgp6", 
-            "data"
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "Second Jet Rapidity", 
-    "x_lims": [
-        "-3", 
-        "3"
-    ], 
-    "x_log": false, 
-    "y_label": "Cross Section (pb/GeV)", 
-    "y_lims": [
-        "1E-8", 
-        "1E8"
-    ], 
-    "y_log": true, 
-    "y_subplot_label": "Ratio to Data", 
-    "y_subplot_lims": [
-        "0.8", 
-        "1.2"
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

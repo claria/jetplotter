@@ -1,24 +1,46 @@
 {
-    "add_subplot": false, 
-    "ana_modules": [
-        "Normalize", 
-        "Ratio"
-    ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb0ys1/h_ptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_ptavg _genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys1/h_genptavg nlo:~/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_xs --ana Normalize Ratio --ratio _genmgp6:data mgp6:data p8:data nlo:data data:data --y-lims 0.0 2.0 --x-lims 133. 3000. --x-log True --normalize mgp6:width p8:width data:width _genmgp6:width --label mgp6:MG+P6 p8:P8 data:DATA nlo:NLO (CT10) _genmgp6:MG+P6 --x-label _ptavg_ --y-label Ratio to Data?_center_ --legend-loc upper right --ax-texts _yb0ys1_?_upperleft_ _cmsp_ _20fb_ --output-path ratio_reco_to_data_yb0ys1.png --color data:black", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Ratio to Data?_center_", 
     "ax_texts": [
         "_yb0ys1_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "show_legend": true, 
+    "ax_hlines": [], 
+    "ratio_copy": [], 
     "legend_loc": "upper right", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "ratio": [
+        [
+            "_genmgp6", 
+            "data"
+        ], 
+        [
+            "mgp6", 
+            "data"
+        ], 
+        [
+            "p8", 
+            "data"
+        ], 
+        [
+            "nlo", 
+            "data"
+        ], 
+        [
+            "data", 
+            "data"
+        ]
+    ], 
+    "y_subplot_label": "", 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
     "normalize": [
         [
             "mgp6", 
@@ -37,16 +59,49 @@
             "width"
         ]
     ], 
+    "x_lims": [
+        "_yb0ys1_xmin_", 
+        "_yb0ys1_xmax_"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb0ys1/h_ptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_ptavg _genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys1/h_genptavg nlo:~/PTAVG_YBYS_NLO.root?yb0ys1/CT10nlo_xs --ana Normalize Ratio --ratio _genmgp6:data mgp6:data p8:data nlo:data data:data --y-lims 0.0 2.0 --x-lims 133. 3000. --x-log True --normalize mgp6:width p8:width data:width _genmgp6:width --label mgp6:MG+P6 p8:P8 data:DATA nlo:NLO (CT10) _genmgp6:MG+P6 --x-label _ptavg_ --y-label Ratio to Data?_center_ --legend-loc upper right --ax-texts _yb0ys1_?_upperleft_ _cmsp_ _20fb_ --output-path ratio_reco_to_data_yb0ys1.png --color data:black", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
-        "_default": {
+        "mgp6": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "_default", 
-            "label": "__nolegend__", 
+            "id": "mgp6", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_ptavg", 
+            "label": "MG+P6", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "p8": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "p8", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb0ys1/h_ptavg", 
+            "label": "P8", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -73,6 +128,25 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
+        }, 
         "data": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -83,24 +157,6 @@
             "id": "data", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys1/h_ptavg", 
             "label": "DATA", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "mgp6": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "mgp6", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb0ys1/h_ptavg", 
-            "label": "MG+P6", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -126,34 +182,28 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
-        }, 
-        "p8": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "p8", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb0ys1/h_ptavg", 
-            "label": "P8", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "ana_modules": [
+        "Normalize", 
+        "Ratio"
     ], 
-    "output_path": "ratio_reco_to_data_yb0ys1.png", 
+    "load_config": [
+        "configs/ratio_reco_to_data_yb0ys1.json"
+    ], 
+    "y_lims": [
+        "0.0", 
+        "2.0"
+    ], 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "ratio_reco_to_data_yb0ys1.png", 
+    "x_log": true, 
     "provided_args": [
         "input", 
         "normalize", 
@@ -169,52 +219,9 @@
         "legend_loc", 
         "ax_texts"
     ], 
-    "ratio": [
-        [
-            "_genmgp6", 
-            "data"
-        ], 
-        [
-            "mgp6", 
-            "data"
-        ], 
-        [
-            "p8", 
-            "data"
-        ], 
-        [
-            "nlo", 
-            "data"
-        ], 
-        [
-            "data", 
-            "data"
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "_yb0ys1_xmin_", 
-        "_yb0ys1_xmax_"
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio to Data?_center_", 
-    "y_lims": [
-        "0.0", 
-        "2.0"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

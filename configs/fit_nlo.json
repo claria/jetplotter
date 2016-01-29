@@ -1,33 +1,40 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "FitObj"
     ], 
-    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs --ana-modules FitObj --fit-obj nlo:{\"fcn\": \"[0]*(x/[3])**(-1*[1])*(1-(x/[3]))**[2]\", \"fcn_0\":[1.56951e-04, 4.72895e+00, 1.25370e+01, 4.41885e+03]} --x-log True --x-lims 30. 3000. --y-log True --y-lims 1E-8 1E8 --style fit_nlo:band --output-path fit_nlo.png --label nlo:NLO fit_nlo:Fit --x-label _ptavg_ --y-label Cross Section", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Cross Section", 
     "ax_texts": [], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "fit_obj": [
-        [
-            "nlo", 
-            {
-                "fcn": "[0]*(x/[3])**(-1*[1])*(1-(x/[3]))**[2]", 
-                "fcn_0": [
-                    0.000156951, 
-                    4.72895, 
-                    12.537, 
-                    4418.85
-                ]
-            }
-        ]
-    ], 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "show_legend": true, 
+    "ax_hlines": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        "1E-8", 
+        "1E8"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "30.", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i nlo:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT10nlo_xs --ana-modules FitObj --fit-obj nlo:{\"fcn\": \"[0]*(x/[3])**(-1*[1])*(1-(x/[3]))**[2]\", \"fcn_0\":[1.56951e-04, 4.72895e+00, 1.25370e+01, 4.41885e+03]} --x-log True --x-lims 30. 3000. --y-log True --y-lims 1E-8 1E8 --style fit_nlo:band --output-path fit_nlo.png --label nlo:NLO fit_nlo:Fit --x-label _ptavg_ --y-label Cross Section", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -43,7 +50,9 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "fit_nlo": {
             "label": "Fit", 
@@ -54,14 +63,32 @@
             "label": "NLO"
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": true, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "load_config": [
+        "configs/fit_nlo.json"
     ], 
-    "output_path": "fit_nlo.png", 
+    "fit_obj": [
+        [
+            "nlo", 
+            {
+                "fcn": "[0]*(x/[3])**(-1*[1])*(1-(x/[3]))**[2]", 
+                "fcn_0": [
+                    0.000156951, 
+                    4.72895, 
+                    12.537, 
+                    4418.85
+                ]
+            }
+        ]
+    ], 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "fit_nlo.png", 
+    "x_log": true, 
     "provided_args": [
         "ana_modules", 
         "input", 
@@ -76,29 +103,9 @@
         "x_label", 
         "y_label"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "30.", 
-        "3000."
+    "input_modules": [
+        "RootModule"
     ], 
-    "x_log": true, 
-    "y_label": "Cross Section", 
-    "y_lims": [
-        "1E-8", 
-        "1E8"
-    ], 
-    "y_log": true, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

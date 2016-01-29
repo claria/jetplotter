@@ -1,22 +1,45 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "NormalizeToColumn"
     ], 
-    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h2_jet12ptrvsptavg --style data:heatmap --x-log True --x-lims 50 3000 --x-label _ptavg_ --y-label 'Ratio jet2_pt/jet1_pt' --ana-modules NormalizeToColumn --normalize-to-column data --z-lims 0.0 0.2 --output-path pt1vspt2vsptavg_yb2ys0.png", 
-    "ax_hlines": [], 
-    "ax_texts": [], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "plot_id": [
+        "^(?!_).*"
     ], 
+    "y_label": "Ratio jet2_pt/jet1_pt", 
+    "ax_texts": [], 
+    "show_legend": true, 
+    "ax_hlines": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        null, 
+        null
+    ], 
+    "x_label": "_ptavg_", 
     "normalize_to_column": [
         "data"
     ], 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "133", 
+        "3000"
+    ], 
+    "z_lims": [
+        "0.001", 
+        "1.0"
+    ], 
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h2_jet12ptrvsptavg --style data:heatmap --x-log True --x-lims 50 3000 --x-label _ptavg_ --y-label 'Ratio jet2_pt/jet1_pt' --ana-modules NormalizeToColumn --normalize-to-column data --z-lims 0.0 0.2 --output-path pt1vspt2vsptavg_yb2ys0.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -32,46 +55,30 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "data": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h2_jet12ptrvsptavg", 
             "style": "heatmap"
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "pt1vspt2vsptavg_yb2ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "133", 
-        "3000"
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio jet2_pt/jet1_pt", 
-    "y_lims": [
-        null, 
-        null
-    ], 
+    "z_log": true, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "load_config": [
+        "configs/pt1vspt2vsptavg_yb2ys0.json"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        "0.001", 
-        "1.0"
+    "output_prefix": "plots/", 
+    "output_path": "pt1vspt2vsptavg_yb2ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_log": true
+    "margin": 0.0, 
+    "z_label": ""
 }

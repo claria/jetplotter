@@ -62,13 +62,13 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "gencuts": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb1ys1/h_ptavg", 
-            "label": "Gen Selection"
-        }, 
         "recocuts": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys1/h_ptavg", 
             "label": "Reco selection"
+        }, 
+        "gencuts": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb1ys1/h_ptavg", 
+            "label": "Gen Selection"
         }
     }, 
     "z_log": false, 

@@ -4,9 +4,7 @@
     ], 
     "y_label": "", 
     "ax_texts": [], 
-    "load_config": [
-        "configs/ratio_to_CT10nlo+np_totcomp.py"
-    ], 
+    "load_config": [], 
     "ax_hlines": [], 
     "legend_loc": "best", 
     "add_subplot": false, 
@@ -28,7 +26,7 @@
         null, 
         null
     ], 
-    "argv": "./plot.py -l configs/ratio_to_CT10nlo+np_totcomp.py", 
+    "argv": "./plots.py", 
     "y_subplot_lims": [
         null, 
         null

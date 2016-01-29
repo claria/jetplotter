@@ -1,17 +1,40 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Efficiency"
     ], 
-    "argv": "./plot.py -i all:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_MC_STUDY_QCDMGP6.root?yb0ys0/TriggerEffs/all_HLT_PFJET260 pass:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_MC_STUDY_QCDMGP6.root?yb0ys0/TriggerEffs/pass_HLT_PFJET260 --ana-modules Efficiency --efficiency pass:all --plot-id eff_pass --y-lims 0.0 1.2 --x-log True --x-lims 100. 1000. --label eff_pass:HLT_PFJET260 --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _8tev_ --x-label _ptavg_ --y-label Efficiency --output-path trigger_eff_mc_hltpfjet260_yb0ys0.png", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "eff_pass"
+    ], 
+    "y_label": "Efficiency", 
     "ax_texts": [
         "_yb0ys0_?_upperleft_", 
         "_cmsp_", 
         "_8tev_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
+    "show_legend": true, 
+    "ax_hlines": [], 
+    "legend_loc": "best", 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        "0.0", 
+        "1.2"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "100.", 
+        "1000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i all:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_MC_STUDY_QCDMGP6.root?yb0ys0/TriggerEffs/all_HLT_PFJET260 pass:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_MC_STUDY_QCDMGP6.root?yb0ys0/TriggerEffs/pass_HLT_PFJET260 --ana-modules Efficiency --efficiency pass:all --plot-id eff_pass --y-lims 0.0 1.2 --x-log True --x-lims 100. 1000. --label eff_pass:HLT_PFJET260 --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _8tev_ --x-label _ptavg_ --y-label Efficiency --output-path trigger_eff_mc_hltpfjet260_yb0ys0.png", 
     "efficiency": [
         [
             "pass", 
@@ -19,11 +42,6 @@
         ]
     ], 
     "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -39,50 +57,39 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "all": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_MC_STUDY_QCDMGP6.root?yb0ys0/TriggerEffs/all_HLT_PFJET260"
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "eff_pass": {
             "label": "HLT_PFJET260"
+        }, 
+        "all": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_MC_STUDY_QCDMGP6.root?yb0ys0/TriggerEffs/all_HLT_PFJET260"
         }, 
         "pass": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_MC_STUDY_QCDMGP6.root?yb0ys0/TriggerEffs/pass_HLT_PFJET260"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "trigger_eff_mc_hltpfjet260_yb0ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "eff_pass"
-    ], 
-    "print_config": false, 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "100.", 
-        "1000."
-    ], 
-    "x_log": true, 
-    "y_label": "Efficiency", 
-    "y_lims": [
-        "0.0", 
-        "1.2"
-    ], 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
-    "y_subplot_label": "", 
+    "store_json": true, 
     "y_subplot_lims": [
         null, 
         null
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "y_subplot_label": "", 
+    "load_config": [
+        "configs/trigger_eff_mc_hltpfjet260_yb0ys0.json"
     ], 
-    "z_log": false
+    "output_prefix": "plots/", 
+    "output_path": "trigger_eff_mc_hltpfjet260_yb0ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "margin": 0.0, 
+    "z_label": ""
 }

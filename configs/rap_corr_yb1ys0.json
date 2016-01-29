@@ -40,6 +40,10 @@
     ], 
     "fig_size": null, 
     "objects": {
+        "dataetacorr": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/RAPCORR_DATA.root?yb1ys0/h_ptavg", 
+            "label": "Data-Eta-corr."
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -61,10 +65,6 @@
         "data": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys0/h_ptavg", 
             "label": "Data"
-        }, 
-        "dataetacorr": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/RAPCORR_DATA.root?yb1ys0/h_ptavg", 
-            "label": "Data-Eta-corr."
         }
     }, 
     "z_log": false, 

@@ -1,24 +1,60 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plot.py -i ptavg:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs ptmax:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO_PTMAX.root?yb1ys0/CT14nlo_xs --ana-modules Ratio --ratio ptmax:ptavg ptavg:ptavg --label ptmax:ptmax ptavg:ptavg --output-path ptmax_vs_ptavg_nlo_yb1ys0.png --ax-texts _yb1ys0_?_upperleft_ _cmsp_ _8tev_ --x-label _ptavg_ --y-label 'Ratio to ptavg' --x-log True --x-lims 50. 3000.", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "Ratio to ptavg", 
     "ax_texts": [
         "_yb1ys0_?_upperleft_", 
         "_cmsp_", 
         "_8tev_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "show_legend": true, 
+    "ax_hlines": [], 
+    "ratio_copy": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "ratio": [
+        [
+            "ptmax", 
+            "ptavg"
+        ], 
+        [
+            "ptavg", 
+            "ptavg"
+        ]
+    ], 
+    "y_lims": [
+        null, 
+        null
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i ptavg:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs ptmax:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO_PTMAX.root?yb1ys0/CT14nlo_xs --ana-modules Ratio --ratio ptmax:ptavg ptavg:ptavg --label ptmax:ptmax ptavg:ptavg --output-path ptmax_vs_ptavg_nlo_yb1ys0.png --ax-texts _yb1ys0_?_upperleft_ _cmsp_ _8tev_ --x-label _ptavg_ --y-label 'Ratio to ptavg' --x-log True --x-lims 50. 3000.", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
+        "ptavg": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs", 
+            "label": "ptavg"
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -33,60 +69,31 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "ptavg": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb1ys0/CT14nlo_xs", 
-            "label": "ptavg"
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "ptmax": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO_PTMAX.root?yb1ys0/CT14nlo_xs", 
             "label": "ptmax exp(0.3y*)"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "ptmax_vs_ptavg_nlo_yb1ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "ratio": [
-        [
-            "ptmax", 
-            "ptavg"
-        ], 
-        [
-            "ptavg", 
-            "ptavg"
-        ]
-    ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "50.", 
-        "3000."
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio to ptavg", 
-    "y_lims": [
-        null, 
-        null
-    ], 
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "load_config": [
+        "configs/ptmax_vs_ptavg_nlo_yb1ys0.json"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "output_prefix": "plots/", 
+    "output_path": "ptmax_vs_ptavg_nlo_yb1ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

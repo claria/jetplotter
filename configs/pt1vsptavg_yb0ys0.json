@@ -1,17 +1,39 @@
 {
-    "add_subplot": false, 
     "ana_modules": [], 
-    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_jet1ptvsptavg --style data:heatmap --x-log True --y-log True --x-lims 100 3000 --y-lims 100 3000 --z-log true --x-label _ptavg_ --y-label jet1_pt --output-path pt1vsptavg_yb0ys0.png", 
-    "ax_hlines": [], 
-    "ax_texts": [], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "plot_id": [
+        "^(?!_).*"
     ], 
+    "y_label": "jet1_pt", 
+    "ax_texts": [], 
+    "show_legend": true, 
+    "ax_hlines": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        "100", 
+        "3000"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "100", 
+        "3000"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_jet1ptvsptavg --style data:heatmap --x-log True --y-log True --x-lims 100 3000 --y-lims 100 3000 --z-log true --x-label _ptavg_ --y-label jet1_pt --output-path pt1vsptavg_yb0ys0.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -27,45 +49,30 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "data": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_jet1ptvsptavg", 
             "style": "heatmap"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "pt1vsptavg_yb0ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "100", 
-        "3000"
-    ], 
-    "x_log": true, 
-    "y_label": "jet1_pt", 
-    "y_lims": [
-        "100", 
-        "3000"
-    ], 
+    "z_log": true, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": true, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "load_config": [
+        "configs/pt1vsptavg_yb0ys0.json"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "output_prefix": "plots/", 
+    "output_path": "pt1vsptavg_yb0ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_log": true
+    "margin": 0.0, 
+    "z_label": ""
 }

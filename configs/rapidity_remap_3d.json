@@ -12,7 +12,9 @@
     ], 
     "y_label": "Gen y", 
     "ax_texts": [], 
-    "load_config": [], 
+    "load_config": [
+        "configs/rapidity_remap_3d.json"
+    ], 
     "ax_hlines": [], 
     "root_output": null, 
     "legend_loc": "best", 

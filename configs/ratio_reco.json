@@ -1,41 +1,84 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -l plots/ratio_reco.json", 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Ratio to Gen", 
+    "ax_texts": [
+        "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 
+        "CMS?_topleft_", 
+        "$20\\,fb^{-1}$ (8TeV)?_topright_"
+    ], 
+    "show_legend": true, 
     "ax_hlines": [
         {
             "color": "black", 
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "$0.0 < y_b < 1.0$\n$0.0 < y_s < 1.0$?0.03,0.85", 
-        "CMS?_topleft_", 
-        "$20\\,fb^{-1}$ (8TeV)?_topright_"
+    "legend_loc": "upper right", 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "ratio": [
+        [
+            "data", 
+            "qcdp8gen"
+        ], 
+        [
+            "qcdmgp6", 
+            "qcdp8gen"
+        ], 
+        [
+            "qcdmgp6gen", 
+            "qcdp8gen"
+        ], 
+        [
+            "qcdp8", 
+            "qcdp8gen"
+        ], 
+        [
+            "qcdp8gen", 
+            "qcdp8gen"
+        ]
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
+    "y_lims": [
+        "0.5", 
+        "1.5"
+    ], 
+    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "50.", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -l plots/ratio_reco.json", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
     "fig_size": [
         10.0, 
         7.0
     ], 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "upper right", 
-    "list_modules": false, 
     "objects": {
-        "_default": {
+        "qcdmgp6gen": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "_default", 
-            "label": "__nolegend__", 
+            "id": "qcdmgp6gen", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg", 
+            "label": "MG+P6 Gen", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -44,16 +87,16 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "data": {
+        "qcdp8gen": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "black", 
+            "color": "auto", 
             "edgecolor": "auto", 
-            "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg", 
-            "label": "Data", 
+            "id": "qcdp8gen", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?gen_yb0ys0/h_genptavg", 
+            "label": "P8 Gen", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -80,24 +123,6 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdmgp6gen": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "qcdmgp6gen", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb0ys0/h_genptavg", 
-            "label": "MG+P6 Gen", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
         "qcdp8": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -116,16 +141,35 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdp8gen": {
+        "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "qcdp8gen", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?gen_yb0ys0/h_genptavg", 
-            "label": "P8 Gen", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
+        }, 
+        "data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg", 
+            "label": "Data", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -135,14 +179,19 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "load_config": [
+        "configs/ratio_reco.json"
     ], 
-    "output_path": "ratio_reco.png", 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "ratio_reco.png", 
+    "x_log": true, 
     "provided_args": [
         "help", 
         "ratio", 
@@ -155,51 +204,9 @@
         "legend_loc", 
         "ana_modules"
     ], 
-    "ratio": [
-        [
-            "data", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdmgp6", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdmgp6gen", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdp8", 
-            "qcdp8gen"
-        ], 
-        [
-            "qcdp8gen", 
-            "qcdp8gen"
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "$p_\\mathrm{T,avg}$ (GeV)", 
-    "x_lims": [
-        "50.", 
-        "3000."
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio to Gen", 
-    "y_lims": [
-        "0.5", 
-        "1.5"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

@@ -54,7 +54,7 @@
             "exp"
         ]
     ], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": true, 
     "list_modules": false, 
     "log_level": "info", 
@@ -63,7 +63,7 @@
         "5.0"
     ], 
     "x_label": "$x$", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 

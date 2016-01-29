@@ -1,21 +1,51 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Project3DProfile"
     ], 
-    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoY --ana-modules Project3DProfile --project3dprofile data:option=xy --style data:heatmap --cmap data:seismic --z-lims -0.05 0.05 --x-log True --x-lims 80. 2000. --x-label _ptavg_ --y-label 'Gen Y' --z-label 'Reco y - Gen y' --y-lims -4.5 4.5 --output-path genvsrecoy_vspt.png", 
-    "ax_hlines": [], 
-    "ax_texts": [], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "project3dprofile": [
+        [
+            "data", 
+            {
+                "option": "xy"
+            }
+        ]
     ], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "Gen Y", 
+    "ax_texts": [], 
+    "load_config": [
+        "configs/genvsrecoy_vspt.json"
+    ], 
+    "ax_hlines": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
-    "load_config": [], 
     "log_level": "info", 
+    "y_lims": [
+        "-4.5", 
+        "4.5"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "80.", 
+        "2000."
+    ], 
+    "z_lims": [
+        "-0.05", 
+        "0.05"
+    ], 
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoY --ana-modules Project3DProfile --project3dprofile data:option=xy --style data:heatmap --cmap data:seismic --z-lims -0.05 0.05 --x-log True --x-lims 80. 2000. --x-label _ptavg_ --y-label 'Gen Y' --z-label 'Reco y - Gen y' --y-lims -4.5 4.5 --output-path genvsrecoy_vspt.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -41,46 +71,19 @@
             "style": "heatmap"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "genvsrecoy_vspt.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "project3dprofile": [
-        [
-            "data", 
-            {
-                "option": "xy"
-            }
-        ]
-    ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "80.", 
-        "2000."
-    ], 
-    "x_log": true, 
-    "y_label": "Gen Y", 
-    "y_lims": [
-        "-4.5", 
-        "4.5"
-    ], 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "genvsrecoy_vspt.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_label": "Reco y - Gen y", 
-    "z_lims": [
-        "-0.05", 
-        "0.05"
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": "Reco y - Gen y"
 }

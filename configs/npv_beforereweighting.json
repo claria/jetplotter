@@ -1,28 +1,43 @@
 {
-    "add_subplot": false, 
-    "ana_modules": [
-        "Normalize"
-    ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/NONPVWEIGHT_DATA.root?yb0ys0/h_nPV mc:~/dust/dijetana/ana/CMSSW_7_2_3/NONPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV --ana-modules Normalize --normalize mc:data --color data:black mc:_color0_ --x-label NPV --y-label arb. u. --label data:Data mc:MC --ax-texts _cmsp_ _20fb_ --output-path npv_beforereweighting.png", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "arb. u.", 
     "ax_texts": [
         "_cmsp_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "show_legend": true, 
+    "ax_hlines": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "log_level": "info", 
+    "y_subplot_label": "", 
+    "x_label": "NPV", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
     "normalize": [
         [
             "mc", 
             "data"
         ]
     ], 
+    "x_lims": [
+        null, 
+        null
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/NONPVWEIGHT_DATA.root?yb0ys0/h_nPV mc:~/dust/dijetana/ana/CMSSW_7_2_3/NONPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV --ana-modules Normalize --normalize mc:data --color data:black mc:_color0_ --x-label NPV --y-label arb. u. --label data:Data mc:MC --ax-texts _cmsp_ _20fb_ --output-path npv_beforereweighting.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -38,7 +53,9 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "data": {
             "color": "black", 
@@ -51,14 +68,24 @@
             "label": "MC"
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "ana_modules": [
+        "Normalize"
     ], 
-    "output_path": "npv_beforereweighting.png", 
+    "load_config": [
+        "configs/npv_beforereweighting.json"
+    ], 
+    "y_lims": [
+        null, 
+        null
+    ], 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "npv_beforereweighting.png", 
+    "x_log": false, 
     "provided_args": [
         "ana_modules", 
         "input", 
@@ -70,29 +97,9 @@
         "y_label", 
         "ax_texts"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "NPV", 
-    "x_lims": [
-        null, 
-        null
+    "input_modules": [
+        "RootModule"
     ], 
-    "x_log": false, 
-    "y_label": "arb. u.", 
-    "y_lims": [
-        null, 
-        null
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

@@ -1,37 +1,53 @@
 {
-    "add_subplot": false, 
     "ana_modules": [], 
-    "argv": "./plot.py -l configs/jec_unc_scale.py", 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "Uncertainty?_center_", 
+    "ax_texts": [
+        "_cmsp_", 
+        "_yb0ys0_?_upperleft_", 
+        "_20fb_"
+    ], 
+    "load_config": [
+        "configs/jec_relunc_0.json"
+    ], 
     "ax_hlines": [
         {
             "color": "black", 
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "_cmsp_", 
-        "_yb0ys0_?_upperleft_", 
-        "_20fb_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
-    "load_config": [
-        "configs/jec_relunc_0.json"
-    ], 
     "log_level": "info", 
+    "y_lims": [
+        "0.9", 
+        "1.1"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "133.", 
+        "2000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -l configs/jec_unc_scale.py", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
-        "AbsoluteMPFBias_dn": {
-            "color": "_color2_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_AbsoluteMPFBias_dn/h_genptavg", 
-            "label": "AbsoluteMPFBias", 
-            "step": "True", 
-            "style": "line"
+        "central": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0/h_genptavg"
         }, 
         "AbsoluteMPFBias_up": {
             "color": "_color2_", 
@@ -40,16 +56,16 @@
             "step": "True", 
             "style": "line"
         }, 
-        "AbsoluteScale_dn": {
-            "color": "_color0_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_AbsoluteScale_dn/h_genptavg", 
-            "label": "AbsoluteScale", 
+        "AbsoluteMPFBias_dn": {
+            "color": "_color2_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_AbsoluteMPFBias_dn/h_genptavg", 
+            "label": "AbsoluteMPFBias", 
             "step": "True", 
             "style": "line"
         }, 
-        "AbsoluteScale_up": {
+        "AbsoluteScale_dn": {
             "color": "_color0_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_AbsoluteScale_up/h_genptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_AbsoluteScale_dn/h_genptavg", 
             "label": "AbsoluteScale", 
             "step": "True", 
             "style": "line"
@@ -86,42 +102,27 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "central": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0/h_genptavg"
+        "AbsoluteScale_up": {
+            "color": "_color0_", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0_AbsoluteScale_up/h_genptavg", 
+            "label": "AbsoluteScale", 
+            "step": "True", 
+            "style": "line"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "jec_relunc_0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "133.", 
-        "2000."
-    ], 
-    "x_log": true, 
-    "y_label": "Uncertainty?_center_", 
-    "y_lims": [
-        "0.9", 
-        "1.1"
-    ], 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "jec_relunc_0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

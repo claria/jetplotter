@@ -1,29 +1,49 @@
 {
-    "add_subplot": false, 
-    "ana_modules": [
-        "Normalize", 
-        "Ratio"
+    "plot_id": [
+        "^(?!_).*"
     ], 
-    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h_ptavg _unfdata:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb2ys0/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb2ys0/h_ptavg _genp8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?gen_yb2ys0/h_genptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h_ptavg _genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb2ys0/h_genptavg _nlo:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_genptavg nlosmeared:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_recoptavg --ana Normalize Ratio --ratio mgp6:_genmgp6 p8:_genp8 nlosmeared:_nlo data:_unfdata --y-lims 0.0 2.0 --x-lims 133. 3000. --x-log True --normalize mgp6:width p8:width data:width _unfdata:width _genmgp6:width _genp8:width --label 'mgp6:MG+P6 (Reco)/MG+P6 (Gen)' 'p8:P8 (Reco)/P8 (Gen)' 'data:Data (Reco)/Data (Unf)' nlosmeared:NLO-smeared/NLO --x-label _ptavg_ --y-label Ratio?_center_ --legend-loc 'upper right' --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --output-path ratio_reco_to_gen.png --color data:black", 
+    "y_label": "Ratio?_center_", 
+    "ax_texts": [
+        "_yb2ys0_?_upperleft_", 
+        "_cmsp_", 
+        "_20fb_"
+    ], 
+    "show_legend": true, 
     "ax_hlines": [
         {
             "color": "black", 
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "_yb2ys0_?_upperleft_", 
-        "_cmsp_", 
-        "_20fb_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "ratio_copy": [], 
     "legend_loc": "upper right", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "ratio": [
+        [
+            "mgp6", 
+            "_genmgp6"
+        ], 
+        [
+            "p8", 
+            "_genp8"
+        ], 
+        [
+            "nlosmeared", 
+            "_nlo"
+        ], 
+        [
+            "data", 
+            "_unfdata"
+        ]
+    ], 
+    "y_subplot_label": "", 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
     "normalize": [
         [
             "mgp6", 
@@ -50,7 +70,45 @@
             "width"
         ]
     ], 
+    "x_lims": [
+        "133.", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h_ptavg _unfdata:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb2ys0/h_ptavg p8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb2ys0/h_ptavg _genp8:~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?gen_yb2ys0/h_genptavg mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h_ptavg _genmgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb2ys0/h_genptavg _nlo:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_genptavg nlosmeared:~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_recoptavg --ana Normalize Ratio --ratio mgp6:_genmgp6 p8:_genp8 nlosmeared:_nlo data:_unfdata --y-lims 0.0 2.0 --x-lims 133. 3000. --x-log True --normalize mgp6:width p8:width data:width _unfdata:width _genmgp6:width _genp8:width --label 'mgp6:MG+P6 (Reco)/MG+P6 (Gen)' 'p8:P8 (Reco)/P8 (Gen)' 'data:Data (Reco)/Data (Unf)' nlosmeared:NLO-smeared/NLO --x-label _ptavg_ --y-label Ratio?_center_ --legend-loc 'upper right' --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --output-path ratio_reco_to_gen.png --color data:black", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
+        "mgp6": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h_ptavg", 
+            "label": "MG+P6 (Reco)/MG+P6 (Gen)"
+        }, 
+        "_genp8": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?gen_yb2ys0/h_genptavg"
+        }, 
+        "p8": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb2ys0/h_ptavg", 
+            "label": "P8 (Reco)/P8 (Gen)"
+        }, 
+        "nlosmeared": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_recoptavg", 
+            "label": "NLO-smeared/NLO"
+        }, 
+        "_genmgp6": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb2ys0/h_genptavg"
+        }, 
+        "_unfdata": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb2ys0/h_ptavg"
+        }, 
+        "_nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_genptavg"
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -65,90 +123,39 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "_genmgp6": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?gen_yb2ys0/h_genptavg"
-        }, 
-        "_genp8": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?gen_yb2ys0/h_genptavg"
-        }, 
-        "_nlo": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_genptavg"
-        }, 
-        "_unfdata": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb2ys0/h_ptavg"
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "data": {
             "color": "black", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h_ptavg", 
             "label": "Data (Reco)/Data (Unf)"
-        }, 
-        "mgp6": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb2ys0/h_ptavg", 
-            "label": "MG+P6 (Reco)/MG+P6 (Gen)"
-        }, 
-        "nlosmeared": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb2ys0/h_recoptavg", 
-            "label": "NLO-smeared/NLO"
-        }, 
-        "p8": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb2ys0/h_ptavg", 
-            "label": "P8 (Reco)/P8 (Gen)"
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "ratio_reco_to_gen_yb2ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "ratio": [
-        [
-            "mgp6", 
-            "_genmgp6"
-        ], 
-        [
-            "p8", 
-            "_genp8"
-        ], 
-        [
-            "nlosmeared", 
-            "_nlo"
-        ], 
-        [
-            "data", 
-            "_unfdata"
-        ]
-    ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
     "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "133.", 
-        "3000."
+    "ana_modules": [
+        "Normalize", 
+        "Ratio"
     ], 
-    "x_log": true, 
-    "y_label": "Ratio?_center_", 
+    "load_config": [
+        "configs/ratio_reco_to_gen_yb2ys0.json"
+    ], 
     "y_lims": [
         "0.0", 
         "2.0"
     ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "output_prefix": "plots/", 
+    "output_path": "ratio_reco_to_gen_yb2ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

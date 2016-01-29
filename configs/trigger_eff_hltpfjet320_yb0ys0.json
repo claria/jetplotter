@@ -1,17 +1,45 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Efficiency", 
         "TriggerEfficiencyFit"
     ], 
-    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb0ys0/TriggerEffs/emul_HLT_PFJET320 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb0ys0/TriggerEffs/HLT_PFJET260 --label _emul:emul _trg:trg --ana-modules Efficiency TriggerEfficiencyFit --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_320 --output-path trigger_eff_hltpfjet320.png --trigger-efficiency-fit eff_emul:{} --style fit_eff_emul:line --ax-texts _cmsp_ _20fb_", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Efficiency", 
     "ax_texts": [
         "_cmsp_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
+    "show_legend": true, 
+    "ax_hlines": [], 
+    "legend_loc": "best", 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        "0.0", 
+        "1.1"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "trigger_efficiency_fit": [
+        [
+            "eff_emul", 
+            {}
+        ]
+    ], 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        null, 
+        null
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i _emul:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb0ys0/TriggerEffs/emul_HLT_PFJET320 _trg:~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb0ys0/TriggerEffs/HLT_PFJET260 --label _emul:emul _trg:trg --ana-modules Efficiency TriggerEfficiencyFit --efficiency _emul:_trg --y-lim 0.0 1.1 --color eff_emul:black --x-label _ptavg_ --y-label Efficiency --label eff_emul:HLT_PFJet_320 --output-path trigger_eff_hltpfjet320.png --trigger-efficiency-fit eff_emul:{} --style fit_eff_emul:line --ax-texts _cmsp_ _20fb_", 
     "efficiency": [
         [
             "_emul", 
@@ -19,12 +47,14 @@
         ]
     ], 
     "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
     "objects": {
+        "_trg": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb0ys0/TriggerEffs/HLT_PFJET260", 
+            "label": "trg"
+        }, 
+        "fit_eff_emul": {
+            "style": "line"
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -39,32 +69,35 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "_emul": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb0ys0/TriggerEffs/emul_HLT_PFJET320", 
-            "label": "emul"
-        }, 
-        "_trg": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb0ys0/TriggerEffs/HLT_PFJET260", 
-            "label": "trg"
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "eff_emul": {
             "color": "black", 
             "label": "HLT_PFJet_320"
         }, 
-        "fit_eff_emul": {
-            "style": "line"
+        "_emul": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/TRIGGER_PTAVG_DATA.root?yb0ys0/TriggerEffs/emul_HLT_PFJET320", 
+            "label": "emul"
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "y_subplot_lims": [
+        null, 
+        null
     ], 
-    "output_path": "trigger_eff_hltpfjet320_yb0ys0.png", 
+    "y_subplot_label": "", 
+    "load_config": [
+        "configs/trigger_eff_hltpfjet320_yb0ys0.json"
+    ], 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "trigger_eff_hltpfjet320_yb0ys0.png", 
+    "x_log": false, 
     "provided_args": [
         "ana_modules", 
         "input", 
@@ -78,35 +111,9 @@
         "y_label", 
         "ax_texts"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "trigger_efficiency_fit": [
-        [
-            "eff_emul", 
-            {}
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        null, 
-        null
-    ], 
-    "x_log": false, 
-    "y_label": "Efficiency", 
-    "y_lims": [
-        "0.0", 
-        "1.1"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

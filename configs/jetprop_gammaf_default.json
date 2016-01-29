@@ -1,10 +1,13 @@
 {
-    "add_subplot": true, 
-    "ana_modules": [
-        "Normalize", 
-        "Ratio"
+    "plot_id": "^(?!_).*", 
+    "y_label": "a.u.", 
+    "ax_texts": [
+        "_cmsp_", 
+        "_20fb_"
     ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?default/h_photonFraction mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?default/h_photonFraction --x-log False --y-log True --x-lims -3 3 --y-lims 1E-8 1E8 --color data:black ratio_mgp6:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Leading Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Normalize Ratio --normalize mgp6:data --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data --output-path chf_default.png --y-subplot-lims 0.8 1.2 --ax-texts _cmsp_ _20fb_ _default_?_upperleft_", 
+    "load_config": [
+        "configs/jetprop_gammaf_default.json"
+    ], 
     "ax_hlines": [
         {
             "axis": "ax1", 
@@ -14,22 +17,23 @@
             "y": 1.0
         }
     ], 
-    "ax_texts": [
-        "_cmsp_", 
-        "_20fb_"
-    ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "ratio_copy": [
+        [
+            "mgp6", 
+            "data"
+        ]
     ], 
     "legend_loc": "best", 
+    "add_subplot": true, 
     "list_modules": false, 
-    "load_config": [
-        "configs/jetprop_gammaf_default.json"
-    ], 
     "log_level": "info", 
+    "y_subplot_label": "Ratio to Data", 
+    "x_label": "Photon Fraction", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
     "normalize": [
         [
             "mgp6", 
@@ -40,6 +44,20 @@
             "unity"
         ]
     ], 
+    "x_lims": [
+        "0.0", 
+        "1.0"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?default/h_photonFraction mgp6:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?default/h_photonFraction --x-log False --y-log True --x-lims -3 3 --y-lims 1E-8 1E8 --color data:black ratio_mgp6:black --style mgp6:histo --label data:Data mgp6:MG+P6 --x-label Leading Jet _pt_ --y-label Cross Section (pb/GeV) --add-subplot True --ana-modules Normalize Ratio --normalize mgp6:data --ratio-copy mgp6:data --axis ratio_mgp6:ax1 --y-subplot-label Ratio to Data --output-path chf_default.png --y-subplot-lims 0.8 1.2 --ax-texts _cmsp_ _20fb_ _default_?_upperleft_", 
+    "y_subplot_lims": [
+        "0.0", 
+        "2.0"
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -54,6 +72,24 @@
             "linestyle": "", 
             "marker": ".", 
             "rasterized": true, 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "ratio_mgp6_to_data": {
+            "alpha": 1.0, 
+            "axis": "ax1", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "ratio_mgp6_to_data", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "obj": "null", 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
@@ -97,34 +133,26 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
-        }, 
-        "ratio_mgp6_to_data": {
-            "alpha": 1.0, 
-            "axis": "ax1", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "black", 
-            "edgecolor": "auto", 
-            "id": "ratio_mgp6_to_data", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "obj": "null", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "ratio": [], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": true, 
+    "store_json": true, 
+    "ana_modules": [
+        "Normalize", 
+        "Ratio"
     ], 
-    "output_path": "jetprop_gammaf_default.png", 
+    "show_legend": true, 
+    "y_lims": [
+        "1E-5", 
+        "1.0"
+    ], 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "jetprop_gammaf_default.png", 
+    "x_log": false, 
     "provided_args": [
         "help", 
         "input", 
@@ -146,36 +174,9 @@
         "ax_texts", 
         "ana_modules"
     ], 
-    "ratio": [], 
-    "ratio_copy": [
-        [
-            "mgp6", 
-            "data"
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "Photon Fraction", 
-    "x_lims": [
-        "0.0", 
-        "1.0"
-    ], 
-    "x_log": false, 
-    "y_label": "a.u.", 
-    "y_lims": [
-        "1E-5", 
-        "1.0"
-    ], 
-    "y_log": true, 
-    "y_subplot_label": "Ratio to Data", 
-    "y_subplot_lims": [
-        "0.0", 
-        "2.0"
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

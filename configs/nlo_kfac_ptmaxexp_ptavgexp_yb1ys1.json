@@ -1,22 +1,46 @@
 {
-    "add_subplot": false, 
     "ana_modules": [], 
-    "argv": "./plot.py -i ptmaxexp:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb1ys1/CT14nlo_kfac ptavgexp:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?yb1ys1/CT14nlo_kfac --label ptmaxexp:ptmaxexp ptavgexp:ptavgexp --output-path nlo_kfac_ptmaxexp_ptavgexp_yb1ys1.png --y-lims 0.0 2.0 --x-lims 133 2000 --x-log True", 
-    "ax_hlines": [], 
-    "ax_texts": [], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
+    "plot_id": [
+        "^(?!_).*"
     ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
+    "y_label": "", 
+    "ax_texts": [], 
     "load_config": [
         "configs/nlo_kfac_ptmaxexp_ptavgexp_yb1ys1.json"
     ], 
+    "ax_hlines": [], 
+    "legend_loc": "best", 
+    "add_subplot": false, 
+    "list_modules": false, 
     "log_level": "info", 
+    "y_lims": [
+        "0.0", 
+        "2.0"
+    ], 
+    "x_label": "", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "133", 
+        "2000"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i ptmaxexp:~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb1ys1/CT14nlo_kfac ptavgexp:~/dust/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?yb1ys1/CT14nlo_kfac --label ptmaxexp:ptmaxexp ptavgexp:ptavgexp --output-path nlo_kfac_ptmaxexp_ptavgexp_yb1ys1.png --y-lims 0.0 2.0 --x-lims 133 2000 --x-log True", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
+        "ptavgexp": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?yb1ys1/CT14nlo_kfac", 
+            "label": "ptavgexp"
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -35,47 +59,24 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "ptavgexp": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?yb1ys1/CT14nlo_kfac", 
-            "label": "ptavgexp"
-        }, 
         "ptmaxexp": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb1ys1/CT14nlo_kfac", 
             "label": "ptmaxexp"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "nlo_kfac_ptmaxexp_ptavgexp_yb1ys1.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "", 
-    "x_lims": [
-        "133", 
-        "2000"
-    ], 
-    "x_log": true, 
-    "y_label": "", 
-    "y_lims": [
-        "0.0", 
-        "2.0"
-    ], 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "nlo_kfac_ptmaxexp_ptavgexp_yb1ys1.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

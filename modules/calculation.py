@@ -6,6 +6,17 @@ import numpy as np
 
 log = logging.getLogger(__name__)
 
+class Divide(BaseModule):
+    def __init__(self):
+        super(Divide, self).__init__()
+        self.arg_group.add_argument('--divide', nargs='+', type='str2kvstr', help='')
+
+    def __call__(self, config):
+        for id, val in config['divide']:
+            if id not in config['objects']:
+                raise ValueError('Requested id {} not found.'.format(id))
+            config['objects'][id]['obj'].Divide(config['objects'][val]['obj'])
+
 
 class Multiply(BaseModule):
     def __init__(self):

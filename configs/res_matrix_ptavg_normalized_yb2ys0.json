@@ -41,6 +41,24 @@
     ], 
     "fig_size": null, 
     "objects": {
+        "resmatrix": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "Blues", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "resmatrix", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?yb2ys0/res_matrix_ptavg_response", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "heatmap", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -59,24 +77,6 @@
             "zorder": 1.0, 
             "rasterized": true, 
             "fill": true
-        }, 
-        "resmatrix": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "Blues", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "resmatrix", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?yb2ys0/res_matrix_ptavg_response", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "heatmap", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
         }
     }, 
     "z_log": false, 
@@ -85,7 +85,9 @@
     "y_log": true, 
     "store_json": true, 
     "y_subplot_label": "", 
-    "load_config": [], 
+    "load_config": [
+        "configs/res_matrix_ptavg_normalized_yb2ys0.json"
+    ], 
     "output_prefix": "plots/", 
     "output_path": "res_matrix_ptavg_normalized_yb2ys0.png", 
     "x_log": true, 

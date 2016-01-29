@@ -18,11 +18,12 @@ def get_config():
          ]
     rap_bins = ['yb0ys0','yb0ys1','yb0ys2','yb1ys0','yb1ys1','yb2ys0']
 
-
+    
     for k, sources in enumerate(all_sources):
         for rap_bin in rap_bins:
+            config = get_base_config()
             config['objects']['central'] = { 
-                    'input' : '~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys0/h_genptavg'
+                    'input' : '~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?{0}/h_genptavg'.format(rap_bin)
                                 }
 
 
@@ -36,20 +37,22 @@ def get_config():
                         'step' : 'True',
                         'label' : '{0}'.format(source),
                         }
-            config['ana_modules'] = ['DataLims', 
+            config['ana_modules'] = [
+                                     # 'DataLims', 
                                      'Ratio'
                                      ]
             for source in sources:
                 for var in ['up','dn']:
-                    config['ratio'].append(('central', '{0}_{1}'.format(source, var)))
+                    config.setdefault('ratio', []).append(('{0}_{1}'.format(source, var),'central'))
 
+            print config['ratio']
 
             config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)})]
 
 
             config["y_lims"] = ["0.9", "1.1"]
             config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
-            config["data_lims"] = ["_yb0ys0_xmin_", "_yb0ys0_xmax_"]
+            config["data_lims"] = ["_{0}_xmin_".format(rap_bin), "_{0}_xmax_".format(rap_bin)]
             config["x_log"] =  True
             config["x_label"] = "_ptavg_"
             config["y_label"] = "Uncertainty?_center_"
@@ -59,22 +62,21 @@ def get_config():
             config["ax_texts"] = ["_cmsp_", "_{0}_?_upperleft_".format(rap_bin), '_20fb_'] 
             config["output_path"] = 'jec_relunc_{0}_{1}.png'.format(k, rap_bin)
 
-
             configs.append(config)
+    return configs
 
 
-@callbacks.register('after_input_modules')
-def after_input_modules(*args, **kwargs):
-    from modules.normalization import calc_ratio
-    from modules.rebinning import rebin_histo
-    config = kwargs['config']
-
-    sources = ['SinglePionECAL','SinglePionHCAL','FlavorQCD', 'Fragmentation']
-    for source in sources:
-        for var in ['up','dn']:
-            config['objects']['{0}_{1}'.format(source, var)]['obj'] = calc_ratio(config['objects']['{0}_{1}'.format(source, var)]['obj'], 
-                                                                                 config['objects']['central']['obj'])
-            config['objects']['{0}_{1}'.format(source, var)]['obj'] = rebin_histo(config['objects']['{0}_{1}'.format(source, var)]['obj'], float(config['data_lims'][0]), float(config['data_lims'][1]))
-
-    del config['objects']['central']
-
+# def after_input_modules(*args, **kwargs):
+#     from modules.normalization import calc_ratio
+#     from modules.rebinning import rebin_histo
+#     config = kwargs['config']
+#
+#     sources = ['SinglePionECAL','SinglePionHCAL','FlavorQCD', 'Fragmentation']
+#     for source in sources:
+#         for var in ['up','dn']:
+#             config['objects']['{0}_{1}'.format(source, var)]['obj'] = calc_ratio(config['objects']['{0}_{1}'.format(source, var)]['obj'], 
+#                                                                                  config['objects']['central']['obj'])
+#             config['objects']['{0}_{1}'.format(source, var)]['obj'] = rebin_histo(config['objects']['{0}_{1}'.format(source, var)]['obj'], float(config['data_lims'][0]), float(config['data_lims'][1]))
+#
+#     del config['objects']['central']
+#

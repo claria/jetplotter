@@ -1,24 +1,61 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plot.py -i tight:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h_ptavg loose:~/dust/dijetana/ana/CMSSW_7_2_3/LOOSEID_DATA.root?yb2ys0/h_ptavg --y-log False --ana-modules Ratio --ratio loose:tight tight:tight --label loose:loose tight:tight --y-lims 0.0 3.0 --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --legend-loc 'upper right' --output-path loose_vs_tight_yb2ys0.png --output-modules PlotModule CopyToWebModule", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "^(?!_).*"
+    ], 
+    "y_label": "Ratio to Tight ID", 
     "ax_texts": [
         "_yb2ys0_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "show_legend": true, 
+    "ax_hlines": [], 
+    "ratio_copy": [], 
     "legend_loc": "upper right", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "ratio": [
+        [
+            "loose", 
+            "tight"
+        ], 
+        [
+            "tight", 
+            "tight"
+        ]
+    ], 
+    "y_lims": [
+        "0.8", 
+        "1.2"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "130", 
+        "2500."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i tight:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb2ys0/h_ptavg loose:~/dust/dijetana/ana/CMSSW_7_2_3/LOOSEID_DATA.root?yb2ys0/h_ptavg --y-log False --ana-modules Ratio --ratio loose:tight tight:tight --label loose:loose tight:tight --y-lims 0.0 3.0 --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --legend-loc 'upper right' --output-path loose_vs_tight_yb2ys0.png --output-modules PlotModule CopyToWebModule", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
+        "tight": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETID_TIGHT_DATA.root?yb2ys0/h_ptavg", 
+            "label": "tight"
+        }, 
         "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -33,61 +70,31 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "loose": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETID_LOOSE_DATA.root?yb2ys0/h_ptavg", 
             "label": "loose"
-        }, 
-        "tight": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETID_TIGHT_DATA.root?yb2ys0/h_ptavg", 
-            "label": "tight"
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "loose_vs_tight_yb2ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "^(?!_).*"
-    ], 
-    "print_config": false, 
-    "ratio": [
-        [
-            "loose", 
-            "tight"
-        ], 
-        [
-            "tight", 
-            "tight"
-        ]
-    ], 
-    "ratio_copy": [], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "130", 
-        "2500."
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio to Tight ID", 
-    "y_lims": [
-        "0.8", 
-        "1.2"
-    ], 
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
+    "store_json": true, 
     "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
+    "load_config": [
+        "configs/loose_vs_tight_yb2ys0.json"
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "output_prefix": "plots/", 
+    "output_path": "loose_vs_tight_yb2ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
     ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

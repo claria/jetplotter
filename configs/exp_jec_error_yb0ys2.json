@@ -1,59 +1,79 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -l plots/exp_jec_error_yb0ys2.json", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Fractional Uncertainty?_center_", 
     "ax_texts": [
         "_yb0ys2_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "upper right", 
-    "list_modules": false, 
     "load_config": [
         "configs/exp_jec_error_yb0ys2.json"
     ], 
+    "ax_hlines": [], 
+    "legend_loc": "upper right", 
+    "add_subplot": false, 
+    "list_modules": false, 
     "log_level": "info", 
+    "y_lims": [
+        "0.7", 
+        "1.3"
+    ], 
+    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "_yb0ys2_xmin_", 
+        "_yb0ys2_xmax_"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -l plots/exp_jec_error_yb0ys2.json", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
-        "_central": {
+        "lumi_up": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "black", 
+            "color": "_color2_", 
             "edgecolor": "auto", 
-            "id": "_central", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2/h_genptavg", 
-            "label": "Stat. Uncertainty", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "_default", 
+            "id": "lumi_up", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?yb0ys2/lumi_unc_up", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
-            "style": "errorbar", 
+            "style": "line", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
+        "total_dn": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "#4C72B0", 
+            "edgecolor": "auto", 
+            "id": "total_dn", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_Total_dn/h_genptavg", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": true, 
+            "style": "line", 
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
@@ -94,42 +114,6 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "lumi_up": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "_color2_", 
-            "edgecolor": "auto", 
-            "id": "lumi_up", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?yb0ys2/lumi_unc_up", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "line", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "total_dn": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "#4C72B0", 
-            "edgecolor": "auto", 
-            "id": "total_dn", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2_Total_dn/h_genptavg", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": true, 
-            "style": "line", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0
-        }, 
         "total_up": {
             "alpha": 1.0, 
             "axis": "ax", 
@@ -147,16 +131,69 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
+        }, 
+        "_default": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
+        }, 
+        "_central": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "black", 
+            "edgecolor": "auto", 
+            "id": "_central", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?yb0ys2/h_genptavg", 
+            "label": "Stat. Uncertainty", 
+            "linestyle": "", 
+            "marker": ".", 
+            "step": false, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "ratio": [
+        [
+            "total_up", 
+            "_central"
+        ], 
+        [
+            "total_dn", 
+            "_central"
+        ], 
+        [
+            "dataunf", 
+            "dataunf"
+        ]
     ], 
-    "output_path": "exp_jec_error_yb0ys2.png", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "show_legend": true, 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "exp_jec_error_yb0ys2.png", 
+    "x_log": true, 
     "provided_args": [
         "help", 
         "input", 
@@ -173,43 +210,9 @@
         "y_label", 
         "ana_modules"
     ], 
-    "ratio": [
-        [
-            "total_up", 
-            "_central"
-        ], 
-        [
-            "total_dn", 
-            "_central"
-        ], 
-        [
-            "dataunf", 
-            "dataunf"
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
-    "x_lims": [
-        "_yb0ys2_xmin_", 
-        "_yb0ys2_xmax_"
-    ], 
-    "x_log": true, 
-    "y_label": "Fractional Uncertainty?_center_", 
-    "y_lims": [
-        "0.7", 
-        "1.3"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

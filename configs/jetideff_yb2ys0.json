@@ -1,17 +1,40 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Efficiency"
     ], 
-    "argv": "./plot.py -i all:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb2ys0/h_allpassjetid pass:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb2ys0/h_probepassjetid --ana-modules Efficiency --efficiency pass:all --plot-id eff_pass --y-lims 0.9 1.1 --x-log True --x-lim 100 2500. --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --x-label _ptavg_ --y-label Efficiency --y-lims 0.5 1.1 --output-path jetideff_yb2ys0.png", 
-    "ax_hlines": [], 
+    "plot_id": [
+        "eff_pass"
+    ], 
+    "y_label": "Efficiency", 
     "ax_texts": [
         "_yb2ys0_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
+    "show_legend": true, 
+    "ax_hlines": [], 
+    "legend_loc": "best", 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        "0.5", 
+        "1.1"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "x_lims": [
+        "100", 
+        "2500."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i all:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb2ys0/h_allpassjetid pass:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb2ys0/h_probepassjetid --ana-modules Efficiency --efficiency pass:all --plot-id eff_pass --y-lims 0.9 1.1 --x-log True --x-lim 100 2500. --ax-texts _yb2ys0_?_upperleft_ _cmsp_ _20fb_ --x-label _ptavg_ --y-label Efficiency --y-lims 0.5 1.1 --output-path jetideff_yb2ys0.png", 
     "efficiency": [
         [
             "pass", 
@@ -19,11 +42,6 @@
         ]
     ], 
     "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -39,50 +57,39 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
-        }, 
-        "all": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb2ys0/h_allpassjetid"
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "eff_pass": {
             "label": "Tight ID"
+        }, 
+        "all": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb2ys0/h_allpassjetid"
         }, 
         "pass": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb2ys0/h_probepassjetid"
         }
     }, 
-    "output_modules": [
-        "PlotModule"
-    ], 
-    "output_path": "jetideff_yb2ys0.png", 
-    "output_prefix": "plots/", 
-    "plot_id": [
-        "eff_pass"
-    ], 
-    "print_config": false, 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "_ptavg_", 
-    "x_lims": [
-        "100", 
-        "2500."
-    ], 
-    "x_log": true, 
-    "y_label": "Efficiency", 
-    "y_lims": [
-        "0.5", 
-        "1.1"
-    ], 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
     "y_log": false, 
-    "y_subplot_label": "", 
+    "store_json": true, 
     "y_subplot_lims": [
         null, 
         null
     ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
+    "y_subplot_label": "", 
+    "load_config": [
+        "configs/jetideff_yb2ys0.json"
     ], 
-    "z_log": false
+    "output_prefix": "plots/", 
+    "output_path": "jetideff_yb2ys0.png", 
+    "x_log": true, 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "margin": 0.0, 
+    "z_label": ""
 }

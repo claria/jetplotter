@@ -1,33 +1,72 @@
 {
-    "add_subplot": false, 
     "ana_modules": [
         "Ratio"
     ], 
-    "argv": "./plotter.py -l plots/ratio_recogenunf.json", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Ratio to Gen Level", 
     "ax_texts": [
         "_yb0ys0_?_upperleft_", 
         "_cmsp_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
+    "show_legend": true, 
+    "ax_hlines": [], 
     "legend_loc": "best", 
+    "add_subplot": false, 
     "list_modules": false, 
+    "ratio": [
+        [
+            "qcdmgp6reco", 
+            "_qcdmgp6gen"
+        ], 
+        [
+            "qcdp8reco", 
+            "_qcdp8gen"
+        ], 
+        [
+            "qcdp8recounf", 
+            "_qcdp8gen"
+        ], 
+        [
+            "qcdmgp6recounf", 
+            "_qcdmgp6gen"
+        ]
+    ], 
+    "y_lims": [
+        "0.5", 
+        "2.0"
+    ], 
+    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "50", 
+        "3000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -l plots/ratio_recogenunf.json", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
-        "_default": {
+        "qcdmgp6recounf": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "_default", 
-            "label": "__nolegend__", 
+            "id": "qcdmgp6recounf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDMGP6.root?h_ptavg", 
+            "label": "MG+P6 (Unf. Reco)", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -90,16 +129,16 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdmgp6recounf": {
+        "qcdp8recounf": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "qcdmgp6recounf", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDMGP6.root?h_ptavg", 
-            "label": "MG+P6 (Unf. Reco)", 
+            "id": "qcdp8recounf", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDP8.root?h_ptavg", 
+            "label": "P8 (Unf. Reco)", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -126,33 +165,39 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "qcdp8recounf": {
+        "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
-            "id": "qcdp8recounf", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDP8.root?h_ptavg", 
-            "label": "P8 (Unf. Reco)", 
+            "id": "_default", 
+            "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
+    "z_log": false, 
+    "log_level": "info", 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "load_config": [
+        "configs/ratio_recogenunf.json"
     ], 
-    "output_path": "ratio_recogenunf.png", 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "ratio_recogenunf.png", 
+    "x_log": true, 
     "provided_args": [
         "help", 
         "input", 
@@ -164,47 +209,9 @@
         "x_log", 
         "ana_modules"
     ], 
-    "ratio": [
-        [
-            "qcdmgp6reco", 
-            "_qcdmgp6gen"
-        ], 
-        [
-            "qcdp8reco", 
-            "_qcdp8gen"
-        ], 
-        [
-            "qcdp8recounf", 
-            "_qcdp8gen"
-        ], 
-        [
-            "qcdmgp6recounf", 
-            "_qcdmgp6gen"
-        ]
+    "input_modules": [
+        "RootModule"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
-    "x_lims": [
-        "50", 
-        "3000."
-    ], 
-    "x_log": true, 
-    "y_label": "Ratio to Gen Level", 
-    "y_lims": [
-        "0.5", 
-        "2.0"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": ""
 }

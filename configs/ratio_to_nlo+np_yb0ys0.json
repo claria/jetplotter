@@ -77,6 +77,24 @@
     ], 
     "fig_size": null, 
     "objects": {
+        "_data": {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "grey", 
+            "edgecolor": "grey", 
+            "id": "data", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg", 
+            "label": "Data (Reco)", 
+            "linestyle": "", 
+            "marker": "", 
+            "step": true, 
+            "style": "errorbar", 
+            "x_err": true, 
+            "y_err": true, 
+            "zorder": 1.0
+        }, 
         "nlonnpdf30": {
             "alpha": 0.5, 
             "axis": "ax", 
@@ -95,25 +113,6 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0
-        }, 
-        "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "id": "_default", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": true, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0, 
-            "rasterized": true, 
-            "fill": true
         }, 
         "nloct14": {
             "alpha": 0.5, 
@@ -156,23 +155,24 @@
             "y_err": true, 
             "zorder": 1.0
         }, 
-        "_data": {
+        "_default": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "grey", 
-            "edgecolor": "grey", 
-            "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg", 
-            "label": "Data (Reco)", 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "id": "_default", 
+            "label": "__nolegend__", 
             "linestyle": "", 
-            "marker": "", 
+            "marker": ".", 
             "step": true, 
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "rasterized": true, 
+            "fill": true
         }, 
         "dataunf": {
             "alpha": 1.0, 

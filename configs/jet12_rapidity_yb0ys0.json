@@ -1,24 +1,43 @@
 {
-    "add_subplot": false, 
     "ana_modules": [], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_y12 --style data:heatmap --z-log True --y-lims -3.0 3.0 --x-lims -3.0 3.0 --x-label Leading Jet Rapidity --y-label Second Jed Rapidity --z-label Cross Section (pb/GeV) --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _20fb_ --output-path jet12_rapidity_yb0ys0.png", 
-    "ax_hlines": [], 
+    "plot_id": "^(?!_).*", 
+    "y_label": "Second Jed Rapidity", 
     "ax_texts": [
         "_yb0ys0_?_upperleft_", 
         "_20fb_"
     ], 
-    "ax_vlines": [], 
-    "combine_legend_entries": [], 
-    "fig_size": null, 
-    "input_modules": [
-        "RootModule"
-    ], 
-    "legend_loc": "best", 
-    "list_modules": false, 
     "load_config": [
         "configs/jet12_rapidity_yb0ys0.json"
     ], 
+    "ax_hlines": [], 
+    "legend_loc": "best", 
+    "add_subplot": false, 
+    "list_modules": false, 
     "log_level": "info", 
+    "y_lims": [
+        "-3.0", 
+        "3.0"
+    ], 
+    "x_label": "Leading Jet Rapidity", 
+    "print_config": false, 
+    "output_modules": [
+        "PlotModule", 
+        "CopyToWebModule"
+    ], 
+    "x_lims": [
+        "-3.0", 
+        "3.0"
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_y12 --style data:heatmap --z-log True --y-lims -3.0 3.0 --x-lims -3.0 3.0 --x-label Leading Jet Rapidity --y-label Second Jed Rapidity --z-label Cross Section (pb/GeV) --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _20fb_ --output-path jet12_rapidity_yb0ys0.png", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
     "objects": {
         "_default": {
             "alpha": 1.0, 
@@ -59,14 +78,16 @@
             "zorder": 1.0
         }
     }, 
-    "output_modules": [
-        "PlotModule", 
-        "CopyToWebModule"
-    ], 
-    "output_path": "jet12_rapidity_yb0ys0.png", 
+    "z_log": false, 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "y_log": false, 
+    "store_json": true, 
+    "y_subplot_label": "", 
+    "show_legend": true, 
     "output_prefix": "plots/", 
-    "plot_id": "^(?!_).*", 
-    "print_config": false, 
+    "output_path": "jet12_rapidity_yb0ys0.png", 
+    "x_log": false, 
     "provided_args": [
         "input", 
         "style", 
@@ -79,29 +100,9 @@
         "z_label", 
         "ax_texts"
     ], 
-    "show_legend": true, 
-    "store_json": true, 
-    "x_label": "Leading Jet Rapidity", 
-    "x_lims": [
-        "-3.0", 
-        "3.0"
+    "input_modules": [
+        "RootModule"
     ], 
-    "x_log": false, 
-    "y_label": "Second Jed Rapidity", 
-    "y_lims": [
-        "-3.0", 
-        "3.0"
-    ], 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "y_subplot_lims": [
-        null, 
-        null
-    ], 
-    "z_label": "a.u.", 
-    "z_lims": [
-        null, 
-        null
-    ], 
-    "z_log": false
+    "margin": 0.0, 
+    "z_label": "a.u."
 }

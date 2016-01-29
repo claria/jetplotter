@@ -81,7 +81,7 @@ def get_config():
                 'color' : '_color0_',
                 'style' : 'line',
                 'step' : 'True',
-                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}$',
+                'label' : 'CT14 (NLOxNP) - $\mu=p_{\mathrm{T,avg}}$',
                 }
         # config['objects']['ct14nlo_xs_ptmaxexpys'] = {
         #         'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
@@ -95,7 +95,7 @@ def get_config():
                 'color' : '_color2_',
                 'style' : 'line',
                 'step' : 'True',
-                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}\cdot e^{(0.3y^*)}$',
+                'label' : 'CT14 (NLOxNP) - $\mu=p_{\mathrm{T,avg}}\cdot e^{(0.3y^*)}$',
                 }
         config['objects']['hw7'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/HW7/HW7_NLO+PS_2.root?{0}_xs'.format(rap_bin),
@@ -103,7 +103,7 @@ def get_config():
                 'style' : 'line',
                 'yerr' : True,
                 'step' : 'True',
-                'label' : 'HW7 - NLO+PS',
+                'label' : 'HW7 (NLO+PS matched) - $\mu=p_{\mathrm{T,max}}$',
                 }
         config['objects']['_np'] = {
             "input": "~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor".format(rap_bin)

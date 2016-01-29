@@ -85,12 +85,12 @@ def main():
 
 def infinalrange(pt_low, ybys_bin):
     cuts = {
-            'yb0ys0' : (74.,1784.),
-            'yb0ys1' : (74.,1248.),
-            'yb0ys2' : (74.,548.),
-            'yb1ys0' : (74.,1032.),
-            'yb1ys1' : (74.,686),
-            'yb2ys0' : (74.,430.),
+            'yb0ys0' : (133.,1784.),
+            'yb0ys1' : (133.,1248.),
+            'yb0ys2' : (133.,548.),
+            'yb1ys0' : (133.,1032.),
+            'yb1ys1' : (133.,686),
+            'yb2ys0' : (133.,430.),
             }
     if pt_low >= cuts[ybys_bin][0] and pt_low < cuts[ybys_bin][1]:
         return True
