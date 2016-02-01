@@ -14,7 +14,7 @@
         "configs/statunc_fractional_yb0ys2.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -23,10 +23,11 @@
         "0.3"
     ], 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "output_modules": [
         "PlotModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "_yb0ys2_xmin_", 
         "_yb0ys2_xmax_"
@@ -62,11 +63,15 @@
         }, 
         "reco": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys2/h_ptavg", 
-            "label": "Stat. unc. Reco"
+            "label": "Stat. unc. Reco", 
+            "style": "line", 
+            "step": true
         }, 
         "unf": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys2/h_ptavg", 
-            "label": "Stat. unc. Unf."
+            "label": "Stat. unc. Unf.", 
+            "style": "line", 
+            "step": true
         }
     }, 
     "z_log": false, 
