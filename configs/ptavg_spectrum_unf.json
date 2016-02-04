@@ -136,6 +136,7 @@
             "width"
         ]
     ], 
+    "plot_order": [], 
     "x_lims": [
         "120.", 
         "2000."
@@ -149,7 +150,10 @@
         "1E-5", 
         "1E5"
     ], 
-    "fig_size": null, 
+    "fig_size": [
+        10, 
+        10
+    ], 
     "objects": {
         "yb1ys0": {
             "color": "black", 
@@ -175,12 +179,14 @@
             "x_err": false, 
             "zorder": 100.0
         }, 
-        "yb0ys0nlo": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs", 
-            "linestyle": "-", 
-            "linewidth": 2.0, 
-            "step": true, 
-            "style": "line"
+        "yb0ys0": {
+            "color": "black", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg", 
+            "label": "_yb0ys0_", 
+            "linestyle": "", 
+            "marker": "x", 
+            "x_err": false, 
+            "zorder": 100.0
         }, 
         "yb2ys0": {
             "color": "black", 
@@ -190,14 +196,12 @@
             "x_err": false, 
             "zorder": 100.0
         }, 
-        "yb0ys0": {
-            "color": "black", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg", 
-            "label": "_yb0ys0_", 
-            "linestyle": "", 
-            "marker": "x", 
-            "x_err": false, 
-            "zorder": 100.0
+        "yb0ys0nlo": {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys0/CT14nlo_xs", 
+            "linestyle": "-", 
+            "linewidth": 2.0, 
+            "step": true, 
+            "style": "line"
         }, 
         "yb0ys2nlo": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?yb0ys2/CT14nlo_xs", 

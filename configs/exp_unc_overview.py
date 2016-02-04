@@ -16,13 +16,14 @@ def get_config():
                            ["dataunf_total", "dataunf_total"], 
                            ["dataunf_uncor", "dataunf_stat"], 
                            ["dataunf_jec", "dataunf_stat"], 
+                           ["dataunf_jer", "dataunf_stat"], 
                            ["dataunf_stat", "dataunf_stat"], 
                           ] 
 
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
 
-        config['plot_order'] = ['dataunf_stat']
+        config['plot_order'] = ['dataunf_stat', 'dataunf_jec', 'dataunf_uncor', 'dataunf_jer', 'dataunf_lumi', 'dataunf_lumi']
 
         config['objects']["dataunf_stat"] = {
             "color": "black", 
@@ -37,18 +38,29 @@ def get_config():
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_lumi".format(rap_bin), 
             "label": "Lumi. uncertainty", 
             "style": "errorlines",
+            "color": "_color2_",
             "step": True,
         }
         config['objects']["dataunf_jec"] = {
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_jec".format(rap_bin), 
             "label": "JEC uncertainty", 
             "style": "errorlines",
+            "color": "_color0_",
             "step": True,
         }
+        config['objects']["dataunf_jer"] = {
+            "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_jer".format(rap_bin), 
+            "label": "JER uncertainty", 
+            "style": "errorlines",
+            "color": "_color1_",
+            "step": True,
+        }
+
         config['objects']["dataunf_uncor"] = {
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_unc".format(rap_bin), 
-            "label": "Syst. unc. uncertainty", 
+            "label": "Uncor. uncertainty", 
             "style": "errorlines",
+            "color": "_color3_",
             "step": True,
         }
         config['objects']["dataunf_total"] = {

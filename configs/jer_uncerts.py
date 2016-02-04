@@ -10,33 +10,36 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ["Ratio", "ReBinning"]
+        config['ana_modules'] = ["BuildTGraph", "Ratio"]
+        config['output_modules'] = ["PlotModule", "RootOutputModule"]
         # config["normalize"] = [("dataunf", "width")]
+        config['build_tgraph'] = [
+                                    ['jer_uncert', ['_def', 'dn', 'up']]
+                                 ]
         config["ratio"] = [
-                        ["dn", "_def"],
-                        ["up", "_def"], 
+                        ["jer_uncert", "jer_uncert"],
                           ] 
 
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)})]
 
         config['objects']['_def'] = {
-                "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?{0}/h_ptavg".format(rap_bin), 
+                "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?{0}/h_recoptavg".format(rap_bin), 
                 }
         config['objects']['up'] = {
-                "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?{0}/h_ptavg".format(rap_bin), 
-                "label": "JER Uncert.",
-                "color": "_color1_",
-                "style": "line",
-                "step":True,
+                "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?{0}/h_recoptavg".format(rap_bin), 
                 }
         config['objects']['dn'] = {
-                "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_dn.root?{0}/h_ptavg".format(rap_bin), 
+                "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_dn.root?{0}/h_recoptavg".format(rap_bin), 
+                }
+
+        config['objects']['jer_uncert'] = {
+                "label": "JER Uncert.",
                 "color": "_color1_",
-                "style": "line",
+                "style": "errorlines",
                 "step":True,
                 }
 
-
+        config['plot_id'] = ['jer_uncert']
         config["y_lims"] = ["0.95", "1.05"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True

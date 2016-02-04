@@ -31,6 +31,8 @@ def main():
         unf_data = R2npObject1D(unf_data_root)
         np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
 
+        jer_data = get_np_object('~/dust/dijetana/plot/plots/jer_uncert_{0}.root?jer_uncert'.format(ybys_bin))
+
         data = collections.OrderedDict()
         data['nbin'] = np.array([i] * len(unf_data.xl))
         data['yb_low'] = np.array([float(ybys_bin[2])] * len(unf_data.xl))
@@ -42,6 +44,8 @@ def main():
         data['sigma'] = unf_data.y
         data['uncor'] = np.array([1.0] * len(unf_data.xl))
         data['stat'] = unf_data.yerr/unf_data.y * 100.
+        data['jer_up'] = jer_data.yerru/jer_data.y * 100.
+        data['jer_dn'] = jer_data.yerrl/jer_data.y * 100.
         # lumi
         lumi_unc = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?{0}/lumi_unc_up'.format(ybys_bin))
         data['lumi'] = (lumi_unc.y - 1.) * 100.
@@ -82,6 +86,27 @@ def main():
         syst_error_u = np.zeros((len(data['sigma'])))
         syst_error_l = np.zeros((len(data['sigma'])))
 
+        jec_error_u = np.zeros((len(data['sigma'])))
+        jec_error_l = np.zeros((len(data['sigma'])))
+
+        jer_error_u = np.zeros((len(data['sigma'])))
+        jer_error_l = np.zeros((len(data['sigma'])))
+
+        unc_error_u = np.zeros((len(data['sigma'])))
+        unc_error_l = np.zeros((len(data['sigma'])))
+
+        lumi_error_u = np.zeros((len(data['sigma'])))
+        lumi_error_l = np.zeros((len(data['sigma'])))
+
+        lumi_error_u = data['lumi']/100. * data['sigma']
+        lumi_error_l = data['lumi']/100. * data['sigma']
+
+        unc_error_u = data['uncor']/100. * data['sigma']
+        unc_error_l = data['uncor']/100. * data['sigma']
+
+        jer_error_u = data['jer_up']/100. * data['sigma']
+        jer_error_l = data['jer_dn']/100. * data['sigma']
+
         syst_error_u += (data['uncor']/100. * data['sigma'])**2
         syst_error_l += (data['uncor']/100. * data['sigma'])**2
 
@@ -92,12 +117,15 @@ def main():
             syst_error_u += (data[jec_source]/100. * data['sigma'])**2
             syst_error_l += (data[jec_source]/100. * data['sigma'])**2
 
+            jec_error_u += (data[jec_source]/100. * data['sigma'])**2
+            jec_error_l += (data[jec_source]/100. * data['sigma'])**2
+
+        jec_error_u = np.sqrt(jec_error_u)
+        jec_error_l = np.sqrt(jec_error_l)
+
         syst_error_u = np.sqrt(syst_error_u)
         syst_error_l = np.sqrt(syst_error_l)
-        
-        print data['sigma']
-        print syst_error_u
-        print syst_error_l
+
         f.cd()
         f.mkdir(ybys_bin)
         f.Cd("/" + ybys_bin)
@@ -105,6 +133,11 @@ def main():
         data_tot = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
         data_stat = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
         data_syst = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
+        data_lumi = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
+        data_unc = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
+        data_jec = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
+        data_jer = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
+
         for i in range(len(data['sigma'])):
             data_tot.SetPoint(i, unf_data.x[i], data['sigma'][i])
             data_tot.SetPointError(i, unf_data.xerrl[i], unf_data.xerru[i], np.sqrt(stat_error_l[i]**2+syst_error_l[i]**2), np.sqrt(stat_error_u[i]**2+syst_error_u[i]**2))
@@ -115,11 +148,27 @@ def main():
             data_syst.SetPoint(i, unf_data.x[i], data['sigma'][i])
             data_syst.SetPointError(i, unf_data.xerrl[i], unf_data.xerru[i], syst_error_l[i], syst_error_u[i])
 
+            data_lumi.SetPoint(i, unf_data.x[i], data['sigma'][i])
+            data_lumi.SetPointError(i, unf_data.xerrl[i], unf_data.xerru[i], lumi_error_l[i], lumi_error_u[i])
+
+            data_unc.SetPoint(i, unf_data.x[i], data['sigma'][i])
+            data_unc.SetPointError(i, unf_data.xerrl[i], unf_data.xerru[i], unc_error_l[i], unc_error_u[i])
+
+            data_jec.SetPoint(i, unf_data.x[i], data['sigma'][i])
+            data_jec.SetPointError(i, unf_data.xerrl[i], unf_data.xerru[i], jec_error_l[i], jec_error_u[i])
+
+            data_jer.SetPoint(i, unf_data.x[i], data['sigma'][i])
+            data_jer.SetPointError(i, unf_data.xerrl[i], unf_data.xerru[i], jer_error_l[i], jer_error_u[i])
+
+
+
         data_tot.Write('data_tot')
         data_stat.Write('data_stat')
         data_syst.Write('data_syst')
-
-
+        data_lumi.Write('data_lumi')
+        data_unc.Write('data_unc')
+        data_jec.Write('data_jec')
+        data_jer.Write('data_jer')
 
 
 def infinalrange(pt_low, ybys_bin):

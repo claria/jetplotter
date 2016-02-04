@@ -1,5 +1,5 @@
 import ROOT
-
+import numpy as np
 import root2np
 
 
@@ -42,8 +42,8 @@ def get_tgraphasymm_err(central_histo, err_low_histo, err_hi_histo):
 def get_tgraphasymm_from_histos(central_histo, low_histo, hi_histo):
     graph = ROOT.TGraphAsymmErrors(central_histo)
     for i in xrange(graph.GetN()):
-        graph.SetPointEYlow(i, central_histo.GetBinContent(i + 1) - low_histo.GetBinContent(i + 1))
-        graph.SetPointEYhigh(i, hi_histo.GetBinContent(i + 1) - central_histo.GetBinContent(i + 1))
+        graph.SetPointEYlow(i, np.abs(central_histo.GetBinContent(i + 1) - low_histo.GetBinContent(i + 1)))
+        graph.SetPointEYhigh(i, np.abs(hi_histo.GetBinContent(i + 1) - central_histo.GetBinContent(i + 1)))
     return graph
 
 def build_tgraph_from_lists(x, y, xerrl=None, xerru=None, yerrl=None, yerru=None):

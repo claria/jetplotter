@@ -85,7 +85,6 @@ class BuildTGraph(BaseModule):
 
     def __call__(self, config):
         if config['build_tgraph']:
-            print config['build_tgraph']
             for id, input_ids in config['build_tgraph']:
                 if len(input_ids) == 1:
                     # Basically only copies th TGraph
@@ -115,30 +114,37 @@ class BuildTGraph(BaseModule):
                         new_graph.SetPointEXhigh(i, tmp_tgraph1.GetErrorX(i))
 
                 elif len(input_ids) == 3:
-                    # The both inputs define the minimum maximum and the center is set by the mean of both.
-                    tmp_tgraph1 = config['objects'][input_ids[0]]['obj']
-                    tmp_tgraph2 = config['objects'][input_ids[1]]['obj']
-                    tmp_tgraph3 = config['objects'][input_ids[2]]['obj']
-                    if not (tmp_tgraph1.GetN() == tmp_tgraph2.GetN() == tmp_tgraph3.GetN()):
-                        raise ValueError('The input objects must have the same number of points.')
+                    if isinstance(config['objects'][input_ids[0]]['obj'], ROOT.TGraph):
+                        # The both inputs define the minimum maximum and the center is set by the mean of both.
+                        tmp_tgraph1 = config['objects'][input_ids[0]]['obj']
+                        tmp_tgraph2 = config['objects'][input_ids[1]]['obj']
+                        tmp_tgraph3 = config['objects'][input_ids[2]]['obj']
+                        if not (tmp_tgraph1.GetN() == tmp_tgraph2.GetN() == tmp_tgraph3.GetN()):
+                            raise ValueError('The input objects must have the same number of points.')
 
-                    new_graph = ROOT.TGraphAsymmErrors(tmp_tgraph1)
+                        new_graph = ROOT.TGraphAsymmErrors(tmp_tgraph1)
 
-                    for i in xrange(tmp_tgraph1.GetN()):
-                        tmp_tgraph1x, tmp_tgraph1y = ROOT.Double(0), ROOT.Double(0)
-                        tmp_tgraph1.GetPoint(i, tmp_tgraph1x, tmp_tgraph1y)
+                        for i in xrange(tmp_tgraph1.GetN()):
+                            tmp_tgraph1x, tmp_tgraph1y = ROOT.Double(0), ROOT.Double(0)
+                            tmp_tgraph1.GetPoint(i, tmp_tgraph1x, tmp_tgraph1y)
 
-                        tmp_tgraph2x, tmp_tgraph2y = ROOT.Double(0), ROOT.Double(0)
-                        tmp_tgraph2.GetPoint(i, tmp_tgraph2x, tmp_tgraph2y)
+                            tmp_tgraph2x, tmp_tgraph2y = ROOT.Double(0), ROOT.Double(0)
+                            tmp_tgraph2.GetPoint(i, tmp_tgraph2x, tmp_tgraph2y)
 
-                        tmp_tgraph3x, tmp_tgraph3y = ROOT.Double(0), ROOT.Double(0)
-                        tmp_tgraph3.GetPoint(i, tmp_tgraph3x, tmp_tgraph3y)
+                            tmp_tgraph3x, tmp_tgraph3y = ROOT.Double(0), ROOT.Double(0)
+                            tmp_tgraph3.GetPoint(i, tmp_tgraph3x, tmp_tgraph3y)
 
-                        new_graph.SetPoint(i, tmp_tgraph1x, tmp_tgraph1y)
-                        new_graph.SetPointEYlow(i, tmp_tgraph1y - tmp_tgraph2y)
-                        new_graph.SetPointEYhigh(i, tmp_tgraph3y - tmp_tgraph1y)
+                            new_graph.SetPoint(i, tmp_tgraph1x, tmp_tgraph1y)
+                            new_graph.SetPointEYlow(i, tmp_tgraph1y - tmp_tgraph2y)
+                            new_graph.SetPointEYhigh(i, tmp_tgraph3y - tmp_tgraph1y)
 
-                        new_graph.SetPointEXlow(i, tmp_tgraph1.GetErrorX(i))
-                        new_graph.SetPointEXhigh(i, tmp_tgraph1.GetErrorX(i))
+                            new_graph.SetPointEXlow(i, tmp_tgraph1.GetErrorX(i))
+                            new_graph.SetPointEXhigh(i, tmp_tgraph1.GetErrorX(i))
 
-                config['objects'].setdefault(id, {})['obj'] = new_graph
+                        config['objects'].setdefault(id, {})['obj'] = new_graph
+                    elif isinstance(config['objects'][input_ids[0]]['obj'], ROOT.TH1):
+                        print 'blub'
+                        obj = get_tgraphasymm_from_histos(config['objects'][input_ids[0]]['obj'],
+                                                          config['objects'][input_ids[1]]['obj'],
+                                                          config['objects'][input_ids[2]]['obj'])
+                        config['objects'].setdefault(id, {})['obj'] = obj
