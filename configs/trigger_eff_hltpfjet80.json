@@ -8,7 +8,6 @@
     ], 
     "y_label": "Efficiency", 
     "ax_texts": [
-        "_cmsp_", 
         "_20fb_"
     ], 
     "show_legend": true, 

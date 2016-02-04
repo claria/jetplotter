@@ -25,7 +25,7 @@
         }
     ], 
     "ratio_copy": [], 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -34,11 +34,12 @@
         "1.3"
     ], 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "_yb0ys1_xmin_", 
         "_yb0ys1_xmax_"

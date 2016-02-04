@@ -97,7 +97,7 @@ class TriggerEfficiencyFit(BaseModule):
             x99 = math.ceil(eff_fcn.GetX(0.99))
             print 'x99 at {0:.2f}'.format(x99)
             # Add label with the efficiency factor
-            text = '.99 eff. at {0} GeV'.format(x99)
+            text = 's=.99 eff. at {0} GeV'.format(x99)
             config['ax_texts'].append(text + '?_bottomright_')
 
             print res.Get()

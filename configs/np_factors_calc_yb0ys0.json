@@ -33,7 +33,7 @@
             "y": 1.0
         }
     ], 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -42,11 +42,12 @@
         "1.4"
     ], 
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "50.", 
         "3000."

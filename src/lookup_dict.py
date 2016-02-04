@@ -19,6 +19,7 @@ lookup_dict = {
 
     },
     'label': {
+        '_default_': 'nocut',
         '_yb0ys0_': '$0.0 \leq \, y_b < 1.0$  $0.0 \leq \, y^* < 1.0$',
         '_yb1ys0_': '$1.0 \leq \, y_b < 2.0$  $0.0 \leq \, y^* < 1.0$',
         '_yb2ys0_': '$2.0 \leq \, y_b < 3.0$  $0.0 \leq \, y^* < 1.0$',
@@ -98,6 +99,7 @@ lookup_dict = {
         '_20fb_': 's=$19.7\\,\mathrm{fb}^{-1}$ (8TeV)|x=1.0|y=1.01|va=bottom|ha=right',
         '_8tev_': 's=8 TeV|x=1.0|y=1.01|va=bottom|ha=right',
         '_yb0ys0_': 's=$0.0 \leq \, y_b < 1.0$\n$0.0 \leq \, y^* < 1.0$',
+        '_default_': 's=',
         '_yb1ys0_': 's=$1.0 \leq \, y_b < 2.0$\n$0.0 \leq \, y^* < 1.0$',
         '_yb2ys0_': 's=$2.0 \leq \, y_b < 3.0$\n$0.0 \leq \, y^* < 1.0$',
         '_yb0ys1_': 's=$0.0 \leq \, y_b < 1.0$\n$1.0 \leq \, y^* < 2.0$',
