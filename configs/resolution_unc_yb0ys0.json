@@ -30,7 +30,7 @@
         null, 
         null
     ], 
-    "argv": "./plot.py -i def:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?yb0ys0/h_ptavg dn:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_dn.root?yb0ys0/h_ptavg up:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?yb0ys0/h_ptavg --ana-modules Ratio --ratio dn:def up:def def:def --y-lims 0.95 1.05 --y-err def:False up:False dn:False --ax-texts _yb0ys0_?_upperleft_ --x-label _ptavg_ --y-label 'Frac. Uncert' --label def:def up:up dn:dn --x-lims _yb0ys0_xmin_ _yb0ys0_xmax_", 
+    "argv": "./plot.py -i _def:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?yb0ys0/h_ptavg dn:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_dn.root?yb0ys0/h_ptavg up:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?yb0ys0/h_ptavg --ana-modules Ratio --ratio dn:_def up:_def _def:_def --y-lims 0.95 1.05 --y-err _def:False up:False dn:False --ax-texts _yb0ys0_?_upperleft_ --x-label _ptavg_ --y-label 'Frac. Uncert' --label _def:_def up:up dn:dn --x-lims _yb0ys0_xmin_ _yb0ys0_xmax_ --output-path resolution_unc_yb0ys0.png", 
     "y_subplot_lims": [
         null, 
         null
@@ -64,8 +64,9 @@
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?yb0ys0/h_ptavg", 
             "y_err": false, 
             "label": "up"
+            "style" : "line"
         }, 
-        "def": {
+        "_def": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?yb0ys0/h_ptavg", 
             "y_err": false, 
             "label": "def"
@@ -75,15 +76,15 @@
     "ratio": [
         [
             "dn", 
-            "def"
+            "_def"
         ], 
         [
             "up", 
-            "def"
+            "_def"
         ], 
         [
-            "def", 
-            "def"
+            "_def", 
+            "_def"
         ]
     ], 
     "combine_legend_entries": [], 
@@ -97,7 +98,7 @@
     ], 
     "show_legend": true, 
     "output_prefix": "plots/", 
-    "output_path": "plot.png", 
+    "output_path": "resolution_unc_yb0ys0.png", 
     "z_label": "", 
     "input_modules": [
         "RootModule"

@@ -38,23 +38,22 @@ def get_config():
                         'label' : '{0}'.format(source),
                         }
             config['ana_modules'] = [
-                                     # 'DataLims', 
+                                     'DataLims', 
                                      'Ratio'
                                      ]
             for source in sources:
                 for var in ['up','dn']:
                     config.setdefault('ratio', []).append(('{0}_{1}'.format(source, var),'central'))
 
-            print config['ratio']
 
             config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)})]
-
-
+            print config['data_lims']
+            config['plot_id'] = ['{0}_{1}'.format(source, var) for source in sources for var in ['up', 'dn']]
             config["y_lims"] = ["0.9", "1.1"]
             config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
-            config["data_lims"] = ["_{0}_xmin_".format(rap_bin), "_{0}_xmax_".format(rap_bin)]
             config["x_log"] =  True
             config["x_label"] = "_ptavg_"
+            config["legend_loc"] = "upper right"
             config["y_label"] = "Uncertainty?_center_"
             config["ax_hlines"] = [
                                     {'y' : 1.0, 'color' : 'black'}
@@ -64,19 +63,3 @@ def get_config():
 
             configs.append(config)
     return configs
-
-
-# def after_input_modules(*args, **kwargs):
-#     from modules.normalization import calc_ratio
-#     from modules.rebinning import rebin_histo
-#     config = kwargs['config']
-#
-#     sources = ['SinglePionECAL','SinglePionHCAL','FlavorQCD', 'Fragmentation']
-#     for source in sources:
-#         for var in ['up','dn']:
-#             config['objects']['{0}_{1}'.format(source, var)]['obj'] = calc_ratio(config['objects']['{0}_{1}'.format(source, var)]['obj'], 
-#                                                                                  config['objects']['central']['obj'])
-#             config['objects']['{0}_{1}'.format(source, var)]['obj'] = rebin_histo(config['objects']['{0}_{1}'.format(source, var)]['obj'], float(config['data_lims'][0]), float(config['data_lims'][1]))
-#
-#     del config['objects']['central']
-#

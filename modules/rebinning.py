@@ -16,6 +16,7 @@ class DataLims(BaseModule):
                                     help='Removes bins not within bin edges. Options are min and max.')
 
     def __call__(self, config):
+        print config.get('data_lims', [])
         if any(id == 'all' for id, kwargs in config.get('data_lims', [])):
             all_kwargs = [kwargs for id, kwargs in config['data_lims'] if id == 'all'][0] 
             config['data_lims'] = [(id, all_kwargs) for id in config['objects'].keys() if (id != '_default')]

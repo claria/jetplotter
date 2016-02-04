@@ -97,7 +97,7 @@ class BasePlot(object):
         matplotlib.rcParams['ytick.minor.width'] = 1.
         matplotlib.rcParams['ytick.major.pad'] = 8
         matplotlib.rcParams['ytick.minor.pad'] = 8
-        matplotlib.rcParams['lines.markersize'] = 8
+        matplotlib.rcParams['lines.markersize'] = 12
         matplotlib.rcParams['lines.linewidth'] = 3
         matplotlib.rcParams['lines.markeredgewidth'] = 1.0
         matplotlib.rcParams['axes.formatter.limits'] = [-2, 5]
@@ -261,9 +261,7 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     fill_between_kwargs = {k: v for k, v in kwargs.items() if
                            k in ['label', 'facecolor', 'edgecolor', 'zorder', 'hatch', 'rasterized', 'linewidth']}
 
-
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
-    print kwargs['facecolor']
     p = matplotlib.patches.Rectangle((0, 0), 1, 1, fill=fill, alpha=kwargs['alpha'], **fill_between_kwargs)
     ax.add_patch(p)
 
@@ -457,7 +455,6 @@ def plot_heatmap(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis',
     y = obj.ybinedges
     z = obj.z
     if kwargs.get('mask_value') is not None:
-        print 'Masking value', kwargs.get('mask_value')
         z = ma.masked_equal(z, kwargs.get('mask_value'))
 
     artist = ax.pcolormesh(x, y, z, linewidth=0., rasterized=True, cmap=cmap, norm=norm)

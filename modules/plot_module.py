@@ -121,6 +121,9 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--plot-id', default=[r'^(?!_).*'], nargs='+',
                                     help='All ids matching are passed to plot-module.'
                                          ' Default matches everything not starting with a underscore.')
+        self.arg_group.add_argument('--plot-order', default=[], nargs='+',
+                                    help='Processes ids in the given order, i.e. to order the legend.')
+
         self.arg_group.add_argument('--ax-texts', nargs='+', default=[],
                                     help='Add text to plot. Syntax is \'Text?json_dict. The options have to be '
                                          'something like \'text?{"x": 0.95, "y":0.05, "va": "bottom", "ha" : "right"}\'')
@@ -138,8 +141,9 @@ class PlotModule(BaseModule):
         id_regex = config.get('plot_id', '')
         if isinstance(id_regex, basestring) or not isinstance(id_regex, collections.Iterable):
             id_regex = [id_regex]
-        print id_regex
-        for id, item in config['objects'].iteritems():
+        items = ([(x, config['objects'][x]) for x in config.get('plot_order', []) if x in config['objects'].keys()] + 
+                [(x, config['objects'][x]) for x in config['objects'].keys() if x not in config.get('plot_order', [])])
+        for id, item in items:
             item['id'] = id
             if not any([re.match(regex, id) for regex in id_regex]):
                 log.debug('Omitting id {0} since it does not match the regex.'.format(id))
@@ -268,7 +272,6 @@ class Plot(BasePlot):
         # Add axis texts
         for text in self.texts:
             text = get_lookup_val('ax_texts', text)
-            print text
             default_text_kwargs = {'x': 0.05, 'y': 0.95, 'va': 'top', 'ha': 'left'}
             text_kwargs = parse_query(text)
             default_text_kwargs.update(text_kwargs)

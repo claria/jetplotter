@@ -4,7 +4,7 @@
     ], 
     "y_label": "Frac. Uncert", 
     "ax_texts": [
-        "_yb0ys0_?_upperleft_"
+        "_yb0ys2_?_upperleft_"
     ], 
     "load_config": [], 
     "ax_hlines": [], 
@@ -23,14 +23,14 @@
     "y_subplot_label": "", 
     "plot_order": [], 
     "x_lims": [
-        "_yb0ys0_xmin_", 
-        "_yb0ys0_xmax_"
+        "_yb0ys2_xmin_", 
+        "_yb0ys2_xmax_"
     ], 
     "z_lims": [
         null, 
         null
     ], 
-    "argv": "./plot.py -i def:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?yb0ys0/h_ptavg dn:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_dn.root?yb0ys0/h_ptavg up:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?yb0ys0/h_ptavg --ana-modules Ratio --ratio dn:def up:def def:def --y-lims 0.95 1.05 --y-err def:False up:False dn:False --ax-texts _yb0ys0_?_upperleft_ --x-label _ptavg_ --y-label 'Frac. Uncert' --label def:def up:up dn:dn --x-lims _yb0ys0_xmin_ _yb0ys0_xmax_", 
+    "argv": "./plot.py -i def:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?yb0ys2/h_ptavg dn:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_dn.root?yb0ys2/h_ptavg up:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?yb0ys2/h_ptavg --ana-modules Ratio --ratio dn:def up:def def:def --y-lims 0.95 1.05 --y-err def:False up:False dn:False --ax-texts _yb0ys2_?_upperleft_ --x-label _ptavg_ --y-label 'Frac. Uncert' --label def:def up:up dn:dn --x-lims _yb0ys2_xmin_ _yb0ys2_xmax_ --output-path resolution_unc_yb0ys2.png", 
     "y_subplot_lims": [
         null, 
         null
@@ -38,7 +38,7 @@
     "fig_size": null, 
     "objects": {
         "dn": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_dn.root?yb0ys0/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_dn.root?yb0ys2/h_ptavg", 
             "y_err": false, 
             "label": "dn"
         }, 
@@ -61,12 +61,12 @@
             "fill": true
         }, 
         "up": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?yb0ys0/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_up.root?yb0ys2/h_ptavg", 
             "y_err": false, 
             "label": "up"
         }, 
         "def": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?yb0ys0/h_ptavg", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_unc_def.root?yb0ys2/h_ptavg", 
             "y_err": false, 
             "label": "def"
         }
@@ -97,7 +97,7 @@
     ], 
     "show_legend": true, 
     "output_prefix": "plots/", 
-    "output_path": "plot.png", 
+    "output_path": "resolution_unc_yb0ys2.png", 
     "z_label": "", 
     "input_modules": [
         "RootModule"

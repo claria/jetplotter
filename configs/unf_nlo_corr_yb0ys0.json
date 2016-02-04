@@ -7,7 +7,7 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -16,11 +16,12 @@
         "_yb0ys0_xmax_"
     ], 
     "x_label": "_ptavg_", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "_yb0ys0_xmin_", 
         "_yb0ys0_xmax_"

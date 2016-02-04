@@ -11,59 +11,69 @@ def get_config():
     for rap_bin in rap_bins:
         config = get_base_config()
         config['ana_modules'] = ["Normalize", "Multiply", "Ratio", "ToTGraph", "ReBinning"]
-        config["normalize"] = [("dataunf", "width")]
+        # config["normalize"] = [("dataunf", "width")]
+        config["normalize"] = []
         config["multiply"] = [
                               ("nloct14", "_np"), 
                               ("nlommht2014", "_np"), 
+                              ("abm11nlo", "_np"), 
                               ("nlonnpdf30", "_np")] 
         config["ratio"] = [
-                           ["dataunf", "nloct14"], 
+                           ["dataunf_stat", "nloct14"], 
+                           ["dataunf_syst", "nloct14"], 
                            ["nlommht2014", "nloct14"], 
                            ["nlonnpdf30", "nloct14"], 
+                           ["abm11nlo", "nloct14"], 
                            ["nloct14", "nloct14"]
                           ] 
 
-        config["data_lims"] = [('dataunf', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
-                               ('nloct14', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
-                               ('nlommht2014', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
-                               ('nlonnpdf30', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
+        config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
-        config["to_tgraph"] = ["dataunf", "nlonnpdf30", "nlommht2014", "nloct14"] 
+        config["to_tgraph"] = ["nlonnpdf30", 
+                               "nlommht2014", 
+                               "abm11nlo", 
+                               "nloct14"] 
+        config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'nloct14']
 
 
         config['objects']["_np"] = {
             "input": "~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor".format(rap_bin)
         } 
-        config['objects']["dataunf"] = {
+        config['objects']["dataunf_stat"] = {
             "color": "black", 
             "edgecolor": "black", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg".format(rap_bin), 
-            "label": "Data (Unf.)", 
+            "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_stat".format(rap_bin), 
+            "label": "Data", 
             "marker": ".", 
             "step": False, 
             "style": "errorbar", 
             "x_err": True, 
             "y_err": True, 
-            "zorder": 2.0
+            "zorder": 3.0
         }
-        config['objects']["dataunf_tot"] = {
-            "color": "black", 
-            "edgecolor": "black", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg".format(rap_bin), 
-            "label": "Data (Unf.)", 
+        config['objects']["dataunf_syst"] = {
+            "color": "none", 
+            "edgecolor": "_color2_", 
+            "linewidth":2.0,
+            "alpha":1.0,
+            "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_syst".format(rap_bin), 
+            "label": "Exp. Unc.", 
             "marker": ".", 
-            "step": False, 
-            "style": "errorbar", 
+            "step": True, 
+            "style": "band", 
+            "hatch": '////',
+            "rasterized": True,
             "x_err": True, 
             "y_err": True, 
             "zorder": 2.0
         }
+
         config['objects']["nloct14"] = {
             "alpha": 0.5, 
             "color": "_color0_", 
             "edgecolor": "_color0_", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_tot_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_tot_u".format(rap_bin), 
-            "label": "NLOxNP (CT14)", 
+            "label": "Theo Unc.", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -97,11 +107,30 @@ def get_config():
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color2_", 
-            "edgecolor": "_color2_", 
+            "color": "_color4_", 
+            "edgecolor": "_color4_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs".format(rap_bin), 
             "label": "NLOxNP (NNPDF30)", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": True, 
+            "step": True, 
+            "style": "line", 
+            "x_err": True, 
+            "y_err": True, 
+            "zorder": 1.0
+        }
+        config['objects']["abm11nlo"] = {
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "capsize": 0, 
+            "cmap": "viridis", 
+            "color": "_color5_", 
+            "edgecolor": "_color5_", 
+            "id": "nlonnpdf30", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/ABM11NLO_xs".format(rap_bin), 
+            "label": "NLOxNP (ABM11)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -115,16 +144,17 @@ def get_config():
         config["y_lims"] = ["0.0", "2.0"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
+        config["legend_loc"] = 'upper right'
         config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
-        config["y_label"] = "Ratio to CT14?_center_"
+        config["y_label"] = "Ratio to NLOxNP (CT14)?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
-        config["ax_texts"] = ['_cmsp_', 
+        config["ax_texts"] = [
                               '_{0}_?_upperleft_'.format(rap_bin), 
                               '_20fb_'] 
 
-        config["output_path"] = 'ratio_to_Ct14nlo+np_totcomp_{0}.png'.format(rap_bin)
+        config["output_path"] = 'ratio_to_CT14nlo+np_totcomp_{0}.png'.format(rap_bin)
         configs.append(config)
 
     return configs
