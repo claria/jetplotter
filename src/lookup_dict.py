@@ -96,7 +96,7 @@ lookup_dict = {
         '_cms_': 's=CMS|x=0.0|y=1.01|va=bottom|ha=left',
         '_cmsp_': 's=CMS Preliminary|x=0.0|y=1.01|va=bottom|ha=left',
         '_cmss_': 's=CMS Simulation|x=0.0|y=1.01|va=bottom|ha=left',
-        '_20fb_': 's=$19.7\\,\mathrm{fb}^{-1}$ (8TeV)|x=1.0|y=1.01|va=bottom|ha=right',
+        '_20fb_': 's=$19.71\\,\mathrm{fb}^{-1}$ (8 TeV)|x=1.0|y=1.01|va=bottom|ha=right',
         '_8tev_': 's=8 TeV|x=1.0|y=1.01|va=bottom|ha=right',
         '_yb0ys0_': 's=$0.0 \leq \, y_b < 1.0$\n$0.0 \leq \, y^* < 1.0$',
         '_default_': 's=',

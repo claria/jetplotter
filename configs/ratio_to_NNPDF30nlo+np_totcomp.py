@@ -92,7 +92,7 @@ def get_config():
             "edgecolor": "_color1_", 
             "id": "nlommht2014", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/MMHT2014_xs".format(rap_bin), 
-            "label": "NLOxNP (MMHT 2014)", 
+            "label": "NLO$\otimes$NP (MMHT 2014)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -111,7 +111,7 @@ def get_config():
             "edgecolor": "_color4_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs".format(rap_bin), 
-            "label": "NLOxNP (CT14)", 
+            "label": "NLO$\otimes$NP (CT14)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -130,7 +130,7 @@ def get_config():
             "edgecolor": "_color5_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/ABM11NLO_xs".format(rap_bin), 
-            "label": "NLOxNP (ABM11)", 
+            "label": "NLO$\otimes$NP (ABM11)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -146,7 +146,7 @@ def get_config():
         config["x_log"] =  True
         config["legend_loc"] = 'upper right'
         config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
-        config["y_label"] = "Ratio to NLOxNP (NNPDF 3.0)?_center_"
+        config["y_label"] = "Ratio to NLO$\otimes$NP (NNPDF 3.0)?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
