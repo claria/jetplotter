@@ -5,7 +5,6 @@
     "plot_id": "^(?!_).*", 
     "y_label": "Cross Section (pb/GeV)", 
     "ax_texts": [
-        "_cmsp_", 
         "_20fb_"
     ], 
     "show_legend": true, 
@@ -24,7 +23,7 @@
             "data"
         ]
     ], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": true, 
     "list_modules": false, 
     "ratio": [], 
@@ -33,11 +32,12 @@
         "1E8"
     ], 
     "x_label": "Second Jet _pt_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "133.", 
         "1784."

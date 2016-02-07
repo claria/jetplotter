@@ -1,15 +1,13 @@
 {
     "ana_modules": [], 
     "plot_id": "^(?!_).*", 
-    "y_label": "arb. u.", 
+    "y_label": "arb. unit", 
     "ax_texts": [
-        "_cmsp_", 
-        "_20fb_", 
-        "_yb0ys0_?_upperleft_"
+        "_20fb_"
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -17,12 +15,13 @@
         "1E-8", 
         "1E8"
     ], 
-    "x_label": "MET/Sum(Et)", 
-    "print_config": false, 
+    "x_label": "MET/$\\sum E_\\mathrm{T}$", 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         null, 
         null
@@ -31,7 +30,7 @@
         null, 
         null
     ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_DATA.root?yb0ys0/h_METSumEtRatio mc:~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_QCDMGP6.root?yb0ys0/h_METSumEtRatio --y-log True --y-lims 1E-8 1E8 --color data:black mc:_color0_ --label data:Data mc:MG+P6 --x-label MET/Sum(Et) --y-label arb. u. --ax-texts _cmsp_ _20fb_ _yb0ys0_?_upperleft_ --output-path metoversumet.png", 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_DATA.root?default/h_METSumEtRatio mc:~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_QCDMGP6.root?default/h_METSumEtRatio --y-log True --y-lims 1E-8 1E8 --color data:black mc:_color0_ --label data:Data mc:MG+P6 --x-label MET/Sum(Et) --y-label arb. u. --ax-texts _cmsp_ _20fb_ _default_?_upperleft_ --output-path metoversumet.png", 
     "y_subplot_lims": [
         null, 
         null
@@ -58,18 +57,25 @@
         }, 
         "data": {
             "color": "black", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_DATA.root?yb0ys0/h_METSumEtRatio", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_DATA.root?default/h_METSumEtRatio", 
             "label": "Data"
         }, 
         "mc": {
             "color": "_color0_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_QCDMGP6.root?yb0ys0/h_METSumEtRatio", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_QCDMGP6.root?default/h_METSumEtRatio", 
             "label": "MG+P6"
         }
     }, 
     "z_log": false, 
     "combine_legend_entries": [], 
-    "ax_vlines": [], 
+    "ax_vlines": [
+        {
+            "x": 0.3, 
+            "color": "black", 
+            "linewidth": 1.0, 
+            "linestyle": "--"
+        }
+    ], 
     "y_log": true, 
     "store_json": true, 
     "y_subplot_label": "", 

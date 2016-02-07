@@ -1,8 +1,7 @@
 {
     "plot_id": "^(?!_).*", 
-    "y_label": "arb. u.", 
+    "y_label": "arb. unit", 
     "ax_texts": [
-        "_cmsp_", 
         "_20fb_"
     ], 
     "show_legend": true, 
@@ -21,12 +20,17 @@
     "normalize": [
         [
             "mc", 
-            "data"
+            "unity"
+        ], 
+        [
+            "data", 
+            "unity"
         ]
     ], 
+    "plot_order": [], 
     "x_lims": [
-        null, 
-        null
+        0.0, 
+        60.0
     ], 
     "z_lims": [
         null, 
@@ -65,6 +69,7 @@
         "mc": {
             "color": "_color0_", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV", 
+            "style": "histo", 
             "label": "MC"
         }
     }, 
@@ -80,8 +85,8 @@
         "configs/npv_afterreweighting.json"
     ], 
     "y_lims": [
-        null, 
-        null
+        0.0, 
+        0.1
     ], 
     "output_prefix": "plots/", 
     "output_path": "npv_afterreweighting.png", 

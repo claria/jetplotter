@@ -1,19 +1,18 @@
 {
     "plot_id": "^(?!_).*", 
-    "y_label": "arb. u.", 
+    "y_label": "arb. unit", 
     "ax_texts": [
-        "_cmsp_", 
         "_20fb_"
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
     "y_subplot_label": "", 
     "x_label": "NPV", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -21,12 +20,17 @@
     "normalize": [
         [
             "mc", 
-            "data"
+            "unity"
+        ], 
+        [
+            "data", 
+            "unity"
         ]
     ], 
+    "plot_order": [], 
     "x_lims": [
-        null, 
-        null
+        0.0, 
+        60.0
     ], 
     "z_lims": [
         null, 
@@ -65,7 +69,8 @@
         "mc": {
             "color": "_color0_", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NONPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV", 
-            "label": "MC"
+            "label": "MC", 
+            "style": "histo"
         }
     }, 
     "z_log": false, 
@@ -80,8 +85,8 @@
         "configs/npv_beforereweighting.json"
     ], 
     "y_lims": [
-        null, 
-        null
+        0.0, 
+        0.1
     ], 
     "output_prefix": "plots/", 
     "output_path": "npv_beforereweighting.png", 

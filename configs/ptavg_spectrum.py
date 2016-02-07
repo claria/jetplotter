@@ -13,7 +13,7 @@ def get_config():
 
     config['ana_modules'] = ["Normalize", 'Multiply', "ReBinning"]
     config["normalize"] = [(rap_bin, 'width') for rap_bin in rap_bins]
-    config["multiply"] = [(rap_bin, '{0}_np'.format(rap_bin)) for rap_bin in rap_bins]
+    config["multiply"] = [('{0}nlo'.format(rap_bin), '{0}_np'.format(rap_bin)) for rap_bin in rap_bins]
 
     config["data_lims"] = ([(rap_bin, 
                            {'min': '_{0}_xmin_'.format(rap_bin), 'max':'_{0}_xmax_'.format(rap_bin)}) for rap_bin in rap_bins] +

@@ -23,13 +23,13 @@
             "data"
         ]
     ], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": true, 
     "list_modules": false, 
     "log_level": "info", 
     "y_subplot_label": "Ratio to Data", 
     "x_label": "Photon Fraction", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -44,6 +44,7 @@
             "unity"
         ]
     ], 
+    "plot_order": [], 
     "x_lims": [
         "0.0", 
         "1.0"

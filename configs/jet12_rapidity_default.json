@@ -25,6 +25,7 @@
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "-3.0", 
         "3.0"
