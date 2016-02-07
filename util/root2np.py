@@ -133,9 +133,9 @@ class R2npObject2D(object):
             self.zu = np.zeros((root_object.GetNbinsY(), root_object.GetNbinsX()))
             for x in xrange(1, root_object.GetNbinsX() + 1):
                 for y in xrange(1, root_object.GetNbinsY() + 1):
-                    self.z[y - 1, x - 1] = root_object.GetBinContent(x, y)
-                    self.zl[y - 1, x - 1] = root_object.GetBinContent(x, y) - root_object.GetBinErrorLow(x, y)
-                    self.zu[y - 1, x - 1] = root_object.GetBinContent(x, y) + root_object.GetBinErrorUp(x, y)
+                    self.z[x - 1, y - 1] = root_object.GetBinContent(x, y)
+                    self.zl[x - 1, y - 1] = root_object.GetBinContent(x, y) - root_object.GetBinErrorLow(x, y)
+                    self.zu[x - 1, y - 1] = root_object.GetBinContent(x, y) + root_object.GetBinErrorUp(x, y)
             self.zerr = self.z - self.zl
         else:
             raise TypeError(str(root_object.ClassName()) + ' cannot be converted to an MPLObject1d.')
