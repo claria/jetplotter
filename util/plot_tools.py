@@ -456,12 +456,12 @@ def plot_heatmap(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis',
     z = obj.z
     if kwargs.get('mask_value') is not None:
         z = ma.masked_equal(z, kwargs.get('mask_value'))
-    if kwargs.get('plot_dataval') is not None:
+    if kwargs.get('plot_datavals'):
         for i, x_val in enumerate(obj.x):
             for j, y_val in enumerate(obj.y):
-                c = '{0:.2g}'.format(z[i,j])
+                c = '{0:.2f}'.format(z[i,j])
                 ax.text(x_val, y_val, c, va='center', ha='center')
 
-    artist = ax.pcolormesh(x, y, z, linewidth=0., rasterized=True, cmap=cmap, norm=norm)
+    artist = ax.pcolormesh(x, y, z.T, linewidth=0., rasterized=True, cmap=cmap, norm=norm)
     artist.set_edgecolor('face')
     return artist

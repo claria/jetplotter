@@ -44,7 +44,7 @@
             "heracms"
         ]
     ], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": true, 
     "list_modules": false, 
     "log_level": "debug", 
@@ -53,10 +53,11 @@
         "5.0"
     ], 
     "x_label": "$x$", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "1E-4", 
         "1.0"

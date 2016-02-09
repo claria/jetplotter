@@ -1,11 +1,9 @@
 {
-    "ana_modules": [
-        "NormalizeToRow"
-    ], 
+    "ana_modules": [], 
     "plot_id": [
         "^(?!_).*"
     ], 
-    "y_label": "Gen Ystar", 
+    "y_label": "True $y^*$", 
     "ax_texts": [], 
     "load_config": [
         "configs/genystar_vs_recoystar.json"
@@ -16,18 +14,19 @@
     "list_modules": false, 
     "log_level": "info", 
     "z_lims": [
-        "1E-4", 
-        "1E0"
+        "none", 
+        "none"
     ], 
     "y_lims": [
         "0.0", 
         "3.0"
     ], 
-    "x_label": "Reco Ystar", 
+    "x_label": "Measured $^*$", 
     "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "0.0", 
         "3.0"
@@ -58,12 +57,14 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "data": {
-            "cmap": "jet", 
+            "cmap": "viridis", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?default/h2_GenYstarVsRecoYstar", 
-            "style": "heatmap"
+            "style": "heatmap", 
+            "plot_datavals": true
         }
     }, 
     "z_log": true, 

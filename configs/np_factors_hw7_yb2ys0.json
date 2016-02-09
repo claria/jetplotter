@@ -1,0 +1,109 @@
+{
+    "plot_id": [
+        "mpihad", 
+        "nlo"
+    ], 
+    "y_label": "Ratio to Herwig 7 NLO+PS", 
+    "ax_texts": [
+        "_yb2ys0_?_upperleft_", 
+        "_8tev_"
+    ], 
+    "load_config": [], 
+    "ax_hlines": [
+        {
+            "y": 1.0, 
+            "lw": 2.0, 
+            "linestyle": "--", 
+            "color": "black"
+        }
+    ], 
+    "ratio_copy": [], 
+    "legend_loc": "upper right", 
+    "add_subplot": false, 
+    "list_modules": false, 
+    "log_level": "info", 
+    "y_lims": [
+        "0.8", 
+        "1.4"
+    ], 
+    "x_label": "_ptavg_", 
+    "print_config": false, 
+    "y_log": false, 
+    "y_subplot_label": "", 
+    "plot_order": [], 
+    "x_lims": [
+        "133.", 
+        "2000."
+    ], 
+    "z_lims": [
+        null, 
+        null
+    ], 
+    "argv": "./plot.py -i mpihad:~/dust/HW7/HW7_NLO+PS_2.root?yb2ys0_xs nompinohad:~/dust/HW7/HW7_NLO+PS_NOMPINOHAD_2.root?yb2ys0_xs nlo:~/dust/HW7/HW7_NLO_6.root?yb2ys0_xs --ana-modules Ratio --ratio mpihad:nompinohad nlo:nompinohad --plot-id mpihad nlo --x-log True --x-lims 133. 2000. --x-label _ptavg_ --y-label 'NP Correction factor' --label 'mpihad:Herwig 7' --ax-hlines y=1.0?lw=2.0?linestyle=--?color=black --ax-texts _yb2ys0_?_upperleft_ _8tev_ --output-path np_factors_hw7_yb2ys0.png --y-lims 0.8 1.4 --legend-loc 'upper right' --y-err nlo:False", 
+    "y_subplot_lims": [
+        null, 
+        null
+    ], 
+    "fig_size": null, 
+    "objects": {
+        "_default": {
+            "edgecolor": "auto", 
+            "style": "errorbar", 
+            "rasterized": true, 
+            "capsize": 0, 
+            "x_err": true, 
+            "color": "auto", 
+            "y_err": true, 
+            "label": "__nolegend__", 
+            "step": false, 
+            "cmap": "viridis", 
+            "zorder": 1.0, 
+            "marker": ".", 
+            "alpha": 1.0, 
+            "axis": "ax", 
+            "linestyle": "", 
+            "fill": true
+        }, 
+        "mpihad": {
+            "input": "~/dust/HW7/HW7_NLO+PS_2.root?yb2ys0_xs", 
+            "label": "Herwig 7 NLO+MPI+HAD+PS"
+        }, 
+        "nlo": {
+            "input": "~/dust/HW7/HW7_NLO_6.root?yb2ys0_xs", 
+            "y_err": false, 
+            "label": "Herwig 7 NLO"
+        }, 
+        "nompinohad": {
+            "input": "~/dust/HW7/HW7_NLO+PS_NOMPINOHAD_2.root?yb2ys0_xs"
+        }
+    }, 
+    "z_log": false, 
+    "ratio": [
+        [
+            "mpihad", 
+            "nompinohad"
+        ], 
+        [
+            "nlo", 
+            "nompinohad"
+        ]
+    ], 
+    "combine_legend_entries": [], 
+    "ax_vlines": [], 
+    "output_modules": [
+        "PlotModule"
+    ], 
+    "store_json": true, 
+    "ana_modules": [
+        "Ratio"
+    ], 
+    "show_legend": true, 
+    "output_prefix": "plots/", 
+    "output_path": "np_factors_hw7_yb2ys0.png", 
+    "z_label": "", 
+    "input_modules": [
+        "RootModule"
+    ], 
+    "margin": 0.0, 
+    "x_log": true
+}

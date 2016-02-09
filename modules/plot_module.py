@@ -66,6 +66,9 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--marker', type='str2kvstr', nargs='+',
                                     default='.', action='setting',
                                     help='Marker for errorbars for each plot.')
+        self.arg_group.add_argument('--plot-datavals', type='str2kvbool', nargs='+',
+                                    default=False, action='setting',
+                                    help='Marker for errorbars for each plot.')
         self.arg_group.add_argument('--x-err', type='str2kvbool', nargs='+', default=True, action='setting',
                                     help='Show x-errors.')
         self.arg_group.add_argument('--y-err', type='str2kvbool', nargs='+', default=True, action='setting',

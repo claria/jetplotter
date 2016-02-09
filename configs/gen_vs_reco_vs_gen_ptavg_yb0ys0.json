@@ -9,7 +9,7 @@
         "configs/gen_vs_reco_vs_gen_ptavg_yb0ys0.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -18,11 +18,12 @@
         "4000."
     ], 
     "x_label": "Gen $p_{\\mathrm{T,avg}}$ / Reco $p_{\\mathrm{T,avg}}$", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "0.5", 
         "1.5"

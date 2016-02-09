@@ -9,30 +9,31 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
-    "normalize_to_row": [
-        "resmatrix"
+    "z_lims": [
+        "0.0", 
+        "1.0"
     ], 
     "y_lims": [
-        "50.", 
-        "3000."
+        "100.", 
+        "2000."
     ], 
-    "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
-    "legend_loc": "best", 
+    "x_label": "Measured $p_{\\mathrm{T,avg}}$ (GeV)", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
-        "50.", 
-        "3000."
+        "133.", 
+        "2000."
     ], 
-    "z_lims": [
-        "0.0", 
-        "1.0"
+    "normalize_to_row": [
+        "resmatrix"
     ], 
     "argv": "./plotter.py -l plots/res_matrix_ptavg_normalized_yb1ys1.json", 
     "y_subplot_lims": [
@@ -45,11 +46,11 @@
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
-            "cmap": "Blues", 
+            "cmap": "viridis", 
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "resmatrix", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_QCDMGP6.root?yb1ys1/res_matrix_ptavg_response", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?yb1ys1/h2_res_matrix_ptavg", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -57,7 +58,8 @@
             "style": "heatmap", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "mask_value": 0.0
         }, 
         "_default": {
             "alpha": 1.0, 
@@ -76,7 +78,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }
     }, 
     "z_log": false, 

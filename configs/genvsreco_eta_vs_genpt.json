@@ -1,40 +1,45 @@
 {
-    "ana_modules": [], 
+    "ana_modules": [
+        "Project3DProfile"
+    ], 
+    "project3dprofile": [
+        [
+            "data", 
+            {
+                "option": "xy"
+            }
+        ]
+    ], 
     "plot_id": [
         "^(?!_).*"
     ], 
-    "y_label": "True $y_\\mathrm{b}$", 
+    "y_label": "Gen Y", 
     "ax_texts": [], 
-    "load_config": [
-        "configs/genyboost_vs_recoyboost.json"
-    ], 
+    "show_legend": true, 
     "ax_hlines": [], 
     "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
-    "normalize_to_row": [
-        "data"
-    ], 
     "y_lims": [
-        "0.0", 
-        "3.0"
+        "-4.5", 
+        "4.5"
     ], 
-    "x_label": "Measured $y_\\mathrm{b}$", 
+    "x_label": "_ptavg_", 
     "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
     "plot_order": [], 
     "x_lims": [
-        "0.0", 
-        "3.0"
+        "80.", 
+        "2000."
     ], 
     "z_lims": [
-        "none", 
-        "none"
+        "-0.05", 
+        "0.05"
     ], 
-    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?default/h2_GenYboostVsRecoYboost --style data:heatmap --x-lims 0.0 3.0 --y-lims 0.0 3.0 --z-log True --ana-modules NormalizeToRow --normalize-to-row data --z-lims 1E-4 1E0 --x-label 'Reco Yboost' --y-label 'Gen Yboost' --cmap data:jet --output-path genyboost_vs_recoyboost.png", 
+    "argv": "./plot.py -l configs/genvsreco_eta_vs_genpt.json", 
     "y_subplot_lims": [
         null, 
         null
@@ -61,25 +66,26 @@
             "plot_datavals": false
         }, 
         "data": {
-            "cmap": "viridis", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?default/h2_GenYboostVsRecoYboost", 
-            "style": "heatmap", 
-            "plot_datavals": true
+            "cmap": "seismic", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoEta", 
+            "style": "heatmap"
         }
     }, 
-    "z_log": true, 
+    "z_log": false, 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": false, 
     "store_json": true, 
     "y_subplot_label": "", 
-    "show_legend": true, 
+    "load_config": [
+        "configs/genvsreco_eta_vs_genpt.json"
+    ], 
     "output_prefix": "plots/", 
-    "output_path": "genyboost_vs_recoyboost.png", 
-    "x_log": false, 
+    "output_path": "genvsreco_eta_vs_genpt.png", 
+    "x_log": true, 
     "input_modules": [
         "RootModule"
     ], 
     "margin": 0.0, 
-    "z_label": ""
+    "z_label": "Reco y - Gen y"
 }

@@ -11,7 +11,7 @@
         "configs/genvsreco_eta.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -29,7 +29,7 @@
             }
         ]
     ], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
@@ -69,11 +69,11 @@
             "plot_datavals": false
         }, 
         "data_proj": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h2_GenVsRecoEta", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityCORR_QCDMGP6.root?default/h2_GenVsRecoEta", 
             "label": "Mean"
         }, 
         "data": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h2_GenVsRecoEta", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityCORR_QCDMGP6.root?default/h2_GenVsRecoEta", 
             "style": "heatmap"
         }
     }, 
@@ -85,7 +85,7 @@
     "y_subplot_label": "", 
     "show_legend": true, 
     "output_prefix": "plots/", 
-    "output_path": "genvsreco_eta.png", 
+    "output_path": "genvsreco_eta_corr.png", 
     "x_log": false, 
     "input_modules": [
         "RootModule"

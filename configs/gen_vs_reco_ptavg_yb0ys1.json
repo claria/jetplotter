@@ -9,7 +9,7 @@
         "configs/gen_vs_reco_ptavg_yb0ys1.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -18,11 +18,12 @@
         "3000"
     ], 
     "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "40", 
         "3000"

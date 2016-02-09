@@ -128,9 +128,9 @@ class R2npObject2D(object):
             self.yu = np.array([root_object.GetYaxis().GetBinUpEdge(i) for i in xrange(1, root_object.GetNbinsY() + 1)])
             self.yerr = self.y - self.yl
 
-            self.z = np.zeros((root_object.GetNbinsY(), root_object.GetNbinsX()))
-            self.zl = np.zeros((root_object.GetNbinsY(), root_object.GetNbinsX()))
-            self.zu = np.zeros((root_object.GetNbinsY(), root_object.GetNbinsX()))
+            self.z = np.zeros((root_object.GetNbinsX(), root_object.GetNbinsY()))
+            self.zl = np.zeros((root_object.GetNbinsX(), root_object.GetNbinsY()))
+            self.zu = np.zeros((root_object.GetNbinsX(), root_object.GetNbinsY()))
             for x in xrange(1, root_object.GetNbinsX() + 1):
                 for y in xrange(1, root_object.GetNbinsY() + 1):
                     self.z[x - 1, y - 1] = root_object.GetBinContent(x, y)

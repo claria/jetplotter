@@ -28,6 +28,7 @@ def main():
         unf_data_root.Scale(1.0, 'width')
         unf_data = R2npObject1D(unf_data_root)
         np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
+        jer_data = get_np_object('~/dust/dijetana/plot/plots/jer_uncert_{0}.root?jer_uncert'.format(ybys_bin))
 
         data = collections.OrderedDict()
         data['nbin'] = np.array([i] * len(unf_data.xl))
@@ -42,6 +43,9 @@ def main():
         data['nperr'] = 0.5 * (np_factor.yu - np_factor.yl)/np_factor.y * 100.
         data['uncor'] = np.array([1.0] * len(unf_data.xl))
         data['stat'] = unf_data.yerr/unf_data.y * 100.
+
+        data['jererr'] = (jer_data.yu - jer_data.yl)/jer_data.y * 100.
+
         # lumi
         lumi_unc = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?{0}/lumi_unc_up'.format(ybys_bin))
         data['lumi'] = (lumi_unc.y - 1.) * 100.
