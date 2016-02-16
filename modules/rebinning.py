@@ -49,7 +49,6 @@ def rebin_histo(obj, min_val, max_val):
     return new_obj
 
 def rebin_tgraph(obj, min_val, max_val):
-    print 'rebinning tgraph'
     x_vals = []
     y_vals = []
     x_errs_l = []
@@ -70,6 +69,6 @@ def rebin_tgraph(obj, min_val, max_val):
     for i in range(0, new_obj.GetN()):
         new_obj.SetPoint(i, x_vals[i], y_vals[i])
         new_obj.SetPointError(i, x_errs_l[i], x_errs_h[i], y_errs_l[i], y_errs_h[i])
-    print x_vals, y_vals
+    # print x_vals, y_vals
     return new_obj
 

@@ -10,10 +10,14 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
+
+        config['ana_modules'] = ['ReBinning']
+        config['data_lims'] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),]
         config['objects']['ct14nlo_kfac_ptavg'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?{0}/CT14nlo_kfac'.format(rap_bin),
                 'color' : '_color0_',
                 'style' : 'line',
+                'linestyle' : '-',
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}$',
                 }
@@ -21,6 +25,7 @@ def get_config():
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?{0}/CT14nlo_kfac'.format(rap_bin),
                 'color' : '_color1_',
                 'style' : 'line',
+                'linestyle' : '-',
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,max}}\exp{(0.3y^*)}$',
                 }
@@ -28,6 +33,7 @@ def get_config():
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?{0}/CT14nlo_kfac'.format(rap_bin),
                 'color' : '_color2_',
                 'style' : 'line',
+                'linestyle' : '--',
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}\exp{(0.3y^*)}$',
                 }
@@ -35,7 +41,6 @@ def get_config():
 
         config["y_lims"] = ["0.5", "2.0"]
         config["x_lims"] = ["133.", "2000."]
-        config["data_lims"] = ["_{0}_xmin_".format(rap_bin), "_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["x_label"] = "_ptavg_"
         config["y_label"] = "k-factor?_center_"

@@ -1,9 +1,9 @@
 {
     "plot_id": [
         "mpihad", 
-        "nlo"
+        "fit_hw7"
     ], 
-    "y_label": "Ratio to Herwig 7 NLO+PS", 
+    "y_label": "NP Correction", 
     "ax_texts": [
         "_yb0ys0_?_upperleft_", 
         "_8tev_"
@@ -62,16 +62,12 @@
             "alpha": 1.0, 
             "axis": "ax", 
             "linestyle": "", 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "mpihad": {
             "input": "~/dust/HW7/HW7_NLO+PS_2.root?yb0ys0_xs", 
             "label": "Herwig 7 NLO+MPI+HAD+PS"
-        }, 
-        "nlo": {
-            "input": "~/dust/HW7/HW7_NLO_6.root?yb0ys0_xs", 
-            "y_err": false, 
-            "label": "Herwig 7 NLO"
         }, 
         "nompinohad": {
             "input": "~/dust/HW7/HW7_NLO+PS_NOMPINOHAD_2.root?yb0ys0_xs"
@@ -81,10 +77,6 @@
     "ratio": [
         [
             "mpihad", 
-            "nompinohad"
-        ], 
-        [
-            "nlo", 
             "nompinohad"
         ]
     ], 

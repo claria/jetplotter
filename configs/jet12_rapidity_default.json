@@ -11,7 +11,7 @@
         "configs/jet12_rapidity_default.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -20,7 +20,7 @@
         "3.0"
     ], 
     "x_label": "Leading Jet Rapidity", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -58,7 +58,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "data": {
             "alpha": 1.0, 

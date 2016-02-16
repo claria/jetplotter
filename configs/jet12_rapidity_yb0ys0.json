@@ -10,7 +10,7 @@
         "configs/jet12_rapidity_yb0ys0.json"
     ], 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -19,7 +19,7 @@
         "3.0"
     ], 
     "x_label": "Leading Jet Rapidity", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -33,7 +33,7 @@
         null, 
         null
     ], 
-    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_y12 --style data:heatmap --z-log True --y-lims -3.0 3.0 --x-lims -3.0 3.0 --x-label Leading Jet Rapidity --y-label Second Jed Rapidity --z-label Cross Section (pb/GeV) --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _20fb_ --output-path jet12_rapidity_yb0ys0.png", 
+    "argv": "./plotter.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/MINPT300_DATA.root?yb0ys0/h2_y12 --style data:heatmap --z-log True --y-lims -3.0 3.0 --x-lims -3.0 3.0 --x-label Leading Jet Rapidity --y-label Second Jed Rapidity --z-label Cross Section (pb/GeV) --ax-texts _yb0ys0_?_upperleft_ _cmsp_ _20fb_ --output-path jet12_rapidity_yb0ys0.png", 
     "y_subplot_lims": [
         null, 
         null
@@ -57,7 +57,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "data": {
             "alpha": 1.0, 
@@ -67,7 +68,7 @@
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "data", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h2_y12", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/MINPT300_DATA.root?yb0ys0/h2_y12", 
             "label": "__nolegend__", 
             "linestyle": "", 
             "marker": ".", 
@@ -79,7 +80,7 @@
             "zorder": 1.0
         }
     }, 
-    "z_log": false, 
+    "z_log": true, 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": false, 

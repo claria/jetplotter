@@ -95,7 +95,6 @@ class BuildTGraph(BaseModule):
                     tmp_tgraph2 = config['objects'][input_ids[1]]['obj']
                     if not (tmp_tgraph1.GetN() == tmp_tgraph2.GetN()):
                         raise ValueError('The both objects must have the same number of points.')
-                    print type(tmp_tgraph1)
                     new_graph = ROOT.TGraphAsymmErrors(tmp_tgraph1)
                     for i in xrange(new_graph.GetN()):
                         tmp_tgraph1x, tmp_tgraph1y = ROOT.Double(0), ROOT.Double(0)
@@ -113,6 +112,7 @@ class BuildTGraph(BaseModule):
                         new_graph.SetPointEXlow(i, tmp_tgraph1.GetErrorX(i))
                         new_graph.SetPointEXhigh(i, tmp_tgraph1.GetErrorX(i))
 
+                    config['objects'].setdefault(id, {})['obj'] = new_graph
                 elif len(input_ids) == 3:
                     if isinstance(config['objects'][input_ids[0]]['obj'], ROOT.TGraph):
                         # The both inputs define the minimum maximum and the center is set by the mean of both.

@@ -2,7 +2,6 @@
     "plot_id": "^(?!_).*", 
     "y_label": "a.u.", 
     "ax_texts": [
-        "_cmsp_", 
         "_20fb_"
     ], 
     "load_config": [
@@ -23,13 +22,13 @@
             "data"
         ]
     ], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": true, 
     "list_modules": false, 
     "log_level": "info", 
     "y_subplot_label": "Ratio to Data", 
     "x_label": "Electron Fraction", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -77,7 +76,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "ratio_mgp6_to_data": {
             "alpha": 1.0, 

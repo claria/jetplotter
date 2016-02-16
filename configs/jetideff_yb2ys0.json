@@ -8,12 +8,11 @@
     "y_label": "Efficiency", 
     "ax_texts": [
         "_yb2ys0_?_upperleft_", 
-        "_cmsp_", 
         "_20fb_"
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -22,10 +21,11 @@
         "1.1"
     ], 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "100", 
         "2500."
@@ -59,7 +59,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "eff_pass": {
             "label": "Tight ID"

@@ -7,6 +7,7 @@ def get_base_config():
 
 def get_config():
     rap_bins = ['yb0ys0','yb0ys1','yb0ys2','yb1ys0','yb1ys1','yb2ys0']
+    colors = ['_color0_','_color1_','_color2_','_color3_','_color4_','_color5_']
     configs = []
 
     config = get_base_config()
@@ -43,7 +44,8 @@ def get_config():
         config['objects']["{0}nlo".format(rap_bin)] = {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs".format(rap_bin),
             "step": True, 
-            "style": "line"
+            "style": "line",
+            'color': colors[i]
         } 
 
     config['plot_id'] = ['^{0}nlo$'.format(rap_bin) for rap_bin in rap_bins] + ['^{0}$'.format(rap_bin) for rap_bin in rap_bins]

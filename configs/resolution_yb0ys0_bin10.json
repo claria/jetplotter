@@ -9,11 +9,9 @@
         "_yb0ys0_?_upperleft_", 
         "s=$133 \\leq p_{\\mathrm{T,avg}} < 153$?_upperright_"
     ], 
-    "load_config": [
-        "configs/resolution_yb0ys0_bin10.json"
-    ], 
+    "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -22,11 +20,12 @@
         "1E4"
     ], 
     "x_label": "Reco $p_{\\mathrm{T,avg}}$ / Gen $p_{\\mathrm{T,avg}}$", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         null, 
         null
@@ -387,7 +386,7 @@
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "auto", 
+            "color": "_color1_", 
             "edgecolor": "auto", 
             "id": "_default", 
             "label": "__nolegend__", 
@@ -688,7 +687,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "_ys0yb0_slice_27_fit": {
             "alpha": 1.0, 
@@ -1274,7 +1274,7 @@
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "auto", 
+            "color": "black", 
             "edgecolor": "auto", 
             "id": "_default", 
             "label": "__nolegend__", 
@@ -1284,7 +1284,7 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 2.0
         }, 
         "_ys0yb0_slice_11_fit": {
             "alpha": 1.0, 
@@ -1483,7 +1483,7 @@
         "_ys0yb0"
     ], 
     "y_subplot_label": "", 
-    "show_legend": true, 
+    "load_config": [], 
     "output_prefix": "plots/", 
     "output_path": "resolution_yb0ys0_bin10.png", 
     "x_log": false, 

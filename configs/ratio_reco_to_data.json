@@ -9,7 +9,7 @@
     "show_legend": true, 
     "ax_hlines": [], 
     "ratio_copy": [], 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "ratio": [
@@ -36,7 +36,7 @@
     ], 
     "y_subplot_label": "", 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -59,6 +59,7 @@
             "width"
         ]
     ], 
+    "plot_order": [], 
     "x_lims": [
         "_yb0ys0_xmin_", 
         "_yb0ys0_xmax_"
@@ -145,7 +146,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "data": {
             "alpha": 1.0, 

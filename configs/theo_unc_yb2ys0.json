@@ -12,6 +12,7 @@
     "y_label": "Fractional Uncertainty?_center_", 
     "ax_texts": [
         "_yb2ys0_?_upperleft_", 
+        "_8tev_", 
         "s=NNPDF 3.0-NLO?_upperleft2_"
     ], 
     "load_config": [
@@ -126,7 +127,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "npunc": {
             "alpha": 1.0, 

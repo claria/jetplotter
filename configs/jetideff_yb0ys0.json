@@ -8,7 +8,6 @@
     "y_label": "Efficiency", 
     "ax_texts": [
         "_yb0ys0_?_upperleft_", 
-        "_cmsp_", 
         "_20fb_"
     ], 
     "show_legend": true, 
@@ -26,6 +25,7 @@
     "output_modules": [
         "PlotModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "100", 
         "2500."
@@ -59,7 +59,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "eff_pass": {
             "label": "Tight ID"

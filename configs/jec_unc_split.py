@@ -58,7 +58,7 @@ def get_config():
             config["ax_hlines"] = [
                                     {'y' : 1.0, 'color' : 'black'}
                                     ]
-            config["ax_texts"] = ["_cmsp_", "_{0}_?_upperleft_".format(rap_bin), '_20fb_'] 
+            config["ax_texts"] = ["_{0}_?_upperleft_".format(rap_bin), '_20fb_'] 
             config["output_path"] = 'jec_relunc_{0}_{1}.png'.format(k, rap_bin)
 
             configs.append(config)

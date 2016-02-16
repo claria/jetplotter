@@ -12,6 +12,7 @@
     ], 
     "y_label": "Gen y", 
     "ax_texts": [], 
+    "plot_order": [], 
     "load_config": [
         "configs/rapidity_remap_3d.json"
     ], 
@@ -71,7 +72,8 @@
             "alpha": 1.0, 
             "axis": "ax", 
             "linestyle": "", 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }
     }, 
     "z_log": false, 
@@ -83,8 +85,7 @@
     ], 
     "store_json": true, 
     "ana_modules": [
-        "Project3DProfile", 
-        "RemapRapidity2D"
+        "Project3DProfile"
     ], 
     "show_legend": true, 
     "output_prefix": "plots/", 

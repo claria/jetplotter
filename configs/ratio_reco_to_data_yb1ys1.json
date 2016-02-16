@@ -3,7 +3,6 @@
     "y_label": "Ratio to Data?_center_", 
     "ax_texts": [
         "_yb1ys1_?_upperleft_", 
-        "_cmsp_", 
         "_20fb_"
     ], 
     "show_legend": true, 
@@ -59,6 +58,7 @@
             "width"
         ]
     ], 
+    "plot_order": [], 
     "x_lims": [
         "_yb1ys1_xmin_", 
         "_yb1ys1_xmax_"
@@ -83,7 +83,7 @@
             "edgecolor": "auto", 
             "id": "mgp6", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?yb1ys1/h_ptavg", 
-            "label": "MG+P6", 
+            "label": "Madgraph", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -101,7 +101,7 @@
             "edgecolor": "auto", 
             "id": "p8", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/QCDP8.root?yb1ys1/h_ptavg", 
-            "label": "P8", 
+            "label": "Pythia 8", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -145,7 +145,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "data": {
             "alpha": 1.0, 
@@ -156,7 +157,7 @@
             "edgecolor": "auto", 
             "id": "data", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg", 
-            "label": "DATA", 
+            "label": "Data - Reco", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 
@@ -174,7 +175,7 @@
             "edgecolor": "auto", 
             "id": "nlo", 
             "input": "~/PTAVG_YBYS_NLO.root?yb1ys1/CT10nlo_xs", 
-            "label": "NLO (CT10)", 
+            "label": "CT10 - NLO", 
             "linestyle": "", 
             "marker": ".", 
             "step": false, 

@@ -268,6 +268,7 @@ class Plot(BasePlot):
         # Add colorbar if there is a mappable
         if self.colorbar_mappable:
             cb = self.fig.colorbar(self.colorbar_mappable, ax=self.ax)
+            cb.ax.minorticks_on()
             cb.solids.set_rasterized(True)
             if self.z_label:
                 cb.set_label(self.z_label)

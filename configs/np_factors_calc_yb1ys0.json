@@ -23,9 +23,7 @@
             ]
         ]
     ], 
-    "load_config": [
-        "configs/np_factors_calc_yb1ys0.json"
-    ], 
+    "show_legend": true, 
     "ax_hlines": [
         {
             "color": "black", 
@@ -49,8 +47,8 @@
     ], 
     "plot_order": [], 
     "x_lims": [
-        "50.", 
-        "3000."
+        "_yb1ys0_xmin_", 
+        "_yb1ys0_xmax_"
     ], 
     "z_lims": [
         null, 
@@ -189,7 +187,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "res_np_factor": {
             "color": "black", 
@@ -214,7 +213,9 @@
     "store_json": true, 
     "simpleratio": [], 
     "y_subplot_label": "", 
-    "show_legend": true, 
+    "load_config": [
+        "configs/np_factors_calc_yb1ys0.json"
+    ], 
     "fit_obj": [
         [
             "qcdp8mpihad", 

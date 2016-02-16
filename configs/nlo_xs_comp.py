@@ -20,18 +20,21 @@ def get_config():
                 'axis' : 'ax1',
                 'color' : '_color0_',
                 'style' : 'line',
+                'linestyle' : '-',
                 'step' : 'True',
                 }
         config['objects']['ratio_ct14nlo_xs_ptavgexpys_to_ct14nlo_xs_ptmaxexpys'] = {
                 'axis' : 'ax1',
                 'color' : '_color2_',
                 'style' : 'line',
+                'linestyle' : '--',
                 'step' : 'True',
                 }
         config['objects']['ratio_ct14nlo_xs_ptmaxexpys_to_ct14nlo_xs_ptmaxexpys'] = {
                 'axis' : 'ax1',
                 'color' : '_color1_',
                 'style' : 'line',
+                'linestyle' : '-',
                 'step' : 'True',
                 }
 
@@ -39,6 +42,7 @@ def get_config():
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
                 'color' : '_color0_',
                 'style' : 'line',
+                'linestyle' : '-',
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}$',
                 }
@@ -46,12 +50,14 @@ def get_config():
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
                 'color' : '_color1_',
                 'style' : 'line',
+                'linestyle' : '-',
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,max}}\cdot e^{(0.3y^*)}$',
                 }
         config['objects']['ct14nlo_xs_ptavgexpys'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
                 'color' : '_color2_',
+                'linestyle' : '--',
                 'style' : 'line',
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}\cdot e^{(0.3y^*)}$',
