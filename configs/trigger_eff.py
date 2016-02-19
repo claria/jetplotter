@@ -41,12 +41,13 @@ def get_config():
             }
 
 
-            config["y_lims"] = ["0.0", "1.1"]
+            config["y_lims"] = ["0.0", "1.15"]
             config["x_lims"] = [50., 1000.]
             config['margin'] = 0.05
             config["x_log"] =  True
             config["x_label"] = "_ptavg_"
             config["y_label"] = "Efficiency"
+            config["legend_loc"] = "upper right"
             config["ax_texts"] = [
                                 "_20fb_",
                                 "_{0}_?_upperleft_".format(rap_bin),

@@ -24,7 +24,8 @@ def get_config():
                            ["nlommht2014", "nloct14"], 
                            ["nlonnpdf30", "nloct14"], 
                            ["abm11nlo", "nloct14"], 
-                           ["nloct14", "nloct14"]
+                           ["nloct14", "nloct14"],
+                           ["nloct14_scale", "nloct14_scale"]
                           ] 
 
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
@@ -72,8 +73,8 @@ def get_config():
             "alpha": 0.5, 
             "color": "_color0_", 
             "edgecolor": "_color0_", 
-            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_tot_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_tot_u".format(rap_bin), 
-            "label": "Theo Unc.", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_pdfunc_u".format(rap_bin), 
+            "label": "PDF Unc.", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -83,6 +84,22 @@ def get_config():
             "y_err": True, 
             "zorder": 1.0
         } 
+        config['objects']["nloct14_scale"] = {
+            "alpha": 1.0, 
+            "color": "_color3_", 
+            "edgecolor": "_color3_", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_scunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_scunc_u".format(rap_bin), 
+            "label": "Scale Unc.", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": True, 
+            "step": True, 
+            "style": "errorlines", 
+            "x_err": True, 
+            "y_err": True, 
+            "zorder": 1.0
+        } 
+
         config['objects']["nlommht2014"] = {
             "alpha": 1.0, 
             "axis": "ax", 

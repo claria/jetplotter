@@ -24,7 +24,8 @@ def get_config():
                            ["nlommht2014", "nlonnpdf30"], 
                            ["abm11nlo", "nlonnpdf30"], 
                            ["nloct14", "nlonnpdf30"],
-                           ["nlonnpdf30", "nlonnpdf30"], 
+                           ["nlonnpdf30", "nlonnpdf30"],
+                           ["nlonnpdf30_scale", "nlonnpdf30_scale"] 
                           ] 
 
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
@@ -33,7 +34,7 @@ def get_config():
                                "nlommht2014", 
                                "abm11nlo", 
                                "nloct14"] 
-        config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'nloct14']
+        config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'nlonnpdf30','nlonnpdf30_scale']
 
 
         config['objects']["_np"] = {
@@ -72,13 +73,28 @@ def get_config():
             "alpha": 0.5, 
             "color": "_color0_", 
             "edgecolor": "_color0_", 
-            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_tot_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_tot_u".format(rap_bin), 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_pdfunc_u".format(rap_bin), 
             "label": "Theo Unc.", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
             "step": True, 
             "style": "band", 
+            "x_err": True, 
+            "y_err": True, 
+            "zorder": 1.0
+        } 
+        config['objects']["nlonnpdf30_scale"] = {
+            "alpha": 1.0, 
+            "color": "_color3_", 
+            "edgecolor": "_color3_", 
+            "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_scunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_scunc_u".format(rap_bin), 
+            "label": "Scale Unc.", 
+            "linestyle": "--", 
+            "marker": ".", 
+            "plot": True, 
+            "step": True, 
+            "style": "errorlines", 
             "x_err": True, 
             "y_err": True, 
             "zorder": 1.0

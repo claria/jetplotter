@@ -1,3 +1,4 @@
+import util.callbacks as callbacks
 
 def get_base_config():
     config = {}
@@ -51,7 +52,7 @@ def get_config():
     config['plot_id'] = ['^{0}nlo$'.format(rap_bin) for rap_bin in rap_bins] + ['^{0}$'.format(rap_bin) for rap_bin in rap_bins]
     config['fig_size'] = [10., 10.]
     config['y_log'] = True
-    config["y_lims"] = [1E-5, 1E5]
+    config["y_lims"] = [1E-5, 1E6]
     config["x_log"] =  True
     config["x_lims"] = [120, 2000.]
     config["legend_loc"] = 'upper right'
@@ -69,3 +70,12 @@ def get_config():
     configs.append(config)
     return configs
 
+
+@callbacks.register('after_plot')
+def final_plot(**kwargs):
+    print 'hallo'
+
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    kwargs['mpl'].rcParams['font.size'] = 20

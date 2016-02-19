@@ -72,7 +72,7 @@ def get_config():
             "step": True,
         }
 
-        config["y_lims"] = ["0.7", "1.3"]
+        config["y_lims"] = ["0.7", "1.4"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["legend_loc"] = 'upper right'
@@ -90,3 +90,6 @@ def get_config():
 
     return configs
 
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['legend.fontsize'] = 22
