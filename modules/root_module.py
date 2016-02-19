@@ -2,7 +2,7 @@ import os
 
 import ROOT
 
-from util.root_tools import get_root_object, get_tgraphasymm_from_histos, get_root_file
+from util.root_tools import get_root_object, get_tgraphasymm_from_histos, get_root_file, build_root_object
 
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
@@ -34,7 +34,12 @@ class RootModule(BaseModule):
     def __call__(self, config):
         for id, item in config['objects'].iteritems():
             if 'input' in item:
-                item['obj'] = get_root_object(item['input'])
+                # just get object
+                if not '=' in item['input']:
+                    item['obj'] = get_root_object(item['input'])
+                else:
+                    kwargs = parse_query(item['input'])
+                    item['obj'] = build_root_object(**kwargs)
             elif 'input_tgraph' in item:
                 if '&' in item['input_tgraph']:
                     item['obj'] = get_tgraphasymm_from_histos(
@@ -75,7 +80,6 @@ class RootOutputModule(BaseModule):
                 continue
 
         f.Close()
-
 
 class BuildTGraph(BaseModule):
     def __init__(self):

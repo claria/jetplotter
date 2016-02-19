@@ -13,11 +13,11 @@
     "plot_id": [
         "^(?!_).*"
     ], 
-    "y_label": "$\\eta_{\\mathrm{gen}}$?_center_", 
+    "y_label": "$\\eta_{\\mathrm{reco}}$?_center_", 
     "ax_texts": [], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -25,8 +25,8 @@
         "-4.5", 
         "4.5"
     ], 
-    "x_label": "gen _ptavg_", 
-    "print_config": false, 
+    "x_label": "Reco _ptavg_", 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
@@ -87,5 +87,5 @@
         "RootModule"
     ], 
     "margin": 0.0, 
-    "z_label": "$y\\eta_{\\mathrm{meas}} - \\eta_{\\mathrm{gen}}$"
+    "z_label": "$\\langle \\eta_{\\mathrm{reco}} - \\eta_{\\mathrm{gen}} \\rangle$"
 }

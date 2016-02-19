@@ -17,8 +17,8 @@
     "list_modules": false, 
     "log_level": "info", 
     "y_lims": [
-        "0.5", 
-        "1.1"
+        "0.8", 
+        "1.049"
     ], 
     "x_label": "_ptavg_", 
     "legend_loc": "best", 
@@ -27,8 +27,8 @@
     ], 
     "plot_order": [], 
     "x_lims": [
-        "100", 
-        "2500."
+        "_yb0ys2_xmin_", 
+        "_yb0ys2_xmax_"
     ], 
     "z_lims": [
         null, 
@@ -63,7 +63,7 @@
             "plot_datavals": false
         }, 
         "eff_pass": {
-            "label": "Tight ID"
+            "label": "Loose jet ID"
         }, 
         "all": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys2/h_allpassjetid"

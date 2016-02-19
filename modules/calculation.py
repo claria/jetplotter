@@ -59,7 +59,7 @@ def multiply(obj, with_obj):
             tmp_x, tmp_y = ROOT.Double(0), ROOT.Double(0)
             with_obj.GetPoint(i, tmp_x, tmp_y)
             mult_vals[i] = tmp_y
-            print tmp_x, tmp_y
+            # print tmp_x, tmp_y
 
     if isinstance(obj, ROOT.TH1):
         for i in xrange(1, obj.GetNbinsX() + 1):

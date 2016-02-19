@@ -5,13 +5,13 @@
     "plot_id": [
         "^(?!_).*"
     ], 
-    "y_label": "$\\eta_{\\mathrm{meas.}}$ - $\\eta_{\\mathrm{gen.}}$", 
+    "y_label": "$\\eta_{\\mathrm{reco}}$ - $\\eta_{\\mathrm{gen}}$?_center_", 
     "ax_texts": [], 
     "load_config": [
         "configs/genvsreco_eta.json"
     ], 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -19,7 +19,7 @@
         "-0.5", 
         "0.5"
     ], 
-    "x_label": "$\\eta_{\\mathrm{gen.}}$", 
+    "x_label": "$\\eta_{\\mathrm{gen}}$", 
     "profile_y": [], 
     "profile_x": [
         [
@@ -29,7 +29,7 @@
             }
         ]
     ], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 

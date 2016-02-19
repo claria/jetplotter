@@ -3,7 +3,7 @@
         "ResolutionAna"
     ], 
     "plot_id": "_ys0yb0_slice_10", 
-    "y_label": "a.u.", 
+    "y_label": "arb. unit", 
     "ax_texts": [
         "_8tev_", 
         "_yb0ys0_?_upperleft_", 
@@ -11,7 +11,7 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -20,7 +20,7 @@
         "1E4"
     ], 
     "x_label": "Reco $p_{\\mathrm{T,avg}}$ / Gen $p_{\\mathrm{T,avg}}$", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"

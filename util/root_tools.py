@@ -3,6 +3,46 @@ import numpy as np
 import root2np
 
 
+def build_root_object(center, low=None, up=None, err_low=None, err_up=None):
+    
+    obj_central = get_root_object(center)
+    if low:
+        obj_low = get_root_object(low)
+    if up:
+        obj_up = get_root_object(up)
+    if err_low:
+        obj_err_low = get_root_object(err_low)
+    if err_up:
+        obj_err_up = get_root_object(err_up)
+
+    # convert everything into tgraph
+    out_obj = ROOT.TGraphAsymmErrors(obj_central)
+
+    if low and high:
+        low_graph = ROOT.TGraphAsymmErrors(obj_low)
+        up_graph = ROOT.TGraphAsymmErrors(obj_up)
+        assert(low_graph.GetN() == up_graph.GetN() == out_obj.GetN())
+        for i in xrange(out_obj.GetN()):
+            central_x, central_y = ROOT.Double(0), ROOT.Double(0)
+            out_obj.GetPoint(i, central_x, central_y)
+            up_x, up_y = ROOT.Double(0), ROOT.Double(0)
+            up_graph.GetPoint(i, central_x, central_y)
+            low_x, low_y = ROOT.Double(0), ROOT.Double(0)
+            low_graph.GetPoint(i, central_x, central_y)
+
+            xerrl_i = out_obj.GetErrorXlow(i)
+            xerru_i = out_obj.GetErrorXhigh(i)
+            yerrl_i = up_y - central_y if (up_y - central_y > 0.) else 0.0
+            yerru_i = central_y -low_y if (central_y - low_y > 0.) else 0.0
+            graph.SetPointError(i, xerrl_i, xerru_i, yerrl_i, yerru_i)
+    elif err_low and err_up:
+        pass
+    else:
+        print 'error'
+    return out_obj
+
+
+
 def get_root_objects(input, option=None, **kwargs):
     if input is None:
         input = []

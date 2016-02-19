@@ -14,7 +14,7 @@
         "configs/statunc_fractional_yb1ys1.json"
     ], 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -23,7 +23,7 @@
         "0.3"
     ], 
     "x_label": "_ptavg_", 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 
@@ -59,7 +59,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "reco": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb1ys1/h_ptavg", 

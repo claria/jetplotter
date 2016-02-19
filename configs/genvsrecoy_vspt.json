@@ -19,7 +19,7 @@
         "configs/genvsrecoy_vspt.json"
     ], 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -28,7 +28,7 @@
         "4.5"
     ], 
     "x_label": "_ptavg_", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 

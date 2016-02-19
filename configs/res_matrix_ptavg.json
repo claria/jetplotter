@@ -5,7 +5,7 @@
     "ax_texts": [], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -14,7 +14,7 @@
         "3000."
     ], 
     "x_label": "Reco $p_{\\mathrm{T,avg}}$ (GeV)", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -70,7 +70,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }
     }, 
     "z_log": true, 

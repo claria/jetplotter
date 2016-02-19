@@ -12,6 +12,7 @@
     "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar", 
     "log_level": "info", 
     "z_lims": [
         "0.0", 
@@ -83,6 +84,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scalar", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": true, 
@@ -91,6 +93,7 @@
     "load_config": [
         "configs/res_matrix_ptavg_normalized_yb1ys0.json"
     ], 
+    "y_axis_formatter": "scalar", 
     "output_prefix": "plots/", 
     "output_path": "res_matrix_ptavg_normalized_yb1ys0.png", 
     "x_log": true, 

@@ -1,6 +1,6 @@
 {
     "plot_id": "^(?!_).*", 
-    "y_label": "a.u.", 
+    "y_label": "arb. unit", 
     "ax_texts": [
         "_20fb_"
     ], 
@@ -22,13 +22,13 @@
             "data"
         ]
     ], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": true, 
     "list_modules": false, 
     "log_level": "info", 
     "y_subplot_label": "Ratio to Data", 
     "x_label": "Muon Fraction", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -148,7 +148,7 @@
     ], 
     "show_legend": true, 
     "y_lims": [
-        "1E-5", 
+        "1.1E-5", 
         "1.0"
     ], 
     "output_prefix": "plots/", 

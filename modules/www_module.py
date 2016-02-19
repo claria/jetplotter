@@ -45,6 +45,7 @@ class CopyToWebModule(BaseModule):
 
     def __call__(self, config):
         pass
+        return
         remote_host = 'sieber@ekplx69.physik.uni-karlsruhe.de' 
         remote_basedir = '/autofs/ekpwww/web/sieber/public_html/private/plots/'
         remote_dir = os.path.join(remote_basedir, date.today().isoformat())

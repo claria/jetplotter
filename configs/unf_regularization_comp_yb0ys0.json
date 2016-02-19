@@ -7,16 +7,17 @@
     "load_config": [], 
     "ax_hlines": [], 
     "ratio_copy": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar", 
     "log_level": "info", 
     "y_lims": [
         "0.8", 
         "1.2"
     ], 
     "x_label": "", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "y_log": false, 
     "y_subplot_label": "", 
     "plot_order": [], 
@@ -37,25 +38,37 @@
     "objects": {
         "unf8": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_8.root?yb0ys0/h_ptavg", 
+            "style": "line", 
+            "step": true, 
             "label": "8"
         }, 
         "reco": {
+            "style": "line", 
+            "step": true, 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg"
         }, 
         "unf2": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_2.root?yb0ys0/h_ptavg", 
+            "style": "line", 
+            "step": true, 
             "label": "2"
         }, 
         "unf1": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_1.root?yb0ys0/h_ptavg", 
+            "style": "line", 
+            "step": true, 
             "label": "1"
         }, 
         "unf6": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_6.root?yb0ys0/h_ptavg", 
+            "style": "line", 
+            "step": true, 
             "label": "6"
         }, 
         "unf4": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg", 
+            "style": "line", 
+            "step": true, 
             "label": "4"
         }, 
         "_default": {
@@ -79,10 +92,13 @@
         }, 
         "unf12": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_12.root?yb0ys0/h_ptavg", 
+            "style": "line", 
+            "step": true, 
             "label": "12"
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scalar", 
     "ratio": [
         [
             "unf1", 
@@ -123,6 +139,7 @@
         "Ratio"
     ], 
     "show_legend": true, 
+    "y_axis_formatter": "scalar", 
     "output_prefix": "plots/", 
     "output_path": "unf_regularization_comp_yb0ys0.png", 
     "z_label": "", 

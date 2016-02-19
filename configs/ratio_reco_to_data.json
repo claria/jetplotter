@@ -9,7 +9,7 @@
     "show_legend": true, 
     "ax_hlines": [], 
     "ratio_copy": [], 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "add_subplot": false, 
     "list_modules": false, 
     "ratio": [
@@ -36,7 +36,7 @@
     ], 
     "y_subplot_label": "", 
     "x_label": "_ptavg_", 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"

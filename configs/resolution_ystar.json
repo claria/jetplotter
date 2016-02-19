@@ -10,7 +10,7 @@
     ], 
     "ax_hlines": [], 
     "root_output": null, 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -19,12 +19,13 @@
         "0.25"
     ], 
     "x_label": "Gen _ptavg_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "RootOutputModule", 
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "50.", 
         "3000"
@@ -202,7 +203,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "resolution_yb0ys1_fit": {
             "color": "_color1_", 

@@ -23,16 +23,16 @@
             "data"
         ]
     ], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": true, 
     "list_modules": false, 
     "ratio": [], 
     "y_lims": [
-        "1E-8", 
+        "1.1E-8", 
         "1E8"
     ], 
     "x_label": "Second Jet _pt_", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -70,7 +70,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "ratio_mgp6_to_data": {
             "alpha": 1.0, 

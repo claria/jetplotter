@@ -3,21 +3,21 @@
         "ResolutionAna"
     ], 
     "plot_id": "^(?!_).*", 
-    "y_label": "Resolution", 
+    "y_label": "Relative Resolution", 
     "ax_texts": [], 
     "show_legend": true, 
     "ax_hlines": [], 
     "root_output": null, 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
     "y_lims": [
         "0.0", 
-        "0.25"
+        "0.20"
     ], 
     "x_label": "Gen _ptavg_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "RootOutputModule", 
         "PlotModule", 

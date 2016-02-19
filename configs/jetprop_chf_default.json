@@ -1,6 +1,6 @@
 {
     "plot_id": "^(?!_).*", 
-    "y_label": "a.u.", 
+    "y_label": "arb. unit", 
     "ax_texts": [
         "_20fb_"
     ], 
@@ -147,7 +147,7 @@
     ], 
     "show_legend": true, 
     "y_lims": [
-        "1E-5", 
+        "1.1E-5", 
         "1.0"
     ], 
     "output_prefix": "plots/", 

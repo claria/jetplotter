@@ -9,7 +9,7 @@
         "configs/gen_vs_reco_vs_gen_ptavg_yb0ys1.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "log_level": "info", 
@@ -18,18 +18,19 @@
         "4000."
     ], 
     "x_label": "Gen $p_{\\mathrm{T,avg}}$ / Reco $p_{\\mathrm{T,avg}}$", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "0.5", 
         "1.5"
     ], 
     "z_lims": [
         "1E-6", 
-        "1E6"
+        "none"
     ], 
     "argv": "./plotter.py -l plots/gen_vs_reco_vs_gen_ptavg.json", 
     "y_subplot_lims": [
@@ -55,7 +56,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "genreco": {
             "alpha": 1.0, 
@@ -103,5 +105,5 @@
         "RootModule"
     ], 
     "margin": 0.0, 
-    "z_label": "a.u."
+    "z_label": "arb. unit"
 }

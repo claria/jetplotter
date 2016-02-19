@@ -3,7 +3,7 @@
     "plot_id": "^(?!_).*", 
     "y_label": "arb. unit", 
     "ax_texts": [
-        "_20fb_"
+        "s=$19.71\\,\\mathrm{fb}^{-1}$ (8 TeV)|x=1.0|y=1.01|va=bottom|ha=right"
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
@@ -53,17 +53,53 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "id": "_default", 
+            "plot_datavals": false
         }, 
         "data": {
+            "edgecolor": "auto", 
+            "style": "errorbar", 
+            "rasterized": true, 
+            "capsize": 0, 
+            "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-08-25_11-57/DATA.root?default/h_METSumEtRatio", 
+            "x_err": true, 
             "color": "black", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_DATA.root?default/h_METSumEtRatio", 
-            "label": "Data"
+            "y_err": true, 
+            "label": "Data", 
+            "step": false, 
+            "cmap": "viridis", 
+            "zorder": 1.0, 
+            "obj": "null", 
+            "plot_datavals": false, 
+            "marker": ".", 
+            "alpha": 1.0, 
+            "fill": true, 
+            "linestyle": "", 
+            "id": "data", 
+            "axis": "ax"
         }, 
         "mc": {
-            "color": "_color0_", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/METSUMET_QCDMGP6.root?default/h_METSumEtRatio", 
-            "label": "MG+P6"
+            "edgecolor": "auto", 
+            "style": "errorbar", 
+            "rasterized": true, 
+            "capsize": 0, 
+            "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-08-25_11-57/QCDMGP6.root?default/h_METSumEtRatio", 
+            "x_err": true, 
+            "color": "#4C72B0", 
+            "y_err": true, 
+            "label": "MG+P6", 
+            "step": false, 
+            "cmap": "viridis", 
+            "zorder": 1.0, 
+            "obj": "null", 
+            "plot_datavals": false, 
+            "marker": ".", 
+            "alpha": 1.0, 
+            "fill": true, 
+            "linestyle": "", 
+            "id": "mc", 
+            "axis": "ax"
         }
     }, 
     "z_log": false, 
@@ -80,7 +116,7 @@
     "store_json": true, 
     "y_subplot_label": "", 
     "load_config": [
-        "configs/metoversumet.json"
+        "/nfs/dust/cms/user/gsieber/dijetana/plot/configs/metoversumet.json"
     ], 
     "output_prefix": "plots/", 
     "output_path": "metoversumet.png", 

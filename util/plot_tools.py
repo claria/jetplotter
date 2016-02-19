@@ -75,28 +75,27 @@ class BasePlot(object):
         matplotlib.rcParams['mathtext.bf'] = 'DejaVu Sans:weight=bold'
         matplotlib.rcParams['mathtext.sf'] = 'DejaVu Sans'
         matplotlib.rcParams['mathtext.tt'] = 'DejaVu Sans'
-        matplotlib.rcParams['font.size'] = 20.
-        matplotlib.rcParams['legend.fontsize'] = 14.
+        matplotlib.rcParams['font.size'] = 24.
         matplotlib.rcParams['text.usetex'] = False
         # matplotlib.rc('text.latex', preamble=r'\usepackage{helvet},\usepackage{sfmath}')
         # matplotlib.rc('text.latex', preamble=r'\usepackage{helvet}')
         # Axes
         matplotlib.rcParams['axes.linewidth'] = 2
-        matplotlib.rcParams['axes.labelsize'] = 20
+        matplotlib.rcParams['axes.labelsize'] = 24
         matplotlib.rcParams['xtick.labelsize'] = 'medium'
         matplotlib.rcParams['xtick.major.size'] = 8
         matplotlib.rcParams['xtick.major.width'] = 1.5
         matplotlib.rcParams['xtick.minor.size'] = 6
         matplotlib.rcParams['xtick.minor.width'] = 1.
-        matplotlib.rcParams['xtick.major.pad'] = 8
-        matplotlib.rcParams['xtick.minor.pad'] = 8
+        matplotlib.rcParams['xtick.major.pad'] = 12
+        matplotlib.rcParams['xtick.minor.pad'] = 12
         matplotlib.rcParams['ytick.labelsize'] = 'medium'
         matplotlib.rcParams['ytick.major.width'] = 1.5
         matplotlib.rcParams['ytick.major.size'] = 8
         matplotlib.rcParams['ytick.minor.size'] = 6
         matplotlib.rcParams['ytick.minor.width'] = 1.
-        matplotlib.rcParams['ytick.major.pad'] = 8
-        matplotlib.rcParams['ytick.minor.pad'] = 8
+        matplotlib.rcParams['ytick.major.pad'] = 12
+        matplotlib.rcParams['ytick.minor.pad'] = 12
         matplotlib.rcParams['lines.markersize'] = 12
         matplotlib.rcParams['lines.linewidth'] = 3
         matplotlib.rcParams['lines.markeredgewidth'] = 1.0
@@ -113,7 +112,7 @@ class BasePlot(object):
 
         # legend
         matplotlib.rcParams['legend.numpoints'] = 1
-        matplotlib.rcParams['legend.fontsize'] = 19
+        matplotlib.rcParams['legend.fontsize'] = 24
         matplotlib.rcParams['legend.labelspacing'] = 0.3
         matplotlib.rcParams['legend.frameon'] = False
         #
@@ -182,7 +181,7 @@ def log_locator_filter(x, pos):
     s = str(int(x))
     if len(s) == 4:
         return ''
-    if s[0] in ('2', '5'):
+    if s[0] in ('2','3', '5'):
         return '${0}$'.format(s)
     return ''
 

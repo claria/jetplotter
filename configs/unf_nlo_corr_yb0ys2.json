@@ -10,6 +10,7 @@
     "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar", 
     "log_level": "info", 
     "y_lims": [
         "_yb0ys2_xmin_", 
@@ -54,13 +55,14 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "corr": {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
-            "cmap": "seismic", 
+            "cmap": "bwr", 
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "corr", 
@@ -76,6 +78,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scalar", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": true, 
@@ -84,6 +87,7 @@
     "load_config": [
         "configs/unf_nlo_corr_yb0ys2.json"
     ], 
+    "y_axis_formatter": "scalar", 
     "output_prefix": "plots/", 
     "output_path": "unf_nlo_corr_yb0ys2.png", 
     "x_log": true, 

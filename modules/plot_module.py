@@ -4,10 +4,12 @@ import collections
 from collections import OrderedDict
 
 import matplotlib
+
 import matplotlib.pyplot as plt
 from matplotlib.ticker import ScalarFormatter
 
 from util.plot_tools import BasePlot
+import util.callbacks as callbacks
 
 BasePlot.init_matplotlib()
 
@@ -109,6 +111,10 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--y-log', default=False, type='bool', help='Use log scale for y-axis.')
         self.arg_group.add_argument('--z-log', default=False, type='bool', help='Use log scale for z-axis.')
 
+        self.arg_group.add_argument('--x-axis-formatter', default='scalar', help='Formatter for x-axis.')
+        self.arg_group.add_argument('--y-axis-formatter', default='scalar', help='Formatter for y-axis.')
+        self.arg_group.add_argument('--z-axis-formatter', default='scalar', help='Formatter for z-axis.')
+
         self.arg_group.add_argument('--x-label', default='', help='Label of the x axis.')
         self.arg_group.add_argument('--y-label', default='', help='Label of the y axis.')
         self.arg_group.add_argument('--y-subplot-label', default='', help='Label of the y subplot axis.')
@@ -140,6 +146,9 @@ class PlotModule(BaseModule):
 
     def __call__(self, config):
         plot = Plot(**config)
+
+        callbacks.trigger('before_plot', plt=plt, mpl=matplotlib)
+
         # plot each object
         id_regex = config.get('plot_id', '')
         if isinstance(id_regex, basestring) or not isinstance(id_regex, collections.Iterable):
@@ -192,6 +201,10 @@ class Plot(BasePlot):
         self.x_log = kwargs.pop('x_log', False)
         self.y_log = kwargs.pop('y_log', False)
         self.z_log = kwargs.pop('z_log', False)
+
+        self.x_axis_formatter = kwargs.pop('x_axis_formatter', 'scalar')
+        self.y_axis_formatter = kwargs.pop('y_axis_formatter', 'scalar')
+        self.z_axis_formatter = kwargs.pop('z_axis_formatter', 'scalar')
 
         self.x_label = get_lookup_val('x_label', kwargs.pop('x_label', ''))
         self.y_label = get_lookup_val('y_label', kwargs.pop('y_label', ''))
@@ -330,23 +343,27 @@ class Plot(BasePlot):
 
         if self.x_log:
             self.ax.set_xscale('log')
-            # x-axis tick formatting, only for log plots
-            # TODO: also for subplots
-            # xfmt = ScalarFormatter()
-            # xfmt.set_scientific(True)
-            # xfmt.set_powerlimits((-2, 5))
-            self.ax.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
-            # self.ax.xaxis.set_major_formatter(xfmt)
+
+            if self.x_axis_formatter == 'scalar':
+                xfmt = ScalarFormatter()
+                self.ax.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
+                self.ax.xaxis.set_major_formatter(xfmt)
             if self.ax1:
                 self.ax1.set_xscale('log')
-                self.ax1.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
-                # self.ax1.xaxis.set_major_formatter(xfmt)
+                if self.x_axis_formatter == 'scalar':
+                    xfmt = ScalarFormatter()
+                    self.ax1.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
+                    self.ax1.xaxis.set_major_formatter(xfmt)
         else:
             self.ax.set_xscale('linear')
 
 
         if self.y_log:
             self.ax.set_yscale('log', nonposy='clip')
+            if self.y_axis_formatter == 'scalar':
+                xfmt = ScalarFormatter()
+                self.ax.yaxis.set_major_formatter(xfmt)
+                self.ax.yaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
         else:
             self.ax.set_yscale('linear')
        
@@ -385,6 +402,7 @@ class Plot(BasePlot):
             self.ax1.set_xlim(self.ax.get_xlim())
             plt.subplots_adjust(hspace=0.15)
 
+        callbacks.trigger('after_plot', plt=self)
 
         self.save_fig()
         plt.close(self.fig)

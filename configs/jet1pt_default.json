@@ -30,7 +30,7 @@
     "list_modules": false, 
     "log_level": "debug", 
     "y_lims": [
-        "1E-8", 
+        "1.1E-8", 
         "1E8"
     ], 
     "x_label": "Leading Jet _pt_", 
@@ -41,7 +41,7 @@
     ], 
     "plot_order": [], 
     "x_lims": [
-        "74.", 
+        "133.", 
         "2500."
     ], 
     "z_lims": [
@@ -72,7 +72,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "ratio_mgp6_to_data": {
             "alpha": 1.0, 

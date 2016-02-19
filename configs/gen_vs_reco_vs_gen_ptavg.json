@@ -21,6 +21,7 @@
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "0.5", 
         "1.5"
@@ -53,7 +54,8 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "plot_datavals": false
         }, 
         "genreco": {
             "alpha": 1.0, 
