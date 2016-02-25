@@ -8,12 +8,19 @@ import imp
 import logging
 
 from util.config_tools import read_config
+import signal
 from plot import plot
 
 from multiprocessing import Pool
 
 log = logging.getLogger(__name__)
 
+def init_worker():
+    signal.signal(signal.SIGINT, signal.SIG_IGN)
+
+def run_worker(config):
+    print config
+    plot(config)
 
 def multi_plot():
     """Initializes and runs the core."""
@@ -47,11 +54,17 @@ def multi_plot():
         for config in configs:
             plot(config)
     else:
-        pool = Pool(processes=args['jobs'])
-        pool.map(plot, configs)
-        pool.close()
-        pool.join()
+        print 'Initializing {0} worker processes'.format(args['jobs'])
+        pool = Pool(processes=args['jobs'], initializer=init_worker)
 
+        try:
+            for config in configs:
+                pool.apply_async(run_worker, (config,))
+            pool.close()
+            pool.join()
+        except KeyboardInterrupt:
+            pool.terminate()
+            pool.join()
 
 if __name__ == '__main__':
     multi_plot()
