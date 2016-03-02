@@ -33,7 +33,34 @@
     ], 
     "legend_loc": "upper right", 
     "add_subplot": false, 
+    "fit_obj": [
+        [
+            "qcdp8mpihad", 
+            {
+                "fcn": "[0] + [1]/x**[2]", 
+                "fcn_0": [
+                    1.0, 
+                    1.0, 
+                    1.0
+                ], 
+                "options": "I"
+            }
+        ], 
+        [
+            "hwppmpihad", 
+            {
+                "fcn": "[0] + [1]/x**[2]", 
+                "fcn_0": [
+                    1.0, 
+                    1.0, 
+                    1.0
+                ], 
+                "options": "I"
+            }
+        ]
+    ], 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "0.88", 
@@ -197,6 +224,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "ratio": [
         [
             "hwppmpihad", 
@@ -214,34 +242,14 @@
     "simpleratio": [], 
     "y_subplot_label": "", 
     "load_config": [
-        "configs/np_factors_calc_yb0ys1.json"
+        "configs/np_factors_calc_yb0ys1.json", 
+        "configs/np_factors_calc_yb0ys1.json", 
+        "configs/np_factors_calc_yb0ys2.json", 
+        "configs/np_factors_calc_yb1ys0.json", 
+        "configs/np_factors_calc_yb1ys1.json", 
+        "configs/np_factors_calc_yb2ys0.json"
     ], 
-    "fit_obj": [
-        [
-            "qcdp8mpihad", 
-            {
-                "fcn": "[0] + [1]/x**[2]", 
-                "fcn_0": [
-                    1.0, 
-                    1.0, 
-                    1.0
-                ], 
-                "options": "I"
-            }
-        ], 
-        [
-            "hwppmpihad", 
-            {
-                "fcn": "[0] + [1]/x**[2]", 
-                "fcn_0": [
-                    1.0, 
-                    1.0, 
-                    1.0
-                ], 
-                "options": "I"
-            }
-        ]
-    ], 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "np_factors_calc_yb0ys1.png", 
     "x_log": true, 

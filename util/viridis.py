@@ -1,5 +1,42 @@
 """ Colormap viridis copied from matplotlib. Will be the default colormap in matplotlib 2.0 """
 from matplotlib.colors import LinearSegmentedColormap
+import matplotlib as mpl
+
+def reverse_colourmap(cmap, name = 'my_cmap_r'):
+    """
+    In: 
+    cmap, name 
+    Out:
+    my_cmap_r
+
+    Explanation:
+    t[0] goes from 0 to 1
+    row i:   x  y0  y1 -> t[0] t[1] t[2]
+                   /
+                  /
+    row i+1: x  y0  y1 -> t[n] t[1] t[2]
+
+    so the inverse should do the same:
+    row i+1: x  y1  y0 -> 1-t[0] t[2] t[1]
+                   /
+                  /
+    row i:   x  y1  y0 -> 1-t[n] t[2] t[1]
+    """        
+    reverse = []
+    k = []   
+
+    for key in cmap._segmentdata:    
+        k.append(key)
+        channel = cmap._segmentdata[key]
+        data = []
+
+        for t in channel:                    
+            data.append((1-t[0],t[2],t[1]))            
+        reverse.append(sorted(data))    
+
+    LinearL = dict(zip(k,reverse))
+    my_cmap_r = mpl.colors.LinearSegmentedColormap(name, LinearL) 
+    return my_cmap_r
 
 viridis_data = [[0.26700401, 0.00487433, 0.32941519],
                 [0.26851048, 0.00960483, 0.33542652],
@@ -259,7 +296,7 @@ viridis_data = [[0.26700401, 0.00487433, 0.32941519],
                 [0.99324789, 0.90615657, 0.1439362]]
 
 viridis_cmap = LinearSegmentedColormap.from_list('viridis', viridis_data)
-
+viridis_cmap_r = reverse_colourmap(LinearSegmentedColormap.from_list('viridis', viridis_data), 'viridis_r')
 
 sb_cmap_data = [[0.282352941176, 0.470588235294, 0.811764705882],
            [0.298039215686, 0.505882352941, 0.839215686275],

@@ -111,9 +111,9 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--y-log', default=False, type='bool', help='Use log scale for y-axis.')
         self.arg_group.add_argument('--z-log', default=False, type='bool', help='Use log scale for z-axis.')
 
-        self.arg_group.add_argument('--x-axis-formatter', default='scalar', help='Formatter for x-axis.')
-        self.arg_group.add_argument('--y-axis-formatter', default='scalar', help='Formatter for y-axis.')
-        self.arg_group.add_argument('--z-axis-formatter', default='scalar', help='Formatter for z-axis.')
+        self.arg_group.add_argument('--x-axis-formatter', default='scalar2', help='Formatter for x-axis.')
+        self.arg_group.add_argument('--y-axis-formatter', default='scientific', help='Formatter for y-axis.')
+        self.arg_group.add_argument('--z-axis-formatter', default='scientific', help='Formatter for z-axis.')
 
         self.arg_group.add_argument('--x-label', default='', help='Label of the x axis.')
         self.arg_group.add_argument('--y-label', default='', help='Label of the y axis.')
@@ -346,14 +346,21 @@ class Plot(BasePlot):
 
             if self.x_axis_formatter == 'scalar':
                 xfmt = ScalarFormatter()
+                self.ax.xaxis.set_major_formatter(xfmt)
+            elif self.x_axis_formatter == 'scalar2':
+                xfmt = ScalarFormatter()
                 self.ax.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
                 self.ax.xaxis.set_major_formatter(xfmt)
             if self.ax1:
                 self.ax1.set_xscale('log')
                 if self.x_axis_formatter == 'scalar':
                     xfmt = ScalarFormatter()
+                    self.ax1.xaxis.set_major_formatter(xfmt)
+                elif self.x_axis_formatter == 'scalar2':
+                    xfmt = ScalarFormatter()
                     self.ax1.xaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))
                     self.ax1.xaxis.set_major_formatter(xfmt)
+
         else:
             self.ax.set_xscale('linear')
 
@@ -361,6 +368,9 @@ class Plot(BasePlot):
         if self.y_log:
             self.ax.set_yscale('log', nonposy='clip')
             if self.y_axis_formatter == 'scalar':
+                xfmt = ScalarFormatter()
+                self.ax.yaxis.set_major_formatter(xfmt)
+            elif self.y_axis_formatter == 'scalar2':
                 xfmt = ScalarFormatter()
                 self.ax.yaxis.set_major_formatter(xfmt)
                 self.ax.yaxis.set_minor_formatter(plt.FuncFormatter(log_locator_filter))

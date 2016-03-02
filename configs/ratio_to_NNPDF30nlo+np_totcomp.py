@@ -1,3 +1,4 @@
+import util.callbacks as callbacks
 
 def get_base_config():
     config = {}
@@ -159,6 +160,7 @@ def get_config():
 
         config["y_lims"] = ["0.0", "2.0"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
+        config['x_axis_formatter'] = 'scalar2'
         config["x_log"] =  True
         config["legend_loc"] = 'upper right'
         config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
@@ -175,3 +177,7 @@ def get_config():
 
     return configs
 
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    # kwargs['mpl'].rcParams['font.size'] = 20

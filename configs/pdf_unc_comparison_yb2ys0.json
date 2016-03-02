@@ -61,13 +61,14 @@
         }
     ], 
     "ratio_copy": [], 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_subplot_label": "", 
     "x_label": "_ptavg_", 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "y_log": false, 
     "plot_order": [], 
     "x_lims": [
@@ -146,13 +147,15 @@
             "alpha": 1.0, 
             "axis": "ax", 
             "linestyle": "", 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "nnpdf_pdfunc_c": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?yb2ys0/NNPDF30_xs"
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "ratio": [
         [
             "ct14nlo_pdfunc_l", 
@@ -196,6 +199,7 @@
         "mmht_pdfunc_c", 
         "nnpdf_pdfunc_c"
     ], 
+    "y_axis_formatter": "scientific", 
     "y_lims": [
         "0.7", 
         "1.3"

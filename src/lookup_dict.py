@@ -109,7 +109,7 @@ lookup_dict = {
         '_topleft_':     'x=0.0|y=1.01|va=bottom|ha=left',
         '_topright_':    'x=1.0|y=1.01|va=bottom|ha=right',
         '_upperleft_':   'x=0.05|y=0.95|va=top|ha=left',
-        '_upperleft2_':   'x=0.05|y=0.85|va=top|ha=left',
+        '_upperleft2_':   'x=0.05|y=0.83|va=top|ha=left',
         '_upperright_':  'x=0.95|y=0.95|va=top|ha=right',
         '_bottomleft_':  'x=0.05|y=0.05|va=bottom|ha=left',
         '_bottomright_': 'x=0.95|y=0.05|va=bottom|ha=right',

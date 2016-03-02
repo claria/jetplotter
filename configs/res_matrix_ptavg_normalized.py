@@ -19,7 +19,7 @@ def get_config():
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
-            "cmap": "viridis", 
+            "cmap": "viridis_r", 
             "color": "auto", 
             "edgecolor": "auto", 
             "id": "resmatrix", 

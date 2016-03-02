@@ -53,7 +53,8 @@ def get_config():
     config['fig_size'] = [10., 10.]
     config['y_log'] = True
     config["y_lims"] = [1E-5, 1E6]
-    config["x_log"] =  True
+    config["x_log"] = True
+    config["x_axis_formatter"] = 'scalar2'
     config["x_lims"] = [120, 2000.]
     config["legend_loc"] = 'upper right'
     config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
@@ -62,7 +63,7 @@ def get_config():
     config["ax_texts"] = [
                           "_20fb_", 
                           "s=anti-$k_\\mathrm{T}\\,\\mathrm{R}=0.7$?x=0.65|y=0.60|ha=left|va=top", 
-                          "s=CT14-NLO${\otimes}$NP?x=0.65|y=0.55|ha=left|va=top",
+                          "s=CT14-NLO$\otimes$NP?x=0.65|y=0.55|ha=left|va=top",
                           "s=$\mu=p_\\mathrm{T,max}e^{{0.3y^*}}$?x=0.65|y=0.50|ha=left|va=top"
                           ]
 

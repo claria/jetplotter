@@ -11,9 +11,10 @@
     "show_legend": true, 
     "ax_hlines": [], 
     "ratio_copy": [], 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scientific", 
     "ratio": [
         [
             "mgp6", 
@@ -42,7 +43,7 @@
     ], 
     "y_subplot_label": "", 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -69,6 +70,7 @@
             "width"
         ]
     ], 
+    "plot_order": [], 
     "x_lims": [
         "133.", 
         "3000."
@@ -116,7 +118,8 @@
             "y_err": true, 
             "zorder": 1.0, 
             "rasterized": true, 
-            "fill": true
+            "fill": true, 
+            "plot_datavals": false
         }, 
         "data": {
             "color": "black", 
@@ -129,6 +132,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "log_level": "info", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
@@ -141,6 +145,7 @@
     "load_config": [
         "configs/ratio_reco_to_genp8_yb1ys1.json"
     ], 
+    "y_axis_formatter": "scientific", 
     "y_lims": [
         "0.0", 
         "2.0"

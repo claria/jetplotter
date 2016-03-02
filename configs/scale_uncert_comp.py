@@ -1,3 +1,4 @@
+import util.callbacks as callbacks
 
 def get_base_config():
     config = {}
@@ -92,3 +93,7 @@ def get_config():
 
     return configs
 
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    # kwargs['mpl'].rcParams['font.size'] = 20

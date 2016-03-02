@@ -1,3 +1,4 @@
+import util.callbacks as callbacks
 
 def get_base_config():
     config = {}
@@ -40,10 +41,11 @@ def get_config():
 
 
         config["y_lims"] = ["0.5", "2.0"]
-        config["x_lims"] = ["133.", "2000."]
+        config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
+        config["x_axis_formatter"] = 'scalar2'
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "k-factor?_center_"
+        config["y_label"] = "$k$-factor"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
@@ -54,3 +56,7 @@ def get_config():
 
     return configs
 
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    # kwargs['mpl'].rcParams['font.size'] = 20

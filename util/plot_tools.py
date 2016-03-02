@@ -10,8 +10,9 @@ from matplotlib.colors import colorConverter
 import matplotlib.pyplot as plt
 
 from root2np import R2npObject1D, R2npObject2D
-from util.viridis import viridis_cmap, sb_cmap
+from util.viridis import viridis_cmap, viridis_cmap_r, sb_cmap
 plt.register_cmap(cmap=viridis_cmap)
+plt.register_cmap(cmap=viridis_cmap_r)
 plt.register_cmap(cmap=sb_cmap)
 
 import logging

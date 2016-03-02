@@ -70,6 +70,7 @@ def get_config():
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["x_label"] = "_ptavg_"
+        config["x_axis_formatter"] = "scalar2"
         config["y_label"] = "Cross Section (pb/GeV)"
         config["y_subplot_label"] = "Ratio"
         config["add_subplot"] = True
