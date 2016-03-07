@@ -48,12 +48,12 @@ def get_config():
             "input": "~/dust/HW7/HW7_NLO+PS_NOMPINOHAD_2.root?{0}_xs".format(rap_bin)
         }
         config['objects']["pwgp8_mpihad"] = {
-            "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET2/POWHEG_MPIHAD.root?{0}_xs".format(rap_bin), 
+            "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET3/POWHEG_MPIHAD.root?{0}_xs".format(rap_bin), 
             "label": "Powheg+P8",
             "color": "_color2_"
         } 
         config['objects']["pwgp8_nompinohad"] = {
-            "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET2/POWHEG_NOMPINOHAD.root?{0}_xs".format(rap_bin)
+            "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET3/POWHEG_NOMPINOHAD.root?{0}_xs".format(rap_bin)
         }
 
         config['objects']["fit_hw7_mpihad"] = {

@@ -11,20 +11,21 @@
         "configs/genystar_vs_recoystar.json"
     ], 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
     "log_level": "info", 
-    "normalize_to_row": [
-        "data"
+    "z_lims": [
+        "1E-4", 
+        "1E0"
     ], 
     "y_lims": [
         "0.0", 
         "3.0"
     ], 
     "x_label": "Measured $^*$", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 
@@ -33,9 +34,8 @@
         "0.0", 
         "3.0"
     ], 
-    "z_lims": [
-        "1E-4", 
-        "1E0"
+    "normalize_to_row": [
+        "data"
     ], 
     "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/QCDMGP6.root?default/h2_GenYstarVsRecoYstar --style data:heatmap --x-lims 0.0 3.0 --y-lims 0.0 3.0 --z-log True --ana-modules NormalizeToRow --normalize-to-row data --z-lims 1E-4 1E0 --x-label 'Reco Ystar' --y-label 'Gen Ystar' --cmap data:jet --output-path genystar_vs_recoystar.png", 
     "y_subplot_lims": [

@@ -6,13 +6,14 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_subplot_label": "", 
     "x_label": "NPV", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -70,11 +71,12 @@
         "mc": {
             "color": "_color0_", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/NONPVWEIGHT_QCDMGP6.root?yb0ys0/h_nPV", 
-            "label": "MC", 
+            "label": "MG+P6", 
             "style": "histo"
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": false, 
@@ -85,6 +87,7 @@
     "load_config": [
         "configs/npv_beforereweighting.json"
     ], 
+    "y_axis_formatter": "scientific", 
     "y_lims": [
         0.0, 
         0.1
