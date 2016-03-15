@@ -9,6 +9,9 @@ from matplotlib.colors import LogNorm
 from matplotlib.colors import colorConverter
 import matplotlib.pyplot as plt
 
+from util.hatch_hack import setCustomHatchWidth
+setCustomHatchWidth(2.0)
+
 from root2np import R2npObject1D, R2npObject2D
 from util.viridis import viridis_cmap, viridis_cmap_r, sb_cmap
 plt.register_cmap(cmap=viridis_cmap)
@@ -263,6 +266,8 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
                            k in ['label', 'facecolor', 'edgecolor', 'zorder', 'hatch', 'rasterized', 'linewidth']}
 
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
+    # if 'hatch' in fill_between_kwargs:
+        # fill_between_kwargs['hatch'] =2*fill_between_kwargs['hatch']
     p = matplotlib.patches.Rectangle((0, 0), 1, 1, fill=fill, alpha=kwargs['alpha'], **fill_between_kwargs)
     ax.add_patch(p)
 

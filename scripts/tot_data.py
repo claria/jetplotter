@@ -72,9 +72,17 @@ def main():
             # data['{0}_up'.format(jec_source)] = jec_up.y/jec_default.y -1.
             # data['{0}_dn'.format(jec_source)] = 1. - jec_dn.y/jec_default.y
             # data['{0}'.format(jec_source)] = np.abs((jec_up.y - jec_dn.y)/2.0)/jec_default.y * 100.
-            data['{0}'.format(jec_source)] = np.maximum(np.abs(1. - jec_up.y/jec_default.y), np.abs(1. - jec_dn.y/jec_default.y)) * 100.
-            data['{0}'.format(jec_source)] = 0.5 *( (jec_up.y -jec_dn.y)/jec_default.y) * 100.
+
+            data['{0}_up'.format(jec_source)] = ((np.maximum(np.maximum(jec_up.y - jec_default.y, jec_dn.y - jec_default.y), 0))/ jec_default.y) * 100.
+            data['{0}_dn'.format(jec_source)] = ((np.maximum(np.maximum(jec_default.y - jec_up.y, jec_default.y - jec_dn.y), 0))/ jec_default.y) * 100.
+            # data['{0}_sym'.format(jec_source)] = np.maximum(np.abs(1. - jec_up.y/jec_default.y), np.abs(1. - jec_dn.y/jec_default.y)) * 100.
+            data['{0}_sym'.format(jec_source)] = 0.5 *( (jec_up.y -jec_dn.y)/jec_default.y) * 100.
             # data['{0}'.format(jec_source)] = np.abs(1 - jec_up.y/jec_default.y) * 100.
+
+        jec_total_up = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?{0}_Total_up/h_genptavg'.format(ybys_bin))
+        jec_total_dn = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/JEC_GEN.root?{0}_Total_dn/h_genptavg'.format(ybys_bin))
+        data['Total_up'.format(jec_source)] = ((np.maximum(np.maximum(jec_total_up.y - jec_default.y, jec_total_dn.y - jec_default.y), 0))/ jec_default.y) * 100.
+        data['Total_dn'.format(jec_source)] = ((np.maximum(np.maximum(jec_default.y - jec_total_up.y, jec_default.y - jec_total_dn.y), 0))/ jec_default.y) * 100.
 
         for k,v in data.iteritems():
             v[np.isnan(v)] = 0.
@@ -88,6 +96,9 @@ def main():
 
         jec_error_u = np.zeros((len(data['sigma'])))
         jec_error_l = np.zeros((len(data['sigma'])))
+
+        jec_total_error_u = (data['Total_up']/100.) * data['sigma']
+        jec_total_error_l = (data['Total_dn']/100.) * data['sigma']
 
         jer_error_u = np.zeros((len(data['sigma'])))
         jer_error_l = np.zeros((len(data['sigma'])))
@@ -114,17 +125,20 @@ def main():
         syst_error_l += (data['lumi']/100. * data['sigma'])**2
 
         for jec_source in jec_sources:
-            syst_error_u += (data[jec_source]/100. * data['sigma'])**2
-            syst_error_l += (data[jec_source]/100. * data['sigma'])**2
+            syst_error_u += (data['{0}_up'.format(jec_source)]/100. * data['sigma'])**2
+            syst_error_l += (data['{0}_dn'.format(jec_source)]/100. * data['sigma'])**2
 
-            jec_error_u += (data[jec_source]/100. * data['sigma'])**2
-            jec_error_l += (data[jec_source]/100. * data['sigma'])**2
+            jec_error_u += (data['{0}_up'.format(jec_source)]/100. * data['sigma'])**2
+            jec_error_l += (data['{0}_dn'.format(jec_source)]/100. * data['sigma'])**2
 
         jec_error_u = np.sqrt(jec_error_u)
         jec_error_l = np.sqrt(jec_error_l)
+        # jec_error_u = jec_total_error_u 
+        # jec_error_l = jec_total_error_l 
 
         syst_error_u = np.sqrt(syst_error_u)
         syst_error_l = np.sqrt(syst_error_l)
+
 
         f.cd()
         f.mkdir(ybys_bin)

@@ -17,16 +17,17 @@
     "ax_texts": [], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "-4.5", 
         "4.5"
     ], 
-    "x_label": "Reco _ptavg_", 
-    "legend_loc": "best", 
+    "x_label": "_ptavgreco_", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 
@@ -72,6 +73,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": false, 
@@ -80,6 +82,7 @@
     "load_config": [
         "configs/genvsreco_eta_vs_genpt.json"
     ], 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "genvsreco_eta_vs_genpt_corr.png", 
     "x_log": true, 
@@ -87,5 +90,5 @@
         "RootModule"
     ], 
     "margin": 0.0, 
-    "z_label": "$\\langle \\eta_{\\mathrm{reco}} - \\eta_{\\mathrm{gen}} \\rangle$"
+    "z_label": "$\\langle \\eta_{\\mathrm{reco}} - \\eta_{\\mathrm{ptcl}} \\rangle$"
 }

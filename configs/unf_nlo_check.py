@@ -17,34 +17,29 @@ def get_config():
                                 ]
         # config["normalize"] = [("dataunf", "width")]
         config["normalize"] = [
-                ('nloct14', 50000),
-                ('unf_truth', 'width'),
-                ('unf_measured', 'width'),
                 ]
         config["multiply"] = [
-                              ("nloct14", "_np"),
                               ]
         config["ratio"] = [
                            ["unf_measured", "unf_truth"],
-                           ["nloct14", "unf_truth"],
-                           ["unf_truth", "unf_truth"],
+                           ["unf_uncorr", "unf_truth"],
+                           ["unf_corr", "unf_truth"],
                           ] 
 
         # config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)})]
         config["data_lims"] = []
-        config["to_tgraph"] = [
-                               "nloct14"] 
         config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'nloct14']
+        config['plot_id'] = ['unf_measured', 'unf_uncorr', 'unf_corr']
 
 
         config['objects']["_np"] = {
             "input": "~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor".format(rap_bin)
         } 
         config['objects']["unf_truth"] = {
-            "alpha": 0.5, 
+            "alpha": 1.0, 
             "color": "auto", 
             "edgecolor": "auto", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ru_truth".format(rap_bin), 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?{0}/h_genptavg".format(rap_bin), 
             "label": "Unf truth", 
             "linestyle": "", 
             "marker": ".", 
@@ -56,50 +51,65 @@ def get_config():
             "zorder": 1.0
         } 
         config['objects']["unf_measured"] = {
-            "alpha": 0.5, 
+            "alpha": 1.0, 
             "color": "auto", 
             "edgecolor": "auto", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ru_measured".format(rap_bin), 
-            "label": "Unf Measured", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/response_fastNLO.root?{0}/h_recoptavg".format(rap_bin), 
+            "label": "stat. correlated smeared", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
             "step": True, 
-            "style": "line", 
+            "style": "errorbar", 
+            "x_err": True, 
+            "y_err": True, 
+            "zorder": 1.0
+        } 
+        config['objects']["unf_uncorr"] = {
+            "alpha": 1.0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLO_CHECK.root?{0}/h_recoptavg".format(rap_bin), 
+            "label": "stat. uncorrelated", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": True, 
+            "step": True, 
+            "style": "errorbar", 
+            "x_err": True, 
+            "y_err": True, 
+            "zorder": 1.0
+        } 
+        config['objects']["unf_corr"] = {
+            "alpha": 1.0, 
+            "color": "auto", 
+            "edgecolor": "auto", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_NLO_CHECK_CORR.root?{0}/h_recoptavg".format(rap_bin), 
+            "label": "stat. correlated", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": True, 
+            "step": True, 
+            "style": "errorbar", 
             "x_err": True, 
             "y_err": True, 
             "zorder": 1.0
         } 
 
-        config['objects']["nloct14"] = {
-            "alpha": 0.5, 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs".format(rap_bin), 
-            "label": "NLOxNP (CT14)", 
-            "linestyle": "", 
-            "marker": ".", 
-            "plot": True, 
-            "step": True, 
-            "style": "line", 
-            "x_err": True, 
-            "y_err": True, 
-            "zorder": 1.0
-        } 
-        config["y_lims"] = ["0.0", "2.0"]
-        # config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
-        config['x_lims'] = [30., 3000.]
+        config["y_lims"] = ["0.8", "1.5"]
+        config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
+        # config['x_lims'] = [30., 3000.]
         config["x_log"] =  True
         config["y_log"] =  False
         config["legend_loc"] = 'upper right'
         config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
         config["y_label"] = "Ratio to NLO$\otimes$NP (CT14)?_center_"
-        config["ax_hlines"] = [
-                {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
-                ]
+        # config["ax_hlines"] = [
+        #         {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
+        #         ]
         config["ax_texts"] = [
                               '_{0}_?_upperleft_'.format(rap_bin), 
-                              '_20fb_'] 
+                              '_8tev_'] 
 
         config["output_path"] = 'unf_nlo_check_{0}.png'.format(rap_bin)
         configs.append(config)

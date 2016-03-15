@@ -22,9 +22,9 @@ class Plotter(object):
         self._ana_modules = []
         self._output_modules = []
 
-    def __call__(self, config=None):
+    def __call__(self, config=None, log_level=None):
         # Prepare configs from parsed args and provided input configs/python files
-        config = self.build_config(config)
+        config = self.build_config(config, log_level=log_level)
 
         # Triggered after config built
         callbacks.trigger('after_config', config=config)
@@ -78,14 +78,14 @@ class Plotter(object):
         write_config(config, path + '.json')
 
 
-    def build_config(self, input_config=None):
+    def build_config(self, input_config=None, log_level='info'):
         """ Parse arguments. To set log level, load additional module parsers etc. the sys.args[1:] are parsed
             multiple times.
         :return: dict of parsed args
         """
         base_parser = SettingParser(add_help=False)
         base_parser_group = base_parser.add_argument_group(title='Base Parser', description='')
-        base_parser_group.add_argument("--log-level", default="info", help="Set the log level.")
+        base_parser_group.add_argument("--log-level", default=log_level, help="Set the log level.")
         base_parser_group.add_argument("--list-modules", action='store_true', help="List all available modules.")
         base_parser_group.add_argument("-l", "--load-config", default=[], nargs='+',
                                        help="Load json configs, with decreasing precedence,  or a python scripts from file.")

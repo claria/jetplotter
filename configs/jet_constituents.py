@@ -17,10 +17,10 @@ def get_config():
 
         config['ana_modules'] = ['Normalize', 'Ratio']
         config['normalize'] = [('mgp6', 'unity'), ('data', 'unity')]
-        config['ratio_copy'] = [('mgp6', 'data'),]
+        config['ratio_copy'] = [('data', 'mgp6'),]
         # config['plot_id'] = '^corr$'
 
-        config['objects']["ratio_mgp6_to_data"] = {
+        config['objects']["ratio_data_to_mgp6"] = {
             "axis": "ax1", 
             "color": "black", 
             "label": "__nolegend__", 
@@ -61,6 +61,7 @@ def get_config():
         config['x_log'] = False
         config["x_label"] = "{0}".format(x_labels[i])
         config["y_label"] = "arb. unit"
+        config["y_subplot_label"] = "Ratio to MC"
         config["legend_loc"] = 'upper right'
         config["ax_hlines"] = [
                 {'axis': 'ax1', 'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}

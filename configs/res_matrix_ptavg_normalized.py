@@ -38,10 +38,12 @@ def get_config():
         config["x_lims"] = ['_{0}_xmin_'.format(rap_bin), '_yb0ys0_xmax_'.format(rap_bin)]
         config["y_lims"] = ['100.', '_yb0ys0_xmax_'.format(rap_bin)]
         config["z_lims"] = [0.0, 1.0]
+        config["x_axis_formatter"] = 'scalar2'
+        config["y_axis_formatter"] = 'scalar2'
         config['x_log'] = True
         config['y_log'] = True
-        config["x_label"] = "Reco _ptavg_"
-        config["y_label"] = "Gen _ptavg_"
+        config["x_label"] = "_ptavgreco_"
+        config["y_label"] = "_ptavggen_"
         config["z_label"] = ""
         config["legend_loc"] = 'upper right'
         config["ax_texts"] = [

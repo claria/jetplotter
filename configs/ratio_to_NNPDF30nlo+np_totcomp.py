@@ -63,8 +63,8 @@ def get_config():
             "marker": ".", 
             "step": True, 
             "style": "band", 
-            "hatch": '////',
-            "rasterized": True,
+            "hatch": '//',
+            "rasterized": False,
             "x_err": True, 
             "y_err": True, 
             "zorder": 2.0

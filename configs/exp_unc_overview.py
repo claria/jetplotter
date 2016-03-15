@@ -1,3 +1,4 @@
+import util.callbacks as callbacks
 
 def get_base_config():
     config = {}

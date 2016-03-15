@@ -5,21 +5,22 @@
     "plot_id": [
         "^(?!_).*"
     ], 
-    "y_label": "$\\eta_{\\mathrm{reco}}$ - $\\eta_{\\mathrm{gen}}$?_center_", 
+    "y_label": "$\\eta_{\\mathrm{reco}}$ - $\\eta_{\\mathrm{ptcl}}$?_center_", 
     "ax_texts": [], 
     "load_config": [
         "configs/genvsreco_eta.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "-0.5", 
         "0.5"
     ], 
-    "x_label": "$\\eta_{\\mathrm{gen}}$", 
+    "x_label": "$\\eta_{\\mathrm{ptcl}}$", 
     "profile_y": [], 
     "profile_x": [
         [
@@ -29,7 +30,7 @@
             }
         ]
     ], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
@@ -78,12 +79,14 @@
         }
     }, 
     "z_log": true, 
+    "z_axis_formatter": "scientific", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": false, 
     "store_json": true, 
     "y_subplot_label": "", 
     "show_legend": true, 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "genvsreco_eta.png", 
     "x_log": false, 

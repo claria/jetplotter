@@ -15,29 +15,35 @@ def get_config():
         config["build_tgraph"] = []
         config["fit_obj"] = [
                         ("hw7_mpihad", {
-                                "fcn": "[0]/x**[1] + [2]", 
+                                "fcn": "[0]/x**[1] + 1.0", 
                                 "fcn_0": [1.0, 1.0, 1.0], 
                                 "options": "I"
                             }
                         ),
-                        ("pwgp8_mpihad", {
-                                "fcn": "[0]/x**[1] + [2]", 
+                        ("pwgp8_s1_mpihad", {
+                                "fcn": "[0]/x**[1] + 1.0", 
                                 "fcn_0": [1.0, 1.0, 1.0], 
                                 "options": "I"
                             }
-                        ) 
-
+                        ),
+                        ("pwgp8_m1_mpihad", {
+                                "fcn": "[0]/x**[1] + 1.0", 
+                                "fcn_0": [1.0, 1.0, 1.0], 
+                                "options": "I"
+                            }
+                        ),
                     ]
 
         config["ratio"] = [
                            ["hw7_mpihad", "hw7_nompinohad"], 
-                           ["pwgp8_mpihad", "pwgp8_nompinohad"], 
+                           ["pwgp8_s1_mpihad", "pwgp8_nompinohad"], 
+                           ["pwgp8_m1_mpihad", "pwgp8_nompinohad"], 
                           ] 
 
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
         config['plot_order'] = []
-        config['plot_id'] = ['fit_hw7_mpihad', 'hw7_mpihad','fit_pwgp8_mpihad', 'pwgp8_mpihad']
+        config['plot_id'] = ['fit_hw7_mpihad', 'hw7_mpihad','fit_pwgp8_s1_mpihad', 'pwgp8_s1_mpihad','fit_pwgp8_m1_mpihad', 'pwgp8_m1_mpihad']
 
         config['objects']["hw7_mpihad"] = {
             "input": "~/dust/HW7/HW7_NLO+PS_2.root?{0}_xs".format(rap_bin), 
@@ -47,24 +53,33 @@ def get_config():
         config['objects']["hw7_nompinohad"] = {
             "input": "~/dust/HW7/HW7_NLO+PS_NOMPINOHAD_2.root?{0}_xs".format(rap_bin)
         }
-        config['objects']["pwgp8_mpihad"] = {
+        config['objects']["pwgp8_s1_mpihad"] = {
             "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET3/POWHEG_MPIHAD.root?{0}_xs".format(rap_bin), 
-            "label": "Powheg+P8",
+            "label": "Powheg+P8 8CUEP8S1",
             "color": "_color2_"
+        } 
+        config['objects']["pwgp8_m1_mpihad"] = {
+            "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET_8CUEP8M1/POWHEG_MPIHAD_8CUEP8M1.root?{0}_xs".format(rap_bin), 
+            "label": "Powheg+P8 8CUEP8M1",
+            "color": "_color3_"
         } 
         config['objects']["pwgp8_nompinohad"] = {
             "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET3/POWHEG_NOMPINOHAD.root?{0}_xs".format(rap_bin)
         }
-
         config['objects']["fit_hw7_mpihad"] = {
             "label": "Herwig 7",
             "style": "line",
             "color": "_color0_"
         } 
-        config['objects']["fit_pwgp8_mpihad"] = {
+        config['objects']["fit_pwgp8_s1_mpihad"] = {
             "label": "Herwig 7",
             "style": "line",
             "color": "_color2_"
+        } 
+        config['objects']["fit_pwgp8_m1_mpihad"] = {
+            "label": "Herwig 7",
+            "style": "line",
+            "color": "_color3_"
         } 
 
         config["y_lims"] = ["0.88", "1.4"]

@@ -19,6 +19,7 @@ def get_config():
         config['ratio_copy'] = [('ct14nlo_xs_ptavg','ct14nlo_xs_ptavgexpys'),
                                 ('ct14nlo_xs_ptavgexpys','ct14nlo_xs_ptavgexpys'),
                                 ('hw7','ct14nlo_xs_ptavgexpys'),
+                                ('pwgp8','ct14nlo_xs_ptavgexpys'),
                                 # ('dataunf','ct14nlo_xs_ptavgexpys'),
                                 ('ct14nlo_xs_ptmaxexpys','ct14nlo_xs_ptavgexpys')
                                 ]
@@ -61,8 +62,18 @@ def get_config():
                 "style": "line", 
                 "x_err": True, 
                 "y_err": True, 
-
                 }
+        config['objects']['ratio_pwgp8_to_ct14nlo_xs_ptavgexpys'] = {
+                'axis' : 'ax',
+                'color' : '_color4_',
+                'style' : 'line',
+                'step' : 'True',
+                "style": "line", 
+                "x_err": True, 
+                "y_err": True, 
+                'label' : 'Powheg+P8 (NLO+PS matched)',
+                }
+
         # config['objects']['ratio_dataunf_to_ct14nlo_xs_ptavgexpys'] = {
         #         'axis' : 'ax',
         #         "alpha": 1.0, 
@@ -111,6 +122,15 @@ def get_config():
                 'step' : 'True',
                 'label' : 'HW7 (NLO+PS matched) - $\mu=p_{\mathrm{T,max}}$',
                 }
+        config['objects']['pwgp8'] = {
+                'input' : '/nfs/dust/cms/user/gsieber/POWHEG/RIVET3/POWHEG_MPIHAD.root?{0}_xs'.format(rap_bin),
+                'color' : '_color5_',
+                'style' : 'line',
+                'yerr' : True,
+                'step' : 'True',
+                'label' : 'Powheg+P8 (NLO+PS matched)',
+                }
+
         config['objects']['_np'] = {
             "input": "~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor".format(rap_bin)
         } 

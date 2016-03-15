@@ -11,9 +11,10 @@
         "configs/genvsreco_y.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "-0.7", 
@@ -29,7 +30,7 @@
             }
         ]
     ], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
@@ -78,12 +79,14 @@
         }
     }, 
     "z_log": true, 
+    "z_axis_formatter": "scientific", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": false, 
     "store_json": true, 
     "y_subplot_label": "", 
     "show_legend": true, 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "genvsreco_y.png", 
     "x_log": false, 

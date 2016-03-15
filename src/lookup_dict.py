@@ -5,6 +5,11 @@ settings.
 lookup_dict = {
     'x_label': {
         '_ptavg_': '$p_{\mathrm{T,avg}}$ (GeV)',
+        '_ptavgreco_': '$p_{\mathrm{T,avg}}^{\mathrm{reco}}$ (GeV)',
+        '_ptavgreconu_': '$p_{\mathrm{T,avg}}^{\mathrm{reco}}$',
+        '_ptavgptcl_': '$p_{\mathrm{T,avg}}^{\mathrm{ptcl}}$ (GeV)',
+        '_ptavggen_': '$p_{\mathrm{T,avg}}^{\mathrm{ptcl}}$ (GeV)',
+        '_ptavggennu_': '$p_{\mathrm{T,avg}}^{\mathrm{ptcl}}$',
         '_pt_': '$p_{\mathrm{T}}$ (GeV)',
         '_y_boost_': '$y_\mathrm{b}$',
         '_y_star_': '$y*$',
@@ -13,6 +18,8 @@ lookup_dict = {
     },
     'y_label': {
         '_ptavg_': '$p_{\mathrm{T,avg}}$ (GeV)',
+        '_ptavgreco_': '$p_{\mathrm{T,avg}}^{\mathrm{reco}}$ (GeV)',
+        '_ptavggen_': '$p_{\mathrm{T,avg}}^{\mathrm{ptcl}}$ (GeV)',
         '_y_star_': '$y^*$',
         '_top_': '{"position" : [0.0,1.0], "va" : "top", "ha" : "right"}',
         '_center_': '{"position" : [0.0,0.5], "va" : "center", "ha" : "right"}'

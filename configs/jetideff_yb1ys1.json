@@ -12,16 +12,17 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "0.8", 
         "1.049"
     ], 
     "x_label": "_ptavg_", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 
@@ -73,6 +74,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": false, 
@@ -85,6 +87,7 @@
     "load_config": [
         "configs/jetideff_yb1ys1.json"
     ], 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "jetideff_yb1ys1.png", 
     "x_log": true, 

@@ -18,9 +18,8 @@ log = logging.getLogger(__name__)
 def init_worker():
     signal.signal(signal.SIGINT, signal.SIG_IGN)
 
-def run_worker(config):
-    print config
-    plot(config)
+def run_worker(config, log_level='info'):
+    plot(config, log_level=log_level)
 
 def multi_plot():
     """Initializes and runs the core."""
@@ -29,6 +28,7 @@ def multi_plot():
                         help="Process multiple configs.")
     parser.add_argument("-j", "--jobs", default=6, type=int, help="Number of jobs.")
     parser.add_argument("--no-mp", default=False, action='store_true', help="Do not use multiproccessing, but a simple loop.")
+    parser.add_argument("--log-level", default='info', help="Set the log level.")
     args = vars(parser.parse_args()) 
     # empty sys args
     sys.argv = sys.argv[:1]
@@ -52,14 +52,14 @@ def multi_plot():
 
     if args['no_mp']:
         for config in configs:
-            plot(config)
+            plot(config, log_level=args['log_level'])
     else:
         print 'Initializing {0} worker processes'.format(args['jobs'])
         pool = Pool(processes=args['jobs'], initializer=init_worker)
 
         try:
             for config in configs:
-                pool.apply_async(run_worker, (config,))
+                pool.apply_async(run_worker, (config,args['log_level']))
             pool.close()
             pool.join()
         except KeyboardInterrupt:

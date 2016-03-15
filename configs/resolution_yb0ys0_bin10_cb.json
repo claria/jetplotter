@@ -7,20 +7,21 @@
     "ax_texts": [
         "_8tev_", 
         "_yb0ys0_?_upperleft_", 
-        "s=$133 \\leq p_{\\mathrm{T,avg}} < 153$?_upperright_"
+        "s=$133\\,\\mathrm{GeV} \\leq p_{\\mathrm{T,avg}} < 153\\,\\mathrm{GeV}$?_upperright_"
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "1", 
         "1E4"
     ], 
-    "x_label": "Reco $p_{\\mathrm{T,avg}}$ / Gen $p_{\\mathrm{T,avg}}$", 
-    "legend_loc": "best", 
+    "x_label": "$p_{\\mathrm{T,avg}}^{\\mathrm{reco}}$ / $p_{\\mathrm{T,avg}}^{\\mathrm{ptcl}}$", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -1475,6 +1476,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": true, 
@@ -1484,6 +1486,7 @@
     ], 
     "y_subplot_label": "", 
     "load_config": [], 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "resolution_yb0ys0_bin10_cb.png", 
     "x_log": false, 

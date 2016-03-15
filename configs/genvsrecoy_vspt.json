@@ -19,16 +19,17 @@
         "configs/genvsrecoy_vspt.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "-4.5", 
         "4.5"
     ], 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
@@ -74,12 +75,14 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "combine_legend_entries": [], 
     "ax_vlines": [], 
     "y_log": false, 
     "store_json": true, 
     "y_subplot_label": "", 
     "show_legend": true, 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "genvsrecoy_vspt.png", 
     "x_log": true, 

@@ -7,16 +7,17 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "1E-8", 
         "1E8"
     ], 
     "x_label": "MET/$\\sum E_\\mathrm{T}$", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -103,6 +104,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "combine_legend_entries": [], 
     "ax_vlines": [
         {
@@ -118,6 +120,7 @@
     "load_config": [
         "/nfs/dust/cms/user/gsieber/dijetana/plot/configs/metoversumet.json"
     ], 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "metoversumet.png", 
     "x_log": false, 

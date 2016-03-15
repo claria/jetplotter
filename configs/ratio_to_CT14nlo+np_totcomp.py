@@ -1,3 +1,4 @@
+import util.callbacks as callbacks
 
 def get_base_config():
     config = {}
@@ -62,8 +63,8 @@ def get_config():
             "marker": ".", 
             "step": True, 
             "style": "band", 
-            "hatch": '////',
-            "rasterized": True,
+            "hatch": '//',
+            "rasterized": False,
             "x_err": True, 
             "y_err": True, 
             "zorder": 2.0
@@ -128,7 +129,7 @@ def get_config():
             "edgecolor": "_color4_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs".format(rap_bin), 
-            "label": "NLO$\otimes$NP (NNPDF30)", 
+            "label": "$\mathrm{NLO}{{\otimes}}\mathrm{NP}$ (NNPDF30)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -147,7 +148,7 @@ def get_config():
             "edgecolor": "_color5_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/ABM11NLO_xs".format(rap_bin), 
-            "label": "NLO$\otimes$NP (ABM11)", 
+            "label": "$\mathrm{NLO}\otimes\mathrm{NP}$ (ABM11)", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -176,3 +177,7 @@ def get_config():
 
     return configs
 
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    # kwargs['mpl'].rcParams['font.size'] = 20
