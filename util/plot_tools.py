@@ -245,8 +245,10 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     x = obj.x
     y = obj.y
 
+
     y_errl = obj.yerrl
     y_erru = obj.yerru
+
     if step:
         x = steppify_bin(obj.xbinedges, isx=True)
         y = steppify_bin(y)
@@ -268,7 +270,7 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
     # if 'hatch' in fill_between_kwargs:
         # fill_between_kwargs['hatch'] =2*fill_between_kwargs['hatch']
-    p = matplotlib.patches.Rectangle((0, 0), 1, 1, fill=fill, alpha=kwargs['alpha'], **fill_between_kwargs)
+    p = matplotlib.patches.Rectangle((0, 0), 0, 0, fill=fill, alpha=kwargs['alpha'], **fill_between_kwargs)
     ax.add_patch(p)
 
     return p
