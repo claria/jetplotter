@@ -1,49 +1,40 @@
-# make sure you have the correct imports,
-# they may differ depending on the matplotlib version
-import matplotlib.backends.backend_pdf
-from matplotlib.backends.backend_pdf import Name, Op
-from matplotlib.transforms import Affine2D, Bbox, BboxBase, TransformedPath
+#!/usr/bin/python
+import numpy as np
+import matplotlib
+import matplotlib.hatch as hatch
+import matplotlib.pyplot as plt
+from matplotlib.patches import Ellipse, Polygon
 from matplotlib.path import Path
 
-def setCustomHatchWidth(customWidth):
+class ThickNorthEastHatch(hatch.HatchPatternBase):
+    def __init__(self, hatch, density):
+        self.num_lines = int((hatch.count('s') + hatch.count('x') +
+                          hatch.count('X')) * density)
+        print(density)
+        self.thickness = int(hatch.count('l'))/72.
+        if self.num_lines:
+            self.num_vertices = (self.num_lines + 1) * 5
+        else:
+            self.num_vertices = 0
 
-    def _writeHatches(self):
-        hatchDict = dict()
-        sidelen = 72.0
-        for hatch_style, name in self.hatchPatterns.iteritems():
-            ob = self.reserveObject('hatch pattern')
-            hatchDict[name] = ob
-            res = { 'Procsets':
-                    [ Name(x) for x in "PDF Text ImageB ImageC ImageI".split() ] }
-            self.beginStream(
-                ob.id, None,
-                { 'Type': Name('Pattern'),
-                  'PatternType': 1, 'PaintType': 1, 'TilingType': 1,
-                  'BBox': [0, 0, sidelen, sidelen],
-                  'XStep': sidelen, 'YStep': sidelen,
-                  'Resources': res })
+    def set_vertices_and_codes(self, vertices, codes):
+        steps = np.linspace(-0.5, 0.5, self.num_lines + 1, True)
+        vertices[0::5, 0] = 0.0 + steps
+        vertices[0::5, 1] = 0.0 - steps
 
-            # lst is a tuple of stroke color, fill color,
-            # number of - lines, number of / lines,
-            # number of | lines, number of \ lines
-            rgb = hatch_style[0]
-            self.output(rgb[0], rgb[1], rgb[2], Op.setrgb_stroke)
-            if hatch_style[1] is not None:
-                rgb = hatch_style[1]
-                self.output(rgb[0], rgb[1], rgb[2], Op.setrgb_nonstroke,
-                            0, 0, sidelen, sidelen, Op.rectangle,
-                            Op.fill)
+        vertices[1::5, 0] = 1.0 + steps
+        vertices[1::5, 1] = 1.0 - steps
+        vertices[2::5, 0] = 1.0 + steps + self.thickness
+        vertices[2::5, 1] = 1.0 - steps
+        vertices[3::5, 0] = 0.0 + steps + self.thickness
+        vertices[3::5, 1] = 0.0 - steps
+        vertices[4::5, 0] = 0.0 + steps
+        vertices[4::5, 1] = 0.0 - steps
 
-            self.output(customWidth, Op.setlinewidth)
+        codes[0::5] = Path.MOVETO
+        codes[1::5] = Path.LINETO
+        codes[2::5] = Path.LINETO
+        codes[3::5] = Path.LINETO
+        codes[4::5] = Path.LINETO
 
-            # TODO: We could make this dpi-dependent, but that would be
-            # an API change
-            self.output(*self.pathOperations(
-                    Path.hatch(hatch_style[2]),
-                    Affine2D().scale(sidelen),
-                    simplify=False))
-            self.output(Op.stroke)
-
-            self.endStream()
-            self.writeObject(self.hatchObject, hatchDict)
-    matplotlib.backends.backend_pdf.PdfFile.writeHatches = _writeHatches
+matplotlib.hatch._hatch_types.append(ThickNorthEastHatch)

@@ -9,8 +9,7 @@ from matplotlib.colors import LogNorm
 from matplotlib.colors import colorConverter
 import matplotlib.pyplot as plt
 
-from util.hatch_hack import setCustomHatchWidth
-setCustomHatchWidth(2.0)
+import util.hatch_hack 
 
 from root2np import R2npObject1D, R2npObject2D
 from util.viridis import viridis_cmap, viridis_cmap_r, sb_cmap
