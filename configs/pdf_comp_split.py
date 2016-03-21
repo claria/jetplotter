@@ -17,6 +17,12 @@ def get_q2label(q2):
     else:
         return q2_str
 
+ymax_lim = { 
+        0 : {1.9 : 4.0},
+        7 : {1.9 : 0.6, 10000 : 0.6},
+        8 : {1.9 : 1.0, 10000 : 1.0},
+        }
+
 
 def get_config():
     configs = []
@@ -181,7 +187,13 @@ def get_config():
                     "id": "nnpdf30", 
                     "axis": "ax1"
                 } 
-                config["y_lims"] = ["0.0", "none"]
+
+                if parton in ymax_lim and q2 in ymax_lim[parton]:
+                    ymaxval = ymax_lim[parton][q2]
+                else:
+                    ymaxval = 'none'
+
+                config["y_lims"] = ["0.0", ymaxval]
                 config["y_subplot_lims"] = ["0.5", "1.5"]
                 config["y_subplot_label"] = 'Rel. Uncert.'
                 config["x_lims"] = [1E-4, 0.9]
@@ -195,7 +207,7 @@ def get_config():
                                       's={0}?_topleft_'.format(pdf_labels[j]),
                                       's=$Q^2\!={0}\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
                                       ] 
-                config["output_path"] = 'pdf_{0}_{1}_{2}.png'.format(pdfset, partons[i], q2)
+                config["output_path"] = 'pdfcomp_{0}_{1}_{2}.png'.format(pdfset, partons[i], q2)
                 configs.append(config)
 
     return configs
