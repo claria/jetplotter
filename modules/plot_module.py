@@ -77,6 +77,8 @@ class PlotModule(BaseModule):
                                     help='Show y-errors.')
         self.arg_group.add_argument('--alpha', type='str2kvfloat', nargs='+', default=1.0, action='setting',
                                     help='Alpha value in plot.')
+        self.arg_group.add_argument('--edgealpha', type='str2kvfloat', nargs='+', default=1.0, action='setting',
+                                    help='Alpha value of Edgecolor in plot.')
         self.arg_group.add_argument('--capsize', type='str2kvint', nargs='+', default=0, action='setting',
                                     help='Capsize of errorbars in plot.')
         self.arg_group.add_argument('--zorder', type='str2kvfloat', nargs='+', default=1.0, action='setting',

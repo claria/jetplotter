@@ -112,7 +112,7 @@ class BasePlot(object):
         matplotlib.rcParams['agg.path.chunksize'] = 20000
 
         # default color cycle
-        matplotlib.rcParams['axes.color_cycle'] = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "#CCB974", "#64B5CD"]
+        matplotlib.rcParams['axes.color_cycle'] = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "#FFC91A", "#64B5CD"]
 
         # legend
         matplotlib.rcParams['legend.numpoints'] = 1
@@ -261,7 +261,7 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         fill = True
 
     kwargs['facecolor'] = colorConverter.to_rgba(kwargs['facecolor'], kwargs.get('alpha', 1.0))
-    kwargs['edgecolor'] = colorConverter.to_rgba(kwargs['edgecolor'], 1.0)
+    kwargs['edgecolor'] = colorConverter.to_rgba(kwargs['edgecolor'], kwargs.get('edgealpha', 1.0))
 
     fill_between_kwargs = {k: v for k, v in kwargs.items() if
                            k in ['label', 'facecolor', 'edgecolor', 'zorder', 'hatch', 'rasterized', 'linewidth']}

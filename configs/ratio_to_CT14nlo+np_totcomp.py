@@ -63,7 +63,7 @@ def get_config():
             "marker": ".", 
             "step": True, 
             "style": "band", 
-            "hatch": '//',
+            "hatch": 'sllll',
             "rasterized": False,
             "x_err": True, 
             "y_err": True, 
@@ -162,7 +162,7 @@ def get_config():
         config["y_lims"] = ["0.0", "2.0"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
-        config["legend_loc"] = 'upper right'
+        config["legend_loc"] = 'lower left'
         config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
         config["y_label"] = "Ratio to NLO$\otimes$NP (CT14)?_center_"
         config["ax_hlines"] = [

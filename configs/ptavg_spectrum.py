@@ -78,5 +78,6 @@ def final_plot(**kwargs):
 
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['axes.unicode_minus']=False
     kwargs['mpl'].rcParams['legend.fontsize'] = 20
     kwargs['mpl'].rcParams['font.size'] = 20

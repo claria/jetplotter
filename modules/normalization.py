@@ -1,3 +1,4 @@
+import copy
 import logging
 
 import numpy as np
@@ -5,6 +6,8 @@ import ROOT
 
 from modules.base_module import BaseModule
 from modules.helpers import divide_tgraph, isfloat
+
+from util.config_tools import merge
 
 log = logging.getLogger(__name__)
 

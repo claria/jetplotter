@@ -33,28 +33,28 @@ def get_config():
         config['plot_id'] = 'ratio'
 
         config['objects']['ratio_ct14nlo_xs_ptavg_to_ct14nlo_xs_ptavgexpys'] = {
-                'label' : 'CT14 (NLOxNP) - $\mu=p_{\mathrm{T,avg}}$',
+                'label' : 'NLOJet++ (NLOxNP) - $\mu=p_{\mathrm{T,avg}}$',
                 'axis' : 'ax',
                 'color' : '_color0_',
                 'style' : 'line',
                 'step' : 'True',
                 }
         config['objects']['ratio_ct14nlo_xs_ptavgexpys_to_ct14nlo_xs_ptavgexpys'] = {
-                'label' : 'CT14 (NLOxNP) - $\mu=p_{\mathrm{T,avg}}\cdot e^{(0.3y^*)}$',
+                'label' : 'NLOJet++ (NLOxNP) - $\mu=p_{\mathrm{T,avg}}\cdot e^{(0.3y^*)}$',
                 'axis' : 'ax',
                 'color' : '_color2_',
                 'style' : 'line',
                 'step' : 'True',
                 }
         config['objects']['ratio_ct14nlo_xs_ptmaxexpys_to_ct14nlo_xs_ptavgexpys'] = {
-                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,max}}\cdot e^{(0.3y^*)}$',
+                'label' : 'NLOJet++ (NLOxNP) - $\mu=p_{\mathrm{T,max}}\cdot e^{(0.3y^*)}$',
                 'axis' : 'ax',
                 'color' : '_color1_',
                 'style' : 'line',
                 'step' : 'True',
                 }
         config['objects']['ratio_hw7_to_ct14nlo_xs_ptavgexpys'] = {
-                'label' : 'HW7 (NLO+PS matched) - $\mu=p_{\mathrm{T,max}}$',
+                'label' : 'HW7 (NLO+PS) - $\mu=p_{\mathrm{T,max}}$',
                 'axis' : 'ax',
                 'color' : '_color3_',
                 'style' : 'line',
@@ -71,7 +71,7 @@ def get_config():
                 "style": "line", 
                 "x_err": True, 
                 "y_err": True, 
-                'label' : 'Powheg+P8 (NLO+PS matched)',
+                'label' : 'Powheg+P8 (NLO+PS) - $\mu=p_{\mathrm{T}}^{\mathrm{born}}$',
                 }
 
         # config['objects']['ratio_dataunf_to_ct14nlo_xs_ptavgexpys'] = {
@@ -98,29 +98,25 @@ def get_config():
                 'color' : '_color0_',
                 'style' : 'line',
                 'step' : 'True',
-                'label' : 'CT14 (NLOxNP) - $\mu=p_{\mathrm{T,avg}}$',
                 }
         config['objects']['ct14nlo_xs_ptmaxexpys'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
                 'color' : '_color1_',
                 'style' : 'line',
                 'step' : 'True',
-                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,max}}\cdot e^{(0.3y^*)}$',
                 }
         config['objects']['ct14nlo_xs_ptavgexpys'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
                 'color' : '_color2_',
                 'style' : 'line',
                 'step' : 'True',
-                'label' : 'CT14 (NLOxNP) - $\mu=p_{\mathrm{T,avg}}\cdot e^{(0.3y^*)}$',
                 }
         config['objects']['hw7'] = {
-                'input' : '/nfs/dust/cms/user/gsieber/HW7/HW7_NLO+PS_2.root?{0}_xs'.format(rap_bin),
+                'input' : '/nfs/dust/cms/user/gsieber/HW7/RIVET_11.root?{0}_xs'.format(rap_bin),
                 'color' : '_color4_',
                 'style' : 'line',
                 'yerr' : True,
                 'step' : 'True',
-                'label' : 'HW7 (NLO+PS matched) - $\mu=p_{\mathrm{T,max}}$',
                 }
         config['objects']['pwgp8'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/POWHEG/RIVET3/POWHEG_MPIHAD.root?{0}_xs'.format(rap_bin),
@@ -128,7 +124,6 @@ def get_config():
                 'style' : 'line',
                 'yerr' : True,
                 'step' : 'True',
-                'label' : 'Powheg+P8 (NLO+PS matched)',
                 }
 
         config['objects']['_np'] = {

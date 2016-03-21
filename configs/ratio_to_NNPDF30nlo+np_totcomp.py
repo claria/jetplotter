@@ -51,12 +51,13 @@ def get_config():
             "style": "errorbar", 
             "x_err": True, 
             "y_err": True, 
-            "zorder": 3.0
+            "zorder": 4.0
         }
         config['objects']["dataunf_syst"] = {
             "color": "none", 
-            "edgecolor": "_color2_", 
+            "edgecolor": "_color4_", 
             "linewidth":2.0,
+            "edgealpha":1.0,
             "alpha":1.0,
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_syst".format(rap_bin), 
             "label": "Exp. Unc.", 
@@ -64,7 +65,7 @@ def get_config():
             "step": True, 
             "style": "band", 
             "hatch": 'sllll',
-            "rasterized": False,
+            "rasterized": True,
             "x_err": True, 
             "y_err": True, 
             "zorder": 2.0
@@ -98,7 +99,7 @@ def get_config():
             "style": "errorlines", 
             "x_err": True, 
             "y_err": True, 
-            "zorder": 1.0
+            "zorder": 3.0
         } 
         config['objects']["nlommht2014"] = {
             "alpha": 1.0, 
@@ -117,14 +118,14 @@ def get_config():
             "style": "line", 
             "x_err": True, 
             "y_err": True, 
-            "zorder": 1.0
+            "zorder": 3.0
         } 
         config['objects']["nloct14"] = {
             "alpha": 1.0, 
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color4_", 
+            "color": "_color2_", 
             "edgecolor": "_color4_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs".format(rap_bin), 
@@ -136,7 +137,7 @@ def get_config():
             "style": "line", 
             "x_err": True, 
             "y_err": True, 
-            "zorder": 1.0
+            "zorder": 3.0
         }
         config['objects']["abm11nlo"] = {
             "alpha": 1.0, 
@@ -155,21 +156,21 @@ def get_config():
             "style": "line", 
             "x_err": True, 
             "y_err": True, 
-            "zorder": 1.0
+            "zorder": 3.0
         }
 
-        config["y_lims"] = ["0.0", "2.0"]
+        config["y_lims"] = ["0.4", "1.6"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config['x_axis_formatter'] = 'scalar2'
         config["x_log"] =  True
-        config["legend_loc"] = 'upper right'
+        config["legend_loc"] = 'upper left'
         config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
         config["y_label"] = "Ratio to NLO$\otimes$NP (NNPDF 3.0)?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
         config["ax_texts"] = [
-                              '_{0}_?_upperleft_'.format(rap_bin), 
+                              '_{0}_?_upperright_'.format(rap_bin), 
                               '_20fb_'] 
 
         config["output_path"] = 'ratio_to_NNPDF30+np_totcomp_{0}.png'.format(rap_bin)
