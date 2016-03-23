@@ -19,7 +19,7 @@
         "configs/genvsrecoy_vspt.json"
     ], 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -29,7 +29,7 @@
         "4.5"
     ], 
     "x_label": "_ptavg_", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 
@@ -66,7 +66,8 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0, 
-            "plot_datavals": false
+            "plot_datavals": false, 
+            "edgealpha": 1.0
         }, 
         "data": {
             "cmap": "seismic", 

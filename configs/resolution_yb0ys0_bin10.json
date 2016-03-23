@@ -11,7 +11,7 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -21,7 +21,7 @@
         "1E4"
     ], 
     "x_label": "$p_{\\mathrm{T,avg}}^{\\mathrm{reco}}$ / $p_{\\mathrm{T,avg}}^{\\mathrm{ptcl}}$", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
@@ -689,7 +689,8 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0, 
-            "plot_datavals": false
+            "plot_datavals": false, 
+            "edgealpha": 1.0
         }, 
         "_ys0yb0_slice_27_fit": {
             "alpha": 1.0, 

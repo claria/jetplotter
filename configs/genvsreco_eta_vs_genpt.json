@@ -17,7 +17,7 @@
     "ax_texts": [], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -27,7 +27,7 @@
         "4.5"
     ], 
     "x_label": "_ptavgreco_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
@@ -64,7 +64,8 @@
             "x_err": true, 
             "y_err": true, 
             "zorder": 1.0, 
-            "plot_datavals": false
+            "plot_datavals": false, 
+            "edgealpha": 1.0
         }, 
         "data": {
             "cmap": "seismic", 

@@ -23,12 +23,12 @@ class Remove(BaseModule):
 
 class Copy(BaseModule):
     def __init__(self):
-        super(Multiply, self).__init__()
+        super(Copy, self).__init__()
         self.arg_group.add_argument('--copy-id', nargs='+', type='str2kvstr', help='')
 
     def __call__(self, config):
         for id, new_id in config['copy_id']:
-            config['objects'][new_id] = copy.deepcopy(config['objects'][id])
+            config['objects'].setdefault(new_id, {})['obj'] = copy.deepcopy(config['objects'][id]['obj'])
 
 
 class ToTGraph(BaseModule):

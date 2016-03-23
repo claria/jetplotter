@@ -35,16 +35,29 @@ def get_config():
 
     pdf_label1 = "HERA DIS"
     pdf_label2 = "HERA DIS + CMS jets"
+
+
    
     for k, q2 in enumerate(q2s):
         for i, parton in enumerate(partons):
             config = get_base_config()
-            config['ana_modules'] = ["PDFModule", 'Ratio']
+            config['ana_modules'] = ["PDFModule", 'Ratio', 'Copy']
+            config['copy_id'] = []
+            config['combine_legend_entries'] = []
+
+            config['copy_id'].append(("_{0}_totunc".format(pdfset1),"_{0}_totunc_line".format(pdfset1)))
+            config['copy_id'].append(("_{0}_totunc".format(pdfset2),"_{0}_totunc_line".format(pdfset2)))
+
             config["plot_id"] =  [
                                     '_{0}_totunc'.format(pdfset1),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset1),
-                                    '_{0}_totunc'.format(pdfset2),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2)
+                                    '_{0}_totunc_line'.format(pdfset1),
+                                    '_{0}_totunc'.format(pdfset2),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2),
+                                    '_{0}_totunc_line'.format(pdfset2),
                                  ] 
             config['plot_order'] = ['_{0}_totunc'.format(pdfset1), '_{0}_totunc'.format(pdfset2)]
+            config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset1), "_{0}_totunc".format(pdfset1)))
+            config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset2), "_{0}_totunc".format(pdfset2)))
+
             config["input_pdfsets"] = [
                     ("{0}".format(pdfset1), {
                             "flavour": partons[i], 
@@ -87,6 +100,30 @@ def get_config():
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax"
             }
+            config["objects"]["_{0}_totunc_line".format(pdfset1)] = {
+                "edgealpha": 1.0,
+                "edgecolor": "auto",
+                "style": "line",
+                "rasterized": True,
+                "capsize": 0, 
+                "x_err": True, 
+                "color": "black",
+                "linewidth": 1.0,
+                "linestyle": "--",
+                "label": "{0}".format(pdf_label1),
+                "step": False,
+                "cmap": "viridis",
+                "zorder": 1.0,
+                "obj": "null",
+                "plot_datavals": False, 
+                "marker": ".", 
+                "alpha": 1.0, 
+                "fill": True, 
+                "y_err": True, 
+                "id": "_nnpdf30_totunc", 
+                "axis": "ax"
+            }
+
             config["objects"]["ratio__{0}_totunc_to__{0}_totunc".format(pdfset1)] = {
                 "edgealpha": 1.0, 
                 "edgecolor": "auto", 
@@ -134,6 +171,32 @@ def get_config():
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax"
             }
+            config["objects"]["_{0}_totunc_line".format(pdfset2)] = {
+                "edgealpha": 1.0,
+                "edgecolor": "auto",
+                "style": "line",
+                "rasterized": True,
+                "capsize": 0, 
+                "x_err": True, 
+                "color": "none", 
+                "color": "_color2_", 
+                "linestyle": "--",
+                "linewidth": "1.0",
+                "label": "{0}".format(pdf_label2),
+                "step": False,
+                "cmap": "viridis",
+                "zorder": 2.0,
+                "obj": "null",
+                "hatch": 'sllll', 
+                "plot_datavals": False, 
+                "marker": ".", 
+                "alpha": 1.0, 
+                "fill": False, 
+                "y_err": True, 
+                "id": "_nnpdf30_totunc", 
+                "axis": "ax"
+            }
+
             config["objects"]["ratio__{0}_totunc_to__{0}_totunc".format(pdfset2)] = {
                 "edgealpha": 1.0, 
                 "style": "band", 

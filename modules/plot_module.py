@@ -393,6 +393,7 @@ class Plot(BasePlot):
             # labels = self._legend_labels
             # TODO combine legend entries
             for id, id2 in self.combine_legend_entries:
+                log.debug('Combining legend entries {0} and {1}'.format(id, id2))
                 if id in self._ids and id2 in self._ids:
                     self._legend_handles[self._ids.index(id)] = (self._legend_handles[self._ids.index(id2)],self._legend_handles[self._ids.index(id)]) 
             leg_entry_dict = OrderedDict(zip(self._legend_labels, self._legend_handles))

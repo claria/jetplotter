@@ -12,7 +12,7 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -22,7 +22,7 @@
         "1.049"
     ], 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
@@ -61,7 +61,8 @@
             "zorder": 1.0, 
             "rasterized": true, 
             "fill": true, 
-            "plot_datavals": false
+            "plot_datavals": false, 
+            "edgealpha": 1.0
         }, 
         "eff_pass": {
             "label": "Loose jet ID"

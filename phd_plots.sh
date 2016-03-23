@@ -24,3 +24,6 @@
               configs/unf_nlo_corr.py \
               configs/exp_unc_overview.py \
               configs/ptavg_spectrum.py \
+              configs/pdf_comp_direct.py \
+              configs/pdf_comp_split.py \
+              configs/pdf_comp_overview.py \

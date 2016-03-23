@@ -33,7 +33,7 @@ def get_config():
    
     for k, q2 in enumerate(q2s):
         config = get_base_config()
-        config['ana_modules'] = ["PDFModule",'Multiply']
+        config['ana_modules'] = ["PDFModule",'Multiply', 'Copy']
         config["plot_id"] =  []
         config["plot_order"] =  []
         config["input_pdfsets"] = []
@@ -45,11 +45,22 @@ def get_config():
                               ('_{0}_9_totunc'.format(pdfset2), 0.2),
                 ]
 
+        config['copy_id'] = []
+        config['combine_legend_entries'] = []
+
         for i, parton in enumerate(partons):
+
+            config['copy_id'].append(("_{0}_{1}_totunc".format(pdfset1, partons[i]),"_{0}_{1}_totunc_line".format(pdfset1, partons[i])))
+            config['copy_id'].append(("_{0}_{1}_totunc".format(pdfset2, partons[i]),"_{0}_{1}_totunc_line".format(pdfset2, partons[i])))
+
             config["plot_id"].append('_{0}_{1}_totunc'.format(pdfset1, partons[i]))
+            config["plot_id"].append('_{0}_{1}_totunc_line'.format(pdfset1, partons[i]))
             config["plot_id"].append('_{0}_{1}_totunc'.format(pdfset2, partons[i]))
+            config["plot_id"].append('_{0}_{1}_totunc_line'.format(pdfset2, partons[i]))
             config['plot_order'].append('_{0}_{1}_totunc'.format(pdfset1, partons[i]))
             config['plot_order'].append('_{0}_{1}_totunc'.format(pdfset2, partons[i]))
+            config["combine_legend_entries"].append(("_{0}_{1}_totunc_line".format(pdfset1, partons[i]), "_{0}_{1}_totunc".format(pdfset1, partons[i])))
+            config["combine_legend_entries"].append(("_{0}_{1}_totunc_line".format(pdfset2, partons[i]), "_{0}_{1}_totunc".format(pdfset2, partons[i])))
             config["input_pdfsets"].append(
                     ("{0}_{1}".format(pdfset1, partons[i]), {
                             "flavour": partons[i], 
@@ -84,9 +95,31 @@ def get_config():
                 "alpha": 1.0, 
                 "fill": True, 
                 "y_err": True, 
-                "id": "_nnpdf30_totunc", 
                 "axis": "ax"
             }
+            config["objects"]["_{0}_{1}_totunc_line".format(pdfset1, partons[i])] = {
+                "edgealpha": 1.0,
+                "edgecolor": "auto",
+                "style": "line",
+                "rasterized": True,
+                "capsize": 0, 
+                "x_err": True, 
+                "color": "black",
+                "linestyle": "--",
+                "linewidth": "1.0",
+                "label": "{0}".format(pdf_label1),
+                "step": False,
+                "cmap": "viridis",
+                "zorder": 1.0,
+                "obj": "null",
+                "plot_datavals": False, 
+                "marker": ".", 
+                "alpha": 1.0, 
+                "fill": True, 
+                "y_err": True, 
+                "axis": "ax"
+            }
+
             config["objects"]["_{0}_{1}_totunc".format(pdfset2, partons[i])] = {
                 "edgealpha": 1.0,
                 "edgecolor": "auto",
@@ -109,9 +142,33 @@ def get_config():
                 "alpha": 1.0, 
                 "fill": False, 
                 "y_err": True, 
-                "id": "_nnpdf30_totunc", 
                 "axis": "ax"
             }
+            config["objects"]["_{0}_{1}_totunc_line".format(pdfset2, partons[i])] = {
+                "edgealpha": 1.0,
+                "edgecolor": "auto",
+                "style": "line",
+                "rasterized": True,
+                "capsize": 0, 
+                "x_err": True, 
+                "color": "none", 
+                "color": "_color2_", 
+                "linestyle": "--",
+                "linewidth": "1.0",
+                "label": "{0}".format(pdf_label2),
+                "step": False,
+                "cmap": "viridis",
+                "zorder": 2.0,
+                "obj": "null",
+                "hatch": 'sllll', 
+                "plot_datavals": False, 
+                "marker": ".", 
+                "alpha": 1.0, 
+                "fill": False, 
+                "y_err": True, 
+                "axis": "ax"
+            }
+
 
         config["y_lims"] = ["0.0", 1.0]
         config["x_lims"] = [1E-4, 0.9]
