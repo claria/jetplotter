@@ -6,6 +6,7 @@ import sys
 import imp
 
 import logging
+import traceback
 
 from util.config_tools import read_config
 import signal
@@ -19,7 +20,12 @@ def init_worker():
     signal.signal(signal.SIGINT, signal.SIG_IGN)
 
 def run_worker(config, log_level='info'):
-    plot(config, log_level=log_level)
+    try:
+        plot(config, log_level=log_level)
+    except Exception as e:
+        print 'Caught exception in worker thread (x = %d):' % x
+        traceback.print_exc()
+        raise e
 
 def multi_plot():
     """Initializes and runs the core."""

@@ -1,5 +1,6 @@
 import collections
 import logging
+import copy
 
 import ROOT
 
@@ -19,6 +20,15 @@ class Remove(BaseModule):
     def __call__(self, config):
         for id in config['remove']:
             del config['objects'][id]
+
+class Copy(BaseModule):
+    def __init__(self):
+        super(Multiply, self).__init__()
+        self.arg_group.add_argument('--copy-id', nargs='+', type='str2kvstr', help='')
+
+    def __call__(self, config):
+        for id, new_id in config['copy_id']:
+            config['objects'][new_id] = copy.deepcopy(config['objects'][id])
 
 
 class ToTGraph(BaseModule):

@@ -33,8 +33,8 @@ def get_config():
     pdfset1 = "HFTD_HERA_V101_EIG"
     pdfset2 = "HFTD_HERACMSTDJETS_V101_EIG"
 
-    pdf_label1 = "HERA-II DIS"
-    pdf_label2 = "HERA-II DIS + CMS jets"
+    pdf_label1 = "HERA DIS"
+    pdf_label2 = "HERA DIS + CMS jets"
    
     for k, q2 in enumerate(q2s):
         for i, parton in enumerate(partons):

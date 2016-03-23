@@ -39,7 +39,7 @@ lookup_dict = {
         '_color1_': '#55A868',
         '_color2_': '#C44E52',
         '_color3_': '#8172B2',
-        '_color4_': '#FFC91A',
+        '_color4_': '#fedf08',
         '_color5_': '#64B5CD'
     },
     'x_lims': {

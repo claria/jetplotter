@@ -112,7 +112,7 @@ class BasePlot(object):
         matplotlib.rcParams['agg.path.chunksize'] = 20000
 
         # default color cycle
-        matplotlib.rcParams['axes.color_cycle'] = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "#FFC91A", "#64B5CD"]
+        matplotlib.rcParams['axes.color_cycle'] = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "#fedf08", "#64B5CD"]
 
         # legend
         matplotlib.rcParams['legend.numpoints'] = 1

@@ -25,6 +25,7 @@ class Multiply(BaseModule):
 
     def __call__(self, config):
         for id, val in config['multiply']:
+            obj = config['objects'][id]['obj']
             if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
             if val in config['objects']:
@@ -32,7 +33,13 @@ class Multiply(BaseModule):
                 config['objects'][id]['obj'] = multiply(config['objects'][id]['obj'], config['objects'][val]['obj'])
             elif isfloat(val):
                 # Normalize/Scale by an factor
-                config['objects'][id]['obj'].Multiply(float(val))
+                if isinstance(obj, ROOT.TH1):
+                    config['objects'][id]['obj'].Multiply(float(val))
+                elif isinstance(obj, ROOT.TGraph):
+                    for i in range(obj.GetN()):
+                        obj.GetY()[i] *= float(val)
+                        obj.GetEYhigh()[i] *= float(val)
+                        obj.GetEYlow()[i] *= float(val)
             else:
                 raise ValueError('The intended multiplication could not be identified for {0}'.format(val))
 
