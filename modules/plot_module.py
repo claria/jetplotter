@@ -403,7 +403,8 @@ class Plot(BasePlot):
 
             if leg_entry_dict:
                 labels, handles = zip(*leg_entry_dict.items())
-                self.ax.legend(handles, labels, loc=self.legend_loc)
+                legend =self.ax.legend(handles, labels, loc=self.legend_loc)
+                legend.get_frame().set_alpha(0.0)
             else:
                 log.debug('Omit legend since all labels are empty.')
 

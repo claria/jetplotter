@@ -1,8 +1,11 @@
 #! /bin/bash
 
-./plots.py -l configs/ratio_to_CT14nlo+np_totcomp.py \
+./plots.py -l \
+              configs/np_factors_calc_yb*.json \
+              configs/ratio_to_CT14nlo+np_totcomp.py \
               configs/ratio_to_NNPDF30nlo+np_totcomp.py \
               configs/trigger_eff.py \
+              configs/jec_unc_split.py \
               configs/metoversumet.json \
               configs/jet_distributions.py \
               configs/jet_constituents.py \

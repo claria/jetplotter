@@ -11,7 +11,7 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -21,7 +21,7 @@
         "1E4"
     ], 
     "x_label": "$p_{\\mathrm{T,avg}}^{\\mathrm{reco}}$ / $p_{\\mathrm{T,avg}}^{\\mathrm{ptcl}}$", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"

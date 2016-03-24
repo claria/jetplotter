@@ -106,7 +106,7 @@ def print_data(data, labels, ybys_bin):
     nbins = len(data[labels[0]])
     for i in xrange(nbins):
         if infinalrange(data['pt_low'][i], ybys_bin):
-            vals = ['{0:<15.4g}'.format(data[label][i]) for label in labels]
+            vals = ['{0:<15.4G}'.format(data[label][i]) for label in labels]
             print ' '.join(vals)
 
 # unfolded data

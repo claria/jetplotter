@@ -39,7 +39,7 @@ lookup_dict = {
         '_color1_': '#55A868',
         '_color2_': '#C44E52',
         '_color3_': '#8172B2',
-        '_color4_': '#fedf08',
+        '_color4_': 'Gold',
         '_color5_': '#64B5CD'
     },
     'x_lims': {
@@ -105,8 +105,8 @@ lookup_dict = {
         '_cmss_': 's=CMS Simulation|x=0.0|y=1.01|va=bottom|ha=left',
         '_20fb_': 's=$19.71\\,\mathrm{fb}^{-1}$ (8 TeV)|x=1.0|y=1.01|va=bottom|ha=right',
         '_8tev_': 's=8 TeV|x=1.0|y=1.01|va=bottom|ha=right',
-        '_yb0ys0_': 's=$0.0 \leq \, y_b < 1.0$\n$0.0 \leq \, y^* < 1.0$',
         '_default_': 's=',
+        '_yb0ys0_': 's=$0 \leq \, y_b < 1$\n$0 \leq \, y^* < 1$',
         '_yb1ys0_': 's=$1 \leq \, y_b < 2$\n$0 \leq \, y^* < 1$',
         '_yb2ys0_': 's=$2 \leq \, y_b < 3$\n$0 \leq \, y^* < 1$',
         '_yb0ys1_': 's=$0 \leq \, y_b < 1$\n$1 \leq \, y^* < 2$',
