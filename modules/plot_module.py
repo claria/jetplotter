@@ -403,8 +403,15 @@ class Plot(BasePlot):
 
             if leg_entry_dict:
                 labels, handles = zip(*leg_entry_dict.items())
-                legend =self.ax.legend(handles, labels, loc=self.legend_loc)
+                legend = self.ax.legend(handles, labels, loc=self.legend_loc)
                 legend.get_frame().set_alpha(0.0)
+
+                # [obj.set_rasterized(True) for obj in self.ax.findobj(match=matplotlib.patches.Patch)]
+                # print legend.get_patches()
+                legend.set_rasterized(True)
+                #wa wow
+                self.ax.legend_ = None
+                self.ax.add_artist(legend)
             else:
                 log.debug('Omit legend since all labels are empty.')
 

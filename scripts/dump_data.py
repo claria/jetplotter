@@ -27,7 +27,20 @@ def main():
         unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
         unf_data_root.Scale(1.0, 'width')
         unf_data = R2npObject1D(unf_data_root)
-        np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
+        # np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
+        # hack for full range
+        np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_nlo_{0}.root?res_np_factor'.format(ybys_bin))
+        np_factor.x = np.concatenate((unf_data.x[0:9],np_factor.x))
+        np_factor.x = np.concatenate((np_factor.x,unf_data.x[np_factor.x.size:]))
+        np_factor.y = np.concatenate((np.zeros((9,)),np_factor.y))
+        np_factor.y = np.concatenate((np_factor.y,np.zeros((unf_data.y.size - np_factor.y.size,))))
+
+        np_factor.yerrl = np.concatenate((np.zeros((9,)),np_factor.yerrl))
+        np_factor.yerrl = np.concatenate((np_factor.yerrl,np.zeros((unf_data.y.size - np_factor.yerrl.size,))))
+
+        np_factor.yerru = np.concatenate((np.zeros((9,)),np_factor.yerru))
+        np_factor.yerru = np.concatenate((np_factor.yerru,np.zeros((unf_data.y.size - np_factor.yerru.size,))))
+
         jer_data = get_np_object('~/dust/dijetana/plot/plots/jer_uncert_{0}.root?jer_uncert'.format(ybys_bin))
 
         data = collections.OrderedDict()
@@ -72,8 +85,9 @@ def main():
             # data['{0}_up'.format(jec_source)] = jec_up.y/jec_default.y -1.
             # data['{0}_dn'.format(jec_source)] = 1. - jec_dn.y/jec_default.y
             # data['{0}'.format(jec_source)] = np.abs((jec_up.y - jec_dn.y)/2.0)/jec_default.y * 100.
-            data['{0}'.format(jec_source)] = np.maximum(np.abs(1. - jec_up.y/jec_default.y), np.abs(1. - jec_dn.y/jec_default.y)) * 100.
-            data['{0}'.format(jec_source)] = 0.5 *( (jec_up.y -jec_dn.y)/jec_default.y) * 100.
+            # data['{0}'.format(jec_source)] = np.maximum(np.abs(1. - jec_up.y/jec_default.y), np.abs(1. - jec_dn.y/jec_default.y)) * 100.
+            data['{0}'.format(jec_source)] = 0.5 *np.abs((jec_up.y -jec_dn.y))/jec_default.y * 100.
+            data['{0}'.format(jec_source)][np.abs(data['{0}'.format(jec_source)]) < 0.05 ] = 0.0
             # data['{0}'.format(jec_source)] = np.abs(1 - jec_up.y/jec_default.y) * 100.
 
         for k,v in data.iteritems():
@@ -108,12 +122,6 @@ def print_data(data, labels, ybys_bin):
         if infinalrange(data['pt_low'][i], ybys_bin):
             vals = ['{0:<15.4G}'.format(data[label][i]) for label in labels]
             print ' '.join(vals)
-
-# unfolded data
-# stat unc
-# correlations
-# jec
-# systematic unfolding
 
 if __name__ == '__main__':
     main()

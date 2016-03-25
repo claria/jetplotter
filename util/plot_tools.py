@@ -21,6 +21,15 @@ import logging
 
 log = logging.getLogger(__name__)
 
+default_colors = [
+                  "#3b5b92",  # blue
+                  "#39ad48",  # green
+                  "#d9544d",  # red
+                  "#9e43a2",  # purple 
+                  "#ffc512",     # yellow 
+                  "#64B5CD"   # hmmm
+                  ]
+
 
 class BasePlot(object):
     __metaclass__ = ABCMeta
@@ -112,7 +121,7 @@ class BasePlot(object):
         matplotlib.rcParams['agg.path.chunksize'] = 20000
 
         # default color cycle
-        matplotlib.rcParams['axes.color_cycle'] = ["#4C72B0", "#55A868", "#C44E52", "#8172B2", "Gold", "#64B5CD"]
+        matplotlib.rcParams['axes.color_cycle'] = default_colors 
 
         # legend
         matplotlib.rcParams['legend.numpoints'] = 1
@@ -267,9 +276,9 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
                            k in ['label', 'facecolor', 'edgecolor', 'zorder', 'hatch', 'rasterized', 'linewidth']}
 
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
-    # if 'hatch' in fill_between_kwargs:
-        # fill_between_kwargs['hatch'] =2*fill_between_kwargs['hatch']
-    p = matplotlib.patches.Rectangle((0, 0), 0, 0, fill=fill, alpha=kwargs['alpha'], **fill_between_kwargs)
+
+    p = matplotlib.patches.Rectangle((0, 0), 0, 0, fill=fill, 
+                                        alpha=kwargs['alpha'], **fill_between_kwargs)
     ax.add_patch(p)
 
     return p

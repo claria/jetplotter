@@ -10,10 +10,10 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ["Ratio", "FitObj", "BuildTGraph", "RootOutputModule"]
+        config['ana_modules'] = ["Divide", "FitObj", "BuildTGraph", "RootOutputModule"]
 
         config["build_tgraph"] = [
-                            ("res_np_factor", ("_fit_graph_origbin_hw7_mpihad", "_fit_graph_origbin_pwgp8_s1_mpihad"))
+                            ("res_np_factor", ("_fit_graph_origbin_hw7_mpihad", "_fit_graph_origbin_pwgp8_m1_mpihad"))
                                 ]
         config["fit_obj"] = [
                         ("hw7_mpihad", {
@@ -36,7 +36,7 @@ def get_config():
                         ),
                     ]
 
-        config["ratio"] = [
+        config["divide"] = [
                            ["hw7_mpihad", "hw7_nompinohad"], 
                            ["pwgp8_s1_mpihad", "pwgp8_nompinohad"], 
                            ["pwgp8_m1_mpihad", "pwgp8_nompinohad"], 

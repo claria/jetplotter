@@ -1,3 +1,5 @@
+from util.plot_tools import default_colors
+
 """
 Dictionary containing lookup values which will be replaced in the 
 settings.
@@ -35,12 +37,12 @@ lookup_dict = {
         '_yb1ys1_': '$1 \leq \, y_b < 2$  $1 \leq \, y^* < 2$',
     },
     'color': {
-        '_color0_': '#4C72B0',
-        '_color1_': '#55A868',
-        '_color2_': '#C44E52',
-        '_color3_': '#8172B2',
-        '_color4_': 'Gold',
-        '_color5_': '#64B5CD'
+        '_color0_': default_colors[0],
+        '_color1_': default_colors[1],
+        '_color2_': default_colors[2],
+        '_color3_': default_colors[3],
+        '_color4_': default_colors[4],
+        '_color5_': default_colors[5],
     },
     'x_lims': {
         '_yb0ys0_xmin_' : 133.,
