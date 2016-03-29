@@ -162,6 +162,10 @@ def get_tuple(s):
     return id, setting
 
 def parse_query(query_str):
+
+    if isinstance(query_str, dict):
+        return query_str
+
     d = {}
     for item in re.split('[?|]+',  query_str):
 

@@ -125,6 +125,7 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--margin', type=float, default=0.0, help='Relative margin between datalims and axis lims.')
 
         self.arg_group.add_argument('--show-legend', type='bool', default=True, help='Plot a legend on axis ax.')
+        self.arg_group.add_argument('--legend-ncol', type=int, default=1, help='Number of columns in legend.')
         self.arg_group.add_argument('--combine-legend-entries', type='str2kvstr', nargs='+', default=[],
                                     help='Combines multiple legend entries into one if possible.')
         self.arg_group.add_argument('--legend-loc', default='best', help='Location of legend on axis ax.')
@@ -216,6 +217,7 @@ class Plot(BasePlot):
         self.show_legend = kwargs.pop('show_legend', True)
         self.combine_legend_entries = kwargs.pop('combine_legend_entries', [])
         self.legend_loc = kwargs.pop('legend_loc', 'best')
+        self.legend_ncol = kwargs.pop('legend_ncol', 1)
 
         self.texts = kwargs.pop('ax_texts', [])
         self.vlines = kwargs.pop('ax_vlines', [])
@@ -334,7 +336,7 @@ class Plot(BasePlot):
         else:
             self.ax.set_xlabel(x_label, **x_label_kwargs)
 
-        y_label_kwargs = {'position': (0.0, 1.0), 'ha': 'right', 'va': 'top'}
+        y_label_kwargs = {'position': (0.0, 1.0), 'ha': 'right', 'va': 'bottom'}
         y_label, user_y_label_kwargs = parse_optionstring(self.y_label)
         y_label_kwargs.update(user_y_label_kwargs)
         self.ax.set_ylabel(y_label, **y_label_kwargs)
@@ -403,13 +405,14 @@ class Plot(BasePlot):
 
             if leg_entry_dict:
                 labels, handles = zip(*leg_entry_dict.items())
-                legend = self.ax.legend(handles, labels, loc=self.legend_loc)
+                legend = self.ax.legend(handles, labels, loc=self.legend_loc, ncol=self.legend_ncol)
                 legend.get_frame().set_alpha(0.0)
 
-                # [obj.set_rasterized(True) for obj in self.ax.findobj(match=matplotlib.patches.Patch)]
-                # print legend.get_patches()
-                legend.set_rasterized(True)
-                #wa wow
+                # [obj.set_rasterized(True) for obj in legend.get_patches()]
+                # for obj in legend.get_patches():
+                    # obj.set_rasterized(True)
+
+                # legend.draw()
                 self.ax.legend_ = None
                 self.ax.add_artist(legend)
             else:

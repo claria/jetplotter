@@ -57,13 +57,13 @@ def get_config():
     config["x_axis_formatter"] = 'scalar2'
     config["x_lims"] = [120, 2000.]
     config["legend_loc"] = 'upper right'
-    config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
-    config["y_label"] = "$\\frac{d^3\\sigma}{dp_{\\mathrm{T,avg}} dy_b dy*}$ (pb/GeV)"
+    config["x_label"] = "_ptavg_"
+    config["y_label"] = "$\\frac{d^3\\sigma}{dp_{\\mathrm{T,avg}} dy_b dy*}$ / $\mathrm{pb}\,\mathrm{GeV}^{-1}$"
 
     config["ax_texts"] = [
                           "_20fb_", 
-                          "s=anti-$k_\\mathrm{T}\\,\\mathrm{R}=0.7$?x=0.65|y=0.60|ha=left|va=top", 
-                          "s=CT14-NLO$\otimes$NP?x=0.65|y=0.55|ha=left|va=top",
+                          {'s': ur'anti\u2013$k_\mathrm{T}\,\mathrm{R}=0.7$' , 'x': 0.65, 'y': 0.60, 'ha': 'left', 'va': 'top'}, 
+                          {'s': ur'CT14\u2013NLO$\otimes$NP' , 'x': 0.65, 'y': 0.55, 'ha': 'left', 'va': 'top'}, 
                           "s=$\mu=p_\\mathrm{T,max}e^{{0.3y^*}}$?x=0.65|y=0.50|ha=left|va=top"
                           ]
 

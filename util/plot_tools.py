@@ -61,9 +61,10 @@ class BasePlot(object):
             # for ext in self.output_ext:
             # if not m.lower().endswith(('.png', '.jpg', '.jpeg', '.pdf', '.ps'))
             # filename = "{}.{}".format(self.output_path, ext)
-        print 'Saved plot to {0}'.format(path)
         self.fig.savefig(path, bbox_inches='tight')
+        print 'Saved plot to {0}'.format(path)
         self.fig.savefig(path.replace('.png', '.pdf'), bbox_inches='tight')
+        print 'Saved plot to {0}'.format(path.replace('.png', '.pdf'))
 
         if close_fig:
             plt.close(self.fig)
@@ -74,7 +75,8 @@ class BasePlot(object):
         Initialize matplotlib with rc settings.
         """
         # figure
-        matplotlib.rcParams['figure.figsize'] = 12., 9.
+        matplotlib.rcParams['figure.figsize'] = (12., 9.)
+        matplotlib.rcParams['figure.dpi'] = 150
 
         matplotlib.rcParams['font.family'] = 'sans-serif'
         matplotlib.rcParams['font.serif'] = ['DejaVu Serif']
@@ -112,7 +114,7 @@ class BasePlot(object):
         matplotlib.rcParams['lines.markersize'] = 12
         matplotlib.rcParams['lines.linewidth'] = 3
         matplotlib.rcParams['lines.markeredgewidth'] = 1.0
-        matplotlib.rcParams['axes.formatter.limits'] = [-2, 5]
+        matplotlib.rcParams['axes.formatter.limits'] = [-2, 9]
 
         # Saving
         matplotlib.rcParams['savefig.bbox'] = 'tight'

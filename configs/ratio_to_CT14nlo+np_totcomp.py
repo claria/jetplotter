@@ -55,7 +55,7 @@ def get_config():
         }
         config['objects']["dataunf_syst"] = {
             "color": "none", 
-            "edgecolor": "_color2_", 
+            "edgecolor": "_color4_", 
             "linewidth":2.0,
             "alpha":1.0,
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_syst".format(rap_bin), 
@@ -63,7 +63,7 @@ def get_config():
             "marker": ".", 
             "step": True, 
             "style": "band", 
-            "hatch": 'sllll',
+            "hatch": '//',
             "rasterized": False,
             "x_err": True, 
             "y_err": True, 
@@ -91,7 +91,7 @@ def get_config():
             "edgecolor": "_color3_", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_scunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_scunc_u".format(rap_bin), 
             "label": "Scale Unc.", 
-            "linestyle": "", 
+            "linestyle": "--", 
             "marker": ".", 
             "plot": True, 
             "step": True, 
@@ -125,8 +125,8 @@ def get_config():
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color4_", 
-            "edgecolor": "_color4_", 
+            "color": "_color2_", 
+            "edgecolor": "_color2_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs".format(rap_bin), 
             "label": "$\mathrm{NLO}{{\otimes}}\mathrm{NP}$ (NNPDF30)", 
@@ -159,17 +159,17 @@ def get_config():
             "zorder": 1.0
         }
 
-        config["y_lims"] = ["0.0", "2.0"]
+        config["y_lims"] = ["0.4", "1.6"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
-        config["legend_loc"] = 'lower left'
-        config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
+        config["legend_loc"] = 'upper left'
+        config["x_label"] = "_ptavg_"
         config["y_label"] = "Ratio to NLO$\otimes$NP (CT14)?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
         config["ax_texts"] = [
-                              '_{0}_?_upperleft_'.format(rap_bin), 
+                              '_{0}_?_upperright_'.format(rap_bin), 
                               '_20fb_'] 
 
         config["output_path"] = 'ratio_to_CT14nlo+np_totcomp_{0}.png'.format(rap_bin)

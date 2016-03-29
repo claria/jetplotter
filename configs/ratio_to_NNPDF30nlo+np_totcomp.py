@@ -64,8 +64,8 @@ def get_config():
             "marker": ".", 
             "step": True, 
             "style": "band", 
-            "hatch": 'sll',
-            "rasterized": True,
+            "hatch": '//',
+            "rasterized": False,
             "x_err": True, 
             "y_err": True, 
             "zorder": 2.0
@@ -164,7 +164,8 @@ def get_config():
         config['x_axis_formatter'] = 'scalar2'
         config["x_log"] =  True
         config["legend_loc"] = 'upper left'
-        config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
+        config["legend_ncol"] = 1
+        config["x_label"] = "_ptavg_"
         config["y_label"] = "Ratio to NLO$\otimes$NP (NNPDF 3.0)?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}

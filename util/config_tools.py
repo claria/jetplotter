@@ -126,8 +126,8 @@ def relpath_replace(s):
     def replace_path(path):
         path = os.path.expanduser(path)
         path = os.path.expandvars(path)
-        if os.path.isfile(path):
-            return os.path.realpath(path)
+        if os.path.isfile(path.encode('utf8')):
+            return os.path.realpath(path.encode('utf8'))
         else:
             return path
     s = s.split('?')
