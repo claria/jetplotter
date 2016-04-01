@@ -66,13 +66,14 @@ def get_config():
         config['objects']['mmht2014_pdfunc'] = {
                 'color' : '_color1_',
                 'style' : 'errorlines',
-                'dashes': [10,4],
+                'dashes': [8,4],
                 'step' : 'True',
                 'label' : 'MMHT 2014 (NLO)',
                 }
         config['objects']['nnpdf30_pdfunc'] = {
                 'color' : '_color2_',
                 'style' : 'errorlines',
+                'dashes': [16,4],
                 'step' : 'True',
                 'label' : 'NNPDF 3.0 (NLO)',
                 }

@@ -1,4 +1,5 @@
 {
+    "legend_ncol": 1, 
     "ana_modules": [
         "Project3DProfile"
     ], 
@@ -19,7 +20,7 @@
         "configs/genvsrecoy_vspt.json"
     ], 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -29,7 +30,7 @@
         "4.5"
     ], 
     "x_label": "_ptavg_", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 

@@ -1,4 +1,5 @@
 {
+    "legend_ncol": 1, 
     "plot_id": "^(?!_).*", 
     "y_label": "arb. unit", 
     "ax_texts": [
@@ -6,14 +7,14 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_subplot_label": "", 
     "x_label": "NPV", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"

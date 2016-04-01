@@ -73,3 +73,58 @@ class FractionalUncertainty(BaseModule):
                     tmp_x, tmp_y = ROOT.Double(0), ROOT.Double(0)
                     obj.GetPoint(i, tmp_x, tmp_y)
                     obj.SetPoint(i, tmp_x, tmp_y)
+
+class MinusOne(BaseModule):
+    """Just subtracts 1 from histo or graph."""
+
+    def __init__(self):
+        super(MinusOne, self).__init__()
+        self.arg_group.add_argument('--minusone', nargs='+', default=[], help='')
+
+    def __call__(self, config):
+        for id in config['minusone']:
+            obj = config['objects'][id]['obj']
+            if isinstance(obj, ROOT.TH1):
+                for i in xrange(1, obj.GetNbinsX() + 1):
+                    if obj.GetBinContent(i) != 0.:
+                        bc = obj.GetBinContent(i) -1.
+                    else:
+                        bc = 0.0
+                    obj.SetBinContent(i, bc)
+            elif isinstance(obj, ROOT.TGraph):
+                for i in xrange(obj.GetN()):
+                    tmp_x, tmp_y = ROOT.Double(0), ROOT.Double(0)
+                    obj.GetPoint(i, tmp_x, tmp_y)
+                    obj.SetPoint(i, tmp_x, tmp_y-1)
+
+class QuadraticSum(BaseModule):
+    """Just subtracts 1 from histo or graph."""
+
+    def __init__(self):
+        super(QuadraticSum, self).__init__()
+        self.arg_group.add_argument('--quadratic_sum', nargs='+', default=[], help='')
+
+    def __call__(self, config):
+        for item in config['quadratic_sum']:
+            new_id = item[0]
+            new_obj = ROOT.TGraphAsymmErrors(config['objects'][item[1][0]]['obj'])
+
+            yerr_l = np.zeros((new_obj.GetN(),))
+            yerr_u = np.zeros((new_obj.GetN(),))
+
+            for sum_id in item[1]:
+                if isinstance(obj, ROOT.TGraph):
+                    for i in xrange(obj.GetN()):
+                        yerr_l += obj.GetErrorYlow(i)**2
+                        yerr_u += obj.GetErrorYhigh(i)**2
+                else:
+                    raise NotImplementedError
+
+            yerr_l = np.sqrt(yerr_l)
+            yerr_u = np.sqrt(yerr_u)
+
+            for i in xrange(obj.GetN()):
+                new_obj.SetPointEYhigh(yerr_u[i])
+                new_obj.SetPointEYlow(yerr_l[i])
+
+            config['objects'].setdefault('new_id', {})['obj'] = new_obj

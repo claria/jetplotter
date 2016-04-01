@@ -1,4 +1,5 @@
 {
+    "legend_ncol": 1, 
     "ana_modules": [
         "Ratio"
     ], 
@@ -16,20 +17,22 @@
     ], 
     "ax_hlines": [], 
     "ratio_copy": [], 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
+    "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_lims": [
         "0.5", 
         "1.5"
     ], 
     "x_label": "", 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
     ], 
+    "plot_order": [], 
     "x_lims": [
         "130.", 
         "1784."
@@ -61,7 +64,9 @@
             "style": "errorbar", 
             "x_err": true, 
             "y_err": true, 
-            "zorder": 1.0
+            "zorder": 1.0, 
+            "edgealpha": 1.0, 
+            "plot_datavals": false
         }, 
         "chs": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/CHS_DATA.root?yb0ys1/h_ptavg", 
@@ -73,6 +78,7 @@
         }
     }, 
     "z_log": false, 
+    "z_axis_formatter": "scientific", 
     "ratio": [
         [
             "data", 
@@ -89,6 +95,7 @@
     "store_json": true, 
     "y_subplot_label": "", 
     "show_legend": true, 
+    "y_axis_formatter": "scientific", 
     "output_prefix": "plots/", 
     "output_path": "data_vs_chs_yb0ys1.png", 
     "x_log": true, 

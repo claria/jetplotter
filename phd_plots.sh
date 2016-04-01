@@ -2,6 +2,8 @@
 
 ./plots.py -l \
               configs/np_factors_calc_yb*.json \
+              configs/pdf_uncert_comp.py \
+              configs/scale_uncert_comp.py \
               configs/ratio_to_CT14nlo+np_totcomp.py \
               configs/ratio_to_NNPDF30nlo+np_totcomp.py \
               configs/trigger_eff.py \

@@ -18,7 +18,7 @@ def get_config():
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?{0}/CT14nlo_kfac'.format(rap_bin),
                 'color' : '_color0_',
                 'style' : 'line',
-                'linestyle' : '-',
+                'dashes': [16,4],
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}$',
                 }
@@ -26,7 +26,7 @@ def get_config():
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?{0}/CT14nlo_kfac'.format(rap_bin),
                 'color' : '_color1_',
                 'style' : 'line',
-                'linestyle' : '-',
+                'dashes': [8,4],
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,max}}\exp{(0.3y^*)}$',
                 }
@@ -34,7 +34,6 @@ def get_config():
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?{0}/CT14nlo_kfac'.format(rap_bin),
                 'color' : '_color2_',
                 'style' : 'line',
-                'linestyle' : '--',
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}\exp{(0.3y^*)}$',
                 }

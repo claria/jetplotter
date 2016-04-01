@@ -58,12 +58,13 @@ def get_config():
                 'color' : '_color0_',
                 'style' : 'errorlines',
                 'step' : 'True',
+                'dashes': [16,4],
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}$',
                 }
         config['objects']['ct14nlo_ptmaxexpystar_scaleunc'] = {
                 'color' : '_color1_',
                 'style' : 'errorlines',
-                'dashes': [10,4],
+                'dashes': [8,4],
                 'step' : 'True',
                 'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,max}}e^{(0.3y^{*})}$',
                 }

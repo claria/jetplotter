@@ -56,7 +56,8 @@ def get_config():
                              'fit_pwgp8_m1_mpihad', 'pwgp8_m1_mpihad', 
                              'fit_p8_mpihad', 'p8_mpihad', 
                              'fit_hwpp_mpihad', 'hwpp_mpihad', 
-                             'res_np_factor']
+                             # 'res_np_factor'
+                             ]
 
         config['objects']["res_np_factor"] = {
             "label": "NPcorr.",

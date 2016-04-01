@@ -1,4 +1,5 @@
 {
+    "legend_ncol": 1, 
     "ana_modules": [
         "Efficiency"
     ], 
@@ -12,7 +13,7 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -22,7 +23,7 @@
         "1.049"
     ], 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 
