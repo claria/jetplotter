@@ -31,7 +31,7 @@ def get_config():
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
     q2s = [1.9, 10000]
     pdfsets = ["HFTD_HERA_V101B_EIG", "HFTD_HERACMSTDJETS_V101B_EIG"]
-    pdf_labels = ["HERA-II DIS", "HERA-II DIS + CMS Dijets"]
+    pdf_labels = ["HERA DIS", "HERA DIS + CMS Dijets"]
    
     for k, q2 in enumerate(q2s):
         for j, pdfset in enumerate(pdfsets):
