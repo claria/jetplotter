@@ -346,7 +346,7 @@ def plot_line(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         y = steppify_bin(y)
 
     line_kwargs = {k: v for k, v in kwargs.items() if
-                   k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth']}
+                   k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth', 'dashes']}
     artist, = ax.plot(x, y, **line_kwargs)
 
     return artist
@@ -383,7 +383,7 @@ def plot_errorlines(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         y_erru = steppify_bin(y_erru)
 
     line_kwargs = {k: v for k, v in kwargs.items() if
-                   k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth']}
+                   k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth', 'dashes']}
     artist, = ax.plot(x, y + y_erru, **line_kwargs)
     artist, = ax.plot(x, y - y_errl, **line_kwargs)
 
@@ -438,7 +438,7 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
             x = steppify_bin(obj.xbinedges, isx=True)
             y = steppify_bin(y)
         plot_kwargs = {k: v for k, v in kwargs.items() if
-                       k in ['label', 'alpha', 'color', 'linestyle', 'linewidth', 'step', 'zorder']}
+                       k in ['label', 'alpha', 'color', 'linestyle', 'linewidth', 'step', 'zorder', 'dashes']}
         ax.plot(x, y, **plot_kwargs)
     return artist
 

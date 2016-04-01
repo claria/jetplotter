@@ -21,11 +21,11 @@ def init_worker():
 
 def run_worker(config, log_level='info'):
     try:
+        print 'try plotting'
         plot(config, log_level=log_level)
-    except Exception as e:
+    except:
         print 'Caught exception in worker thread (x = %d):' % x
         traceback.print_exc()
-        raise e
 
 def multi_plot():
     """Initializes and runs the core."""

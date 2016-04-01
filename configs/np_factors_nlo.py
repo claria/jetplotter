@@ -18,18 +18,18 @@ def get_config():
         config["fit_obj"] = [
                         ("hw7_mpihad", {
                                 "fcn": "[0]/x**[1] + 1.0", 
-                                "fcn_0": [1.0, 1.0, 1.0], 
+                                "fcn_0": [118, 1.58, 1.0], 
                                 "options": "I"
                             }
                         ),
                         ("pwgp8_s1_mpihad", {
-                                "fcn": "[0]/x**[1] + 1.0", 
+                                "fcn": "[0]/x**[1] + [2]", 
                                 "fcn_0": [1.0, 1.0, 1.0], 
                                 "options": "I"
                             }
                         ),
                         ("pwgp8_m1_mpihad", {
-                                "fcn": "[0]/x**[1] + 1.0", 
+                                "fcn": "[0]/x**[1] + [2]", 
                                 "fcn_0": [1.0, 1.0, 1.0], 
                                 "options": "I"
                             }

@@ -30,8 +30,8 @@ def get_config():
     names = ['gluon', 'd valence quark', 'u valence quark', 'sea quarks']
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
     q2s = [1.9, 10000]
-    pdfsets = ["HFTD_HERA_V103_EIG", "HFTD_HERACMSTDJETS_V103_EIG"]
-    pdf_labels = ["HERA-II DIS", "HERA-II DIS + CMS jets"]
+    pdfsets = ["HFTD_HERA_V101B_EIG", "HFTD_HERACMSTDJETS_V101B_EIG"]
+    pdf_labels = ["HERA-II DIS", "HERA-II DIS + CMS Dijets"]
    
     for k, q2 in enumerate(q2s):
         for j, pdfset in enumerate(pdfsets):
@@ -207,7 +207,7 @@ def get_config():
                                       's={0}?_topleft_'.format(pdf_labels[j]),
                                       's=$Q^2\!={0}\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
                                       ] 
-                config["output_path"] = 'pdfcomp_{0}_{1}_{2}.png'.format(pdfset, partons[i], q2)
+                config["output_path"] = 'pdfcomp_{0}_{1}_{2}.png'.format('_'.join(pdfset.split('_')[:-2]), partons[i], q2)
                 configs.append(config)
 
     return configs

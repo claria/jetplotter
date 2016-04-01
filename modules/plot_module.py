@@ -65,6 +65,9 @@ class PlotModule(BaseModule):
         self.arg_group.add_argument('--linewidth', type='str2kvfloat', nargs='+',
                                     default=None, action='setting',
                                     help='Linewidth for each plot')
+        self.arg_group.add_argument('--dashes', type='str2kvfloat', nargs='+',
+                                    default=None, action='setting',
+                                    help='Dashes for each plot')
         self.arg_group.add_argument('--marker', type='str2kvstr', nargs='+',
                                     default='.', action='setting',
                                     help='Marker for errorbars for each plot.')
@@ -297,13 +300,17 @@ class Plot(BasePlot):
             text_kwargs = parse_query(text)
             default_text_kwargs.update(text_kwargs)
             ax_name = default_text_kwargs.pop('axis', 'ax')
+
+            s = default_text_kwargs.pop('s')
+            r = re.compile(r'\$([^$]*)\$')
+            s = r.sub(lambda m: m.group().replace('.', '.\!'), s)
             try:
                 cax = getattr(self, ax_name)
             except AttributeError as e:
                 log.critical('The axis name {0} does not exist.'.format(ax_name))
                 log.critical(e)
                 raise
-            cax.text(transform=cax.transAxes, **default_text_kwargs)
+            cax.text(s=s, transform=cax.transAxes, **default_text_kwargs)
 
         # Add horizontal lines to ax
         for hline_kwargs in self.hlines:

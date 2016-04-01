@@ -43,7 +43,7 @@ def get_config():
             "zorder": 100.0
         } 
         config['objects']["{0}nlo".format(rap_bin)] = {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs".format(rap_bin),
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs".format(rap_bin),
             "step": True, 
             "style": "line",
             'color': colors[i]
@@ -62,9 +62,9 @@ def get_config():
 
     config["ax_texts"] = [
                           "_20fb_", 
-                          {'s': ur'anti\u2013$k_\mathrm{T}\,\mathrm{R}=0.7$' , 'x': 0.65, 'y': 0.60, 'ha': 'left', 'va': 'top'}, 
-                          {'s': ur'CT14\u2013NLO$\otimes$NP' , 'x': 0.65, 'y': 0.55, 'ha': 'left', 'va': 'top'}, 
-                          "s=$\mu=p_\\mathrm{T,max}e^{{0.3y^*}}$?x=0.65|y=0.50|ha=left|va=top"
+                          {'s': ur'anti\u2013$k_\mathrm{T}\,\mathrm{R}=0.7$' , 'x': 0.62, 'y': 0.60, 'ha': 'left', 'va': 'top'}, 
+                          {'s': ur'NNPDF3.0\u2013NLO$\otimes$NP' , 'x': 0.62, 'y': 0.55, 'ha': 'left', 'va': 'top'}, 
+                          "s=$\mu=p_\\mathrm{T,max}e^{{0.3y^*}}$?x=0.62|y=0.50|ha=left|va=top"
                           ]
 
     config["output_path"] = 'ptavg_spectrum.png'.format(rap_bin)
@@ -78,6 +78,5 @@ def final_plot(**kwargs):
 
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
-    kwargs['mpl'].rcParams['axes.unicode_minus']=False
     kwargs['mpl'].rcParams['legend.fontsize'] = 20
     kwargs['mpl'].rcParams['font.size'] = 20

@@ -40,6 +40,7 @@ def get_config():
             "label": "Lumi. uncertainty", 
             "style": "errorlines",
             "color": "_color2_",
+            "dashes": [4,4,10,4],
             "step": True,
         }
         config['objects']["dataunf_jec"] = {
@@ -73,10 +74,11 @@ def get_config():
             "step": True,
         }
 
-        config["y_lims"] = ["0.7", "1.4"]
+        config["y_lims"] = ["0.75", "1.25"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
-        config["legend_loc"] = 'upper right'
+        config["legend_loc"] = 'lower left'
+        config["legend_ncol"] = 2
         config["x_label"] = "_ptavg_"
         config["y_label"] = "Fractional Uncertainty?_center_"
         config["ax_hlines"] = [

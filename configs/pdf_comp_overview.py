@@ -25,11 +25,11 @@ def get_config():
     names = ['gluon', 'd valence quark', 'u valence quark', 'sea quarks']
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
     q2s = [1.9, 10000]
-    pdfset1 = "HFTD_HERA_V103_EIG"
-    pdfset2 = "HFTD_HERACMSTDJETS_V103_EIG"
+    pdfset1 = "HFTD_HERA_V101B_EIG"
+    pdfset2 = "HFTD_HERACMSTDJETS_V101B_EIG"
 
     pdf_label1 = "HERA DIS"
-    pdf_label2 = "HERA DIS + CMS jets"
+    pdf_label2 = "HERA DIS + CMS Dijets"
    
     for k, q2 in enumerate(q2s):
         config = get_base_config()
@@ -39,10 +39,10 @@ def get_config():
         config["input_pdfsets"] = []
 
         config['multiply'] = [
-                              ('_{0}_0_totunc'.format(pdfset1), 0.2),
-                              ('_{0}_0_totunc'.format(pdfset2), 0.2),
-                              ('_{0}_9_totunc'.format(pdfset1), 0.2),
-                              ('_{0}_9_totunc'.format(pdfset2), 0.2),
+                              ('_{0}_0_totunc'.format(pdfset1), 0.25),
+                              ('_{0}_0_totunc'.format(pdfset2), 0.25),
+                              ('_{0}_9_totunc'.format(pdfset1), 0.25),
+                              ('_{0}_9_totunc'.format(pdfset2), 0.25),
                 ]
 
         config['copy_id'] = []
@@ -172,24 +172,26 @@ def get_config():
 
         config["y_lims"] = ["0.0", 1.0]
         config["x_lims"] = [1E-4, 0.9]
+        config['fig_size'] = [10,10]
         config['x_axis_formatter'] = 'scientific'
         config["x_log"] =  True
         config["legend_loc"] = 'upper right'
         config["x_label"] = "$x$"
         config["y_label"] = '$xf(x,Q^2\!)$'
         config["ax_texts"] = [
-                              's=$Q^2\!={0}\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
-                              's=$0.2\cdot x\Sigma$?x=0.2|y=0.5|va=bottom|ha=right',
-                              's=$0.2\cdot xg$?x=0.5|y=0.65|va=bottom|ha=right',
+                {'s': ur'$Q^2\!={0}\,\mathrm{{GeV}}^2$'.format(get_q2label(q2)), 'x': 1.0, 'y': 1.01, 'va': 'bottom', 'ha': 'right'},
+                              's=$0.25\cdot x\Sigma$?x=0.5|y=0.25|va=bottom|ha=right',
+                              's=$0.25\cdot xg$?x=0.5|y=0.70|va=bottom|ha=right',
                               's=$xu_{\mathrm{v}}$?x=0.8|y=0.70|va=bottom|ha=right',
-                              's=$xu_{\mathrm{d}}$?x=0.85|y=0.45|va=bottom|ha=right',
+                              's=$xd_{\mathrm{v}}$?x=0.85|y=0.45|va=bottom|ha=right',
                               ] 
+        print config['ax_texts']
         config["output_path"] = 'pdfcomp_direct_overview_{0}.png'.format(q2)
         configs.append(config)
 
     return configs
 
-# @callbacks.register('before_plot')
-# def final_plot(**kwargs):
-#     kwargs['mpl'].rcParams['legend.fontsize'] = 20
-#     # kwargs['mpl'].rcParams['font.size'] = 20
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    kwargs['mpl'].rcParams['font.size'] = 20

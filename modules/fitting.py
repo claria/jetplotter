@@ -30,6 +30,7 @@ class FitObj(BaseModule):
             if id not in config['objects']:
                 raise ValueError('Requested id {} not found.'.format(id))
 
+            log.debug('Fitting object {0}'.format(id))
             fcn_name = 'fit_{0}'.format(id)
             fcn = ROOT.TF1(fcn_name, settings['fcn'])
 

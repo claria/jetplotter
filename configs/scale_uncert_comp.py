@@ -11,17 +11,21 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ['Ratio', 'DataLims']
-        config['plot_id']= ['ct14nlo_scunc_l_ptavg','ct14nlo_scunc_l_ptmaxexpystar','ct14nlo_scunc_l_ptavgexpystar',
-                            'ct14nlo_scunc_u_ptavg','ct14nlo_scunc_u_ptmaxexpystar','ct14nlo_scunc_u_ptavgexpystar']
-        config['ratio'] = [('ct14nlo_scunc_l_ptavg', 'ct14nlo_xs_ptavg'),
-                           ('ct14nlo_scunc_l_ptmaxexpystar', 'ct14nlo_xs_ptmaxexpystar'),
-                           ('ct14nlo_scunc_l_ptavgexpystar', 'ct14nlo_xs_ptavgexpystar'),
-                           ('ct14nlo_scunc_u_ptavg', 'ct14nlo_xs_ptavg'),
-                           ('ct14nlo_scunc_u_ptmaxexpystar', 'ct14nlo_xs_ptmaxexpystar'),
-                           ('ct14nlo_scunc_u_ptavgexpystar', 'ct14nlo_xs_ptavgexpystar'),
+        config['ana_modules'] = ['BuildTGraph', 'Ratio', 'DataLims']
 
-                ]
+        config['build_tgraph'] = [
+                                ('ct14nlo_ptavg_scaleunc', ('ct14nlo_xs_ptavg', 'ct14nlo_scunc_l_ptavg', 'ct14nlo_scunc_u_ptavg')),
+                                ('ct14nlo_ptmaxexpystar_scaleunc', ('ct14nlo_xs_ptmaxexpystar', 'ct14nlo_scunc_l_ptmaxexpystar', 'ct14nlo_scunc_u_ptmaxexpystar')),
+                                ('ct14nlo_ptavgexpystar_scaleunc', ('ct14nlo_xs_ptavgexpystar', 'ct14nlo_scunc_l_ptavgexpystar', 'ct14nlo_scunc_u_ptavgexpystar')),
+                                ]
+
+        config['plot_id']= ['ct14nlo_ptavg_scaleunc', 'ct14nlo_ptavgexpystar_scaleunc','ct14nlo_ptmaxexpystar_scaleunc']
+
+        config['ratio'] = [
+                           ('ct14nlo_ptmaxexpystar_scaleunc', 'ct14nlo_ptmaxexpystar_scaleunc'),
+                           ('ct14nlo_ptavgexpystar_scaleunc', 'ct14nlo_ptavgexpystar_scaleunc'),
+                           ('ct14nlo_ptavg_scaleunc', 'ct14nlo_ptavg_scaleunc'),
+                          ]
         config['objects']['ct14nlo_xs_ptavg'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?{0}/CT14nlo_xs'.format(rap_bin),
                 }
@@ -34,45 +38,41 @@ def get_config():
 
         config['objects']['ct14nlo_scunc_l_ptavg'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?{0}/CT14nlo_scunc_l'.format(rap_bin),
-                'color' : '_color0_',
-                'style' : 'line',
-                'step' : 'True',
-                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}$',
                 }
         config['objects']['ct14nlo_scunc_l_ptmaxexpystar'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?{0}/CT14nlo_scunc_l'.format(rap_bin),
-                'color' : '_color1_',
-                'style' : 'line',
-                'step' : 'True',
-                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,max}}\exp{(0.3y^*)}$',
                 }
         config['objects']['ct14nlo_scunc_l_ptavgexpystar'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?{0}/CT14nlo_scunc_l'.format(rap_bin),
-                'color' : '_color2_',
-                'style' : 'line',
-                'step' : 'True',
-                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}\exp{(0.3y^*)}$',
                 }
-
         config['objects']['ct14nlo_scunc_u_ptavg'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVG_DEF_YBYS_NLO.root?{0}/CT14nlo_scunc_u'.format(rap_bin),
-                'color' : '_color0_',
-                'style' : 'line',
-                'step' : 'True',
                 }
         config['objects']['ct14nlo_scunc_u_ptmaxexpystar'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTMAXEXPYS_YBYS_NLO.root?{0}/CT14nlo_scunc_u'.format(rap_bin),
-                'color' : '_color1_',
-                'style' : 'line',
-                'step' : 'True',
                 }
         config['objects']['ct14nlo_scunc_u_ptavgexpystar'] = {
                 'input' : '/nfs/dust/cms/user/gsieber/dijetana/ana/CMSSW_7_2_3/PTAVGEXPYS_YBYS_NLO.root?{0}/CT14nlo_scunc_u'.format(rap_bin),
-                'color' : '_color2_',
-                'style' : 'line',
-                'step' : 'True',
                 }
-
+        config['objects']['ct14nlo_ptavg_scaleunc'] = {
+                'color' : '_color0_',
+                'style' : 'errorlines',
+                'step' : 'True',
+                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}$',
+                }
+        config['objects']['ct14nlo_ptmaxexpystar_scaleunc'] = {
+                'color' : '_color1_',
+                'style' : 'errorlines',
+                'dashes': [10,4],
+                'step' : 'True',
+                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,max}}e^{(0.3y^{*})}$',
+                }
+        config['objects']['ct14nlo_ptavgexpystar_scaleunc'] = {
+                'color' : '_color2_',
+                'style' : 'errorlines',
+                'step' : 'True',
+                'label' : 'CT14 (NLO) - $\mu=p_{\mathrm{T,avg}}e^{(0.3y^{*})}$',
+                }
 
 
         config["y_lims"] = ["0.6", "1.2"]
