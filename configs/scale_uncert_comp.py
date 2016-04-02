@@ -11,13 +11,15 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ['BuildTGraph', 'Ratio', 'DataLims']
+        config['ana_modules'] = ['BuildTGraph', 'Ratio', 'DataLims' 'MinusOne']
 
         config['build_tgraph'] = [
                                 ('ct14nlo_ptavg_scaleunc', ('ct14nlo_xs_ptavg', 'ct14nlo_scunc_l_ptavg', 'ct14nlo_scunc_u_ptavg')),
                                 ('ct14nlo_ptmaxexpystar_scaleunc', ('ct14nlo_xs_ptmaxexpystar', 'ct14nlo_scunc_l_ptmaxexpystar', 'ct14nlo_scunc_u_ptmaxexpystar')),
                                 ('ct14nlo_ptavgexpystar_scaleunc', ('ct14nlo_xs_ptavgexpystar', 'ct14nlo_scunc_l_ptavgexpystar', 'ct14nlo_scunc_u_ptavgexpystar')),
                                 ]
+
+        config['minusone'] = ['ct14nlo_ptavg_scaleunc', 'ct14nlo_ptavgexpystar_scaleunc','ct14nlo_ptmaxexpystar_scaleunc']
 
         config['plot_id']= ['ct14nlo_ptavg_scaleunc', 'ct14nlo_ptavgexpystar_scaleunc','ct14nlo_ptmaxexpystar_scaleunc']
 
@@ -83,7 +85,7 @@ def get_config():
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Fractional Uncertainty?_center_"
+        config["y_label"] = "Relative uncertainty?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]

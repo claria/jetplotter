@@ -3,8 +3,10 @@ import numpy as np
 import matplotlib
 import matplotlib.hatch as hatch
 import matplotlib.pyplot as plt
+import matplotlib.lines as lines
+from matplotlib.lines import Line2D
 from matplotlib.patches import Ellipse, Polygon, Patch
-from matplotlib.legend_handler import HandlerPatch
+from matplotlib.legend_handler import HandlerPatch, HandlerNpoints
 from matplotlib.legend import Legend
 from matplotlib.path import Path
 
@@ -90,4 +92,39 @@ class HandlerPatch2(HandlerPatch):
         return artists[0]
 
 
+
+
 # Legend.update_default_handler_map({Patch: HandlerPatch2()})
+
+class ErrorLine2D(Line2D):
+    pass
+
+class HandlerErrorLine2D(HandlerNpoints):
+    """
+    Handler for Line2D instances.
+    """
+    def __init__(self, marker_pad=0.3, numpoints=None, **kw):
+        HandlerNpoints.__init__(self, marker_pad=marker_pad, numpoints=numpoints, **kw)
+
+    def create_artists(self, legend, orig_handle,
+                       xdescent, ydescent, width, height, fontsize,
+                       trans):
+
+        xdata, xdata_marker = self.get_xdata(legend, xdescent, ydescent,
+                                             width, height, fontsize)
+
+        ydata = ((height - ydescent) / 2.) * np.ones(xdata.shape, float)
+        legline1 = Line2D(xdata, ydata*1.4)
+        legline2 = Line2D(xdata, ydata*0.6)
+
+        self.update_prop(legline1, orig_handle, legend)
+        self.update_prop(legline2, orig_handle, legend)
+
+
+        legline1.set_transform(trans)
+        legline2.set_transform(trans)
+
+        return [legline1, legline2]
+
+
+Legend.update_default_handler_map({ErrorLine2D: HandlerErrorLine2D()})

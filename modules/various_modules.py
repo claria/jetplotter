@@ -3,6 +3,7 @@ import logging
 import copy
 
 import ROOT
+import numpy as np
 
 from modules.base_module import BaseModule
 from util.root_tools import get_tgraphasymm_from_histos
@@ -113,10 +114,11 @@ class QuadraticSum(BaseModule):
             yerr_u = np.zeros((new_obj.GetN(),))
 
             for sum_id in item[1]:
+                obj = config['objects'][sum_id]['obj']
                 if isinstance(obj, ROOT.TGraph):
                     for i in xrange(obj.GetN()):
-                        yerr_l += obj.GetErrorYlow(i)**2
-                        yerr_u += obj.GetErrorYhigh(i)**2
+                        yerr_l[i] += obj.GetErrorYlow(i)**2
+                        yerr_u[i] += obj.GetErrorYhigh(i)**2
                 else:
                     raise NotImplementedError
 
@@ -124,7 +126,7 @@ class QuadraticSum(BaseModule):
             yerr_u = np.sqrt(yerr_u)
 
             for i in xrange(obj.GetN()):
-                new_obj.SetPointEYhigh(yerr_u[i])
-                new_obj.SetPointEYlow(yerr_l[i])
+                new_obj.SetPointEYhigh(i, yerr_u[i])
+                new_obj.SetPointEYlow(i, yerr_l[i])
 
-            config['objects'].setdefault('new_id', {})['obj'] = new_obj
+            config['objects'].setdefault(new_id, {})['obj'] = new_obj

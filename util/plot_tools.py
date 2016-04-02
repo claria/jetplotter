@@ -10,6 +10,7 @@ from matplotlib.colors import colorConverter
 import matplotlib.pyplot as plt
 
 import util.hatch_hack 
+from util.hatch_hack import ErrorLine2D
 
 from root2np import R2npObject1D, R2npObject2D
 from util.viridis import viridis_cmap, viridis_cmap_r, sb_cmap
@@ -386,8 +387,11 @@ def plot_errorlines(obj=None, step=False, emptybins=True, ax=None, **kwargs):
                    k in ['alpha', 'color', 'linestyle', 'step', 'label', 'zorder', 'linewidth', 'dashes']}
     artist, = ax.plot(x, y + y_erru, **line_kwargs)
     artist, = ax.plot(x, y - y_errl, **line_kwargs)
+    # use different artist which adds two lines in legend
+    new_artist = ErrorLine2D(artist.get_xdata(), artist.get_ydata())
+    new_artist.update_from(artist)
 
-    return artist
+    return new_artist
 
 
 

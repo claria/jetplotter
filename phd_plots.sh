@@ -4,6 +4,9 @@
               configs/np_factors_calc_yb*.json \
               configs/pdf_uncert_comp.py \
               configs/scale_uncert_comp.py \
+              configs/nlo_xs_comp.py \
+              configs/kfactor_comp.py \
+              configs/theo_unc_overview.py \
               configs/ratio_to_CT14nlo+np_totcomp.py \
               configs/ratio_to_NNPDF30nlo+np_totcomp.py \
               configs/trigger_eff.py \

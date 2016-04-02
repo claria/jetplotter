@@ -11,15 +11,20 @@ def get_config():
     for rap_bin in rap_bins:
         config = get_base_config()
 
-        config['ana_modules'] = ['BuildTGraph',"Ratio", "MinusOne", 'DataLims']
+        config['ana_modules'] = ['BuildTGraph',"Ratio",  "MinusOne", 'QuadraticSum', 'DataLims']
 
         config['build_tgraph'] = [
                                  ('scaleunc', ('nlo', 'scunc_l', 'scunc_u')),
                                  ('pdfunc', ('nlo', 'pdfunc_l', 'pdfunc_u')),
                                  ]
+
+        config['quadratic_sum'] = [
+                                ('totalunc', ('scaleunc', 'pdfunc', 'npunc')),
+                                 ]
+
         config['minusone'] = ['npunc', 'pdfunc', 'scaleunc']
 
-        config["plot_id"] = ['npunc', '^scaleunc$', '^pdfunc$'] 
+        config["plot_id"] = ['totalunc', 'npunc', '^scaleunc$', '^pdfunc$'] 
 
         config["ratio"] = [
                            ["scaleunc", "scaleunc"], 
@@ -31,7 +36,7 @@ def get_config():
                                 ('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                               ]
 
-        config['plot_order'] = []
+        config['plot_order'] = ['totalunc', 'pdfunc', 'scaleunc', 'npunc']
 
 
         config['objects']["nlo"] = {
@@ -56,7 +61,6 @@ def get_config():
             "label": "NP uncertainty", 
             "step": True, 
             "style": "errorlines", 
-            'dashes': [8,4],
             "zorder": 1.0
         } 
         config['objects']["pdfunc"] = {
@@ -70,6 +74,14 @@ def get_config():
             "step": True, 
             'dashes': [16,4],
             "style": "errorlines", 
+            "zorder": 1.0
+        } 
+        config['objects']["totalunc"] = {
+            "label": "Total uncertainty", 
+            "step": True, 
+            "style": "errorlines", 
+            'dashes': [8,4],
+            "color": "black",
             "zorder": 1.0
         } 
 

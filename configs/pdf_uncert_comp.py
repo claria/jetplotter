@@ -11,18 +11,20 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ['BuildTGraph', 'Ratio', 'DataLims']
+        config['ana_modules'] = ['BuildTGraph', 'Ratio', 'DataLims', 'MinusOne']
 
         config['build_tgraph'] = [
                                 ('ct14nlo_pdfunc', ('ct14nlo_xs', 'ct14nlo_pdfunc_l', 'ct14nlo_pdfunc_u')),
                                 ('mmht2014_pdfunc', ('mmht2014_xs', 'mmht2014_pdfunc_l', 'mmht2014_pdfunc_u')),
                                 ('nnpdf30_pdfunc', ('nnpdf30_xs', 'nnpdf30_pdfunc_l', 'nnpdf30_pdfunc_u')),
                                 ]
-        config['plot_id']= [
+        config['plot_id'] = [
                              '^ct14nlo_pdfunc$', 
                              '^mmht2014_pdfunc$', 
                              '^nnpdf30_pdfunc$', 
                             ]
+        config['minusone'] = ['ct14nlo_pdfunc', 'mmht2014_pdfunc', 'nnpdf30_pdfunc']
+
         config['ratio'] = [
                            ('ct14nlo_pdfunc', 'ct14nlo_pdfunc'),
                            ('mmht2014_pdfunc', 'mmht2014_pdfunc'),
@@ -87,7 +89,7 @@ def get_config():
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Fractional Uncertainty?_center_"
+        config["y_label"] = "Relative uncertainty?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
