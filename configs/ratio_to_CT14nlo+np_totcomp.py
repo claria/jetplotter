@@ -11,7 +11,7 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ["Normalize", "Multiply", "Ratio", "ToTGraph", "ReBinning"]
+        config['ana_modules'] = ["Normalize", "ReBinning", "Multiply", "Ratio", "ToTGraph"]
         # config["normalize"] = [("dataunf", "width")]
         config["normalize"] = []
         config["multiply"] = [
@@ -39,7 +39,7 @@ def get_config():
 
 
         config['objects']["_np"] = {
-            "input": "~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor".format(rap_bin)
+            "input": "~/dust/dijetana/plot/np_factors.root?{0}/res_np_factor".format(rap_bin)
         } 
         config['objects']["dataunf_stat"] = {
             "color": "black", 

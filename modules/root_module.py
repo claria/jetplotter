@@ -4,6 +4,8 @@ import ROOT
 
 from util.root_tools import get_root_object, get_tgraphasymm_from_histos, get_root_file, build_root_object
 
+import numpy as np
+
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
 
@@ -62,11 +64,26 @@ class RootOutputModule(BaseModule):
         else:
             ids = config['objects'].keys()
 
-        root_output_filename = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[
-                                   0] + '.root'
+        if 'root_output_filename' not in config.keys():
+            root_output_filename = os.path.splitext(os.path.join(config['output_prefix'], config['output_path']))[0] + '.root'
+        else:
+            root_output_filename = config['root_output_filename'] 
 
-        f = get_root_file(root_output_filename, "RECREATE")
-        f.cd('/')
+
+        if 'root_output_folder' in config.keys():
+            root_output_folder = config['root_output_folder']
+        else:
+            root_output_folder = '/'
+
+        out_file = get_root_file(root_output_filename, "UPDATE")
+        out_file.cd('/')
+
+        if ROOT.gDirectory.GetDirectory(root_output_folder) != None:
+            print "Folder {0} exists. Will be overwritten".format(root_output_folder)
+            ROOT.gDirectory.Delete('{0};*'.format(root_output_folder))
+
+        ROOT.gDirectory.mkdir(root_output_folder)
+        ROOT.gDirectory.cd(root_output_folder)
 
         for id in ids:
             if id not in config['objects']:
@@ -79,7 +96,7 @@ class RootOutputModule(BaseModule):
                 log.debug('Omitting id {0} since no root object found.'.format(id))
                 continue
 
-        f.Close()
+        out_file.Close()
 
 class BuildTGraph(BaseModule):
     def __init__(self):
@@ -152,3 +169,48 @@ class BuildTGraph(BaseModule):
                                                           config['objects'][input_ids[1]]['obj'],
                                                           config['objects'][input_ids[2]]['obj'])
                         config['objects'].setdefault(id, {})['obj'] = obj
+
+
+class Envelope(BaseModule):
+    def __init__(self):
+        super(Envelope, self).__init__()
+        self.arg_group.add_argument('--envelope', default=[], nargs='+', type='str2kvdict',
+                                    help='List of ids.')
+
+    def __call__(self, config):
+        if config['envelope']:
+            for id, input_ids in config['envelope']:
+                if len(input_ids) == 1:
+                    # Basically only copies th TGraph
+                    new_graph = ROOT.TGraphAsymmErrors(config['objects'][input_ids[0]]['obj'])
+                elif len(input_ids) > 1:
+
+                    objs = [config['objects'][cid]['obj'] for cid in input_ids]
+
+                    if not all(item.GetN() == objs[0].GetN() for item in objs):
+                        raise ValueError('All objects must have the same length,')
+
+                    nobs = objs[0].GetN()
+
+                    data = np.zeros((len(objs), nobs)) 
+
+                    for j,obj in enumerate(objs):
+                        for i in xrange(nobs):
+                            tmp_X, tmp_Y = ROOT.Double(0), ROOT.Double(0)
+                            obj.GetPoint(i, tmp_X, tmp_Y)
+                            data[j, i] = tmp_Y
+
+                    data_max = np.max(data, axis=0)
+                    data_min = np.min(data, axis=0)
+                    center = 0.5 * (data_max + data_min) 
+
+                    new_graph = ROOT.TGraphAsymmErrors(objs[0])
+                    for i in xrange(nobs):
+                       tmp_X, tmp_Y = ROOT.Double(0), ROOT.Double(0)
+                       new_graph.GetPoint(i, tmp_X, tmp_Y)
+                       new_graph.SetPoint(i, tmp_X, center[i])
+                       new_graph.SetPointEYlow(i, center[i] - data_min[i])
+                       new_graph.SetPointEYhigh(i, data_max[i] - center[i])
+
+                    config['objects'].setdefault(id, {})['obj'] = new_graph
+

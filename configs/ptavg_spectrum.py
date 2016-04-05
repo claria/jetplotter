@@ -13,7 +13,7 @@ def get_config():
 
     config = get_base_config()
 
-    config['ana_modules'] = ["Normalize", 'Multiply', "ReBinning"]
+    config['ana_modules'] = ["Normalize", "ReBinning", 'Multiply']
     config["normalize"] = [(rap_bin, 'width') for rap_bin in rap_bins]
     config["multiply"] = [('{0}nlo'.format(rap_bin), '{0}_np'.format(rap_bin)) for rap_bin in rap_bins]
 
@@ -30,7 +30,7 @@ def get_config():
     markers = ['x', '4', '.', '*', '+', '1']
     for i, rap_bin in enumerate(rap_bins):
         config['objects']["{0}_np".format(rap_bin)] = {
-            "input": "~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor".format(rap_bin),
+            "input": "~/dust/dijetana/plot/np_factors.root?{0}/res_np_factor".format(rap_bin)
         } 
         config['objects']["{0}".format(rap_bin)] = {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg".format(rap_bin),

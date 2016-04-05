@@ -7,14 +7,14 @@
     ], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
     "log_level": "info", 
     "y_subplot_label": "", 
     "x_label": "NPV", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"

@@ -29,7 +29,7 @@ def main():
         unf_data = R2npObject1D(unf_data_root)
         # np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
         # hack for full range
-        np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_nlo_{0}.root?res_np_factor'.format(ybys_bin))
+        np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_nlo_final_{0}.root?res_np_factor'.format(ybys_bin))
         np_factor.x = np.concatenate((unf_data.x[0:9],np_factor.x))
         np_factor.x = np.concatenate((np_factor.x,unf_data.x[np_factor.x.size:]))
         np_factor.y = np.concatenate((np.zeros((9,)),np_factor.y))

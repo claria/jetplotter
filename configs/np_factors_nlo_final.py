@@ -10,11 +10,17 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ["Divide", "FitObj", "BuildTGraph", "RootOutputModule"]
+        config['ana_modules'] = ["Divide", "FitObj", "DataLims", "Envelope", "RootOutputModule"]
 
-        config["build_tgraph"] = [
-                            ("res_np_factor", ("_fit_graph_origbin_hwpp_mpihad", "_fit_graph_origbin_p8_mpihad"))
+
+        config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),]
+        config["envelope"] = [
+                            ("res_np_factor", ("_fit_graph_origbin_hwpp_mpihad", "_fit_graph_origbin_p8_mpihad", '_fit_graph_origbin_pwgp8_m1_mpihad', '_fit_graph_origbin_pwgp8_s1_mpihad'))
                                 ]
+
+        config['root_output_filename'] = 'np_factors.root'
+        config['root_output_folder'] = rap_bin
+
         config["fit_obj"] = [
                         ("pwgp8_s1_mpihad", {
                                 "fcn": "[0]/x**[1] + [2]", 
@@ -52,17 +58,19 @@ def get_config():
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
         config['plot_order'] = []
-        config['plot_id'] = ['fit_pwgp8_s1_mpihad', 'pwgp8_s1_mpihad',
-                             'fit_pwgp8_m1_mpihad', 'pwgp8_m1_mpihad', 
-                             'fit_p8_mpihad', 'p8_mpihad', 
-                             'fit_hwpp_mpihad', 'hwpp_mpihad', 
-                             # 'res_np_factor'
+        config['plot_id'] = ['fit_pwgp8_s1_mpihad',# 'pwgp8_s1_mpihad',
+                             'fit_pwgp8_m1_mpihad',# 'pwgp8_m1_mpihad', 
+                             'fit_p8_mpihad',# 'p8_mpihad', 
+                             'fit_hwpp_mpihad',# 'hwpp_mpihad', 
+                             'res_np_factor'
                              ]
 
         config['objects']["res_np_factor"] = {
             "label": "NPcorr.",
             "color": "black",
-            "zorder": 2.5
+            'alpha': 1.0,
+            "zorder": 2.5,
+            # "style": 'band'
         } 
         config['objects']["pwgp8_s1_mpihad"] = {
             "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET3/POWHEG_MPIHAD.root?{0}_xs".format(rap_bin), 

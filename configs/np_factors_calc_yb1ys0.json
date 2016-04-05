@@ -32,7 +32,7 @@
             "y": 1.0
         }
     ], 
-    "print_config": false, 
+    "legend_loc": "upper right", 
     "add_subplot": false, 
     "fit_obj": [
         [
@@ -68,7 +68,7 @@
         "1.4"
     ], 
     "x_label": "$p_{\\mathrm{T,avg}}$ (GeV)", 
-    "legend_loc": "upper right", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule", 
         "CopyToWebModule"
