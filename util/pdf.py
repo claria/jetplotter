@@ -196,7 +196,7 @@ class PDF(object):
 
         for member in range(9, self._varpdf[flavor].shape[0]):
             # print 'warning ignoring member 12'
-            # if member in []:
+            # if member in [11,12]:
                 # continue
             par_uncert_up = numpy.maximum(par_uncert_up,
                                           self._varpdf[flavor][member] -

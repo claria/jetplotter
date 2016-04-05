@@ -20,7 +20,7 @@
         "configs/genvsrecoy_vspt.json"
     ], 
     "ax_hlines": [], 
-    "legend_loc": "best", 
+    "print_config": false, 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -30,7 +30,7 @@
         "4.5"
     ], 
     "x_label": "_ptavg_", 
-    "print_config": false, 
+    "legend_loc": "best", 
     "output_modules": [
         "PlotModule"
     ], 

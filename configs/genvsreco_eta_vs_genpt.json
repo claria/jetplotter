@@ -18,7 +18,7 @@
     "ax_texts": [], 
     "show_legend": true, 
     "ax_hlines": [], 
-    "print_config": false, 
+    "legend_loc": "best", 
     "add_subplot": false, 
     "list_modules": false, 
     "x_axis_formatter": "scalar2", 
@@ -28,7 +28,7 @@
         "4.5"
     ], 
     "x_label": "_ptavgreco_", 
-    "legend_loc": "best", 
+    "print_config": false, 
     "output_modules": [
         "PlotModule"
     ], 

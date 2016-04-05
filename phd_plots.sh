@@ -8,7 +8,9 @@
               configs/kfactor_comp.py \
               configs/theo_unc_overview.py \
               configs/ratio_to_CT14nlo+np_totcomp.py \
+              configs/ratio_to_MMHT2014nlo+np_totcomp.py \
               configs/ratio_to_NNPDF30nlo+np_totcomp.py \
+              configs/ratio_to_NNPDF30nlo+np_varcomp.py \
               configs/trigger_eff.py \
               configs/jec_unc_split.py \
               configs/metoversumet.json \

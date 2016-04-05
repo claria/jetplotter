@@ -81,7 +81,7 @@ def get_config():
                 }
 
 
-        config["y_lims"] = ["0.7", "1.3"]
+        config["y_lims"] = ["-0.3", "0.3"]
         config['legend_loc'] = 'upper right'
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config['margin'] = 0.05

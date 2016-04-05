@@ -11,7 +11,7 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ['BuildTGraph', 'Ratio', 'DataLims' 'MinusOne']
+        config['ana_modules'] = ['BuildTGraph', 'Ratio', 'DataLims', 'MinusOne']
 
         config['build_tgraph'] = [
                                 ('ct14nlo_ptavg_scaleunc', ('ct14nlo_xs_ptavg', 'ct14nlo_scunc_l_ptavg', 'ct14nlo_scunc_u_ptavg')),
@@ -78,7 +78,7 @@ def get_config():
                 }
 
 
-        config["y_lims"] = ["0.6", "1.2"]
+        config["y_lims"] = ["-0.4", "0.2"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config['margin'] = 0.05
         config["x_log"] =  True
