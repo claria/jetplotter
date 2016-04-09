@@ -93,7 +93,7 @@ def get_config():
                 "zorder": 1.0,
                 "obj": "null",
                 "marker": ".", 
-                "alpha": 1.0, 
+                "alpha": 0.5, 
                 "fill": True, 
                 "y_err": True, 
                 "id": "_nnpdf30_totunc", 
@@ -106,7 +106,7 @@ def get_config():
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "black",
+                "color": "_color0_",
                 "linewidth": 1.0,
                 "linestyle": "--",
                 "label": "{0}".format(pdf_label1),
@@ -136,7 +136,7 @@ def get_config():
                 "zorder": 1.0, 
                 "obj": "null", 
                 "marker": ".", 
-                "alpha": 1.0, 
+                "alpha": 0.5, 
                 "fill": True, 
                 "y_err": True, 
                 "id": "_nnpdf30_totunc", 
@@ -151,7 +151,7 @@ def get_config():
                 "capsize": 0, 
                 "x_err": True, 
                 "color": "none", 
-                "edgecolor": "_color2_", 
+                "edgecolor": "_darkcolor2_", 
                 "linestyle": "",
                 "linewidth": "2.0",
                 "label": "{0}".format(pdf_label2),
@@ -176,7 +176,7 @@ def get_config():
                 "capsize": 0, 
                 "x_err": True, 
                 "color": "none", 
-                "color": "_color2_", 
+                "color": "_darkcolor2_", 
                 "linestyle": "--",
                 "linewidth": "1.0",
                 "label": "{0}".format(pdf_label2),
@@ -201,7 +201,7 @@ def get_config():
                 "capsize": 0, 
                 "x_err": True, 
                 "color": "none", 
-                "edgecolor": "_color2_", 
+                "edgecolor": "_darkcolor2_", 
                 "linestyle": "", 
                 "step": False, 
                 "cmap": "viridis", 
@@ -243,7 +243,8 @@ def get_config():
 
     return configs
 
-# @callbacks.register('before_plot')
-# def final_plot(**kwargs):
-#     kwargs['mpl'].rcParams['legend.fontsize'] = 20
-#     # kwargs['mpl'].rcParams['font.size'] = 20
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['hatch.linewidth'] = 1.5
+#   kwargs['mpl'].rcParams['legend.fontsize'] = 20
+#   kwargs['mpl'].rcParams['font.size'] = 20

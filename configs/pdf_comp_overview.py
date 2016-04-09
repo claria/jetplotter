@@ -92,7 +92,7 @@ def get_config():
                 "obj": "null",
                 "plot_datavals": False, 
                 "marker": ".", 
-                "alpha": 1.0, 
+                "alpha": 0.5, 
                 "fill": True, 
                 "y_err": True, 
                 "axis": "ax"
@@ -104,7 +104,7 @@ def get_config():
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "black",
+                "color": "_color0_",
                 "linestyle": "--",
                 "linewidth": "1.0",
                 "label": "{0}".format(pdf_label1),
@@ -127,8 +127,8 @@ def get_config():
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "none", 
-                "edgecolor": "_color2_", 
+                "color": "_darkcolor2_", 
+                "edgecolor": "_darkcolor2_", 
                 "linestyle": "",
                 "linewidth": "2.0",
                 "label": "{0}".format(pdf_label2),
@@ -139,7 +139,7 @@ def get_config():
                 "hatch": '//', 
                 "plot_datavals": False, 
                 "marker": ".", 
-                "alpha": 1.0, 
+                "alpha": 0.2, 
                 "fill": True, 
                 "y_err": True, 
                 "axis": "ax"
@@ -152,7 +152,7 @@ def get_config():
                 "capsize": 0, 
                 "x_err": True, 
                 "color": "none", 
-                "color": "_color2_", 
+                "color": "_darkcolor2_", 
                 "linestyle": "--",
                 "linewidth": "1.0",
                 "label": "{0}".format(pdf_label2),
@@ -195,3 +195,4 @@ def get_config():
 def final_plot(**kwargs):
     kwargs['mpl'].rcParams['legend.fontsize'] = 20
     kwargs['mpl'].rcParams['font.size'] = 20
+    kwargs['mpl'].rcParams['hatch.linewidth'] = 1.5

@@ -25,11 +25,18 @@ log = logging.getLogger(__name__)
 default_colors = [
                   "#3b5b92",  # blue
                   "#39ad48",  # green
-                  "#d9544d",  # red
+                  "#C44E52",  # red
                   "#9e43a2",  # purple 
                   "#ffc512",     # yellow 
                   "#64B5CD"   # hmmm
                   ]
+default_colors_dark=["#001C7F",
+                     "#017517",
+                     "#8C0900",
+                     "#7600A1",
+                     "#B8860B",
+                     "#006374"
+                     ]
 
 
 class BasePlot(object):
@@ -98,6 +105,7 @@ class BasePlot(object):
         # Axes
         matplotlib.rcParams['axes.linewidth'] = 2
         matplotlib.rcParams['axes.labelsize'] = 24
+        matplotlib.rcParams['axes.formatter.limits'] = [-2, 9]
         matplotlib.rcParams['xtick.labelsize'] = 'medium'
         matplotlib.rcParams['xtick.major.size'] = 8
         matplotlib.rcParams['xtick.major.width'] = 1.5
@@ -113,9 +121,11 @@ class BasePlot(object):
         matplotlib.rcParams['ytick.major.pad'] = 12
         matplotlib.rcParams['ytick.minor.pad'] = 12
         matplotlib.rcParams['lines.markersize'] = 12
+
         matplotlib.rcParams['lines.linewidth'] = 3
         matplotlib.rcParams['lines.markeredgewidth'] = 1.0
-        matplotlib.rcParams['axes.formatter.limits'] = [-2, 9]
+
+        matplotlib.rcParams['hatch.linewidth'] = 1.0
 
         # Saving
         matplotlib.rcParams['savefig.bbox'] = 'tight'
@@ -124,7 +134,7 @@ class BasePlot(object):
         matplotlib.rcParams['agg.path.chunksize'] = 20000
 
         # default color cycle
-        matplotlib.rcParams['axes.color_cycle'] = default_colors 
+        matplotlib.rcParams['axes.color_cycle'] = default_colors_dark
 
         # legend
         matplotlib.rcParams['legend.numpoints'] = 1
@@ -280,8 +290,7 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
 
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
 
-    p = matplotlib.patches.Rectangle((0, 0), 0, 0, fill=fill, 
-                                        alpha=kwargs['alpha'], **fill_between_kwargs)
+    p = matplotlib.patches.Rectangle((0, 0), 0, 0, fill=fill, **fill_between_kwargs)
     ax.add_patch(p)
 
     return p

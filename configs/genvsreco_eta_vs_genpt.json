@@ -1,96 +1,96 @@
 {
-    "legend_ncol": 1, 
+    "legend_ncol": 1,
     "ana_modules": [
         "Project3DProfile"
-    ], 
+    ],
     "project3dprofile": [
         [
-            "data", 
+            "data",
             {
                 "option": "xy"
             }
         ]
-    ], 
+    ],
     "plot_id": [
         "^(?!_).*"
-    ], 
-    "y_label": "$\\eta_{\\mathrm{reco}}$?_center_", 
-    "ax_texts": [], 
-    "show_legend": true, 
-    "ax_hlines": [], 
-    "print_config": false, 
-    "add_subplot": false, 
-    "list_modules": false, 
-    "x_axis_formatter": "scalar2", 
-    "log_level": "info", 
+    ],
+    "y_label": "$\\eta_{\\mathrm{reco}}$?_center_",
+    "ax_texts": [],
+    "show_legend": true,
+    "ax_hlines": [],
+    "print_config": false,
+    "add_subplot": false,
+    "list_modules": false,
+    "x_axis_formatter": "scalar2",
+    "log_level": "info",
     "y_lims": [
-        "-4.5", 
+        "-4.5",
         "4.5"
-    ], 
-    "x_label": "_ptavgreco_", 
-    "legend_loc": "best", 
+    ],
+    "x_label": "_ptavgreco_",
+    "legend_loc": "best",
     "output_modules": [
         "PlotModule"
-    ], 
-    "plot_order": [], 
+    ],
+    "plot_order": [],
     "x_lims": [
-        "80.", 
+        "80.",
         "2000."
-    ], 
+    ],
     "z_lims": [
-        "-0.049", 
+        "-0.049",
         "0.049"
-    ], 
-    "argv": "./plot.py -l configs/genvsreco_eta_vs_genpt.json", 
+    ],
+    "argv": "./plot.py -l configs/genvsreco_eta_vs_genpt.json",
     "y_subplot_lims": [
-        null, 
+        null,
         null
-    ], 
-    "fig_size": null, 
+    ],
+    "fig_size": null,
     "objects": {
         "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "fill": true, 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "rasterized": true, 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0, 
-            "plot_datavals": false, 
+            "alpha": 1.0,
+            "axis": "ax",
+            "capsize": 0,
+            "cmap": "viridis",
+            "color": "auto",
+            "edgecolor": "auto",
+            "fill": true,
+            "label": "__nolegend__",
+            "linestyle": "",
+            "marker": ".",
+            "rasterized": true,
+            "step": false,
+            "style": "errorbar",
+            "x_err": true,
+            "y_err": true,
+            "zorder": 1.0,
+            "plot_datavals": false,
             "edgealpha": 1.0
-        }, 
+        },
         "data": {
-            "cmap": "seismic", 
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoEta", 
+            "cmap": "seismic",
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidityNOCORR_QCDMGP6.root?default/h3_GenVsRecoEta",
             "style": "heatmap"
         }
-    }, 
-    "z_log": false, 
-    "z_axis_formatter": "scientific", 
-    "combine_legend_entries": [], 
-    "ax_vlines": [], 
-    "y_log": false, 
-    "store_json": true, 
-    "y_subplot_label": "", 
+    },
+    "z_log": false,
+    "z_axis_formatter": "scientific",
+    "combine_legend_entries": [],
+    "ax_vlines": [],
+    "y_log": false,
+    "store_json": true,
+    "y_subplot_label": "",
     "load_config": [
         "configs/genvsreco_eta_vs_genpt.json"
-    ], 
-    "y_axis_formatter": "scientific", 
-    "output_prefix": "plots/", 
-    "output_path": "genvsreco_eta_vs_genpt.png", 
-    "x_log": true, 
+    ],
+    "y_axis_formatter": "scientific",
+    "output_prefix": "plots/",
+    "output_path": "genvsreco_eta_vs_genpt.png",
+    "x_log": true,
     "input_modules": [
         "RootModule"
-    ], 
-    "margin": 0.0, 
+    ],
+    "margin": 0.0,
     "z_label": "$\\langle \\eta_{\\mathrm{reco}} - \\eta_{\\mathrm{ptcl}} \\rangle$"
 }

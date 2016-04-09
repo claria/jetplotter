@@ -141,7 +141,7 @@ def get_config():
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config['x_axis_formatter'] = 'scalar2'
         config["x_log"] =  True
-        config["legend_loc"] = 'upper left'
+        config["legend_loc"] = 'lower left'
         config["legend_ncol"] = 1
         config["x_label"] = "_ptavg_"
         config["y_label"] = "Ratio to NLO$\otimes$NP (NNPDF 3.0)?_center_"

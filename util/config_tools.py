@@ -101,7 +101,7 @@ def write_config(config, path, indent=4):
         os.makedirs(directory)
     # Write config.
     with open(path, "w") as f:
-        json.dump(config, f, skipkeys=True, indent=indent, cls=SimpleJsonEncoder)
+        json.dump(config, f, skipkeys=True, indent=indent, separators=(',', ': '), cls=SimpleJsonEncoder)
 
     # log.debug("Config written to \"{0}\"".format(path))
     log.info('Config written to \"{0}\"'.format(path))
@@ -109,7 +109,7 @@ def write_config(config, path, indent=4):
 
 def print_config(config):
     """ Print the config to the screen."""
-    print json.dumps(config, cls=SimpleJsonEncoder, indent=4)
+    print json.dumps(config, cls=SimpleJsonEncoder, separators=(',', ': '), indent=4)
 
 
 def walk_dic(node, func):

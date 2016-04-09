@@ -1,100 +1,100 @@
 {
-    "legend_ncol": 1, 
+    "legend_ncol": 1,
     "ana_modules": [
         "Profile"
-    ], 
+    ],
     "plot_id": [
         "^(?!_).*"
-    ], 
-    "y_label": "Reco y - Gen y", 
-    "ax_texts": [], 
+    ],
+    "y_label": "Reco y - Gen y",
+    "ax_texts": [],
     "load_config": [
         "configs/genvsreco_y.json"
-    ], 
-    "ax_hlines": [], 
-    "legend_loc": "best", 
-    "add_subplot": false, 
-    "list_modules": false, 
-    "x_axis_formatter": "scalar2", 
-    "log_level": "info", 
+    ],
+    "ax_hlines": [],
+    "legend_loc": "best",
+    "add_subplot": false,
+    "list_modules": false,
+    "x_axis_formatter": "scalar2",
+    "log_level": "info",
     "y_lims": [
-        "-0.7", 
+        "-0.7",
         "0.7"
-    ], 
-    "x_label": "Gen Rapidity", 
-    "profile_y": [], 
+    ],
+    "x_label": "Gen Rapidity",
+    "profile_y": [],
     "profile_x": [
         [
-            "data_proj", 
+            "data_proj",
             {
                 "option": ""
             }
         ]
-    ], 
-    "print_config": false, 
+    ],
+    "print_config": false,
     "output_modules": [
         "PlotModule"
-    ], 
-    "plot_order": [], 
+    ],
+    "plot_order": [],
     "x_lims": [
-        "-4", 
+        "-4",
         "4"
-    ], 
+    ],
     "z_lims": [
-        "1E-3", 
+        "1E-3",
         "none"
-    ], 
-    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY data_proj:~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY --style data:heatmap --z-log True --z-lims 1E-3 none --y-lims -0.7 0.7 --x-label 'Gen Rapidity' --y-label 'Reco y - Gen y' --x-lims -4 4 --output-path genvsreco_y.png --z-label a.u. --ana-modules Profile --profile-x data_proj:option= --label data_proj:mean", 
+    ],
+    "argv": "./plot.py -i data:~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY data_proj:~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY --style data:heatmap --z-log True --z-lims 1E-3 none --y-lims -0.7 0.7 --x-label 'Gen Rapidity' --y-label 'Reco y - Gen y' --x-lims -4 4 --output-path genvsreco_y.png --z-label a.u. --ana-modules Profile --profile-x data_proj:option= --label data_proj:mean",
     "y_subplot_lims": [
-        null, 
+        null,
         null
-    ], 
-    "fig_size": null, 
+    ],
+    "fig_size": null,
     "objects": {
         "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "fill": true, 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "rasterized": true, 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0, 
-            "plot_datavals": false, 
+            "alpha": 1.0,
+            "axis": "ax",
+            "capsize": 0,
+            "cmap": "viridis",
+            "color": "auto",
+            "edgecolor": "auto",
+            "fill": true,
+            "label": "__nolegend__",
+            "linestyle": "",
+            "marker": ".",
+            "rasterized": true,
+            "step": false,
+            "style": "errorbar",
+            "x_err": true,
+            "y_err": true,
+            "zorder": 1.0,
+            "plot_datavals": false,
             "edgealpha": 1.0
-        }, 
+        },
         "data_proj": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY",
             "label": "mean"
-        }, 
+        },
         "data": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY", 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/rapidity_QCDMGP6.root?default/h2_GenVsRecoY",
             "style": "heatmap"
         }
-    }, 
-    "z_log": true, 
-    "z_axis_formatter": "scientific", 
-    "combine_legend_entries": [], 
-    "ax_vlines": [], 
-    "y_log": false, 
-    "store_json": true, 
-    "y_subplot_label": "", 
-    "show_legend": true, 
-    "y_axis_formatter": "scientific", 
-    "output_prefix": "plots/", 
-    "output_path": "genvsreco_y.png", 
-    "x_log": false, 
+    },
+    "z_log": true,
+    "z_axis_formatter": "scientific",
+    "combine_legend_entries": [],
+    "ax_vlines": [],
+    "y_log": false,
+    "store_json": true,
+    "y_subplot_label": "",
+    "show_legend": true,
+    "y_axis_formatter": "scientific",
+    "output_prefix": "plots/",
+    "output_path": "genvsreco_y.png",
+    "x_log": false,
     "input_modules": [
         "RootModule"
-    ], 
-    "margin": 0.0, 
+    ],
+    "margin": 0.0,
     "z_label": "a.u."
 }

@@ -1,101 +1,101 @@
 {
-    "legend_ncol": 1, 
+    "legend_ncol": 1,
     "ana_modules": [
         "Efficiency"
-    ], 
+    ],
     "plot_id": [
         "eff_pass"
-    ], 
-    "y_label": "Efficiency", 
+    ],
+    "y_label": "Efficiency",
     "ax_texts": [
-        "_yb0ys2_?_upperleft_", 
+        "_yb0ys2_?_upperleft_",
         "_20fb_"
-    ], 
-    "show_legend": true, 
-    "ax_hlines": [], 
-    "print_config": false, 
-    "add_subplot": false, 
-    "list_modules": false, 
-    "x_axis_formatter": "scalar2", 
-    "log_level": "info", 
+    ],
+    "show_legend": true,
+    "ax_hlines": [],
+    "print_config": false,
+    "add_subplot": false,
+    "list_modules": false,
+    "x_axis_formatter": "scalar2",
+    "log_level": "info",
     "y_lims": [
-        "0.8", 
+        "0.8",
         "1.049"
-    ], 
-    "x_label": "_ptavg_", 
-    "legend_loc": "best", 
+    ],
+    "x_label": "_ptavg_",
+    "legend_loc": "best",
     "output_modules": [
         "PlotModule"
-    ], 
-    "plot_order": [], 
+    ],
+    "plot_order": [],
     "x_lims": [
-        "_yb0ys2_xmin_", 
+        "_yb0ys2_xmin_",
         "_yb0ys2_xmax_"
-    ], 
+    ],
     "z_lims": [
-        null, 
+        null,
         null
-    ], 
-    "argv": "./plot.py -i all:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys2/h_allpassjetid pass:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys2/h_probepassjetid --ana-modules Efficiency --efficiency pass:all --plot-id eff_pass --y-lims 0.9 1.1 --x-log True --x-lim 100 2500. --ax-texts _yb0ys2_?_upperleft_ _cmsp_ _20fb_ --x-label _ptavg_ --y-label Efficiency --y-lims 0.5 1.1 --output-path jetideff_yb0ys2.png", 
+    ],
+    "argv": "./plot.py -i all:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys2/h_allpassjetid pass:~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys2/h_probepassjetid --ana-modules Efficiency --efficiency pass:all --plot-id eff_pass --y-lims 0.9 1.1 --x-log True --x-lim 100 2500. --ax-texts _yb0ys2_?_upperleft_ _cmsp_ _20fb_ --x-label _ptavg_ --y-label Efficiency --y-lims 0.5 1.1 --output-path jetideff_yb0ys2.png",
     "efficiency": [
         [
-            "pass", 
+            "pass",
             "all"
         ]
-    ], 
-    "fig_size": null, 
+    ],
+    "fig_size": null,
     "objects": {
         "_default": {
-            "alpha": 1.0, 
-            "axis": "ax", 
-            "capsize": 0, 
-            "cmap": "viridis", 
-            "color": "auto", 
-            "edgecolor": "auto", 
-            "label": "__nolegend__", 
-            "linestyle": "", 
-            "marker": ".", 
-            "step": false, 
-            "style": "errorbar", 
-            "x_err": true, 
-            "y_err": true, 
-            "zorder": 1.0, 
-            "rasterized": true, 
-            "fill": true, 
-            "plot_datavals": false, 
+            "alpha": 1.0,
+            "axis": "ax",
+            "capsize": 0,
+            "cmap": "viridis",
+            "color": "auto",
+            "edgecolor": "auto",
+            "label": "__nolegend__",
+            "linestyle": "",
+            "marker": ".",
+            "step": false,
+            "style": "errorbar",
+            "x_err": true,
+            "y_err": true,
+            "zorder": 1.0,
+            "rasterized": true,
+            "fill": true,
+            "plot_datavals": false,
             "edgealpha": 1.0
-        }, 
+        },
         "eff_pass": {
             "label": "Loose jet ID"
-        }, 
+        },
         "all": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys2/h_allpassjetid"
-        }, 
+        },
         "pass": {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/JETIDCHECK_DATA.root?yb0ys2/h_probepassjetid"
         }
-    }, 
-    "z_log": false, 
-    "z_axis_formatter": "scientific", 
-    "combine_legend_entries": [], 
-    "ax_vlines": [], 
-    "y_log": false, 
-    "store_json": true, 
+    },
+    "z_log": false,
+    "z_axis_formatter": "scientific",
+    "combine_legend_entries": [],
+    "ax_vlines": [],
+    "y_log": false,
+    "store_json": true,
     "y_subplot_lims": [
-        null, 
+        null,
         null
-    ], 
-    "y_subplot_label": "", 
+    ],
+    "y_subplot_label": "",
     "load_config": [
         "configs/jetideff_yb0ys2.json"
-    ], 
-    "y_axis_formatter": "scientific", 
-    "output_prefix": "plots/", 
-    "output_path": "jetideff_yb0ys2.png", 
-    "x_log": true, 
+    ],
+    "y_axis_formatter": "scientific",
+    "output_prefix": "plots/",
+    "output_path": "jetideff_yb0ys2.png",
+    "x_log": true,
     "input_modules": [
         "RootModule"
-    ], 
-    "margin": 0.0, 
+    ],
+    "margin": 0.0,
     "z_label": ""
 }
