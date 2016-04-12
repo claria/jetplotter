@@ -37,7 +37,7 @@
     ],
     "y_subplot_label": "",
     "x_label": "_ptavg_",
-    "legend_loc": "upper right",
+    "legend_loc": "lower left",
     "output_modules": [
         "PlotModule",
         "CopyToWebModule"

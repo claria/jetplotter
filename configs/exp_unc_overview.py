@@ -11,7 +11,7 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ["Ratio"]
+        config['ana_modules'] = ["Ratio", "MinusOne"]
         config["ratio"] = [
                            ["dataunf_lumi", "dataunf_stat"], 
                            ["dataunf_total", "dataunf_total"], 
@@ -24,7 +24,8 @@ def get_config():
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
 
-        config['plot_order'] = ['dataunf_stat', 'dataunf_jec', 'dataunf_uncor', 'dataunf_jer', 'dataunf_lumi', 'dataunf_lumi']
+        config['plot_order'] = ['dataunf_stat', 'dataunf_jec', 'dataunf_uncor', 'dataunf_jer', 'dataunf_lumi']
+        config['minusone'] = ['dataunf_stat', 'dataunf_jec', 'dataunf_uncor', 'dataunf_jer', 'dataunf_lumi', 'dataunf_total']
 
         config['objects']["dataunf_stat"] = {
             "color": "black", 
@@ -48,6 +49,7 @@ def get_config():
             "label": "JEC uncertainty", 
             "style": "errorlines",
             "color": "_color0_",
+            "dashes": [20,4],
             "step": True,
         }
         config['objects']["dataunf_jer"] = {
@@ -74,13 +76,13 @@ def get_config():
             "step": True,
         }
 
-        config["y_lims"] = ["0.75", "1.25"]
+        config["y_lims"] = ["-0.25", "0.25"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["legend_loc"] = 'lower left'
         config["legend_ncol"] = 2
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Fractional Uncertainty?_center_"
+        config["y_label"] = "Relative Uncertainty?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
@@ -96,3 +98,4 @@ def get_config():
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
     kwargs['mpl'].rcParams['legend.fontsize'] = 22
+    kwargs['mpl'].rcParams['lines.linewidth'] = 4

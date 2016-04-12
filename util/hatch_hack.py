@@ -5,8 +5,8 @@ import matplotlib.hatch as hatch
 import matplotlib.pyplot as plt
 import matplotlib.lines as lines
 from matplotlib.lines import Line2D
-from matplotlib.patches import Ellipse, Polygon, Patch
-from matplotlib.legend_handler import HandlerPatch, HandlerNpoints
+from matplotlib.patches import Ellipse, Polygon, Patch, Rectangle
+from matplotlib.legend_handler import HandlerPatch, HandlerNpoints, HandlerBase
 from matplotlib.legend import Legend
 from matplotlib.path import Path
 
@@ -44,58 +44,6 @@ class ThickNorthEastHatch(hatch.HatchPatternBase):
 matplotlib.hatch._hatch_types.append(ThickNorthEastHatch)
 
 
-class HandlerPatch2(HandlerPatch):
-
-    def create_artists(self, legend, orig_handle,
-                       xdescent, ydescent, width, height, fontsize, trans):
-        p = self._create_patch(legend, orig_handle,
-                               xdescent, ydescent, width, height, fontsize)
-        self.update_prop(p, orig_handle, legend)
-        # p.set_fill(True)
-        p.set_hatch('slll')
-        p.set_transform(trans)
-        return [p]
-
-    def legend_artist(self, legend, orig_handle,
-                       fontsize, handlebox):
-        """
-        Return the artist that this HandlerBase generates for the given
-        original artist/handle.
-        Parameters
-        ----------
-        legend : :class:`matplotlib.legend.Legend` instance
-            The legend for which these legend artists are being created.
-        orig_handle : :class:`matplotlib.artist.Artist` or similar
-            The object for which these legend artists are being created.
-        fontsize : float or int
-            The fontsize in pixels. The artists being created should
-            be scaled according to the given fontsize.
-        handlebox : :class:`matplotlib.offsetbox.OffsetBox` instance
-            The box which has been created to hold this legend entry's
-            artists. Artists created in the `legend_artist` method must
-            be added to this handlebox inside this method.
-        """
-        xdescent, ydescent, width, height = self.adjust_drawing_area(
-                 legend, orig_handle,
-                 handlebox.xdescent, handlebox.ydescent,
-                 handlebox.width, handlebox.height,
-                 fontsize)
-        artists = self.create_artists(legend, orig_handle,
-                                      xdescent, ydescent, width, height,
-                                      fontsize, handlebox.get_transform())
-
-        # create_artists will return a list of artists.
-        for a in artists:
-            handlebox.add_artist(a)
-            a.set_rasterized(True)
-
-        return artists[0]
-
-
-
-
-# Legend.update_default_handler_map({Patch: HandlerPatch2()})
-
 class ErrorLine2D(Line2D):
     pass
 
@@ -114,8 +62,8 @@ class HandlerErrorLine2D(HandlerNpoints):
                                              width, height, fontsize)
 
         ydata = ((height - ydescent) / 2.) * np.ones(xdata.shape, float)
-        legline1 = Line2D(xdata, ydata*1.4)
-        legline2 = Line2D(xdata, ydata*0.6)
+        legline1 = Line2D(xdata, ydata*1.5)
+        legline2 = Line2D(xdata, ydata*0.5)
 
         self.update_prop(legline1, orig_handle, legend)
         self.update_prop(legline2, orig_handle, legend)
@@ -126,5 +74,26 @@ class HandlerErrorLine2D(HandlerNpoints):
 
         return [legline1, legline2]
 
+class HandlerPatch2(HandlerBase):
+    """
+    Handler for Patch instances.
+    """
+    def __init__(self, **kw):
+        HandlerBase.__init__(self, **kw)
+
+    def create_artists(self, legend, orig_handle,
+                       xdescent, ydescent, width, height, fontsize, trans):
+        p1 = Rectangle(xy=(-xdescent, -ydescent),
+                       width=width, height=height)
+        p2 = Rectangle(xy=(-xdescent, -ydescent),
+                       width=width, height=height)
+        self.update_prop(p1, orig_handle, legend)
+        self.update_prop(p2, orig_handle, legend)
+        p2.set_facecolor('none')
+        p1.set_transform(trans)
+        p2.set_transform(trans)
+        return [p1,p2]
+
 
 Legend.update_default_handler_map({ErrorLine2D: HandlerErrorLine2D()})
+Legend.update_default_handler_map({Patch: HandlerPatch2()})

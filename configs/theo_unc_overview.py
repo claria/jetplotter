@@ -80,7 +80,7 @@ def get_config():
             "label": "Total uncertainty", 
             "step": True, 
             "style": "errorlines", 
-            'dashes': [8,4],
+            # 'dashes': [8,4],
             "color": "black",
             "zorder": 1.0
         } 
@@ -89,7 +89,7 @@ def get_config():
         config["y_lims"] = ["-0.3", "0.3"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
-        config["legend_loc"] = 'upper right'
+        config["legend_loc"] = 'lower left'
         config["x_label"] = "_ptavg_"
         config["y_label"] = "Relative Uncertainty?_center_"
         config["ax_hlines"] = [

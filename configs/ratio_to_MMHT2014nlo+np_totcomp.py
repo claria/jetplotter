@@ -181,4 +181,5 @@ def get_config():
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
     kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    kwargs['mpl'].rcParams['lines.linewidth'] = 4
     # kwargs['mpl'].rcParams['font.size'] = 20

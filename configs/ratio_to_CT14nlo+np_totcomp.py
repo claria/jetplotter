@@ -54,10 +54,10 @@ def get_config():
             "zorder": 3.0
         }
         config['objects']["dataunf_syst"] = {
-            "color": "none", 
             "edgecolor": "_color4_", 
+            "color": "_color4_", 
             "linewidth":2.0,
-            "alpha":1.0,
+            "alpha":0.1,
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_syst".format(rap_bin), 
             "label": "Exp. Unc.", 
             "marker": ".", 
@@ -71,7 +71,7 @@ def get_config():
         }
 
         config['objects']["nloct14"] = {
-            "alpha": 0.5, 
+            "alpha": 0.3, 
             "color": "_color0_", 
             "edgecolor": "_color0_", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_pdfunc_u".format(rap_bin), 
@@ -180,4 +180,5 @@ def get_config():
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
     kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    kwargs['mpl'].rcParams['lines.linewidth'] = 4
     # kwargs['mpl'].rcParams['font.size'] = 20

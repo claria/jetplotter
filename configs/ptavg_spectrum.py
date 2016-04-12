@@ -27,7 +27,7 @@ def get_config():
 
     config['plot_order'] = rap_bins
 
-    markers = ['x', '4', '.', '*', '+', '1']
+    markers = ['x', '4', '.', '+', '*', '1']
     for i, rap_bin in enumerate(rap_bins):
         config['objects']["{0}_np".format(rap_bin)] = {
             "input": "~/dust/dijetana/plot/np_factors.root?{0}/res_np_factor".format(rap_bin)
@@ -38,6 +38,8 @@ def get_config():
             "label": "_{0}_".format(rap_bin), 
             "linestyle": "", 
             "marker": markers[i], 
+            "markersize": 10,
+            "markeredgewidth": 2,
             "x_err": False, 
             "y_err": True, 
             "zorder": 100.0
@@ -62,9 +64,9 @@ def get_config():
 
     config["ax_texts"] = [
                           "_20fb_", 
-                          {'s': ur'anti\u2013$k_\mathrm{T}\,\mathrm{R}=0.7$' , 'x': 0.62, 'y': 0.60, 'ha': 'left', 'va': 'top'}, 
-                          {'s': ur'NNPDF3.0\u2013NLO$\otimes$NP' , 'x': 0.62, 'y': 0.55, 'ha': 'left', 'va': 'top'}, 
-                          "s=$\mu=p_\\mathrm{T,max}e^{{0.3y^*}}$?x=0.62|y=0.50|ha=left|va=top"
+                          {'s': ur'anti\u2013$k_\mathrm{T}\,R=0.7$' , 'x': 0.62, 'y': 0.60, 'ha': 'left', 'va': 'top'}, 
+                          {'s': ur'NNPDF 3.0\u2013NLO$\otimes$NP' , 'x': 0.62, 'y': 0.55, 'ha': 'left', 'va': 'top'}, 
+                          "s=$\mu=p_\\mathrm{T,max}e^{{0.3y^{*}}}$?x=0.62|y=0.50|ha=left|va=top"
                           ]
 
     config["output_path"] = 'ptavg_spectrum.png'.format(rap_bin)

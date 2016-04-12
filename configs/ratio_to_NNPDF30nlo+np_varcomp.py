@@ -51,11 +51,11 @@ def get_config():
             "zorder": 4.0
         }
         config['objects']["dataunf_syst"] = {
-            "color": "none", 
             "edgecolor": "_color4_", 
+            "color": "_color4_", 
             "linewidth":2.0,
             "edgealpha":1.0,
-            "alpha":1.0,
+            "alpha":0.1,
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_syst".format(rap_bin), 
             "label": "Exp. Unc.", 
             "marker": ".", 
@@ -69,7 +69,7 @@ def get_config():
         }
 
         config['objects']["nlonnpdf30"] = {
-            "alpha": 0.5, 
+            "alpha": 0.3, 
             "color": "_color0_", 
             "edgecolor": "_color0_", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_pdfunc_u".format(rap_bin), 
@@ -161,3 +161,4 @@ def get_config():
 def final_plot(**kwargs):
     kwargs['mpl'].rcParams['legend.fontsize'] = 20
     # kwargs['mpl'].rcParams['font.size'] = 20
+    kwargs['mpl'].rcParams['lines.linewidth'] = 4

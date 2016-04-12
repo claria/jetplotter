@@ -120,10 +120,10 @@ class BasePlot(object):
         matplotlib.rcParams['ytick.minor.width'] = 1.
         matplotlib.rcParams['ytick.major.pad'] = 12
         matplotlib.rcParams['ytick.minor.pad'] = 12
-        matplotlib.rcParams['lines.markersize'] = 12
+        matplotlib.rcParams['lines.markersize'] = 16
+        matplotlib.rcParams['lines.markeredgewidth'] = 1.0
 
         matplotlib.rcParams['lines.linewidth'] = 3
-        matplotlib.rcParams['lines.markeredgewidth'] = 1.0
 
         matplotlib.rcParams['hatch.linewidth'] = 1.0
 
@@ -285,12 +285,19 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     kwargs['facecolor'] = colorConverter.to_rgba(kwargs['facecolor'], kwargs.get('alpha', 1.0))
     kwargs['edgecolor'] = colorConverter.to_rgba(kwargs['edgecolor'], kwargs.get('edgealpha', 1.0))
 
+    # plot without hatch
     fill_between_kwargs = {k: v for k, v in kwargs.items() if
-                           k in ['label', 'facecolor', 'edgecolor', 'zorder', 'hatch', 'rasterized', 'linewidth']}
+                           k in ['label', 'facecolor', 'edgecolor', 'zorder', 'rasterized', 'linewidth']}
 
     artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
 
-    p = matplotlib.patches.Rectangle((0, 0), 0, 0, fill=fill, **fill_between_kwargs)
+    # work around okular bug present when hatch+color is plotted (plot 
+    if 'hatch' in kwargs:
+        fill_between_kwargs2 = {k: v for k, v in kwargs.items() if
+                               k in ['label', 'edgecolor', 'zorder', 'hatch', 'rasterized', 'linewidth']}
+        artist = ax.fill_between(x, y - y_errl, y + y_erru, color='none', **fill_between_kwargs2)
+
+    p = matplotlib.patches.Rectangle((0, 0), 0, 0, hatch=kwargs.get('hatch', ''), **fill_between_kwargs)
     ax.add_patch(p)
 
     return p
@@ -441,7 +448,7 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     # http://stackoverflow.com/a/18499120/3243729
 
     errorbar_kwargs = {k: v for k, v in kwargs.items() if
-                       k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color', 'zorder']}
+                       k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color', 'zorder', 'linewidth', 'markeredgewidth']}
     errorbar_kwargs['fmt'] = ''
     errorbar_kwargs['linestyle'] = ''
     artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, **errorbar_kwargs)
