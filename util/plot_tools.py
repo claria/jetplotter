@@ -23,7 +23,7 @@ import logging
 log = logging.getLogger(__name__)
 
 default_colors = [
-                  "#3b5b92",  # blue
+                  "#4878CF",  # blue
                   "#39ad48",  # green
                   "#C44E52",  # red
                   "#9e43a2",  # purple 

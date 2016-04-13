@@ -66,7 +66,7 @@ def get_config():
                              ]
 
         config['objects']["res_np_factor"] = {
-            "label": "NPcorr.",
+            "label": "Final Correction",
             "color": "black",
             'alpha': 1.0,
             "zorder": 2.5,

@@ -57,7 +57,7 @@ def get_config():
         } 
 
         config['objects']["npunc"] = {
-            "input": "~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor".format(rap_bin), 
+            "input": "~/dust/dijetana/plot/np_factors.root?{0}/res_np_factor".format(rap_bin),
             "label": "NP uncertainty", 
             "step": True, 
             "style": "errorlines", 

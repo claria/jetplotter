@@ -84,7 +84,7 @@
         },
         "mc": {
             "edgecolor": "auto",
-            "style": "errorbar",
+            "style": "histo",
             "rasterized": true,
             "capsize": 0,
             "input": "/nfs/dust/cms/user/gsieber/ARTUS/artus_2015-08-25_11-57/QCDMGP6.root?default/h_METSumEtRatio",
