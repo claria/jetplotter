@@ -54,8 +54,8 @@ def get_config():
             config["plot_id"] =  [
                                     '_{0}_totunc'.format(pdfset1),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset1),
                                     '_{0}_totunc_line'.format(pdfset1),
-                                    '_{0}_totunc'.format(pdfset2),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2),
-                                    '_{0}_totunc_line'.format(pdfset2),
+                                    # '_{0}_totunc'.format(pdfset2),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2),
+                                    # '_{0}_totunc_line'.format(pdfset2),
                                  ] 
             config['plot_order'] = ['_{0}_totunc'.format(pdfset1), '_{0}_totunc'.format(pdfset2)]
             config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset1), "_{0}_totunc".format(pdfset1)))
@@ -241,7 +241,7 @@ def get_config():
                                   # 's={0}?_topleft_'.format(pdf_labels[j]),
                                   's=$Q^2\!={0}\,\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
                                   ] 
-            config["output_path"] = 'pdfcomp_direct_{0}_{1}.png'.format(partons[i], q2)
+            config["output_path"] = 'phdvortrag_pdfcomp_direct_{0}_{1}_heraonly.png'.format(partons[i], q2)
             configs.append(config)
 
     return configs

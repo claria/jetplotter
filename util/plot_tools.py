@@ -38,6 +38,11 @@ default_colors_dark=["#001C7F",
                      "#006374"
                      ]
 
+paired_colors = ['#a6cee3', '#2079b4', 
+                 '#b0dd8b', '#36a12e', 
+                 '#fb9898', '#e31b1c', 
+                 '#fdbe6f', '#ff8001', 
+                 '#c8afd5', '#6c409a']
 
 class BasePlot(object):
     __metaclass__ = ABCMeta
@@ -134,7 +139,7 @@ class BasePlot(object):
         matplotlib.rcParams['agg.path.chunksize'] = 20000
 
         # default color cycle
-        matplotlib.rcParams['axes.color_cycle'] = default_colors_dark
+        matplotlib.rcParams['axes.color_cycle'] = default_colors
 
         # legend
         matplotlib.rcParams['legend.numpoints'] = 1

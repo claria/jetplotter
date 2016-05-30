@@ -1,7 +1,7 @@
 #! /bin/bash
 
 ./plots.py -l \
-              configs/np_factors_calc_yb*.json \
+              # configs/np_factors_calc_yb*.json \
               configs/pdf_uncert_comp.py \
               configs/scale_uncert_comp.py \
               configs/nlo_xs_comp.py \

@@ -190,7 +190,7 @@ def get_config():
     config["x_lims"] = [50., 2000.]
     config["legend_loc"] = 'upper right'
     config["x_label"] = "_ptavggen_"
-    config["y_label"] = "Relative resolution $\Delta p_{\mathrm{T,avg}}/p_{\mathrm{T,avg}}$"
+    config["y_label"] = "Relative resolution $\Delta p_{\mathrm{T,avg}}^{\mathrm{ptcl}}/p_{\mathrm{T,avg}}^{\mathrm{ptcl}}$"
 
     config["ax_texts"] = [
                           "_8tev_", 

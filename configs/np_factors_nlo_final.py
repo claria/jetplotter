@@ -57,7 +57,7 @@ def get_config():
 
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
-        config['plot_order'] = []
+        config['plot_order'] = ['res_np_factor']
         config['plot_id'] = ['fit_pwgp8_s1_mpihad',# 'pwgp8_s1_mpihad',
                              'fit_pwgp8_m1_mpihad',# 'pwgp8_m1_mpihad', 
                              'fit_p8_mpihad',# 'p8_mpihad', 

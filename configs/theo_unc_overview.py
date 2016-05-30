@@ -11,7 +11,7 @@ def get_config():
     for rap_bin in rap_bins:
         config = get_base_config()
 
-        config['ana_modules'] = ['BuildTGraph',"Ratio",  "MinusOne", 'QuadraticSum', 'DataLims']
+        config['ana_modules'] = ['BuildTGraph','DataLims', "Ratio",  "MinusOne", 'QuadraticSum', ]
 
         config['build_tgraph'] = [
                                  ('scaleunc', ('nlo', 'scunc_l', 'scunc_u')),
@@ -80,7 +80,7 @@ def get_config():
             "label": "Total uncertainty", 
             "step": True, 
             "style": "errorlines", 
-            # 'dashes': [8,4],
+            'dashes': [8,4],
             "color": "black",
             "zorder": 1.0
         } 

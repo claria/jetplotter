@@ -221,6 +221,7 @@ class Plot(BasePlot):
         self.combine_legend_entries = kwargs.pop('combine_legend_entries', [])
         self.legend_loc = kwargs.pop('legend_loc', 'best')
         self.legend_ncol = kwargs.pop('legend_ncol', 1)
+        self.legend_bbox_anchor = kwargs.pop('legend_bbox_anchor', None)
 
         self.texts = kwargs.pop('ax_texts', [])
         self.vlines = kwargs.pop('ax_vlines', [])
@@ -412,7 +413,16 @@ class Plot(BasePlot):
 
             if leg_entry_dict:
                 labels, handles = zip(*leg_entry_dict.items())
-                legend = self.ax.legend(handles, labels, loc=self.legend_loc, ncol=self.legend_ncol)
+                if 'outside' in self.legend_loc:
+                    if self.legend_bbox_anchor:
+                        bbox_to_anchor = self.legend_bbox_anchor
+                    else:
+                        bbox_to_anchor = (1, 1)
+
+                    self.legend_loc = self.legend_loc.replace('outside', '').strip()
+                else:
+                    bbox_to_anchor = None
+                legend = self.ax.legend(handles, labels, loc=self.legend_loc, ncol=self.legend_ncol, bbox_to_anchor=bbox_to_anchor)
                 legend.get_frame().set_alpha(0.0)
 
                 # [obj.set_rasterized(True) for obj in legend.get_patches()]
@@ -420,8 +430,8 @@ class Plot(BasePlot):
                     # obj.set_rasterized(True)
 
                 # legend.draw()
-                self.ax.legend_ = None
-                self.ax.add_artist(legend)
+                # self.ax.legend_ = None
+                # self.ax.add_artist(legend)
             else:
                 log.debug('Omit legend since all labels are empty.')
 

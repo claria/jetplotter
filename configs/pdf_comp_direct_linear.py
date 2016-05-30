@@ -33,8 +33,8 @@ def get_config():
     pdfset1 = "HFTD_HERA_V101B_EIG"
     pdfset2 = "HFTD_HERACMSTDJETS_V101B_EIG"
 
-    pdf_label1 = "HERA"
-    pdf_label2 = "HERA + CMS Dijets"
+    pdf_label1 = "HERA DIS"
+    pdf_label2 = "HERA DIS + CMS Dijets"
 
 
    
@@ -228,11 +228,11 @@ def get_config():
                 ymaxval = 'none'
 
             config["y_lims"] = ["0.0", ymaxval]
-            config["y_subplot_lims"] = ["-0.5", "0.5"]
+            config["y_subplot_lims"] = ["-1.0", "1.0"]
             config["y_subplot_label"] = 'Rel. Uncert.'
             config["x_lims"] = [1E-4, 0.9]
             config['x_axis_formatter'] = 'scientific'
-            config["x_log"] =  True
+            config["x_log"] =  False
             config["add_subplot"] =  True
             config["legend_loc"] = 'best'
             config["x_label"] = "$x$"
@@ -241,7 +241,7 @@ def get_config():
                                   # 's={0}?_topleft_'.format(pdf_labels[j]),
                                   's=$Q^2\!={0}\,\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
                                   ] 
-            config["output_path"] = 'pdfcomp_direct_{0}_{1}.png'.format(partons[i], q2)
+            config["output_path"] = 'pdfcomp_direct_linear_{0}_{1}.png'.format(partons[i], q2)
             configs.append(config)
 
     return configs

@@ -8,7 +8,7 @@
     "ax_texts": [
         "_8tev_",
         "_yb0ys0_?_upperleft_",
-        "s=$133\\,\\mathrm{GeV} \\leq p_{\\mathrm{T,avg}} < 153\\,\\mathrm{GeV}$?_upperright_"
+        "s=$133\\,\\mathrm{GeV} \\leq p_{\\mathrm{T,avg}}^{\\mathrm{ptcl}} < 153\\,\\mathrm{GeV}$?_upperright_"
     ],
     "show_legend": true,
     "ax_hlines": [],

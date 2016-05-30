@@ -7,7 +7,7 @@ def get_base_config():
 
 def get_config():
     quantities = ['neutralHadronFraction', 'chargedHadronFraction', 'neutralEMFraction', 'electronFraction', 'muonFraction', 'nConstituents', 'nCharged']
-    x_labels = ['neutral hadron fraction', 'charged hadron fraction', 'photon fraction', 'electron fraction', 'muon fraction', 'n constituents', 'n charged constituents']
+    x_labels = ['neutral hadron fraction', 'charged hadron fraction', 'photon fraction', 'electron fraction', 'muon fraction', 'no. of constituents', 'no. of charged constituents']
     x_lims = [(0.0, 1.0), (0.0, 1.0), (0.0, 1.0), (0.0, 1.0), (0.0, 1.0), (0.0, 200), (0.0, 200)]
     y_lims = [(1.1E-4, 1.1), (1.1E-4, 1.1), (1.1E-4, 1.1), (1.1E-4, 1.1), (1.1E-4, 1.1), (1.1E-7, 1.1), (1.1E-7, 1.1)]
     configs = []

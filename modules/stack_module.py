@@ -18,8 +18,9 @@ class Stack(BaseModule):
 
     def __call__(self, config):
         for i, id in reversed(list(enumerate(config['stack']))):
-            for i in range(i):
-                config['objects'][id]['obj'] = add(config['objects'][id]['obj'], config['objects'][config['stack'][i]]['obj'])
+            for j in range(i):
+                config['objects'][id]['obj'] = add(config['objects'][id]['obj'], config['objects'][config['stack'][j]]['obj'])
+            config['objects'][id]['zorder'] = 1.5  - 0.01*i
 
 class Add(BaseModule):
 

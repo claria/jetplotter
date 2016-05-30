@@ -1,4 +1,4 @@
-from util.plot_tools import default_colors, default_colors_dark
+from util.plot_tools import default_colors, default_colors_dark, paired_colors
 
 """
 Dictionary containing lookup values which will be replaced in the 
@@ -49,7 +49,16 @@ lookup_dict = {
         '_darkcolor3_': default_colors_dark[3],
         '_darkcolor4_': default_colors_dark[4],
         '_darkcolor5_': default_colors_dark[5],
-
+        '_colorpair0a_': paired_colors[0],
+        '_colorpair0b_': paired_colors[1],
+        '_colorpair1a_': paired_colors[2],
+        '_colorpair1b_': paired_colors[3],
+        '_colorpair2a_': paired_colors[4],
+        '_colorpair2b_': paired_colors[5],
+        '_colorpair3a_': paired_colors[6],
+        '_colorpair3b_': paired_colors[7],
+        '_colorpair4a_': paired_colors[8],
+        '_colorpair4b_': paired_colors[9],
     },
     'x_lims': {
         '_yb0ys0_xmin_' : 133.,

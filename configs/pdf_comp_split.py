@@ -37,12 +37,17 @@ def get_config():
         for j, pdfset in enumerate(pdfsets):
             for i, parton in enumerate(partons):
                 config = get_base_config()
-                config['ana_modules'] = ["PDFModule", 'Ratio']
+                config['ana_modules'] = ["PDFModule", 'Ratio', 'MinusOne']
                 config["plot_id"] =  ["pdf_gluon_19", "_pdf_gluon_19_totunc", "_pdf_gluon_19_modexpunc",
                                       'ratio__pdf_gluon_19_modexpunc_to_pdf_gluon_19',
                                       'ratio__pdf_gluon_19_totunc_to_pdf_gluon_19',
                                       'ratio_pdf_gluon_19_to_pdf_gluon_19',
                                      ] 
+                config['minusone'] = [
+                                       'ratio__pdf_gluon_19_modexpunc_to_pdf_gluon_19',
+                                      'ratio__pdf_gluon_19_totunc_to_pdf_gluon_19',
+                                      'ratio_pdf_gluon_19_to_pdf_gluon_19',
+                                      ]
                 config["input_pdfsets"] = [
                         (
                         "pdf_gluon_19", {
@@ -194,7 +199,7 @@ def get_config():
                     ymaxval = 'none'
 
                 config["y_lims"] = ["0.0", ymaxval]
-                config["y_subplot_lims"] = ["0.5", "1.5"]
+                config["y_subplot_lims"] = ["-0.5", "0.5"]
                 config["y_subplot_label"] = 'Rel. Uncert.'
                 config["x_lims"] = [1E-4, 0.9]
                 config['x_axis_formatter'] = 'scientific'
@@ -205,7 +210,7 @@ def get_config():
                 config["y_label"] = y_labels[i]
                 config["ax_texts"] = [
                                       's={0}?_topleft_'.format(pdf_labels[j]),
-                                      's=$Q^2\!={0}\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
+                                      's=$Q^2\!={0}\,\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
                                       ] 
                 config["output_path"] = 'pdfcomp_{0}_{1}_{2}.png'.format('_'.join(pdfset.split('_')[:-2]), partons[i], q2)
                 configs.append(config)

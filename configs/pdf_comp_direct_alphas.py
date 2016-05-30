@@ -30,11 +30,11 @@ def get_config():
     names = ['gluon', 'd valence quark', 'u valence quark', 'sea quarks']
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
     q2s = [1.9, 10000]
-    pdfset1 = "HFTD_HERA_V101B_EIG"
     pdfset2 = "HFTD_HERACMSTDJETS_V101B_EIG"
+    pdfset1 = "HFTD_HERACMSTDJETS_V200_EIG"
 
-    pdf_label1 = "HERA"
-    pdf_label2 = "HERA + CMS Dijets"
+    pdf_label2 = "HERA DIS + CMS Dijets"
+    pdf_label1 = r"HERA DIS + CMS Dijets (free $\alpha_s$)"
 
 
    
@@ -239,9 +239,9 @@ def get_config():
             config["y_label"] = y_labels[i]
             config["ax_texts"] = [
                                   # 's={0}?_topleft_'.format(pdf_labels[j]),
-                                  's=$Q^2\!={0}\,\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
+                                  's=$Q^2\!={0}\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
                                   ] 
-            config["output_path"] = 'pdfcomp_direct_{0}_{1}.png'.format(partons[i], q2)
+            config["output_path"] = 'pdfcomp_direct_alphas_{0}_{1}.png'.format(partons[i], q2)
             configs.append(config)
 
     return configs

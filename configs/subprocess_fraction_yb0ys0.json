@@ -2,7 +2,7 @@
     "ana_modules": [
         "Add", 
         "Ratio", 
-        "Stack"
+        // "Stack"
     ], 
     "plot_id": [
         "^(?!_).*"

@@ -11,12 +11,13 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ["Normalize", "ReBinning", "Multiply", "Ratio", "ToTGraph", 'QuadraticSum']
+        config['ana_modules'] = ["Normalize", "ReBinning", "Multiply", "Ratio", "ToTGraph"]
         # config["normalize"] = [("dataunf", "width")]
-        config["normalize"] = []
+
         config['quadratic_sum'] = [
-                ('theo_unc', ('nlonnpdf30', '_np'))
-                ]
+                                ('theounc', ('nlonnpdf30_scale', 'nlonnpdf30')),
+                                 ]
+        config["normalize"] = []
         config["multiply"] = [
                               ("nloct14", "_np"), 
                               ("nlommht2014", "_np"), 
@@ -29,8 +30,7 @@ def get_config():
                            ["abm11nlo", "nlonnpdf30"], 
                            ["nloct14", "nlonnpdf30"],
                            ["nlonnpdf30", "nlonnpdf30"],
-                           ["nlonnpdf30_scale", "nlonnpdf30_scale"],
-                           ['_np', '_np']
+                           ["nlonnpdf30_scale", "nlonnpdf30_scale"] 
                           ] 
 
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
@@ -39,8 +39,15 @@ def get_config():
                                "nlommht2014", 
                                "abm11nlo", 
                                "nloct14"] 
-        config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'theo_unc','nlonnpdf30_scale']
-        config['plot_id'] = ['dataunf_stat', 'dataunf_syst','theo_unc', 'nlonnpdf30_scale', 'nloct14', 'nlommht2014', 'abm11nlo']
+        config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'nlonnpdf30','nlonnpdf30_scale']
+        config['plot_id'] = ['dataunf_stat', 
+                             'dataunf_syst', 
+                             '^nlonnpdf30$',
+                             # 'nlonnpdf30_scale', 
+                             # "nlommht2014", 
+                             # "abm11nlo", 
+                             # "nloct14"
+                             ]
 
 
         config['objects']["_np"] = {
@@ -65,7 +72,7 @@ def get_config():
             "edgealpha":1.0,
             "alpha": 0.1,
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_syst".format(rap_bin), 
-            "label": "Exp. Unc.", 
+            "label": "Syst. Unc.", 
             "marker": ".", 
             "step": True, 
             "style": "band", 
@@ -81,7 +88,7 @@ def get_config():
             "color": "_color0_", 
             "edgecolor": "_color0_", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_pdfunc_u".format(rap_bin), 
-            "label": "Theo Unc.", 
+            "label": "PDF Unc.", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -91,21 +98,6 @@ def get_config():
             "y_err": True, 
             "zorder": 1.0
         } 
-        config['objects']["theo_unc"] = {
-            "alpha": 0.3, 
-            "color": "_color0_", 
-            "edgecolor": "_color0_", 
-            "label": "Theo Unc.", 
-            "linestyle": "", 
-            "marker": ".", 
-            "plot": True, 
-            "step": True, 
-            "style": "band", 
-            "x_err": True, 
-            "y_err": True, 
-            "zorder": 1.0
-        } 
-
         config['objects']["nlonnpdf30_scale"] = {
             "alpha": 1.0, 
             "color": "_color3_", 
@@ -126,11 +118,11 @@ def get_config():
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color1_", 
-            "edgecolor": "_color1_", 
+            "color": "#15b01a", 
+            "edgecolor": "#15b01a", 
             "id": "nlommht2014", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/MMHT2014_xs".format(rap_bin), 
-            "label": "NLO$\otimes$NP (MMHT 2014)", 
+            "label": "MMHT 2014 - NLO$\otimes$NP", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -145,11 +137,11 @@ def get_config():
             "axis": "ax", 
             "capsize": 0, 
             "cmap": "viridis", 
-            "color": "_color2_", 
-            "edgecolor": "_color4_", 
+            "color": "#ff000d", 
+            "edgecolor": "#ff000d", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs".format(rap_bin), 
-            "label": "NLO$\otimes$NP (CT14)", 
+            "label": "CT14 - NLO$\otimes$NP", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -186,7 +178,7 @@ def get_config():
         config["legend_loc"] = 'upper left'
         config["legend_ncol"] = 1
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Ratio to NLO$\otimes$NP (NNPDF 3.0)?_center_"
+        config["y_label"] = "Ratio to Theory?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
@@ -194,7 +186,7 @@ def get_config():
                               '_{0}_?_upperright_'.format(rap_bin), 
                               '_20fb_'] 
 
-        config["output_path"] = 'ratio_to_NNPDF30+np_totcomp_{0}.png'.format(rap_bin)
+        config["output_path"] = 'phdvortrag_ratio_to_NNPDF30+np_totcomp_{0}.png'.format(rap_bin)
         configs.append(config)
 
     return configs

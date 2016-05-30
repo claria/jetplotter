@@ -42,7 +42,7 @@ def get_config():
         config["y_label"] = "_ptavg_"
         config['x_axis_formatter'] = 'scalar2'
         config['y_axis_formatter'] = 'scalar2'
-        config["z_label"] = "Correlation factor"
+        config["z_label"] = "Correlation coefficient"
         config["legend_loc"] = 'upper right'
         config["ax_texts"] = [
                             "_20fb_",
