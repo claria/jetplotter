@@ -16,31 +16,39 @@ def get_config():
         config['build_tgraph'] = [
                                  ('scaleunc', ('nlo', 'scunc_l', 'scunc_u')),
                                  ('pdfunc', ('nlo', 'pdfunc_l', 'pdfunc_u')),
+                                 ('asunc', ('nlo', 'asunc_l', 'asunc_u')),
                                  ]
 
         config['quadratic_sum'] = [
-                                ('totalunc', ('scaleunc', 'pdfunc', 'npunc')),
+                                ('totalunc', ('scaleunc', 'pdfunc', 'npunc', 'asunc')),
                                  ]
 
-        config['minusone'] = ['npunc', 'pdfunc', 'scaleunc']
+        config['minusone'] = ['npunc', 'pdfunc', 'scaleunc', 'asunc']
 
-        config["plot_id"] = ['totalunc', 'npunc', '^scaleunc$', '^pdfunc$'] 
+        config["plot_id"] = ['totalunc', 'npunc', '^scaleunc$', '^pdfunc$', '^asunc$'] 
 
         config["ratio"] = [
                            ["scaleunc", "scaleunc"], 
                            ["pdfunc", "pdfunc"], 
                            ["npunc", "npunc"], 
+                           ["asunc", "asunc"], 
                           ] 
 
         config["data_lims"] = [
                                 ('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                               ]
 
-        config['plot_order'] = ['totalunc', 'pdfunc', 'scaleunc', 'npunc']
+        config['plot_order'] = ['totalunc', 'pdfunc', 'scaleunc', 'npunc', 'asunc']
 
 
         config['objects']["nlo"] = {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs".format(rap_bin), 
+        }
+        config['objects']["asunc_l"] = {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_as117_xs".format(rap_bin), 
+        }
+        config['objects']["asunc_u"] = {
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_as119_xs".format(rap_bin), 
         }
 
         config['objects']["scunc_l"] = {
@@ -58,29 +66,36 @@ def get_config():
 
         config['objects']["npunc"] = {
             "input": "~/dust/dijetana/plot/np_factors.root?{0}/res_np_factor".format(rap_bin),
-            "label": "NP uncertainty", 
+            "label": "NP", 
             "step": True, 
             "style": "errorlines", 
             "zorder": 1.0
         } 
         config['objects']["pdfunc"] = {
-            "label": "PDF uncertainty", 
+            "label": "PDF", 
             "step": True, 
             "style": "errorlines", 
             "zorder": 1.0
         } 
         config['objects']["scaleunc"] = {
-            "label": "Scale uncertainty", 
+            "label": "Scale", 
             "step": True, 
-            'dashes': [16,4],
+            # 'dashes': [16,4],
+            "style": "errorlines", 
+            "zorder": 1.0
+        } 
+        config['objects']["asunc"] = {
+            "label": "$\\alpha_s$", 
+            "step": True, 
+            # 'dashes': [16,4],
             "style": "errorlines", 
             "zorder": 1.0
         } 
         config['objects']["totalunc"] = {
-            "label": "Total uncertainty", 
+            "label": "Total", 
             "step": True, 
             "style": "errorlines", 
-            'dashes': [8,4],
+            # 'dashes': [8,4],
             "color": "black",
             "zorder": 1.0
         } 
