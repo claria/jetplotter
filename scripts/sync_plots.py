@@ -7,6 +7,7 @@ log = logging.getLogger(__name__)
 import tempfile
 import glob
 import subprocess
+import stat
 import os
 import sys
 import shutil
@@ -37,6 +38,8 @@ def create_copy(filelist, suffix=None):
                                                                  '_' + suffix if suffix else '', 
                                                                  os.path.splitext(filename)[1]))
         shutil.copy(filename, new_filename)
+        st = os.stat(new_filename)
+        os.chmod(new_filename, st.st_mode | stat.S_IROTH)
         new_filelist.append(new_filename)
     return new_filelist
 

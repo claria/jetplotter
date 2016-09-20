@@ -11,11 +11,17 @@ def get_config():
     configs = []
     for rap_bin in rap_bins:
         config = get_base_config()
-        config['ana_modules'] = ["ReBinning", "Normalize", "Multiply", "Ratio", "ToTGraph"]
+        config['ana_modules'] = ["ReBinning", "Normalize", "Multiply", "Ratio", "ToTGraph", 'QuadraticSum']
         # config["normalize"] = [("dataunf", "width")]
         config["normalize"] = []
+        config['quadratic_sum'] = [
+                ('theo_unc', ('nlonnpdf30', '_np', 'nlonnpdf30_scale'))
+                ]
         config["multiply"] = [
-                              ("nlonnpdf30", "_np")
+                              ("nlonnpdf30", "_np"),
+                              ("nlonnpdf30", "_ewk"),
+                              ("nloherwig7", "_ewk"),
+                              ("nlopowheg", "_ewk"),
                               ]
         config["ratio"] = [
                            ["dataunf_stat", "nlonnpdf30"], 
@@ -32,11 +38,15 @@ def get_config():
                                "nlopowheg", 
                                "nloherwig7", 
                                ] 
-        config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'nlonnpdf30','nlonnpdf30_scale']
+        config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'theo_unc']
+        config['plot_id'] = ['dataunf_stat', 'dataunf_syst','theo_unc', 'nloherwig7', 'nlopowheg']
 
 
         config['objects']["_np"] = {
             "input": "~/dust/dijetana/plot/np_factors.root?{0}/res_np_factor".format(rap_bin)
+        } 
+        config['objects']["_ewk"] = {
+            "input": "~/dust/dijetana/ewk/ewk_dijet.root?{0}/ewk_corr".format(rap_bin)
         } 
         config['objects']["dataunf_stat"] = {
             "color": "black", 
@@ -83,6 +93,21 @@ def get_config():
             "y_err": True, 
             "zorder": 1.0
         } 
+        config['objects']["theo_unc"] = {
+            "alpha": 0.3, 
+            "color": "_color0_", 
+            "edgecolor": "_color0_", 
+            "label": "Theo. Unc.", 
+            "linestyle": "", 
+            "marker": ".", 
+            "plot": True, 
+            "step": True, 
+            "style": "band", 
+            "x_err": True, 
+            "y_err": True, 
+            "zorder": 1.0
+        } 
+
         config['objects']["nlonnpdf30_scale"] = {
             "alpha": 1.0, 
             "color": "_color3_", 
@@ -107,7 +132,7 @@ def get_config():
             "edgecolor": "_color1_", 
             "id": "nlommht2014", 
             "input": "/nfs/dust/cms/user/gsieber/POWHEG/RIVET_8CUEP8M1/POWHEG_MPIHAD_8CUEP8M1.root?{0}_xs".format(rap_bin), 
-            "label": "Powheg+P8 NLO - $\mu=p_{\mathrm{T}}^{\mathrm{born}}$", 
+            "label": "Powheg+P8 NLO$\otimes$EW - $\mu=p_{\mathrm{T}}^{\mathrm{born}}$", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -126,7 +151,7 @@ def get_config():
             "edgecolor": "_color1_", 
             "id": "nlommht2014", 
             "input": "/nfs/dust/cms/user/gsieber/HW7/RIVET_11.root?{0}_xs".format(rap_bin), 
-            "label": "Herwig 7 NLO - $\mu=p_{\mathrm{T,max}}$", 
+            "label": "Herwig 7 NLO$\otimes$EW - $\mu=p_{\mathrm{T,max}}$", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -144,7 +169,7 @@ def get_config():
         config["legend_loc"] = 'lower left'
         config["legend_ncol"] = 1
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Ratio to NLO$\otimes$NP (NNPDF 3.0)?_center_"
+        config["y_label"] = "Ratio to NNPDF 3.0 - NLO$\otimes$EW$\otimes$NP?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]

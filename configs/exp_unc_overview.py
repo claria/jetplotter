@@ -56,7 +56,8 @@ def get_config():
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_jer".format(rap_bin), 
             "label": "JER uncertainty", 
             "style": "errorlines",
-            "color": "_color1_",
+            "color": "_color3_",
+            "linestyle": "--",
             "step": True,
         }
 
@@ -64,7 +65,7 @@ def get_config():
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_unc".format(rap_bin), 
             "label": "Uncor. uncertainty", 
             "style": "errorlines",
-            "color": "_color3_",
+            "color": "_color1_",
             "step": True,
         }
         config['objects']["dataunf_total"] = {
@@ -72,7 +73,6 @@ def get_config():
             "label": "Total uncertainty", 
             "style": "errorlines",
             "color": "black",
-            "linestyle": "--",
             "step": True,
         }
 

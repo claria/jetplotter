@@ -26,7 +26,7 @@ def main():
 
     for i, ybys_bin in enumerate(ybys_bins):
         # unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
-        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
+        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_WITHFAKES.root?{0}/h_ptavg'.format(ybys_bin))
         unf_data_root.Scale(1.0, 'width')
         unf_data = R2npObject1D(unf_data_root)
         np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))

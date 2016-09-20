@@ -11,21 +11,28 @@ def get_config():
     for rap_bin in rap_bins:
         config = get_base_config()
 
-        config['ana_modules'] = ['BuildTGraph','DataLims', "Ratio",  "MinusOne", 'QuadraticSum', ]
+        config['ana_modules'] = ['BuildTGraph','DataLims', "Ratio",  "MinusOne", "ScaleUnc", 'QuadraticSum', ]
 
         config['build_tgraph'] = [
                                  ('scaleunc', ('nlo', 'scunc_l', 'scunc_u')),
                                  ('pdfunc', ('nlo', 'pdfunc_l', 'pdfunc_u')),
                                  ('asunc', ('nlo', 'asunc_l', 'asunc_u')),
                                  ]
+        config['scale_unc'] = [
+                             ('asunc', 1.5)
+                             ]
 
         config['quadratic_sum'] = [
-                                ('totalunc', ('scaleunc', 'pdfunc', 'npunc', 'asunc')),
+                                ('totalunc', ('scaleunc', 'pdfunc', 'npunc', 
+                                    # 'asunc'
+                                    )),
                                  ]
 
         config['minusone'] = ['npunc', 'pdfunc', 'scaleunc', 'asunc']
 
-        config["plot_id"] = ['totalunc', 'npunc', '^scaleunc$', '^pdfunc$', '^asunc$'] 
+        config["plot_id"] = ['totalunc', 'npunc', '^scaleunc$', '^pdfunc$'
+                             #, '^asunc$'
+                             ] 
 
         config["ratio"] = [
                            ["scaleunc", "scaleunc"], 
@@ -69,18 +76,20 @@ def get_config():
             "label": "NP", 
             "step": True, 
             "style": "errorlines", 
+            "linestyle": "--",
             "zorder": 1.0
         } 
         config['objects']["pdfunc"] = {
             "label": "PDF", 
             "step": True, 
             "style": "errorlines", 
+            "dashes": [20,4],
             "zorder": 1.0
         } 
         config['objects']["scaleunc"] = {
             "label": "Scale", 
             "step": True, 
-            # 'dashes': [16,4],
+            "dashes": [4,4,10,4],
             "style": "errorlines", 
             "zorder": 1.0
         } 

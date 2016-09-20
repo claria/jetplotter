@@ -24,10 +24,11 @@ def main():
 
     for i, ybys_bin in enumerate(ybys_bins):
         # unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
-        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
+        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_WITHFAKES.root?{0}/h_ptavg'.format(ybys_bin))
         unf_data_root.Scale(1.0, 'width')
         unf_data = R2npObject1D(unf_data_root)
         # np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_calc_{0}.root?res_np_factor'.format(ybys_bin))
+
         # hack for full range
         np_factor = get_np_object('~/dust/dijetana/plot/plots/np_factors_nlo_final_{0}.root?res_np_factor'.format(ybys_bin))
         np_factor.x = np.concatenate((unf_data.x[0:9],np_factor.x))
@@ -40,6 +41,23 @@ def main():
 
         np_factor.yerru = np.concatenate((np.zeros((9,)),np_factor.yerru))
         np_factor.yerru = np.concatenate((np_factor.yerru,np.zeros((unf_data.y.size - np_factor.yerru.size,))))
+
+        # hack for full range ewk
+        ewk_factor = get_np_object('~/dust/dijetana/ewk/ewk_dijet.root?{0}/ewk_corr'.format(ybys_bin))
+        ewk_factor.x = np.concatenate((unf_data.x[0:9],ewk_factor.x))
+        ewk_factor.x = np.concatenate((ewk_factor.x,unf_data.x[ewk_factor.x.size:]))
+        ewk_factor.y = np.concatenate((np.zeros((9,)),ewk_factor.y))
+        ewk_factor.y = np.concatenate((ewk_factor.y,np.zeros((unf_data.y.size - ewk_factor.y.size,))))
+
+        ewk_factor.yerrl = np.concatenate((np.zeros((9,)),ewk_factor.yerrl))
+        ewk_factor.yerrl = np.concatenate((ewk_factor.yerrl,np.zeros((unf_data.y.size - ewk_factor.yerrl.size,))))
+
+        ewk_factor.yerru = np.concatenate((np.zeros((9,)),ewk_factor.yerru))
+        ewk_factor.yerru = np.concatenate((ewk_factor.yerru,np.zeros((unf_data.y.size - ewk_factor.yerru.size,))))
+
+        # just multiply with np _factors for now
+        np_factor.y = np_factor.y * ewk_factor.y
+
 
         jer_data = get_np_object('~/dust/dijetana/plot/plots/jer_uncert_{0}.root?jer_uncert'.format(ybys_bin))
 

@@ -15,7 +15,8 @@ def get_config():
 
     config['ana_modules'] = ["Normalize", "ReBinning", 'Multiply']
     config["normalize"] = [(rap_bin, 'width') for rap_bin in rap_bins]
-    config["multiply"] = [('{0}nlo'.format(rap_bin), '{0}_np'.format(rap_bin)) for rap_bin in rap_bins]
+    config["multiply"] = ([('{0}nlo'.format(rap_bin), '{0}_np'.format(rap_bin)) for rap_bin in rap_bins] +
+                         [('{0}nlo'.format(rap_bin), '{0}_ewk'.format(rap_bin)) for rap_bin in rap_bins])
 
     config["data_lims"] = ([(rap_bin, 
                            {'min': '_{0}_xmin_'.format(rap_bin), 'max':'_{0}_xmax_'.format(rap_bin)}) for rap_bin in rap_bins] +
@@ -27,20 +28,26 @@ def get_config():
 
     config['plot_order'] = rap_bins
 
-    markers = ['x', '4', '.', '+', '*', '1']
+    markers = ['D', 'v', '^', 's', '>', 'o']
     for i, rap_bin in enumerate(rap_bins):
         config['objects']["{0}_np".format(rap_bin)] = {
             "input": "~/dust/dijetana/plot/np_factors.root?{0}/res_np_factor".format(rap_bin)
         } 
+        config['objects']["{0}_ewk".format(rap_bin)] = {
+            "input": "~/dust/dijetana/ewk/ewk_dijet.root?{0}/ewk_corr".format(rap_bin)
+        } 
         config['objects']["{0}".format(rap_bin)] = {
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg".format(rap_bin),
-            "color": "black", 
+            "color": "none", 
             "label": "_{0}_".format(rap_bin), 
             "linestyle": "", 
             "marker": markers[i], 
-            "markersize": 10,
+            "markersize": 8,
+            "ecolor" : "black",
+            'elinewidth' : 1,
             "markeredgewidth": 2,
-            "x_err": False, 
+            'legend_errorbars': False,
+            "x_err": True, 
             "y_err": True, 
             "zorder": 100.0
         } 
@@ -64,9 +71,11 @@ def get_config():
 
     config["ax_texts"] = [
                           "_20fb_", 
-                          {'s': ur'anti\u2013$k_\mathrm{T}\,R=0.7$' , 'x': 0.62, 'y': 0.60, 'ha': 'left', 'va': 'top'}, 
-                          {'s': ur'NNPDF 3.0\u2013NLO$\otimes$NP' , 'x': 0.62, 'y': 0.55, 'ha': 'left', 'va': 'top'}, 
-                          "s=$\mu=p_\\mathrm{T,max}e^{{0.3y^{*}}}$?x=0.62|y=0.50|ha=left|va=top"
+                          {'s': ur'anti\u2013$k_\mathrm{t}\,R=0.7$' , 'x': 0.52, 'y': 0.65, 'ha': 'left', 'va': 'top'}, 
+                          {'s': ur'NNPDF 3.0\u2013NLO$\otimes$EW$\otimes$NP' , 'x': 0.52, 'y': 0.60, 'ha': 'left', 'va': 'top'}, 
+                          "s=$\mu=p_\\mathrm{T,max}e^{{0.3y^{*}}}$?x=0.52|y=0.55|ha=left|va=top",
+                          {'s': ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                          {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
                           ]
 
     config["output_path"] = 'ptavg_spectrum.png'.format(rap_bin)

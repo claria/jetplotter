@@ -6,7 +6,7 @@
     "plot_id": [
         "^(?!_).*"
     ],
-    "y_label": "$y_{\\mathrm{ptcl}^{*}$",
+    "y_label": "$y_{\\mathrm{ptcl}}^{*}$",
     "ax_texts": [],
     "load_config": [
         "configs/genystar_vs_recoystar.json"
@@ -72,7 +72,7 @@
             "plot_datavals": true
         }
     },
-    "z_log": true,
+    "z_log": false,
     "z_axis_formatter": "scientific",
     "combine_legend_entries": [],
     "ax_vlines": [],

@@ -34,10 +34,37 @@ class Multiply(BaseModule):
             elif isfloat(val):
                 # Normalize/Scale by an factor
                 if isinstance(obj, ROOT.TH1):
-                    config['objects'][id]['obj'].Multiply(float(val))
+                    # config['objects'][id]['obj'].Multiply(float(val))
+                    val = float(val)
+                    for i in xrange(1, obj.GetNbinsX() + 1):
+                        obj.SetBinContent(i, obj.GetBinContent(i) * val)
+                        obj.SetBinError(i, obj.GetBinError(i) * val)
                 elif isinstance(obj, ROOT.TGraph):
                     for i in range(obj.GetN()):
                         obj.GetY()[i] *= float(val)
+                        obj.GetEYhigh()[i] *= float(val)
+                        obj.GetEYlow()[i] *= float(val)
+            else:
+                raise ValueError('The intended multiplication could not be identified for {0}'.format(val))
+
+
+class ScaleUnc(BaseModule):
+    def __init__(self):
+        super(ScaleUnc, self).__init__()
+        self.arg_group.add_argument('--scale_unc', nargs='+', type='str2kvstr', help='')
+
+    def __call__(self, config):
+        for id, val in config['scale_unc']:
+            log.info('Scaling id {0} with value {1}'.format(id, val))
+            if id not in config['objects']:
+                raise ValueError('Requested id {} not found.'.format(id))
+            obj = config['objects'][id]['obj']
+            if isfloat(val):
+                # Normalize/Scale by an factor
+                if isinstance(obj, ROOT.TH1):
+                    raise NotImplementedError('Unc scaling not implemented for TH1')
+                elif isinstance(obj, ROOT.TGraph):
+                    for i in range(obj.GetN()):
                         obj.GetEYhigh()[i] *= float(val)
                         obj.GetEYlow()[i] *= float(val)
             else:
@@ -57,9 +84,14 @@ def multiply(obj, with_obj):
     obj = obj.Clone('ratio_{0}'.format(obj.GetName()))
 
     if isinstance(with_obj, ROOT.TH1):
-        mult_vals = np.zeros(obj.GetNbinsX())
+        if isinstance(obj, ROOT.TH1):
+            mult_vals = np.zeros(obj.GetNbinsX())
+        elif isinstance(obj, ROOT.TGraph):
+            mult_vals = np.zeros(obj.GetN())
+
         for i in xrange(1, with_obj.GetNbinsX() + 1):
             mult_vals[i-1] = with_obj.GetBinContent(i)
+
     elif isinstance(with_obj, ROOT.TGraph):
         mult_vals = np.zeros(with_obj.GetN())
         for i in xrange(with_obj.GetN()):

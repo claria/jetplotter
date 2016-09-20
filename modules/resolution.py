@@ -17,7 +17,7 @@ class ResolutionAna(BaseModule):
         self.arg_group.add_argument('--resolution', nargs='+', default=[], help='')
 
     def __call__(self, config):
-        ROOT.TVirtualFitter.SetMaxIterations(9999)
+        ROOT.TVirtualFitter.SetMaxIterations(99999)
         res_pars = {}
         for id in config['resolution']:
             if id not in config['objects']:
@@ -61,11 +61,11 @@ class ResolutionAna(BaseModule):
             config['objects'].setdefault(id_res, {})
             config['objects'][id_res]['obj'] = resolution_graph
 
-            res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x)*(x**[3]) + [2]**2)")
+            res_fcn = ROOT.TF1("res_fcn", "sqrt(([0]/x)**2 + (([1]**2)/x) + [2]**2)")
             # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x) + [2]**2)")
             # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]**2) + ((x)**[1])*([2]**2/x) + [3]**2)")
             res_fcn.SetParameters(5., 1.0, 0.03, -0.5)
-            res_fcn.SetRange(0., 9999.)
+            res_fcn.SetRange(30., 9999.)
             print 'Fitting id {0}'.format(id_res)
             res = resolution_graph.Fit("res_fcn", "RSOEX0", "")
             # if res.Get() == None or res.Status() != 0:
@@ -144,7 +144,7 @@ class CrystalBallResolutionAna(BaseModule):
         self.arg_group.add_argument('--resolution', nargs='+', default=[], help='')
 
     def __call__(self, config):
-        ROOT.TVirtualFitter.SetMaxIterations(9999)
+        ROOT.TVirtualFitter.SetMaxIterations(99999)
         res_pars = {}
         for id in config['resolution']:
             if id not in config['objects']:
@@ -158,6 +158,7 @@ class CrystalBallResolutionAna(BaseModule):
                 pt_bin_obj = config['objects'][id]['obj'].ProjectionX("{0}_slice_{1}".format(id, i), i, i)
                 # Continue if histogram if empty
                 if pt_bin_obj.GetEntries() < 1:
+                    print 'pt bin entry. Omit bin.'
                     continue
                 # If fit fails continue instead of failing
                 id_slice = '_{0}_slice_{1}'.format(id.strip('_'), i)
@@ -165,13 +166,14 @@ class CrystalBallResolutionAna(BaseModule):
                 # Start with gaussian fit
                 res = pt_bin_obj.Fit("gaus", "SQO")
                 if res.Get() == None or res.Status() != 0:
+                    print 'gaussian fit failed. Omit bin.'
                     continue
                 gauss_fcn = pt_bin_obj.GetFunction("gaus")
                 p_norm = gauss_fcn.GetParameter(0)
                 p_mean = gauss_fcn.GetParameter(1)
                 p_sigma = gauss_fcn.GetParameter(2)
 
-                cb_fcn = ROOT.TF1('crystalball', fnc_dscb, 0.5, 1.5, 7)
+                cb_fcn = ROOT.TF1('crystalball', fnc_dscb, 0.1, 2.0, 7)
 
                 cb_fcn.SetParameter(0, p_norm)
                 cb_fcn.SetParameter(1, p_mean)
@@ -189,6 +191,7 @@ class CrystalBallResolutionAna(BaseModule):
 
                 res = pt_bin_obj.Fit("crystalball", "SO")
                 if res.Get() == None or res.Status() != 0:
+                    print 'Crystal Ball Fit failed. Omit bin.'
                     continue
 
                 xmin, xmax = pt_bin_obj.GetXaxis().GetXmin(), pt_bin_obj.GetXaxis().GetXmax()
@@ -198,7 +201,7 @@ class CrystalBallResolutionAna(BaseModule):
                 error_graph = get_tgrapherrors(cb_fcn, vfitter)
 
                 # Omit bin with too large errors > 5%
-                if (cb_fcn.GetParError(2) / cb_fcn.GetParameter(2)) > 0.05 or cb_fcn.GetParameter(2)> 0.20:
+                if (cb_fcn.GetParError(2) / cb_fcn.GetParameter(2)) > 0.20 or cb_fcn.GetParameter(2)> 0.30:
                     print 'stat. error too large. Omit bin.'
                     continue
 
@@ -216,13 +219,13 @@ class CrystalBallResolutionAna(BaseModule):
             config['objects'].setdefault(id_res, {})
             config['objects'][id_res]['obj'] = resolution_graph
 
-            res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x)*(x**[3]) + [2]**2)")
+            res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + ([1]**2/x)*(x**[3]) + [2]**2)")
             # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]/x)**2 + (([1]**2)/x) + [2]**2)")
-            # res_fcn = ROOT.TF1("res_fcn", "sqrt(TMath::Sign(1.,[0])*([0]**2) + ((x)**[1])*([2]**2/x) + [3]**2)")
+            # res_fcn = ROOT.TF1("res_fcn", "sqrt(([0]/x)**2 + (([1]**2)/x) + [2]**2)")
             res_fcn.SetParameters(5., 1.0, 0.03, -0.5)
-            res_fcn.SetRange(0., 9999.)
+            res_fcn.SetRange(30., 9999.)
             print 'Fitting id {0}'.format(id_res)
-            res = resolution_graph.Fit("res_fcn", "RSOEX0", "")
+            res = resolution_graph.Fit("res_fcn", "RSEX0", "")
             # if res.Get() == None or res.Status() != 0:
                 # raise Exception('Fit Failed')
             res_pars[id] = [res_fcn.GetParameter(0),res_fcn.GetParameter(1),res_fcn.GetParameter(2),res_fcn.GetParameter(3)]

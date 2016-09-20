@@ -28,19 +28,19 @@ def get_config():
         config['plot_order'] = ['run_a', 'run_b', 'run_c', 'run_d']
 
         config['objects']["run_a"] = {
-            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_A.root?yb0ys0/h_ptavg", 
+            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_A.root?{0}/h_ptavg".format(rap_bin), 
             "label": "Run A"
         }
         config['objects']["run_b"] = {
-            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_B.root?yb0ys0/h_ptavg", 
+            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_B.root?{0}/h_ptavg".format(rap_bin), 
             "label": "Run B"
         }
         config['objects']["run_c"] = {
-            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_C.root?yb0ys0/h_ptavg", 
+            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_C.root?{0}/h_ptavg".format(rap_bin), 
             "label": "Run C"
         }
         config['objects']["run_d"] = {
-            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_D.root?yb0ys0/h_ptavg", 
+            "input": "~/dust/ARTUS/artus_2015-11-10_08-50/DATA_D.root?{0}/h_ptavg".format(rap_bin), 
             "label": "Run D"
         }
 

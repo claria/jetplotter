@@ -163,6 +163,9 @@ class PlotModule(BaseModule):
                 [(x, config['objects'][x]) for x in config['objects'].keys() if x not in config.get('plot_order', [])])
         for id, item in items:
             item['id'] = id
+            if item.get('no_plot', False):
+                log.debug('Omitting id {0} since no_plot setting was set.'.format(id))
+                continue
             if not any([re.match(regex, id) for regex in id_regex]):
                 log.debug('Omitting id {0} since it does not match the regex.'.format(id))
                 continue

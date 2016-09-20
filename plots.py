@@ -19,18 +19,20 @@ log = logging.getLogger(__name__)
 def init_worker():
     signal.signal(signal.SIGINT, signal.SIG_IGN)
 
-def run_worker(config, log_level='info'):
+def run_worker(config, log_level='info', worker_number=-1):
     try:
         print 'try plotting'
-        plot(config, log_level=log_level)
+        return plot(config, log_level=log_level)
+        print 'did not fail.'
     except:
-        print 'Caught exception in worker thread (x = %d):' % x
+        print 'Caught exception in worker thread (x = %d):' % worker_number
         traceback.print_exc()
+        # raise Exception("".join(traceback.format_exception(*sys.exc_info())))
 
 def multi_plot():
     """Initializes and runs the core."""
     parser = argparse.ArgumentParser(description='Proces multiple plot configs.')
-    parser.add_argument("-l", "--load-config", default=[], nargs='+', 
+    parser.add_argument("-l", "--load-configs", default=[], nargs='+', 
                         help="Process multiple configs.")
     parser.add_argument("-j", "--jobs", default=6, type=int, help="Number of jobs.")
     parser.add_argument("--no-mp", default=False, action='store_true', help="Do not use multiproccessing, but a simple loop.")
@@ -43,7 +45,7 @@ def multi_plot():
 
     configs = []
 
-    for item in args.pop('load_config', []):
+    for item in args.pop('load_configs', []):
             if item.endswith('.json'):
                 configs.append(read_config(item))
             elif item.endswith('.py'):
@@ -64,8 +66,9 @@ def multi_plot():
         pool = Pool(processes=args['jobs'], initializer=init_worker)
 
         try:
-            for config in configs:
-                pool.apply_async(run_worker, (config,args['log_level']))
+            for i, config in enumerate(configs):
+                a = pool.apply_async(run_worker, (config, args['log_level'], i))
+                a.get()
             pool.close()
             pool.join()
         except KeyboardInterrupt:

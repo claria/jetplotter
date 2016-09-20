@@ -29,9 +29,9 @@ def get_config():
     partons = [0, 7, 8, 9]
     names = ['gluon', 'd valence quark', 'u valence quark', 'sea quarks']
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
-    q2s = [1.9, 10000]
-    pdfset1 = "HFTD_HERA_V101B_EIG"
-    pdfset2 = "HFTD_HERACMSTDJETS_V101B_EIG"
+    q2s = [1.9, 4.0, 10000]
+    pdfset1 = "HFTD_HERA_V110J_EIG"
+    pdfset2 = "HFTD_HERACMSTDJETS_V110J_EIG"
 
     pdf_label1 = "HERA"
     pdf_label2 = "HERA + CMS Dijets"

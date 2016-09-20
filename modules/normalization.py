@@ -54,6 +54,7 @@ class Ratio(BaseModule):
 def calc_ratio(obj, to_obj):
     obj = obj.Clone('ratio_{0}'.format(obj.GetName()))
     if isinstance(obj, ROOT.TH1) and isinstance(to_obj, ROOT.TH1):
+        log.debug('Divide TH1 by TH1')
         if not (obj.GetNbinsX() == to_obj.GetNbinsX()):
             raise ValueError('The two histograms have different numbers of bins.')
         for i in xrange(1, obj.GetNbinsX() + 1):

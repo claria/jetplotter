@@ -11,8 +11,11 @@ def divide_tgraph(graph1, graph2, error_prop=False):
         graph2.GetPoint(i, graph2X, graph2Y)
 
         graph1.SetPoint(i, graph1X, graph1Y / graph2Y if graph2Y != 0. else 0.)
-        graph1.SetPointEYlow(i, np.abs(graph1.GetErrorYlow(i) / graph2Y) if graph2Y != 0. else 0.)
-        graph1.SetPointEYhigh(i, np.abs(graph1.GetErrorYhigh(i) / graph2Y) if graph2Y != 0. else 0.)
+        if isinstance(graph1, ROOT.TGraphAsymmErrors):
+            graph1.SetPointEYlow(i, np.abs(graph1.GetErrorYlow(i) / graph2Y) if graph2Y != 0. else 0.)
+            graph1.SetPointEYhigh(i, np.abs(graph1.GetErrorYhigh(i) / graph2Y) if graph2Y != 0. else 0.)
+        else:
+            graph1.SetPointError(i, 0.0, np.abs(graph1.GetErrorYlow(i) / graph2Y) if graph2Y != 0. else 0.)
 
 
 def multiply_tgraph(graph1, graph2, error_prop=False):

@@ -21,7 +21,9 @@ lookup_dict = {
     'y_label': {
         '_ptavg_': '$p_{\mathrm{T,avg}}$ / GeV',
         '_ptavgreco_': '$p_{\mathrm{T,avg}}^{\mathrm{reco}}$ / GeV',
+        '_ptavgreconu_': '$p_{\mathrm{T,avg}}^{\mathrm{reco}}$',
         '_ptavggen_': '$p_{\mathrm{T,avg}}^{\mathrm{ptcl}}$ / GeV',
+        '_ptavggennu_': '$p_{\mathrm{T,avg}}^{\mathrm{ptcl}}$',
         '_y_star_': '$y^*$',
         '_top_': '{"position" : [0.0,1.0], "va" : "bottom", "ha" : "right"}',
         '_center_': '{"position" : [0.0,0.5], "va" : "bottom", "ha" : "center"}'
@@ -121,7 +123,7 @@ lookup_dict = {
         '_cms_': 's=CMS|x=0.0|y=1.01|va=bottom|ha=left',
         '_cmsp_': 's=CMS Preliminary|x=0.0|y=1.002|va=bottom|ha=left',
         '_cmss_': 's=CMS Simulation|x=0.0|y=1.002|va=bottom|ha=left',
-        '_20fb_': 's=$19.\!71\\,\mathrm{fb}^{-1}$ (8 TeV)|x=1.0|y=1.002|va=bottom|ha=right',
+        '_20fb_': 's=$19.\!7\\,\mathrm{fb}^{-1}$ (8 TeV)|x=1.0|y=1.002|va=bottom|ha=right',
         '_8tev_': 's=8 TeV|x=1.0|y=1.002|va=bottom|ha=right',
         '_default_': 's=',
         '_yb0ys0_': 's=$0 \leq \, y_b < 1$\n$0 \leq \, y^{*} < 1$',

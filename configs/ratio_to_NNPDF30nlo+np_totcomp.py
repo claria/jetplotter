@@ -15,13 +15,18 @@ def get_config():
         # config["normalize"] = [("dataunf", "width")]
         config["normalize"] = []
         config['quadratic_sum'] = [
-                ('theo_unc', ('nlonnpdf30', '_np'))
+                ('theo_unc', ('nlonnpdf30', '_np', 'nlonnpdf30_scale'))
                 ]
         config["multiply"] = [
                               ("nloct14", "_np"), 
+                              ("nloct14", "_ewk"), 
                               ("nlommht2014", "_np"), 
+                              ("nlommht2014", "_ewk"), 
                               ("abm11nlo", "_np"), 
-                              ("nlonnpdf30", "_np")] 
+                              ("abm11nlo", "_ewk"), 
+                              ("nlonnpdf30", "_np"),
+                              ("nlonnpdf30", "_ewk"),
+                              ] 
         config["ratio"] = [
                            ["dataunf_stat", "nlonnpdf30"], 
                            ["dataunf_syst", "nlonnpdf30"], 
@@ -40,11 +45,14 @@ def get_config():
                                "abm11nlo", 
                                "nloct14"] 
         config['plot_order'] = ['dataunf_stat', 'dataunf_syst', 'theo_unc','nlonnpdf30_scale']
-        config['plot_id'] = ['dataunf_stat', 'dataunf_syst','theo_unc', 'nlonnpdf30_scale', 'nloct14', 'nlommht2014', 'abm11nlo']
+        config['plot_id'] = ['dataunf_stat', 'dataunf_syst','theo_unc', 'nloct14', 'nlommht2014', 'abm11nlo']
 
 
         config['objects']["_np"] = {
             "input": "~/dust/dijetana/plot/np_factors.root?{0}/res_np_factor".format(rap_bin)
+        } 
+        config['objects']["_ewk"] = {
+            "input": "~/dust/dijetana/ewk/ewk_dijet.root?{0}/ewk_corr".format(rap_bin)
         } 
         config['objects']["dataunf_stat"] = {
             "color": "black", 
@@ -95,7 +103,7 @@ def get_config():
             "alpha": 0.3, 
             "color": "_color0_", 
             "edgecolor": "_color0_", 
-            "label": "Theo Unc.", 
+            "label": "Theo. Unc.", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -130,7 +138,7 @@ def get_config():
             "edgecolor": "_color1_", 
             "id": "nlommht2014", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/MMHT2014_xs".format(rap_bin), 
-            "label": "NLO$\otimes$NP (MMHT 2014)", 
+            "label": "MMHT 2014 - NLO$\otimes$EW$\otimes$NP", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -149,7 +157,7 @@ def get_config():
             "edgecolor": "_color4_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/CT14nlo_xs".format(rap_bin), 
-            "label": "NLO$\otimes$NP (CT14)", 
+            "label": "CT14 - NLO$\otimes$EW$\otimes$NP", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -168,7 +176,7 @@ def get_config():
             "edgecolor": "_color5_", 
             "id": "nlonnpdf30", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/ABM11NLO_xs".format(rap_bin), 
-            "label": "NLO$\otimes$NP (ABM11)", 
+            "label": "ABM11 - NLO$\otimes$EW$\otimes$NP", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -186,7 +194,7 @@ def get_config():
         config["legend_loc"] = 'upper left'
         config["legend_ncol"] = 1
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Ratio to NLO$\otimes$NP (NNPDF 3.0)?_center_"
+        config["y_label"] = "Ratio to NNPDF 3.0 - NLO$\otimes$EW$\otimes$NP?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]

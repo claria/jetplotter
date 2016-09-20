@@ -416,7 +416,7 @@ def plot_errorlines(obj=None, step=False, emptybins=True, ax=None, **kwargs):
 
 
 
-def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, ax=None, **kwargs):
+def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, ax=None, legend_errorbars=True, **kwargs):
     """ Produce an errorbar plots with or without connecting lines.
 
     Args:
@@ -425,6 +425,7 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
         x_err: If True, x errorbars will be plotted.
         yerr: If True, y errorbars will be plotted.
         emptybins: Not Implemented. Supposed to ignore/plot empty bins.
+        legend_errorbars: show the errorbars also in the legend
     """
     # Convert root object to mpl readable object
     obj = R2npObject1D(obj)
@@ -453,7 +454,7 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
     # http://stackoverflow.com/a/18499120/3243729
 
     errorbar_kwargs = {k: v for k, v in kwargs.items() if
-                       k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color', 'zorder', 'linewidth', 'markeredgewidth']}
+                       k in ['label', 'marker', 'capsize', 'marker', 'fmt', 'alpha', 'color', 'zorder', 'linewidth', 'ecolor', 'elinewidth',  'markersize', 'markeredgewidth']}
     errorbar_kwargs['fmt'] = ''
     errorbar_kwargs['linestyle'] = ''
     artist = ax.errorbar(x, y, xerr=x_err, yerr=y_err, **errorbar_kwargs)
@@ -465,7 +466,11 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
         plot_kwargs = {k: v for k, v in kwargs.items() if
                        k in ['label', 'alpha', 'color', 'linestyle', 'linewidth', 'step', 'zorder', 'dashes']}
         ax.plot(x, y, **plot_kwargs)
-    return artist
+
+    if legend_errorbars:
+        return artist
+    else:
+        return artist[:1]
 
 
 def plot_heatmap(obj, ax=None, z_log=False, z_lims=(None, None), cmap='viridis', **kwargs):
