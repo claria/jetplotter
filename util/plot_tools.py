@@ -281,7 +281,12 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
         y_errl = steppify_bin(y_errl)
         y_erru = steppify_bin(y_erru)
 
-    #
+    y_le = y - y_errl
+    y_ue = y + y_erru
+    if 'clip_vals' in kwargs:
+        y_le = np.clip(y - y_errl, kwargs['clip_vals'][0], kwargs['clip_vals'][1])
+        y_ue = np.clip(y + y_erru, kwargs['clip_vals'][0], kwargs['clip_vals'][1])
+
     if kwargs['facecolor'] == 'none':
         fill = False
     else:
@@ -294,13 +299,13 @@ def plot_band(obj=None, step=False, emptybins=True, ax=None, **kwargs):
     fill_between_kwargs = {k: v for k, v in kwargs.items() if
                            k in ['label', 'facecolor', 'edgecolor', 'zorder', 'rasterized', 'linewidth']}
 
-    artist = ax.fill_between(x, y - y_errl, y + y_erru, **fill_between_kwargs)
+    artist = ax.fill_between(x, y_le, y_ue, **fill_between_kwargs)
 
     # work around okular bug present when hatch+color is plotted (plot 
     if 'hatch' in kwargs:
         fill_between_kwargs2 = {k: v for k, v in kwargs.items() if
                                k in ['label', 'edgecolor', 'zorder', 'hatch', 'rasterized', 'linewidth']}
-        artist = ax.fill_between(x, y - y_errl, y + y_erru, color='none', **fill_between_kwargs2)
+        artist = ax.fill_between(x, y_le, y_ue, color='none', **fill_between_kwargs2)
 
     p = matplotlib.patches.Rectangle((0, 0), 0, 0, hatch=kwargs.get('hatch', ''), **fill_between_kwargs)
     ax.add_patch(p)

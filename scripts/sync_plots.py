@@ -45,8 +45,8 @@ def create_copy(filelist, suffix=None):
 
 
 def main():
-    remote_host = 'sieber@ekplx77.physik.uni-karlsruhe.de' 
-    remote_basedir = '/autofs/ekpwww/web/sieber/public_html/private/plots/'
+    remote_host = 'sieber@ekplx2.physik.uni-karlsruhe.de' 
+    remote_basedir = '/ekpwww/web/sieber/public_html/private/plots/'
     remote_dir = os.path.join(remote_basedir, date.today().isoformat())
     current_datetime = datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
 

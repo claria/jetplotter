@@ -10,6 +10,43 @@ from util.root_tools import get_np_object, get_root_object
 from util.root2np import R2npObject1D
 import ROOT
 
+nongaussian_unc = {
+'yb0ys0': np.array([ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,
+        0.11,  0.08,  0.07,  0.22,  0.06,  0.0 ,  0.00,  0.00,  0.00,
+        0.00,  0.00,  0.00,  0.00,  0.0 ,  0.00,  0.00,  0.00,  0.00,
+        0.00,  0.00,  0.00,  0.0 ,  0.00,  0.00,  0.00,  0.00,  0.00,
+        0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.  ]),
+'yb0ys1': np.array([  0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.37,   0.32,   0.1 ,   0.0 ,   0.00,   0.00,   0.00,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,  00.00,   0.  ,
+         0.  ,   0.  ,   0.  ]),
+'yb0ys2' : np.array([  0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   1.46,   1.19,   1.62,   1.38,   1.68,   0.31,   0.00,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,
+         0.00,  00.00,  00.00,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ]),
+'yb1ys0' :np.array([  0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.43,   0.4 ,   0.33,   0.34,   0.29,   0.13,   0.0 ,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.0 ,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,
+         0.00,   0.00,   0.00,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ]),
+'yb1ys1' : np.array([ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,
+        1.19,  1.18,  1.01,  1.42,  1.11,  0.97,  0.5 ,  0.00,  0.00,
+        0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,
+        0.00,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,
+        0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ]),
+'yb2ys0' : np.array([  0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   1.8 ,   1.69,   1.17,   1.81,   1.78,   2.38,   1.08,
+         0.64,   0.  ,   0.  ,   0.  ,   0.  ,   0.00,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ])
+}
+
 
 def main():
     pass
@@ -49,6 +86,18 @@ def main():
         # lumi
         lumi_unc = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?{0}/lumi_unc_up'.format(ybys_bin))
         data['lumi'] = (lumi_unc.y - 1.) * 100.
+
+        # non-gaussian tails
+        # unf_smeared = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/SMEARED_NEW2_QCDMGP6.root?{0}/h_ptavg'.format(ybys_bin))
+        # unf_scaled = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/SMEARED_OLD_QCDMGP6.root?{0}/h_ptavg'.format(ybys_bin))
+        # data['nongaussiantails'] = np.abs(unf_smeared.y - unf_scaled.y)/unf_smeared.y / 2.0 * 100.
+        data['nongaussiantails'] = nongaussian_unc[ybys_bin] 
+        # data['nongaussiantails'] = smooth(data['nongaussiantails'], 3)
+        # np.set_printoptions(precision=2)
+        # np.set_printoptions(suppress=True)
+        # print ybys_bin, np.array_repr(np.nan_to_num(data['nongaussiantails']))
+
+
 
         jec_sources  = [
                        'AbsoluteScale','AbsoluteStat','AbsoluteMPFBias',
@@ -103,6 +152,11 @@ def main():
         jer_error_u = np.zeros((len(data['sigma'])))
         jer_error_l = np.zeros((len(data['sigma'])))
 
+        nongaussian_error_u = np.zeros((len(data['sigma'])))
+        nongaussian_error_l = np.zeros((len(data['sigma'])))
+
+
+
         unc_error_u = np.zeros((len(data['sigma'])))
         unc_error_l = np.zeros((len(data['sigma'])))
 
@@ -118,11 +172,19 @@ def main():
         jer_error_u = data['jer_up']/100. * data['sigma']
         jer_error_l = data['jer_dn']/100. * data['sigma']
 
+        nongaussian_error_u = data['nongaussiantails']/100. * data['sigma']
+        nongaussian_error_l = data['nongaussiantails']/100. * data['sigma']
+
+        syst_error_u += (data['nongaussiantails']/100. * data['sigma'])**2
+        syst_error_l += (data['nongaussiantails']/100. * data['sigma'])**2
+
         syst_error_u += (data['uncor']/100. * data['sigma'])**2
         syst_error_l += (data['uncor']/100. * data['sigma'])**2
 
         syst_error_u += (data['lumi']/100. * data['sigma'])**2
         syst_error_l += (data['lumi']/100. * data['sigma'])**2
+
+
 
         for jec_source in jec_sources:
             syst_error_u += (data['{0}_up'.format(jec_source)]/100. * data['sigma'])**2
@@ -151,6 +213,7 @@ def main():
         data_unc = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
         data_jec = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
         data_jer = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
+        data_nongaussian = ROOT.TGraphAsymmErrors(len(data['sigma'])) 
 
         for i in range(len(data['sigma'])):
             data_tot.SetPoint(i, unf_data.x[i], data['sigma'][i])
@@ -174,6 +237,9 @@ def main():
             data_jer.SetPoint(i, unf_data.x[i], data['sigma'][i])
             data_jer.SetPointError(i, unf_data.xerrl[i], unf_data.xerru[i], jer_error_l[i], jer_error_u[i])
 
+            data_nongaussian.SetPoint(i, unf_data.x[i], data['sigma'][i])
+            data_nongaussian.SetPointError(i, unf_data.xerrl[i], unf_data.xerru[i], nongaussian_error_l[i], nongaussian_error_u[i])
+
 
 
         data_tot.Write('data_tot')
@@ -183,6 +249,7 @@ def main():
         data_unc.Write('data_unc')
         data_jec.Write('data_jec')
         data_jer.Write('data_jer')
+        data_nongaussian.Write('data_nongaussian')
 
 
 def infinalrange(pt_low, ybys_bin):

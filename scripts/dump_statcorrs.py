@@ -16,8 +16,8 @@ def main():
     ncorr = 0
     for i, ybys_bin in enumerate(ybys_bins):
         # unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
-        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/h_ptavg'.format(ybys_bin))
-        unf_data_root_corr = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?{0}/corr_h_ptavg'.format(ybys_bin))
+        unf_data_root = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_WITHFAKES.root?{0}/h_ptavg'.format(ybys_bin))
+        unf_data_root_corr = get_root_object('~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_WITHFAKES.root?{0}/corr_h_ptavg'.format(ybys_bin))
         unf_data_corr = R2npObject2D(unf_data_root_corr)
         unf_data = R2npObject1D(unf_data_root)
 

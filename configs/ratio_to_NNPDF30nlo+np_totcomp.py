@@ -67,8 +67,8 @@ def get_config():
             "zorder": 4.0
         }
         config['objects']["dataunf_syst"] = {
-            "color": "_color4_", 
-            "edgecolor": "_color4_", 
+            "color": "_darkcolor4_", 
+            "edgecolor": "_darkcolor4_", 
             "linewidth":2.0,
             "edgealpha":1.0,
             "alpha": 0.1,
@@ -139,7 +139,7 @@ def get_config():
             "id": "nlommht2014", 
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/MMHT2014_xs".format(rap_bin), 
             "label": "MMHT 2014 - NLO$\otimes$EW$\otimes$NP", 
-            "linestyle": "", 
+            "linestyle": "--", 
             "marker": ".", 
             "plot": True, 
             "step": True, 
@@ -181,6 +181,7 @@ def get_config():
             "marker": ".", 
             "plot": True, 
             "step": True, 
+            "dashes": [20,4],
             "style": "line", 
             "x_err": True, 
             "y_err": True, 
@@ -191,7 +192,7 @@ def get_config():
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config['x_axis_formatter'] = 'scalar2'
         config["x_log"] =  True
-        config["legend_loc"] = 'upper left'
+        config["legend_loc"] = 'lower left'
         config["legend_ncol"] = 1
         config["x_label"] = "_ptavg_"
         config["y_label"] = "Ratio to NNPDF 3.0 - NLO$\otimes$EW$\otimes$NP?_center_"
@@ -200,6 +201,8 @@ def get_config():
                 ]
         config["ax_texts"] = [
                               '_{0}_?_upperright_'.format(rap_bin), 
+                              {'s': ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
                               '_20fb_'] 
 
         config["output_path"] = 'ratio_to_NNPDF30+np_totcomp_{0}.png'.format(rap_bin)

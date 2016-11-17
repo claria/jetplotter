@@ -19,9 +19,10 @@ def get_q2label(q2):
 
 ymax_lim = { 
         0 : { 1.9 : 4.0},
-        7 : { 1.9 : 0.6, 10000 : 0.6},
-        8 : { 1.9 : 1.0, 10000 : 1.0},
+        7 : { 1.9 : 0.6, 10000 : 0.6,100000 : 0.6, 1000000 : 0.6},
+        8 : { 1.9 : 1.0, 10000 : 1.0, 100000 : 1.0, 1000000 : 1.0},
         }
+
 
 
 def get_config():
@@ -29,12 +30,12 @@ def get_config():
     partons = [0, 7, 8, 9]
     names = ['gluon', 'd valence quark', 'u valence quark', 'sea quarks']
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
-    q2s = [1.9, 4.0, 10000]
-    pdfset1 = "HFTD_HERA_V110J_EIG"
-    pdfset2 = "HFTD_HERACMSTDJETS_V110J_EIG"
+    q2s = [1.9, 4.0, 10000, 100000, 1000000]
+    pdfset1 = "HFTD_HERA_V111K_EIG"
+    pdfset2 = "HFTD_HERACMSTDJETS_V111K_EIG"
 
-    pdf_label1 = "HERA"
-    pdf_label2 = "HERA + CMS Dijets"
+    pdf_label1 = "HERA I+II DIS"
+    pdf_label2 = "HERA I+II DIS + CMS Dijets"
 
 
    
@@ -142,6 +143,7 @@ def get_config():
                 "alpha": 0.5, 
                 "fill": True, 
                 "y_err": True, 
+                "clip_vals": [-10,10],
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax1"
             }
@@ -162,7 +164,7 @@ def get_config():
                 "cmap": "viridis",
                 "zorder": 2.0,
                 "obj": "null",
-                "hatch": '//', 
+                "hatch": '/', 
                 "plot_datavals": False, 
                 "marker": ".", 
                 "alpha": 0.2, 
@@ -217,6 +219,7 @@ def get_config():
                 "hatch": '//', 
                 "fill": True, 
                 "y_err": True, 
+                "clip_vals": [-10,10],
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax1"
             }
@@ -238,8 +241,11 @@ def get_config():
             config["x_label"] = "$x$"
             config["y_label"] = y_labels[i]
             config["ax_texts"] = [
-                                  # 's={0}?_topleft_'.format(pdf_labels[j]),
-                                  's=$Q^2\!={0}\,\mathrm{{GeV}}^2$?_topright_'.format(get_q2label(q2)),
+                                  's=HERAPDF Method (Hessian)?_topright_',
+                                  {'s' : ur'$Q^2\!={0}\,\mathrm{{GeV}}^2$'.format(get_q2label(q2)), 'x': 0.48, 'y': 0.78, 'ha': 'left', 'va': 'top'},
+                                  {'s' : ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                                  {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.865, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
+
                                   ] 
             config["output_path"] = 'pdfcomp_direct_{0}_{1}.png'.format(partons[i], q2)
             configs.append(config)

@@ -113,6 +113,7 @@ class Plotter(object):
             if item.endswith('.json'):
                 merge(file_config, read_config(item))
             elif item.endswith('.py'):
+                log.info('Running python file {}'.format(item))
                 runpy.run_path(item)
             else:
                 raise ValueError('The file type of {0} is not supported.'.format(item))

@@ -1,7 +1,6 @@
 #!/usr/bin/env python2
 import argparse
 import os
-import runpy
 import sys
 import imp
 
@@ -15,6 +14,9 @@ from plot import plot
 from multiprocessing import Pool
 
 log = logging.getLogger(__name__)
+
+import gc
+gc.disable()
 
 def init_worker():
     signal.signal(signal.SIGINT, signal.SIG_IGN)
@@ -35,6 +37,7 @@ def multi_plot():
     parser.add_argument("-l", "--load-configs", default=[], nargs='+', 
                         help="Process multiple configs.")
     parser.add_argument("-j", "--jobs", default=6, type=int, help="Number of jobs.")
+    parser.add_argument("-i", "--job-ids", type=int, nargs='+', default=None, help="Job id to process.")
     parser.add_argument("--no-mp", default=False, action='store_true', help="Do not use multiproccessing, but a simple loop.")
     parser.add_argument("--log-level", default='info', help="Set the log level.")
     args = vars(parser.parse_args()) 
@@ -59,8 +62,9 @@ def multi_plot():
                 raise ValueError('The file type of {0} is not supported.'.format(item))
 
     if args['no_mp']:
-        for config in configs:
-            plot(config, log_level=args['log_level'])
+        for i,config in enumerate(configs):
+            if args['job_ids'] is None or i in args['job_ids']:
+                plot(config, log_level=args['log_level'])
     else:
         print 'Initializing {0} worker processes'.format(args['jobs'])
         pool = Pool(processes=args['jobs'], initializer=init_worker)

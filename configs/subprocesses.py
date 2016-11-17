@@ -1,5 +1,14 @@
 import util.callbacks as callbacks
 
+pos = {
+        'yb0ys0' : [(0.1, 0.3),(0.3, 0.5),(0.5, 0.7),(0.7, 0.7),(0.8, 0.85),(0.5, 0.96),(0.6, 0.999)],
+        'yb0ys1' : [(0.1, 0.3),(0.3, 0.5),(0.4, 0.65),(0.7, 0.7),(0.8, 0.85),(0.5, 0.97),(0.4, 0.999)],
+        'yb0ys2' : [(0.25, 0.1),(0.3, 0.3),(0.4, 0.5),(0.6, 0.6),(0.8, 0.85),(0.3, 0.97),(0.1, 0.999)],
+        'yb1ys0' : [(0.1, 0.25),(0.3, 0.5),(0.3, 0.83),(0.7, 0.8),(0.8, 0.85),(0.5, 0.96),(0.6, 0.999)],
+        'yb1ys1' : [(0.25, 0.1),(0.3, 0.5),(0.3, 0.8),(0.8, 0.72),(0.8, 0.85),(0.5, 0.95),(0.8, 0.999)],
+        'yb2ys0' : [(0.25, 0.1),(0.3, 0.5),(0.3, 0.85),(0.4, 0.87),(0.6, 0.89),(0.7, 0.94),(0.8, 0.999)],
+        }
+
 def get_base_config():
     config = {}
     config['objects'] = {}
@@ -30,7 +39,7 @@ def get_config():
                     ("_sum", "sub0,sub1,sub2,sub3,sub4,sub5,sub6"), 
                     ]
         config['stack'] = ['sub0', 'sub5', 'sub6', 'sub2','sub1', 'sub3', 'sub4']
-        config['plot_order'] = ['sub0', 'sub5', 'sub6', 'sub1', 'sub2', 'sub3', 'sub4']
+        config['plot_order'] = ['sub0', 'sub5', 'sub6', 'sub2', 'sub1', 'sub3', 'sub4']
 
         config['objects']['sub0'] = {
             "input": "~/nsubstest.root?{0}_sub0/NNPDF30_xs".format(rap_bin), 
@@ -41,14 +50,14 @@ def get_config():
             }
         config['objects']['sub1'] = {
             "input": "~/nsubstest.root?{0}_sub1/NNPDF30_xs".format(rap_bin), 
-            "label": u"\u2463 $\\mathrm{q}_\\mathrm{i}\\mathrm{q}_\mathrm{j} \\rightarrow\\mathrm{jets}$", 
+            "label": u"\u2464 $\\mathrm{q}_\\mathrm{i}\\mathrm{q}_\mathrm{j} \\rightarrow\\mathrm{jets}$", 
             "style": "histo", 
             "color": "_colorpair4b_",
             "y_err": False, 
             }
         config['objects']['sub2'] = {
             "input": "~/nsubstest.root?{0}_sub2/NNPDF30_xs".format(rap_bin), 
-            "label": u"\u2464 $\\mathrm{q}_\\mathrm{i}\\mathrm{q}_\mathrm{i} \\rightarrow\\mathrm{jets}$", 
+            "label": u"\u2463 $\\mathrm{q}_\\mathrm{i}\\mathrm{q}_\mathrm{i} \\rightarrow\\mathrm{jets}$", 
             "style": "histo", 
             "color": "_colorpair4a_",
             "y_err": False,
@@ -93,7 +102,16 @@ def get_config():
                                 ]
         config["x_label"] = "_ptavg_"
         config["y_label"] = "Subprocess fraction"
-        config["ax_texts"] = ["_{0}_?_bottomleft_".format(rap_bin)] 
+        config["ax_texts"] = [
+                              "_{0}_?_bottomleft_".format(rap_bin),
+                              {'s': ur'\u2460' , 'x': pos[rap_bin][0][0], 'y': pos[rap_bin][0][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'\u2461' , 'x': pos[rap_bin][1][0], 'y': pos[rap_bin][1][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'\u2462' , 'x': pos[rap_bin][2][0], 'y': pos[rap_bin][2][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'\u2463' , 'x': pos[rap_bin][3][0], 'y': pos[rap_bin][3][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'\u2464' , 'x': pos[rap_bin][4][0], 'y': pos[rap_bin][4][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'\u2465' , 'x': pos[rap_bin][5][0], 'y': pos[rap_bin][5][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'\u2466' , 'x': pos[rap_bin][6][0], 'y': pos[rap_bin][6][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                             ] 
 
         config["output_path"] = 'subprocesses_{0}.png'.format(rap_bin)
         configs.append(config)

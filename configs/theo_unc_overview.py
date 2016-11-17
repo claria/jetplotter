@@ -122,6 +122,8 @@ def get_config():
         config["ax_texts"] = [
                               '_{0}_?_upperleft_'.format(rap_bin), 
                               "s=NNPDF 3.0-NLO?_upperleft2_",
+                              {'s': ur'CMS' , 'x': 0.55, 'y': 0.95, 'ha': 'center', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'Simulation' , 'x': 0.555, 'y': 0.875, 'ha': 'center', 'va': 'top', 'size': 18, 'style':'italic'}, 
                               '_8tev_'] 
 
         config["output_path"] = 'theo_unc_overview_{0}.png'.format(rap_bin)

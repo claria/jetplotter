@@ -9,8 +9,6 @@ import os
 import sys
 import array
 
-import lhapdf
-
 from modules.base_module import BaseModule
 from util.root_tools import build_tgraph_from_lists
 from util.pdf import PDF
@@ -50,6 +48,7 @@ class PDFModule(BaseModule):
 
             graph = build_tgraph_from_lists(x, y, yerrl=pdf_unc[0], yerru=pdf_unc[1])
             config['objects'].setdefault('{0}'.format(id), {})['obj'] = graph
+            config['objects'].setdefault('_{0}_totunc'.format(id), {})['obj'] = graph
 
             if pdf._has_var:
                 mod_unc = pdf.get_mod_uncert(flavour)

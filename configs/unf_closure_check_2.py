@@ -27,7 +27,7 @@ def get_config():
         config['plot_id'] = [
                     'mgp6_unf',
                     'mgp6_unf_3d',
-                    'p8_unf',
+                    # 'p8_unf',
                     # 'fnlo_unf',
                     'fnlo_unf_test',
                 ]

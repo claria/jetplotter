@@ -1,10 +1,14 @@
 #! /usr/bin/env python2
 
 import sys
+import time
 
 import numpy
-
 import lhapdf
+
+
+global pdfs
+pdfs = {}
 
 class PDF(object):
 
@@ -13,6 +17,9 @@ class PDF(object):
                  flavors=range(-6, 7),
                  q2=1.9,
                  x_range=numpy.logspace(-4, -0.001, 201)):
+
+        reload(lhapdf)
+        print sys.getrefcount(lhapdf)
 
         self._lhgrid_filename = lhgrid_filename
         self._flavors = flavors
@@ -61,22 +68,36 @@ class PDF(object):
         elif self._lhgrid_filename.startswith('HERA'):
             self._pdf_type = 'EV'
             self._has_var = True
+        elif self._lhgrid_filename.startswith('HFTDMC'):
+            self._pdf_type = 'MC'
+            self._has_var = False
         elif self._lhgrid_filename.startswith('HFTD'):
             self._pdf_type = 'EV'
             self._has_var = True
+        elif self._lhgrid_filename.startswith('INCJETS'):
+            self._pdf_type = 'EV'
+            self._has_var = True
+
         else:
             raise Exception('No PDF type identified: %s', self._lhgrid_filename)
 
     def _read_lhapdf(self, lhgrid_filename):
         pdf = {}
+        global pdfs
+        pdfset = lhapdf.getPDFSet(lhgrid_filename)
+        if not lhgrid_filename in pdfs:
+            print 'cache it.'
+            print pdfs.keys()
+            pdfs[lhgrid_filename] = pdfset.mkPDFs()
+        else:
+            print 'is already cached'
+
         for flavor in self._flavors:
-            pdf[flavor] = self._get_lhapdf_flavor(flavor, lhgrid_filename)
+            pdf[flavor] = self._get_lhapdf_flavor(flavor, pdfs[lhgrid_filename])
         return pdf
 
-    def _get_lhapdf_flavor(self, flavor, pdfset_filename):
+    def _get_lhapdf_flavor(self, flavor, pdfs):
 
-        pdfset = lhapdf.getPDFSet(pdfset_filename)
-        pdfs = pdfset.mkPDFs()
         npdfs = len(pdfs)
         pdf = numpy.zeros((npdfs, self._xrange.size))
         for member in range(0, npdfs):
@@ -157,7 +178,7 @@ class PDF(object):
 
         if not self._pdf:
             self._pdf = self._read_lhapdf(self._lhgrid_filename)
-
+        print 'type', self._pdf_type
         if self._pdf_type == 'MC':
             self._calc_pdf_mc_uncert(flavor)
         elif self._pdf_type == 'EV':

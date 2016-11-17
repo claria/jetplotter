@@ -18,14 +18,15 @@ def get_config():
                            ["dataunf_uncor", "dataunf_stat"], 
                            ["dataunf_jec", "dataunf_stat"], 
                            ["dataunf_jer", "dataunf_stat"], 
+                           ["dataunf_nongaussian", "dataunf_stat"], 
                            ["dataunf_stat", "dataunf_stat"], 
                           ] 
 
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
 
-        config['plot_order'] = ['dataunf_stat', 'dataunf_jec', 'dataunf_uncor', 'dataunf_jer', 'dataunf_lumi']
-        config['minusone'] = ['dataunf_stat', 'dataunf_jec', 'dataunf_uncor', 'dataunf_jer', 'dataunf_lumi', 'dataunf_total']
+        config['plot_order'] = ['dataunf_stat', 'dataunf_jec', 'dataunf_uncor', 'dataunf_jer', 'dataunf_lumi', 'dataunf_nongaussian']
+        config['minusone'] = ['dataunf_stat', 'dataunf_jec', 'dataunf_uncor', 'dataunf_jer', 'dataunf_nongaussian', 'dataunf_lumi', 'dataunf_total']
 
         config['objects']["dataunf_stat"] = {
             "color": "black", 
@@ -61,6 +62,16 @@ def get_config():
             "step": True,
         }
 
+        config['objects']["dataunf_nongaussian"] = {
+            "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_nongaussian".format(rap_bin), 
+            "label": "Non-gaussian tails unc.", 
+            "style": "errorlines",
+            "color": "_color5_",
+            "linestyle": "-",
+            "step": True,
+        }
+
+
         config['objects']["dataunf_uncor"] = {
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_unc".format(rap_bin), 
             "label": "Uncor. uncertainty", 
@@ -76,7 +87,7 @@ def get_config():
             "step": True,
         }
 
-        config["y_lims"] = ["-0.25", "0.25"]
+        config["y_lims"] = ["-0.30", "0.30"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["legend_loc"] = 'lower left'
@@ -88,6 +99,9 @@ def get_config():
                 ]
         config["ax_texts"] = [
                               '_{0}_?_upperleft_'.format(rap_bin), 
+                              {'s': ur'CMS' , 'x': 0.55, 'y': 0.95, 'ha': 'center', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'Preliminary' , 'x': 0.555, 'y': 0.875, 'ha': 'center', 'va': 'top', 'size': 18, 'style':'italic'}, 
+
                               '_20fb_'] 
 
         config["output_path"] = 'exp_unc_overview_{0}.png'.format(rap_bin)

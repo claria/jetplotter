@@ -61,8 +61,8 @@ def get_config():
             "zorder": 4.0
         }
         config['objects']["dataunf_syst"] = {
-            "edgecolor": "_color4_", 
-            "color": "_color4_", 
+            "edgecolor": "_darkcolor4_", 
+            "color": "_darkcolor4_", 
             "linewidth":2.0,
             "edgealpha":1.0,
             "alpha":0.1,
@@ -152,7 +152,7 @@ def get_config():
             "id": "nlommht2014", 
             "input": "/nfs/dust/cms/user/gsieber/HW7/RIVET_11.root?{0}_xs".format(rap_bin), 
             "label": "Herwig 7 NLO$\otimes$EW - $\mu=p_{\mathrm{T,max}}$", 
-            "linestyle": "", 
+            "linestyle": "--", 
             "marker": ".", 
             "plot": True, 
             "step": True, 
@@ -175,6 +175,8 @@ def get_config():
                 ]
         config["ax_texts"] = [
                               '_{0}_?_upperright_'.format(rap_bin), 
+                              {'s': ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
                               '_20fb_'] 
 
         config["output_path"] = 'ratio_to_NNPDF30+np_varcomp_{0}.png'.format(rap_bin)

@@ -10,6 +10,46 @@ from util.root_tools import get_np_object, get_root_object
 from util.root2np import R2npObject1D
 
 
+nongaussian_unc = {
+'yb0ys0': np.array([ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,
+        0.11,  0.08,  0.07,  0.22,  0.06,  0.0 ,  0.00,  0.00,  0.00,
+        0.00,  0.00,  0.00,  0.00,  0.0 ,  0.00,  0.00,  0.00,  0.00,
+        0.00,  0.00,  0.00,  0.0 ,  0.00,  0.00,  0.00,  0.00,  0.00,
+        0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.  ]),
+'yb0ys1': np.array([  0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.37,   0.32,   0.1 ,   0.0 ,   0.00,   0.00,   0.00,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,  00.00,   0.  ,
+         0.  ,   0.  ,   0.  ]),
+'yb0ys2' : np.array([  0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   1.46,   1.19,   1.62,   1.38,   1.68,   0.31,   0.00,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,
+         0.00,  00.00,  00.00,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ]),
+'yb1ys0' :np.array([  0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.43,   0.4 ,   0.33,   0.34,   0.29,   0.13,   0.0 ,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.0 ,
+         0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,   0.00,
+         0.00,   0.00,   0.00,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ]),
+'yb1ys1' : np.array([ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,
+        1.19,  1.18,  1.01,  1.42,  1.11,  0.97,  0.5 ,  0.00,  0.00,
+        0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,
+        0.00,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,
+        0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ]),
+'yb2ys0' : np.array([  0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   1.8 ,   1.69,   1.17,   1.81,   1.78,   2.38,   1.08,
+         0.64,   0.  ,   0.  ,   0.  ,   0.  ,   0.00,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,   0.  ,
+         0.  ,   0.  ,   0.  ])
+}
+
+
+
+
 def main():
     pass
     ybys_bins = ['yb0ys0', 'yb0ys1', 'yb0ys2', 'yb1ys0', 'yb1ys1', 'yb2ys0']
@@ -81,6 +121,17 @@ def main():
         lumi_unc = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/lumi_unc_relative.root?{0}/lumi_unc_up'.format(ybys_bin))
         data['lumi'] = (lumi_unc.y - 1.) * 100.
 
+        # non-gaussian tails
+        # unf_smeared = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/SMEARED_NEW2_QCDMGP6.root?{0}/h_ptavg'.format(ybys_bin))
+        # unf_scaled = get_np_object('~/dust/dijetana/ana/CMSSW_7_2_3/SMEARED_OLD_QCDMGP6.root?{0}/h_ptavg'.format(ybys_bin))
+        # data['nongaussiantails'] = np.abs(unf_smeared.y - unf_scaled.y)/unf_smeared.y / 2.0 * 100.
+        data['nongaussiantails'] = nongaussian_unc[ybys_bin] 
+        # data['nongaussiantails'] = smooth(data['nongaussiantails'], 3)
+        # np.set_printoptions(precision=2)
+        # np.set_printoptions(suppress=True)
+        # print ybys_bin, np.array_repr(np.nan_to_num(data['nongaussiantails']))
+
+
         jec_sources  = [
                        'AbsoluteScale','AbsoluteStat','AbsoluteMPFBias',
                        'Fragmentation',
@@ -140,6 +191,11 @@ def print_data(data, labels, ybys_bin):
         if infinalrange(data['pt_low'][i], ybys_bin):
             vals = ['{0:<15.4G}'.format(data[label][i]) for label in labels]
             print ' '.join(vals)
+
+def smooth(y, box_pts):
+    box = np.ones(box_pts)/box_pts
+    y_smooth = np.convolve(y, box, mode='same')
+    return y_smooth
 
 if __name__ == '__main__':
     main()

@@ -16,7 +16,7 @@ def get_config():
                            ["mgp6_unf", "fnlo_unf_test"], 
                            ["mgp6_unf_3d", "fnlo_unf_test"], 
                            ["p8_unf", "fnlo_unf_test"], 
-                           ["fnlo_unf", "fnlo_unf"], 
+                           ["fnlo_unf", "fnlo_unf_test"], 
                           ] 
 
         config['normalize'] = [
@@ -26,9 +26,9 @@ def get_config():
         config['plot_id'] = [
                     'mgp6_unf',
                     # 'mgp6_unf_3d',
-                    'p8_unf',
+                    # 'p8_unf',
                     # 'fnlo_unf',
-                    'fnlo_unf_test',
+                    # 'fnlo_unf_test',
                 ]
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
@@ -149,7 +149,7 @@ def get_config():
         }
 
         config['objects']["p8_unf"] = {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_FNLO_QCDP8.root?{0}/h_recoptavg".format(rap_bin), 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDP8.root?{0}/h_ptavg".format(rap_bin), 
             "label": "Data Unf - (P8 response)", 
             "marker": ".", 
             "step": True, 
@@ -192,7 +192,7 @@ def get_config():
             "zorder": 3.0
         }
         config['objects']["fnlo_unf_test"] = {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_FNLO_FNLO.root?{0}/h_recoptavg".format(rap_bin), 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_WITHFAKES.root?{0}/h_ptavg".format(rap_bin), 
             "label": "Data Unf (fnlo response)", 
             "marker": ".", 
             "step": True, 
@@ -227,7 +227,7 @@ def get_config():
 
 
         config['objects']["mgp6_unf"] = {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_FNLO_QCDMGP6.root?{0}/h_recoptavg".format(rap_bin), 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_QCDMGP6.root?{0}/h_ptavg".format(rap_bin), 
             "label": "Data Unf (MGP6 response)", 
             "marker": ".", 
             "step": True, 
@@ -254,7 +254,7 @@ def get_config():
         config["x_log"] =  True
         config["legend_loc"] = 'upper right'
         config["x_label"] = "$p_\\mathrm{T,avg}$ (GeV)"
-        config["y_label"] = "Ratio to FNLO Unf (fnlo response)?_center_"
+        config["y_label"] = "Ratio to Data Unf (fnlo response)?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]

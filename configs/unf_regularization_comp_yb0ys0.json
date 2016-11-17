@@ -1,151 +1,153 @@
 {
+    "legend_ncol": 1,
     "plot_id": [
         "^(?!_).*"
-    ], 
-    "y_label": "", 
-    "ax_texts": [], 
-    "load_config": [], 
-    "ax_hlines": [], 
-    "ratio_copy": [], 
-    "legend_loc": "best", 
-    "add_subplot": false, 
-    "list_modules": false, 
-    "x_axis_formatter": "scalar", 
-    "log_level": "info", 
+    ],
+    "y_label": "",
+    "ax_texts": [],
+    "load_config": [],
+    "ax_hlines": [],
+    "ratio_copy": [],
+    "print_config": false,
+    "add_subplot": false,
+    "list_modules": false,
+    "x_axis_formatter": "scalar",
+    "log_level": "info",
     "y_lims": [
-        "0.8", 
+        "0.8",
         "1.2"
-    ], 
-    "x_label": "", 
-    "print_config": false, 
-    "y_log": false, 
-    "y_subplot_label": "", 
-    "plot_order": [], 
+    ],
+    "x_label": "",
+    "legend_loc": "best",
+    "y_log": false,
+    "y_subplot_label": "",
+    "plot_order": [],
     "x_lims": [
-        "50.", 
+        "50.",
         "2000."
-    ], 
+    ],
     "z_lims": [
-        null, 
+        null,
         null
-    ], 
-    "argv": "./plot.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg unf1:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_1.root?yb0ys0/h_ptavg unf2:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_2.root?yb0ys0/h_ptavg unf4:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg unf6:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_6.root?yb0ys0/h_ptavg unf8:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_8.root?yb0ys0/h_ptavg unf12:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_12.root?yb0ys0/h_ptavg --ana-modules Ratio --ratio unf1:reco unf2:reco unf4:reco unf6:reco unf8:reco unf12:reco reco:reco --x-lims 50. 2000. --x-log True --y-lims 0.8 1.2 --label unf1:1 unf2:2 unf4:4 unf6:6 unf8:8 unf12:12 --output-path unf_regularization_comp_yb0ys0.png", 
+    ],
+    "argv": "./plot.py -i reco:~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg unf1:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_1.root?yb0ys0/h_ptavg unf2:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_2.root?yb0ys0/h_ptavg unf4:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg unf6:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_6.root?yb0ys0/h_ptavg unf8:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_8.root?yb0ys0/h_ptavg unf12:~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_12.root?yb0ys0/h_ptavg --ana-modules Ratio --ratio unf1:reco unf2:reco unf4:reco unf6:reco unf8:reco unf12:reco reco:reco --x-lims 50. 2000. --x-log True --y-lims 0.8 1.2 --label unf1:1 unf2:2 unf4:4 unf6:6 unf8:8 unf12:12 --output-path unf_regularization_comp_yb0ys0.png",
     "y_subplot_lims": [
-        null, 
+        null,
         null
-    ], 
-    "fig_size": null, 
+    ],
+    "fig_size": null,
     "objects": {
         "unf8": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_8.root?yb0ys0/h_ptavg", 
-            "style": "line", 
-            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_8.root?yb0ys0/h_ptavg",
+            "style": "line",
+            "step": true,
             "label": "8"
-        }, 
+        },
         "reco": {
-            "style": "line", 
-            "step": true, 
+            "style": "line",
+            "step": true,
             "input": "~/dust/dijetana/ana/CMSSW_7_2_3/DATA.root?yb0ys0/h_ptavg"
-        }, 
+        },
         "unf2": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_2.root?yb0ys0/h_ptavg", 
-            "style": "line", 
-            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_2.root?yb0ys0/h_ptavg",
+            "style": "line",
+            "step": true,
             "label": "2"
-        }, 
+        },
         "unf1": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_1.root?yb0ys0/h_ptavg", 
-            "style": "line", 
-            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_1.root?yb0ys0/h_ptavg",
+            "style": "line",
+            "step": true,
             "label": "1"
-        }, 
+        },
         "unf6": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_6.root?yb0ys0/h_ptavg", 
-            "style": "line", 
-            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_6.root?yb0ys0/h_ptavg",
+            "style": "line",
+            "step": true,
             "label": "6"
-        }, 
+        },
         "unf4": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg", 
-            "style": "line", 
-            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO.root?yb0ys0/h_ptavg",
+            "style": "line",
+            "step": true,
             "label": "4"
-        }, 
+        },
         "_default": {
-            "edgecolor": "auto", 
-            "style": "errorbar", 
-            "rasterized": true, 
-            "capsize": 0, 
-            "x_err": true, 
-            "color": "auto", 
-            "y_err": true, 
-            "label": "__nolegend__", 
-            "step": false, 
-            "cmap": "viridis", 
-            "zorder": 1.0, 
-            "alpha": 1.0, 
-            "marker": ".", 
-            "plot_datavals": false, 
-            "axis": "ax", 
-            "linestyle": "", 
-            "fill": true
-        }, 
+            "edgecolor": "auto",
+            "style": "errorbar",
+            "rasterized": true,
+            "capsize": 0,
+            "x_err": true,
+            "color": "auto",
+            "y_err": true,
+            "label": "__nolegend__",
+            "step": false,
+            "cmap": "viridis",
+            "zorder": 1.0,
+            "alpha": 1.0,
+            "marker": ".",
+            "plot_datavals": false,
+            "axis": "ax",
+            "linestyle": "",
+            "fill": true,
+            "edgealpha": 1.0
+        },
         "unf12": {
-            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_12.root?yb0ys0/h_ptavg", 
-            "style": "line", 
-            "step": true, 
+            "input": "~/dust/dijetana/ana/CMSSW_7_2_3/unf_DATA_NLO_reg_12.root?yb0ys0/h_ptavg",
+            "style": "line",
+            "step": true,
             "label": "12"
         }
-    }, 
-    "z_log": false, 
-    "z_axis_formatter": "scalar", 
+    },
+    "z_log": false,
+    "z_axis_formatter": "scalar",
     "ratio": [
         [
-            "unf1", 
+            "unf1",
             "reco"
-        ], 
+        ],
         [
-            "unf2", 
+            "unf2",
             "reco"
-        ], 
+        ],
         [
-            "unf4", 
+            "unf4",
             "reco"
-        ], 
+        ],
         [
-            "unf6", 
+            "unf6",
             "reco"
-        ], 
+        ],
         [
-            "unf8", 
+            "unf8",
             "reco"
-        ], 
+        ],
         [
-            "unf12", 
+            "unf12",
             "reco"
-        ], 
+        ],
         [
-            "reco", 
+            "reco",
             "reco"
         ]
-    ], 
-    "combine_legend_entries": [], 
-    "ax_vlines": [], 
+    ],
+    "combine_legend_entries": [],
+    "ax_vlines": [],
     "output_modules": [
         "PlotModule"
-    ], 
-    "store_json": true, 
+    ],
+    "store_json": true,
     "ana_modules": [
         "Ratio"
-    ], 
-    "show_legend": true, 
-    "y_axis_formatter": "scalar", 
-    "output_prefix": "plots/", 
-    "output_path": "unf_regularization_comp_yb0ys0.png", 
-    "z_label": "", 
+    ],
+    "show_legend": true,
+    "y_axis_formatter": "scalar",
+    "output_prefix": "plots/",
+    "output_path": "unf_regularization_comp_yb0ys0.png",
+    "z_label": "",
     "input_modules": [
         "RootModule"
-    ], 
-    "margin": 0.0, 
+    ],
+    "margin": 0.0,
     "x_log": true
 }

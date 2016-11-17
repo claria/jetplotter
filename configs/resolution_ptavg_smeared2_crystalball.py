@@ -187,7 +187,7 @@ def get_config():
     config["y_lims"] = [0.0, 0.20]
     config["x_log"] = True
     config["x_axis_formatter"] = 'scalar2'
-    config["x_lims"] = [30., 2000.]
+    config["x_lims"] = [50., 2000.]
     config["legend_loc"] = 'upper right'
     config["x_label"] = "_ptavggen_"
     config["y_label"] = "Relative resolution $\Delta p_{\mathrm{T,avg}}^{\mathrm{ptcl}}/p_{\mathrm{T,avg}}^{\mathrm{ptcl}}$"
