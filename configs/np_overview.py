@@ -43,7 +43,7 @@ def get_config():
             "color": colors[i],
             "label": get_label(rap_bin), 
             "linestyle": "-", 
-            "style" : "line",
+            "style" : "errorbar",
             "step" : True,
             "marker": markers[i], 
             "markersize": 8,
@@ -52,25 +52,25 @@ def get_config():
             "markeredgewidth": 2,
             'legend_errorbars': False,
             "x_err": True, 
-            "y_err": True, 
+            "y_err": False, 
             "zorder": 100.0
         } 
 
     # config['plot_id'] = ['^{0}nlo$'.format(rap_bin) for rap_bin in rap_bins] + ['^{0}$'.format(rap_bin) for rap_bin in rap_bins]
     config['fig_size'] = [10., 10.]
     config['y_log'] = False
-    config["y_lims"] = [1.0, 1.15]
+    config["y_lims"] = [1.0, 1.12]
     config["x_log"] = True
     config["x_axis_formatter"] = 'scalar2'
     config["x_lims"] = [120, 2000.]
     config["legend_loc"] = 'upper right'
     config["x_label"] = "_ptavg_"
-    config["y_label"] = "Relative non-perturbative correction"
+    config["y_label"] = "NP correction"
 
     config["ax_texts"] = [
                           "_8tev_", 
                           {'s': ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
-                          {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
+                          {'s': ur'Simulation' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
                           ]
 
     config["output_path"] = 'np_overview.png'.format(rap_bin)
@@ -84,5 +84,6 @@ def final_plot(**kwargs):
 
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
-    kwargs['mpl'].rcParams['legend.fontsize'] = 18
-    kwargs['mpl'].rcParams['font.size'] = 18
+    # kwargs['mpl'].rcParams['legend.fontsize'] = 18
+    # kwargs['mpl'].rcParams['font.size'] = 18
+    pass

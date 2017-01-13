@@ -82,7 +82,7 @@ def get_config():
     config["x_lims"] = [120, 2000.]
     config["legend_loc"] = 'upper right'
     config["x_label"] = "_ptavg_"
-    config["y_label"] = "$\\frac{d^3\\sigma}{dp_{\\mathrm{T,avg}} dy_b dy*}$ / $\mathrm{pb}\,\mathrm{GeV}^{-1}$"
+    config["y_label"] = "$\\frac{d^3\\sigma}{dp_{\\mathrm{T,avg}} dy_b dy*}$ [$\mathrm{pb}\,/ \mathrm{GeV}$]"
 
     config["ax_texts"] = [
                           "_20fb_", 
@@ -91,7 +91,7 @@ def get_config():
                           {'s': ur'$\mu=p_\mathrm{T,max}e^{{0.3y^{*}}}$', 'x':'0.54','y':'0.60','ha':'left','va':'top'},
                           {'s': ur'anti\u2013$k_\mathrm{t}\,R=0.7$' , 'x': 0.54, 'y': 0.56, 'ha': 'left', 'va': 'top'}, 
                           {'s': ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
-                          {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
+                          # {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
                           ]
 
     config["output_path"] = 'ptavg_spectrum_scaled.png'.format(rap_bin)

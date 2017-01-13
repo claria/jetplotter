@@ -30,7 +30,7 @@ def get_config():
     names = ['gluon', 'd valence quark', 'u valence quark', 'sea quarks']
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
     q2s = [1.9, 4.0, 10000]
-    pdfsets = ["HFTD_HERACMSTDJETS_V111E_EIG", "HFTD_HERA_V111E_EIG"]
+    pdfsets = ["HFTD_HERACMSTDJETS_V111KA_EIG", "HFTD_HERA_V111KA_EIG"]
     pdf_labels = ["HERA DIS", "HERA DIS + CMS Dijets"]
    
     for j, pdfset in enumerate(pdfsets):

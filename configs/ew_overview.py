@@ -43,7 +43,7 @@ def get_config():
             "color": colors[i],
             "label": get_label(rap_bin), 
             "linestyle": "-", 
-            "style" : "line",
+            "style" : "errorbar",
             "step" : True,
             "marker": markers[i], 
             "markersize": 8,
@@ -63,14 +63,15 @@ def get_config():
     config["x_log"] = True
     config["x_axis_formatter"] = 'scalar2'
     config["x_lims"] = [120, 2000.]
-    config["legend_loc"] = 'upper right'
+    config["legend_loc"] = 'upper left'
     config["x_label"] = "_ptavg_"
-    config["y_label"] = "Relative electroweak correction"
+    config["y_label"] = "Electroweak correction"
 
     config["ax_texts"] = [
                           "_8tev_", 
-                          {'s': ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
-                          {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
+                          {'s': ur'Dittmaier, Huss, Speckner' , 'x': 0.05, 'y': 0.50, 'ha': 'left', 'va': 'bottom', 'size': 24}, 
+                          {'s': ur'[JHEP 1211 (2012) 095]' , 'x': 0.05, 'y': 0.45, 'ha': 'left', 'va': 'bottom', 'size': 24}, 
+                          # {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
                           ]
 
     config["output_path"] = 'ew_overview.png'.format(rap_bin)
@@ -84,5 +85,6 @@ def final_plot(**kwargs):
 
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
-    kwargs['mpl'].rcParams['legend.fontsize'] = 18
-    kwargs['mpl'].rcParams['font.size'] = 18
+    # kwargs['mpl'].rcParams['legend.fontsize'] = 18
+    # kwargs['mpl'].rcParams['font.size'] = 18
+    pass

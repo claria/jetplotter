@@ -94,7 +94,7 @@ def get_config():
 
         config["y_lims"] = ["0.0", "1.0"]
         config['legend_loc'] = 'lower left outside'
-        config['legend_bbox_anchor'] = (-0.021,1.0)
+        config['legend_bbox_anchor'] = (-0.171,1.0)
         config['legend_ncol'] = 3
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
@@ -103,7 +103,7 @@ def get_config():
         config["x_label"] = "_ptavg_"
         config["y_label"] = "Subprocess fraction"
         config["ax_texts"] = [
-                              "_{0}_?_bottomleft_".format(rap_bin),
+                              "_{0}_?x=0.03|y=0.03|va=bottom|ha=left|backgroundcolor=white".format(rap_bin),
                               {'s': ur'\u2460' , 'x': pos[rap_bin][0][0], 'y': pos[rap_bin][0][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
                               {'s': ur'\u2461' , 'x': pos[rap_bin][1][0], 'y': pos[rap_bin][1][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
                               {'s': ur'\u2462' , 'x': pos[rap_bin][2][0], 'y': pos[rap_bin][2][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
@@ -111,6 +111,7 @@ def get_config():
                               {'s': ur'\u2464' , 'x': pos[rap_bin][4][0], 'y': pos[rap_bin][4][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
                               {'s': ur'\u2465' , 'x': pos[rap_bin][5][0], 'y': pos[rap_bin][5][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
                               {'s': ur'\u2466' , 'x': pos[rap_bin][6][0], 'y': pos[rap_bin][6][1], 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
+                              '_8tev_',
                              ] 
 
         config["output_path"] = 'subprocesses_{0}.png'.format(rap_bin)
@@ -120,5 +121,7 @@ def get_config():
 
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
-    kwargs['mpl'].rcParams['legend.fontsize'] = 20
+    kwargs['mpl'].rcParams['legend.fontsize'] = 24
+    kwargs['mpl'].rcParams['legend.labelspacing'] = 0.1
+    kwargs['mpl'].rcParams['legend.columnspacing'] = 1.0
     # kwargs['mpl'].rcParams['font.size'] = 20

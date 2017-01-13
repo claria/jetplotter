@@ -31,11 +31,11 @@ def get_config():
     names = ['gluon', 'd valence quark', 'u valence quark', 'sea quarks']
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
     q2s = [1.9, 4.0, 10000, 100000, 1000000]
-    pdfset1 = "HFTD_HERA_V111K_EIG"
-    pdfset2 = "HFTD_HERACMSTDJETS_V111K_EIG"
+    pdfset2 = "HFTD_HERA_V111KA_EIG"
+    pdfset1 = "HFTD_HERACMSTDJETS_V111KA_EIG"
 
-    pdf_label1 = "HERA I+II DIS"
-    pdf_label2 = "HERA I+II DIS + CMS Dijets"
+    pdf_label2 = "HERA I+II DIS"
+    pdf_label1 = "HERA I+II DIS + CMS Dijets"
 
 
    
@@ -58,7 +58,7 @@ def get_config():
                                     '_{0}_totunc'.format(pdfset2),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2),
                                     '_{0}_totunc_line'.format(pdfset2),
                                  ] 
-            config['plot_order'] = ['_{0}_totunc'.format(pdfset1), '_{0}_totunc'.format(pdfset2)]
+            config['plot_order'] = ['_{0}_totunc'.format(pdfset2), '_{0}_totunc'.format(pdfset1)]
             config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset1), "_{0}_totunc".format(pdfset1)))
             config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset2), "_{0}_totunc".format(pdfset2)))
 
@@ -89,7 +89,7 @@ def get_config():
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "_color0_",
+                "color": "#1acce6",
                 "linestyle": "",
                 "label": "{0}".format(pdf_label1),
                 "step": False,
@@ -97,7 +97,7 @@ def get_config():
                 "zorder": 1.0,
                 "obj": "null",
                 "marker": ".", 
-                "alpha": 0.5, 
+                "alpha": 1.0, 
                 "fill": True, 
                 "y_err": True, 
                 "id": "_nnpdf30_totunc", 
@@ -110,7 +110,7 @@ def get_config():
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "_color0_",
+                "color": "#1acce6",
                 "linewidth": 1.0,
                 "linestyle": "--",
                 "label": "{0}".format(pdf_label1),
@@ -133,17 +133,17 @@ def get_config():
                 "rasterized": False, 
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "_color0_", 
+                "color": "#1acce6", 
                 "linestyle": "", 
                 "step": False, 
                 "cmap": "viridis", 
                 "zorder": 1.0, 
                 "obj": "null", 
                 "marker": ".", 
-                "alpha": 0.5, 
+                "alpha": 1.0, 
                 "fill": True, 
                 "y_err": True, 
-                "clip_vals": [-10,10],
+                "clip_vals": [-1,1],
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax1"
             }
@@ -155,8 +155,8 @@ def get_config():
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "_darkcolor2_", 
-                "edgecolor": "_darkcolor2_", 
+                "color": "blue", 
+                "edgecolor": "blue", 
                 "linestyle": "",
                 "linewidth": "2.0",
                 "label": "{0}".format(pdf_label2),
@@ -164,10 +164,10 @@ def get_config():
                 "cmap": "viridis",
                 "zorder": 2.0,
                 "obj": "null",
-                "hatch": '/', 
+                "hatch": '//', 
                 "plot_datavals": False, 
                 "marker": ".", 
-                "alpha": 0.2, 
+                "alpha": 0.0, 
                 "fill": False, 
                 "y_err": True, 
                 "id": "_nnpdf30_totunc", 
@@ -181,7 +181,7 @@ def get_config():
                 "capsize": 0, 
                 "x_err": True, 
                 "color": "none", 
-                "color": "_darkcolor2_", 
+                "color": "blue", 
                 "linestyle": "--",
                 "linewidth": "1.0",
                 "label": "{0}".format(pdf_label2),
@@ -205,8 +205,8 @@ def get_config():
                 "rasterized": False, 
                 "capsize": 0, 
                 "x_err": True, 
-                "edgecolor": "_darkcolor2_", 
-                "color": "_darkcolor2_", 
+                "edgecolor": "blue", 
+                "color": "blue", 
                 "linestyle": "", 
                 "step": False, 
                 "cmap": "viridis", 
@@ -215,11 +215,11 @@ def get_config():
                 "obj": "null", 
                 "plot_datavals": False, 
                 "marker": ".", 
-                "alpha": 0.2, 
+                "alpha": 0.0, 
                 "hatch": '//', 
                 "fill": True, 
                 "y_err": True, 
-                "clip_vals": [-10,10],
+                "clip_vals": [-1,1],
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax1"
             }
@@ -232,7 +232,7 @@ def get_config():
 
             config["y_lims"] = ["0.0", ymaxval]
             config["y_subplot_lims"] = ["-0.5", "0.5"]
-            config["y_subplot_label"] = 'Rel. Uncert.'
+            config["y_subplot_label"] = 'Rel. uncert.'
             config["x_lims"] = [1E-4, 0.9]
             config['x_axis_formatter'] = 'scientific'
             config["x_log"] =  True
@@ -241,10 +241,10 @@ def get_config():
             config["x_label"] = "$x$"
             config["y_label"] = y_labels[i]
             config["ax_texts"] = [
-                                  's=HERAPDF Method (Hessian)?_topright_',
+                                  's=HERAPDF method (Hessian)?_topright_?size=28',
                                   {'s' : ur'$Q^2\!={0}\,\mathrm{{GeV}}^2$'.format(get_q2label(q2)), 'x': 0.48, 'y': 0.78, 'ha': 'left', 'va': 'top'},
                                   {'s' : ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
-                                  {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.865, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
+                                  # {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.865, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
 
                                   ] 
             config["output_path"] = 'pdfcomp_direct_{0}_{1}.png'.format(partons[i], q2)

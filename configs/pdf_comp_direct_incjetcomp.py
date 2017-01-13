@@ -30,15 +30,11 @@ def get_config():
     names = ['gluon', 'd valence quark', 'u valence quark', 'sea quarks']
     y_labels = ['$xg(x,Q^2\!)$', '$xd_{\mathrm{v}}(x,Q^2\!)$', '$xu_{\mathrm{v}}(x,Q^2\!)$', '$x\Sigma(x,Q^2\!)$',]
     q2s = [1.9, 4.0, 10000, 100000, 1000000]
-    pdfset1 = "NNPDF30_nlo_as_0118"
-    pdfset3 = "INCJETS_8TEV_EIG"
-    pdfset2 = "HFTD_HERACMSTDJETS_V111K_EIG"
-    pdfset4 = "CT14nlo"
+    pdfset2 = "INCJETS_8TEV_EIG"
+    pdfset1 = "HFTD_HERACMSTDJETS_V111KA_EIG"
 
-    pdf_label1 = "NNPDF30"
-    pdf_label3 = "HERA I+II DIS + CMS Inc. Jets"
-    pdf_label2 = "HERA I+II DIS + CMS Dijets"
-    pdf_label4 = "CT14nlo"
+    pdf_label2 = "HERA I+II DIS + CMS Inc. Jets"
+    pdf_label1 = "HERA I+II DIS + CMS Dijets"
 
 
    
@@ -51,30 +47,26 @@ def get_config():
 
             config['copy_id'].append(("_{0}_totunc".format(pdfset1),"_{0}_totunc_line".format(pdfset1)))
             config['copy_id'].append(("_{0}_totunc".format(pdfset2),"_{0}_totunc_line".format(pdfset2)))
-            config['copy_id'].append(("_{0}_totunc".format(pdfset3),"_{0}_totunc_line".format(pdfset3)))
-            config['copy_id'].append(("_{0}_totunc".format(pdfset4),"_{0}_totunc_line".format(pdfset4)))
             config['minusone'] = ['ratio__{0}_totunc_to__{0}_totunc'.format(pdfset1), 
-                                  'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2),
-                                  'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset3),
-                                  'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset4)
+                                  'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2)
                                   ]
 
             config["plot_id"] =  [
                                     # '_{0}_totunc'.format(pdfset1),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset1),
                                     # '_{0}_totunc_line'.format(pdfset1),
+                                    '_{0}_totunc'.format(pdfset1),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset1),
+                                    '_{0}_totunc_line'.format(pdfset1),
                                     '_{0}_totunc'.format(pdfset2),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2),
                                     '_{0}_totunc_line'.format(pdfset2),
-                                    '_{0}_totunc'.format(pdfset3),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset3),
-                                    '_{0}_totunc_line'.format(pdfset3),
                                     # '_{0}_totunc'.format(pdfset4),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset4),
                                     # '_{0}_totunc_line'.format(pdfset4),
 
                                  ] 
-            config['plot_order'] = ['_{0}_totunc'.format(pdfset3), '_{0}_totunc'.format(pdfset2), 'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset3),'ratio__{0}_totunc_to__{0}_totunc'.format(pdfset2)]
+            config['plot_order'] = ['_{0}_totunc'.format(pdfset1), '_{0}_totunc'.format(pdfset2)]
             config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset1), "_{0}_totunc".format(pdfset1)))
             config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset2), "_{0}_totunc".format(pdfset2)))
-            config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset3), "_{0}_totunc".format(pdfset3)))
-            config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset4), "_{0}_totunc".format(pdfset4)))
+            # config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset3), "_{0}_totunc".format(pdfset3)))
+            # config["combine_legend_entries"].append(("_{0}_totunc_line".format(pdfset4), "_{0}_totunc".format(pdfset4)))
 
             config["input_pdfsets"] = [
                     ("{0}".format(pdfset1), {
@@ -89,44 +81,32 @@ def get_config():
                             "pdfset": pdfset2
                             }
                     ),
-                    ("{0}".format(pdfset3), {
-                            "flavour": partons[i], 
-                            "q2": q2s[k], 
-                            "pdfset": pdfset3
-                            }
-                    ),
-                    ("{0}".format(pdfset4), {
-                            "flavour": partons[i], 
-                            "q2": q2s[k], 
-                            "pdfset": pdfset4
-                            }
-                    ),
-
             ]
             config['ratio_copy'] = [
                                     ('_{0}_totunc'.format(pdfset1), '_{0}_totunc'.format(pdfset1)),
                                     ('_{0}_totunc'.format(pdfset2), '_{0}_totunc'.format(pdfset2)),
-                                    ('_{0}_totunc'.format(pdfset3), '_{0}_totunc'.format(pdfset3)),
-                                    ('_{0}_totunc'.format(pdfset4), '_{0}_totunc'.format(pdfset4)),
                                     ]
+
 
             config["objects"]["_{0}_totunc".format(pdfset1)] = {
                 "edgealpha": 1.0,
-                "edgecolor": "auto",
                 "style": "band",
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "_color0_",
+                "color": "#1acce6", 
+                "edgecolor": "#1acce6", 
                 "linestyle": "",
+                "linewidth": "2.0",
                 "label": "{0}".format(pdf_label1),
                 "step": False,
                 "cmap": "viridis",
-                "zorder": 1.0,
+                "zorder": 2.0,
                 "obj": "null",
+                "plot_datavals": False, 
                 "marker": ".", 
-                "alpha": 0.5, 
-                "fill": True, 
+                "alpha": 1.0, 
+                "fill": False, 
                 "y_err": True, 
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax"
@@ -138,17 +118,20 @@ def get_config():
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "_color0_",
-                "linewidth": 1.0,
+                "color": "none", 
+                "color": "#1acce6", 
                 "linestyle": "--",
+                "linewidth": "1.0",
                 "label": "{0}".format(pdf_label1),
                 "step": False,
                 "cmap": "viridis",
-                "zorder": 1.0,
+                "zorder": 2.0,
                 "obj": "null",
+                "hatch": '//', 
+                "plot_datavals": False, 
                 "marker": ".", 
                 "alpha": 1.0, 
-                "fill": True, 
+                "fill": False, 
                 "y_err": True, 
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax"
@@ -156,21 +139,23 @@ def get_config():
 
             config["objects"]["ratio__{0}_totunc_to__{0}_totunc".format(pdfset1)] = {
                 "edgealpha": 1.0, 
-                "edgecolor": "auto", 
                 "style": "band", 
                 "rasterized": False, 
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "_color0_", 
+                "edgecolor": "#1acce6", 
+                "color": "#1acce6", 
                 "linestyle": "", 
                 "step": False, 
                 "cmap": "viridis", 
-                "zorder": 1.0, 
+                "zorder": 2.0, 
+                "linewidth": "2.0",
                 "obj": "null", 
+                "plot_datavals": False, 
                 "marker": ".", 
-                "alpha": 0.5, 
+                "alpha": 1.0, 
+                "clip_vals": [-1,1],
                 "fill": True, 
-                "clip_vals": [-10,10],
                 "y_err": True, 
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax1"
@@ -190,15 +175,14 @@ def get_config():
                 "label": "{0}".format(pdf_label2),
                 "step": False,
                 "cmap": "viridis",
-                "zorder": 2.0,
+                "zorder": 5.0,
                 "obj": "null",
                 "hatch": '//', 
                 "plot_datavals": False, 
                 "marker": ".", 
-                "alpha": 0.1, 
+                "alpha": 0.0, 
                 "fill": False, 
                 "y_err": True, 
-                "id": "_nnpdf30_totunc", 
                 "axis": "ax"
             }
             config["objects"]["_{0}_totunc_line".format(pdfset2)] = {
@@ -208,14 +192,14 @@ def get_config():
                 "rasterized": False,
                 "capsize": 0, 
                 "x_err": True, 
-                "color": "none", 
-                "color": "_darkcolor2_", 
+                "color": "_color1_", 
+                "edgecolor": "_color1_", 
                 "linestyle": "--",
                 "linewidth": "1.0",
                 "label": "{0}".format(pdf_label2),
                 "step": False,
                 "cmap": "viridis",
-                "zorder": 2.0,
+                "zorder": 5.0,
                 "obj": "null",
                 "hatch": '//', 
                 "plot_datavals": False, 
@@ -238,167 +222,16 @@ def get_config():
                 "linestyle": "", 
                 "step": False, 
                 "cmap": "viridis", 
-                "zorder": 2.0, 
+                "zorder": 5.0, 
                 "linewidth": "2.0",
                 "obj": "null", 
                 "plot_datavals": False, 
                 "marker": ".", 
-                "alpha": 0.1, 
+                "alpha": 0.0, 
                 "hatch": '//', 
-                "clip_vals": [-10,10],
+                "clip_vals": [-1,1],
                 "fill": True, 
                 "y_err": True, 
-                "id": "_nnpdf30_totunc", 
-                "axis": "ax1"
-            }
-
-            config["objects"]["_{0}_totunc".format(pdfset3)] = {
-                "edgealpha": 1.0,
-                "edgecolor": "auto",
-                "style": "band",
-                "rasterized": False,
-                "capsize": 0, 
-                "x_err": True, 
-                "color": "_color1_", 
-                "edgecolor": "_color1_", 
-                "linestyle": "",
-                "linewidth": "2.0",
-                "label": "{0}".format(pdf_label3),
-                "step": False,
-                "cmap": "viridis",
-                "zorder": 2.0,
-                "obj": "null",
-                # "hatch": '//', 
-                "plot_datavals": False, 
-                "marker": ".", 
-                "alpha": 0.8, 
-                "fill": False, 
-                "y_err": True, 
-                "axis": "ax"
-            }
-            config["objects"]["_{0}_totunc_line".format(pdfset3)] = {
-                "edgealpha": 1.0,
-                "edgecolor": "auto",
-                "style": "line",
-                "rasterized": False,
-                "capsize": 0, 
-                "x_err": True, 
-                "color": "_color1_", 
-                "edgecolor": "_color1_", 
-                "linestyle": "--",
-                "linewidth": "1.0",
-                "label": "{0}".format(pdf_label3),
-                "step": False,
-                "cmap": "viridis",
-                "zorder": 2.0,
-                "obj": "null",
-                "hatch": '//', 
-                "plot_datavals": False, 
-                "marker": ".", 
-                "alpha": 1.0, 
-                "fill": False, 
-                "y_err": True, 
-                "id": "_nnpdf30_totunc", 
-                "axis": "ax"
-            }
-
-            config["objects"]["ratio__{0}_totunc_to__{0}_totunc".format(pdfset3)] = {
-                "edgealpha": 1.0, 
-                "style": "band", 
-                "rasterized": False, 
-                "capsize": 0, 
-                "x_err": True, 
-                "edgecolor": "_color1_", 
-                "color": "_color1_", 
-                "linestyle": "", 
-                "step": False, 
-                "cmap": "viridis", 
-                "zorder": 2.0, 
-                "linewidth": "2.0",
-                "obj": "null", 
-                "plot_datavals": False, 
-                "marker": ".", 
-                "alpha": 0.8, 
-                # "hatch": '//', 
-                "clip_vals": [-10,10],
-                "fill": True, 
-                "y_err": True, 
-                "id": "_nnpdf30_totunc", 
-                "axis": "ax1"
-            }
-
-            config["objects"]["_{0}_totunc".format(pdfset4)] = {
-                "edgealpha": 1.0,
-                "edgecolor": "auto",
-                "style": "band",
-                "rasterized": False,
-                "capsize": 0, 
-                "x_err": True, 
-                "color": "_darkcolor4_", 
-                "edgecolor": "_darkcolor4_", 
-                "linestyle": "",
-                "linewidth": "2.0",
-                "label": "{0}".format(pdf_label4),
-                "step": False,
-                "cmap": "viridis",
-                "zorder": 2.0,
-                "obj": "null",
-                "hatch": '//', 
-                "plot_datavals": False, 
-                "marker": ".", 
-                "alpha": 0.2, 
-                "fill": False, 
-                "y_err": True, 
-                "id": "_nnpdf30_totunc", 
-                "axis": "ax"
-            }
-            config["objects"]["_{0}_totunc_line".format(pdfset4)] = {
-                "edgealpha": 1.0,
-                "edgecolor": "auto",
-                "style": "line",
-                "rasterized": False,
-                "capsize": 0, 
-                "x_err": True, 
-                "color": "none", 
-                "color": "_darkcolor4_", 
-                "linestyle": "--",
-                "linewidth": "1.0",
-                "label": "{0}".format(pdf_label4),
-                "step": False,
-                "cmap": "viridis",
-                "zorder": 2.0,
-                "obj": "null",
-                "hatch": '//', 
-                "plot_datavals": False, 
-                "marker": ".", 
-                "alpha": 1.0, 
-                "fill": False, 
-                "y_err": True, 
-                "id": "_nnpdf30_totunc", 
-                "axis": "ax"
-            }
-
-            config["objects"]["ratio__{0}_totunc_to__{0}_totunc".format(pdfset4)] = {
-                "edgealpha": 1.0, 
-                "style": "band", 
-                "rasterized": False, 
-                "capsize": 0, 
-                "x_err": True, 
-                "edgecolor": "_darkcolor4_", 
-                "color": "_darkcolor4_", 
-                "linestyle": "", 
-                "step": False, 
-                "cmap": "viridis", 
-                "zorder": 2.0, 
-                "linewidth": "2.0",
-                "obj": "null", 
-                "plot_datavals": False, 
-                "marker": ".", 
-                "alpha": 0.2, 
-                "hatch": '//', 
-                "fill": True, 
-                "y_err": True, 
-                "clip_vals": [-10,10],
                 "id": "_nnpdf30_totunc", 
                 "axis": "ax1"
             }
@@ -411,7 +244,7 @@ def get_config():
 
             config["y_lims"] = ["0.0", ymaxval]
             config["y_subplot_lims"] = ["-0.5", "0.5"]
-            config["y_subplot_label"] = 'Rel. Uncert.'
+            config["y_subplot_label"] = 'Rel. uncert.'
             config["x_lims"] = [1E-4, 0.9]
             config['x_axis_formatter'] = 'scientific'
             config["x_log"] =  True
@@ -420,10 +253,10 @@ def get_config():
             config["x_label"] = "$x$"
             config["y_label"] = y_labels[i]
             config["ax_texts"] = [
-                                  's=HERAPDF Method (Hessian)?_topright_',
+                                  's=HERAPDF method (Hessian)?_topright_?size=28',
                                   {'s' : ur'$Q^2\!={0}\,\mathrm{{GeV}}^2$'.format(get_q2label(q2)), 'x': 0.42, 'y': 0.78, 'ha': 'left', 'va': 'top'},
                                   {'s' : ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
-                                  {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.865, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
+                                  # {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.865, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
                                   ] 
             config["output_path"] = 'pdfcomp_direct_{0}_{1}_incjetcomp.png'.format(partons[i], q2)
             configs.append(config)

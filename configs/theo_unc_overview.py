@@ -1,3 +1,4 @@
+import util.callbacks as callbacks
 
 def get_base_config():
     config = {}
@@ -110,18 +111,18 @@ def get_config():
         } 
 
 
-        config["y_lims"] = ["-0.3", "0.3"]
+        config["y_lims"] = ["-0.35", "0.35"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["legend_loc"] = 'lower left'
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Relative Uncertainty?_center_"
+        config["y_label"] = "Relative uncertainty?_center_"
         config["ax_hlines"] = [
                 {'y' : 0.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
         config["ax_texts"] = [
-                              '_{0}_?_upperleft_'.format(rap_bin), 
-                              "s=NNPDF 3.0-NLO?_upperleft2_",
+                              '_{0}_?_upperleft_|size=32'.format(rap_bin), 
+                              "s=NNPDF 3.0-NLO?_upperleft2_|size=32",
                               {'s': ur'CMS' , 'x': 0.55, 'y': 0.95, 'ha': 'center', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
                               {'s': ur'Simulation' , 'x': 0.555, 'y': 0.875, 'ha': 'center', 'va': 'top', 'size': 18, 'style':'italic'}, 
                               '_8tev_'] 
@@ -131,3 +132,6 @@ def get_config():
 
     return configs
 
+@callbacks.register('before_plot')
+def final_plot(**kwargs):
+    kwargs['mpl'].rcParams['legend.fontsize'] = 28

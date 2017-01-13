@@ -39,7 +39,7 @@ def get_config():
         }
         config['objects']["dataunf_lumi"] = {
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_lumi".format(rap_bin), 
-            "label": "Lumi. uncertainty", 
+            "label": "Lumi uncertainty", 
             "style": "errorlines",
             "color": "_color2_",
             "dashes": [4,4,10,4],
@@ -64,7 +64,7 @@ def get_config():
 
         config['objects']["dataunf_nongaussian"] = {
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_nongaussian".format(rap_bin), 
-            "label": "Non-gaussian tails unc.", 
+            "label": "Non-Gaussian tails unc.", 
             "style": "errorlines",
             "color": "_color5_",
             "linestyle": "-",
@@ -74,7 +74,7 @@ def get_config():
 
         config['objects']["dataunf_uncor"] = {
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_unc".format(rap_bin), 
-            "label": "Uncor. uncertainty", 
+            "label": "Uncorrelated unc.", 
             "style": "errorlines",
             "color": "_color1_",
             "step": True,
@@ -93,14 +93,14 @@ def get_config():
         config["legend_loc"] = 'lower left'
         config["legend_ncol"] = 2
         config["x_label"] = "_ptavg_"
-        config["y_label"] = "Relative Uncertainty?_center_"
+        config["y_label"] = "Relative uncertainty?_center_"
         config["ax_hlines"] = [
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
         config["ax_texts"] = [
-                              '_{0}_?_upperleft_'.format(rap_bin), 
+                              '_{0}_?_upperleft_|size=32'.format(rap_bin), 
                               {'s': ur'CMS' , 'x': 0.55, 'y': 0.95, 'ha': 'center', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
-                              {'s': ur'Preliminary' , 'x': 0.555, 'y': 0.875, 'ha': 'center', 'va': 'top', 'size': 18, 'style':'italic'}, 
+                              # {'s': ur'Preliminary' , 'x': 0.555, 'y': 0.875, 'ha': 'center', 'va': 'top', 'size': 18, 'style':'italic'}, 
 
                               '_20fb_'] 
 
@@ -112,4 +112,5 @@ def get_config():
 @callbacks.register('before_plot')
 def final_plot(**kwargs):
     kwargs['mpl'].rcParams['legend.fontsize'] = 22
+    kwargs['mpl'].rcParams['legend.columnspacing'] = 1
     kwargs['mpl'].rcParams['lines.linewidth'] = 4

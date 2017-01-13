@@ -109,16 +109,16 @@ class BasePlot(object):
         # matplotlib.rc('text.latex', preamble=r'\usepackage{helvet}')
         # Axes
         matplotlib.rcParams['axes.linewidth'] = 2
-        matplotlib.rcParams['axes.labelsize'] = 24
+        matplotlib.rcParams['axes.labelsize'] = 32
         matplotlib.rcParams['axes.formatter.limits'] = [-2, 9]
-        matplotlib.rcParams['xtick.labelsize'] = 'medium'
+        matplotlib.rcParams['xtick.labelsize'] = 'large'
         matplotlib.rcParams['xtick.major.size'] = 8
         matplotlib.rcParams['xtick.major.width'] = 1.5
         matplotlib.rcParams['xtick.minor.size'] = 6
         matplotlib.rcParams['xtick.minor.width'] = 1.
         matplotlib.rcParams['xtick.major.pad'] = 12
         matplotlib.rcParams['xtick.minor.pad'] = 12
-        matplotlib.rcParams['ytick.labelsize'] = 'medium'
+        matplotlib.rcParams['ytick.labelsize'] = 'large'
         matplotlib.rcParams['ytick.major.width'] = 1.5
         matplotlib.rcParams['ytick.major.size'] = 8
         matplotlib.rcParams['ytick.minor.size'] = 6
@@ -470,6 +470,9 @@ def plot_errorbar(obj=None, step=False, x_err=True, y_err=True, emptybins=True, 
             y = steppify_bin(y)
         plot_kwargs = {k: v for k, v in kwargs.items() if
                        k in ['label', 'alpha', 'color', 'linestyle', 'linewidth', 'step', 'zorder', 'dashes']}
+        # plot marker in front of line
+        if 'zorder' in plot_kwargs:
+            plot_kwargs['zorder'] *= 0.99
         ax.plot(x, y, **plot_kwargs)
 
     if legend_errorbars:

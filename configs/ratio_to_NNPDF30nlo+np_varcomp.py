@@ -67,7 +67,7 @@ def get_config():
             "edgealpha":1.0,
             "alpha":0.1,
             "input": "~/dust/dijetana/plot/data_summary.root?{0}/data_syst".format(rap_bin), 
-            "label": "Exp. Unc.", 
+            "label": "Exp. unc.", 
             "marker": ".", 
             "step": True, 
             "style": "band", 
@@ -83,7 +83,7 @@ def get_config():
             "color": "_color0_", 
             "edgecolor": "_color0_", 
             "input_tgraph": "~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_xs&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_pdfunc_l&~/dust/dijetana/ana/CMSSW_7_2_3/PTAVG_YBYS_NLO.root?{0}/NNPDF30_pdfunc_u".format(rap_bin), 
-            "label": "Theo Unc.", 
+            "label": "Theo unc.", 
             "linestyle": "", 
             "marker": ".", 
             "plot": True, 
@@ -174,9 +174,9 @@ def get_config():
                 {'y' : 1.0, 'color' : 'black', 'linewidth' : 1.0, 'linestyle' : '--'}
                 ]
         config["ax_texts"] = [
-                              '_{0}_?_upperright_'.format(rap_bin), 
+                              '_{0}_?_upperright_|size=32'.format(rap_bin), 
                               {'s': ur'CMS' , 'x': 0.05, 'y': 0.95, 'ha': 'left', 'va': 'top', 'size': 40, 'weight': 'bold'}, 
-                              {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
+                              # {'s': ur'Preliminary' , 'x': 0.055, 'y': 0.875, 'ha': 'left', 'va': 'top', 'size': 18, 'style':'italic'}, 
                               '_20fb_'] 
 
         config["output_path"] = 'ratio_to_NNPDF30+np_varcomp_{0}.png'.format(rap_bin)

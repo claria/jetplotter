@@ -251,6 +251,14 @@ def main():
         data_jer.Write('data_jer')
         data_nongaussian.Write('data_nongaussian')
 
+        print_hepdata_summary(data=data['sigma'], 
+                              ystar_l=data['ys_low'], ystar_u=data['ys_high'],
+                              yboost_l=data['yb_low'], yboost_u=data['yb_high'],
+                              ptavg_l=data['pt_low'], ptavg_u=data['pt_high'],
+                              stat_l=stat_error_l, stat_u=stat_error_u,
+                              syst_l=syst_error_l, syst_u=syst_error_u,
+                              ybys_bin=ybys_bin)
+
 
 def infinalrange(pt_low, ybys_bin):
     cuts = {
@@ -274,11 +282,49 @@ def print_data(data, labels, ybys_bin):
             vals = ['{0:<15.4g}'.format(data[label][i]) for label in labels]
             print ' '.join(vals)
 
-# unfolded data
-# stat unc
-# correlations
-# jec
-# systematic unfolding
+
+def print_hepdata_summary(**kwargs):
+    # print kwargs.keys()
+
+    header="""
+*author: CMS Collaboration
+*experiment: CERN-LHC-CMS
+*detector: CMS
+*title: Measurement of Triple-Differential Dijet Cross Sections at sqrt(s) = 8 TeV with the CMS Detector and Constraints on Parton Distribution Functions
+"""
+    if kwargs['ybys_bin'] == 'yb0ys0':
+        print header
+
+    dataset="""
+*dataset:
+*dscomment: Triple differential dijet cross section for {ystar_l} <= YSTAR < {ystar_u} and {yboost_l} <= YBOOST < {yboost_u} as function of the average transverse momentum of the leading two jets. 
+            The (sys) error is the total relative systematic error, including the luminosity uncertainty of 2.6%.
+*reackey: P P --> JET JET
+*obskey: D3SIG/DPTAVG/DYSTAR/DYBOOST
+*qual: {ystar_l} <= YSTAR < {ystar_u}; {yboost_l} <= YBOOST < {yboost_u}
+*qual: RE : P P --> JET JET
+*qual: SQRT(S) IN GEV : 8000.0
+*yheader: D3(SIG)/DPTAVG/DYSTAR/DYBOOST IN PB/GEV
+*xheader: PTAVG IN GEV 
+*data: x : y 
+""".format(ystar_l=kwargs['ystar_l'][0], ystar_u=kwargs['ystar_u'][0], yboost_l=kwargs['yboost_l'][0], yboost_u=kwargs['yboost_u'][0])
+    print dataset
+    data ="""
+ {ptavg_l} TO {ptavg_u}; {sigma:15.4G} +- {stat:.4G} (DSYS=+{syst_u:.4G},-{syst_l:.4G});"""
+    for i in xrange(len(kwargs['data'])):
+        if infinalrange(kwargs['ptavg_l'][i], kwargs['ybys_bin']):
+            print data.format(ptavg_l=kwargs['ptavg_l'][i], ptavg_u=kwargs['ptavg_u'][i], sigma=kwargs['data'][i],
+                              stat=kwargs['stat_l'][i], syst_u=kwargs['syst_u'][i], syst_l=kwargs['syst_l'][i]), 
+    footer="""
+*dataend:
+
+"""
+    print footer
+
+
+    if kwargs['ybys_bin'] == 'yb2ys0':
+        print "*E"
+
 
 if __name__ == '__main__':
     main()

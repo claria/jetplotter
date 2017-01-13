@@ -69,7 +69,7 @@ def get_config():
         config["data_lims"] = [('all', { 'min' : '_{0}_xmin_'.format(rap_bin), 'max' : '_{0}_xmax_'.format(rap_bin)}),
                                 ]
 
-        config["y_lims"] = ["0.0", "2"]
+        config["y_lims"] = ["0.8", "1.2"]
         config["x_lims"] = ["_{0}_xmin_".format(rap_bin),"_{0}_xmax_".format(rap_bin)]
         config["x_log"] =  True
         config["legend_loc"] = 'lower left'
